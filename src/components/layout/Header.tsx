@@ -106,7 +106,7 @@ export default function Header() {
           Contact
         </Link>
 
-        <a href='https://llm-adam-steinberger.vercel.app/' className='menu-item' onClick={closeMenu} target='_blank' rel='noopener noreferrer'>
+        <a href='https://chat.adam.matthewsteinberger.com' className='menu-item' onClick={closeMenu} target='_blank' rel='noopener noreferrer'>
           <i className='fas fa-play me-2'></i>
           Demo
         </a>
