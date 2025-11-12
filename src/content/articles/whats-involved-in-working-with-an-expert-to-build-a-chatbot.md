@@ -26,7 +26,7 @@ They'll also look at your existing systems (like CRMs or ERPs), your audience, a
 
 🧾 **Deliverable:** A project brief with goals, user needs, tech requirements, and scope.
 
-📌 **Real-world example:** MobiDev helped a healthcare company reduce support calls by 15% (saving $5M/year) by starting with a clear discovery process that matched tech to business needs.
+📌 **Real-world example:** For Chosen People Ministries, I conducted a comprehensive 10-hour codebase analysis and architecture review, identifying critical issues and creating a detailed roadmap with 400+ hours of prioritized improvements to transform their AI-built platform into an enterprise-grade system.
 
 ## 📋 2. Planning and Design: Blueprint Before You Build
 
@@ -38,7 +38,7 @@ Then comes conversation design—mapping how the chatbot will actually talk to u
 
 🧾 **Deliverables:** A detailed plan with tech stack, UI mockups, chatbot flows, and a project timeline.
 
-📌 **Real-world example:** Itransition mapped out customer workflows for a CRM-integrated chatbot that handled 70% of repeat inquiries.
+📌 **Real-world example:** For GodFocus, I created 8 prioritized Lovable prompts with detailed requirements for implementing a push notification feature, which guided rapid AI-assisted development and resulted in 159/159 tests passing with 85% coverage.
 
 ## ⚙️ 3. Development: This Is Where the Bot Comes to Life
 
@@ -55,7 +55,7 @@ Security, of course, is part of this—especially for law and banking. Expect fe
 
 🧾 **Deliverables:** A working chatbot prototype with real integrations and security baked in.
 
-📌 **Real-world example:** ValueCoders built a chatbot for a bank that used MFA, integrated with Salesforce, and achieved 95% uptime.
+📌 **Real-world example:** I built a Self-Hosted RAG Chatbot using Mistral-7B with FAISS vector search for a non-profit client, implementing OpenAI-compatible API, Docker containerization, and comprehensive monitoring with Grafana and Prometheus—achieving complete data privacy with zero external dependencies.
 
 ## 🧪 4. Testing: Try to Break It Before Your Users Do
 
@@ -72,7 +72,7 @@ Experts will use user feedback and edge cases to refine the bot.
 
 🧾 **Deliverables:** A tested, production-ready chatbot with documentation.
 
-📌 **Real-world example:** Topflight Apps tested and restructured a sobriety support chatbot that previously failed on open-ended inputs, improving performance dramatically.
+📌 **Real-world example:** For GodFocus push notifications, I used Test-Driven Development methodology with Claude Code to achieve 159/159 passing tests (unit, integration, and E2E) with 85.84% coverage—all delivered production-ready in just 5 billable hours.
 
 ## 🚀 5. Deployment & Ongoing Support: Launch and Keep It Alive
 
@@ -89,7 +89,7 @@ Post-launch, experts will:
 
 🧾 **Deliverables:** A live chatbot, monitoring dashboards, and a support plan.
 
-📌 **Real-world example:** MobiDev maintained a healthcare chatbot that continued to save the client over $5M annually through improved routing and response automation.
+📌 **Real-world example:** I delivered an enterprise AI Payroll Processor using GPT-5 with Azure Service Bus microservices and RAG architecture, completing a 45-day redesign of the automated payroll processing system with full deployment and integration with Microsoft Graph API.
 
 ## ⚠️ Challenges You'll Want to Prepare For
 

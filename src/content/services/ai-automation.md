@@ -1,7 +1,7 @@
 ---
 title: 'Intelligent AI Automation'
 subtitle: 'Streamline Your Business Processes with AI-Powered Automation'
-description: 'Transform repetitive tasks into intelligent workflows. I help Greenville businesses reduce costs, improve efficiency, and focus on what matters most through AI-powered automation solutions.'
+description: 'I transform repetitive, time-consuming tasks into intelligent AI-powered workflows that run automatically while your team focuses on high-value work. From automating customer email responses and data entry to generating reports and processing documents, I build custom automation systems using n8n, LLM APIs like GPT-5 and Claude, and seamless integrations with your existing tools and databases.<newline>These aren''t simple if-then scripts—they''re intelligent automations that understand context, make decisions, and handle exceptions just like a skilled employee would. Your automation solution connects everything from your CRM and email to spreadsheets, forms, calendars, and custom applications, creating end-to-end workflows that eliminate manual handoffs and human error.<newline>Greenville businesses using AI automation typically see 60-80% reduction in operational costs for automated tasks, 90% fewer errors, and ROI within 3-6 months as teams redirect hours previously spent on repetitive work. Plus everything runs 24/7 with complete logging, monitoring, and the flexibility to adapt as your processes evolve. Scroll down to see exactly how AI automation delivers measurable ROI for your specific business processes and operational bottlenecks.'
 category: 'AI Business Automation'
 heroTitle: 'Intelligent AI Automation'
 heroSubtitle: 'Streamline Your Business Processes with AI-Powered Automation'

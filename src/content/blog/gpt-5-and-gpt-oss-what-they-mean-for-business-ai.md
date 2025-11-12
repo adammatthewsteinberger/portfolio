@@ -20,7 +20,7 @@ featured: true
 
 ## What Are GPT-5 and GPT-OSS?
 
-- **GPT-5**: the evolution of GPT-4, boasting higher reasoning accuracy, multimodal inputs (text, image, audio), and stronger contextual memory.  
+- **GPT-5**: the evolution of GPT-5, boasting higher reasoning accuracy, multimodal inputs (text, image, audio), and stronger contextual memory.  
 - **GPT-OSS**: an open-weight alternative available in 20B and 120B parameter versions, free to deploy under Apache-2.0.  
 
 Together, they represent two ends of the enterprise AI spectrum: **closed but powerful vs. open and flexible**.  

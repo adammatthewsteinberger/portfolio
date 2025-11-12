@@ -1,7 +1,7 @@
 ---
 title: 'Expert LLM Developer'
 subtitle: 'Custom Language Model Solutions & API Integration'
-description: 'I build, fine-tune, and integrate large language models to automate workflows, generate content, and enhance customer service. Specializing in GPT, Claude, Gemini, and open-source models for Greenville businesses.'
+description: 'I build, fine-tune, and integrate large language models that transform how your business operates. From automating complex workflows and generating branded content to providing intelligent customer service that never sleeps, I deliver production-ready LLM solutions using GPT-5, Claude 3, Gemini, and open-source models.<newline>Whether you need rapid prototyping or enterprise-grade deployment with complete security and compliance, I help Greenville businesses harness the full power of AI language models with custom integration, fine-tuning, and RAG systems tailored to your data and workflows.<newline>Companies implementing custom LLM solutions gain competitive advantages that generic chatbots simply cannot match. Scroll down to see exactly how custom LLM development delivers measurable ROI for your specific industry and use case.'
 category: 'AI Development'
 heroTitle: 'Build Smarter with LLMs'
 heroSubtitle: 'From ChatGPT to Claude and Gemini, launch tailored AI solutions for your business.'
@@ -18,7 +18,7 @@ choice3Description: 'Enterprise-ready deployment with privacy, monitoring, and c
 featuresOffered: 'LLM Development Services'
 feature1Icon: 'fa-comments'
 feature1Title: 'ChatGPT Integration'
-feature1Description: 'Custom GPT-4 solutions with prompt design, API calls, and content workflows.'
+feature1Description: 'Custom GPT-5 solutions with prompt design, API calls, and content workflows.'
 feature2Icon: 'fa-lightbulb'
 feature2Title: 'Claude AI Development'
 feature2Description: 'Build advanced reasoning applications with Claude 3 models from Anthropic.'

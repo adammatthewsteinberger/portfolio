@@ -50,14 +50,14 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               <span className="text-muted ms-2">{articleContent.meta.readTime}</span>
             </div>
 
-            {articleContent.audioFile && (
+            {/* {articleContent.audioFile && (
               <div className="audio-player mb-4">
                 <audio controls className="w-100">
                   <source src={`/audio/${articleContent.audioFile}`} type="audio/wav" />
                   Your browser does not support the audio element.
                 </audio>
               </div>
-            )}
+            )} */}
 
             <div className="article-body mb-5">
               <ReactMarkdown

@@ -35,7 +35,7 @@ featured: false
 
 ## Mini Case Story: SLM for Customer Support
 
-A telco swapped out GPT-4 for an SLM.  
+A telco swapped out GPT-5 for an SLM.  
 - Cut compute costs by 65%.  
 - Maintained **95% answer accuracy** for FAQs.  
 

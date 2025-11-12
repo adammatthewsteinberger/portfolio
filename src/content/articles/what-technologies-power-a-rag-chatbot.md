@@ -15,7 +15,7 @@ Let's break it down in simple terms—and then we'll get technical.
 ## 🔧 What Powers a RAG Chatbot? (Layman's View)
 
 - **The Language It Speaks (Python)**: Most RAG chatbots are written in Python. Why? Because Python is easy to use and has tons of libraries that make AI magic possible.
-- **The Brain (Large Language Models)**: This is the part that understands and responds to you. Think GPT-4, Mistral's Mixtral, or Google Gemini.
+- **The Brain (Large Language Models)**: This is the part that understands and responds to you. Think GPT-5, Mistral's Mixtral, or Google Gemini.
 - **The Memory (Vector Databases)**: These are high-speed filing cabinets where knowledge is stored in a way AI can understand—using vectors.
 - **The Search Assistant (Retrievers)**: When you ask a question, the retriever fetches the most relevant files from the vector database.
 - **The Composer (Generators)**: After fetching the right info, the AI writes a clear, accurate response, using natural language generation.
@@ -42,7 +42,7 @@ Python dominates because it's readable, widely supported, and rich with AI libra
 ### 3. NLP + Machine Learning Libraries
 
 - **Hugging Face Transformers** – Foundation models like BERT, RoBERTa, etc.
-- **OpenAI API** – Access to GPT-4, embeddings, and other tools.
+- **OpenAI API** – Access to GPT-5, embeddings, and other tools.
 - **NLTK / SpaCy** – Text cleaning, tokenization, and preparation.
 
 ### 4. Embedding Models
@@ -66,7 +66,7 @@ These store and retrieve embeddings for quick, accurate information retrieval:
 
 Used to generate answers and summaries:
 
-- GPT-3 / GPT-4 (OpenAI)
+- GPT-3 / GPT-5 (OpenAI)
 - Mixtral-8x7B (MistralAI)
 - Gemini 1.5 (Google)
 - T5 / BART / LLaMA
@@ -128,7 +128,7 @@ For public-facing user interfaces, the latest frontend stacks are key:
 
 | Question | Trade-Off |
 |----------|-----------|
-| Open-source vs. Proprietary? | Open-source gives control and privacy. Proprietary APIs (like GPT-4) are faster to integrate, but cost more and may raise security concerns. |
+| Open-source vs. Proprietary? | Open-source gives control and privacy. Proprietary APIs (like GPT-5) are faster to integrate, but cost more and may raise security concerns. |
 | Self-hosted vs. Cloud? | Self-hosted saves on long-term costs and improves privacy. Cloud is faster to deploy, more scalable. |
 | Speed vs. Accuracy? | High-accuracy LLMs are expensive and compute-heavy. Smaller models are cheaper but may miss nuance. |
 | Real-time vs. Batch Processing? | Real-time RAG feels magical, but may need throttling or rate limits depending on your stack. |

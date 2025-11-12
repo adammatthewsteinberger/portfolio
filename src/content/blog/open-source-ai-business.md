@@ -28,7 +28,7 @@ featured: false
 ## Business Applications
 
 - **Custom Fine-Tuning**: Industry-specific OSS models.  
-- **Cost Savings**: Deploy smaller OSS models vs GPT-4/Claude.  
+- **Cost Savings**: Deploy smaller OSS models vs GPT-5/Claude.  
 - **Transparency**: Regulators prefer explainable OSS AI.  
 
 ---

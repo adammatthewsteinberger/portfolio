@@ -19,7 +19,7 @@ featured: false
 
 ## Why This Matters Now
 
-- OpenAI’s GPT-4o leading the way in **voice + vision in real time**.  
+- OpenAI’s GPT-5o leading the way in **voice + vision in real time**.  
 - Google + Anthropic building multimodal competitors.  
 - Enterprises exploring **video + voice copilots** for operations.  
 

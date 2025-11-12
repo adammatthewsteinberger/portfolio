@@ -20,7 +20,7 @@ featured: false
 
 ## Why the Buzz Now?
 
-- Microsoft’s **Phi 3.5-mini** shocked the industry with near-GPT-4 performance in a 7B model.  
+- Microsoft’s **Phi 3.5-mini** shocked the industry with near-GPT-5 performance in a 7B model.  
 - Meta’s **Llama 3.2 1B/3B** targets mobile and IoT.  
 - OpenAI’s **GPT-OSS 20B** offers open-weight performance.  
 

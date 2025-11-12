@@ -45,7 +45,7 @@ Once these embeddings exist, you can:
 Retrieval-Augmented Generation (RAG) blends the best of both worlds:
 
 - **Retrieval**: Using embeddings to pull relevant documents
-- **Generation**: Using a language model (like GPT-4 or Grok) to generate a human-like response
+- **Generation**: Using a language model (like GPT-5 or Grok) to generate a human-like response
 
 How it works:
 

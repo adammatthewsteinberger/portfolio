@@ -18,9 +18,9 @@ export default function Home() {
           className='fw-semibold mb-3 headline-gradient'
           style={{ fontSize: '1.35rem' }}
         >
-          And How I&apos;m Solving It for Greenville South Carolina Businesses
+          And How I&apos;m Solving It for Greenville, South Carolina Businesses
         </h3>
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <div className="ratio ratio-16x9" style={{maxWidth: '800px', margin: '0 auto'}}>
             <iframe 
               src="https://www.youtube.com/embed/2O8Qg4uFnl0" 
@@ -28,14 +28,20 @@ export default function Home() {
               allowFullScreen
             ></iframe>
           </div>
-        </div>
+        </div> */}
         <div className='mx-auto mb-4' style={{ maxWidth: '800px' }}>
-          <div className='alert custom-alert p-4 mb-4 shadow-lg'>
-            <strong>Reality Check:</strong> Most businesses are losing money on
-            AI. They&apos;re either stuck with generic chatbots that don&apos;t
-            understand their business, or they&apos;re paralyzed by security
-            concerns and technical complexity. Meanwhile, their competitors are
-            gaining massive advantages through custom AI solutions.
+          <div className='alert custom-alert p-4 mb-4 shadow-lg' style={{ fontSize: '1.15rem', lineHeight: '1.7' }}>
+            <strong>Reality Check:</strong> Most businesses are losing money on AI right now.
+            They&apos;re either stuck with generic chatbots that don&apos;t understand their unique business processes,
+            or they&apos;re completely paralyzed by legitimate security concerns and overwhelming technical complexity.
+            <br /><br />
+            The worst part? While they&apos;re hesitating, their competitors are gaining massive operational advantages
+            through properly implemented custom AI solutions—automating workflows, reducing support costs by 40%,
+            and capturing leads 24/7 with intelligent systems that actually understand their industry.
+            <br /><br />
+            The gap between AI winners and losers isn&apos;t about budget—it&apos;s about having the right technical
+            partner who can navigate the complexity, implement security correctly, and deliver solutions that
+            actually move the needle on your business metrics. <strong>Keep scrolling to see how this works.</strong>
           </div>
         </div>
       </section>

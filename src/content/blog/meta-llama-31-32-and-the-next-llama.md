@@ -38,7 +38,7 @@ featured: false
 
 A global retailer fine-tuned Llama 3.1 on product catalogs + customer queries.  
 - Achieved **80% accuracy** on recommendation queries.  
-- Costs dropped by 50% compared to GPT-4 API usage.  
+- Costs dropped by 50% compared to GPT-5 API usage.  
 
 ---
 

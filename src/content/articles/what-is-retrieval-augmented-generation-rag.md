@@ -49,7 +49,7 @@ Here's how that breaks down:
 
 ### 2. Generation
 
-- The retrieved documents are handed off to a language model (like GPT-4 or Grok).
+- The retrieved documents are handed off to a language model (like GPT-5 or Grok).
 - The model reads them, combines them with your original question, and generates a complete answer — ideally one that's both relevant and fluent.
 
 🔁 Repeat this process every time a new question is asked, using the freshest available data.

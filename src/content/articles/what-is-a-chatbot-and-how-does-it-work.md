@@ -171,7 +171,7 @@ That's why custom development matters — especially when your chatbot represent
 
 Whether you're a startup looking to automate support, an enterprise streamlining internal Q&A, or a solopreneur offering 24/7 help — I can help you build a bespoke AI chatbot, trained on your content, tone, and goals.
 
-- ✅ Built on GPT-4, Claude, or other LLMs
+- ✅ Built on GPT-5, Claude, or other LLMs
 - ✅ Custom RAG architecture if needed
 - ✅ Brand-safe tone and messaging
 - ✅ Connects to your website, Slack, Notion, docs, APIs

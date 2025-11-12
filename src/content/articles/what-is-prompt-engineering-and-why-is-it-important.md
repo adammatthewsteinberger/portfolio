@@ -71,7 +71,7 @@ Each tweak brings you closer to a reliable, human-like output — without writin
 
 ## 🧑‍🔬 Under the Hood: How Prompt Engineering Works (For the Tech-Inclined)
 
-From a technical standpoint, prompt engineering guides generative AI models — especially large language models (LLMs) like GPT-4 or Grok — by activating their internal knowledge and shaping how they generate responses.
+From a technical standpoint, prompt engineering guides generative AI models — especially large language models (LLMs) like GPT-5 or Grok — by activating their internal knowledge and shaping how they generate responses.
 
 ### Techniques Include:
 

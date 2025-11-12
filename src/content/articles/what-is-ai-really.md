@@ -128,7 +128,7 @@ Modern AI development often uses:
 - Optimization algorithms
 - Natural Language Processing (NLP)
 
-And many of today's breakthroughs — from GPT-4 to autonomous robots — depend on the scaling of large models trained on massive datasets, supported by cloud infrastructure.
+And many of today's breakthroughs — from GPT-5 to autonomous robots — depend on the scaling of large models trained on massive datasets, supported by cloud infrastructure.
 
 ## TL;DR: What is AI, Really?
 

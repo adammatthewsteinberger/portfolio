@@ -39,8 +39,12 @@ export default async function ServicePage({ params }: ServicePageProps) {
           {serviceContent.heroSubtitle}
         </h2>
         <div className="mx-auto mb-4" style={{maxWidth: '700px'}}>
-          <div className="alert custom-alert p-4 mb-4 shadow-lg">
-            {serviceContent.description}
+          <div className="alert custom-alert p-4 mb-4 shadow-lg" style={{fontSize: '1.15rem', lineHeight: '1.7'}}>
+            {serviceContent.description.split('<newline>').map((paragraph, index) => (
+              <p key={index} className={index > 0 ? 'mt-3' : 'mb-0'}>
+                {paragraph}
+              </p>
+            ))}
           </div>
         </div>
       </section>

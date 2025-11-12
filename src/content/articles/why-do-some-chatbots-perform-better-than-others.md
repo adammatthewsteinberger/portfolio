@@ -55,7 +55,7 @@ Early chatbots used rules — like a phone menu:
 
 That's like teaching someone to memorize phrases — it works, but only if the question is predictable.
 
-Modern chatbots use AI and machine learning — especially transformer models (the tech behind GPT-4). These don't just memorize answers — they learn how to talk.
+Modern chatbots use AI and machine learning — especially transformer models (the tech behind GPT-5). These don't just memorize answers — they learn how to talk.
 
 ### Better Chatbots Use:
 
@@ -109,7 +109,7 @@ Example: A healthcare chatbot trained on medical dialogues is safer and more rel
 | LSTMs | Sequence modeling with memory |
 | Transformers (GPT) | Long-range dependency & generative tasks |
 
-Transformers like BERT (for classification) and GPT-4 (for generation) dominate modern chatbot architecture. They use self-attention to model language patterns across long stretches of text.
+Transformers like BERT (for classification) and GPT-5 (for generation) dominate modern chatbot architecture. They use self-attention to model language patterns across long stretches of text.
 
 These models are the difference between robotic scripts and truly human-like dialogue.
 

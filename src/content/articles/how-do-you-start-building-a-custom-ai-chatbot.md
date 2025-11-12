@@ -99,7 +99,7 @@ Key technologies:
 
 - **LangChain / LlamaIndex**: Integrate retrieval pipelines with generation
 - **Vector DBs**: Pinecone, Weaviate, FAISS
-- **LLMs**: GPT-4, Claude, Mistral, LLaMA, Grok
+- **LLMs**: GPT-5, Claude, Mistral, LLaMA, Grok
 - **Deployment**: Docker, Kubernetes, CI/CD pipelines
 
 Security & compliance:

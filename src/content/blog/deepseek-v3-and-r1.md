@@ -20,7 +20,7 @@ featured: false
 
 ## Why the Buzz Now?
 
-- DeepSeek V3 benchmarked competitively against GPT-4-class models.  
+- DeepSeek V3 benchmarked competitively against GPT-5-class models.  
 - R1 introduced optimized training methods that cut costs significantly.  
 - China’s regulatory support for open-weight AI is accelerating adoption.  
 
@@ -37,7 +37,7 @@ featured: false
 ## Case Study: Regional Deployment
 
 An APAC e-commerce company deployed DeepSeek R1 for customer service in Chinese + English.  
-- Achieved comparable accuracy to GPT-4-turbo.  
+- Achieved comparable accuracy to GPT-5-turbo.  
 - Cut deployment costs by 30%.  
 
 ---
