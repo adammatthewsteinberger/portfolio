@@ -509,6 +509,20 @@ footer {
   .social-links {
     justify-content: center;
   }
+
+  /* Hide text labels on mobile, show only icons */
+  .social-links .btn {
+    padding: 0.5rem 0.75rem !important;
+    min-width: 40px !important;
+  }
+
+  .social-links .btn .btn-text {
+    display: none !important;
+  }
+
+  .social-links .btn i {
+    margin: 0 !important;
+  }
 }
 
 /* Make the main action buttons look like social links on desktop */

@@ -233,31 +233,34 @@ export default function Header() {
                   target='_blank'
                   rel='noopener noreferrer'
                   className='btn btn-primary btn-sm'
+                  aria-label='LinkedIn Profile'
                 >
                   <i className='fab fa-linkedin me-1'></i>
-                  LinkedIn
+                  <span className='btn-text'>LinkedIn</span>
                 </a>
                 <a
                   href='https://github.com/realadammatthew'
                   target='_blank'
                   rel='noopener noreferrer'
                   className='btn btn-primary btn-sm'
+                  aria-label='GitHub Profile'
                 >
                   <i className='fab fa-github me-1'></i>
-                  GitHub
+                  <span className='btn-text'>GitHub</span>
                 </a>
-                <Link href='/contact' className='btn btn-primary btn-sm'>
+                <Link href='/contact' className='btn btn-primary btn-sm' aria-label='Contact Me'>
                   <i className='fas fa-envelope me-1'></i>
-                  Contact Me
+                  <span className='btn-text'>Contact Me</span>
                 </Link>
                 <a
                   href="https://github.com/realadammatthew/resume/raw/main/adam-steinberger-resume.pdf"
                   className='btn btn-primary btn-sm'
                   target='_blank'
                   rel='noopener noreferrer'
+                  aria-label='Download Resume'
                 >
                   <i className='fas fa-download me-1'></i>
-                  Download Resume
+                  <span className='btn-text'>Download Resume</span>
                 </a>
               </div>
             </div>
