@@ -246,47 +246,6 @@ export default function Header() {
                   <i className='fab fa-github me-1'></i>
                   GitHub
                 </a>
-                <a
-                  href='https://x.com/realadammatthew'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='btn btn-primary btn-sm'
-                >
-                  <i className='fab fa-x-twitter me-1'></i>
-                  Twitter
-                </a>
-              </div>
-              <div className='social-links d-flex gap-2 mt-2'>
-                <a
-                  href='https://www.instagram.com/realadammatthew/'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='btn btn-primary btn-sm'
-                >
-                  <i className='fab fa-instagram me-1'></i>
-                  Instagram
-                </a>
-                <a
-                  href='https://facebook.com/adammatthewsteinberger'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='btn btn-primary btn-sm'
-                >
-                  <i className='fab fa-facebook me-1'></i>
-                  Facebook
-                </a>
-                <a
-                  href='https://www.youtube.com/@AdamMatthewSteinberger'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='btn btn-primary btn-sm'
-                >
-                  <i className='fab fa-youtube me-1'></i>
-                  YouTube
-                </a>
-              </div>
-
-              <div className='social-links d-flex gap-2 mt-2'>
                 <Link href='/contact' className='btn btn-primary btn-sm'>
                   <i className='fas fa-envelope me-1'></i>
                   Contact Me

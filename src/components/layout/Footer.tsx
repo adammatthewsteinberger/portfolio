@@ -37,19 +37,64 @@ export default function Footer() {
             <Link href="/sitemap" className="fw-bold">Sitemap</Link>
           </div>
           <div className="col-auto">
-            <a href="https://www.linkedin.com/in/realadammatthew/" className="fw-bold">LinkedIn</a>
-            &nbsp;|&nbsp;
-            <a href="https://github.com/realadammatthew" className="fw-bold">GitHub</a>
-            &nbsp;|&nbsp;
-            <a href="https://x.com/realadammatthew" className="fw-bold">X/Twitter</a>
-            &nbsp;|&nbsp;
-            <a href="https://instagram.com/realadammatthew/" className="fw-bold">Instagram</a>
-            &nbsp;|&nbsp;
-            <a href="https://facebook.com/adammatthewsteinberger" className="fw-bold">Facebook</a>
-            &nbsp;|&nbsp;
-            <a href="https://www.youtube.com/@AdamMatthewSteinberger" className="fw-bold">YouTube</a>
-            &nbsp;|&nbsp;
-            <a href="https://coff.ee/realadammatthew" className="fw-bold">Buy me a Coffee</a>
+            <div className="d-flex gap-3 justify-content-center flex-wrap my-3">
+              <a
+                href="https://www.linkedin.com/in/realadammatthew/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <i className="fab fa-linkedin fa-2x"></i>
+              </a>
+              <a
+                href="https://github.com/realadammatthew"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+              >
+                <i className="fab fa-github fa-2x"></i>
+              </a>
+              <a
+                href="https://x.com/realadammatthew"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter"
+              >
+                <i className="fab fa-x-twitter fa-2x"></i>
+              </a>
+              <a
+                href="https://instagram.com/realadammatthew/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <i className="fab fa-instagram fa-2x"></i>
+              </a>
+              <a
+                href="https://facebook.com/adammatthewsteinberger"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              >
+                <i className="fab fa-facebook fa-2x"></i>
+              </a>
+              <a
+                href="https://www.youtube.com/@AdamMatthewSteinberger"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube"
+              >
+                <i className="fab fa-youtube fa-2x"></i>
+              </a>
+              <a
+                href="https://coff.ee/realadammatthew"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Buy me a Coffee"
+              >
+                <i className="fas fa-coffee fa-2x"></i>
+              </a>
+            </div>
           </div>
         </div>
         <div className="row justify-content-center">
