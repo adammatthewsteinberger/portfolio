@@ -36,9 +36,27 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
   return {
     title: `${post.title} | Adam Matthew Steinberger`,
     description: post.description,
+    keywords: post.tags.join(', '),
+    authors: [{ name: post.author }],
+    creator: 'Adam Matthew Steinberger',
+    publisher: 'Adam Matthew Steinberger LLC',
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
     openGraph: {
       title: post.title,
       description: post.description,
+      url: `https://hire.adam.matthewsteinberger.com/blog/${slug}`,
+      siteName: 'Hire Adam Matthew Steinberger - Upstate South Carolina AI Expert',
+      images: [
+        {
+          url: '/images/social-preview.png',
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+      locale: 'en_US',
       type: 'article',
       publishedTime: post.publishedDate,
       authors: [post.author],
@@ -48,6 +66,7 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
       card: 'summary_large_image',
       title: post.title,
       description: post.description,
+      images: ['/images/social-preview.png'],
     },
   };
 }

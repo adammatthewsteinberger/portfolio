@@ -1,5 +1,45 @@
 import Link from 'next/link';
 import MultipleCTAs from '@/components/MultipleCTAs';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Sitemap | Adam Matthew Steinberger - AI Development Services',
+  description:
+    'Complete sitemap of Adam Matthew Steinberger\'s AI development website. Browse all services, articles, blog posts, and resources for custom AI and chatbot solutions.',
+  keywords:
+    'sitemap, website navigation, AI services directory, AI articles, chatbot resources, Adam Matthew Steinberger',
+  authors: [{ name: 'Adam Matthew Steinberger' }],
+  creator: 'Adam Matthew Steinberger',
+  publisher: 'Adam Matthew Steinberger LLC',
+  alternates: {
+    canonical: '/sitemap',
+  },
+  openGraph: {
+    title: 'Sitemap | Adam Matthew Steinberger AI Services',
+    description:
+      'Browse all AI development services, educational content, and resources from Adam Matthew Steinberger.',
+    url: 'https://hire.adam.matthewsteinberger.com/sitemap',
+    siteName:
+      'Hire Adam Matthew Steinberger - Upstate South Carolina AI Expert',
+    images: [
+      {
+        url: '/images/social-preview.png',
+        width: 1200,
+        height: 630,
+        alt: 'Sitemap - Adam Matthew Steinberger',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sitemap | AI Development Services',
+    description:
+      'Browse all AI services, articles, and resources from Adam Matthew Steinberger.',
+    images: ['/images/social-preview.png'],
+  },
+};
 
 export default function SitemapPage() {
   return (

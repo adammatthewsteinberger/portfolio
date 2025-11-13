@@ -1,4 +1,44 @@
 import ContactForm from '@/components/ContactForm';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Contact Adam Matthew Steinberger | AI Development Consultation',
+  description:
+    'Get in touch with Adam Matthew Steinberger for AI development projects, custom chatbot solutions, and technology consulting in Greenville, SC. Schedule a free consultation today.',
+  keywords:
+    'contact AI developer, AI consultation Greenville SC, hire chatbot developer, AI project inquiry, custom AI solutions contact, Adam Matthew Steinberger contact',
+  authors: [{ name: 'Adam Matthew Steinberger' }],
+  creator: 'Adam Matthew Steinberger',
+  publisher: 'Adam Matthew Steinberger LLC',
+  alternates: {
+    canonical: '/contact',
+  },
+  openGraph: {
+    title: 'Contact Adam Matthew Steinberger | AI Development Consultation',
+    description:
+      'Schedule a free consultation for AI development projects and custom chatbot solutions. Based in Greenville, SC.',
+    url: 'https://hire.adam.matthewsteinberger.com/contact',
+    siteName:
+      'Hire Adam Matthew Steinberger - Upstate South Carolina AI Expert',
+    images: [
+      {
+        url: '/images/social-preview.png',
+        width: 1200,
+        height: 630,
+        alt: 'Contact Adam Matthew Steinberger',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact Adam Matthew Steinberger | AI Development',
+    description:
+      'Schedule a free consultation for AI development and custom chatbot solutions in Greenville, SC.',
+    images: ['/images/social-preview.png'],
+  },
+};
 
 export default function ContactPage() {
   return (
