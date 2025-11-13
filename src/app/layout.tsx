@@ -36,7 +36,7 @@ export const metadata: Metadata = {
       'Hire Adam Matthew Steinberger - Upstate South Carolina AI Expert',
     images: [
       {
-        url: '/social-preview.png',
+        url: '/images/social-preview.png',
         width: 1200,
         height: 630,
         alt: 'Adam Matthew Steinberger - Upstate South Carolina AI Expert',
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     title: 'Hire Local AI Expert in Greenville | Custom Chatbot Solutions',
     description:
       "Greenville's premier AI developer for custom business chatbots. Local expertise in ChatGPT, Claude, Gemini & Mistral implementation.",
-    images: ['/social-preview.png'],
+    images: ['/images/social-preview.png'],
   },
   robots: {
     index: true,

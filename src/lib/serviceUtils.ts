@@ -147,17 +147,42 @@ export function getAllServices(): ServiceContent[] {
   try {
     const slugs = getAllServiceSlugs();
     const services: ServiceContent[] = [];
-    
+
     for (const slug of slugs) {
       const service = getServiceBySlug(slug);
       if (service) {
         services.push(service);
       }
     }
-    
+
     return services.sort((a, b) => a.title.localeCompare(b.title));
   } catch (error) {
     console.error('Error reading all services:', error);
     return [];
+  }
+}
+
+// Lightweight function to get only metadata (for generateMetadata)
+export function getServiceMetadata(slug: string): Pick<ServiceContent, 'title' | 'subtitle' | 'description' | 'category'> | null {
+  try {
+    const servicesDirectory = path.join(process.cwd(), 'src/content/services');
+    const fullPath = path.join(servicesDirectory, `${slug}.md`);
+
+    if (!fs.existsSync(fullPath)) {
+      return null;
+    }
+
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const { data } = matter(fileContents);
+
+    return {
+      title: data.title,
+      subtitle: data.subtitle,
+      description: data.description,
+      category: data.category,
+    };
+  } catch (error) {
+    console.error(`Error reading service metadata ${slug}:`, error);
+    return null;
   }
 } 

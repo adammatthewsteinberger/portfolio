@@ -117,7 +117,7 @@ export default function Header() {
         <div className='container-fluid'>
           <Link href='/' className='navbar-brand d-flex align-items-center'>
             <Image
-              src='/profile-picture.jpg'
+              src='/images/profile-picture.jpg'
               alt='Adam Matthew Steinberger'
               width={40}
               height={40}
@@ -210,7 +210,7 @@ export default function Header() {
           <div className='row align-items-center'>
             <div className='col-md-3 text-center mb-4 mb-md-0'>
               <Image
-                src='/profile-picture.jpg'
+                src='/images/profile-picture.jpg'
                 alt='Adam Matthew Steinberger - Staff Software Engineer and AI Solutions Architect'
                 width={200}
                 height={200}

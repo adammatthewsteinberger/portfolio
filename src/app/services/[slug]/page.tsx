@@ -1,16 +1,71 @@
 import { notFound } from 'next/navigation';
 import { services } from '@/data/services';
-import { getServiceBySlug } from '@/lib/serviceUtils';
+import { getServiceBySlug, getServiceMetadata } from '@/lib/serviceUtils';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import MultipleCTAs from '@/components/MultipleCTAs';
 import styles from '../ServicePage.module.css';
+import type { Metadata } from 'next';
 
 interface ServicePageProps {
   params: Promise<{
     slug: string;
   }>;
+}
+
+export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const serviceMetadata = getServiceMetadata(slug);
+
+  if (!serviceMetadata) {
+    return {
+      title: 'Service Not Found',
+    };
+  }
+
+  // Clean description - remove <newline> tags and get first paragraph
+  const cleanDescription = serviceMetadata.description
+    .split('<newline>')[0]
+    .replace(/<[^>]*>/g, '')
+    .trim();
+
+  const pageTitle = `${serviceMetadata.title} | Adam Matthew Steinberger`;
+  const pageUrl = `https://hire.adam.matthewsteinberger.com/services/${slug}`;
+
+  return {
+    title: pageTitle,
+    description: cleanDescription,
+    keywords: `${serviceMetadata.title}, ${serviceMetadata.category}, AI development Greenville SC, custom AI solutions, Adam Matthew Steinberger`,
+    authors: [{ name: 'Adam Matthew Steinberger' }],
+    creator: 'Adam Matthew Steinberger',
+    publisher: 'Adam Matthew Steinberger LLC',
+    alternates: {
+      canonical: `/services/${slug}`,
+    },
+    openGraph: {
+      title: serviceMetadata.title,
+      description: cleanDescription,
+      url: pageUrl,
+      siteName: 'Hire Adam Matthew Steinberger - Upstate South Carolina AI Expert',
+      images: [
+        {
+          url: '/images/social-preview.png',
+          width: 1200,
+          height: 630,
+          alt: serviceMetadata.title,
+        },
+      ],
+      locale: 'en_US',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: serviceMetadata.title,
+      description: cleanDescription,
+      images: ['/images/social-preview.png'],
+    },
+  };
 }
 
 export default async function ServicePage({ params }: ServicePageProps) {

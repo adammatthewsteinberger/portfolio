@@ -46,7 +46,7 @@ export function getArticleBySlug(slug: string): ArticleContent | null {
 export function getAllArticleSlugs(): string[] {
   try {
     const articlesDirectory = path.join(process.cwd(), 'src/content/articles');
-    
+
     if (!fs.existsSync(articlesDirectory)) {
       return [];
     }
@@ -58,5 +58,32 @@ export function getAllArticleSlugs(): string[] {
   } catch (error) {
     console.error('Error reading article slugs:', error);
     return [];
+  }
+}
+
+// Lightweight function to get only metadata (for generateMetadata)
+export function getArticleMetadata(slug: string): Pick<ArticleContent, 'title' | 'meta'> | null {
+  try {
+    const articlesDirectory = path.join(process.cwd(), 'src/content/articles');
+    const fullPath = path.join(articlesDirectory, `${slug}.md`);
+
+    if (!fs.existsSync(fullPath)) {
+      return null;
+    }
+
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const { data } = matter(fileContents);
+
+    return {
+      title: data.title,
+      meta: {
+        date: data.date,
+        section: data.section,
+        readTime: data.readTime
+      }
+    };
+  } catch (error) {
+    console.error(`Error reading article metadata ${slug}:`, error);
+    return null;
   }
 } 

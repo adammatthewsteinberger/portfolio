@@ -24,7 +24,7 @@ export default function AboutPage() {
               <div className="row align-items-center mb-5">
                 <div className="col-md-4 text-center mb-4 mb-md-0">
                   <Image
-                    src='/profile-picture.jpg'
+                    src='/images/profile-picture.jpg'
                     alt='Adam Matthew Steinberger - Staff Software Engineer and AI Solutions Architect'
                     width={250}
                     height={250}

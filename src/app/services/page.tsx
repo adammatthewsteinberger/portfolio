@@ -2,6 +2,46 @@ import MultipleCTAs from '@/components/MultipleCTAs';
 import { serviceCategories } from '@/data/services';
 import Link from 'next/link';
 import styles from './ServicePage.module.css';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'AI Development Services | Greenville SC | Adam Matthew Steinberger',
+  description:
+    'Comprehensive AI development services tailored for Greenville, South Carolina businesses. From custom chatbots to enterprise AI solutions, specialized expertise across industries and locations.',
+  keywords:
+    'AI development services, custom AI solutions Greenville SC, chatbot development, enterprise AI, AI consulting, GPT solutions, RAG systems, Adam Matthew Steinberger, Upstate AI expert',
+  authors: [{ name: 'Adam Matthew Steinberger' }],
+  creator: 'Adam Matthew Steinberger',
+  publisher: 'Adam Matthew Steinberger LLC',
+  alternates: {
+    canonical: '/services',
+  },
+  openGraph: {
+    title: 'AI Development Services for Greenville & Upstate SC Businesses',
+    description:
+      'From custom chatbots to enterprise AI solutions, comprehensive services tailored for your business needs across all industries.',
+    url: 'https://hire.adam.matthewsteinberger.com/services',
+    siteName:
+      'Hire Adam Matthew Steinberger - Upstate South Carolina AI Expert',
+    images: [
+      {
+        url: '/images/social-preview.png',
+        width: 1200,
+        height: 630,
+        alt: 'AI Development Services',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AI Development Services | Greenville SC',
+    description:
+      'Comprehensive AI solutions for businesses. Custom chatbots, enterprise AI, industry-specific expertise.',
+    images: ['/images/social-preview.png'],
+  },
+};
 
 export default function ServicesPage() {
   return (

@@ -1,6 +1,46 @@
 import { sections } from '@/data/articles';
 import Link from 'next/link';
 import MultipleCTAs from '@/components/MultipleCTAs';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Novice to Navigator: AI Chatbot Education Series | Adam Matthew Steinberger',
+  description:
+    'Master AI chatbot knowledge with this comprehensive 33-article series. Learn what AI chatbots are, how they work, and what to look for when hiring an expert. From complete beginner to confident decision-maker.',
+  keywords:
+    'AI chatbot education, AI learning series, chatbot tutorial, AI for beginners, GPT education, AI chatbot guide, custom AI solutions, Adam Matthew Steinberger, Greenville SC AI expert',
+  authors: [{ name: 'Adam Matthew Steinberger' }],
+  creator: 'Adam Matthew Steinberger',
+  publisher: 'Adam Matthew Steinberger LLC',
+  alternates: {
+    canonical: '/novice-to-navigator',
+  },
+  openGraph: {
+    title: 'Novice to Navigator: Master AI Chatbot Knowledge',
+    description:
+      'A comprehensive 33-article series designed to take you from complete beginner to confident decision-maker in AI chatbot development.',
+    url: 'https://hire.adam.matthewsteinberger.com/novice-to-navigator',
+    siteName:
+      'Hire Adam Matthew Steinberger - Upstate South Carolina AI Expert',
+    images: [
+      {
+        url: '/images/social-preview.png',
+        width: 1200,
+        height: 630,
+        alt: 'Novice to Navigator AI Education Series',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Novice to Navigator: AI Chatbot Education Series',
+    description:
+      '33-article series taking you from beginner to expert in AI chatbot knowledge. Learn how to make confident business decisions.',
+    images: ['/images/social-preview.png'],
+  },
+};
 
 export default function NoviceToNavigator() {
   return (

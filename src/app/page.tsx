@@ -1,4 +1,45 @@
 import MultipleCTAs from '@/components/MultipleCTAs';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Hire Expert AI Chatbot Developer in Greenville SC | Adam Matthew Steinberger',
+  description:
+    "Hire Adam Matthew Steinberger—Greenville's leading AI chatbot developer for custom GPT solutions. Serving Upstate businesses with secure, branded chatbots using ChatGPT, Claude, Gemini & Mistral. Local Upstate region expertise.",
+  keywords:
+    'hire AI developer Greenville SC, custom chatbot developer Greenville, GPT engineer Upstate, Upstate Region AI expert, ChatGPT integration specialist, Claude AI developer SC, Gemini implementation Greenville, Mistral AI engineer Greenville, local AI developer Upstate, custom GPT solutions Greenville, AI chatbot agency Greenville, Greenville South Carolina AI engineer, Adam Matthew Steinberger, AI chatbot solutions SC, local AI expert Greenville, custom AI chatbots Upstate South Carolina, business AI solutions Greenville, Claude Gemini Mistral integration SC',
+  authors: [{ name: 'Adam Matthew Steinberger' }],
+  creator: 'Adam Matthew Steinberger',
+  publisher: 'Adam Matthew Steinberger LLC',
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title:
+      'Hire Local AI Chatbot Developer | Greenville & Upstate South Carolina',
+    description:
+      'Expert AI developer in Greenville, SC specializing in custom chatbots for Upstate Region businesses. Local expertise in ChatGPT, Claude, Gemini & Mistral solutions.',
+    url: 'https://hire.adam.matthewsteinberger.com',
+    siteName:
+      'Hire Adam Matthew Steinberger - Upstate South Carolina AI Expert',
+    images: [
+      {
+        url: '/images/social-preview.png',
+        width: 1200,
+        height: 630,
+        alt: 'Adam Matthew Steinberger - Upstate South Carolina AI Expert',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Hire Local AI Expert in Greenville | Custom Chatbot Solutions',
+    description:
+      "Greenville's premier AI developer for custom business chatbots. Local expertise in ChatGPT, Claude, Gemini & Mistral implementation.",
+    images: ['/images/social-preview.png'],
+  },
+};
 
 export default function Home() {
   return (
