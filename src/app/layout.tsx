@@ -1,3 +1,4 @@
+import CookieConsent from '@/components/CookieConsent';
 import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
 import type { Metadata } from 'next';
@@ -99,6 +100,27 @@ export default function RootLayout({
         <link rel='stylesheet' href='/styles.css' />
       </head>
       <body className={inter.className}>
+        {/* Google Consent Mode v2 - Default Settings */}
+        <Script id='google-consent-default' strategy='beforeInteractive'>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+
+            // Set default consent mode (denied by default for GDPR compliance)
+            gtag('consent', 'default', {
+              'ad_storage': 'denied',
+              'analytics_storage': 'denied',
+              'ad_user_data': 'denied',
+              'ad_personalization': 'denied',
+              'functionality_storage': 'granted',
+              'personalization_storage': 'denied',
+              'security_storage': 'granted',
+              'wait_for_update': 500
+            });
+          `}
+        </Script>
+
+        {/* Google Analytics gtag.js */}
         <Script
           src='https://www.googletagmanager.com/gtag/js?id=G-P4CX07CNRW'
           strategy='afterInteractive'
@@ -108,12 +130,17 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-P4CX07CNRW');
+            gtag('config', 'G-P4CX07CNRW', {
+              'anonymize_ip': true,
+              'cookie_flags': 'SameSite=None;Secure'
+            });
           `}
         </Script>
+
         <Header />
         <main>{children}</main>
         <Footer />
+        <CookieConsent />
         <script src='/bootstrap.bundle.min.js' defer></script>
         <script
           dangerouslySetInnerHTML={{
