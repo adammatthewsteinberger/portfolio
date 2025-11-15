@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Generated eBooks
+public/novice-to-navigator-ebook.pdf
+public/novice-to-navigator-ebook.epub
