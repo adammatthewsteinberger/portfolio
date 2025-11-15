@@ -1,4 +1,6 @@
 import MultipleCTAs from '@/components/MultipleCTAs';
+import AmazonBookButton from '@/components/AmazonBookButton';
+import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -83,6 +85,43 @@ export default function Home() {
             The gap between AI winners and losers isn&apos;t about budget—it&apos;s about having the right technical
             partner who can navigate the complexity, implement security correctly, and deliver solutions that
             actually move the needle on your business metrics. <strong>Keep scrolling to see how this works.</strong>
+          </div>
+        </div>
+      </section>
+
+      {/* Book Announcement Section */}
+      <section className='container my-5'>
+        <div className='row justify-content-center'>
+          <div className='col-md-10 col-lg-8'>
+            <div className='card golden-box text-center p-4 shadow-lg'>
+              <div className='mb-3'>
+                <i className='fas fa-book fa-3x' style={{ color: '#fbbf24' }}></i>
+              </div>
+              <h4 className='fw-bold mb-3' style={{
+                background: 'linear-gradient(45deg, #fbbf24, #f59e0b)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                display: 'inline-block'
+              }}>
+                New Book: From Novice to Navigator
+              </h4>
+              <p className='lead mb-4' style={{ fontSize: '1.1rem', lineHeight: '1.6' }}>
+                Your comprehensive guide to understanding and implementing AI in your business.
+                Learn the strategies, frameworks, and best practices that successful companies use
+                to leverage AI effectively.
+              </p>
+              <div className='d-flex justify-content-center gap-3 flex-wrap'>
+                <AmazonBookButton size='lg' />
+                <Link
+                  href='/novice-to-navigator'
+                  className='btn btn-outline-primary btn-lg fw-bold'
+                >
+                  <i className='fas fa-eye me-2'></i>
+                  Preview Chapters
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
