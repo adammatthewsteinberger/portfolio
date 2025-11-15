@@ -7,7 +7,8 @@
     "build": "next build && node scripts/generate-sitemap.js",
     "start": "next start",
     "lint": "next lint",
-    "sitemap": "node scripts/generate-sitemap.js"
+    "sitemap": "node scripts/generate-sitemap.js",
+    "generate-ebook": "node scripts/generate-ebook.js"
   },
   "dependencies": {
     "@formspree/react": "^3.0.0",
@@ -28,8 +29,12 @@
     "@types/react": "^19",
     "@types/react-burger-menu": "^2.8.7",
     "@types/react-dom": "^19",
+    "archiver": "^7.0.1",
     "eslint": "^9",
     "eslint-config-next": "15.3.5",
+    "marked": "^17.0.0",
+    "pdf-lib": "^1.17.1",
+    "puppeteer": "^24.29.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
