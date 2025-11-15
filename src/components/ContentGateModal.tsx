@@ -7,7 +7,7 @@ import { useBotDetection } from '@/hooks/useBotDetection';
 
 export default function ContentGateModal() {
   const [showModal, setShowModal] = useState(false);
-  const hasScrolledEnough = useScrollDepth(40);
+  const hasScrolledEnough = useScrollDepth(15);
   const isBot = useBotDetection();
 
   useEffect(() => {
