@@ -75,10 +75,18 @@ export function useConsent() {
       setHasConsented(false);
       setShowBanner(isEEARegion());
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const updateGtagConsent = (newConsent: ConsentState) => {
-    if (typeof window !== 'undefined' && window.gtag) {
+    if (typeof window !== 'undefined') {
+      // Ensure gtag is available
+      if (!window.gtag) {
+        // Wait a bit and try again
+        setTimeout(() => updateGtagConsent(newConsent), 100);
+        return;
+      }
+
       window.gtag('consent', 'update', {
         ad_storage: newConsent.ad_storage,
         analytics_storage: newConsent.analytics_storage,
