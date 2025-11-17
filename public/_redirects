@@ -1,0 +1,12 @@
+# Redirect HTTP to HTTPS for all domains
+http://matthewsteinberger.com/* https://hire.adam.matthewsteinberger.com/:splat 301!
+http://hire.adam.matthewsteinberger.com/* https://hire.adam.matthewsteinberger.com/:splat 301!
+
+# Redirect old domain to new primary domain (HTTPS)
+https://matthewsteinberger.com/* https://hire.adam.matthewsteinberger.com/:splat 301!
+
+# Redirect www variants to non-www
+https://www.matthewsteinberger.com/* https://hire.adam.matthewsteinberger.com/:splat 301!
+http://www.matthewsteinberger.com/* https://hire.adam.matthewsteinberger.com/:splat 301!
+https://www.hire.adam.matthewsteinberger.com/* https://hire.adam.matthewsteinberger.com/:splat 301!
+http://www.hire.adam.matthewsteinberger.com/* https://hire.adam.matthewsteinberger.com/:splat 301!
