@@ -3,11 +3,11 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Adam Matthew Steinberger | Staff Software Engineer & AI Solutions Architect',
-  description: 'Learn about Adam Matthew Steinberger, a dedicated Staff Software Engineer and AI Solutions Architect based in Greenville, SC with over 12 years of experience in AI platforms.',
+  title: 'About Adam Matthew Steinberger | Senior Azure and AI Development Engineer',
+  description: 'Learn about Adam Matthew Steinberger, a dedicated Senior Azure and AI Development Engineer based in Greenville, SC with over 12 years of experience in AI platforms.',
   openGraph: {
-    title: 'About Adam Matthew Steinberger | Staff Software Engineer & AI Solutions Architect',
-    description: 'Learn about Adam Matthew Steinberger, a dedicated Staff Software Engineer and AI Solutions Architect based in Greenville, SC with over 12 years of experience in AI platforms.',
+    title: 'About Adam Matthew Steinberger | Senior Azure and AI Development Engineer',
+    description: 'Learn about Adam Matthew Steinberger, a dedicated Senior Azure and AI Development Engineer based in Greenville, SC with over 12 years of experience in AI platforms.',
     url: 'https://hire.adam.matthewsteinberger.com/about',
   },
 };
@@ -25,7 +25,7 @@ export default function AboutPage() {
                 <div className="col-md-4 text-center mb-4 mb-md-0">
                   <Image
                     src='/images/profile-picture.jpg'
-                    alt='Adam Matthew Steinberger - Staff Software Engineer and AI Solutions Architect'
+                    alt='Adam Matthew Steinberger - Senior Azure and AI Development Engineer'
                     width={250}
                     height={250}
                     className='rounded-circle shadow-lg'
@@ -35,7 +35,7 @@ export default function AboutPage() {
                 <div className="col-md-8">
                   <h1 className="display-4 fw-bold mb-4">About Me</h1>
                   <p className="about-intro">
-                    Hello! I&apos;m Adam Matthew Steinberger, a dedicated Staff Software Engineer and AI Solutions Architect based in
+                    Hello! I&apos;m Adam Matthew Steinberger, a dedicated Senior Azure and AI Development Engineer based in
                     <strong> Greenville, South Carolina</strong>. With over <strong>12 years of experience</strong> in building
                     scalable, secure AI platforms, I specialize in delivering innovative technology solutions tailored to business needs.
                   </p>
@@ -73,10 +73,8 @@ export default function AboutPage() {
                     Career Goals
                   </h3>
                   <p>
-                    While consulting through <strong>Adam Matthew Steinberger LLC</strong> has been fulfilling, I&apos;m now seeking
-                    a stable, full-time W-2 position in the IT or AI space. I&apos;m eager to join a neurodivergent-friendly workplace
-                    in Greenville, SC, where I can apply my Certified ScrumMaster skills, expertise in LLMs, RAG systems,
-                    LoRA fine-tuning, and cloud infrastructure (AWS, Azure, GCP) to collaborative teams.
+                    I just accepted a full-time W-2 position at <a href="https://www.vizius.com/">The Vizius Group</a>, which officially transitions from subcontractor consulting work in December 2025.
+                    This is a huge blessing, and I look forward to working with this team to help businesses here in Greenville and beyond integrate AI into automation systems and improving company bottom lines.
                   </p>
                 </div>
 
@@ -119,8 +117,7 @@ export default function AboutPage() {
                     Let&apos;s Connect
                   </h3>
                   <p className="mb-4">
-                    I&apos;m ready to bring reliable, innovative solutions to your organization. Let&apos;s explore how we can work together
-                    to achieve your technology goals.
+                    I am thrilled to continue building relationship with professionals in the AI and tech space, and am always eager to connect whether online or in person!
                   </p>
                   <div className="d-flex gap-3 flex-wrap">
                     <Link href="/contact" className="btn btn-primary btn-lg">

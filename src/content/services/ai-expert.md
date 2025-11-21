@@ -1,5 +1,5 @@
 ---
-title: 'Adam Matthew Steinberger - Staff Software Engineer and AI Solutions Architect'
+title: 'Adam Matthew Steinberger - Senior Azure and AI Development Engineer'
 subtitle: 'Backend, Cloud & AI Software Architecture and Development'
 description: 'With 12+ years of software engineering experience spanning backend development, cloud architecture, and AI system design, I provide expert-level AI engineering services that Greenville businesses can trust for mission-critical implementations. Most AI developers learned AI recently and lack the deep software engineering fundamentals needed for production systems—I bring battle-tested expertise in scalable architecture, security best practices, database optimization, API design, cloud infrastructure, and systems integration that ensures your AI solutions are built correctly from day one.<newline>Whether you need custom LLM applications using GPT-5, Claude, and Gemini, complex multi-agent systems with LangChain and AutoGen, RAG pipelines with vector databases, high-performance inference servers with vLLM, or enterprise AI platforms that integrate with existing systems and scale to thousands of users, I architect and implement solutions using modern best practices for performance, security, and maintainability. Your implementation gets proper error handling, comprehensive testing, monitoring and observability, security hardening with encryption and access controls, scalable architecture that handles growth, clean code that future developers can maintain, and detailed documentation.<newline>Upstate companies working with an expert AI engineer see 80% fewer post-launch issues, 60% better system performance, 70% easier maintenance and updates, significantly better security posture, and long-term success as systems are built on solid engineering foundations rather than quick prototypes. I handle complex integrations with Salesforce, SAP, custom databases, legacy systems, and modern cloud platforms, solving the hard technical problems that generalist developers struggle with. Scroll down to see exactly how expert AI engineering delivers measurable ROI through robust, scalable, secure solutions that work correctly and continue delivering value for years.'
 category: 'Expert AI Engineering'
@@ -38,7 +38,7 @@ contentTitle: 'Expert AI Architecture & Development'
 
 ## Meet Adam Matthew Steinberger
 
-I’m a Staff Software Engineer and AI Solutions Architect with over 12 years of experience specializing in backend, cloud, and AI software systems. My mission is to help Greenville businesses succeed with powerful, practical AI solutions that drive efficiency and growth.
+I’m a Senior Azure and AI Development Engineer with over 12 years of experience specializing in backend, cloud, and AI software systems. My mission is to help Greenville businesses succeed with powerful, practical AI solutions that drive efficiency and growth.
 
 ### My AI Engineering Expertise
 

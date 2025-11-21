@@ -1,6 +1,6 @@
 # Hire Adam Matthew Steinberger - AI Development Portfolio
 
-A comprehensive Next.js portfolio website for Adam Matthew Steinberger, a Staff Software Engineer and AI Solutions Architect specializing in AI development and custom chatbot solutions for Greenville businesses.
+A comprehensive Next.js portfolio website for Adam Matthew Steinberger, a Senior Azure and AI Development Engineer specializing in AI development and custom chatbot solutions for Greenville businesses.
 
 ## 🎯 Business Purpose
 

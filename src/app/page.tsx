@@ -616,17 +616,16 @@ export default function Home() {
       {/* For Employers Section */}
       <section className='container my-5'>
         <h4 className='fw-bold mb-4 section-headline-purple text-center'>
-          For Employers: Staff Software Engineer and AI Solutions Architect Available
+          For Employers: Senior Azure and AI Development Engineer Working Full-Time
         </h4>
         <div className='row justify-content-center'>
           <div className='col-md-8'>
             <div className='card purple-box employer-card mb-4'>
               <h5 className='mb-3'>
-                <i className='fas fa-briefcase'></i> Staff Software Engineering and AI Solutions Architecting
+                <i className='fas fa-briefcase'></i> Senior Azure and AI Development Engineer
               </h5>
               <p>
-                <strong>Available for:</strong> Full-time positions, contract
-                work, or consulting projects in the Upstate region
+                <strong>Currently working:</strong> I just accepted a full-time W2 role at <a href="https://www.vizius.com/">The Vizius Group</a>!
               </p>
               <div className='row'>
                 <div className='col-md-6'>
@@ -655,8 +654,7 @@ export default function Home() {
                 </div>
               </div>
               <p className='mt-3'>
-                <strong>Interested in hiring?</strong> Let&apos;s discuss how my
-                AI expertise can accelerate your team&apos;s capabilities.
+                <strong>Interested in learning more?</strong> Let&apos;s chat about how my skills have worked so well for this new team I&apos;ve just joined!
               </p>
             </div>
           </div>

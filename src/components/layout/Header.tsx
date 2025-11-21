@@ -211,7 +211,7 @@ export default function Header() {
             <div className='col-md-3 text-center mb-4 mb-md-0'>
               <Image
                 src='/images/profile-picture.jpg'
-                alt='Adam Matthew Steinberger - Staff Software Engineer and AI Solutions Architect'
+                alt='Adam Matthew Steinberger - Senior Azure and AI Development Engineer'
                 width={200}
                 height={200}
                 className='profile-large rounded-circle shadow'
@@ -220,7 +220,7 @@ export default function Header() {
             </div>
             <div className='col-md-9'>
               <h1 className='display-4 fw-bold mb-2'>Adam Matthew Steinberger</h1>
-              <h2 className='h4 text-muted mb-3'>Staff Software Engineer &amp; AI Solutions Architect</h2>
+              <h2 className='h4 text-muted mb-3'>Senior Azure and AI Development Engineer</h2>
               <p className='lead mb-4'>
                 Transforming businesses with cutting-edge AI solutions and custom chatbot development in 
                 <br />
