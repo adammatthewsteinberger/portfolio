@@ -182,14 +182,18 @@ function generateSitemap() {
 // Write sitemap to public directory
 function writeSitemap() {
   try {
+    console.log('Starting sitemap generation...');
     const sitemap = generateSitemap();
     const outputPath = path.join(process.cwd(), 'public/sitemap.xml');
-    
+
+    console.log(`Writing sitemap to ${outputPath}...`);
     fs.writeFileSync(outputPath, sitemap);
     console.log(`✅ Sitemap generated successfully at ${outputPath}`);
     console.log(`📊 Total URLs: ${sitemap.split('<url>').length - 1}`);
+    process.exit(0);
   } catch (error) {
     console.error('❌ Error generating sitemap:', error);
+    console.error('Stack trace:', error.stack);
     process.exit(1);
   }
 }
