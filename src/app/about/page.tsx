@@ -73,7 +73,7 @@ export default function AboutPage() {
                     Career Goals
                   </h3>
                   <p>
-                    I just accepted a full-time W-2 position at <a href="https://www.vizius.com/">The Vizius Group</a>, which officially transitions from subcontractor consulting work in December 2025.
+                    I just accepted a full-time W-2 position at <a href="https://www.vizius.com/">The Vizius Group</a>, which officially transitioned from subcontractor consulting work in December 2025.
                     This is a huge blessing, and I look forward to working with this team to help businesses here in Greenville and beyond integrate AI into automation systems and improving company bottom lines.
                   </p>
                 </div>
