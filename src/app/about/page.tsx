@@ -62,7 +62,7 @@ export default function AboutPage() {
                     Transparency & Integrity
                   </h3>
                   <p>
-                    In 2025, I faced a civil matter due to falling for a real estate scam, which is currently being resolved. This experience
+                    In 2025, I faced a civil matter due to a failed real estate transaction, which is currently being resolved. This experience
                     has helped me discover my new autism diagnosis while also reinforcing my dedication to diligence, integrity, and transparency in all my work.
                   </p>
                 </div>
