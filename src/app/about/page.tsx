@@ -58,19 +58,8 @@ export default function AboutPage() {
 
                 <div className="about-section mb-5">
                   <h3 className="section-heading mb-3">
-                    <i className="fas fa-shield-alt me-2"></i>
-                    Transparency & Integrity
-                  </h3>
-                  <p>
-                    In 2025, I faced a civil matter due to a failed real estate transaction, which is currently being resolved. This experience
-                    has helped me discover my new autism diagnosis while also reinforcing my dedication to diligence, integrity, and transparency in all my work.
-                  </p>
-                </div>
-
-                <div className="about-section mb-5">
-                  <h3 className="section-heading mb-3">
                     <i className="fas fa-briefcase me-2"></i>
-                    Career Goals
+                    Career Status
                   </h3>
                   <p>
                     I just accepted a full-time W-2 position at <a href="https://www.vizius.com/">The Vizius Group</a>, which officially transitioned from subcontractor consulting work in December 2025.
