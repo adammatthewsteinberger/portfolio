@@ -47,11 +47,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   if (!project || !projectData) {
     return (
-      <div className="container py-5 text-center">
-        <h1 className="display-4 mb-4">Project Not Found</h1>
-        <p className="lead mb-4">The requested project could not be found.</p>
-        <Link href="/projects" className="btn btn-primary">
-          <i className="fas fa-arrow-left me-2"></i>
+      <div className="container mx-auto px-4 py-12 text-center">
+        <h1 className="text-4xl font-bold text-[var(--color-text-primary)] mb-6">Project Not Found</h1>
+        <p className="text-xl text-[var(--color-text-muted)] mb-6">The requested project could not be found.</p>
+        <Link href="/projects" className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] text-white font-bold rounded-lg transition-colors no-underline">
+          <i className="fas fa-arrow-left"></i>
           Back to Projects
         </Link>
       </div>
@@ -63,53 +63,52 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     .slice(0, 2);
 
   return (
-    <div className="project-page">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="project-hero py-5">
-        <div className="container">
-          <div className="row align-items-center">
-            <div className="col-lg-8">
-              <nav aria-label="breadcrumb" className="mb-3">
-                <ol className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <Link href="/projects">Projects</Link>
+      <section className="pt-8 pb-16">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+            <div className="lg:col-span-2">
+              {/* Breadcrumb */}
+              <nav className="mb-4">
+                <ol className="flex items-center gap-2 text-sm">
+                  <li>
+                    <Link href="/projects" className="text-[var(--color-accent-blue)] hover:underline no-underline">Projects</Link>
                   </li>
-                  <li className="breadcrumb-item">
-                    <span className="text-muted">{projectData.category}</span>
-                  </li>
-                  <li className="breadcrumb-item active" aria-current="page">
-                    {project.title}
-                  </li>
+                  <li className="text-[var(--color-text-muted)]">/</li>
+                  <li className="text-[var(--color-text-muted)]">{projectData.category}</li>
+                  <li className="text-[var(--color-text-muted)]">/</li>
+                  <li className="text-[var(--color-text-muted)]">{project.title}</li>
                 </ol>
               </nav>
 
-              <h1 className="display-4 fw-bold mb-3">{project.heroTitle || project.title}</h1>
-              <h2 className="h3 text-muted mb-4">{project.heroSubtitle || project.subtitle}</h2>
-              <p className="lead">{project.description}</p>
+              <h1 className="text-3xl md:text-4xl font-bold text-[var(--color-text-primary)] mb-4">{project.heroTitle || project.title}</h1>
+              <h2 className="text-xl text-[var(--color-text-muted)] mb-6">{project.heroSubtitle || project.subtitle}</h2>
+              <p className="text-lg text-[var(--color-text-muted)]">{project.description}</p>
             </div>
-            <div className="col-lg-4">
-              <div className="project-meta-card">
-                <div className="meta-item">
-                  <strong>Category:</strong>
-                  <span className="badge bg-primary ms-2">{projectData.category}</span>
+            <div>
+              <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6">
+                <div className="mb-4">
+                  <strong className="text-[var(--color-text-primary)]">Category:</strong>
+                  <span className="ml-2 px-2 py-1 text-sm bg-[var(--color-accent-blue)] text-white rounded">{projectData.category}</span>
                 </div>
-                <div className="meta-item">
-                  <strong>Duration:</strong>
-                  <span className="ms-2">{project.duration}</span>
+                <div className="mb-4">
+                  <strong className="text-[var(--color-text-primary)]">Duration:</strong>
+                  <span className="ml-2 text-[var(--color-text-muted)]">{project.duration}</span>
                 </div>
-                <div className="meta-item">
-                  <strong>Status:</strong>
-                  <span className={`status-badge status-${project.status} ms-2`}>
-                    <i className="fas fa-circle me-1"></i>
+                <div className="mb-4">
+                  <strong className="text-[var(--color-text-primary)]">Status:</strong>
+                  <span className={`ml-2 inline-flex items-center gap-1 ${project.status === 'completed' ? 'text-[var(--color-accent-green)]' : 'text-[var(--color-accent-gold)]'}`}>
+                    <i className="fas fa-circle text-xs"></i>
                     {project.status}
                   </span>
                 </div>
                 {project.technologies && (
-                  <div className="meta-item">
-                    <strong>Technologies:</strong>
-                    <div className="technologies mt-2">
+                  <div>
+                    <strong className="text-[var(--color-text-primary)]">Technologies:</strong>
+                    <div className="flex flex-wrap gap-1 mt-2">
                       {project.technologies.map((tech, index) => (
-                        <span key={index} className="tech-badge me-1 mb-1">{tech}</span>
+                        <span key={index} className="px-2 py-0.5 text-xs bg-[var(--color-dark-bg)] text-[var(--color-text-muted)] rounded">{tech}</span>
                       ))}
                     </div>
                   </div>
@@ -121,63 +120,56 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       </section>
 
       {/* Project Summary */}
-      <section className="project-summary py-5">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-4 mb-4">
-              <div className="summary-card">
-                <h3 className="summary-title">
-                  <i className="fas fa-exclamation-triangle me-2"></i>
-                  Challenge
-                </h3>
-                <p>{project.challenge}</p>
-              </div>
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-[var(--color-dark-card)] border border-[var(--color-accent-coral)]/30 rounded-xl p-6">
+              <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-3 flex items-center gap-2">
+                <i className="fas fa-exclamation-triangle text-[var(--color-accent-coral)]"></i>
+                Challenge
+              </h3>
+              <p className="text-[var(--color-text-muted)]">{project.challenge}</p>
             </div>
-            <div className="col-lg-4 mb-4">
-              <div className="summary-card">
-                <h3 className="summary-title">
-                  <i className="fas fa-lightbulb me-2"></i>
-                  Solution
-                </h3>
-                <p>{project.solution}</p>
-              </div>
+            <div className="bg-[var(--color-dark-card)] border border-[var(--color-accent-gold)]/30 rounded-xl p-6">
+              <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-3 flex items-center gap-2">
+                <i className="fas fa-lightbulb text-[var(--color-accent-gold)]"></i>
+                Solution
+              </h3>
+              <p className="text-[var(--color-text-muted)]">{project.solution}</p>
             </div>
-            <div className="col-lg-4 mb-4">
-              <div className="summary-card">
-                <h3 className="summary-title">
-                  <i className="fas fa-trophy me-2"></i>
-                  Results
-                </h3>
-                <p>{project.results}</p>
-              </div>
+            <div className="bg-[var(--color-dark-card)] border border-[var(--color-accent-green)]/30 rounded-xl p-6">
+              <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-3 flex items-center gap-2">
+                <i className="fas fa-trophy text-[var(--color-accent-green)]"></i>
+                Results
+              </h3>
+              <p className="text-[var(--color-text-muted)]">{project.results}</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Project Details */}
-      <section className="project-details py-5">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8">
-              <div className="project-content">
-                <div className="markdown-content">
-                  <ReactMarkdown
-                    components={{
-                    h1: ({children}) => <h2 className="section-headline-blue mb-4 d-block">{children}</h2>,
-                    h2: ({children}) => <h3 className="h4 fw-bold mb-3 mt-4 d-block">{children}</h3>,
-                    h3: ({children}) => <h4 className="h5 fw-bold mb-3 mt-3 d-block">{children}</h4>,
-                    p: ({children}) => <p className="mb-3">{children}</p>,
-                    ul: ({children}) => <ul className="mb-3">{children}</ul>,
-                    ol: ({children}) => <ol className="mb-3">{children}</ol>,
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="lg:col-span-2">
+              <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6 md:p-8 article-body prose prose-invert max-w-none">
+                <ReactMarkdown
+                  components={{
+                    h1: ({children}) => <h2 className="text-2xl font-bold bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-blue-light)] bg-clip-text text-transparent mb-4">{children}</h2>,
+                    h2: ({children}) => <h3 className="text-xl font-bold text-[var(--color-text-primary)] mb-3 mt-6">{children}</h3>,
+                    h3: ({children}) => <h4 className="text-lg font-bold text-[var(--color-text-primary)] mb-3 mt-4">{children}</h4>,
+                    p: ({children}) => <p className="text-[var(--color-text-muted)] mb-4">{children}</p>,
+                    ul: ({children}) => <ul className="text-[var(--color-text-muted)] mb-4 list-disc pl-6">{children}</ul>,
+                    ol: ({children}) => <ol className="text-[var(--color-text-muted)] mb-4 list-decimal pl-6">{children}</ol>,
                     code: ({children, ...props}) => {
                       const isInline = !props.className;
                       return isInline
-                        ? <code className="bg-light px-1 rounded">{children}</code>
-                        : <pre className="bg-light p-3 rounded overflow-auto"><code>{children}</code></pre>;
+                        ? <code className="bg-[var(--color-dark-bg)] px-1 rounded text-[var(--color-accent-blue)]">{children}</code>
+                        : <pre className="bg-[var(--color-dark-bg)] p-4 rounded-lg overflow-auto"><code>{children}</code></pre>;
                     },
                     blockquote: ({children}) => (
-                      <blockquote className="blockquote border-start border-primary border-3 ps-3 my-3">
+                      <blockquote className="border-l-4 border-[var(--color-accent-blue)] pl-4 my-4 italic text-[var(--color-text-muted)]">
                         {children}
                       </blockquote>
                     ),
@@ -185,82 +177,79 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 >
                   {project.content}
                 </ReactMarkdown>
-                </div>
               </div>
             </div>
-            <div className="col-lg-4">
-              <div className="project-sidebar">
-                {/* Technical Details */}
-                <div className="sidebar-section mb-4">
-                  <h4 className="sidebar-title">Technical Details</h4>
-                  <div className="technical-details">
-                    <div className="detail-item">
-                      <strong>Tech Stack:</strong>
-                      <p className="small mt-1">{project.techStack}</p>
-                    </div>
-                    <div className="detail-item">
-                      <strong>Architecture:</strong>
-                      <p className="small mt-1">{project.architecture}</p>
-                    </div>
-                    <div className="detail-item">
-                      <strong>Key Learnings:</strong>
-                      <p className="small mt-1">{project.lessons}</p>
-                    </div>
+            <div>
+              {/* Technical Details */}
+              <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6 mb-6">
+                <h4 className="text-lg font-bold text-[var(--color-text-primary)] mb-4">Technical Details</h4>
+                <div className="space-y-4">
+                  <div>
+                    <strong className="text-[var(--color-accent-blue)]">Tech Stack:</strong>
+                    <p className="text-sm text-[var(--color-text-muted)] mt-1">{project.techStack}</p>
+                  </div>
+                  <div>
+                    <strong className="text-[var(--color-accent-blue)]">Architecture:</strong>
+                    <p className="text-sm text-[var(--color-text-muted)] mt-1">{project.architecture}</p>
+                  </div>
+                  <div>
+                    <strong className="text-[var(--color-accent-blue)]">Key Learnings:</strong>
+                    <p className="text-sm text-[var(--color-text-muted)] mt-1">{project.lessons}</p>
                   </div>
                 </div>
-
-                {/* Related Projects */}
-                {relatedProjects.length > 0 && (
-                  <div className="sidebar-section">
-                    <h4 className="sidebar-title">Related Projects</h4>
-                    <div className="related-projects">
-                      {relatedProjects.map((relatedProject) => (
-                        <Link
-                          key={relatedProject.slug}
-                          href={`/projects/${relatedProject.slug}`}
-                          className="related-project-link"
-                        >
-                          <div className="related-project-card">
-                            <h5 className="related-project-title">{relatedProject.title}</h5>
-                            <p className="related-project-description">
-                              {relatedProject.description.substring(0, 100)}...
-                            </p>
-                            <span className="badge bg-secondary">{relatedProject.category}</span>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
               </div>
+
+              {/* Related Projects */}
+              {relatedProjects.length > 0 && (
+                <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6">
+                  <h4 className="text-lg font-bold text-[var(--color-text-primary)] mb-4">Related Projects</h4>
+                  <div className="space-y-4">
+                    {relatedProjects.map((relatedProject) => (
+                      <Link
+                        key={relatedProject.slug}
+                        href={`/projects/${relatedProject.slug}`}
+                        className="block no-underline"
+                      >
+                        <div className="bg-[var(--color-dark-bg)] border border-[var(--color-dark-border)] rounded-lg p-4 hover:border-[var(--color-accent-blue)]/50 transition-colors">
+                          <h5 className="font-bold text-[var(--color-text-primary)] mb-2">{relatedProject.title}</h5>
+                          <p className="text-sm text-[var(--color-text-muted)] mb-2">
+                            {relatedProject.description.substring(0, 100)}...
+                          </p>
+                          <span className="px-2 py-0.5 text-xs bg-[var(--color-dark-card-alt)] text-[var(--color-text-muted)] rounded">{relatedProject.category}</span>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
       </section>
 
       {/* Call to Action */}
-      <section className="project-cta py-5">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-8 text-center">
-              <h2 className="section-headline-blue mb-4">Interested in Similar Work?</h2>
-              <p className="lead mb-4">
-                I&apos;d love to discuss how I can help you achieve similar results for your organization.
-              </p>
-              <div className="d-flex gap-3 justify-content-center flex-wrap">
-                <Link href="/contact" className="btn btn-primary btn-lg">
-                  <i className="fas fa-envelope me-2"></i>
-                  Get In Touch
-                </Link>
-                <Link href="/projects" className="btn btn-outline-primary btn-lg">
-                  <i className="fas fa-arrow-left me-2"></i>
-                  View All Projects
-                </Link>
-                <Link href="/services" className="btn btn-custom btn-lg">
-                  <i className="fas fa-cogs me-2"></i>
-                  View Services
-                </Link>
-              </div>
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-blue-light)] bg-clip-text text-transparent">
+              Interested in Similar Work?
+            </h2>
+            <p className="text-lg text-[var(--color-text-muted)] mb-8">
+              I&apos;d love to discuss how I can help you achieve similar results for your organization.
+            </p>
+            <div className="flex gap-4 justify-center flex-wrap">
+              <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] font-bold rounded-lg transition-colors no-underline" style={{ color: '#000000' }}>
+                <i className="fas fa-envelope"></i>
+                Get In Touch
+              </Link>
+              <Link href="/projects" className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white font-bold rounded-lg transition-colors no-underline">
+                <i className="fas fa-arrow-left"></i>
+                View All Projects
+              </Link>
+              <Link href="/services" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[var(--color-accent-gold)] to-amber-500 hover:from-amber-500 hover:to-[var(--color-accent-gold)] font-bold rounded-lg transition-all no-underline" style={{ color: '#000000' }}>
+                <i className="fas fa-cogs"></i>
+                View Services
+              </Link>
             </div>
           </div>
         </div>

@@ -1,13 +1,13 @@
-const fs = require('fs');
-const path = require('path');
-const matter = require('gray-matter');
-const { marked } = require('marked');
-const puppeteer = require('puppeteer');
-const archiver = require('archiver');
-const { PDFDocument, rgb, StandardFonts } = require('pdf-lib');
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+import { marked } from 'marked';
+import puppeteer from 'puppeteer';
+import archiver from 'archiver';
+import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 
 // Define the Novice to Navigator articles in order
-const noviceToNavigatorArticles = [
+const noviceToNavigatorArticles: string[] = [
   'what-is-ai-really',
   'what-are-the-different-types-of-ai-systems',
   'whats-the-difference-between-ai-machine-learning-and-deep-learning',
@@ -40,66 +40,133 @@ const noviceToNavigatorArticles = [
   'what-if-my-business-has-limited-content-or-data',
   'what-should-i-consider-before-investing-in-a-custom-chatbot',
   'whats-involved-in-working-with-an-expert-to-build-a-chatbot',
-  'how-do-i-get-my-own-custom-ai-chatbot'
+  'how-do-i-get-my-own-custom-ai-chatbot',
 ];
 
 // Section titles for the table of contents
-const sectionTitles = [
+const sectionTitles: string[] = [
   'Understanding the Basics of AI',
   'Understanding Chatbots',
   'Advanced AI Concepts',
   'Building Custom Solutions',
   'Quality and Safety',
   'Business Applications',
-  'Working with Experts'
+  'Working with Experts',
 ];
 
 // Section groupings
-const sectionGroupings = [
+const sectionGroupings: string[][] = [
   // Section 1: Understanding the Basics of AI
-  ['what-is-ai-really', 'what-are-the-different-types-of-ai-systems', 'whats-the-difference-between-ai-machine-learning-and-deep-learning', 'how-does-ai-learn-from-data', 'what-is-prompt-engineering-and-why-is-it-important'],
+  [
+    'what-is-ai-really',
+    'what-are-the-different-types-of-ai-systems',
+    'whats-the-difference-between-ai-machine-learning-and-deep-learning',
+    'how-does-ai-learn-from-data',
+    'what-is-prompt-engineering-and-why-is-it-important',
+  ],
   // Section 2: Understanding Chatbots
-  ['what-is-a-chatbot-and-how-does-it-work', 'how-do-chatbots-understand-human-language', 'why-do-some-chatbots-perform-better-than-others', 'what-makes-a-chatbot-valuable-for-businesses', 'can-chatbots-replace-human-roles-in-certain-tasks'],
+  [
+    'what-is-a-chatbot-and-how-does-it-work',
+    'how-do-chatbots-understand-human-language',
+    'why-do-some-chatbots-perform-better-than-others',
+    'what-makes-a-chatbot-valuable-for-businesses',
+    'can-chatbots-replace-human-roles-in-certain-tasks',
+  ],
   // Section 3: Advanced AI Concepts
-  ['what-is-retrieval-augmented-generation-rag', 'why-doesnt-ai-just-know-everything', 'how-does-a-rag-chatbot-use-my-specific-data', 'what-is-a-vector-database-and-why-is-it-used-in-rag', 'what-are-embeddings-and-how-do-they-help-chatbots'],
+  [
+    'what-is-retrieval-augmented-generation-rag',
+    'why-doesnt-ai-just-know-everything',
+    'how-does-a-rag-chatbot-use-my-specific-data',
+    'what-is-a-vector-database-and-why-is-it-used-in-rag',
+    'what-are-embeddings-and-how-do-they-help-chatbots',
+  ],
   // Section 4: Building Custom Solutions
-  ['how-do-you-start-building-a-custom-ai-chatbot', 'what-technologies-power-a-rag-chatbot', 'how-do-you-ensure-a-chatbot-gives-accurate-and-relevant-answers', 'can-a-chatbot-integrate-with-my-existing-systems', 'is-building-a-custom-chatbot-expensive-or-time-intensive'],
+  [
+    'how-do-you-start-building-a-custom-ai-chatbot',
+    'what-technologies-power-a-rag-chatbot',
+    'how-do-you-ensure-a-chatbot-gives-accurate-and-relevant-answers',
+    'can-a-chatbot-integrate-with-my-existing-systems',
+    'is-building-a-custom-chatbot-expensive-or-time-intensive',
+  ],
   // Section 5: Quality and Safety
-  ['can-ai-chatbots-give-incorrect-or-made-up-answers', 'how-do-you-prevent-a-chatbot-from-giving-harmful-or-off-brand-responses', 'is-my-business-data-safe-when-using-a-chatbot', 'can-competitors-exploit-my-chatbots-knowledge-base', 'how-do-you-evaluate-a-chatbots-performance'],
+  [
+    'can-ai-chatbots-give-incorrect-or-made-up-answers',
+    'how-do-you-prevent-a-chatbot-from-giving-harmful-or-off-brand-responses',
+    'is-my-business-data-safe-when-using-a-chatbot',
+    'can-competitors-exploit-my-chatbots-knowledge-base',
+    'how-do-you-evaluate-a-chatbots-performance',
+  ],
   // Section 6: Business Applications
-  ['what-industries-are-using-ai-chatbots-effectively', 'how-can-a-chatbot-increase-revenue-or-reduce-costs', 'can-chatbots-streamline-lead-generation-or-customer-onboarding', 'is-my-business-ready-for-an-ai-chatbot', 'what-if-my-business-has-limited-content-or-data'],
+  [
+    'what-industries-are-using-ai-chatbots-effectively',
+    'how-can-a-chatbot-increase-revenue-or-reduce-costs',
+    'can-chatbots-streamline-lead-generation-or-customer-onboarding',
+    'is-my-business-ready-for-an-ai-chatbot',
+    'what-if-my-business-has-limited-content-or-data',
+  ],
   // Section 7: Working with Experts
-  ['what-should-i-consider-before-investing-in-a-custom-chatbot', 'whats-involved-in-working-with-an-expert-to-build-a-chatbot', 'how-do-i-get-my-own-custom-ai-chatbot']
+  [
+    'what-should-i-consider-before-investing-in-a-custom-chatbot',
+    'whats-involved-in-working-with-an-expert-to-build-a-chatbot',
+    'how-do-i-get-my-own-custom-ai-chatbot',
+  ],
 ];
 
+// Book metadata type
+interface BookMetadata {
+  title: string;
+  subtitle: string;
+  fullTitle: string;
+  author: string;
+  authorBio: string;
+  description: string;
+  publisher: string;
+  website: string;
+  email: string;
+  language: string;
+  isbn: string;
+  copyright: string;
+  edition: string;
+}
+
 // Book metadata
-const bookMetadata = {
+const bookMetadata: BookMetadata = {
   title: 'Novice to Navigator',
   subtitle: 'Your Guide to AI Chatbots for Business',
   fullTitle: 'Novice to Navigator: Your Guide to AI Chatbots for Business',
   author: 'Adam Matthew Steinberger',
-  authorBio: 'Adam Matthew Steinberger is an AI development expert specializing in custom chatbot solutions and Retrieval-Augmented Generation (RAG) systems. With extensive experience helping businesses implement intelligent automation, Adam makes complex AI concepts accessible to business leaders and entrepreneurs.',
-  description: 'A comprehensive guide to understanding and implementing AI chatbots for business success. From foundational concepts to advanced techniques, learn how to leverage AI to transform your customer experience, streamline operations, and drive growth.',
+  authorBio:
+    'Adam Matthew Steinberger is an AI development expert specializing in custom chatbot solutions and Retrieval-Augmented Generation (RAG) systems. With extensive experience helping businesses implement intelligent automation, Adam makes complex AI concepts accessible to business leaders and entrepreneurs.',
+  description:
+    'A comprehensive guide to understanding and implementing AI chatbots for business success. From foundational concepts to advanced techniques, learn how to leverage AI to transform your customer experience, streamline operations, and drive growth.',
   publisher: 'Adam Matthew Steinberger',
   website: 'https://hire.adam.matthewsteinberger.com',
   email: 'adam@matthewsteinberger.com',
   language: 'en',
   isbn: '', // To be filled when ready for Amazon
   copyright: `© ${new Date().getFullYear()} Adam Matthew Steinberger LLC. All rights reserved.`,
-  edition: 'First Edition'
+  edition: 'First Edition',
 };
 
-function extractTitleFromMarkdown(fileContent) {
+// Get the directory of the current script
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
+
+function extractTitleFromMarkdown(fileContent: string): string {
   const { data } = matter(fileContent);
-  return data.title || 'No Title';
+  return (data.title as string) || 'No Title';
 }
 
-function removeEmojis(text) {
+function removeEmojis(text: string): string {
   // Remove emojis using comprehensive regex including circles, symbols, and all Unicode emoji ranges
-  return text.replace(/[\u{1F600}-\u{1F64F}]|[\u{1F300}-\u{1F5FF}]|[\u{1F680}-\u{1F6FF}]|[\u{1F1E0}-\u{1F1FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]|[\u{1F900}-\u{1F9FF}]|[\u{1FA70}-\u{1FAFF}]|[\u{231A}-\u{231B}]|[\u{23E9}-\u{23FA}]|[\u{25AA}-\u{25AB}]|[\u{25B6}]|[\u{25C0}]|[\u{25FB}-\u{25FE}]|[\u{2934}-\u{2935}]|[\u{2B05}-\u{2B07}]|[\u{2B1B}-\u{2B1C}]|[\u{3030}]|[\u{303D}]|[\u{3297}]|[\u{3299}]|[\u{1F7E0}-\u{1F7EB}]|[\u{FE0F}]|[\u{200D}]/gu, '').trim();
+  return text
+    .replace(
+      /[\u{1F600}-\u{1F64F}]|[\u{1F300}-\u{1F5FF}]|[\u{1F680}-\u{1F6FF}]|[\u{1F1E0}-\u{1F1FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]|[\u{1F900}-\u{1F9FF}]|[\u{1FA70}-\u{1FAFF}]|[\u{231A}-\u{231B}]|[\u{23E9}-\u{23FA}]|[\u{25AA}-\u{25AB}]|[\u{25B6}]|[\u{25C0}]|[\u{25FB}-\u{25FE}]|[\u{2934}-\u{2935}]|[\u{2B05}-\u{2B07}]|[\u{2B1B}-\u{2B1C}]|[\u{3030}]|[\u{303D}]|[\u{3297}]|[\u{3299}]|[\u{1F7E0}-\u{1F7EB}]|[\u{FE0F}]|[\u{200D}]/gu,
+      ''
+    )
+    .trim();
 }
 
-function cleanMarkdownContent(content) {
+function cleanMarkdownContent(content: string): string {
   // Remove ALL emojis from the entire content
   let cleaned = removeEmojis(content);
 
@@ -107,11 +174,14 @@ function cleanMarkdownContent(content) {
   cleaned = cleaned.replace(/[—–]/g, '-');
 
   // Convert markdown tables to bulleted lists for better book formatting
-  cleaned = cleaned.replace(/(\|[^\n]+\|\n)+/g, (tableMatch) => {
+  cleaned = cleaned.replace(/(\|[^\n]+\|\n)+/g, (tableMatch: string) => {
     const lines = tableMatch.trim().split('\n');
     if (lines.length < 3) return tableMatch; // Not a valid table
 
-    const headers = lines[0].split('|').map(h => h.trim()).filter(h => h);
+    const headers = lines[0]
+      .split('|')
+      .map((h) => h.trim())
+      .filter((h) => h);
     const separator = lines[1];
 
     // Check if it's a valid table (has separator line)
@@ -121,7 +191,10 @@ function cleanMarkdownContent(content) {
 
     // Process data rows
     for (let i = 2; i < lines.length; i++) {
-      const cells = lines[i].split('|').map(c => c.trim()).filter(c => c);
+      const cells = lines[i]
+        .split('|')
+        .map((c) => c.trim())
+        .filter((c) => c);
       if (cells.length === 0) continue;
 
       list += `\n**${headers[0]}:** ${cells[0]}\n\n`;
@@ -141,9 +214,12 @@ function cleanMarkdownContent(content) {
   return cleaned;
 }
 
-function generateTableOfContents() {
+function generateTableOfContents(): string {
   // Chapter page numbers
-  const chapterPages = [1, 8, 15, 21, 28, 35, 42, 50, 56, 62, 68, 75, 81, 84, 90, 96, 102, 109, 114, 120, 125, 128, 133, 138, 142, 148, 154, 160, 166, 172, 178, 183, 189];
+  const chapterPages = [
+    1, 8, 15, 21, 28, 35, 42, 50, 56, 62, 68, 75, 81, 84, 90, 96, 102, 109, 114,
+    120, 125, 128, 133, 138, 142, 148, 154, 160, 166, 172, 178, 183, 189,
+  ];
 
   let toc = `<h1>Table of Contents</h1>\n\n`;
 
@@ -155,7 +231,14 @@ function generateTableOfContents() {
     toc += `<table class="toc-table">\n`;
 
     section.forEach((articleSlug) => {
-      const articlePath = path.join(__dirname, '..', 'src', 'content', 'articles', `${articleSlug}.md`);
+      const articlePath = path.join(
+        __dirname,
+        '..',
+        'src',
+        'content',
+        'articles',
+        `${articleSlug}.md`
+      );
       if (fs.existsSync(articlePath)) {
         const fileContent = fs.readFileSync(articlePath, 'utf8');
         const title = removeEmojis(extractTitleFromMarkdown(fileContent));
@@ -172,7 +255,7 @@ function generateTableOfContents() {
   return toc;
 }
 
-function generateEbookHTML() {
+function generateEbookHTML(): string {
   const metadata = bookMetadata;
   const year = new Date().getFullYear();
 
@@ -535,7 +618,14 @@ function generateEbookHTML() {
   // Add each article as chapters
   let chapterNumber = 1;
   noviceToNavigatorArticles.forEach((articleSlug) => {
-    const articlePath = path.join(__dirname, '..', 'src', 'content', 'articles', `${articleSlug}.md`);
+    const articlePath = path.join(
+      __dirname,
+      '..',
+      'src',
+      'content',
+      'articles',
+      `${articleSlug}.md`
+    );
 
     if (fs.existsSync(articlePath)) {
       const fileContent = fs.readFileSync(articlePath, 'utf8');
@@ -584,7 +674,7 @@ function generateEbookHTML() {
   return html;
 }
 
-async function generatePDF() {
+async function generatePDF(): Promise<void> {
   try {
     console.log('Generating ebook HTML...');
     const html = generateEbookHTML();
@@ -596,7 +686,13 @@ async function generatePDF() {
     console.log('Launching browser...');
     const browser = await puppeteer.launch({
       headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--disable-software-rasterizer']
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-gpu',
+        '--disable-software-rasterizer',
+      ],
     });
 
     const page = await browser.newPage();
@@ -616,12 +712,12 @@ async function generatePDF() {
         top: '0.75in',
         right: '0.5in',
         bottom: '0.75in',
-        left: gutterMargin
+        left: gutterMargin,
       },
       printBackground: true,
       displayHeaderFooter: false,
       preferCSSPageSize: false,
-      tagged: true
+      tagged: true,
     });
 
     await browser.close();
@@ -634,7 +730,9 @@ async function generatePDF() {
     // Load PDF and add page numbers with offset
     const pdfDoc = await PDFDocument.load(pdfBuffer);
     const pages = pdfDoc.getPages();
-    const font = await pdfDoc.embedFont(StandardFonts.Helvetica, { subset: true });
+    const font = await pdfDoc.embedFont(StandardFonts.Helvetica, {
+      subset: true,
+    });
 
     // Page 1 should be on physical page 9 (index 8)
     // Last page number should be on physical page 201 (index 200)
@@ -642,45 +740,59 @@ async function generatePDF() {
     const lastNumberedPage = 200; // Physical page 201 (0-indexed)
     const totalPages = pages.length;
 
-    console.log(`Page numbering: Physical pages 1-${firstNumberedPage + 1} (unnumbered)`);
-    console.log(`Page numbering: Physical pages ${firstNumberedPage + 1}-${lastNumberedPage + 1} (numbered as 1-${lastNumberedPage - firstNumberedPage + 1})`);
-    console.log(`Page numbering: Physical pages ${lastNumberedPage + 2}-${totalPages} (unnumbered)`);
+    console.log(
+      `Page numbering: Physical pages 1-${firstNumberedPage + 1} (unnumbered)`
+    );
+    console.log(
+      `Page numbering: Physical pages ${firstNumberedPage + 1}-${lastNumberedPage + 1} (numbered as 1-${lastNumberedPage - firstNumberedPage + 1})`
+    );
+    console.log(
+      `Page numbering: Physical pages ${lastNumberedPage + 2}-${totalPages} (unnumbered)`
+    );
 
     // Add page numbers from physical page 9 (index 8) to physical page 194 (index 193)
     for (let i = firstNumberedPage; i <= lastNumberedPage; i++) {
-      const page = pages[i];
-      const { width } = page.getSize();
+      const pdfPage = pages[i];
+      const { width } = pdfPage.getSize();
       const pageNumber = i - firstNumberedPage + 1;
 
       const text = pageNumber.toString();
       const textWidth = font.widthOfTextAtSize(text, 10);
 
-      page.drawText(text, {
+      pdfPage.drawText(text, {
         x: width / 2 - textWidth / 2,
         y: 36,
         size: 10,
         font: font,
-        color: rgb(0.2, 0.2, 0.2)
+        color: rgb(0.2, 0.2, 0.2),
       });
     }
 
     // Save the modified PDF
     const modifiedPdfBytes = await pdfDoc.save();
-    const pdfPath = path.join(__dirname, '..', 'public', 'novice-to-navigator-ebook.pdf');
+    const pdfPath = path.join(
+      __dirname,
+      '..',
+      'public',
+      'novice-to-navigator-ebook.pdf'
+    );
     fs.writeFileSync(pdfPath, modifiedPdfBytes);
 
-    console.log(`✅ PDF generated successfully: ${pdfPath}`);
-    console.log(`📄 PDF size: ${(modifiedPdfBytes.length / 1024 / 1024).toFixed(2)} MB`);
-    console.log(`📄 Total pages: ${totalPages} (${firstNumberedPage + 1} unnumbered front + ${lastNumberedPage - firstNumberedPage + 1} numbered + ${totalPages - lastNumberedPage - 1} unnumbered back)`);
-
+    console.log(`PDF generated successfully: ${pdfPath}`);
+    console.log(
+      `PDF size: ${(modifiedPdfBytes.length / 1024 / 1024).toFixed(2)} MB`
+    );
+    console.log(
+      `Total pages: ${totalPages} (${firstNumberedPage + 1} unnumbered front + ${lastNumberedPage - firstNumberedPage + 1} numbered + ${totalPages - lastNumberedPage - 1} unnumbered back)`
+    );
   } catch (error) {
-    console.error('❌ Error generating PDF:', error);
+    console.error('Error generating PDF:', error);
     throw error;
   }
 }
 
 // EPUB generation functions
-function generateEPUBCSS() {
+function generateEPUBCSS(): string {
   return `@charset "UTF-8";
 
 /* Professional eBook Styling */
@@ -968,7 +1080,7 @@ nav[epub|type~="toc"] a:hover {
 }`;
 }
 
-function generateEPUBContainerXML() {
+function generateEPUBContainerXML(): string {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container">
     <rootfiles>
@@ -977,38 +1089,54 @@ function generateEPUBContainerXML() {
 </container>`;
 }
 
-function generateEPUBContentOPF() {
+function generateEPUBContentOPF(): string {
   const metadata = bookMetadata;
-  const manifest = [];
-  const spine = [];
+  const manifest: string[] = [];
+  const spine: string[] = [];
 
   // Add CSS
-  manifest.push('        <item id="css" href="style.css" media-type="text/css"/>');
+  manifest.push(
+    '        <item id="css" href="style.css" media-type="text/css"/>'
+  );
 
   // Add front matter
-  manifest.push('        <item id="cover" href="cover.xhtml" media-type="application/xhtml+xml"/>');
+  manifest.push(
+    '        <item id="cover" href="cover.xhtml" media-type="application/xhtml+xml"/>'
+  );
   spine.push('        <itemref idref="cover"/>');
 
-  manifest.push('        <item id="copyright" href="copyright.xhtml" media-type="application/xhtml+xml"/>');
+  manifest.push(
+    '        <item id="copyright" href="copyright.xhtml" media-type="application/xhtml+xml"/>'
+  );
   spine.push('        <itemref idref="copyright"/>');
 
-  manifest.push('        <item id="dedication" href="dedication.xhtml" media-type="application/xhtml+xml"/>');
+  manifest.push(
+    '        <item id="dedication" href="dedication.xhtml" media-type="application/xhtml+xml"/>'
+  );
   spine.push('        <itemref idref="dedication"/>');
 
-  manifest.push('        <item id="toc" href="toc.xhtml" media-type="application/xhtml+xml" properties="nav"/>');
+  manifest.push(
+    '        <item id="toc" href="toc.xhtml" media-type="application/xhtml+xml" properties="nav"/>'
+  );
   spine.push('        <itemref idref="toc"/>');
 
   // Add articles
   noviceToNavigatorArticles.forEach((articleSlug) => {
-    manifest.push(`        <item id="${articleSlug}" href="${articleSlug}.xhtml" media-type="application/xhtml+xml"/>`);
+    manifest.push(
+      `        <item id="${articleSlug}" href="${articleSlug}.xhtml" media-type="application/xhtml+xml"/>`
+    );
     spine.push(`        <itemref idref="${articleSlug}"/>`);
   });
 
   // Add back matter
-  manifest.push('        <item id="about-author" href="about-author.xhtml" media-type="application/xhtml+xml"/>');
+  manifest.push(
+    '        <item id="about-author" href="about-author.xhtml" media-type="application/xhtml+xml"/>'
+  );
   spine.push('        <itemref idref="about-author"/>');
 
-  manifest.push('        <item id="back-cover" href="back-cover.xhtml" media-type="application/xhtml+xml"/>');
+  manifest.push(
+    '        <item id="back-cover" href="back-cover.xhtml" media-type="application/xhtml+xml"/>'
+  );
   spine.push('        <itemref idref="back-cover"/>');
 
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -1037,9 +1165,9 @@ ${spine.join('\n')}
 </package>`;
 }
 
-function generateEPUBTOCNCX() {
+function generateEPUBTOCNCX(): string {
   const metadata = bookMetadata;
-  const navPoints = [];
+  const navPoints: string[] = [];
   let playOrder = 1;
 
   // Add front matter
@@ -1049,32 +1177,47 @@ function generateEPUBTOCNCX() {
   navPoints.push('        </navPoint>');
   playOrder++;
 
-  navPoints.push(`        <navPoint id="nav-copyright" playOrder="${playOrder}">`);
+  navPoints.push(
+    `        <navPoint id="nav-copyright" playOrder="${playOrder}">`
+  );
   navPoints.push('            <navLabel><text>Copyright</text></navLabel>');
   navPoints.push('            <content src="copyright.xhtml"/>');
   navPoints.push('        </navPoint>');
   playOrder++;
 
-  navPoints.push(`        <navPoint id="nav-dedication" playOrder="${playOrder}">`);
+  navPoints.push(
+    `        <navPoint id="nav-dedication" playOrder="${playOrder}">`
+  );
   navPoints.push('            <navLabel><text>Dedication</text></navLabel>');
   navPoints.push('            <content src="dedication.xhtml"/>');
   navPoints.push('        </navPoint>');
   playOrder++;
 
   navPoints.push(`        <navPoint id="nav-toc" playOrder="${playOrder}">`);
-  navPoints.push('            <navLabel><text>Table of Contents</text></navLabel>');
+  navPoints.push(
+    '            <navLabel><text>Table of Contents</text></navLabel>'
+  );
   navPoints.push('            <content src="toc.xhtml"/>');
   navPoints.push('        </navPoint>');
   playOrder++;
 
   // Add articles
   noviceToNavigatorArticles.forEach((articleSlug) => {
-    const articlePath = path.join(__dirname, '..', 'src', 'content', 'articles', `${articleSlug}.md`);
+    const articlePath = path.join(
+      __dirname,
+      '..',
+      'src',
+      'content',
+      'articles',
+      `${articleSlug}.md`
+    );
     if (fs.existsSync(articlePath)) {
       const fileContent = fs.readFileSync(articlePath, 'utf8');
       const title = removeEmojis(extractTitleFromMarkdown(fileContent));
 
-      navPoints.push(`        <navPoint id="nav-${articleSlug}" playOrder="${playOrder}">`);
+      navPoints.push(
+        `        <navPoint id="nav-${articleSlug}" playOrder="${playOrder}">`
+      );
       navPoints.push(`            <navLabel><text>${title}</text></navLabel>`);
       navPoints.push(`            <content src="${articleSlug}.xhtml"/>`);
       navPoints.push('        </navPoint>');
@@ -1083,14 +1226,22 @@ function generateEPUBTOCNCX() {
   });
 
   // Add back matter
-  navPoints.push(`        <navPoint id="nav-about-author" playOrder="${playOrder}">`);
-  navPoints.push('            <navLabel><text>About the Author</text></navLabel>');
+  navPoints.push(
+    `        <navPoint id="nav-about-author" playOrder="${playOrder}">`
+  );
+  navPoints.push(
+    '            <navLabel><text>About the Author</text></navLabel>'
+  );
   navPoints.push('            <content src="about-author.xhtml"/>');
   navPoints.push('        </navPoint>');
   playOrder++;
 
-  navPoints.push(`        <navPoint id="nav-back-cover" playOrder="${playOrder}">`);
-  navPoints.push('            <navLabel><text>About This Book</text></navLabel>');
+  navPoints.push(
+    `        <navPoint id="nav-back-cover" playOrder="${playOrder}">`
+  );
+  navPoints.push(
+    '            <navLabel><text>About This Book</text></navLabel>'
+  );
   navPoints.push('            <content src="back-cover.xhtml"/>');
   navPoints.push('        </navPoint>');
 
@@ -1115,7 +1266,7 @@ ${navPoints.join('\n')}
 </ncx>`;
 }
 
-function generateEPUBCoverXHTML() {
+function generateEPUBCoverXHTML(): string {
   const metadata = bookMetadata;
 
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -1137,7 +1288,7 @@ function generateEPUBCoverXHTML() {
 </html>`;
 }
 
-function generateEPUBCopyrightXHTML() {
+function generateEPUBCopyrightXHTML(): string {
   const metadata = bookMetadata;
   const year = new Date().getFullYear();
 
@@ -1174,7 +1325,7 @@ function generateEPUBCopyrightXHTML() {
 </html>`;
 }
 
-function generateEPUBDedicationXHTML() {
+function generateEPUBDedicationXHTML(): string {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en">
@@ -1191,7 +1342,7 @@ function generateEPUBDedicationXHTML() {
 </html>`;
 }
 
-function generateEPUBAboutAuthorXHTML() {
+function generateEPUBAboutAuthorXHTML(): string {
   const metadata = bookMetadata;
 
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -1213,7 +1364,7 @@ function generateEPUBAboutAuthorXHTML() {
 </html>`;
 }
 
-function generateEPUBBackCoverXHTML() {
+function generateEPUBBackCoverXHTML(): string {
   const metadata = bookMetadata;
 
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -1235,14 +1386,16 @@ function generateEPUBBackCoverXHTML() {
 </html>`;
 }
 
-function generateEPUBTOCXHTML() {
+function generateEPUBTOCXHTML(): string {
   // Build the nav structure with nested lists
   let navItems = '';
 
   // Add front matter items
   navItems += '                <li><a href="cover.xhtml">Cover</a></li>\n';
-  navItems += '                <li><a href="copyright.xhtml">Copyright</a></li>\n';
-  navItems += '                <li><a href="dedication.xhtml">Dedication</a></li>\n';
+  navItems +=
+    '                <li><a href="copyright.xhtml">Copyright</a></li>\n';
+  navItems +=
+    '                <li><a href="dedication.xhtml">Dedication</a></li>\n';
 
   let chapterNumber = 1;
 
@@ -1252,7 +1405,14 @@ function generateEPUBTOCXHTML() {
     navItems += '                    <ol>\n';
 
     section.forEach((articleSlug) => {
-      const articlePath = path.join(__dirname, '..', 'src', 'content', 'articles', `${articleSlug}.md`);
+      const articlePath = path.join(
+        __dirname,
+        '..',
+        'src',
+        'content',
+        'articles',
+        `${articleSlug}.md`
+      );
       if (fs.existsSync(articlePath)) {
         const fileContent = fs.readFileSync(articlePath, 'utf8');
         const title = removeEmojis(extractTitleFromMarkdown(fileContent));
@@ -1266,8 +1426,10 @@ function generateEPUBTOCXHTML() {
   });
 
   // Add back matter items
-  navItems += '                <li><a href="about-author.xhtml">About the Author</a></li>\n';
-  navItems += '                <li><a href="back-cover.xhtml">About This Book</a></li>\n';
+  navItems +=
+    '                <li><a href="about-author.xhtml">About the Author</a></li>\n';
+  navItems +=
+    '                <li><a href="back-cover.xhtml">About This Book</a></li>\n';
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
@@ -1287,8 +1449,18 @@ ${navItems}        </ol>
 </html>`;
 }
 
-function generateEPUBArticleXHTML(articleSlug, chapterNumber) {
-  const articlePath = path.join(__dirname, '..', 'src', 'content', 'articles', `${articleSlug}.md`);
+function generateEPUBArticleXHTML(
+  articleSlug: string,
+  chapterNumber: number
+): string | null {
+  const articlePath = path.join(
+    __dirname,
+    '..',
+    'src',
+    'content',
+    'articles',
+    `${articleSlug}.md`
+  );
 
   if (fs.existsSync(articlePath)) {
     const fileContent = fs.readFileSync(articlePath, 'utf8');
@@ -1321,7 +1493,7 @@ ${articleHTML}
   }
 }
 
-async function generateEPUB() {
+async function generateEPUB(): Promise<void> {
   try {
     console.log('Generating EPUB...');
 
@@ -1344,10 +1516,16 @@ async function generateEPUB() {
     if (!fs.existsSync(metaInfDir)) {
       fs.mkdirSync(metaInfDir, { recursive: true });
     }
-    fs.writeFileSync(path.join(metaInfDir, 'container.xml'), generateEPUBContainerXML());
+    fs.writeFileSync(
+      path.join(metaInfDir, 'container.xml'),
+      generateEPUBContainerXML()
+    );
 
     // Generate OEBPS/content.opf
-    fs.writeFileSync(path.join(oebpsDir, 'content.opf'), generateEPUBContentOPF());
+    fs.writeFileSync(
+      path.join(oebpsDir, 'content.opf'),
+      generateEPUBContentOPF()
+    );
 
     // Generate OEBPS/toc.ncx
     fs.writeFileSync(path.join(oebpsDir, 'toc.ncx'), generateEPUBTOCNCX());
@@ -1356,9 +1534,18 @@ async function generateEPUB() {
     fs.writeFileSync(path.join(oebpsDir, 'style.css'), generateEPUBCSS());
 
     // Generate front matter
-    fs.writeFileSync(path.join(oebpsDir, 'cover.xhtml'), generateEPUBCoverXHTML());
-    fs.writeFileSync(path.join(oebpsDir, 'copyright.xhtml'), generateEPUBCopyrightXHTML());
-    fs.writeFileSync(path.join(oebpsDir, 'dedication.xhtml'), generateEPUBDedicationXHTML());
+    fs.writeFileSync(
+      path.join(oebpsDir, 'cover.xhtml'),
+      generateEPUBCoverXHTML()
+    );
+    fs.writeFileSync(
+      path.join(oebpsDir, 'copyright.xhtml'),
+      generateEPUBCopyrightXHTML()
+    );
+    fs.writeFileSync(
+      path.join(oebpsDir, 'dedication.xhtml'),
+      generateEPUBDedicationXHTML()
+    );
     fs.writeFileSync(path.join(oebpsDir, 'toc.xhtml'), generateEPUBTOCXHTML());
 
     // Generate article XHTML files
@@ -1366,41 +1553,60 @@ async function generateEPUB() {
     noviceToNavigatorArticles.forEach((articleSlug) => {
       const articleXHTML = generateEPUBArticleXHTML(articleSlug, chapterNumber);
       if (articleXHTML) {
-        fs.writeFileSync(path.join(oebpsDir, `${articleSlug}.xhtml`), articleXHTML);
+        fs.writeFileSync(
+          path.join(oebpsDir, `${articleSlug}.xhtml`),
+          articleXHTML
+        );
         chapterNumber++;
       }
     });
 
     // Generate back matter
-    fs.writeFileSync(path.join(oebpsDir, 'about-author.xhtml'), generateEPUBAboutAuthorXHTML());
-    fs.writeFileSync(path.join(oebpsDir, 'back-cover.xhtml'), generateEPUBBackCoverXHTML());
+    fs.writeFileSync(
+      path.join(oebpsDir, 'about-author.xhtml'),
+      generateEPUBAboutAuthorXHTML()
+    );
+    fs.writeFileSync(
+      path.join(oebpsDir, 'back-cover.xhtml'),
+      generateEPUBBackCoverXHTML()
+    );
 
     // Create EPUB file using archiver
-    const epubPath = path.join(__dirname, '..', 'public', 'novice-to-navigator-ebook.epub');
+    const epubPath = path.join(
+      __dirname,
+      '..',
+      'public',
+      'novice-to-navigator-ebook.epub'
+    );
     const output = fs.createWriteStream(epubPath);
     const archive = archiver('zip', {
       zlib: { level: 9 },
-      store: false  // Use compression
+      store: false, // Use compression
     });
 
     return new Promise((resolve, reject) => {
       output.on('close', () => {
-        console.log(`✅ EPUB generated successfully: ${epubPath}`);
-        console.log(`📄 EPUB size: ${(archive.pointer() / 1024 / 1024).toFixed(2)} MB`);
+        console.log(`EPUB generated successfully: ${epubPath}`);
+        console.log(
+          `EPUB size: ${(archive.pointer() / 1024 / 1024).toFixed(2)} MB`
+        );
 
         // Clean up temporary directory
         fs.rmSync(tempDir, { recursive: true, force: true });
         resolve();
       });
 
-      archive.on('error', (err) => {
+      archive.on('error', (err: Error) => {
         reject(err);
       });
 
       archive.pipe(output);
 
       // Add mimetype first (uncompressed, as per EPUB spec)
-      archive.file(path.join(tempDir, 'mimetype'), { name: 'mimetype', store: true });
+      archive.file(path.join(tempDir, 'mimetype'), {
+        name: 'mimetype',
+        store: true,
+      } as { name: string; store: boolean });
 
       // Add all other files
       archive.directory(metaInfDir, 'META-INF');
@@ -1408,33 +1614,33 @@ async function generateEPUB() {
 
       archive.finalize();
     });
-
   } catch (error) {
-    console.error('❌ Error generating EPUB:', error);
+    console.error('Error generating EPUB:', error);
     throw error;
   }
 }
 
-async function generateAllEbooks() {
+async function generateAllEbooks(): Promise<void> {
   try {
-    console.log('🚀 Starting generation of Novice to Navigator ebook formats...\n');
+    console.log(
+      'Starting generation of Novice to Navigator ebook formats...\n'
+    );
 
     // Generate PDF
-    console.log('📖 Generating PDF...');
+    console.log('Generating PDF...');
     await generatePDF();
 
     // Generate EPUB
-    console.log('\n📱 Generating EPUB...');
+    console.log('\nGenerating EPUB...');
     await generateEPUB();
 
-    console.log('\n🎉 All ebooks generated successfully!');
+    console.log('\nAll ebooks generated successfully!');
     console.log('\nGenerated files:');
-    console.log('  📄 public/novice-to-navigator-ebook.pdf');
-    console.log('  📱 public/novice-to-navigator-ebook.epub');
+    console.log('  public/novice-to-navigator-ebook.pdf');
+    console.log('  public/novice-to-navigator-ebook.epub');
     console.log('\nThese files are ready for Amazon KDP self-publishing!');
-
   } catch (error) {
-    console.error('❌ Error generating ebooks:', error);
+    console.error('Error generating ebooks:', error);
     process.exit(1);
   }
 }

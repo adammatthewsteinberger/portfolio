@@ -71,14 +71,14 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug } = await params;
   const articleIndex = articles.findIndex(a => a.slug === slug);
   const article = articles[articleIndex];
-  
+
   if (!article) {
     notFound();
   }
 
   // Get article content from Markdown file
   const articleContent = getArticleBySlug(slug);
-  
+
   if (!articleContent) {
     notFound();
   }
@@ -88,32 +88,34 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const nextArticle = articleIndex < articles.length - 1 ? articles[articleIndex + 1] : null;
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-12">
+    <div className="min-h-screen">
+      <div className="container mx-auto px-4 pt-8 pb-16">
+        <div className="max-w-4xl mx-auto">
           <div className="article-content">
-            <div className="mb-3">
-              <Link href="/novice-to-navigator" className="fw-bold">Novice to Navigator</Link>
+            <div className="mb-4">
+              <Link href="/novice-to-navigator" className="font-bold text-[var(--color-accent-blue)] hover:underline no-underline">Novice to Navigator</Link>
             </div>
 
-            <h1 className="article-title mb-4" style={{display: 'block'}}>{articleContent.title}</h1>
-            <div className="article-meta mb-4">
-              <span className="badge bg-primary me-2">{articleContent.meta.section}</span>
-              <span className="text-muted">{articleContent.meta.date}</span>
-              <span className="text-muted ms-2">•</span>
-              <span className="text-muted ms-2">{articleContent.meta.readTime}</span>
+            <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-green)] bg-clip-text text-transparent mb-6">
+              {articleContent.title}
+            </h1>
+            <div className="flex items-center gap-3 mb-6 flex-wrap">
+              <span className="px-3 py-1 text-sm font-medium bg-[var(--color-accent-blue)] text-white rounded">{articleContent.meta.section}</span>
+              <span className="text-[var(--color-text-muted)]">{articleContent.meta.date}</span>
+              <span className="text-[var(--color-text-muted)]">•</span>
+              <span className="text-[var(--color-text-muted)]">{articleContent.meta.readTime}</span>
             </div>
 
             {/* {articleContent.audioFile && (
               <div className="audio-player mb-4">
-                <audio controls className="w-100">
+                <audio controls className="w-full">
                   <source src={`/audio/${articleContent.audioFile}`} type="audio/wav" />
                   Your browser does not support the audio element.
                 </audio>
               </div>
             )} */}
 
-            <div className="article-body mb-5">
+            <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6 md:p-8 article-body prose prose-invert max-w-none mb-8">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeHighlight]}
@@ -124,14 +126,14 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
             <MultipleCTAs />
 
-            <div className="d-flex justify-content-between border-top pt-4 mt-5">
+            <div className="flex justify-between border-t border-[var(--color-dark-border)] pt-6 mt-8">
               {prevArticle ? (
-                <Link href={`/novice-to-navigator/${prevArticle.slug}`} className="btn btn-outline-primary">
+                <Link href={`/novice-to-navigator/${prevArticle.slug}`} className="inline-flex items-center gap-2 px-4 py-2 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white rounded-lg transition-colors no-underline font-medium">
                   ← Previous
                 </Link>
               ) : <span />}
               {nextArticle ? (
-                <Link href={`/novice-to-navigator/${nextArticle.slug}`} className="btn btn-outline-primary ms-auto">
+                <Link href={`/novice-to-navigator/${nextArticle.slug}`} className="inline-flex items-center gap-2 px-4 py-2 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white rounded-lg transition-colors no-underline font-medium ml-auto">
                   Next →
                 </Link>
               ) : <span />}
@@ -144,4 +146,4 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       <ContentGateModal />
     </div>
   );
-} 
+}

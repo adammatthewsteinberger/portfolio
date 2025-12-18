@@ -57,147 +57,147 @@ export default function Header() {
           className='burger-menu'
         >
         <Link href='/' className='menu-item' onClick={closeMenu}>
-          <i className='fas fa-home me-2'></i>
+          <i className='fas fa-home mr-2'></i>
           Home
         </Link>
 
         <div className='menu-section'>
           <h6 className='menu-section-title'>Services</h6>
           <Link href='/services/custom-chatbots' className='menu-item submenu-item' onClick={closeMenu}>
-            <i className='fas fa-robot me-2'></i>
+            <i className='fas fa-robot mr-2'></i>
             Custom Chatbots
           </Link>
           <Link href='/services/llm-development' className='menu-item submenu-item' onClick={closeMenu}>
-            <i className='fas fa-brain me-2'></i>
+            <i className='fas fa-brain mr-2'></i>
             LLM Development
           </Link>
           <Link href='/services/rag-development' className='menu-item submenu-item' onClick={closeMenu}>
-            <i className='fas fa-search me-2'></i>
+            <i className='fas fa-search mr-2'></i>
             RAG Systems
           </Link>
           <Link href='/services' className='menu-item submenu-item' onClick={closeMenu}>
-            <i className='fas fa-list me-2'></i>
+            <i className='fas fa-list mr-2'></i>
             All Services
           </Link>
         </div>
 
         <Link href='/about' className='menu-item' onClick={closeMenu}>
-          <i className='fas fa-user me-2'></i>
+          <i className='fas fa-user mr-2'></i>
           About Me
         </Link>
 
         <Link href='/projects' className='menu-item' onClick={closeMenu}>
-          <i className='fas fa-briefcase me-2'></i>
+          <i className='fas fa-briefcase mr-2'></i>
           Projects
         </Link>
 
         <Link href='/novice-to-navigator' className='menu-item' onClick={closeMenu}>
-          <i className='fas fa-graduation-cap me-2'></i>
+          <i className='fas fa-graduation-cap mr-2'></i>
           Learn AI
         </Link>
 
         <Link href='/blog' className='menu-item' onClick={closeMenu}>
-          <i className='fas fa-blog me-2'></i>
+          <i className='fas fa-blog mr-2'></i>
           Blog
         </Link>
 
         <Link href='/contact' className='menu-item' onClick={closeMenu}>
-          <i className='fas fa-envelope me-2'></i>
+          <i className='fas fa-envelope mr-2'></i>
           Contact
         </Link>
 
         <a href='https://chat.adam.matthewsteinberger.com' className='menu-item' onClick={closeMenu} target='_blank' rel='noopener noreferrer'>
-          <i className='fas fa-play me-2'></i>
+          <i className='fas fa-play mr-2'></i>
           Demo
         </a>
         </Menu>
 
       {/* Main Navigation Bar */}
-      <nav className='navbar fixed-top main-navbar'>
-        <div className='container-fluid'>
-          <Link href='/' className='navbar-brand d-flex align-items-center'>
+      <nav className='fixed top-0 left-0 right-0 z-50 bg-[var(--color-dark-bg)]/95 backdrop-blur-sm border-b border-[var(--color-dark-border)] main-navbar'>
+        <div className='container mx-auto px-4 flex items-center justify-between h-16'>
+          <Link href='/' className='flex items-center gap-2 no-underline'>
             <Image
               src='/images/profile-picture.jpg'
               alt='Adam Matthew Steinberger'
               width={40}
               height={40}
-              className='rounded-circle me-2'
+              className='rounded-full'
               priority
             />
-            <span className='brand-text'>Adam Matthew Steinberger</span>
+            <span className='text-[var(--color-text-primary)] font-semibold text-lg'>Adam Matthew Steinberger</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className='desktop-nav d-none d-lg-flex'>
-            <div className='nav-list'>
-              <Link href='/' className='nav-link-desktop'>
-                <i className='fas fa-home me-1'></i>
+          <div className='hidden lg:flex items-center'>
+            <div className='flex items-center gap-1'>
+              <Link href='/' className='px-3 py-2 text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors text-sm font-medium no-underline'>
+                <i className='fas fa-home mr-1'></i>
                 Home
               </Link>
 
               <div
-                className='dropdown-wrapper'
+                className='relative'
                 onMouseEnter={handleServicesMouseEnter}
                 onMouseLeave={handleServicesMouseLeave}
               >
                 <button
-                  className='nav-link-desktop dropdown-btn'
+                  className='px-3 py-2 text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors text-sm font-medium bg-transparent border-none cursor-pointer flex items-center gap-1'
                   onClick={toggleServices}
                 >
-                  <i className='fas fa-cogs me-1'></i>
+                  <i className='fas fa-cogs mr-1'></i>
                   Services
-                  <i className={`fas fa-chevron-down ms-1 ${isServicesOpen ? 'rotate' : ''}`}></i>
+                  <i className={`fas fa-chevron-down text-xs transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`}></i>
                 </button>
                 {isServicesOpen && (
-                  <div className='dropdown-menu-custom'>
-                    <Link href='/services/custom-chatbots' className='dropdown-item-custom' onClick={closeServices}>
-                      <i className='fas fa-robot me-2'></i>
+                  <div className='absolute top-full left-0 mt-1 w-56 bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-lg shadow-lg py-2 z-50'>
+                    <Link href='/services/custom-chatbots' className='flex items-center px-4 py-2 text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-dark-card-alt)] transition-colors text-sm no-underline' onClick={closeServices}>
+                      <i className='fas fa-robot mr-2 w-5'></i>
                       Custom Chatbots
                     </Link>
-                    <Link href='/services/llm-development' className='dropdown-item-custom' onClick={closeServices}>
-                      <i className='fas fa-brain me-2'></i>
+                    <Link href='/services/llm-development' className='flex items-center px-4 py-2 text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-dark-card-alt)] transition-colors text-sm no-underline' onClick={closeServices}>
+                      <i className='fas fa-brain mr-2 w-5'></i>
                       LLM Development
                     </Link>
-                    <Link href='/services/rag-development' className='dropdown-item-custom' onClick={closeServices}>
-                      <i className='fas fa-search me-2'></i>
+                    <Link href='/services/rag-development' className='flex items-center px-4 py-2 text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-dark-card-alt)] transition-colors text-sm no-underline' onClick={closeServices}>
+                      <i className='fas fa-search mr-2 w-5'></i>
                       RAG Systems
                     </Link>
-                    <div className='dropdown-divider-custom'></div>
-                    <Link href='/services' className='dropdown-item-custom' onClick={closeServices}>
-                      <i className='fas fa-list me-2'></i>
+                    <div className='border-t border-[var(--color-dark-border)] my-1'></div>
+                    <Link href='/services' className='flex items-center px-4 py-2 text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-dark-card-alt)] transition-colors text-sm no-underline' onClick={closeServices}>
+                      <i className='fas fa-list mr-2 w-5'></i>
                       All Services
                     </Link>
                   </div>
                 )}
               </div>
 
-              <Link href='/about' className='nav-link-desktop'>
-                <i className='fas fa-user me-1'></i>
+              <Link href='/about' className='px-3 py-2 text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors text-sm font-medium no-underline'>
+                <i className='fas fa-user mr-1'></i>
                 About Me
               </Link>
 
-              <Link href='/projects' className='nav-link-desktop'>
-                <i className='fas fa-briefcase me-1'></i>
+              <Link href='/projects' className='px-3 py-2 text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors text-sm font-medium no-underline'>
+                <i className='fas fa-briefcase mr-1'></i>
                 Projects
               </Link>
 
-              <Link href='/novice-to-navigator' className='nav-link-desktop'>
-                <i className='fas fa-graduation-cap me-1'></i>
+              <Link href='/novice-to-navigator' className='px-3 py-2 text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors text-sm font-medium no-underline'>
+                <i className='fas fa-graduation-cap mr-1'></i>
                 Learn AI
               </Link>
 
-              <Link href='/blog' className='nav-link-desktop'>
-                <i className='fas fa-blog me-1'></i>
+              <Link href='/blog' className='px-3 py-2 text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors text-sm font-medium no-underline'>
+                <i className='fas fa-blog mr-1'></i>
                 Blog
               </Link>
 
-              <a href='https://chat.adam.matthewsteinberger.com/' className='nav-link-desktop' target='_blank' rel='noopener noreferrer'>
-                <i className='fas fa-play me-1'></i>
+              <a href='https://chat.adam.matthewsteinberger.com/' className='px-3 py-2 text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors text-sm font-medium no-underline' target='_blank' rel='noopener noreferrer'>
+                <i className='fas fa-play mr-1'></i>
                 Demo
               </a>
 
-              <Link href='/contact' className='nav-link-desktop'>
-                <i className='fas fa-envelope me-1'></i>
+              <Link href='/contact' className='px-3 py-2 text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors text-sm font-medium no-underline'>
+                <i className='fas fa-envelope mr-1'></i>
                 Contact
               </Link>
             </div>
@@ -205,61 +205,64 @@ export default function Header() {
         </div>
       </nav>
 
-      <header className='resume-header'>
-        <div className='container py-5'>
-          <div className='row align-items-center'>
-            <div className='col-md-3 text-center mb-4 mb-md-0'>
+      <header className='resume-header mt-20'>
+        <div className='container mx-auto px-4 py-2'>
+          <div className='flex flex-col md:flex-row items-center gap-8'>
+            <div className='flex-shrink-0 text-center'>
               <Image
                 src='/images/profile-picture.jpg'
                 alt='Adam Matthew Steinberger - Senior Azure and AI Development Engineer'
                 width={200}
                 height={200}
-                className='profile-large rounded-circle shadow'
+                className='rounded-full shadow-lg'
                 priority
               />
             </div>
-            <div className='col-md-9'>
-              <h1 className='display-4 fw-bold mb-2'>Adam Matthew Steinberger</h1>
-              <h2 className='h4 text-muted mb-3'>Senior Azure and AI Development Engineer</h2>
-              <p className='lead mb-4'>
-                Transforming businesses with cutting-edge AI solutions and custom chatbot development in 
+            <div className='flex-1 text-center md:text-left'>
+              <h1 className='text-4xl md:text-5xl font-bold text-[var(--color-text-primary)] mb-2'>Adam Matthew Steinberger</h1>
+              <h2 className='text-xl text-[var(--color-text-muted)] mb-4'>Senior Azure and AI Development Engineer</h2>
+              <p className='text-lg text-[var(--color-text-muted)] mb-6 leading-relaxed'>
+                Transforming businesses with cutting-edge AI solutions and custom chatbot development in
                 <br />
-                📍 Greenville, South Carolina.
+                Greenville, South Carolina.
               </p>
 
-              <div className='social-links d-flex gap-2'>
+              <div className='flex flex-wrap gap-2 justify-center md:justify-start'>
                 <a
                   href='https://linkedin.com/in/realadammatthew/'
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='btn btn-primary btn-sm'
+                  className='inline-flex items-center gap-1 px-4 py-2 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] text-sm font-medium rounded-lg transition-colors no-underline'
+                  style={{ color: '#ffffff' }}
                   aria-label='LinkedIn Profile'
                 >
-                  <i className='fab fa-linkedin me-1'></i>
+                  <i className='fab fa-linkedin'></i>
                   <span className='btn-text'>LinkedIn</span>
                 </a>
                 <a
                   href='https://github.com/realadammatthew'
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='btn btn-primary btn-sm'
+                  className='inline-flex items-center gap-1 px-4 py-2 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] text-sm font-medium rounded-lg transition-colors no-underline'
+                  style={{ color: '#ffffff' }}
                   aria-label='GitHub Profile'
                 >
-                  <i className='fab fa-github me-1'></i>
+                  <i className='fab fa-github'></i>
                   <span className='btn-text'>GitHub</span>
                 </a>
-                <Link href='/contact' className='btn btn-primary btn-sm' aria-label='Contact Me'>
-                  <i className='fas fa-envelope me-1'></i>
+                <Link href='/contact' className='inline-flex items-center gap-1 px-4 py-2 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] text-sm font-medium rounded-lg transition-colors no-underline' style={{ color: '#ffffff' }} aria-label='Contact Me'>
+                  <i className='fas fa-envelope'></i>
                   <span className='btn-text'>Contact Me</span>
                 </Link>
                 <a
                   href="https://github.com/realadammatthew/resume/raw/main/adam-steinberger-resume.pdf"
-                  className='btn btn-primary btn-sm'
+                  className='inline-flex items-center gap-1 px-4 py-2 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] text-sm font-medium rounded-lg transition-colors no-underline'
+                  style={{ color: '#ffffff' }}
                   target='_blank'
                   rel='noopener noreferrer'
                   aria-label='Download Resume'
                 >
-                  <i className='fas fa-download me-1'></i>
+                  <i className='fas fa-download'></i>
                   <span className='btn-text'>Download Resume</span>
                 </a>
               </div>

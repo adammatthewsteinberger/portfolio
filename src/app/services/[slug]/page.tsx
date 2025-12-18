@@ -5,7 +5,6 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import MultipleCTAs from '@/components/MultipleCTAs';
-import styles from '../ServicePage.module.css';
 import type { Metadata } from 'next';
 
 interface ServicePageProps {
@@ -72,31 +71,31 @@ export default async function ServicePage({ params }: ServicePageProps) {
   const { slug } = await params;
   const serviceIndex = services.findIndex(s => s.slug === slug);
   const service = services[serviceIndex];
-  
+
   if (!service) {
     notFound();
   }
 
   const serviceContent = getServiceBySlug(slug);
-  
+
   if (!serviceContent) {
     notFound();
   }
 
   return (
-    <div className={styles.servicePageBg}>
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="container text-center" style={{marginTop: '6rem', marginBottom: '3rem'}}>
-        <h1 className={styles.headline}>
+      <section className="container mx-auto px-4 text-center pt-8 pb-16">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-green)] bg-clip-text text-transparent">
           {serviceContent.heroTitle}
         </h1>
-        <h2 className={styles.subheadline}>
+        <h2 className="text-xl text-[var(--color-text-muted)] mb-8">
           {serviceContent.heroSubtitle}
         </h2>
-        <div className="mx-auto mb-4" style={{maxWidth: '700px'}}>
-          <div className="alert custom-alert p-4 mb-4 shadow-lg" style={{fontSize: '1.15rem', lineHeight: '1.7'}}>
+        <div className="max-w-2xl mx-auto">
+          <div className="bg-[var(--color-dark-card)] border border-[var(--color-accent-coral)]/30 rounded-xl p-6 shadow-lg text-lg leading-relaxed text-[var(--color-text-muted)]">
             {serviceContent.description.split('<newline>').map((paragraph, index) => (
-              <p key={index} className={index > 0 ? 'mt-3' : 'mb-0'}>
+              <p key={index} className={index > 0 ? 'mt-4' : ''}>
                 {paragraph}
               </p>
             ))}
@@ -105,124 +104,130 @@ export default async function ServicePage({ params }: ServicePageProps) {
       </section>
 
       {/* Choice 1, 2, 3 */}
-      <section className="container my-5">
-        <h4 className={styles.sectionTitle + ' section-headline-gold'}>{serviceContent.whyChoose}</h4>
-        <div className="row justify-content-center">
-          <div className="col-md-4 mb-4">
-            <div className={styles.card + ' card credential-card'}>
-              <i className={`fas ${serviceContent.choice1Icon} fa-2x mb-3`}></i>
-              <h5 className={styles.cardTitle}>{serviceContent.choice1Title}</h5>
-              <p className={styles.cardText}>{serviceContent.choice1Description}</p>
-            </div>
+      <section className="container mx-auto px-4 py-16">
+        <h4 className="text-2xl font-bold mb-8 text-center bg-gradient-to-r from-[var(--color-accent-gold)] to-amber-500 bg-clip-text text-transparent">
+          {serviceContent.whyChoose}
+        </h4>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="bg-[var(--color-dark-card)] border border-[var(--color-accent-gold)]/30 rounded-xl p-6 text-center">
+            <i className={`fas ${serviceContent.choice1Icon} text-4xl text-[var(--color-accent-gold)] mb-4`}></i>
+            <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-2">{serviceContent.choice1Title}</h5>
+            <p className="text-[var(--color-text-muted)]">{serviceContent.choice1Description}</p>
           </div>
-          <div className="col-md-4 mb-4">
-            <div className={styles.card + ' card credential-card'}>
-              <i className={`fas ${serviceContent.choice2Icon} fa-2x mb-3`}></i>
-              <h5 className={styles.cardTitle}>{serviceContent.choice2Title}</h5>
-              <p className={styles.cardText}>{serviceContent.choice2Description}</p>
-            </div>
+          <div className="bg-[var(--color-dark-card)] border border-[var(--color-accent-gold)]/30 rounded-xl p-6 text-center">
+            <i className={`fas ${serviceContent.choice2Icon} text-4xl text-[var(--color-accent-blue)] mb-4`}></i>
+            <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-2">{serviceContent.choice2Title}</h5>
+            <p className="text-[var(--color-text-muted)]">{serviceContent.choice2Description}</p>
           </div>
-          <div className="col-md-4 mb-4">
-            <div className={styles.card + ' card credential-card'}>
-              <i className={`fas ${serviceContent.choice3Icon} fa-2x mb-3`}></i>
-              <h5 className={styles.cardTitle}>{serviceContent.choice3Title}</h5>
-              <p className={styles.cardText}>{serviceContent.choice3Description}</p>
-            </div>
+          <div className="bg-[var(--color-dark-card)] border border-[var(--color-accent-gold)]/30 rounded-xl p-6 text-center">
+            <i className={`fas ${serviceContent.choice3Icon} text-4xl text-[var(--color-accent-purple)] mb-4`}></i>
+            <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-2">{serviceContent.choice3Title}</h5>
+            <p className="text-[var(--color-text-muted)]">{serviceContent.choice3Description}</p>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="container my-5">
-        <h4 className={styles.sectionTitle + ' section-headline-green'}>{serviceContent.featuresOffered}</h4>
-        <div className="row justify-content-center g-4">
-          <div className="col-md-6">
-            <div className={styles.card + ' card solution-card'}>
-              <h5 className={styles.cardTitle}><i className={`fas ${serviceContent.feature1Icon}`}></i> {serviceContent.feature1Title}</h5>
-              <p className={styles.cardText}>{serviceContent.feature1Description}</p>
-            </div>
+      <section className="container mx-auto px-4 py-16">
+        <h4 className="text-2xl font-bold mb-8 text-center bg-gradient-to-r from-[var(--color-accent-green)] to-[var(--color-accent-green-light)] bg-clip-text text-transparent">
+          {serviceContent.featuresOffered}
+        </h4>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6">
+            <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 flex items-center gap-2">
+              <i className={`fas ${serviceContent.feature1Icon} text-[var(--color-accent-blue)]`}></i>
+              {serviceContent.feature1Title}
+            </h5>
+            <p className="text-[var(--color-text-muted)]">{serviceContent.feature1Description}</p>
           </div>
-          <div className="col-md-6">
-            <div className={styles.card + ' card solution-card'}>
-              <h5 className={styles.cardTitle}><i className={`fas ${serviceContent.feature2Icon}`}></i> {serviceContent.feature2Title}</h5>
-              <p className={styles.cardText}>{serviceContent.feature2Description}</p>
-            </div>
+          <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6">
+            <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 flex items-center gap-2">
+              <i className={`fas ${serviceContent.feature2Icon} text-[var(--color-accent-blue)]`}></i>
+              {serviceContent.feature2Title}
+            </h5>
+            <p className="text-[var(--color-text-muted)]">{serviceContent.feature2Description}</p>
           </div>
-          <div className="col-md-6">
-            <div className={styles.card + ' card solution-card'}>
-              <h5 className={styles.cardTitle}><i className={`fas ${serviceContent.feature3Icon}`}></i> {serviceContent.feature3Title}</h5>
-              <p className={styles.cardText}>{serviceContent.feature3Description}</p>
-            </div>
+          <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6">
+            <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 flex items-center gap-2">
+              <i className={`fas ${serviceContent.feature3Icon} text-[var(--color-accent-blue)]`}></i>
+              {serviceContent.feature3Title}
+            </h5>
+            <p className="text-[var(--color-text-muted)]">{serviceContent.feature3Description}</p>
           </div>
-          <div className="col-md-6">
-            <div className={styles.card + ' card solution-card'}>
-              <h5 className={styles.cardTitle}><i className={`fas ${serviceContent.feature4Icon}`}></i> {serviceContent.feature4Title}</h5>
-              <p className={styles.cardText}>{serviceContent.feature4Description}</p>
-            </div>
+          <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6">
+            <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 flex items-center gap-2">
+              <i className={`fas ${serviceContent.feature4Icon} text-[var(--color-accent-blue)]`}></i>
+              {serviceContent.feature4Title}
+            </h5>
+            <p className="text-[var(--color-text-muted)]">{serviceContent.feature4Description}</p>
           </div>
           {serviceContent.feature5Title && serviceContent.feature5Description && (
-            <div className="col-md-6">
-              <div className={styles.card + ' card solution-card'}>
-                <h5 className={styles.cardTitle}><i className={`fas ${serviceContent.feature5Icon}`}></i> {serviceContent.feature5Title}</h5>
-                <p className={styles.cardText}>{serviceContent.feature5Description}</p>
-              </div>
+            <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6">
+              <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 flex items-center gap-2">
+                <i className={`fas ${serviceContent.feature5Icon} text-[var(--color-accent-blue)]`}></i>
+                {serviceContent.feature5Title}
+              </h5>
+              <p className="text-[var(--color-text-muted)]">{serviceContent.feature5Description}</p>
             </div>
           )}
           {serviceContent.feature6Title && serviceContent.feature6Description && (
-            <div className="col-md-6">
-              <div className={styles.card + ' card solution-card'}>
-                <h5 className={styles.cardTitle}><i className={`fas ${serviceContent.feature6Icon}`}></i> {serviceContent.feature6Title}</h5>
-                <p className={styles.cardText}>{serviceContent.feature6Description}</p>
-              </div>
+            <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6">
+              <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 flex items-center gap-2">
+                <i className={`fas ${serviceContent.feature6Icon} text-[var(--color-accent-blue)]`}></i>
+                {serviceContent.feature6Title}
+              </h5>
+              <p className="text-[var(--color-text-muted)]">{serviceContent.feature6Description}</p>
             </div>
           )}
           {serviceContent.feature7Title && serviceContent.feature7Description && (
-            <div className="col-md-6">
-              <div className={styles.card + ' card solution-card'}>
-                <h5 className={styles.cardTitle}><i className={`fas ${serviceContent.feature7Icon}`}></i> {serviceContent.feature7Title}</h5>
-                <p className={styles.cardText}>{serviceContent.feature7Description}</p>
-              </div>
+            <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6">
+              <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 flex items-center gap-2">
+                <i className={`fas ${serviceContent.feature7Icon} text-[var(--color-accent-blue)]`}></i>
+                {serviceContent.feature7Title}
+              </h5>
+              <p className="text-[var(--color-text-muted)]">{serviceContent.feature7Description}</p>
             </div>
           )}
           {serviceContent.feature8Title && serviceContent.feature8Description && (
-            <div className="col-md-6">
-              <div className={styles.card + ' card solution-card'}>
-                <h5 className={styles.cardTitle}><i className={`fas ${serviceContent.feature8Icon}`}></i> {serviceContent.feature8Title}</h5>
-                <p className={styles.cardText}>{serviceContent.feature8Description}</p>
-              </div>
+            <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6">
+              <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 flex items-center gap-2">
+                <i className={`fas ${serviceContent.feature8Icon} text-[var(--color-accent-blue)]`}></i>
+                {serviceContent.feature8Title}
+              </h5>
+              <p className="text-[var(--color-text-muted)]">{serviceContent.feature8Description}</p>
             </div>
           )}
           {serviceContent.feature9Title && serviceContent.feature9Description && (
-            <div className="col-md-6">
-              <div className={styles.card + ' card solution-card'}>
-                <h5 className={styles.cardTitle}><i className={`fas ${serviceContent.feature9Icon}`}></i> {serviceContent.feature9Title}</h5>
-                <p className={styles.cardText}>{serviceContent.feature9Description}</p>
-              </div>
+            <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6">
+              <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 flex items-center gap-2">
+                <i className={`fas ${serviceContent.feature9Icon} text-[var(--color-accent-blue)]`}></i>
+                {serviceContent.feature9Title}
+              </h5>
+              <p className="text-[var(--color-text-muted)]">{serviceContent.feature9Description}</p>
             </div>
           )}
           {serviceContent.feature10Title && serviceContent.feature10Description && (
-            <div className="col-md-6">
-              <div className={styles.card + ' card solution-card'}>
-                <h5 className={styles.cardTitle}><i className={`fas ${serviceContent.feature10Icon}`}></i> {serviceContent.feature10Title}</h5>
-                <p className={styles.cardText}>{serviceContent.feature10Description}</p>
-              </div>
+            <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6">
+              <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 flex items-center gap-2">
+                <i className={`fas ${serviceContent.feature10Icon} text-[var(--color-accent-blue)]`}></i>
+                {serviceContent.feature10Title}
+              </h5>
+              <p className="text-[var(--color-text-muted)]">{serviceContent.feature10Description}</p>
             </div>
           )}
         </div>
       </section>
 
       {/* Content Section */}
-      <section className="container my-5">
-        <div className="row justify-content-center">
-          <div className="col-lg-10">
-            <div className={styles.mainContentCard + ' ' + styles.articleBody + ' article-body mb-5'}>
-              <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeHighlight]}
-              >
-                {serviceContent.content}
-              </ReactMarkdown>
-            </div>
+      <section className="container mx-auto px-4 py-16">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-8 article-body prose prose-invert max-w-none">
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeHighlight]}
+            >
+              {serviceContent.content}
+            </ReactMarkdown>
           </div>
         </div>
       </section>

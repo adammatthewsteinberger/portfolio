@@ -94,10 +94,8 @@ export default function RootLayout({
         <link rel='manifest' href='/site.webmanifest' />
         <link rel='preconnect' href='https://www.googletagmanager.com' />
         <link rel='preconnect' href='https://www.google-analytics.com' />
-        <link rel='stylesheet' href='/bootstrap.min.css' />
         <link rel='stylesheet' href='/font-awesome.min.css' />
         <link rel='stylesheet' href='/fonts.css' />
-        <link rel='stylesheet' href='/styles.css' />
       </head>
       <body className={inter.className}>
         {/* Google Consent Mode v2 - Default Settings */}
@@ -141,17 +139,6 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <CookieConsent />
-        <script src='/bootstrap.bundle.min.js' defer></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              document.addEventListener('DOMContentLoaded', function() {
-                const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-                const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
-              });
-            `,
-          }}
-        />
       </body>
     </html>
   );

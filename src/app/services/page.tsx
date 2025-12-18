@@ -1,7 +1,6 @@
 import MultipleCTAs from '@/components/MultipleCTAs';
 import { serviceCategories } from '@/data/services';
 import Link from 'next/link';
-import styles from './ServicePage.module.css';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -45,60 +44,53 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <div className={styles.servicePageBg}>
-      <div className='container'>
-        <div className='row justify-content-center'>
-          <div className='col-lg-10'>
-            <h1 className={styles.headline}>AI Development Services</h1>
-            <p
-              className='lead text-center mb-5'
-              style={{ fontSize: '1.25rem', lineHeight: 1.7 }}
-            >
-              Comprehensive AI development services tailored for Greenville,
-              South Carolina businesses.
-              <br />
-              From custom chatbots to enterprise AI solutions, I help businesses
-              leverage AI technology effectively.
-            </p>
+    <div className="min-h-screen">
+      <div className="container mx-auto px-4 pt-8 pb-16">
+        <div className="max-w-5xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-green)] bg-clip-text text-transparent">
+            AI Development Services
+          </h1>
+          <p className="text-xl text-center text-[var(--color-text-muted)] mb-16 max-w-3xl mx-auto leading-relaxed">
+            Comprehensive AI development services tailored for Greenville,
+            South Carolina businesses.
+            <br />
+            From custom chatbots to enterprise AI solutions, I help businesses
+            leverage AI technology effectively.
+          </p>
 
-            {serviceCategories.map((category, index) => (
-              <div key={index} className={styles.section}>
-                <h2 className={styles.sectionTitle + ' section-headline-gold'}>
-                  {category.title}
-                </h2>
-                <p
-                  className='text-secondary mb-4'
-                  style={{ fontSize: '1.1rem' }}
-                >
-                  {category.description}
-                </p>
-                <div className='row g-4'>
-                  {category.services.map((service, serviceIndex) => (
-                    <div key={serviceIndex} className='col-md-6 col-lg-4'>
-                      <div
-                        className={styles.card + ' card solution-card h-100'}
-                      >
-                        <div className='card-body d-flex flex-column'>
-                          <h5 className={styles.cardTitle}>{service.title}</h5>
-                          <p className={styles.cardText + ' flex-grow-1'}>
-                            {service.description}
-                          </p>
-                          <Link
-                            href={`/services/${service.slug}`}
-                            className='btn btn-outline-primary btn-sm mt-auto fw-bold px-3 py-2'
-                          >
-                            Learn More
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+          {serviceCategories.map((category, index) => (
+            <div key={index} className="mb-16">
+              <h2 className="text-2xl font-bold text-center mb-4 bg-gradient-to-r from-[var(--color-accent-gold)] to-amber-500 bg-clip-text text-transparent">
+                {category.title}
+              </h2>
+              <p className="text-lg text-center text-[var(--color-text-muted)] mb-8">
+                {category.description}
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {category.services.map((service, serviceIndex) => (
+                  <div
+                    key={serviceIndex}
+                    className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6 flex flex-col h-full hover:border-[var(--color-accent-blue)]/50 transition-colors"
+                  >
+                    <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-3">
+                      {service.title}
+                    </h5>
+                    <p className="text-[var(--color-text-muted)] flex-grow mb-4">
+                      {service.description}
+                    </p>
+                    <Link
+                      href={`/services/${service.slug}`}
+                      className="inline-flex items-center justify-center px-4 py-2 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white rounded-lg font-bold text-sm transition-colors no-underline mt-auto"
+                    >
+                      Learn More
+                    </Link>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+          ))}
 
-            <MultipleCTAs />
-          </div>
+          <MultipleCTAs />
         </div>
       </div>
     </div>

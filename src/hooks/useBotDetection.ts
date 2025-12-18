@@ -38,7 +38,8 @@ export function useBotDetection(): boolean {
       'gtmetrix',
       'pingdom',
       'pagespeed',
-      'headlesschrome'
+      'headlesschrome',
+      'playwright', // E2E testing
     ];
 
     const isBotDetected = botPatterns.some(pattern => userAgent.includes(pattern));

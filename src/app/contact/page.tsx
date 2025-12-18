@@ -42,86 +42,72 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="container mt-4">
-      <div className="row justify-content-center">
-        <div className="col-lg-10">
-          <div className="text-center mb-5">
-            <h1 className="display-4 fw-bold">Get In Touch</h1>
-            <p className="lead">
-              Ready to start your AI project? Let&apos;s discuss how I can help bring your vision to life.
-            </p>
-          </div>
-          
-          <div className="row">
-            <div className="col-md-4 mb-4">
-              <div className="card h-100 border-0 shadow-sm">
-                <div className="card-body text-center">
-                  <i className="fas fa-calendar-alt fa-3x text-primary mb-3"></i>
-                  <h5 className="card-title">Schedule a Call</h5>
-                  <p className="card-text">
-                    Book a free consultation to discuss your project requirements and timeline.
-                  </p>
-                  <a 
-                    href="https://tidycal.com/realadammatthew" 
-                    className="btn btn-outline-primary"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Book Consultation
-                  </a>
-                </div>
-              </div>
-            </div>
-            
-            <div className="col-md-4 mb-4">
-              <div className="card h-100 border-0 shadow-sm">
-                <div className="card-body text-center">
-                  <i className="fas fa-envelope fa-3x text-primary mb-3"></i>
-                  <h5 className="card-title">Email Directly</h5>
-                  <p className="card-text">
-                    Send me a direct email for quick questions or detailed project discussions.
-                  </p>
-                  <a 
-                    href="mailto:adam@matthewsteinberger.com" 
-                    className="btn btn-outline-primary"
-                  >
-                    Send Email
-                  </a>
-                </div>
-              </div>
-            </div>
-            
-            <div className="col-md-4 mb-4">
-              <div className="card h-100 border-0 shadow-sm">
-                <div className="card-body text-center">
-                  <i className="fas fa-comments fa-3x text-primary mb-3"></i>
-                  <h5 className="card-title">Try My Chatbot</h5>
-                  <p className="card-text">
-                    Experience my AI chatbot technology firsthand to see what&apos;s possible.
-                  </p>
-                  <a 
-                    href="https://chat.adam.matthewsteinberger.com" 
-                    className="btn btn-outline-primary"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Demo Chatbot
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="text-center mb-4">
-            <h2 className="h3">Or Send Me a Message</h2>
-            <p className="text-muted">
-              Fill out the form below and I&apos;ll get back to you within 24 hours.
-            </p>
-          </div>
-          
-          <ContactForm />
+    <div className="container mx-auto px-4 pt-8 pb-16">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold text-[var(--color-text-primary)] mb-4">Get In Touch</h1>
+          <p className="text-xl text-[var(--color-text-muted)]">
+            Ready to start your AI project? Let&apos;s discuss how I can help bring your vision to life.
+          </p>
         </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6 shadow-lg text-center h-full">
+            <i className="fas fa-calendar-alt text-4xl text-[var(--color-accent-blue)] mb-4"></i>
+            <h5 className="text-xl font-bold text-[var(--color-text-primary)] mb-2">Schedule a Call</h5>
+            <p className="text-[var(--color-text-muted)] mb-4">
+              Book a free consultation to discuss your project requirements and timeline.
+            </p>
+            <a
+              href="https://tidycal.com/realadammatthew"
+              className="inline-flex items-center px-4 py-2 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white rounded-lg transition-colors no-underline font-medium"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Book Consultation
+            </a>
+          </div>
+
+          <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6 shadow-lg text-center h-full">
+            <i className="fas fa-envelope text-4xl text-[var(--color-accent-blue)] mb-4"></i>
+            <h5 className="text-xl font-bold text-[var(--color-text-primary)] mb-2">Email Directly</h5>
+            <p className="text-[var(--color-text-muted)] mb-4">
+              Send me a direct email for quick questions or detailed project discussions.
+            </p>
+            <a
+              href="mailto:adam@matthewsteinberger.com"
+              className="inline-flex items-center px-4 py-2 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white rounded-lg transition-colors no-underline font-medium"
+            >
+              Send Email
+            </a>
+          </div>
+
+          <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6 shadow-lg text-center h-full">
+            <i className="fas fa-comments text-4xl text-[var(--color-accent-blue)] mb-4"></i>
+            <h5 className="text-xl font-bold text-[var(--color-text-primary)] mb-2">Try My Chatbot</h5>
+            <p className="text-[var(--color-text-muted)] mb-4">
+              Experience my AI chatbot technology firsthand to see what&apos;s possible.
+            </p>
+            <a
+              href="https://chat.adam.matthewsteinberger.com"
+              className="inline-flex items-center px-4 py-2 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white rounded-lg transition-colors no-underline font-medium"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Demo Chatbot
+            </a>
+          </div>
+        </div>
+
+        <div className="text-center mb-8">
+          <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-2">Or Send Me a Message</h2>
+          <p className="text-[var(--color-text-muted)]">
+            Fill out the form below and I&apos;ll get back to you within 24 hours.
+          </p>
+        </div>
+
+        <ContactForm />
       </div>
     </div>
   );
-} 
+}

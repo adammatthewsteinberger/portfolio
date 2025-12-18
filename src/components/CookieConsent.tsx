@@ -27,53 +27,44 @@ export default function CookieConsent() {
   return (
     <>
       {/* Backdrop */}
-      <div
-        className="position-fixed top-0 start-0 w-100 h-100"
-        style={{
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          zIndex: 1050,
-        }}
-      />
+      <div className="fixed inset-0 bg-black/50 z-[1050]" />
 
       {/* Cookie Banner */}
-      <div
-        className="position-fixed bottom-0 start-0 end-0 p-3 p-md-4"
-        style={{ zIndex: 1051 }}
-      >
-        <div className="container">
-          <div className="card shadow-lg border-0">
-            <div className="card-body p-4">
+      <div className="fixed bottom-0 left-0 right-0 p-4 z-[1051]">
+        <div className="container mx-auto max-w-4xl">
+          <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl shadow-2xl">
+            <div className="p-6">
               {!showDetails ? (
                 // Simple View
                 <>
-                  <h5 className="card-title mb-3">Cookie Consent</h5>
-                  <p className="card-text mb-4">
+                  <h5 className="text-xl font-semibold text-[var(--color-text-primary)] mb-3">Cookie Consent</h5>
+                  <p className="text-[var(--color-text-muted)] mb-4">
                     We use cookies and similar technologies to improve your experience,
                     analyze site traffic, and personalize content. By clicking
                     &quot;Accept All&quot;, you consent to our use of cookies.{' '}
-                    <a href="/privacy" className="text-decoration-none">
+                    <a href="/privacy" className="text-[var(--color-accent-blue)] hover:underline">
                       Learn more in our Privacy Policy
                     </a>
                     .
                   </p>
-                  <div className="d-flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2">
                     <button
                       type="button"
-                      className="btn btn-primary"
+                      className="px-6 py-2 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] text-white font-medium rounded-lg transition-colors"
                       onClick={acceptAll}
                     >
                       Accept All
                     </button>
                     <button
                       type="button"
-                      className="btn btn-secondary"
+                      className="px-6 py-2 bg-[var(--color-dark-card-alt)] hover:bg-[var(--color-dark-border)] text-[var(--color-text-primary)] font-medium rounded-lg transition-colors"
                       onClick={rejectAll}
                     >
                       Reject All
                     </button>
                     <button
                       type="button"
-                      className="btn btn-outline-secondary"
+                      className="px-6 py-2 border border-[var(--color-dark-border)] hover:bg-[var(--color-dark-card-alt)] text-[var(--color-text-muted)] font-medium rounded-lg transition-colors"
                       onClick={() => setShowDetails(true)}
                     >
                       Customize
@@ -83,120 +74,111 @@ export default function CookieConsent() {
               ) : (
                 // Detailed View
                 <>
-                  <h5 className="card-title mb-3">Cookie Preferences</h5>
-                  <p className="card-text mb-4">
+                  <h5 className="text-xl font-semibold text-[var(--color-text-primary)] mb-3">Cookie Preferences</h5>
+                  <p className="text-[var(--color-text-muted)] mb-4">
                     Manage your cookie preferences below. Some cookies are essential
                     for the site to function and cannot be disabled.
                   </p>
 
-                  <div className="mb-4">
+                  <div className="mb-6 space-y-3">
                     {/* Essential Cookies */}
-                    <div className="form-check mb-3 p-3 bg-light rounded">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        id="essentialCookies"
-                        checked
-                        disabled
-                      />
-                      <label
-                        className="form-check-label w-100"
-                        htmlFor="essentialCookies"
-                      >
-                        <div className="d-flex justify-content-between align-items-start">
-                          <div>
-                            <strong>Essential Cookies</strong>
-                            <p className="mb-0 small text-muted">
-                              Required for the website to function properly. These
-                              cannot be disabled.
-                            </p>
+                    <div className="p-4 bg-[var(--color-dark-bg)] rounded-lg">
+                      <label className="flex items-start gap-3 cursor-not-allowed">
+                        <input
+                          type="checkbox"
+                          className="mt-1 w-4 h-4 accent-[var(--color-accent-green)]"
+                          checked
+                          disabled
+                        />
+                        <div className="flex-1">
+                          <div className="flex items-center justify-between">
+                            <strong className="text-[var(--color-text-primary)]">Essential Cookies</strong>
+                            <span className="px-2 py-0.5 text-xs font-medium bg-[var(--color-accent-green)]/20 text-[var(--color-accent-green)] rounded">Always Active</span>
                           </div>
-                          <span className="badge bg-success ms-2">Always Active</span>
+                          <p className="text-sm text-[var(--color-text-muted)] mt-1">
+                            Required for the website to function properly. These
+                            cannot be disabled.
+                          </p>
                         </div>
                       </label>
                     </div>
 
                     {/* Analytics Cookies */}
-                    <div className="form-check mb-3 p-3 border rounded">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        id="analyticsCookies"
-                        checked={analyticsConsent}
-                        onChange={(e) => setAnalyticsConsent(e.target.checked)}
-                      />
-                      <label
-                        className="form-check-label w-100"
-                        htmlFor="analyticsCookies"
-                      >
-                        <strong>Analytics Cookies</strong>
-                        <p className="mb-0 small text-muted">
-                          Help us understand how visitors interact with our website
-                          by collecting and reporting information anonymously.
-                        </p>
+                    <div className="p-4 border border-[var(--color-dark-border)] rounded-lg">
+                      <label className="flex items-start gap-3 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          className="mt-1 w-4 h-4 accent-[var(--color-accent-blue)]"
+                          checked={analyticsConsent}
+                          onChange={(e) => setAnalyticsConsent(e.target.checked)}
+                        />
+                        <div className="flex-1">
+                          <strong className="text-[var(--color-text-primary)]">Analytics Cookies</strong>
+                          <p className="text-sm text-[var(--color-text-muted)] mt-1">
+                            Help us understand how visitors interact with our website
+                            by collecting and reporting information anonymously.
+                          </p>
+                        </div>
                       </label>
                     </div>
 
                     {/* Advertising Cookies */}
-                    <div className="form-check mb-3 p-3 border rounded">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        id="adCookies"
-                        checked={adsConsent}
-                        onChange={(e) => setAdsConsent(e.target.checked)}
-                      />
-                      <label className="form-check-label w-100" htmlFor="adCookies">
-                        <strong>Advertising Cookies</strong>
-                        <p className="mb-0 small text-muted">
-                          Used to deliver personalized advertisements and measure
-                          advertising campaign effectiveness.
-                        </p>
+                    <div className="p-4 border border-[var(--color-dark-border)] rounded-lg">
+                      <label className="flex items-start gap-3 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          className="mt-1 w-4 h-4 accent-[var(--color-accent-blue)]"
+                          checked={adsConsent}
+                          onChange={(e) => setAdsConsent(e.target.checked)}
+                        />
+                        <div className="flex-1">
+                          <strong className="text-[var(--color-text-primary)]">Advertising Cookies</strong>
+                          <p className="text-sm text-[var(--color-text-muted)] mt-1">
+                            Used to deliver personalized advertisements and measure
+                            advertising campaign effectiveness.
+                          </p>
+                        </div>
                       </label>
                     </div>
 
                     {/* Personalization Cookies */}
-                    <div className="form-check mb-3 p-3 border rounded">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        id="personalizationCookies"
-                        checked={personalizationConsent}
-                        onChange={(e) =>
-                          setPersonalizationConsent(e.target.checked)
-                        }
-                      />
-                      <label
-                        className="form-check-label w-100"
-                        htmlFor="personalizationCookies"
-                      >
-                        <strong>Personalization Cookies</strong>
-                        <p className="mb-0 small text-muted">
-                          Remember your preferences and settings to provide a more
-                          personalized experience.
-                        </p>
+                    <div className="p-4 border border-[var(--color-dark-border)] rounded-lg">
+                      <label className="flex items-start gap-3 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          className="mt-1 w-4 h-4 accent-[var(--color-accent-blue)]"
+                          checked={personalizationConsent}
+                          onChange={(e) => setPersonalizationConsent(e.target.checked)}
+                        />
+                        <div className="flex-1">
+                          <strong className="text-[var(--color-text-primary)]">Personalization Cookies</strong>
+                          <p className="text-sm text-[var(--color-text-muted)] mt-1">
+                            Remember your preferences and settings to provide a more
+                            personalized experience.
+                          </p>
+                        </div>
                       </label>
                     </div>
                   </div>
 
-                  <div className="d-flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2">
                     <button
                       type="button"
-                      className="btn btn-primary"
+                      className="px-6 py-2 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] text-white font-medium rounded-lg transition-colors"
                       onClick={handleCustomize}
                     >
                       Save Preferences
                     </button>
                     <button
                       type="button"
-                      className="btn btn-secondary"
+                      className="px-6 py-2 bg-[var(--color-dark-card-alt)] hover:bg-[var(--color-dark-border)] text-[var(--color-text-primary)] font-medium rounded-lg transition-colors"
                       onClick={acceptAll}
                     >
                       Accept All
                     </button>
                     <button
                       type="button"
-                      className="btn btn-outline-secondary"
+                      className="px-6 py-2 border border-[var(--color-dark-border)] hover:bg-[var(--color-dark-card-alt)] text-[var(--color-text-muted)] font-medium rounded-lg transition-colors"
                       onClick={() => setShowDetails(false)}
                     >
                       Back
