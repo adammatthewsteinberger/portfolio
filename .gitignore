@@ -44,4 +44,4 @@ next-env.d.ts
 
 # Generated eBooks
 public/novice-to-navigator-ebook.pdf
-public/novice-to-navigator-ebook.epube2e/.auth/
+public/novice-to-navigator-ebook.epub

@@ -1,0 +1,68 @@
+# Allow all crawlers on the rest of the site
+User-agent: *
+Disallow: /letter-to-the-press
+Disallow: /docs/letter-to-the-press.pdf
+
+# OpenAI
+User-agent: GPTBot
+Disallow: /letter-to-the-press
+Disallow: /docs/letter-to-the-press.pdf
+
+# Google AI training (Bard/Gemini)
+User-agent: Google-Extended
+Disallow: /letter-to-the-press
+Disallow: /docs/letter-to-the-press.pdf
+
+# Anthropic
+User-agent: anthropic-ai
+Disallow: /letter-to-the-press
+Disallow: /docs/letter-to-the-press.pdf
+
+User-agent: Claude-Web
+Disallow: /letter-to-the-press
+Disallow: /docs/letter-to-the-press.pdf
+
+# Common Crawl (used for AI training datasets)
+User-agent: CCBot
+Disallow: /letter-to-the-press
+Disallow: /docs/letter-to-the-press.pdf
+
+# Perplexity
+User-agent: PerplexityBot
+Disallow: /letter-to-the-press
+Disallow: /docs/letter-to-the-press.pdf
+
+# Cohere
+User-agent: cohere-ai
+Disallow: /letter-to-the-press
+Disallow: /docs/letter-to-the-press.pdf
+
+# Meta AI
+User-agent: FacebookBot
+Disallow: /letter-to-the-press
+Disallow: /docs/letter-to-the-press.pdf
+
+# ByteDance
+User-agent: Bytespider
+Disallow: /letter-to-the-press
+Disallow: /docs/letter-to-the-press.pdf
+
+# Amazon Alexa
+User-agent: Amazonbot
+Disallow: /letter-to-the-press
+Disallow: /docs/letter-to-the-press.pdf
+
+# Internet Archive / Wayback Machine
+User-agent: ia_archiver
+Disallow: /letter-to-the-press
+Disallow: /docs/letter-to-the-press.pdf
+
+# Apple
+User-agent: Applebot
+Disallow: /letter-to-the-press
+Disallow: /docs/letter-to-the-press.pdf
+
+# Microsoft Bing AI (Copilot)
+User-agent: bingbot
+Disallow: /letter-to-the-press
+Disallow: /docs/letter-to-the-press.pdf
