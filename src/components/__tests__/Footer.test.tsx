@@ -63,11 +63,11 @@ describe('Footer', () => {
     render(<Footer />);
     expect(screen.getByRole('link', { name: 'LinkedIn' })).toHaveAttribute(
       'href',
-      'https://www.linkedin.com/in/realadammatthew/'
+      'https://www.linkedin.com/in/adammatthewsteinberger/'
     );
     expect(screen.getByRole('link', { name: 'GitHub' })).toHaveAttribute(
       'href',
-      'https://github.com/realadammatthew'
+      'https://github.com/adammatthewsteinberger'
     );
   });
 

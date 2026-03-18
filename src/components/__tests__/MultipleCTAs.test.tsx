@@ -81,7 +81,7 @@ describe('MultipleCTAs', () => {
     render(<MultipleCTAs />);
     expect(
       screen.getByRole('link', { name: /schedule free consultation/i })
-    ).toHaveAttribute('href', 'https://tidycal.com/realadammatthew');
+    ).toHaveAttribute('href', 'https://tidycal.com/adammatthewsteinberger');
     expect(screen.getByRole('link', { name: /try the demo/i })).toHaveAttribute(
       'href',
       'https://chat.adam.matthewsteinberger.com'

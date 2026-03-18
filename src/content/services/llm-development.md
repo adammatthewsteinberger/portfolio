@@ -1,11 +1,11 @@
 ---
-title: 'Expert LLM Developer'
+title: 'Expert AI Developer'
 subtitle: 'Custom Language Model Solutions & API Integration'
-description: 'I build, fine-tune, and integrate large language models that transform how your business operates. From automating complex workflows and generating branded content to providing intelligent customer service that never sleeps, I deliver production-ready LLM solutions using GPT-5, Claude 3, Gemini, and open-source models.<newline>Whether you need rapid prototyping or enterprise-grade deployment with complete security and compliance, I help Greenville businesses harness the full power of AI language models with custom integration, fine-tuning, and RAG systems tailored to your data and workflows.<newline>Companies implementing custom LLM solutions gain competitive advantages that generic chatbots simply cannot match. Scroll down to see exactly how custom LLM development delivers measurable ROI for your specific industry and use case.'
+description: 'I build, fine-tune, and integrate large language models that transform how your business operates. From automating complex workflows and generating branded content to providing intelligent customer service that never sleeps, I deliver production-ready AI solutions using GPT-5, Claude 3, Gemini, and open-source models.<newline>Whether you need rapid prototyping or enterprise-grade deployment with complete security and compliance, I help Greenville businesses harness the full power of AI language models with custom integration, fine-tuning, and RAG systems tailored to your data and workflows.<newline>Companies implementing custom AI solutions gain competitive advantages that generic chatbots simply cannot match. Scroll down to see exactly how custom AI development delivers measurable ROI for your specific industry and use case.'
 category: 'AI Development'
 heroTitle: 'Build Smarter with LLMs'
 heroSubtitle: 'From ChatGPT to Claude and Gemini, launch tailored AI solutions for your business.'
-whyChoose: 'Why LLM Development?'
+whyChoose: 'Why AI Development?'
 choice1Icon: 'fa-robot'
 choice1Title: 'Advanced NLP'
 choice1Description: 'Leverage state-of-the-art language models for generation, classification, and reasoning.'
@@ -15,7 +15,7 @@ choice2Description: 'Connect LLMs to your systems, knowledge base, and workflows
 choice3Icon: 'fa-user-shield'
 choice3Title: 'Secure & Scalable'
 choice3Description: 'Enterprise-ready deployment with privacy, monitoring, and compliance baked in.'
-featuresOffered: 'LLM Development Services'
+featuresOffered: 'AI Development Services'
 feature1Icon: 'fa-comments'
 feature1Title: 'ChatGPT Integration'
 feature1Description: 'Custom GPT-5 solutions with prompt design, API calls, and content workflows.'
@@ -32,11 +32,11 @@ feature5Icon: 'fa-stream'
 feature5Title: 'RAG Systems'
 feature5Description: 'Implement retrieval-augmented generation using your private data and documents.'
 feature6Icon: 'fa-cogs'
-feature6Title: 'LLM Automation'
+feature6Title: 'AI Automation'
 feature6Description: 'Power content generation, support, and internal tools with LLM-driven automation.'
 ---
 
-## LLM Development Expertise
+## AI Development Expertise
 
 Tailored language model systems built for your business needs:
 
@@ -58,7 +58,7 @@ Tailored language model systems built for your business needs:
 
 ---
 
-## LLM Development Process
+## AI Development Process
 
 1. **Discovery & Planning**
    Identify use case, data requirements, and integration pathways

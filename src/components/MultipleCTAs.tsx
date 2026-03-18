@@ -13,7 +13,7 @@ export default function MultipleCTAs() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
           <div>
             <a
-              href="https://tidycal.com/realadammatthew"
+              href="https://tidycal.com/adammatthewsteinberger"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full px-6 py-4 font-bold bg-gradient-to-r from-[var(--color-accent-green)] to-emerald-500 hover:from-emerald-500 hover:to-[var(--color-accent-green)] rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 no-underline"

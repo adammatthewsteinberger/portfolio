@@ -59,7 +59,7 @@ export default function ContactPage() {
               Book a free consultation to discuss your project requirements and timeline.
             </p>
             <a
-              href="https://tidycal.com/realadammatthew"
+              href="https://tidycal.com/adammatthewsteinberger"
               className="inline-flex items-center px-4 py-2 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white rounded-lg transition-colors no-underline font-medium"
               target="_blank"
               rel="noopener noreferrer"

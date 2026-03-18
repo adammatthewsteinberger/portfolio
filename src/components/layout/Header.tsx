@@ -69,7 +69,7 @@ export default function Header() {
           </Link>
           <Link href='/services/llm-development' className='menu-item submenu-item' onClick={closeMenu}>
             <i className='fas fa-brain mr-2'></i>
-            LLM Development
+            AI Development
           </Link>
           <Link href='/services/rag-development' className='menu-item submenu-item' onClick={closeMenu}>
             <i className='fas fa-search mr-2'></i>
@@ -156,7 +156,7 @@ export default function Header() {
                     </Link>
                     <Link href='/services/llm-development' className='flex items-center px-4 py-2 text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-dark-card-alt)] transition-colors text-sm no-underline' onClick={closeServices}>
                       <i className='fas fa-brain mr-2 w-5'></i>
-                      LLM Development
+                      AI Development
                     </Link>
                     <Link href='/services/rag-development' className='flex items-center px-4 py-2 text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-dark-card-alt)] transition-colors text-sm no-underline' onClick={closeServices}>
                       <i className='fas fa-search mr-2 w-5'></i>
@@ -229,7 +229,7 @@ export default function Header() {
 
               <div className='flex flex-wrap gap-2 justify-center md:justify-start'>
                 <a
-                  href='https://linkedin.com/in/realadammatthew/'
+                  href='https://linkedin.com/in/adammatthewsteinberger/'
                   target='_blank'
                   rel='noopener noreferrer'
                   className='inline-flex items-center gap-1 px-4 py-2 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] text-sm font-medium rounded-lg transition-colors no-underline'
@@ -240,7 +240,7 @@ export default function Header() {
                   <span className='btn-text'>LinkedIn</span>
                 </a>
                 <a
-                  href='https://github.com/realadammatthew'
+                  href='https://github.com/adammatthewsteinberger'
                   target='_blank'
                   rel='noopener noreferrer'
                   className='inline-flex items-center gap-1 px-4 py-2 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] text-sm font-medium rounded-lg transition-colors no-underline'
@@ -255,7 +255,7 @@ export default function Header() {
                   <span className='btn-text'>Contact Me</span>
                 </Link>
                 <a
-                  href="https://github.com/realadammatthew/resume/raw/main/adam-steinberger-resume.pdf"
+                  href="https://github.com/adammatthewsteinberger/resume/raw/main/adam-steinberger-resume.pdf"
                   className='inline-flex items-center gap-1 px-4 py-2 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] text-sm font-medium rounded-lg transition-colors no-underline'
                   style={{ color: '#ffffff' }}
                   target='_blank'

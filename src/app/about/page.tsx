@@ -106,7 +106,7 @@ export default function AboutPage() {
                     Contact Me
                   </Link>
                   <a
-                    href="https://github.com/realadammatthew/resume/raw/main/adam-steinberger-resume.pdf"
+                    href="https://github.com/adammatthewsteinberger/resume/raw/main/adam-steinberger-resume.pdf"
                     className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white font-bold rounded-lg transition-colors no-underline"
                     target="_blank"
                     rel="noopener noreferrer"

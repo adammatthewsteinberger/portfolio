@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         {/* Primary Navigation */}
         <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 mb-6 text-sm">
-          <a href="https://tidycal.com/realadammatthew" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] font-semibold transition-colors">Schedule a Free Consultation</a>
+          <a href="https://tidycal.com/adammatthewsteinberger" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] font-semibold transition-colors">Schedule a Free Consultation</a>
           <span className="text-[var(--color-dark-border)]">|</span>
           <Link href="/contact" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] font-semibold transition-colors">Contact for Employment</Link>
           <span className="text-[var(--color-dark-border)]">|</span>
@@ -26,7 +26,7 @@ export default function Footer() {
         {/* Social Media Links */}
         <div className="flex flex-wrap justify-center gap-4 mb-6">
           <a
-            href="https://www.linkedin.com/in/realadammatthew/"
+            href="https://www.linkedin.com/in/adammatthewsteinberger/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
@@ -35,7 +35,7 @@ export default function Footer() {
             <i className="fab fa-linkedin text-2xl"></i>
           </a>
           <a
-            href="https://github.com/realadammatthew"
+            href="https://github.com/adammatthewsteinberger"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
@@ -43,62 +43,22 @@ export default function Footer() {
           >
             <i className="fab fa-github text-2xl"></i>
           </a>
-          <a
-            href="https://x.com/realadammatthew"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Twitter"
+          <Link
+            href="/contact"
+            aria-label="Contact"
             className="text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors"
           >
-            <i className="fab fa-x-twitter text-2xl"></i>
-          </a>
+            <i className="fas fa-envelope"></i>
+          </Link>
           <a
-            href="https://instagram.com/realadammatthew/"
+            href="https://github.com/adammatthewsteinberger/resume/raw/main/adam-steinberger-resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Instagram"
-            className="text-[var(--color-text-muted)] hover:text-[var(--color-accent-coral)] transition-colors"
+            aria-label="Download Resume"
+            className="text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors"
           >
-            <i className="fab fa-instagram text-2xl"></i>
+            <i className="fas fa-download"></i>
           </a>
-          <a
-            href="https://facebook.com/adammatthewsteinberger"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-            className="text-[var(--color-text-muted)] hover:text-[var(--color-accent-blue)] transition-colors"
-          >
-            <i className="fab fa-facebook text-2xl"></i>
-          </a>
-          <a
-            href="https://www.youtube.com/@AdamMatthewSteinberger"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="YouTube"
-            className="text-[var(--color-text-muted)] hover:text-[var(--color-accent-coral)] transition-colors"
-          >
-            <i className="fab fa-youtube text-2xl"></i>
-          </a>
-          <a
-            href="https://coff.ee/realadammatthew"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Buy me a Coffee"
-            className="text-[var(--color-text-muted)] hover:text-[var(--color-accent-gold)] transition-colors"
-          >
-            <i className="fas fa-coffee text-2xl"></i>
-          </a>
-        </div>
-
-        {/* Secondary Navigation */}
-        <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 mb-6 text-sm">
-          <a href="https://humbleberger.org" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] font-semibold transition-colors">Ministry</a>
-          <span className="text-[var(--color-dark-border)]">|</span>
-          <a href="https://messiahfirst.org" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] font-semibold transition-colors">Policy</a>
-          <span className="text-[var(--color-dark-border)]">|</span>
-          <a href="https://chat.adam.matthewsteinberger.com" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] font-semibold transition-colors">Chat</a>
-          <span className="text-[var(--color-dark-border)]">|</span>
-          <a href="https://theautisticapologist.com/" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] font-semibold transition-colors">Blog</a>
         </div>
 
         {/* Copyright */}
