@@ -66,3 +66,72 @@ Disallow: /docs/letter-to-the-press.pdf
 User-agent: bingbot
 Disallow: /letter-to-the-press
 Disallow: /docs/letter-to-the-press.pdf
+
+# Civil case subsite — block all crawlers
+User-agent: *
+Disallow: /civil-case
+Disallow: /legal/
+
+# OpenAI
+User-agent: GPTBot
+Disallow: /civil-case
+Disallow: /legal/
+
+# Google AI training (Bard/Gemini)
+User-agent: Google-Extended
+Disallow: /civil-case
+Disallow: /legal/
+
+# Anthropic
+User-agent: anthropic-ai
+Disallow: /civil-case
+Disallow: /legal/
+
+User-agent: Claude-Web
+Disallow: /civil-case
+Disallow: /legal/
+
+# Common Crawl (used for AI training datasets)
+User-agent: CCBot
+Disallow: /civil-case
+Disallow: /legal/
+
+# Perplexity
+User-agent: PerplexityBot
+Disallow: /civil-case
+Disallow: /legal/
+
+# Cohere
+User-agent: cohere-ai
+Disallow: /civil-case
+Disallow: /legal/
+
+# Meta AI
+User-agent: FacebookBot
+Disallow: /civil-case
+Disallow: /legal/
+
+# ByteDance
+User-agent: Bytespider
+Disallow: /civil-case
+Disallow: /legal/
+
+# Amazon Alexa
+User-agent: Amazonbot
+Disallow: /civil-case
+Disallow: /legal/
+
+# Internet Archive / Wayback Machine
+User-agent: ia_archiver
+Disallow: /civil-case
+Disallow: /legal/
+
+# Apple
+User-agent: Applebot
+Disallow: /civil-case
+Disallow: /legal/
+
+# Microsoft Bing AI (Copilot)
+User-agent: bingbot
+Disallow: /civil-case
+Disallow: /legal/
