@@ -28,23 +28,100 @@ const documents = [
     label: 'Personal Testimony',
     file: 'personal-testimony.pdf',
     description: 'Full personal testimony detailing 19 alleged NAR Code of Ethics violations.',
-    size: '13 MB',
+    date: '',
+    size: '12.4 MB',
   },
-  { label: 'Court Document 001', file: 'court-doc-001.pdf', size: '200 KB' },
-  { label: 'Court Document 002', file: 'court-doc-002.pdf', size: '1.1 MB' },
-  { label: 'Court Document 003', file: 'court-doc-003.pdf', size: '1.4 MB' },
-  { label: 'Court Document 004', file: 'court-doc-004.pdf', size: '350 KB' },
-  { label: 'Court Document 005', file: 'court-doc-005.pdf', size: '212 KB' },
-  { label: 'Court Document 006', file: 'court-doc-006.pdf', size: '156 KB' },
-  { label: 'Court Document 007', file: 'court-doc-007.pdf', size: '26.4 MB' },
-  { label: 'Court Document 008', file: 'court-doc-008.pdf', size: '5.9 MB' },
-  { label: 'Court Document 009', file: 'court-doc-009.pdf', size: '208 KB' },
-  { label: 'Court Document 010', file: 'court-doc-010.pdf', size: '5.9 MB' },
-  { label: 'Court Document 011', file: 'court-doc-011.pdf', size: '153 KB' },
-  { label: 'Court Document 012', file: 'court-doc-012.pdf', size: '352 KB' },
-  { label: 'Court Document 013', file: 'court-doc-013.pdf', size: '1.0 MB' },
-  { label: 'Court Document 014', file: 'court-doc-014.pdf', size: '421 KB' },
-  { label: 'Court Document 015', file: 'court-doc-015.pdf', size: '806 KB' },
+  {
+    label: 'Court Document 001',
+    file: 'court-doc-001.pdf',
+    description: 'Original summons',
+    date: '8/12/25',
+    size: '195 KB',
+  },
+  {
+    label: 'Court Document 002',
+    file: 'court-doc-002.pdf',
+    description: 'Exclusive right to sell agreement',
+    date: '8/12/25',
+    size: '1.0 MB',
+  },
+  {
+    label: 'Court Document 003',
+    file: 'court-doc-003.pdf',
+    description: 'Agreement/contract to buy and sell real estate',
+    date: '8/12/25',
+    size: '1.4 MB',
+  },
+  {
+    label: 'Court Document 004',
+    file: 'court-doc-004.pdf',
+    description: 'Motion for extension of time',
+    date: '10/14/25',
+    size: '207 KB',
+  },
+  {
+    label: 'Court Document 005',
+    file: 'court-doc-005.pdf',
+    description: 'Consent to extend deadline',
+    date: '11/6/25',
+    size: '152 KB',
+  },
+  {
+    label: 'Court Document 006',
+    file: 'court-doc-006.pdf',
+    description: 'Original counterclaim',
+    date: '11/9/25',
+    size: '25.1 MB',
+  },
+  {
+    label: 'Court Document 007',
+    file: 'court-doc-007.pdf',
+    description: 'Original denial of counterclaims',
+    date: '12/9/25',
+    size: '203 KB',
+  },
+  {
+    label: 'Court Document 008',
+    file: 'court-doc-008.pdf',
+    description: 'Amendment to counterclaim',
+    date: '1/20/26',
+    size: '5.6 MB',
+  },
+  {
+    label: 'Court Document 009',
+    file: 'court-doc-009.pdf',
+    description: 'Motion to dismiss amendment',
+    date: '3/2/26',
+    size: '149 KB',
+  },
+  {
+    label: 'Court Document 010',
+    file: 'court-doc-010.pdf',
+    description: 'Opposition to motion to dismiss amendment',
+    date: '3/4/26',
+    size: '342 KB',
+  },
+  {
+    label: 'Court Document 011',
+    file: 'court-doc-011.pdf',
+    description: 'Motion to dismiss original claim for abuse of process / lawfare',
+    date: '3/5/26',
+    size: '977 KB',
+  },
+  {
+    label: 'Court Document 012',
+    file: 'court-doc-012.pdf',
+    description: 'First memorandum for motion to dismiss',
+    date: '3/11/26',
+    size: '411 KB',
+  },
+  {
+    label: 'Court Document 013',
+    file: 'court-doc-013.pdf',
+    description: 'Second memorandum for motion to dismiss',
+    date: '3/12/26',
+    size: '787 KB',
+  },
 ];
 
 const violations = [
@@ -258,6 +335,11 @@ export default function CivilCasePage() {
                     {doc.description && (
                       <p className="text-sm mt-0.5" style={{ color: 'var(--color-text-muted)' }}>
                         {doc.description}
+                        {doc.date && (
+                          <span className="ml-2 text-xs" style={{ color: 'var(--color-text-muted)', opacity: 0.6 }}>
+                            {doc.date}
+                          </span>
+                        )}
                       </p>
                     )}
                   </div>
@@ -272,6 +354,23 @@ export default function CivilCasePage() {
             ))}
           </div>
         </section>
+
+        {/* ZIP Download */}
+        <div className="mt-10 text-center">
+          <a
+            href="/legal/civil-case-documents.zip"
+            download
+            className="inline-flex items-center gap-3 rounded-lg border px-6 py-3 font-medium transition-colors"
+            style={{
+              background: 'var(--color-dark-card)',
+              borderColor: 'var(--color-dark-border)',
+              color: 'var(--color-text-primary)',
+            }}
+          >
+            <i className="fas fa-file-zipper text-lg" style={{ color: 'var(--color-accent-blue)' }} />
+            Download All Documents (ZIP, ~46 MB)
+          </a>
+        </div>
 
         {/* Footer note */}
         <p className="text-xs text-center mt-12" style={{ color: 'var(--color-text-muted)' }}>
