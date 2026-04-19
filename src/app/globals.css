@@ -792,6 +792,10 @@ footer {
   --tw-prose-td-borders: var(--color-dark-border);
 }
 
+.text-primary {
+  color: var(--color-text-primary);
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .article-content {

@@ -26,102 +26,109 @@ export const metadata: Metadata = {
 const documents = [
   {
     label: 'Personal Testimony',
-    file: 'personal-testimony.pdf',
+    file: '001-personal-testimony.pdf',
     description: 'Full personal testimony detailing 19 alleged NAR Code of Ethics violations.',
-    date: '',
-    size: '12.4 MB',
+    date: '12/15/25',
+    size: '13 MB',
   },
   {
-    label: 'Court Document 001',
-    file: 'court-doc-001.pdf',
+    label: 'Original Court Summons',
+    file: '002-original-summons.pdf',
     description: 'Original summons',
     date: '8/12/25',
-    size: '195 KB',
+    size: '201 KB',
   },
   {
-    label: 'Court Document 002',
-    file: 'court-doc-002.pdf',
+    label: 'Exclusive Right to Sell Agreement',
+    file: '003-exclusive-right-to-sell.pdf',
     description: 'Exclusive right to sell agreement',
     date: '8/12/25',
-    size: '1.0 MB',
+    size: '1.1 MB',
   },
   {
-    label: 'Court Document 003',
-    file: 'court-doc-003.pdf',
+    label: 'Contract to Buy and Sell Real Estate',
+    file: '004-contract-to-buy-sell.pdf',
     description: 'Agreement/contract to buy and sell real estate',
     date: '8/12/25',
     size: '1.4 MB',
   },
   {
-    label: 'Court Document 004',
-    file: 'court-doc-004.pdf',
+    label: 'Motion for Extension of Time',
+    file: '005-extension-of-time.pdf',
     description: 'Motion for extension of time',
     date: '10/14/25',
-    size: '207 KB',
+    size: '213 KB',
   },
   {
-    label: 'Court Document 005',
-    file: 'court-doc-005.pdf',
+    label: 'Consent to Extend Deadline',
+    file: '006-deadline-extension.pdf',
     description: 'Consent to extend deadline',
     date: '11/6/25',
-    size: '152 KB',
+    size: '160 KB',
   },
   {
-    label: 'Court Document 006',
-    file: 'court-doc-006.pdf',
+    label: 'Original Counterclaim',
+    file: '007-original-counterclaim.pdf',
     description: 'Original counterclaim',
     date: '11/9/25',
-    size: '25.1 MB',
+    size: '26.4 MB',
   },
   {
-    label: 'Court Document 007',
-    file: 'court-doc-007.pdf',
+    label: 'Denial of Counterclaims',
+    file: '008-denial-of-counterclaim.pdf',
     description: 'Original denial of counterclaims',
     date: '12/9/25',
-    size: '203 KB',
+    size: '209 KB',
   },
   {
-    label: 'Court Document 008',
-    file: 'court-doc-008.pdf',
+    label: 'Amendment to Counterclaim',
+    file: '009-amendment-to-counterclaim.pdf',
     description: 'Amendment to counterclaim',
     date: '1/20/26',
-    size: '5.6 MB',
+    size: '5.9 MB',
   },
   {
-    label: 'Court Document 009',
-    file: 'court-doc-009.pdf',
+    label: 'Motion to Dismiss Amendment',
+    file: '010-motion-to-dismiss-amendment.pdf',
     description: 'Motion to dismiss amendment',
     date: '3/2/26',
-    size: '149 KB',
+    size: '156 KB',
   },
   {
-    label: 'Court Document 010',
-    file: 'court-doc-010.pdf',
+    label: 'Opposition to Motion to Dismiss Amendment',
+    file: '011-opposition-to-dismissal.pdf',
     description: 'Opposition to motion to dismiss amendment',
     date: '3/4/26',
-    size: '342 KB',
+    size: '352 KB',
   },
   {
-    label: 'Court Document 011',
-    file: 'court-doc-011.pdf',
+    label: 'Motion to Dismiss Original Claim',
+    file: '012-motion-to-dismiss-claim.pdf',
     description: 'Motion to dismiss original claim for abuse of process / lawfare',
     date: '3/5/26',
-    size: '977 KB',
+    size: '1 MB',
   },
   {
-    label: 'Court Document 012',
-    file: 'court-doc-012.pdf',
+    label: 'Arguendo Memorandum for Motion to Dismiss',
+    file: '013-arguendo-memorandum.pdf',
     description: 'First memorandum for motion to dismiss',
     date: '3/11/26',
-    size: '411 KB',
+    size: '422 KB',
   },
   {
-    label: 'Court Document 013',
-    file: 'court-doc-013.pdf',
+    label: 'Chronology Memorandum for Motion to Dismiss',
+    file: '014-chronology-memorandum.pdf',
     description: 'Second memorandum for motion to dismiss',
     date: '3/12/26',
-    size: '787 KB',
+    size: '807 KB',
   },
+  {
+    label: 'Valuation Memorandum for Motion to Dismiss',
+    file: '015-valuation-memorandum.pdf',
+    description: 'Third memorandum for motion to dismiss',
+    date: '4/17/26',
+    size: '1.4 MB',
+  }
 ];
 
 const violations = [
@@ -129,113 +136,115 @@ const violations = [
     num: 1,
     code: 'SOP 10-1',
     title: 'Panic Selling',
-    summary:
-      "Agent allegedly exploited a disabled seller's emotional distress, financial panic, and religious vulnerability to pressure a below-market sale — including suggesting the seller add personal vehicles to the deal rather than offering favorable alternatives such as waiting for peak season or moving back home.",
+    summary: "Exploited a disabled seller's emotional distress and religious vulnerability to pressure a below-market sale.",
   },
   {
     num: 2,
     code: 'SOP 11-1',
-    title: 'Duty to Prepare Opinions of Real Property Value',
-    summary:
-      "Agent provided property valuations ($290K for seller's home, $275K for a comparison property, $20K for seller's car) without any supporting market data, CMA, or required disclosures.",
+    title: 'Unsupported Valuations',
+    summary: 'Provided valuations for home, comp, and personal property with no CMA, market data, or required disclosures.',
   },
   {
     num: 3,
     code: 'SOP 1-3',
-    title: 'Deliberate Misleading of Market Value',
-    summary:
-      'Agent may have deliberately understated market value to accelerate a panic sale. No justification for valuations was ever provided in writing.',
+    title: 'Deliberate Undervaluation',
+    summary: 'Understated market value in writing with no justification, likely to accelerate a distressed sale.',
   },
   {
     num: 4,
     code: 'Article 2',
-    title: 'Misrepresentation and Exaggeration',
-    summary:
-      "Agent allegedly misrepresented his own religious identity, the buyer's character and intentions, the nature of dual agency, the terms of the deal, and later falsely claimed that seller had signed a Dual Agency Agreement that remains unsigned.",
+    title: 'Misrepresentation',
+    summary: 'Misrepresented religious identity, dual agency, deal terms, and later falsely claimed seller signed a document that remains unsigned.',
   },
   {
     num: 5,
     code: 'SOP 1-12',
-    title: 'Dual Agency Disclosure',
-    summary:
-      'Agent continued sending the unsigned Dual Agency Agreement to seller up through the week of closing — even after closing documents had been signed by the buyer — suggesting seller was never properly informed of the dual agency arrangement.',
+    title: 'Dual Agency Disclosure Failure',
+    summary: 'Sent the unsigned Dual Agency Agreement through closing week, seller was never properly informed.',
   },
   {
     num: 6,
     code: 'Article 9',
-    title: 'Signed and Initialed Agreements',
-    summary:
-      'The Dual Agency Agreement was never signed by seller. Agent proceeded with the transaction anyway, including an attempted closing, without this required document.',
+    title: 'Unsigned Required Agreement',
+    summary: 'Proceeded to closing without a signed Dual Agency Agreement, a required document.',
   },
   {
     num: 7,
     code: 'Article 17',
-    title: 'Failure to Mediate/Arbitrate',
-    summary:
-      'Agent directed seller to seek legal counsel and proceeded to litigation without first offering mediation or arbitration as required by NAR Code of Ethics — knowing seller was in financial hardship and could not afford legal representation.',
+    title: 'Failure to Offer Mediation',
+    summary: 'Skipped mandatory mediation/arbitration and went straight to litigation against an unrepresented disabled seller.',
   },
   {
     num: 8,
     code: 'SOP 17-1',
     title: 'Refusal to Arbitrate',
-    summary:
-      'By filing litigation and refusing to withdraw, agent effectively refused to arbitrate an arbitrable matter.',
+    summary: 'Filed suit and refused to withdraw, bypassing an arbitrable dispute.',
   },
   {
     num: 9,
     code: 'SOP 17-2',
-    title: 'Duty to Arbitrate',
-    summary:
-      'Even after seller attempted mediation (which failed), agent never pursued arbitration as required regardless of whether mediation succeeds.',
+    title: 'Duty to Arbitrate Ignored',
+    summary: 'Never pursued arbitration even after mediation failed: a separate, ongoing obligation.',
   },
   {
     num: 10,
     code: 'SOP 1-5',
     title: 'Informed Consent',
-    summary:
-      'Seller (later confirmed AuDHD — combined autism and ADHD, diagnosed Oct 2025) was not properly informed of the mechanics of the transaction before signing documents. Disability symptomology was observable from the earliest communications.',
+    summary: 'AuDHD seller (diagnosed Oct 2025) was not informed of transaction mechanics before signing. Observable from early communications.',
   },
   {
     num: 11,
     code: 'SOP 9-2',
-    title: 'Reasonable Efforts to Explain',
-    summary:
-      'Agent failed to make reasonable efforts to explain the nature and specific terms of the transaction to a seller who was demonstrably confused about the payment structure days before a scheduled closing.',
+    title: 'Failure to Explain Terms',
+    summary: 'Seller was demonstrably confused about payment structure days before closing. Agent made no reasonable effort to clarify.',
   },
   {
     num: 12,
     code: 'SOP 1-6',
-    title: 'Objectivity',
-    summary:
-      'Agent responded with emotional protest when seller exercised an alternative closing option that agent himself had confirmed with the closing attorney — failing the standard of submitting offers and counter-offers objectively.',
+    title: 'Lack of Objectivity',
+    summary: "Responded with emotional protest when seller used a closing option the agent himself had confirmed, a textbook objectivity failure.",
   },
   {
     num: 13,
     code: 'SOP 1-9',
-    title: "Confidential Information Used to Client's Disadvantage",
-    summary:
-      "Agent shared seller's personal hardship with a prospective buyer (asking permission via text). Agent's legal team later weaponized seller's disclosed religious convictions in demand letters using Scripture verses to characterize seller as dishonest.",
+    title: 'Confidential Information Weaponized',
+    summary: "Disclosed seller's hardship to a buyer, then legal team weaponized seller's religious beliefs in demand letters.",
   },
   {
     num: 14,
     code: 'Article 1',
-    title: 'Fiduciary Duties',
-    summary:
-      "Agent repeatedly steered seller away from options favorable to seller's own financial interests (keeping the car, waiting for peak season, bringing cash to close) in favor of a deal that included agent's own commission.",
+    title: 'Breach of Fiduciary Duty',
+    summary: "Steered seller away from financially favorable options to protect a commission-bearing deal.",
   },
   {
     num: 15,
     code: 'SOP 1-11',
-    title: 'Protection Against Losses',
-    summary:
-      "Agent refused to release seller from the Exclusive Rights to Representation Agreement, causing seller to default on his mortgage and lose possession of his home.",
+    title: 'Failure to Protect Against Loss',
+    summary: 'Refused to release seller from the listing agreement, directly causing mortgage default and loss of home.',
   },
   {
     num: 16,
     code: 'SOP 12-10',
-    title: 'Misleading Consumers',
-    summary:
-      "Agent manipulated the MLS/Zillow listing — removing and relisting seller's home — while actively refusing to proceed with a valid sale.",
+    title: 'MLS Manipulation',
+    summary: "Removed and relisted seller's property on MLS/Zillow while blocking a valid sale.",
+  },
+  {
+    num: 17,
+    code: 'SOP 12-8',
+    title: 'Assurance of Current Information Online',
+    summary: 'Failed to ensure online listing information was accurate and current during the transaction.',
+  },
+  {
+    num: 18,
+    code: 'SOP 1-1',
+    title: 'Obligation to the Code of Ethics',
+    summary: 'Agent had an affirmative duty to uphold the Code, a duty violated across every interaction documented in this case.',
+  },
+  {
+    num: 19,
+    code: 'SOP 1-2',
+    title: 'All Encompassing',
+    summary: "Agent's conduct violated the spirit and letter of the Code in its entirety, not merely isolated provisions.",
   },
 ];
 
@@ -246,18 +255,37 @@ export default function CivilCasePage() {
 
         {/* Header */}
         <div className="mb-12 text-center">
-          <p className="text-sm uppercase tracking-widest mb-3" style={{ color: 'var(--color-text-muted)' }}>
+          <p id="legal-documents" className="text-sm uppercase tracking-widest mb-3" style={{ color: 'var(--color-text-muted)', scrollMarginTop: '80px' }}>
             Legal Documents
           </p>
-          <h1 className="text-4xl font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>
-            Civil Case — Steinberger v. Batson
+          <h1 className="text-4xl font-bold" style={{ color: 'var(--color-text-primary)', marginBottom: '2.5rem' }}>
+            Linhart Realty Group LLC d/b/a RE/MAX Results
+            <br />
+            <small style={{ fontSize: '0.5em' }}>Robert Jackson Batson, MLS #74055</small>
+            <br />
+            v.
+            <br />
+            Adam Matthew Steinberger
+            <br />
+            <small style={{ fontSize: '0.5em' }}>Disabled pro se litigant</small>
           </h1>
-          <p className="text-lg max-w-2xl mx-auto" style={{ color: 'var(--color-text-muted)' }}>
-            This page provides access to the personal testimony and court documents related to an
-            ongoing civil case involving alleged violations of the NAR Code of Ethics by a
-            licensed South Carolina real estate agent.
-          </p>
+          <div className="max-w-2xl mx-auto rounded-xl border p-6 mt-2" style={{ background: 'var(--color-dark-card)', borderColor: 'var(--color-dark-border)' }}>
+            <p className="text-lg mb-3" style={{ color: 'var(--color-text-muted)' }}>
+              A <strong className="text-primary">strong, well-documented case</strong> against a licensed South Carolina REALTOR®: 19 alleged <strong className="text-primary">NAR Code of Ethics violations</strong>, plaintiff&apos;s claims without merit, and <strong className="text-primary">$2M+ in potential counterclaim damages</strong>.
+            </p>
+            <p className="text-lg mb-0" style={{ color: 'var(--color-text-muted)' }}>
+              All evidentiary and legal groundwork is complete. The <strong className="text-primary">pro se neurodivergent defendant</strong> is seeking counsel to take this to trial.
+            </p>
+          </div>
         </div>
+
+        {/* Quick ZIP download */}
+        <p className="text-sm text-center mb-10" style={{ color: 'var(--color-text-muted)' }}>
+          <a href="/legal/civil-case-documents.zip" download style={{ color: 'var(--color-accent-blue)' }}>
+            <i className="fas fa-file-zipper mr-1" />
+            Download all documents (ZIP, 49.2 MB)
+          </a>
+        </p>
 
         {/* Personal Testimony Summary */}
         <section
@@ -268,13 +296,10 @@ export default function CivilCasePage() {
           }}
         >
           <h2 className="text-2xl font-bold mb-2" style={{ color: 'var(--color-text-primary)' }}>
-            Personal Testimony — Summary
+            Summary
           </h2>
           <p className="text-sm mb-6" style={{ color: 'var(--color-text-muted)' }}>
-            The personal testimony documents 19 alleged violations of the NAR Code of Ethics. A
-            brief description of each alleged violation is provided below. Full details, evidence
-            references, and exhibit citations are contained in the personal testimony PDF linked in
-            the documents section.
+            19 alleged NAR Code of Ethics violations: summaries below, full evidence and exhibit citations in the <a href="/legal/001-personal-testimony.pdf" target="_blank" style={{ color: 'var(--color-text-primary)' }}>personal testimony PDF</a>.
           </p>
 
           <div className="space-y-5">
@@ -356,7 +381,7 @@ export default function CivilCasePage() {
         </section>
 
         {/* ZIP Download */}
-        <div className="mt-10 text-center">
+        <div className="mt-10 mb-16 text-center">
           <a
             href="/legal/civil-case-documents.zip"
             download
@@ -368,7 +393,7 @@ export default function CivilCasePage() {
             }}
           >
             <i className="fas fa-file-zipper text-lg" style={{ color: 'var(--color-accent-blue)' }} />
-            Download All Documents (ZIP, ~46 MB)
+            Download All Documents (ZIP, 49.2 MB)
           </a>
         </div>
 
