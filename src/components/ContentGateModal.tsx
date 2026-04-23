@@ -74,17 +74,6 @@ export default function ContentGateModal() {
             Order on Amazon
           </a>
 
-          <a
-            href="https://chat.adam.matthewsteinberger.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 w-full py-3 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white font-bold rounded-lg transition-colors no-underline"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <i className="fas fa-comments"></i>
-            Chat Now
-          </a>
-
           <Link
             href="/"
             className="flex items-center justify-center gap-2 w-full py-3 bg-[var(--color-dark-card-alt)] hover:bg-[var(--color-dark-border)] text-[var(--color-text-primary)] font-bold rounded-lg transition-colors no-underline"

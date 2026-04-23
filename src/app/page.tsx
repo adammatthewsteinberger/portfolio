@@ -417,27 +417,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Live Demo Section */}
+      {/* CTA Section */}
       <section className='container mx-auto px-4 py-16'>
         <h4 className='text-2xl font-bold text-center bg-gradient-to-r from-[var(--color-accent-gold)] to-amber-500 bg-clip-text text-transparent mb-6'>
-          Experience the Difference
+          Ready to Get Started?
         </h4>
         <div className='text-center max-w-2xl mx-auto'>
           <p className='text-[var(--color-text-muted)] mb-6'>
-            See how a custom AI assistant trained on real business data handles
-            complex interactions. Notice the consistent brand voice, security
-            features, and seamless integration capabilities.
+            Let&apos;s talk about what custom AI can do for your business. Schedule a free consultation to discuss your needs, timeline, and budget — no commitment required.
           </p>
           <a
-            href='https://chat.adam.matthewsteinberger.com'
+            href='https://tidycal.com/adammatthewsteinberger'
             target='_blank'
+            rel='noopener noreferrer'
             className='inline-flex items-center gap-2 px-8 py-4 text-lg font-bold bg-gradient-to-r from-[var(--color-accent-gold)] to-amber-500 hover:from-amber-500 hover:to-[var(--color-accent-gold)] rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 no-underline'
             style={{ color: '#000000' }}
           >
-            <i className='fas fa-play'></i> Try the Live Demo
+            <i className='fas fa-calendar'></i> Schedule Free Consultation
           </a>
           <p className='mt-4 text-sm text-[var(--color-text-muted)]'>
-            No registration required - experience the technology firsthand
+            Free 30-minute call — no pressure, no commitment
           </p>
         </div>
       </section>

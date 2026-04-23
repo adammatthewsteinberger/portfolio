@@ -83,18 +83,16 @@ export default function ContactPage() {
           </div>
 
           <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6 shadow-lg text-center h-full">
-            <i className="fas fa-comments text-4xl text-[var(--color-accent-blue)] mb-4"></i>
-            <h5 className="text-xl font-bold text-[var(--color-text-primary)] mb-2">Try My Chatbot</h5>
+            <i className="fas fa-briefcase text-4xl text-[var(--color-accent-blue)] mb-4"></i>
+            <h5 className="text-xl font-bold text-[var(--color-text-primary)] mb-2">Browse My Services</h5>
             <p className="text-[var(--color-text-muted)] mb-4">
-              Experience my AI chatbot technology firsthand to see what&apos;s possible.
+              Explore the full range of AI development services available for your business.
             </p>
             <a
-              href="https://chat.adam.matthewsteinberger.com"
+              href="/services"
               className="inline-flex items-center px-4 py-2 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white rounded-lg transition-colors no-underline font-medium"
-              target="_blank"
-              rel="noopener noreferrer"
             >
-              Demo Chatbot
+              View Services
             </a>
           </div>
         </div>

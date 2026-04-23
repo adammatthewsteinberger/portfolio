@@ -157,7 +157,6 @@ Each article includes:
 ## 🔗 Key External Integrations
 
 - **TidyCal**: Consultation scheduling (https://tidycal.com/adammatthewsteinberger)
-- **Demo Chatbot**: https://chat.adam.matthewsteinberger.com
 - **Social Media**: LinkedIn, GitHub, X/Twitter
 - **Contact**: adam@matthewsteinberger.com
 

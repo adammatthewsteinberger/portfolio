@@ -36,19 +36,7 @@ export default function MultipleCTAs() {
         </div>
 
         {/* Secondary CTAs */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div>
-            <a
-              href="https://chat.adam.matthewsteinberger.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full px-6 py-3 font-semibold border-2 border-[var(--color-accent-blue-light)] hover:bg-[var(--color-accent-blue)] rounded-lg transition-all duration-300 no-underline"
-              style={{ color: '#93c5fd' }}
-            >
-              <i className="fas fa-play"></i> Try the Demo
-            </a>
-            <p className="mt-2 text-sm" style={{ color: '#e2e8f0' }}>Experience the technology</p>
-          </div>
+        <div className="mb-4">
           <div>
             <Link
               href="/novice-to-navigator"

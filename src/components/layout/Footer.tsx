@@ -10,8 +10,6 @@ export default function Footer() {
           <span className="text-[var(--color-dark-border)]">|</span>
           <Link href="/contact" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] font-semibold transition-colors">Contact for Employment</Link>
           <span className="text-[var(--color-dark-border)]">|</span>
-          <a href="https://chat.adam.matthewsteinberger.com" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] font-semibold transition-colors">Try the Chatbot Demo</a>
-          <span className="text-[var(--color-dark-border)]">|</span>
           <Link href="/novice-to-navigator" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] font-semibold transition-colors">Learn about AI</Link>
           <span className="text-[var(--color-dark-border)]">|</span>
           <Link href="/blog" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] font-semibold transition-colors">Read the Blog</Link>

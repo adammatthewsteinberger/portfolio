@@ -106,10 +106,6 @@ export default function Header() {
           Contact
         </Link>
 
-        <a href='https://chat.adam.matthewsteinberger.com' className='menu-item' onClick={closeMenu} target='_blank' rel='noopener noreferrer'>
-          <i className='fas fa-play mr-2'></i>
-          Demo
-        </a>
         </Menu>
 
       {/* Main Navigation Bar */}
@@ -190,11 +186,6 @@ export default function Header() {
                 <i className='fas fa-blog mr-1'></i>
                 Blog
               </Link>
-
-              <a href='https://chat.adam.matthewsteinberger.com/' className='px-3 py-2 text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors text-sm font-medium no-underline' target='_blank' rel='noopener noreferrer'>
-                <i className='fas fa-play mr-1'></i>
-                Demo
-              </a>
 
               <Link href='/contact' className='px-3 py-2 text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors text-sm font-medium no-underline'>
                 <i className='fas fa-envelope mr-1'></i>

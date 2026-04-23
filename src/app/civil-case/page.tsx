@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Civil Case Documents | Adam Steinberger',
   description:
-    'Legal documents and personal testimony related to an ongoing civil case involving alleged NAR Code of Ethics violations by a licensed South Carolina real estate agent.',
+    'Legal documents and personal testimony for Case No. 2025-CP-23-05006: an ongoing civil case in Greenville County Court of Common Pleas involving alleged NAR Code of Ethics violations by a licensed South Carolina REALTOR®. Hearing scheduled May 5, 2026.',
   alternates: {
     canonical: '/civil-case',
   },
@@ -24,6 +24,13 @@ export const metadata: Metadata = {
 };
 
 const documents = [
+  {
+    label: 'Combined Testimony: ADA Memorandum & Chronological Record',
+    file: '000-combined-testimony.pdf',
+    description: "Defendant's Memorandum in Lieu of Verbal Testimony with attached Chronological Personal Testimony, submitted as ADA accommodation for the May 5, 2026 hearing.",
+    date: '4/22/26',
+    size: '13.2 MB',
+  },
   {
     label: 'Personal Testimony',
     file: '001-personal-testimony.pdf',
@@ -128,7 +135,14 @@ const documents = [
     description: 'Third memorandum for motion to dismiss',
     date: '4/17/26',
     size: '1.4 MB',
-  }
+  },
+  {
+    label: 'Motion for Continuance',
+    file: '016-motion-for-continuance.pdf',
+    description: 'Motion to continue the May 5, 2026 hearing to allow newly retained counsel adequate time to prepare. Prospective counsel has expressed willingness to represent.',
+    date: '4/22/26',
+    size: '406 KB',
+  },
 ];
 
 const violations = [
@@ -271,10 +285,30 @@ export default function CivilCasePage() {
           </h1>
           <div className="max-w-2xl mx-auto rounded-xl border p-6 mt-2" style={{ background: 'var(--color-dark-card)', borderColor: 'var(--color-dark-border)' }}>
             <p className="text-lg mb-3" style={{ color: 'var(--color-text-muted)' }}>
-              A <strong className="text-primary">strong, well-documented case</strong> against a licensed South Carolina REALTOR®: 19 alleged <strong className="text-primary">NAR Code of Ethics violations</strong>, plaintiff&apos;s claims without merit, and <strong className="text-primary">$2M+ in potential counterclaim damages</strong>.
+              Case No. 2025-CP-23-05006, Greenville County Court of Common Pleas.{' '}
+              A <strong className="text-primary">strong, well-documented case</strong>{' '}
+              against a licensed South Carolina REALTOR®: 19 alleged{' '}
+              <strong className="text-primary">NAR Code of Ethics violations</strong>,
+              a structural defect running through the entire transaction (unsigned Dual Agency Agreement
+              required by SC Code § 40-57-350), plaintiff&apos;s claims without merit, and{' '}
+              <strong className="text-primary">$2M+ in potential counterclaim damages</strong>.
+            </p>
+            <p className="text-lg mb-3" style={{ color: 'var(--color-text-muted)' }}>
+              A <strong className="text-primary">hearing is scheduled for May 5, 2026</strong>.
+              A motion for continuance was filed April 22, 2026 to allow incoming counsel adequate
+              preparation time.{' '}
+              <strong className="text-primary">Prospective counsel has already expressed willingness
+              to represent</strong>, retention is contingent on that continuance being granted.
+              All evidentiary and legal groundwork is complete.
             </p>
             <p className="text-lg mb-0" style={{ color: 'var(--color-text-muted)' }}>
-              All evidentiary and legal groundwork is complete. The <strong className="text-primary">pro se neurodivergent defendant</strong> is seeking counsel to take this to trial.
+              The defendant carries{' '}
+              <strong className="text-primary">formal diagnoses of ASD Level 1, ADHD (Combined),
+              GAD, and PTSD</strong>{' '}(PCL-5 severity 73/80), confirmed by a licensed psychologist
+              and admitted by plaintiff&apos;s counsel in their own pleading. An ADA accommodation
+              for written testimony in lieu of verbal has been filed concurrently.
+              The <strong className="text-primary">pro se neurodivergent defendant</strong> is
+              seeking counsel to take this case to trial.
             </p>
           </div>
         </div>
@@ -283,7 +317,7 @@ export default function CivilCasePage() {
         <p className="text-sm text-center mb-10" style={{ color: 'var(--color-text-muted)' }}>
           <a href="/legal/civil-case-documents.zip" download style={{ color: 'var(--color-accent-blue)' }}>
             <i className="fas fa-file-zipper mr-1" />
-            Download all documents (ZIP, 49.2 MB)
+            Download all documents (ZIP, 61.7 MB)
           </a>
         </p>
 
@@ -393,7 +427,7 @@ export default function CivilCasePage() {
             }}
           >
             <i className="fas fa-file-zipper text-lg" style={{ color: 'var(--color-accent-blue)' }} />
-            Download All Documents (ZIP, 49.2 MB)
+            Download All Documents (ZIP, 61.7 MB)
           </a>
         </div>
 

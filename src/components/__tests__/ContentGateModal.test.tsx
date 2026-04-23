@@ -89,18 +89,6 @@ describe('ContentGateModal', () => {
       expect(amazonLink).toHaveAttribute('target', '_blank');
     });
 
-    it('renders chat now button', () => {
-      render(<ContentGateModal />);
-
-      const chatLink = screen.getByRole('link', { name: /chat now/i });
-      expect(chatLink).toBeInTheDocument();
-      expect(chatLink).toHaveAttribute(
-        'href',
-        'https://chat.adam.matthewsteinberger.com'
-      );
-      expect(chatLink).toHaveAttribute('target', '_blank');
-    });
-
     it('renders go home button', () => {
       render(<ContentGateModal />);
 
