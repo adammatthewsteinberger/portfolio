@@ -28,7 +28,8 @@
     "react-dom": "^19.2.1",
     "react-markdown": "^10.1.0",
     "rehype-highlight": "^7.0.2",
-    "remark-gfm": "^4.0.1"
+    "remark-gfm": "^4.0.1",
+    "rollup": "^4.62.4"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
