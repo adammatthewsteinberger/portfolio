@@ -6,8 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "lint:fix": "next lint --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -22,7 +22,7 @@
   "dependencies": {
     "@formspree/react": "^3.0.0",
     "gray-matter": "^4.0.3",
-    "next": "^16.0.7",
+    "next": "16.2.11",
     "react": "^19.2.1",
     "react-burger-menu": "^3.1.0",
     "react-dom": "^19.2.1",
@@ -45,10 +45,10 @@
     "@types/react-burger-menu": "^2.8.7",
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^5.1.2",
-    "@vitest/coverage-v8": "^4.0.16",
+    "@vitest/coverage-v8": "^4.1.10",
     "archiver": "^7.0.1",
     "eslint": "^9",
-    "eslint-config-next": "15.3.5",
+    "eslint-config-next": "16.2.11",
     "husky": "^9.1.7",
     "jsdom": "^27.3.0",
     "lint-staged": "^16.2.7",
@@ -58,7 +58,7 @@
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
     "typescript": "^5",
-    "vitest": "^4.0.16"
+    "vitest": "^4.1.10"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
