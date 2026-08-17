@@ -48,3 +48,6 @@ public/novice-to-navigator-ebook.epub
 
 # Claude memories
 .remember
+
+# Unpublished book drafts dropped in locally for reference (see docs/)
+docs/*.pdf

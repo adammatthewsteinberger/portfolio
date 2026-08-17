@@ -1,4 +1,10 @@
-import nextVitals from "eslint-config-next/core-web-vitals";
-import nextTypescript from "eslint-config-next/typescript";
+import nextVitals from 'eslint-config-next/core-web-vitals';
+import nextTypescript from 'eslint-config-next/typescript';
 
-export default [...nextVitals, ...nextTypescript];
+const config = [
+  { ignores: ['coverage/**'] },
+  ...nextVitals,
+  ...nextTypescript,
+];
+
+export default config;

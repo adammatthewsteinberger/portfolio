@@ -3,16 +3,16 @@ import { Metadata } from 'next';
 import { projects, projectCategories } from '@/data/projects';
 
 export const metadata: Metadata = {
-  title: 'AI Development Projects | Adam Matthew Steinberger Portfolio',
-  description: 'Explore Adam Matthew Steinberger\'s portfolio of AI development projects including enterprise solutions, RAG chatbots, and open-source tools.',
+  title: 'Work | Case Studies in AI, Azure & Automation | Adam Matthew Steinberger',
+  description: 'Case studies in RAG systems, event-driven microservices, and AI automation — built by Adam Matthew Steinberger, Staff Software Architect & AI Automation Engineer.',
   openGraph: {
-    title: 'AI Development Projects | Adam Matthew Steinberger Portfolio',
-    description: 'Explore Adam Matthew Steinberger\'s portfolio of AI development projects including enterprise solutions, RAG chatbots, and open-source tools.',
-    url: 'https://hire.adam.matthewsteinberger.com/projects',
+    title: 'Work | Case Studies in AI, Azure & Automation | Adam Matthew Steinberger',
+    description: 'Case studies in RAG systems, event-driven microservices, and AI automation — built by Adam Matthew Steinberger, Staff Software Architect & AI Automation Engineer.',
+    url: 'https://hire.adam.matthewsteinberger.com/work',
   },
 };
 
-export default function ProjectsPage() {
+export default function WorkPage() {
   const featuredProjects = projects.filter(project => project.featured);
   const projectsByCategory = projectCategories.map(category => ({
     category,
@@ -24,17 +24,17 @@ export default function ProjectsPage() {
     <div>
       {/* Hero Section */}
       <section className="text-center pt-8 pb-16 container mx-auto px-4">
-        <h1 className="text-4xl md:text-5xl font-bold text-[var(--color-text-primary)] mb-4">AI Development Projects</h1>
+        <h1 className="text-4xl md:text-5xl font-bold text-[var(--color-text-primary)] mb-4">Work</h1>
         <p className="text-xl text-[var(--color-text-muted)] max-w-3xl mx-auto">
-          Explore my portfolio of innovative AI solutions across enterprise, non-profit, and open-source projects.
-          Each project showcases cutting-edge technology and real-world impact.
+          Case studies from thirteen-plus years of shipping RAG systems, event-driven microservices, and
+          automation pipelines — for enterprise clients, non-profits, and my own open-source tools.
         </p>
       </section>
 
       {/* Featured Projects */}
       <section className="container mx-auto px-4 py-16">
         <h2 className="text-2xl font-bold mb-8 text-center bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-blue-light)] bg-clip-text text-transparent">
-          Featured Projects
+          Featured Work
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {featuredProjects.map((project) => (
@@ -43,7 +43,7 @@ export default function ProjectsPage() {
                 <span className="inline-block px-2 py-1 text-xs font-medium bg-[var(--color-accent-blue)] text-white rounded">{project.category}</span>
               </div>
               <h3 className="text-xl font-bold text-[var(--color-text-primary)] mb-3">
-                <Link href={`/projects/${project.slug}`} className="hover:text-[var(--color-accent-blue)] transition-colors no-underline">
+                <Link href={`/work/${project.slug}`} className="hover:text-[var(--color-accent-blue)] transition-colors no-underline">
                   {project.title}
                 </Link>
               </h3>
@@ -66,7 +66,7 @@ export default function ProjectsPage() {
                   </span>
                 </div>
               </div>
-              <Link href={`/projects/${project.slug}`} className="inline-flex items-center justify-center px-4 py-2 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white rounded-lg transition-colors no-underline font-medium mt-auto">
+              <Link href={`/work/${project.slug}`} className="inline-flex items-center justify-center px-4 py-2 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white rounded-lg transition-colors no-underline font-medium mt-auto">
                 View Project <i className="fas fa-arrow-right ml-2"></i>
               </Link>
             </div>
@@ -77,7 +77,7 @@ export default function ProjectsPage() {
       {/* Projects by Category */}
       <section className="container mx-auto px-4 py-16">
         <h2 className="text-2xl font-bold mb-8 text-center bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-blue-light)] bg-clip-text text-transparent">
-          All Projects by Category
+          All Work by Category
         </h2>
 
         {projectsByCategory.map(({ category, categoryDescription, projects: categoryProjects }) => (
@@ -91,7 +91,7 @@ export default function ProjectsPage() {
               {categoryProjects.map((project) => (
                 <div key={project.slug} className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6">
                   <h4 className="text-lg font-bold text-[var(--color-text-primary)] mb-2">
-                    <Link href={`/projects/${project.slug}`} className="hover:text-[var(--color-accent-blue)] transition-colors no-underline">
+                    <Link href={`/work/${project.slug}`} className="hover:text-[var(--color-accent-blue)] transition-colors no-underline">
                       {project.title}
                     </Link>
                   </h4>
@@ -111,7 +111,7 @@ export default function ProjectsPage() {
                           <i className="fas fa-circle mr-1 text-xs"></i>{project.status}
                         </span>
                       </div>
-                      <Link href={`/projects/${project.slug}`} className="px-3 py-1 text-sm border border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white rounded-lg transition-colors no-underline">
+                      <Link href={`/work/${project.slug}`} className="px-3 py-1 text-sm border border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white rounded-lg transition-colors no-underline">
                         View Details
                       </Link>
                     </div>
@@ -126,10 +126,10 @@ export default function ProjectsPage() {
       {/* Call to Action */}
       <section className="container mx-auto px-4 py-16 text-center">
         <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-blue-light)] bg-clip-text text-transparent">
-          Ready to Start Your AI Project?
+          Want Something Like This Built?
         </h2>
         <p className="text-xl text-[var(--color-text-muted)] mb-8 max-w-2xl mx-auto">
-          Let&apos;s discuss how I can help bring your AI vision to life with proven expertise and innovative solutions.
+          I&apos;m available starting September 2026 — let&apos;s talk about what you&apos;re trying to build.
         </p>
         <div className="flex gap-4 justify-center flex-wrap">
           <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] text-white font-bold rounded-lg transition-colors no-underline">

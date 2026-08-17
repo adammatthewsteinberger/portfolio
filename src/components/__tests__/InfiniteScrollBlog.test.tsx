@@ -134,4 +134,127 @@ describe('InfiniteScrollBlog', () => {
       expect(screen.queryByText('Test Post 7')).not.toBeInTheDocument();
     });
   });
+
+  describe('edge cases', () => {
+    it('stops offering more posts once a load returns nothing new', async () => {
+      // `hasMore` is seeded once from props and isn't resynced on prop
+      // changes (a deliberate lazy-initializer trade-off — see
+      // InfiniteScrollBlog.tsx). Shrinking `allPosts` after the first render
+      // reproduces the case where a scheduled load finds nothing left,
+      // exercising the `newPosts.length === 0` branch.
+      const posts = createMockPosts(6);
+      const { rerender } = render(<InfiniteScrollBlog allPosts={posts} postsPerPage={3} />);
+      expect(screen.getByRole('button', { name: 'Load More Articles' })).toBeInTheDocument();
+
+      rerender(<InfiniteScrollBlog allPosts={posts.slice(0, 3)} postsPerPage={3} />);
+      fireEvent.click(screen.getByRole('button', { name: 'Load More Articles' }));
+
+      await waitFor(() => {
+        expect(
+          screen.queryByRole('button', { name: 'Load More Articles' })
+        ).not.toBeInTheDocument();
+      });
+    });
+
+    it('loads more posts automatically when scrolled near the bottom of the page', async () => {
+      const posts = createMockPosts(10);
+      render(<InfiniteScrollBlog allPosts={posts} postsPerPage={3} />);
+
+      expect(screen.queryByText('Test Post 4')).not.toBeInTheDocument();
+
+      Object.defineProperty(window, 'innerHeight', { value: 800, configurable: true });
+      Object.defineProperty(document.documentElement, 'scrollTop', {
+        value: 5000,
+        configurable: true,
+      });
+      Object.defineProperty(document.documentElement, 'offsetHeight', {
+        value: 5200,
+        configurable: true,
+      });
+
+      fireEvent.scroll(window);
+
+      await waitFor(
+        () => {
+          expect(screen.getByText('Test Post 4')).toBeInTheDocument();
+        },
+        { timeout: 1000 }
+      );
+    });
+
+    it('does not trigger a load on scroll when nowhere near the bottom of the page', () => {
+      const posts = createMockPosts(10);
+      render(<InfiniteScrollBlog allPosts={posts} postsPerPage={3} />);
+
+      Object.defineProperty(window, 'innerHeight', { value: 800, configurable: true });
+      Object.defineProperty(document.documentElement, 'scrollTop', {
+        value: 0,
+        configurable: true,
+      });
+      Object.defineProperty(document.documentElement, 'offsetHeight', {
+        value: 10_000,
+        configurable: true,
+      });
+
+      fireEvent.scroll(window);
+
+      expect(screen.queryByText('Test Post 4')).not.toBeInTheDocument();
+      expect(screen.queryByText('Loading more articles...')).not.toBeInTheDocument();
+    });
+
+    it('ignores a scroll-triggered load while already loading', async () => {
+      const posts = createMockPosts(10);
+      render(<InfiniteScrollBlog allPosts={posts} postsPerPage={3} />);
+
+      fireEvent.click(screen.getByRole('button', { name: 'Load More Articles' }));
+      expect(screen.getByText('Loading more articles...')).toBeInTheDocument();
+
+      // A scroll event that fires mid-load should be a no-op (the loading
+      // guard short-circuits it) rather than scheduling a second load.
+      Object.defineProperty(window, 'innerHeight', { value: 800, configurable: true });
+      Object.defineProperty(document.documentElement, 'scrollTop', {
+        value: 5000,
+        configurable: true,
+      });
+      Object.defineProperty(document.documentElement, 'offsetHeight', {
+        value: 5200,
+        configurable: true,
+      });
+      fireEvent.scroll(window);
+
+      await waitFor(() => {
+        expect(screen.getByText('Test Post 4')).toBeInTheDocument();
+      });
+      // Only the batch from the original click landed — posts 4-6.
+      expect(screen.queryByText('Test Post 7')).not.toBeInTheDocument();
+    });
+
+    it('a bottom-of-page scroll is a no-op once hasMore is already false', () => {
+      // hasMore is already false here (6 posts, 6 per page): no "Load More"
+      // button renders, and a scroll event past the threshold must hit the
+      // `!hasMore` side of the loadMorePosts guard rather than re-loading.
+      const posts = createMockPosts(6);
+      render(<InfiniteScrollBlog allPosts={posts} postsPerPage={6} />);
+
+      expect(
+        screen.queryByRole('button', { name: 'Load More Articles' })
+      ).not.toBeInTheDocument();
+
+      Object.defineProperty(window, 'innerHeight', { value: 800, configurable: true });
+      Object.defineProperty(document.documentElement, 'scrollTop', {
+        value: 5000,
+        configurable: true,
+      });
+      Object.defineProperty(document.documentElement, 'offsetHeight', {
+        value: 5200,
+        configurable: true,
+      });
+      fireEvent.scroll(window);
+
+      expect(screen.queryByText('Loading more articles...')).not.toBeInTheDocument();
+      expect(
+        screen.queryByRole('button', { name: 'Load More Articles' })
+      ).not.toBeInTheDocument();
+    });
+  });
 });

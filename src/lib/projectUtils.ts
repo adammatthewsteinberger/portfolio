@@ -78,20 +78,18 @@ export function getAllProjectSlugs(): string[] {
 }
 
 export function getAllProjects(): ProjectContent[] {
-  try {
-    const slugs = getAllProjectSlugs();
-    const projects: ProjectContent[] = [];
+  // getAllProjectSlugs() and getProjectBySlug() each already catch and log
+  // their own filesystem/parse errors (returning [] / null respectively),
+  // so there is no error path left for this function itself to guard.
+  const slugs = getAllProjectSlugs();
+  const projects: ProjectContent[] = [];
 
-    for (const slug of slugs) {
-      const project = getProjectBySlug(slug);
-      if (project) {
-        projects.push(project);
-      }
+  for (const slug of slugs) {
+    const project = getProjectBySlug(slug);
+    if (project) {
+      projects.push(project);
     }
-
-    return projects.sort((a, b) => a.title.localeCompare(b.title));
-  } catch (error) {
-    console.error('Error reading all projects:', error);
-    return [];
   }
+
+  return projects.sort((a, b) => a.title.localeCompare(b.title));
 }

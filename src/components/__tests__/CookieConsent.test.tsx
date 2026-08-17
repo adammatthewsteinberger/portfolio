@@ -99,9 +99,9 @@ describe('CookieConsent', () => {
       expect(screen.getByRole('button', { name: 'Accept All' })).toBeInTheDocument();
     });
 
-    it('displays Reject All button', () => {
+    it('displays Essential Only button', () => {
       render(<CookieConsent />);
-      expect(screen.getByRole('button', { name: 'Reject All' })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Essential Only' })).toBeInTheDocument();
     });
 
     it('displays Customize button', () => {
@@ -124,11 +124,11 @@ describe('CookieConsent', () => {
       expect(mockAcceptAll).toHaveBeenCalledTimes(1);
     });
 
-    it('calls rejectAll when Reject All is clicked', async () => {
+    it('calls rejectAll when Essential Only is clicked', async () => {
       const user = userEvent.setup();
       render(<CookieConsent />);
 
-      await user.click(screen.getByRole('button', { name: 'Reject All' }));
+      await user.click(screen.getByRole('button', { name: 'Essential Only' }));
       expect(mockRejectAll).toHaveBeenCalledTimes(1);
     });
   });
@@ -228,14 +228,42 @@ describe('CookieConsent', () => {
         security_storage: 'granted',
       });
     });
+
+    it('toggles the advertising and personalization checkboxes into the saved preferences', async () => {
+      const user = userEvent.setup();
+      render(<CookieConsent />);
+
+      await user.click(screen.getByRole('button', { name: 'Customize' }));
+
+      const adsCheckbox = screen.getByLabelText(/advertising cookies/i);
+      const personalizationCheckbox = screen.getByLabelText(/personalization cookies/i);
+      await user.click(adsCheckbox);
+      await user.click(personalizationCheckbox);
+      expect(adsCheckbox).toBeChecked();
+      expect(personalizationCheckbox).toBeChecked();
+
+      await user.click(screen.getByRole('button', { name: 'Save Preferences' }));
+
+      expect(mockUpdatePreferences).toHaveBeenCalledWith({
+        analytics_storage: 'denied',
+        ad_storage: 'granted',
+        ad_user_data: 'granted',
+        ad_personalization: 'granted',
+        personalization_storage: 'granted',
+        functionality_storage: 'granted',
+        security_storage: 'granted',
+      });
+    });
   });
 
   describe('accessibility', () => {
-    it('has backdrop overlay', () => {
+    it('renders as a non-blocking bottom sheet, not a full-screen backdrop', () => {
       render(<CookieConsent />);
-      // Check for the backdrop div with Tailwind classes (fixed inset-0)
-      const backdrop = document.querySelector('[class*="fixed"][class*="inset-0"]');
-      expect(backdrop).toBeInTheDocument();
+      // The banner sits in a pointer-events-none wrapper so the rest of the
+      // page stays interactive; only its inner card captures clicks.
+      const wrapper = document.querySelector('.pointer-events-none');
+      expect(wrapper).toBeInTheDocument();
+      expect(document.querySelector('.fixed.inset-0')).not.toBeInTheDocument();
     });
   });
 });

@@ -24,18 +24,18 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 
   if (!project || !projectData) {
     return {
-      title: 'Project Not Found | Adam Matthew Steinberger',
-      description: 'The requested project could not be found.',
+       title: 'Work Not Found | Adam Matthew Steinberger',
+      description: 'The requested case study could not be found.',
     };
   }
 
   return {
-    title: `${project.title} | Adam Matthew Steinberger Projects`,
+    title: `${project.title} | Adam Matthew Steinberger — Work`,
     description: project.description,
     openGraph: {
-      title: `${project.title} | Adam Matthew Steinberger Projects`,
+      title: `${project.title} | Adam Matthew Steinberger — Work`,
       description: project.description,
-      url: `https://hire.adam.matthewsteinberger.com/projects/${slug}`,
+      url: `https://hire.adam.matthewsteinberger.com/work/${slug}`,
     },
   };
 }
@@ -48,11 +48,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   if (!project || !projectData) {
     return (
       <div className="container mx-auto px-4 py-12 text-center">
-        <h1 className="text-4xl font-bold text-[var(--color-text-primary)] mb-6">Project Not Found</h1>
-        <p className="text-xl text-[var(--color-text-muted)] mb-6">The requested project could not be found.</p>
-        <Link href="/projects" className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] text-white font-bold rounded-lg transition-colors no-underline">
+        <h1 className="text-4xl font-bold text-[var(--color-text-primary)] mb-6">Work Not Found</h1>
+        <p className="text-xl text-[var(--color-text-muted)] mb-6">The requested case study could not be found.</p>
+        <Link href="/work" className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] text-white font-bold rounded-lg transition-colors no-underline">
           <i className="fas fa-arrow-left"></i>
-          Back to Projects
+          Back to Work
         </Link>
       </div>
     );
@@ -73,7 +73,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <nav className="mb-4">
                 <ol className="flex items-center gap-2 text-sm">
                   <li>
-                    <Link href="/projects" className="text-[var(--color-accent-blue)] hover:underline no-underline">Projects</Link>
+                    <Link href="/work" className="text-[var(--color-accent-blue)] hover:underline no-underline">Work</Link>
                   </li>
                   <li className="text-[var(--color-text-muted)]">/</li>
                   <li className="text-[var(--color-text-muted)]">{projectData.category}</li>
@@ -207,7 +207,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     {relatedProjects.map((relatedProject) => (
                       <Link
                         key={relatedProject.slug}
-                        href={`/projects/${relatedProject.slug}`}
+                        href={`/work/${relatedProject.slug}`}
                         className="block no-underline"
                       >
                         <div className="bg-[var(--color-dark-bg)] border border-[var(--color-dark-border)] rounded-lg p-4 hover:border-[var(--color-accent-blue)]/50 transition-colors">
@@ -242,9 +242,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <i className="fas fa-envelope"></i>
                 Get In Touch
               </Link>
-              <Link href="/projects" className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white font-bold rounded-lg transition-colors no-underline">
+              <Link href="/work" className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white font-bold rounded-lg transition-colors no-underline">
                 <i className="fas fa-arrow-left"></i>
-                View All Projects
+                View All Work
               </Link>
               <Link href="/services" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[var(--color-accent-gold)] to-amber-500 hover:from-amber-500 hover:to-[var(--color-accent-gold)] font-bold rounded-lg transition-all no-underline" style={{ color: '#000000' }}>
                 <i className="fas fa-cogs"></i>

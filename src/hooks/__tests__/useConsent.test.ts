@@ -252,4 +252,59 @@ describe('useConsent', () => {
       expect(result.current.consent.analytics_storage).toBe('denied');
     });
   });
+
+  describe('gtag not yet loaded', () => {
+    it('retries until gtag becomes available, then delivers the update', () => {
+      vi.useFakeTimers();
+      // Simulate gtag.js not having loaded yet (e.g. blocked by an adblocker
+      // or still in flight) when consent changes.
+      // @ts-expect-error - intentionally unset for this test
+      delete window.gtag;
+
+      const { result } = renderHook(() => useConsent());
+
+      act(() => {
+        result.current.acceptAll();
+      });
+      // No gtag yet: the update is queued for retry, not lost.
+      expect(result.current.consent.ad_storage).toBe('granted');
+
+      const gtagMock = vi.fn();
+      window.gtag = gtagMock;
+
+      act(() => {
+        vi.advanceTimersByTime(200);
+      });
+
+      expect(gtagMock).toHaveBeenCalledWith(
+        'consent',
+        'update',
+        expect.objectContaining({ ad_storage: 'granted' })
+      );
+
+      vi.useRealTimers();
+    });
+
+    it('gives up after the retry budget is exhausted rather than retrying forever', () => {
+      vi.useFakeTimers();
+      // @ts-expect-error - intentionally unset for this test
+      delete window.gtag;
+
+      const { result } = renderHook(() => useConsent());
+
+      act(() => {
+        result.current.acceptAll();
+      });
+
+      // Advance well past the ~5s (25 * 200ms) retry budget. If the retry
+      // loop were unbounded this would still be scheduling timers.
+      act(() => {
+        vi.advanceTimersByTime(10_000);
+      });
+
+      expect(vi.getTimerCount()).toBe(0);
+
+      vi.useRealTimers();
+    });
+  });
 });

@@ -64,23 +64,21 @@ export function getAllBlogSlugs(): string[] {
 }
 
 export function getAllBlogPosts(): BlogContent[] {
-  try {
-    const slugs = getAllBlogSlugs();
-    const posts: BlogContent[] = [];
-    
-    for (const slug of slugs) {
-      const post = getBlogPostBySlug(slug);
-      if (post) {
-        posts.push(post);
-      }
+  // getAllBlogSlugs() and getBlogPostBySlug() each already catch and log
+  // their own filesystem/parse errors (returning [] / null respectively),
+  // so there is no error path left for this function itself to guard.
+  const slugs = getAllBlogSlugs();
+  const posts: BlogContent[] = [];
+
+  for (const slug of slugs) {
+    const post = getBlogPostBySlug(slug);
+    if (post) {
+      posts.push(post);
     }
-    
-    // Sort by published date (newest first)
-    return posts.sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime());
-  } catch (error) {
-    console.error('Error reading all blog posts:', error);
-    return [];
   }
+
+  // Sort by published date (newest first)
+  return posts.sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime());
 }
 
 export function getBlogPostsByCategory(category: string): BlogContent[] {

@@ -1,594 +1,302 @@
-import MultipleCTAs from '@/components/MultipleCTAs';
-import AmazonBookButton from '@/components/AmazonBookButton';
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { AudienceToggle, ForAudience } from '@/components/AudienceToggle';
+import { getAllBlogPosts } from '@/lib/blogUtils';
 
 export const metadata: Metadata = {
-  title: 'Hire Expert AI Chatbot Developer in Greenville SC | Adam Matthew Steinberger',
+  title: 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer',
   description:
-    "Hire Adam Matthew Steinberger—Greenville's leading AI chatbot developer for custom GPT solutions. Serving Upstate businesses with secure, branded chatbots using ChatGPT, Claude, Gemini & Mistral. Local Upstate region expertise.",
-  keywords:
-    'hire AI developer Greenville SC, custom chatbot developer Greenville, GPT engineer Upstate, Upstate Region AI expert, ChatGPT integration specialist, Claude AI developer SC, Gemini implementation Greenville, Mistral AI engineer Greenville, local AI developer Upstate, custom GPT solutions Greenville, AI chatbot agency Greenville, Greenville South Carolina AI engineer, Adam Matthew Steinberger, AI chatbot solutions SC, local AI expert Greenville, custom AI chatbots Upstate South Carolina, business AI solutions Greenville, Claude Gemini Mistral integration SC',
-  authors: [{ name: 'Adam Matthew Steinberger' }],
-  creator: 'Adam Matthew Steinberger',
-  publisher: 'Adam Matthew Steinberger LLC',
-  alternates: {
-    canonical: '/',
-  },
+    'Staff Software Architect & AI Automation Engineer, gifted and autistic, in Greenville, SC. 13+ years shipping RAG systems, event-driven Azure microservices, and automation pipelines. Available September 2026.',
+  alternates: { canonical: '/' },
   openGraph: {
-    title:
-      'Hire Local AI Chatbot Developer | Greenville & Upstate South Carolina',
+    title: 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer',
     description:
-      'Expert AI developer in Greenville, SC specializing in custom chatbots for Upstate Region businesses. Local expertise in ChatGPT, Claude, Gemini & Mistral solutions.',
+      'RAG systems, event-driven Azure microservices, and automation pipelines that the people who inherit them can actually run. Available September 2026 — Greenville, SC (remote) or US remote.',
     url: 'https://hire.adam.matthewsteinberger.com',
-    siteName:
-      'Hire Adam Matthew Steinberger - Upstate South Carolina AI Expert',
-    images: [
-      {
-        url: '/images/social-preview.png',
-        width: 1200,
-        height: 630,
-        alt: 'Adam Matthew Steinberger - Upstate South Carolina AI Expert',
-      },
-    ],
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Adam Matthew Steinberger' }],
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Hire Local AI Expert in Greenville | Custom Chatbot Solutions',
+    title: 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer',
     description:
-      "Greenville's premier AI developer for custom business chatbots. Local expertise in ChatGPT, Claude, Gemini & Mistral implementation.",
-    images: ['/images/social-preview.png'],
+      'RAG systems, event-driven Azure microservices, and automation pipelines. Available September 2026.',
   },
 };
 
+const pillars = [
+  { title: 'AI & ML', href: '/expertise#ai-ml', ceo: 'Telling real AI opportunities apart from vendor pitches.', engineer: 'AI ⊃ ML ⊃ DL ⊃ transformers — build order is prompting, then RAG, then fine-tuning.' },
+  { title: 'RAG chat systems', href: '/expertise#rag-chat-systems', ceo: 'A chatbot is only as good as what it can retrieve, not which model it runs.', engineer: 'Retrieval, indexing, generation — parent-child chunking and contextual retrieval close the accuracy gap.' },
+  { title: 'Agents & automation', href: '/expertise#agents-automation', ceo: 'The hard part is never the model. It’s the guardrails.', engineer: 'Hard iteration caps, token/time budgets, human-in-the-loop checkpoints — mandatory, not polish.' },
+  { title: 'Process engineering', href: '/expertise#process-engineering', ceo: 'Most expensive mistakes are scope decisions made before the work even begins.', engineer: 'Cynefin for method selection; structured interviews; Event Storming before code.' },
+  { title: 'Scrum & Agile', href: '/expertise#scrum-agile', ceo: 'Security-First Scrum: secure, working, tested, clean — in that order.', engineer: 'Certified ScrumMaster. Threat modeling in backlog refinement, not a waterfall gate.' },
+  { title: 'Software architecture', href: '/expertise#software-architecture', ceo: 'Every architecture decision is a trade-off — I help you find it before it costs you.', engineer: 'Modular monolith first. Split along business boundaries, not technical layers.' },
+  { title: 'Onion layering', href: '/expertise#onion-clean-layering', ceo: 'Your business logic shouldn’t care what database sits underneath it.', engineer: 'One dependency rule, pointing inward. Domain has zero framework dependencies.' },
+  { title: 'Microservices', href: '/expertise#microservices', ceo: 'I don’t reach for microservices by default — only when a real boundary demands it.', engineer: 'Service Bus, Event Grid, Event Hubs — complementary, not competing. Outbox pattern, always.' },
+  { title: 'Azure cloud', href: '/expertise#azure-cloud', ceo: '13+ years on Microsoft’s cloud stack — Service Bus, Functions, Key Vault, AKS.', engineer: 'Control-plane "*" does not grant DataActions. Cosmos partition key is an irreversible decision.' },
+  { title: 'Data & integration', href: '/expertise#data-integration-pipelines', ceo: 'Connecting the systems that don’t want to talk to each other.', engineer: 'ELT default, idempotency non-negotiable, dbt three-layer discipline.' },
+];
+
+const proof = [
+  { title: 'AI Payroll Processor', metric: '45-day handoff, junior dev now owns it', href: '/work/enterprise-ai-payroll-processor' },
+  { title: 'Self-Hosted RAG Chatbot', metric: 'Mistral-7B, zero external dependencies', href: '/work/self-hosted-rag-chatbot' },
+  { title: 'GodFocus Push Notifications', metric: '159/159 tests, 85.84% coverage, 5 billable hours', href: '/work/godfocus-push-notifications' },
+  { title: 'Lima One Microservices Suite', metric: 'NestJS/gRPC, replaced legacy Mulesoft', href: '/work/lima-one-microservices-suite' },
+];
+
 export default function Home() {
+  const latestPosts = getAllBlogPosts().slice(0, 4);
+
   return (
     <>
-      {/* Hero Section - Problem Statement */}
-      <section className='container mx-auto px-4 text-center pt-8 pb-16'>
-        <h2 className='text-4xl font-bold bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-green)] bg-clip-text text-transparent mb-4'>
-          The AI Crisis
+      {/* Hero */}
+      <section className="container mx-auto px-4 text-center pt-8 pb-16">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-[var(--color-accent-green)]/15 border border-[var(--color-accent-green)]/30 text-[var(--color-accent-green)] text-sm font-semibold">
+          Available September 2026 · Greenville, SC (remote) · US remote
+        </div>
+        <h1 className="text-4xl md:text-5xl font-bold text-[var(--color-text-primary)] mb-3">
+          Adam Matthew Steinberger
+        </h1>
+        <h2 className="text-xl md:text-2xl font-semibold bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-green)] bg-clip-text text-transparent mb-6">
+          Staff Software Architect &amp; AI Automation Engineer
         </h2>
-        <h3 className='text-xl font-semibold text-[var(--color-text-muted)] mb-6'>
-          And How I&apos;m Solving It for Greenville, South Carolina Businesses
-        </h3>
-        <div className='max-w-3xl mx-auto mb-8'>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-coral)]/30 rounded-xl p-6 shadow-lg text-lg leading-relaxed text-[var(--color-text-muted)]'>
-            <strong className='text-[var(--color-text-primary)]'>Reality Check:</strong> Most businesses are losing money on AI right now.
-            They&apos;re either stuck with generic chatbots that don&apos;t understand their unique business processes,
-            or they&apos;re completely paralyzed by legitimate security concerns and overwhelming technical complexity.
-            <br /><br />
-            The worst part? While they&apos;re hesitating, their competitors are gaining massive operational advantages
-            through properly implemented custom AI solutions—automating workflows, reducing support costs by 40%,
-            and capturing leads 24/7 with intelligent systems that actually understand their industry.
-            <br /><br />
-            The gap between AI winners and losers isn&apos;t about budget—it&apos;s about having the right technical
-            partner who can navigate the complexity, implement security correctly, and deliver solutions that
-            actually move the needle on your business metrics. <strong className='text-[var(--color-text-primary)]'>Keep scrolling to see how this works.</strong>
-          </div>
-        </div>
-      </section>
-
-      {/* Book Announcement Section */}
-      <section className='container mx-auto px-4 py-16'>
-        <div className='max-w-3xl mx-auto'>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-gold)]/30 rounded-xl p-8 shadow-lg text-center'>
-            <div className='mb-4'>
-              <i className='fas fa-book text-5xl text-[var(--color-accent-gold)]'></i>
-            </div>
-            <h4 className='text-2xl font-bold mb-4 bg-gradient-to-r from-[var(--color-accent-gold)] to-amber-500 bg-clip-text text-transparent inline-block'>
-              New Book: From Novice to Navigator
-            </h4>
-            <p className='text-lg text-[var(--color-text-muted)] mb-6 leading-relaxed'>
-              Your comprehensive guide to understanding and implementing AI in your business.
-              Learn the strategies, frameworks, and best practices that successful companies use
-              to leverage AI effectively.
-            </p>
-            <div className='flex justify-center gap-4 flex-wrap'>
-              <AmazonBookButton size='lg' />
-              <Link
-                href='/novice-to-navigator'
-                className='inline-flex items-center gap-2 px-6 py-3 text-lg font-bold border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white rounded-lg transition-colors no-underline'
-              >
-                <i className='fas fa-eye'></i>
-                Preview Chapters
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* The Problem Deep Dive */}
-      <section className='container mx-auto px-4 py-16'>
-        <h4 className='text-2xl font-bold mb-8 text-center bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-blue-light)] bg-clip-text text-transparent'>
-          The 5 Critical AI Implementation Challenges
-        </h4>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto'>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-blue)]/30 rounded-xl p-6'>
-            <i className='fas fa-exclamation-triangle text-3xl text-[var(--color-accent-coral)] mb-4'></i>
-            <h5 className='text-xl font-bold text-[var(--color-text-primary)] mb-2'>Generic Chatbots That Don&apos;t Work</h5>
-            <p className='text-[var(--color-text-muted)]'>
-              Off-the-shelf solutions that can&apos;t handle your specific
-              business processes, leading to frustrated customers and wasted
-              resources.
-            </p>
-          </div>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-blue)]/30 rounded-xl p-6'>
-            <i className='fas fa-shield-alt text-3xl text-[var(--color-accent-blue)] mb-4'></i>
-            <h5 className='text-xl font-bold text-[var(--color-text-primary)] mb-2'>Security &amp; Compliance Concerns</h5>
-            <p className='text-[var(--color-text-muted)]'>
-              Uncertainty about data protection, HIPAA compliance, and
-              intellectual property security slowing AI adoption.
-            </p>
-          </div>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-blue)]/30 rounded-xl p-6'>
-            <i className='fas fa-dollar-sign text-3xl text-[var(--color-accent-green)] mb-4'></i>
-            <h5 className='text-xl font-bold text-[var(--color-text-primary)] mb-2'>Hidden Costs &amp; Poor ROI</h5>
-            <p className='text-[var(--color-text-muted)]'>
-              Projects that start small but balloon into expensive, ongoing
-              maintenance challenges with unclear returns.
-            </p>
-          </div>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-blue)]/30 rounded-xl p-6'>
-            <i className='fas fa-users text-3xl text-[var(--color-accent-purple)] mb-4'></i>
-            <h5 className='text-xl font-bold text-[var(--color-text-primary)] mb-2'>Team Resistance &amp; Poor Adoption</h5>
-            <p className='text-[var(--color-text-muted)]'>
-              AI solutions that don&apos;t integrate with existing workflows,
-              leading to low adoption rates and wasted investments.
-            </p>
-          </div>
-          <div className='md:col-span-2 bg-[var(--color-dark-card)] border border-[var(--color-accent-blue)]/30 rounded-xl p-6'>
-            <i className='fas fa-clock text-3xl text-[var(--color-accent-gold)] mb-4'></i>
-            <h5 className='text-xl font-bold text-[var(--color-text-primary)] mb-2'>Implementation Paralysis</h5>
-            <p className='text-[var(--color-text-muted)]'>
-              Analysis paralysis from too many options, unclear requirements,
-              and lack of local expertise to guide the process.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* The Solution Framework */}
-      <section className='container mx-auto px-4 py-16'>
-        <h4 className='text-2xl font-bold mb-8 text-center bg-gradient-to-r from-[var(--color-accent-green)] to-[var(--color-accent-green-light)] bg-clip-text text-transparent'>
-          The Upstate AI Solution Framework
-        </h4>
-        <div className='max-w-4xl mx-auto'>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-green)]/30 rounded-xl p-8'>
-            <h5 className='text-xl font-bold text-[var(--color-text-primary)] mb-6 flex items-center gap-2'>
-              <i className='fas fa-lightbulb text-[var(--color-accent-gold)]'></i> My Proven 4-Step Process
-            </h5>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-              <div>
-                <h6 className='font-bold text-[var(--color-text-primary)] mb-2'>Step 1: Strategic Assessment</h6>
-                <p className='text-[var(--color-text-muted)]'>
-                  Deep dive into your business processes, data security
-                  requirements, and ROI goals. No cookie-cutter solutions.
-                </p>
-              </div>
-              <div>
-                <h6 className='font-bold text-[var(--color-text-primary)] mb-2'>Step 2: Custom Architecture</h6>
-                <p className='text-[var(--color-text-muted)]'>
-                  Design secure, scalable AI solutions using your existing
-                  tools and workflows. No rip-and-replace required.
-                </p>
-              </div>
-              <div>
-                <h6 className='font-bold text-[var(--color-text-primary)] mb-2'>Step 3: Secure Implementation</h6>
-                <p className='text-[var(--color-text-muted)]'>
-                  Enterprise-grade security with self-hosted options, HIPAA
-                  compliance, and data protection built-in.
-                </p>
-              </div>
-              <div>
-                <h6 className='font-bold text-[var(--color-text-primary)] mb-2'>Step 4: Team Enablement</h6>
-                <p className='text-[var(--color-text-muted)]'>
-                  Comprehensive training, documentation, and ongoing support
-                  to ensure successful adoption and ROI.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Credibility Section - Enhanced */}
-      <section className='container mx-auto px-4 py-16'>
-        <h4 className='text-2xl font-bold mb-8 text-center bg-gradient-to-r from-[var(--color-accent-gold)] to-amber-500 bg-clip-text text-transparent'>
-          Why Greenville Businesses Trust My Expertise
-        </h4>
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto'>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-gold)]/30 rounded-xl p-6 text-center'>
-            <i className='fas fa-code text-3xl text-[var(--color-accent-blue)] mb-4'></i>
-            <h5 className='text-xl font-bold text-[var(--color-text-primary)] mb-2'>12+ Years Technical Excellence</h5>
-            <p className='text-[var(--color-text-muted)]'>
-              Enterprise-grade software engineering with production AI systems
-              serving millions of users. No junior-level mistakes.
-            </p>
-          </div>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-purple)]/30 rounded-xl p-6 text-center'>
-            <i className='fas fa-shield-alt text-3xl text-[var(--color-accent-purple)] mb-4'></i>
-            <h5 className='text-xl font-bold text-[var(--color-text-primary)] mb-2'>Security-First Architecture</h5>
-            <p className='text-[var(--color-text-muted)]'>
-              Specialized in HIPAA-compliant, SOC2-ready AI systems. Your data
-              security is non-negotiable.
-            </p>
-          </div>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-gold)]/30 rounded-xl p-6 text-center'>
-            <i className='fas fa-map-marker-alt text-3xl text-[var(--color-accent-coral)] mb-4'></i>
-            <h5 className='text-xl font-bold text-[var(--color-text-primary)] mb-2'>Local Upstate Expertise</h5>
-            <p className='text-[var(--color-text-muted)]'>
-              Serving Greenville with hands-on support. No offshore teams or
-              timezone issues.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Technical Expertise Deep Dive */}
-      <section className='container mx-auto px-4 py-16'>
-        <h4 className='text-2xl font-bold mb-8 text-center bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-blue-light)] bg-clip-text text-transparent'>
-          Advanced AI Technical Stack
-        </h4>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto'>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-blue)]/30 rounded-xl p-6'>
-            <h5 className='text-xl font-bold text-[var(--color-text-primary)] mb-4 flex items-center gap-2'>
-              <i className='fas fa-brain text-[var(--color-accent-blue)]'></i> LLM Technologies
-            </h5>
-            <ul className='space-y-2 text-[var(--color-text-muted)]'>
-              <li>ChatGPT API &amp; Custom GPTs</li>
-              <li>Claude AI (Anthropic)</li>
-              <li>Gemini (Google)</li>
-              <li>Mistral AI &amp; Open Source</li>
-              <li>Custom Fine-tuning</li>
-            </ul>
-          </div>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-purple)]/30 rounded-xl p-6'>
-            <h5 className='text-xl font-bold text-[var(--color-text-primary)] mb-4 flex items-center gap-2'>
-              <i className='fas fa-database text-[var(--color-accent-purple)]'></i> RAG &amp; Vector Systems
-            </h5>
-            <ul className='space-y-2 text-[var(--color-text-muted)]'>
-              <li>Pinecone Vector Database</li>
-              <li>Weaviate &amp; Chroma</li>
-              <li>Custom Embeddings</li>
-              <li>Semantic Search</li>
-              <li>Context Engineering</li>
-            </ul>
-          </div>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-gold)]/30 rounded-xl p-6'>
-            <h5 className='text-xl font-bold text-[var(--color-text-primary)] mb-4 flex items-center gap-2'>
-              <i className='fas fa-cloud text-[var(--color-accent-gold)]'></i> Infrastructure &amp; Security
-            </h5>
-            <ul className='space-y-2 text-[var(--color-text-muted)]'>
-              <li>AWS, Azure, GCP</li>
-              <li>Docker &amp; Kubernetes</li>
-              <li>HIPAA Compliance</li>
-              <li>SOC2 Security</li>
-              <li>Self-Hosted Options</li>
-            </ul>
-          </div>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-green)]/30 rounded-xl p-6'>
-            <h5 className='text-xl font-bold text-[var(--color-text-primary)] mb-4 flex items-center gap-2'>
-              <i className='fas fa-cogs text-[var(--color-accent-green)]'></i> Integration &amp; Automation
-            </h5>
-            <ul className='space-y-2 text-[var(--color-text-muted)]'>
-              <li>Slack, Discord, Teams</li>
-              <li>HubSpot, Salesforce</li>
-              <li>Zapier &amp; Webhooks</li>
-              <li>Custom APIs</li>
-              <li>Workflow Automation</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Social Proof & Case Studies */}
-      <section className='container mx-auto px-4 py-16'>
-        <h4 className='text-2xl font-bold mb-8 text-center bg-gradient-to-r from-[var(--color-accent-gold)] to-amber-500 bg-clip-text text-transparent'>
-          Proven Results Across Upstate Industries
-        </h4>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto'>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-gold)]/30 rounded-xl p-6'>
-            <h5 className='text-xl font-bold text-[var(--color-text-primary)] mb-4 flex items-center gap-2'>
-              <i className='fas fa-building text-[var(--color-accent-gold)]'></i> Enterprise AI Payroll Processor
-            </h5>
-            <p className='text-[var(--color-text-muted)] mb-2'>
-              <strong className='text-[var(--color-text-primary)]'>Challenge:</strong> Complex payroll processing system redesign with Azure microservices architecture
-            </p>
-            <p className='text-[var(--color-text-muted)] mb-2'>
-              <strong className='text-[var(--color-text-primary)]'>Solution:</strong> Complete architectural design and implementation package using GPT-5 and RAG systems
-            </p>
-            <p className='text-[var(--color-text-muted)]'>
-              <strong className='text-[var(--color-text-primary)]'>Result:</strong> 45-day delivery enabling junior developer implementation with comprehensive handoff
-            </p>
-          </div>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-purple)]/30 rounded-xl p-6'>
-            <h5 className='text-xl font-bold text-[var(--color-text-primary)] mb-4 flex items-center gap-2'>
-              <i className='fas fa-shield-alt text-[var(--color-accent-purple)]'></i> Privacy-First RAG Chatbot
-            </h5>
-            <p className='text-[var(--color-text-muted)] mb-2'>
-              <strong className='text-[var(--color-text-primary)]'>Challenge:</strong> Non-profit needed secure, self-hosted AI solution protecting sensitive data
-            </p>
-            <p className='text-[var(--color-text-muted)] mb-2'>
-              <strong className='text-[var(--color-text-primary)]'>Solution:</strong> Custom RAG chatbot with self-hosted Mistral-7B ensuring complete privacy control
-            </p>
-            <p className='text-[var(--color-text-muted)]'>
-              <strong className='text-[var(--color-text-primary)]'>Result:</strong> 100% data privacy with powerful AI capabilities and seamless user experience
-            </p>
-          </div>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-blue)]/30 rounded-xl p-6'>
-            <h5 className='text-xl font-bold text-[var(--color-text-primary)] mb-4 flex items-center gap-2'>
-              <i className='fas fa-cloud text-[var(--color-accent-blue)]'></i> Cloud RAG Sales Assistant
-            </h5>
-            <p className='text-[var(--color-text-muted)] mb-2'>
-              <strong className='text-[var(--color-text-primary)]'>Challenge:</strong> Sales agency needed intelligent customer engagement with Gemini integration
-            </p>
-            <p className='text-[var(--color-text-muted)] mb-2'>
-              <strong className='text-[var(--color-text-primary)]'>Solution:</strong> Custom cloud-based RAG chatbot with responsive web interface and sales optimization
-            </p>
-            <p className='text-[var(--color-text-muted)]'>
-              <strong className='text-[var(--color-text-primary)]'>Result:</strong> Enhanced customer interactions with intelligent lead qualification and conversion
-            </p>
-          </div>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-green)]/30 rounded-xl p-6'>
-            <h5 className='text-xl font-bold text-[var(--color-text-primary)] mb-4 flex items-center gap-2'>
-              <i className='fas fa-snowflake text-[var(--color-accent-blue)]'></i> Snow Portal Job Scheduler
-            </h5>
-            <p className='text-[var(--color-text-muted)] mb-2'>
-              <strong className='text-[var(--color-text-primary)]'>Challenge:</strong> Lima One Capital needed Alteryx replacement for Snowflake workflow automation
-            </p>
-            <p className='text-[var(--color-text-muted)] mb-2'>
-              <strong className='text-[var(--color-text-primary)]'>Solution:</strong> Custom job scheduling system with comprehensive workflow management and monitoring
-            </p>
-            <p className='text-[var(--color-text-muted)]'>
-              <strong className='text-[var(--color-text-primary)]'>Result:</strong> 60% cost reduction while improving performance and enabling self-service analytics
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ROI & Business Impact */}
-      <section className='container mx-auto px-4 py-16'>
-        <h4 className='text-2xl font-bold mb-8 text-center bg-gradient-to-r from-[var(--color-accent-green)] to-[var(--color-accent-green-light)] bg-clip-text text-transparent'>
-          Measurable Business Impact
-        </h4>
-        <div className='max-w-4xl mx-auto'>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-green)]/30 rounded-xl p-8'>
-            <h5 className='text-xl font-bold text-[var(--color-text-primary)] mb-6 flex items-center gap-2'>
-              <i className='fas fa-chart-line text-[var(--color-accent-green)]'></i> Typical ROI Metrics
-            </h5>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-              <div>
-                <h6 className='font-bold text-[var(--color-text-primary)] mb-3'>Cost Reduction</h6>
-                <ul className='space-y-2 text-[var(--color-text-muted)]'>
-                  <li>30-60% reduction in customer service costs</li>
-                  <li>40-70% faster issue resolution</li>
-                  <li>50-80% reduction in repetitive tasks</li>
-                </ul>
-              </div>
-              <div>
-                <h6 className='font-bold text-[var(--color-text-primary)] mb-3'>Revenue Impact</h6>
-                <ul className='space-y-2 text-[var(--color-text-muted)]'>
-                  <li>25-45% increase in lead conversion</li>
-                  <li>20-40% improvement in customer satisfaction</li>
-                  <li>15-35% increase in online sales</li>
-                </ul>
-              </div>
-            </div>
-            <p className='mt-6 text-[var(--color-text-muted)]'>
-              <strong className='text-[var(--color-text-primary)]'>Average ROI Timeline:</strong> 6-12 months for most implementations
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Competitive Analysis */}
-      <section className='container mx-auto px-4 py-16'>
-        <h4 className='text-2xl font-bold mb-8 text-center bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-blue-light)] bg-clip-text text-transparent'>
-          Why Choose Local Greenville Expertise?
-        </h4>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto'>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-coral)]/30 rounded-xl p-6'>
-            <h5 className='text-xl font-bold text-[var(--color-text-primary)] mb-4 flex items-center gap-2'>
-              <i className='fas fa-times-circle text-[var(--color-accent-coral)]'></i> Generic AI Platforms
-            </h5>
-            <ul className='space-y-2 text-[var(--color-text-muted)]'>
-              <li>No custom training on your data</li>
-              <li>Generic responses that don&apos;t match your brand</li>
-              <li>Limited integration options</li>
-              <li>No local support or training</li>
-              <li>Hidden costs and usage limits</li>
-            </ul>
-          </div>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-green)]/30 rounded-xl p-6'>
-            <h5 className='text-xl font-bold text-[var(--color-text-primary)] mb-4 flex items-center gap-2'>
-              <i className='fas fa-check-circle text-[var(--color-accent-green)]'></i> My Custom Solutions
-            </h5>
-            <ul className='space-y-2 text-[var(--color-text-muted)]'>
-              <li>Trained specifically on your business data</li>
-              <li>Matches your exact brand voice and personality</li>
-              <li>Integrates with your existing tools and workflows</li>
-              <li>Local Upstate area support and training</li>
-              <li>Transparent pricing with no hidden fees</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className='container mx-auto px-4 py-16'>
-        <h4 className='text-2xl font-bold text-center bg-gradient-to-r from-[var(--color-accent-gold)] to-amber-500 bg-clip-text text-transparent mb-6'>
-          Ready to Get Started?
-        </h4>
-        <div className='text-center max-w-2xl mx-auto'>
-          <p className='text-[var(--color-text-muted)] mb-6'>
-            Let&apos;s talk about what custom AI can do for your business. Schedule a free consultation to discuss your needs, timeline, and budget — no commitment required.
-          </p>
-          <a
-            href='https://tidycal.com/adammatthewsteinberger'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='inline-flex items-center gap-2 px-8 py-4 text-lg font-bold bg-gradient-to-r from-[var(--color-accent-gold)] to-amber-500 hover:from-amber-500 hover:to-[var(--color-accent-gold)] rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 no-underline'
-            style={{ color: '#000000' }}
+        <p className="text-lg text-[var(--color-text-muted)] max-w-2xl mx-auto mb-8">
+          Gifted, autistic, in Greenville, SC — 13+ years shipping RAG systems, event-driven
+          microservices, and automation pipelines that the people who inherit them can actually
+          run.
+        </p>
+        <div className="flex flex-wrap gap-3 justify-center mb-6">
+          <Link
+            href="/hire-me"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] font-bold rounded-lg transition-colors no-underline"
+            style={{ color: '#ffffff' }}
           >
-            <i className='fas fa-calendar'></i> Schedule Free Consultation
+            Hire Me
+          </Link>
+          <a
+            href="https://github.com/adammatthewsteinberger/resume/raw/main/adam-steinberger-resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white font-bold rounded-lg transition-colors no-underline"
+          >
+            Download Résumé
           </a>
-          <p className='mt-4 text-sm text-[var(--color-text-muted)]'>
-            Free 30-minute call — no pressure, no commitment
+        </div>
+        <p className="text-sm text-[var(--color-text-muted)] max-w-lg mx-auto">
+          159/159 tests, 85.84% coverage, 5 billable hours — that&apos;s what &ldquo;AI-assisted
+          TDD&rdquo; means when someone who ships owns it.
+        </p>
+      </section>
+
+      {/* What I actually do */}
+      <section className="container mx-auto px-4 py-16">
+        <h2 className="text-2xl font-bold mb-2 text-center text-[var(--color-text-primary)]">
+          What I Actually Do
+        </h2>
+        <p className="text-center text-[var(--color-text-muted)] mb-8">
+          Ten pillars. Pick your altitude.
+        </p>
+        <AudienceToggle>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
+            {pillars.map((pillar) => (
+              <Link
+                key={pillar.title}
+                href={pillar.href}
+                className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] hover:border-[var(--color-accent-blue)]/50 rounded-xl p-4 no-underline transition-colors"
+              >
+                <h3 className="font-bold text-[var(--color-text-primary)] mb-2 text-sm">
+                  {pillar.title}
+                </h3>
+                <ForAudience audience="ceo">
+                  <p className="text-xs text-[var(--color-text-muted)]">{pillar.ceo}</p>
+                </ForAudience>
+                <ForAudience audience="engineer">
+                  <p className="text-xs text-[var(--color-text-muted)]">{pillar.engineer}</p>
+                </ForAudience>
+              </Link>
+            ))}
+          </div>
+        </AudienceToggle>
+      </section>
+
+      {/* Proof */}
+      <section className="container mx-auto px-4 py-16">
+        <h2 className="text-2xl font-bold mb-8 text-center text-[var(--color-text-primary)]">
+          Proof, Not Promises
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+          {proof.map((item) => (
+            <Link
+              key={item.title}
+              href={item.href}
+              className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] hover:border-[var(--color-accent-blue)]/50 rounded-xl p-5 no-underline transition-colors flex flex-col"
+            >
+              <h3 className="font-bold text-[var(--color-text-primary)] mb-2">{item.title}</h3>
+              <p className="text-sm text-[var(--color-accent-green)] font-medium">{item.metric}</p>
+            </Link>
+          ))}
+        </div>
+        <div className="text-center mt-8">
+          <Link href="/work" className="text-[var(--color-accent-blue)] hover:underline font-medium">
+            See all the work →
+          </Link>
+        </div>
+      </section>
+
+      {/* Neurodivergence as an engineering advantage */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="max-w-3xl mx-auto bg-[var(--color-dark-card)] border border-[var(--color-accent-purple)]/30 rounded-xl p-8">
+          <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-4">
+            Autistic, Gifted, and That&apos;s the Point
+          </h2>
+          <p className="text-[var(--color-text-muted)] mb-4 leading-relaxed">
+            I was diagnosed autistic in 2025. It didn&apos;t change how I think — it explained
+            it. The same wiring that makes hyperfocus effortless and small talk exhausting is
+            the reason I catch the one row in a dataset that contradicts the other nine hundred
+            instead of averaging it away. Research on autistic engineers backs this up: a 2024
+            study in <em>Frontiers in Psychology</em> documented an &ldquo;ethical advantage of
+            autistic employees&rdquo; — lower moral disengagement, less susceptibility to the
+            bystander effect. I write everything down for the same reason a RAG pipeline cites
+            its sources — because an auditable trail beats a confident guess.
           </p>
+          <p className="text-[var(--color-text-muted)] mb-6 leading-relaxed">
+            After a year as Senior Azure &amp; AI Development Engineer at The Vizius Group, we
+            agreed the volume of AI work didn&apos;t justify a long-term engagement — so as of
+            September 2026 I&apos;m looking for the next team where AI, automation, and
+            architecture are the whole job, not a side quest.
+          </p>
+          <Link href="/story" className="text-[var(--color-accent-blue)] hover:underline font-medium">
+            Read the full story →
+          </Link>
         </div>
       </section>
 
-      {/* Investment & Pricing Transparency */}
-      <section className='container mx-auto px-4 py-16'>
-        <h4 className='text-2xl font-bold mb-8 text-center bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-blue-light)] bg-clip-text text-transparent'>
-          Transparent Investment &amp; Timeline
-        </h4>
-        <div className='max-w-4xl mx-auto'>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-purple)]/30 rounded-xl p-8'>
-            <h5 className='text-xl font-bold text-[var(--color-text-primary)] mb-6 flex items-center gap-2'>
-              <i className='fas fa-chart-line text-[var(--color-accent-purple)]'></i> Project-Based Pricing
-            </h5>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-              <div>
-                <h6 className='font-bold text-[var(--color-text-primary)] mb-3'>Small Business Solutions</h6>
-                <p className='text-[var(--color-text-muted)] mb-3'>
-                  $5K-15K for essential AI automation and customer support chatbots
-                </p>
-                <ul className='space-y-1 text-[var(--color-text-muted)]'>
-                  <li>Custom chatbot training</li>
-                  <li>Website integration</li>
-                  <li>Basic analytics</li>
-                  <li>30-day support</li>
-                </ul>
-              </div>
-              <div>
-                <h6 className='font-bold text-[var(--color-text-primary)] mb-3'>Enterprise Solutions</h6>
-                <p className='text-[var(--color-text-muted)] mb-3'>
-                  $15K-50K+ for comprehensive AI platforms with advanced features
-                </p>
-                <ul className='space-y-1 text-[var(--color-text-muted)]'>
-                  <li>Multi-platform integration</li>
-                  <li>Advanced RAG systems</li>
-                  <li>Custom API development</li>
-                  <li>Ongoing optimization</li>
-                </ul>
-              </div>
-            </div>
-            <p className='mt-6 text-[var(--color-text-muted)]'>
-              <strong className='text-[var(--color-text-primary)]'>Timeline:</strong> 2-6 weeks depending on complexity.
-              Most projects deliver ROI within 6-12 months.
-            </p>
+      {/* What's buzzing */}
+      {latestPosts.length > 0 && (
+        <section className="container mx-auto px-4 py-16">
+          <h2 className="text-2xl font-bold mb-8 text-center text-[var(--color-text-primary)]">
+            What&apos;s Buzzing in AI
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+            {latestPosts.map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] hover:border-[var(--color-accent-blue)]/50 rounded-xl p-5 no-underline transition-colors flex flex-col"
+              >
+                <span className="text-xs text-[var(--color-accent-blue)] font-medium mb-2">
+                  {post.category}
+                </span>
+                <h3 className="font-bold text-[var(--color-text-primary)] text-sm">{post.title}</h3>
+              </Link>
+            ))}
           </div>
-        </div>
-      </section>
+          <div className="text-center mt-8">
+            <Link href="/blog" className="text-[var(--color-accent-blue)] hover:underline font-medium">
+              Read the blog →
+            </Link>
+          </div>
+        </section>
+      )}
 
-      {/* Risk Mitigation */}
-      <section className='container mx-auto px-4 py-16'>
-        <h4 className='text-2xl font-bold mb-8 text-center bg-gradient-to-r from-[var(--color-accent-green)] to-[var(--color-accent-green-light)] bg-clip-text text-transparent'>
-          Risk-Free Implementation
-        </h4>
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto'>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-green)]/30 rounded-xl p-6 text-center'>
-            <i className='fas fa-shield-alt text-3xl text-[var(--color-accent-green)] mb-4'></i>
-            <h5 className='text-xl font-bold text-[var(--color-text-primary)] mb-2'>Security Guarantee</h5>
-            <p className='text-[var(--color-text-muted)]'>
-              Self-hosted options available. Your data never leaves your
-              control. HIPAA and SOC2 compliance built-in.
-            </p>
-          </div>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-green)]/30 rounded-xl p-6 text-center'>
-            <i className='fas fa-handshake text-3xl text-[var(--color-accent-blue)] mb-4'></i>
-            <h5 className='text-xl font-bold text-[var(--color-text-primary)] mb-2'>Performance Guarantee</h5>
-            <p className='text-[var(--color-text-muted)]'>
-              If your AI solution doesn&apos;t meet agreed performance
-              metrics, I&apos;ll optimize it at no additional cost.
-            </p>
-          </div>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-green)]/30 rounded-xl p-6 text-center'>
-            <i className='fas fa-graduation-cap text-3xl text-[var(--color-accent-gold)] mb-4'></i>
-            <h5 className='text-xl font-bold text-[var(--color-text-primary)] mb-2'>Adoption Guarantee</h5>
-            <p className='text-[var(--color-text-muted)]'>
-              Comprehensive training and support to ensure your team
-              successfully adopts and uses the AI solution.
-            </p>
+      {/* Books */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="max-w-3xl mx-auto bg-[var(--color-dark-card)] border border-[var(--color-accent-gold)]/30 rounded-xl p-8 text-center">
+          <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-4">Books</h2>
+          <p className="text-[var(--color-text-muted)] mb-6">
+            <strong className="text-[var(--color-text-primary)]">Novice to Navigator</strong> —
+            read the first edition free, right here, 33 articles on AI chatbots for business. A
+            second edition is in development.
+          </p>
+          <div className="flex flex-wrap gap-3 justify-center">
+            <Link
+              href="/novice-to-navigator"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[var(--color-accent-gold)] to-amber-500 hover:from-amber-500 hover:to-[var(--color-accent-gold)] font-bold rounded-lg transition-all no-underline"
+              style={{ color: '#000000' }}
+            >
+              Read Free
+            </Link>
+            <Link
+              href="/books"
+              className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[var(--color-accent-gold)] text-[var(--color-accent-gold)] hover:bg-[var(--color-accent-gold)] hover:text-black font-bold rounded-lg transition-colors no-underline"
+            >
+              See Both Books
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* For Employers Section */}
-      <section className='container mx-auto px-4 py-16'>
-        <h4 className='text-2xl font-bold mb-8 text-center bg-gradient-to-r from-[var(--color-accent-purple)] to-[var(--color-accent-purple-light)] bg-clip-text text-transparent'>
-          For Employers: Senior Azure and AI Development Engineer Working Full-Time
-        </h4>
-        <div className='max-w-4xl mx-auto'>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-purple)]/30 rounded-xl p-8'>
-            <h5 className='text-xl font-bold text-[var(--color-text-primary)] mb-4 flex items-center gap-2'>
-              <i className='fas fa-briefcase text-[var(--color-accent-purple)]'></i> Senior Azure and AI Development Engineer
-            </h5>
-            <p className='text-[var(--color-text-muted)] mb-6'>
-              <strong className='text-[var(--color-text-primary)]'>Currently working:</strong> I just accepted a full-time W2 role at <a href="https://www.vizius.com/" className='text-[var(--color-accent-blue)] hover:underline'>The Vizius Group</a>!
+      {/* Open source */}
+      <section className="container mx-auto px-4 py-16">
+        <h2 className="text-2xl font-bold mb-8 text-center text-[var(--color-text-primary)]">
+          Open Source
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
+          <a
+            href="https://github.com/adammatthewsteinberger/claudeloop"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] hover:border-[var(--color-accent-blue)]/50 rounded-xl p-5 no-underline transition-colors"
+          >
+            <h3 className="font-bold text-[var(--color-text-primary)] mb-2">
+              claudeloop &amp; the *loop family
+            </h3>
+            <p className="text-sm text-[var(--color-text-muted)]">
+              Onion-architected, autonomous AI-agent session runners — 5 packages on PyPI.
             </p>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-              <div>
-                <h6 className='font-bold text-[var(--color-text-primary)] mb-3'>Technical Skills</h6>
-                <ul className='space-y-2 text-[var(--color-text-muted)]'>
-                  <li>Production RAG systems</li>
-                  <li>LLM integration &amp; fine-tuning</li>
-                  <li>Vector database architecture</li>
-                  <li>AI/ML pipeline development</li>
-                  <li>Cloud infrastructure (AWS/Azure/GCP)</li>
-                </ul>
-              </div>
-              <div>
-                <h6 className='font-bold text-[var(--color-text-primary)] mb-3'>Business Value</h6>
-                <ul className='space-y-2 text-[var(--color-text-muted)]'>
-                  <li>12+ years software engineering</li>
-                  <li>Enterprise security expertise</li>
-                  <li>Local Upstate Region knowledge</li>
-                  <li>Proven ROI delivery</li>
-                  <li>Team leadership experience</li>
-                </ul>
-              </div>
-            </div>
-            <p className='mt-6 text-[var(--color-text-muted)]'>
-              <strong className='text-[var(--color-text-primary)]'>Interested in learning more?</strong> Let&apos;s chat about how my skills have worked so well for this new team I&apos;ve just joined!
+          </a>
+          <a
+            href="https://github.com/TheViziusGroup/vibe-engineering-skills"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] hover:border-[var(--color-accent-blue)]/50 rounded-xl p-5 no-underline transition-colors"
+          >
+            <h3 className="font-bold text-[var(--color-text-primary)] mb-2">
+              vibe-engineering-skills
+            </h3>
+            <p className="text-sm text-[var(--color-text-muted)]">
+              18 plugins, 71 evidence-grounded practitioner references, MIT licensed.
             </p>
-          </div>
+          </a>
+          <a
+            href="https://pypi.org/project/azure-bootstrap/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] hover:border-[var(--color-accent-blue)]/50 rounded-xl p-5 no-underline transition-colors"
+          >
+            <h3 className="font-bold text-[var(--color-text-primary)] mb-2">azure-bootstrap</h3>
+            <p className="text-sm text-[var(--color-text-muted)]">
+              v3, used across 17+ Azure Functions repos. Solves the logging↔config bootstrap
+              paradox.
+            </p>
+          </a>
+        </div>
+        <div className="text-center mt-8">
+          <Link href="/open-source" className="text-[var(--color-accent-blue)] hover:underline font-medium">
+            See everything I&apos;ve open-sourced →
+          </Link>
         </div>
       </section>
 
-      {/* Multiple CTAs */}
-      <MultipleCTAs />
-
-      {/* Trust Signals */}
-      <section className='container mx-auto px-4 py-16'>
-        <h4 className='text-2xl font-bold mb-8 text-center bg-gradient-to-r from-[var(--color-accent-gold)] to-amber-500 bg-clip-text text-transparent'>
-          Why Greenville Businesses Choose Me
-        </h4>
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto'>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-gold)]/30 rounded-xl p-6 text-center'>
-            <i className='fas fa-clock text-3xl text-[var(--color-accent-gold)] mb-4'></i>
-            <h5 className='text-lg font-bold text-[var(--color-text-primary)] mb-2'>Fast Implementation</h5>
-            <p className='text-[var(--color-text-muted)] text-sm'>2-6 weeks from concept to deployment</p>
-          </div>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-purple)]/30 rounded-xl p-6 text-center'>
-            <i className='fas fa-shield-alt text-3xl text-[var(--color-accent-purple)] mb-4'></i>
-            <h5 className='text-lg font-bold text-[var(--color-text-primary)] mb-2'>Security First</h5>
-            <p className='text-[var(--color-text-muted)] text-sm'>HIPAA compliant, SOC2 ready</p>
-          </div>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-gold)]/30 rounded-xl p-6 text-center'>
-            <i className='fas fa-map-marker-alt text-3xl text-[var(--color-accent-coral)] mb-4'></i>
-            <h5 className='text-lg font-bold text-[var(--color-text-primary)] mb-2'>Local Support</h5>
-            <p className='text-[var(--color-text-muted)] text-sm'>Upstate expertise &amp; availability</p>
-          </div>
-          <div className='bg-[var(--color-dark-card)] border border-[var(--color-accent-purple)]/30 rounded-xl p-6 text-center'>
-            <i className='fas fa-chart-line text-3xl text-[var(--color-accent-green)] mb-4'></i>
-            <h5 className='text-lg font-bold text-[var(--color-text-primary)] mb-2'>Proven ROI</h5>
-            <p className='text-[var(--color-text-muted)] text-sm'>6-12 month average payback period</p>
-          </div>
+      {/* Final CTA */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="max-w-2xl mx-auto text-center bg-gradient-to-br from-[var(--color-accent-blue)]/10 to-[var(--color-accent-green)]/10 border border-[var(--color-accent-blue)]/30 rounded-xl p-10">
+          <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-3">
+            Looking For
+          </h2>
+          <p className="text-[var(--color-text-muted)] mb-8">
+            Staff Software Architect · AI Automation Engineer · Staff/Principal AI Engineer ·
+            Solutions Architect · Platform/Automation Engineer — Greenville-remote or US-remote,
+            W2 preferred, contract-to-hire OK.
+          </p>
+          <Link
+            href="/hire-me"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] font-bold rounded-lg transition-colors no-underline"
+            style={{ color: '#ffffff' }}
+          >
+            Everything a Recruiter Needs →
+          </Link>
         </div>
       </section>
     </>
