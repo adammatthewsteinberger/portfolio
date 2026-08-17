@@ -57,6 +57,28 @@ export default function NoviceToNavigator() {
           <div className="bg-[var(--color-dark-card)] border border-[var(--color-accent-coral)]/30 rounded-xl p-6 shadow-lg text-[var(--color-text-muted)]">
             A comprehensive 33-article series designed to take you from complete beginner to confident decision-maker. Learn what AI chatbots are, how they work, and what to look for when hiring an expert to build your custom solution. No technical background required.
           </div>
+          <div className="mt-4 bg-[var(--color-accent-gold)]/10 border border-[var(--color-accent-gold)]/30 rounded-xl p-4 text-sm text-[var(--color-text-muted)] flex flex-wrap items-center justify-center gap-3">
+            <span>
+              📖 A <strong className="text-[var(--color-text-primary)]">second edition</strong> is in
+              development, with real case studies and named research.
+            </span>
+            <a
+              href="https://eepurl.com/jiYXCQ"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--color-accent-gold)] hover:underline font-semibold whitespace-nowrap"
+            >
+              Get notified →
+            </a>
+          </div>
+          <div className="mt-4">
+            <Link
+              href="/novice-to-navigator/readiness"
+              className="inline-flex items-center gap-2 px-5 py-2.5 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white rounded-lg transition-colors no-underline text-sm font-semibold"
+            >
+              <i className="fas fa-clipboard-check"></i> Take the Chatbot Readiness Quiz
+            </Link>
+          </div>
         </div>
       </section>
 

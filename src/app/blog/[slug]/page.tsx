@@ -47,15 +47,7 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
       title: post.title,
       description: post.description,
       url: `https://hire.adam.matthewsteinberger.com/blog/${slug}`,
-      siteName: 'Hire Adam Matthew Steinberger - Upstate South Carolina AI Expert',
-      images: [
-        {
-          url: '/images/social-preview.png',
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
+      siteName: 'Adam Matthew Steinberger',
       locale: 'en_US',
       type: 'article',
       publishedTime: post.publishedDate,
@@ -66,7 +58,6 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
       card: 'summary_large_image',
       title: post.title,
       description: post.description,
-      images: ['/images/social-preview.png'],
     },
   };
 }
@@ -79,8 +70,24 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.description,
+    datePublished: post.publishedDate,
+    author: { '@type': 'Person', name: post.author, url: 'https://hire.adam.matthewsteinberger.com/story' },
+    publisher: { '@type': 'Organization', name: 'Adam Matthew Steinberger LLC' },
+    mainEntityOfPage: `https://hire.adam.matthewsteinberger.com/blog/${slug}`,
+    keywords: post.tags.join(', '),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero Section */}
       <section className="container mx-auto px-4 text-center pt-8 pb-16">
         <div className="max-w-4xl mx-auto">

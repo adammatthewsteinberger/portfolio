@@ -1,178 +1,75 @@
-# Hire Adam Matthew Steinberger - AI Development Portfolio
+# Hire Adam Matthew Steinberger
 
-A comprehensive Next.js portfolio website for Adam Matthew Steinberger, a Senior Azure and AI Development Engineer specializing in AI development and custom chatbot solutions for Greenville businesses.
+The personal "hire me" site for Adam Matthew Steinberger — Staff Software Architect & AI Automation Engineer, based in Greenville, SC. It's a portfolio, a blog, a 33-article free educational series on AI chatbots for business, and a small Claude-powered "ask my résumé" widget, all in one Next.js app.
 
-## 🎯 Business Purpose
+Live at [hire.adam.matthewsteinberger.com](https://hire.adam.matthewsteinberger.com).
 
-This website serves as a professional portfolio and lead generation platform for AI development services, specifically targeting businesses in the Upstate Region of South Carolina. The site addresses the "AI Implementation Crisis" where 73% of businesses fail at AI adoption due to generic solutions, security concerns, and poor ROI.
+> **Working on this repo with an AI coding assistant?** Read [`AGENTS.md`](./AGENTS.md) first — it's the canonical, detailed guide (content schemas, the RAG bot's architecture, coverage requirements, conventions). `CLAUDE.md`, `WARP.md`, `GEMINI.md`, `.agent`, and `.agents` are all symlinks to it.
 
-## 🏗️ Technical Architecture
+## Tech stack
 
-### Core Technologies
+- **Framework**: [Next.js](https://nextjs.org) 16 (App Router), React 19, TypeScript 5 (strict mode)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com), theme tokens defined as CSS custom properties in `src/app/globals.css` — there's no `tailwind.config.js`
+- **Content**: Markdown files with `gray-matter` frontmatter, rendered via `react-markdown`
+- **RAG bot**: `@anthropic-ai/sdk` (Claude) + `minisearch` for lexical retrieval over the site's own content
+- **Testing**: Vitest + React Testing Library (100% coverage enforced) and Playwright for e2e
+- **Deployment**: [Netlify](https://netlify.com), via `@netlify/plugin-nextjs`
 
-- **Framework**: Next.js 15.3.5 with App Router
-- **Language**: TypeScript 5
-- **Styling**: Bootstrap 5 + Custom CSS
-- **Markdown Processing**: React Markdown with Gray Matter
-- **Deployment**: Netlify with Next.js plugin
-- **Analytics**: Google Analytics (G-P4CX07CNRW)
+## Getting started
 
-### Key Dependencies
+```sh
+npm install
+npm run dev
+```
 
-- `react-markdown`: Markdown rendering for educational content
-- `gray-matter`: Front matter parsing for article metadata
-- `rehype-highlight`: Syntax highlighting for code blocks
-- `remark-gfm`: GitHub Flavored Markdown support
+Open [http://localhost:3000](http://localhost:3000). The dev server automatically rebuilds the RAG bot's knowledge base first (`predev` → `scripts/build-kb.ts`) — no extra setup needed to browse the site locally. The "Ask my résumé" widget itself stays hidden unless `ASK_BOT_ENABLED=true` and `ANTHROPIC_API_KEY` are set in your environment; everything else works with no environment variables at all.
 
-## 📁 Project Structure
+## Scripts
+
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Start the dev server (Turbopack) |
+| `npm run build` | Production build |
+| `npm start` | Serve the production build |
+| `npm run lint` / `lint:fix` | ESLint |
+| `npm run typecheck` | `tsc --noEmit` |
+| `npm test` | Run the Vitest suite |
+| `npm run test:coverage` | Run tests with coverage (must stay at 100%) |
+| `npm run test:e2e` | Run the Playwright e2e suite |
+| `npm run build-kb` | Manually rebuild `src/generated/kb.json`, the RAG bot's knowledge base |
+| `npm run generate-ebook` | Rebuild the Novice to Navigator PDF/EPUB from its source articles |
+
+## Project structure
 
 ```
 src/
-├── app/                          # Next.js App Router pages
-│   ├── layout.tsx               # Root layout with metadata and analytics
-│   ├── page.tsx                 # Homepage with business value proposition
-│   ├── services/                # Service pages directory
-│   │   ├── page.tsx            # Services overview page
-│   │   └── [service]/          # Individual service pages (50+ services)
-│   ├── novice-to-navigator/     # Educational content section
-│   │   ├── page.tsx            # Learning hub overview
-│   │   └── [slug]/             # Individual article pages (33 articles)
-│   └── sitemap/                # Sitemap page
-├── components/
-│   └── layout/
-│       ├── Header.tsx          # Professional header with contact info
-│       └── Footer.tsx          # Footer with links and trust badges
-├── content/
-│   └── articles/               # Markdown files for educational content
-├── data/
-│   └── articles.ts             # Article metadata and structure
-├── lib/
-│   ├── markdownUtils.ts        # Markdown processing utilities
-│   └── articleUtils.ts         # Article management utilities
-└── globals.css                 # Global styles and custom CSS
+├── app/            # Next.js App Router pages and API routes
+├── components/     # Shared React components
+├── content/        # Markdown content: blog/, projects/, services/, articles/
+├── data/           # Content metadata arrays + the RAG bot's curated source text
+├── lib/            # Content utilities, analytics, RAG bot retrieval/rate-limiting
+├── hooks/          # Shared React hooks
+└── generated/      # Build-time generated files (gitignored) — the RAG bot's kb.json
 ```
 
-## 🎨 Design & UX Features
+See [`AGENTS.md`](./AGENTS.md) for the full breakdown, including the exact frontmatter schema each content type expects.
 
-### Visual Design
+## Adding content
 
-- **Professional Header**: Profile image, contact information, and social links
-- **Bootstrap-Based**: Responsive design with custom color schemes
-- **Trust Indicators**: SSL badges, live support indicators
-- **Call-to-Action Focused**: Multiple CTAs for consultation and employment
+1. Add a `.md` file to the relevant `src/content/{blog,projects,services,articles}/` directory with the frontmatter fields documented in `AGENTS.md`.
+2. For projects and articles, also add a metadata entry to `src/data/projects.ts` or `src/data/articles.ts` — those two content types are metadata-array-driven rather than directory-scanned.
+3. Run `npm run build` locally to confirm the new page renders and the sitemap/RSS feed pick it up.
 
-### Content Organization
+Metrics and claims in case studies and blog posts should be traceable to a real source (résumé, LinkedIn, or the author's own record) — don't round up or invent numbers.
 
-- **Homepage**: Problem-solution framework with credibility building
-- **Services Section**: 50+ specialized service pages organized by:
-  - Location-based services (Greenville, Greer, Simpsonville, Spartanburg)
-  - Industry-specific solutions (Healthcare, Finance, Real Estate, etc.)
-  - Technical services (Custom Chatbots, LLM Development, RAG, etc.)
-- **Educational Hub**: "Novice to Navigator" - 33-article learning series
+## The RAG bot
 
-## 📚 Content Strategy
+The homepage includes an "Ask my résumé" widget, backed by `POST /api/ask` — a streaming Claude endpoint that answers questions using only content retrieved from this site (never invented facts, never outside knowledge). It's feature-flagged off by default; see [`AGENTS.md`](./AGENTS.md#the-rag-bot-apiask) for the full architecture, guardrails, and required environment variables.
 
-### Educational Content ("Novice to Navigator")
+## Deployment
 
-A comprehensive 33-article series organized into 7 progressive sections:
+Deploys to Netlify. Build command is `npm run build`, publish directory is `.next`, configured in `netlify.toml` via `@netlify/plugin-nextjs`. Set `ANTHROPIC_API_KEY` and `ASK_BOT_ENABLED=true` in the Netlify dashboard to enable the RAG bot; `GOOGLE_SITE_VERIFICATION` is optional for Search Console.
 
-1. **Understanding the Basics of AI** (5 articles)
-2. **Understanding Chatbots** (5 articles)
-3. **Advanced AI Concepts** (5 articles)
-4. **Building Custom Solutions** (5 articles)
-5. **Quality and Safety** (4 articles)
-6. **Business Applications** (5 articles)
-7. **Implementation & Hiring** (4 articles)
+## License
 
-Each article includes:
-
-- Markdown content with syntax highlighting
-- Audio versions (WAV files)
-- Navigation between articles
-- Multiple CTAs for business consultation
-
-### Service Pages
-
-50+ specialized service pages covering:
-
-- **Location-based**: Greenville, Greer, Simpsonville, Spartanburg AI development
-- **Industry-specific**: Healthcare, Finance, Real Estate, Restaurants, Law Firms
-- **Technical**: Custom Chatbots, ChatGPT, Claude, Gemini, RAG, LLM Development
-- **Specialized**: Christian organizations, nonprofits, startups, enterprise
-
-## 🔧 Technical Features
-
-### SEO & Performance
-
-- **Comprehensive Sitemap**: Both old (.html) and new URLs for SEO continuity
-- **Meta Tags**: Detailed metadata for all pages
-- **Google Analytics**: Full tracking implementation
-- **Social Media**: Open Graph and Twitter Card optimization
-
-### URL Structure & Redirects
-
-- **Legacy Support**: Complete redirect system for old .html URLs
-- **Clean URLs**: Modern Next.js routing structure
-- **SEO-Friendly**: Descriptive URLs for all service pages
-
-### Content Management
-
-- **Markdown-Based**: Educational content in Markdown files
-- **Dynamic Routing**: Service pages and articles use dynamic routes
-- **Metadata Management**: Structured article data with sections and ordering
-
-## 🚀 Deployment
-
-### Netlify Configuration
-
-```toml
-[build]
-  command = "npm run build"
-  publish = ".next"
-
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
-```
-
-### Build Process
-
-- **Development**: `npm run dev` (with Turbopack)
-- **Production**: `npm run build`
-- **Linting**: `npm run lint`
-
-## 📊 Analytics & Tracking
-
-- **Google Analytics**: G-P4CX07CNRW
-- **Conversion Tracking**: Consultation scheduling and employment inquiries
-- **Content Analytics**: Article engagement and service page performance
-
-## 🎯 Business Goals
-
-1. **Lead Generation**: Convert visitors into consultation bookings
-2. **Employment Opportunities**: Attract job offers from companies
-3. **Educational Authority**: Establish expertise through comprehensive content
-4. **Local SEO**: Dominate Greenville AI development searches
-5. **Trust Building**: Demonstrate expertise and credibility
-
-## 🔗 Key External Integrations
-
-- **TidyCal**: Consultation scheduling (https://tidycal.com/adammatthewsteinberger)
-- **Social Media**: LinkedIn, GitHub, X/Twitter
-- **Contact**: adam@matthewsteinberger.com
-
-## 📈 Performance Optimizations
-
-- **Image Optimization**: Next.js Image component with priority loading
-- **Font Optimization**: Inter font with subset loading
-- **Code Splitting**: Automatic route-based code splitting
-- **Static Generation**: Pre-rendered pages for fast loading
-- **CDN**: Netlify's global CDN for fast delivery
-
-## 🛡️ Security & Compliance
-
-- **SSL**: Full HTTPS implementation
-- **Data Protection**: No sensitive data collection
-- **Privacy**: Minimal tracking, GDPR compliant
-- **Trust Indicators**: SSL badges and security messaging
-
-This codebase represents a sophisticated lead generation and educational platform designed to establish Adam Matthew Steinberger as the premier AI development expert in the Upstate region, with comprehensive content, technical excellence, and strong conversion optimization.
+Private, all rights reserved — this is a personal site, not an open-source project. (See [`/open-source`](https://hire.adam.matthewsteinberger.com/open-source) on the live site for Adam's actual MIT-licensed packages.)

@@ -13,9 +13,33 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Book',
+      name: 'Novice to Navigator',
+      description: 'Your guide to AI chatbots for business. Second edition in development.',
+      author: { '@type': 'Person', name: 'Adam Matthew Steinberger' },
+      url: 'https://hire.adam.matthewsteinberger.com/books',
+    },
+    {
+      '@type': 'Book',
+      name: 'Engineering Influence',
+      description: 'A Playbook for the Remnant to Bring Christian Culture Back to America. In development.',
+      author: { '@type': 'Person', name: 'Adam Matthew Steinberger' },
+      url: 'https://hire.adam.matthewsteinberger.com/books',
+    },
+  ],
+};
+
 export default function BooksPage() {
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <section className="container mx-auto px-4 pt-8 pb-12 text-center">
         <h1 className="text-4xl md:text-5xl font-bold text-[var(--color-text-primary)] mb-4">
           Books
@@ -55,7 +79,7 @@ export default function BooksPage() {
                     Read the First Edition Free
                   </Link>
                   <a
-                    href="http://eepurl.com/jiYXCQ"
+                    href="https://eepurl.com/jiYXCQ"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-5 py-2.5 border-2 border-[var(--color-accent-gold)] text-[var(--color-accent-gold)] hover:bg-[var(--color-accent-gold)] hover:text-black font-bold rounded-lg transition-colors no-underline text-sm"
@@ -83,7 +107,7 @@ export default function BooksPage() {
               names that plainly rather than hiding it. Currently in development.
             </p>
             <a
-              href="http://eepurl.com/jiYXCQ"
+              href="https://eepurl.com/jiYXCQ"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white font-bold rounded-lg transition-colors no-underline text-sm"

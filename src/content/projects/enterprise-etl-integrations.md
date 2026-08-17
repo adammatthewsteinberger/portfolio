@@ -18,7 +18,7 @@ duration: 18 months
 status: completed
 challenge: Lima One Capital needed to connect their disparate enterprise systems to enable seamless data flow and eliminate manual data entry across their organization. The company was operating with siloed systems including HubSpot for marketing, SharePoint for document management, Snowflake for analytics, and Salesforce for customer relationship management, resulting in data inconsistencies and operational inefficiencies.
 solution: Built multiple automated ETL pipelines and API integrations connecting HubSpot, SharePoint, Snowflake, and Salesforce with other third-party data providers. Implemented robust data transformation processes, error handling, and monitoring systems to ensure reliable, real-time data synchronization across all enterprise platforms while maintaining data quality and integrity.
-results: Successfully automated data flow across all major enterprise systems, eliminating manual data entry and reducing data inconsistencies by 95%. The integrated system now provides real-time visibility into customer journeys, marketing performance, and business analytics while supporting automated workflows that have improved operational efficiency and decision-making capabilities.
+results: Successfully automated data flow across all major enterprise systems, eliminating manual data entry and substantially reducing data inconsistencies. The integrated system now provides real-time visibility into customer journeys, marketing performance, and business analytics while supporting automated workflows that have improved operational efficiency and decision-making capabilities.
 techStack: Built using Python for ETL development, REST APIs for system connectivity, Apache Airflow for workflow orchestration, SQL for data transformation, cloud infrastructure for scalable processing, and comprehensive monitoring tools for system reliability. Includes custom connectors for proprietary systems and data validation frameworks.
 architecture: Implemented event-driven ETL architecture with real-time and batch processing capabilities, centralized data transformation layer, comprehensive error handling and retry mechanisms, data quality validation pipelines, and scalable cloud infrastructure supporting high-volume data processing across multiple enterprise platforms.
 lessons: Enterprise data integration requires careful attention to data quality, transformation logic, and system reliability. Successful ETL implementations need robust monitoring, comprehensive error handling, and clear data governance policies to maintain system integrity and business value over time.
@@ -78,21 +78,21 @@ Designed and implemented a robust data integration platform featuring:
 ## Results and Impact
 
 ### Technical Achievements
-- **95% Data Consistency**: Eliminated data discrepancies across enterprise systems
-- **Real-Time Synchronization**: Sub-minute data updates across critical business systems
-- **Automated Processing**: 100% automation of previously manual data entry processes
-- **Scalable Architecture**: Infrastructure supporting 10x data volume growth
-- **System Reliability**: 99.9% uptime with comprehensive monitoring and alerting
+- **Consistent Data Across Systems**: Eliminated the discrepancies that came from four teams maintaining four separate copies of the same customer record
+- **Near-Real-Time Synchronization**: Data updates propagate across critical business systems in minutes, not the next day's batch job
+- **Automated Processing**: Removed manual data entry from the pipelines this project covered
+- **Scalable Architecture**: Infrastructure designed to absorb data volume growth without a redesign
+- **System Reliability**: Comprehensive monitoring and alerting across every pipeline, so failures surface immediately instead of being discovered downstream
 
 ### Business Impact
-- **Operational Efficiency**: 70% reduction in manual data entry and validation tasks
+- **Operational Efficiency**: Meaningful reduction in manual data entry and validation work across marketing, sales, and finance
 - **Decision Making**: Real-time business intelligence enabling faster, data-driven decisions
 - **Customer Experience**: Unified customer view improving service quality and response times
 - **Compliance Assurance**: Automated audit trails and data lineage for regulatory requirements
-- **Cost Reduction**: Significant savings from eliminated manual processes and improved accuracy
+- **Cost Reduction**: Savings from eliminated manual processes and improved accuracy
 
 ### Data Quality Improvements
-- **Error Reduction**: 95% decrease in data entry errors and inconsistencies
+- **Error Reduction**: A material drop in data entry errors and inconsistencies once entry was automated instead of manual
 - **Data Freshness**: Real-time data availability for critical business operations
 - **Audit Capabilities**: Complete data lineage and transformation tracking
 - **Validation Framework**: Automated data quality checking and exception handling

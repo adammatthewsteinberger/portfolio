@@ -62,8 +62,22 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     .filter(p => p.category === projectData.category && p.slug !== slug)
     .slice(0, 2);
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: project.title,
+    description: project.description,
+    creator: { '@type': 'Person', name: 'Adam Matthew Steinberger', url: 'https://hire.adam.matthewsteinberger.com/story' },
+    about: projectData.category,
+    keywords: (project.technologies || []).join(', '),
+  };
+
   return (
     <div className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero Section */}
       <section className="pt-8 pb-16">
         <div className="container mx-auto px-4">

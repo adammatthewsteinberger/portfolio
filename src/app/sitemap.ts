@@ -2,122 +2,61 @@ import { MetadataRoute } from 'next';
 import { services } from '@/data/services';
 import { articles } from '@/data/articles';
 import { projects } from '@/data/projects';
-import fs from 'fs';
-import path from 'path';
+import { getAllBlogPosts } from '@/lib/blogUtils';
 
 const DOMAIN = 'https://hire.adam.matthewsteinberger.com';
 
-/**
- * Get blog post slugs from the blog content directory
- */
-function getBlogSlugs(): string[] {
-  try {
-    const blogDir = path.join(process.cwd(), 'src/content/blog');
-    if (!fs.existsSync(blogDir)) {
-      return [];
-    }
-    const files = fs.readdirSync(blogDir);
-    return files
-      .filter((file) => file.endsWith('.md'))
-      .map((file) => file.replace('.md', ''));
-  } catch {
-    return [];
-  }
-}
-
 export default function sitemap(): MetadataRoute.Sitemap {
-  const today = new Date();
+  // A fallback for pages whose content has no per-item date of its own
+  // (e.g. static marketing pages). Real content below uses its own date.
+  const buildDate = new Date();
 
-  // Static pages
   const staticPages: MetadataRoute.Sitemap = [
-    {
-      url: `${DOMAIN}/`,
-      lastModified: today,
-      changeFrequency: 'weekly',
-      priority: 1.0,
-    },
-    {
-      url: `${DOMAIN}/about`,
-      lastModified: today,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${DOMAIN}/services`,
-      lastModified: today,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${DOMAIN}/blog`,
-      lastModified: today,
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${DOMAIN}/novice-to-navigator`,
-      lastModified: today,
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${DOMAIN}/projects`,
-      lastModified: today,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${DOMAIN}/contact`,
-      lastModified: today,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${DOMAIN}/site-directory`,
-      lastModified: today,
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
+    { url: `${DOMAIN}/`, lastModified: buildDate, changeFrequency: 'weekly', priority: 1.0 },
+    { url: `${DOMAIN}/hire-me`, lastModified: buildDate, changeFrequency: 'weekly', priority: 1.0 },
+    { url: `${DOMAIN}/story`, lastModified: buildDate, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${DOMAIN}/expertise`, lastModified: buildDate, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${DOMAIN}/work`, lastModified: buildDate, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${DOMAIN}/open-source`, lastModified: buildDate, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${DOMAIN}/writing`, lastModified: buildDate, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${DOMAIN}/books`, lastModified: buildDate, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${DOMAIN}/blog`, lastModified: buildDate, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${DOMAIN}/novice-to-navigator`, lastModified: buildDate, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${DOMAIN}/services`, lastModified: buildDate, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${DOMAIN}/contact`, lastModified: buildDate, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${DOMAIN}/privacy`, lastModified: buildDate, changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${DOMAIN}/site-directory`, lastModified: buildDate, changeFrequency: 'monthly', priority: 0.5 },
   ];
 
-  // Service pages
   const servicePages: MetadataRoute.Sitemap = services.map((service) => ({
     url: `${DOMAIN}/services/${service.slug}`,
-    lastModified: today,
-    changeFrequency: 'monthly' as const,
-    priority: 0.9,
-  }));
-
-  // Article pages
-  const articlePages: MetadataRoute.Sitemap = articles.map((article) => ({
-    url: `${DOMAIN}/novice-to-navigator/${article.slug}`,
-    lastModified: today,
+    lastModified: buildDate,
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));
 
-  // Project pages
+  const articlePages: MetadataRoute.Sitemap = articles.map((article) => ({
+    url: `${DOMAIN}/novice-to-navigator/${article.slug}`,
+    lastModified: buildDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
   const projectPages: MetadataRoute.Sitemap = projects.map((project) => ({
-    url: `${DOMAIN}/projects/${project.slug}`,
-    lastModified: today,
+    url: `${DOMAIN}/work/${project.slug}`,
+    lastModified: buildDate,
     changeFrequency: 'monthly' as const,
     priority: 0.8,
   }));
 
-  // Blog pages
-  const blogSlugs = getBlogSlugs();
-  const blogPages: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
-    url: `${DOMAIN}/blog/${slug}`,
-    lastModified: today,
+  // Blog pages use each post's own publishedDate as lastModified — a real
+  // freshness signal instead of "today" for every URL on every build.
+  const blogPages: MetadataRoute.Sitemap = getAllBlogPosts().map((post) => ({
+    url: `${DOMAIN}/blog/${post.slug}`,
+    lastModified: new Date(post.publishedDate),
     changeFrequency: 'monthly' as const,
-    priority: 0.7,
+    priority: post.featured ? 0.8 : 0.6,
   }));
 
-  return [
-    ...staticPages,
-    ...servicePages,
-    ...articlePages,
-    ...projectPages,
-    ...blogPages,
-  ];
+  return [...staticPages, ...servicePages, ...articlePages, ...projectPages, ...blogPages];
 }

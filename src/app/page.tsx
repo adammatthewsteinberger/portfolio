@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { AudienceToggle, ForAudience } from '@/components/AudienceToggle';
+import { AskAdam } from '@/components/AskAdam';
 import { getAllBlogPosts } from '@/lib/blogUtils';
 
 export const metadata: Metadata = {
@@ -82,6 +83,7 @@ export default function Home() {
           >
             Download Résumé
           </a>
+          <AskAdam />
         </div>
         <p className="text-sm text-[var(--color-text-muted)] max-w-lg mx-auto">
           159/159 tests, 85.84% coverage, 5 billable hours — that&apos;s what &ldquo;AI-assisted

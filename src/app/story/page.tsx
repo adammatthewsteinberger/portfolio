@@ -31,9 +31,30 @@ const timeline = [
   { year: 'Sep 2026', label: 'Available — Staff Software Architect & AI Automation Engineer' },
 ];
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  mainEntity: {
+    '@type': 'Person',
+    name: 'Adam Matthew Steinberger',
+    jobTitle: 'Staff Software Architect & AI Automation Engineer',
+    url: 'https://hire.adam.matthewsteinberger.com/story',
+    image: 'https://hire.adam.matthewsteinberger.com/images/profile-picture.jpg',
+    address: { '@type': 'PostalAddress', addressLocality: 'Greenville', addressRegion: 'SC', addressCountry: 'US' },
+    sameAs: [
+      'https://www.linkedin.com/in/adammatthewsteinberger/',
+      'https://github.com/adammatthewsteinberger',
+    ],
+  },
+};
+
 export default function StoryPage() {
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <section className="container mx-auto px-4 pt-8 pb-16">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <Image

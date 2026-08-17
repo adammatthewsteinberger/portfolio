@@ -75,6 +75,8 @@ Object.defineProperty(window, 'localStorage', { value: localStorageMock });
 
 // Mock scrollTo
 window.scrollTo = vi.fn();
+// jsdom doesn't implement Element.scrollTo at all
+Element.prototype.scrollTo = vi.fn();
 
 // Mock gtag for Google Analytics
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
