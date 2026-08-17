@@ -160,18 +160,9 @@ export default function StoryPage() {
               a Messianic Jewish believer — both are part of who I am, neither is the subject of
               this page. If you want the fuller version of my story, including the parts about
               faith and recovery, it&apos;s in{' '}
-              <Link href="/books/engineering-influence" className="text-[var(--color-accent-blue)] hover:underline">
+              <Link href="/books" className="text-[var(--color-accent-blue)] hover:underline">
                 the book I wrote
-              </Link>{' '}
-              and on{' '}
-              <a
-                href="https://theautisticapologist.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[var(--color-accent-blue)] hover:underline"
-              >
-                The Autistic Apologist
-              </a>
+              </Link>
               .
             </p>
           </div>

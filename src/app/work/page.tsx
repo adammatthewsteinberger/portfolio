@@ -143,51 +143,6 @@ export default function WorkPage() {
         </div>
       </section>
 
-      {/* Side Projects */}
-      <section className="container mx-auto px-4 py-16">
-        <h3 className="text-center text-lg text-[var(--color-text-muted)] mb-6">Side Projects</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-          <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-lg p-4">
-            <h5 className="font-bold text-[var(--color-text-primary)] mb-1">
-              <a
-                href="https://humbleberger.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[var(--color-accent-blue)] transition-colors no-underline"
-              >
-                Humbleberger Ministries <i className="fas fa-external-link-alt text-xs ml-1"></i>
-              </a>
-            </h5>
-            <p className="text-sm text-[var(--color-text-muted)]">Messianic ministry and outreach organization</p>
-          </div>
-          <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-lg p-4">
-            <h5 className="font-bold text-[var(--color-text-primary)] mb-1">
-              <a
-                href="https://messiahfirst.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[var(--color-accent-blue)] transition-colors no-underline"
-              >
-                Messiah First for America PAC <i className="fas fa-external-link-alt text-xs ml-1"></i>
-              </a>
-            </h5>
-            <p className="text-sm text-[var(--color-text-muted)]">Political action committee</p>
-          </div>
-          <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-lg p-4">
-            <h5 className="font-bold text-[var(--color-text-primary)] mb-1">
-              <a
-                href="https://theautisticapologist.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[var(--color-accent-blue)] transition-colors no-underline"
-              >
-                The Autistic Apologist <i className="fas fa-external-link-alt text-xs ml-1"></i>
-              </a>
-            </h5>
-            <p className="text-sm text-[var(--color-text-muted)]">Messianic apologetics, philosophy and science</p>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

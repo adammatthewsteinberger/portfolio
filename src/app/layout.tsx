@@ -117,12 +117,16 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.google-analytics.com" />
         {/* Font Awesome is loaded non-blocking: the browser fetches it at
             print-media priority (so it doesn't block first paint) and the
-            inline script below flips it to all-media once it has arrived. */}
+            inline script below flips it to all-media once it has arrived.
+            suppressHydrationWarning is required here — that flip runs before
+            React hydrates, so the client's `media` attribute intentionally
+            differs from the server-rendered one. */}
         <link
           rel="stylesheet"
           href="/font-awesome.min.css"
           media="print"
           data-lazy-stylesheet="true"
+          suppressHydrationWarning
         />
         <script
           // Tiny inline script (no external round-trip): flips the lazy
