@@ -49,7 +49,36 @@ export function useConsent() {
     return true;
   };
 
+  // A hoisted function declaration (rather than a const arrow function) so it
+  // can be referenced from the mount effect above regardless of source order.
+  // This hook is 'use client'-only and every call site is inside an effect
+  // or event handler, so `window` is always defined here — no SSR guard
+  // needed (see the equivalent note in src/lib/analytics.ts).
+  function updateGtagConsent(newConsent: ConsentState, attempt = 0) {
+    // Ensure gtag is available. Cap retries at ~5s total (25 * 200ms) so a
+    // blocked/failed analytics load (adblocker, offline) doesn't leave a
+    // recursive timer running forever.
+    if (!window.gtag) {
+      if (attempt >= 25) return;
+      setTimeout(() => updateGtagConsent(newConsent, attempt + 1), 200);
+      return;
+    }
+
+    window.gtag('consent', 'update', {
+      ad_storage: newConsent.ad_storage,
+      analytics_storage: newConsent.analytics_storage,
+      ad_user_data: newConsent.ad_user_data,
+      ad_personalization: newConsent.ad_personalization,
+      functionality_storage: newConsent.functionality_storage,
+      personalization_storage: newConsent.personalization_storage,
+      security_storage: newConsent.security_storage,
+    });
+  }
+
   useEffect(() => {
+    /* eslint-disable react-hooks/set-state-in-effect -- localStorage isn't
+       available during SSR render, so this state can only be hydrated
+       client-side after mount, not via a lazy useState initializer. */
     // Load saved consent preferences
     const savedConsent = localStorage.getItem(CONSENT_STORAGE_KEY);
 
@@ -75,29 +104,9 @@ export function useConsent() {
       setHasConsented(false);
       setShowBanner(isEEARegion());
     }
+    /* eslint-enable react-hooks/set-state-in-effect */
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const updateGtagConsent = (newConsent: ConsentState) => {
-    if (typeof window !== 'undefined') {
-      // Ensure gtag is available
-      if (!window.gtag) {
-        // Wait a bit and try again
-        setTimeout(() => updateGtagConsent(newConsent), 100);
-        return;
-      }
-
-      window.gtag('consent', 'update', {
-        ad_storage: newConsent.ad_storage,
-        analytics_storage: newConsent.analytics_storage,
-        ad_user_data: newConsent.ad_user_data,
-        ad_personalization: newConsent.ad_personalization,
-        functionality_storage: newConsent.functionality_storage,
-        personalization_storage: newConsent.personalization_storage,
-        security_storage: newConsent.security_storage,
-      });
-    }
-  };
 
   const saveConsent = (newConsent: ConsentState) => {
     setConsent(newConsent);

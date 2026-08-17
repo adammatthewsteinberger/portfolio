@@ -6,7 +6,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import Link from 'next/link';
 import MultipleCTAs from '@/components/MultipleCTAs';
-import ContentGateModal from '@/components/ContentGateModal';
+import SecondEditionNudge from '@/components/SecondEditionNudge';
 import type { Metadata } from 'next';
 
 interface ArticlePageProps {
@@ -143,7 +143,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       </div>
 
       {/* Content Gate Modal - Only shows to human users after scrolling */}
-      <ContentGateModal />
+      <SecondEditionNudge />
     </div>
   );
 }

@@ -11,11 +11,8 @@ export function useBotDetection(): boolean {
   const [isBot, setIsBot] = useState(false);
 
   useEffect(() => {
-    if (typeof window === 'undefined') {
-      setIsBot(true);
-      return;
-    }
-
+    // navigator.userAgent isn't available during SSR render, so this has to
+    // run client-side after mount rather than as a lazy useState initializer.
     const userAgent = navigator.userAgent.toLowerCase();
 
     const botPatterns = [
@@ -43,6 +40,9 @@ export function useBotDetection(): boolean {
     ];
 
     const isBotDetected = botPatterns.some(pattern => userAgent.includes(pattern));
+    // navigator isn't available during SSR render, so bot detection can only
+    // run client-side after mount.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsBot(isBotDetected);
   }, []);
 

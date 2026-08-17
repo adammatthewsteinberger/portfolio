@@ -87,7 +87,7 @@ The self-hosted infrastructure consists of several integrated components:
 - **Regulatory Compliance**: Met strict data handling requirements
 - **Self-Sufficiency**: Reduced dependency on external technical support
 - **Scalability**: Infrastructure scales with organizational needs
-- **Reliability**: 99.9% uptime with proper backup and recovery procedures
+- **Reliability**: Stable operation with proper backup and recovery procedures in place
 
 ### Performance Metrics
 - **Query Response Time**: Average 800ms end-to-end processing

@@ -209,6 +209,19 @@ This is the main content of the service page.`;
       expect(result[1].title).toBe('Zebra Service');
     });
 
+    it('skips a slug whose file has since been removed, without failing the batch', () => {
+      mockReaddirSync.mockReturnValue(['real-service.md', 'removed-service.md']);
+      mockExistsSync.mockImplementation(
+        (filePath) => !String(filePath).includes('removed-service')
+      );
+      mockReadFileSync.mockReturnValue(mockServiceMarkdown);
+
+      const result = getAllServices();
+
+      expect(result).toHaveLength(1);
+      expect(result[0].title).toBe('AI Consulting');
+    });
+
     it('returns empty array when no services exist', () => {
       mockExistsSync.mockReturnValue(false);
 

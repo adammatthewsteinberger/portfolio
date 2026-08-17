@@ -25,14 +25,13 @@ export default defineConfig({
         'src/**/*.test.{ts,tsx}',
         'src/**/*.spec.{ts,tsx}',
         'src/test/**/*',
-        'src/components/layout/Header.tsx', // Complex component with dynamic imports - tested via E2E
       ],
       thresholds: {
         global: {
-          statements: 80,
-          branches: 80,
-          functions: 80,
-          lines: 80,
+          statements: 100,
+          branches: 100,
+          functions: 100,
+          lines: 100,
         },
       },
     },

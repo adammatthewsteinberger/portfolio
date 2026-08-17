@@ -26,12 +26,9 @@ export default function CookieConsent() {
 
   return (
     <>
-      {/* Backdrop */}
-      <div className="fixed inset-0 bg-black/50 z-[1050]" />
-
-      {/* Cookie Banner */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 z-[1051]">
-        <div className="container mx-auto max-w-4xl">
+      {/* Bottom sheet — no full-screen backdrop; the rest of the page stays usable. */}
+      <div className="fixed bottom-0 left-0 right-0 p-4 z-[1051] pointer-events-none">
+        <div className="container mx-auto max-w-4xl pointer-events-auto">
           <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl shadow-2xl">
             <div className="p-6">
               {!showDetails ? (
@@ -60,7 +57,7 @@ export default function CookieConsent() {
                       className="px-6 py-2 bg-[var(--color-dark-card-alt)] hover:bg-[var(--color-dark-border)] text-[var(--color-text-primary)] font-medium rounded-lg transition-colors"
                       onClick={rejectAll}
                     >
-                      Reject All
+                      Essential Only
                     </button>
                     <button
                       type="button"

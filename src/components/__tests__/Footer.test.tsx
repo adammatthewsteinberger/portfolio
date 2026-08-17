@@ -11,25 +11,24 @@ describe('Footer', () => {
 
   it('renders navigation links', () => {
     render(<Footer />);
-    expect(screen.getByRole('link', { name: /schedule a free consultation/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /contact for employment/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /try the chatbot demo/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /learn about ai/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /read the blog/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /get the newsletter/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /my services/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /hire me/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /^work$/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /expertise/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /writing/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /consulting call/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /newsletter/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /consulting services/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /site directory/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /^privacy$/i })).toBeInTheDocument();
   });
 
   it('renders social media links with correct aria labels', () => {
     render(<Footer />);
     expect(screen.getByRole('link', { name: 'LinkedIn' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'GitHub' })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Twitter' })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Instagram' })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Facebook' })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'YouTube' })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Buy me a Coffee' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Contact' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Download Resume' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'RSS feed' })).toBeInTheDocument();
   });
 
   it('displays current year in copyright', () => {
@@ -73,21 +72,29 @@ describe('Footer', () => {
 
   it('internal links use Next.js Link component with correct hrefs', () => {
     render(<Footer />);
-    expect(screen.getByRole('link', { name: /contact for employment/i })).toHaveAttribute(
-      'href',
-      '/contact'
-    );
-    expect(screen.getByRole('link', { name: /learn about ai/i })).toHaveAttribute(
-      'href',
-      '/novice-to-navigator'
-    );
-    expect(screen.getByRole('link', { name: /read the blog/i })).toHaveAttribute(
-      'href',
-      '/blog'
-    );
-    expect(screen.getByRole('link', { name: /my services/i })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: /hire me/i })).toHaveAttribute('href', '/hire-me');
+    expect(screen.getByRole('link', { name: /^work$/i })).toHaveAttribute('href', '/work');
+    expect(screen.getByRole('link', { name: /expertise/i })).toHaveAttribute('href', '/expertise');
+    expect(screen.getByRole('link', { name: /writing/i })).toHaveAttribute('href', '/writing');
+    expect(screen.getByRole('link', { name: /consulting services/i })).toHaveAttribute(
       'href',
       '/services'
     );
+    expect(screen.getByRole('link', { name: /site directory/i })).toHaveAttribute(
+      'href',
+      '/site-directory'
+    );
+    expect(screen.getByRole('link', { name: /^privacy$/i })).toHaveAttribute('href', '/privacy');
+  });
+
+  it('newsletter and consulting-call links open externally', () => {
+    render(<Footer />);
+    const newsletter = screen.getByRole('link', { name: /newsletter/i });
+    expect(newsletter).toHaveAttribute('href', 'https://eepurl.com/jiYXCQ');
+    expect(newsletter).toHaveAttribute('target', '_blank');
+
+    const call = screen.getByRole('link', { name: /consulting call/i });
+    expect(call).toHaveAttribute('href', 'https://tidycal.com/adammatthewsteinberger');
+    expect(call).toHaveAttribute('target', '_blank');
   });
 });

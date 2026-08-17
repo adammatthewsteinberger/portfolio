@@ -7,9 +7,21 @@ test.describe('Navigation', () => {
     await expect(page.locator('h1').first()).toContainText('Adam Matthew Steinberger');
   });
 
-  test('about page loads', async ({ page }) => {
+  test('story page loads (and /about redirects to it)', async ({ page }) => {
     await gotoAndDismiss(page, '/about');
-    await expect(page).toHaveURL('/about');
+    await expect(page).toHaveURL('/story');
+    await expect(page.locator('h1').first()).toBeVisible();
+  });
+
+  test('expertise page loads', async ({ page }) => {
+    await gotoAndDismiss(page, '/expertise');
+    await expect(page).toHaveURL('/expertise');
+    await expect(page.locator('h1').first()).toBeVisible();
+  });
+
+  test('hire-me page loads', async ({ page }) => {
+    await gotoAndDismiss(page, '/hire-me');
+    await expect(page).toHaveURL('/hire-me');
     await expect(page.locator('h1').first()).toBeVisible();
   });
 
@@ -23,9 +35,9 @@ test.describe('Navigation', () => {
     await expect(page).toHaveURL('/blog');
   });
 
-  test('projects page loads', async ({ page }) => {
+  test('work page loads (and /projects redirects to it)', async ({ page }) => {
     await gotoAndDismiss(page, '/projects');
-    await expect(page).toHaveURL('/projects');
+    await expect(page).toHaveURL('/work');
   });
 
   test('learn AI page loads', async ({ page }) => {
@@ -42,10 +54,9 @@ test.describe('Navigation', () => {
     await gotoAndDismiss(page, '/');
     const footer = page.locator('footer');
     await expect(footer).toBeVisible();
+    await expect(footer.locator('a[href="/hire-me"]')).toBeVisible();
+    await expect(footer.locator('a[href="/work"]')).toBeVisible();
     await expect(footer.locator('a[href="/services"]')).toBeVisible();
-    await expect(footer.locator('a[href="/blog"]')).toBeVisible();
-    await expect(footer.locator('a[href="/novice-to-navigator"]')).toBeVisible();
-    await expect(footer.locator('a[href="/contact"]')).toBeVisible();
   });
 
   test('social media links open in new tab', async ({ page }) => {

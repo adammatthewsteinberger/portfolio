@@ -10,17 +10,15 @@ interface InfiniteScrollBlogProps {
 }
 
 export default function InfiniteScrollBlog({ allPosts, postsPerPage = 6 }: InfiniteScrollBlogProps) {
-  const [displayedPosts, setDisplayedPosts] = useState<BlogContent[]>([]);
+  // Lazy initializers rather than a mount effect: allPosts/postsPerPage are
+  // plain props (no browser-only API involved), so the first batch can be
+  // computed synchronously without risking an SSR/client mismatch.
+  const [displayedPosts, setDisplayedPosts] = useState<BlogContent[]>(() =>
+    allPosts.slice(0, postsPerPage)
+  );
   const [currentPage, setCurrentPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
+  const [hasMore, setHasMore] = useState(() => allPosts.length > postsPerPage);
   const [loading, setLoading] = useState(false);
-
-  // Initialize with first batch of posts
-  useEffect(() => {
-    const initialPosts = allPosts.slice(0, postsPerPage);
-    setDisplayedPosts(initialPosts);
-    setHasMore(allPosts.length > postsPerPage);
-  }, [allPosts, postsPerPage]);
 
   const loadMorePosts = useCallback(() => {
     if (loading || !hasMore) return;

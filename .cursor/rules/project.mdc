@@ -1,0 +1,19 @@
+---
+description: Project overview and conventions for hire.adam.matthewsteinberger.com
+alwaysApply: true
+---
+
+# hire.adam.matthewsteinberger.com
+
+The full, canonical project guidance for this repository lives in **`AGENTS.md`** at the repo root — read it before making changes. It covers the real tech stack (Next.js 16, React 19, **Tailwind v4 via `@theme` tokens — no `tailwind.config.js`, no Bootstrap**), the directory structure, content frontmatter schemas, the RAG bot (`/api/ask`) architecture and guardrails, testing/coverage requirements (100% on `src/lib`, `src/data`, `src/components`, `src/hooks`), and deployment.
+
+Fast-reference rules that matter most while editing in Cursor:
+
+- **Never use Bootstrap classes or introduce a `tailwind.config.js`.** Theme tokens are CSS custom properties in `src/app/globals.css`, referenced as `text-[var(--color-text-primary)]` etc.
+- **No pricing anywhere on the site**, and **the books are not for sale** (email-capture only) — don't reintroduce either.
+- **Don't fabricate metrics** in case studies or blog posts — every stat must be traceable to the résumé/LinkedIn/a real source.
+- Rebuild the RAG knowledge base with `npm run build-kb` after editing `src/data/kb-sources.ts` — it's also auto-run before `dev`/`build`/`test`/`typecheck` via npm `pre*` hooks, so this is rarely needed manually.
+- Path alias `@/*` → `./src/*`.
+- New content = a new `.md` file under `src/content/{blog,projects,services,articles}/` with the exact frontmatter schema documented in `AGENTS.md`, plus a metadata entry in `src/data/*.ts` for projects and articles.
+
+For anything not covered by these bullets, defer to `AGENTS.md` — it is kept current and this file is intentionally just a pointer to it.

@@ -20,8 +20,13 @@ test.describe('Articles (Novice to Navigator)', () => {
   });
 
   test('second article loads correctly', async ({ page }) => {
-    await gotoAndDismiss(page, '/novice-to-navigator/machine-learning-demystified');
-    await expect(page).toHaveURL('/novice-to-navigator/machine-learning-demystified');
+    await gotoAndDismiss(
+      page,
+      '/novice-to-navigator/whats-the-difference-between-ai-machine-learning-and-deep-learning'
+    );
+    await expect(page).toHaveURL(
+      '/novice-to-navigator/whats-the-difference-between-ai-machine-learning-and-deep-learning'
+    );
     await expect(page.locator('h1').first()).toBeVisible();
   });
 });

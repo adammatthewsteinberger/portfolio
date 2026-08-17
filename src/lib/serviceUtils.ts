@@ -144,22 +144,20 @@ export function getAllServiceSlugs(): string[] {
 }
 
 export function getAllServices(): ServiceContent[] {
-  try {
-    const slugs = getAllServiceSlugs();
-    const services: ServiceContent[] = [];
+  // getAllServiceSlugs() and getServiceBySlug() each already catch and log
+  // their own filesystem/parse errors (returning [] / null respectively),
+  // so there is no error path left for this function itself to guard.
+  const slugs = getAllServiceSlugs();
+  const services: ServiceContent[] = [];
 
-    for (const slug of slugs) {
-      const service = getServiceBySlug(slug);
-      if (service) {
-        services.push(service);
-      }
+  for (const slug of slugs) {
+    const service = getServiceBySlug(slug);
+    if (service) {
+      services.push(service);
     }
-
-    return services.sort((a, b) => a.title.localeCompare(b.title));
-  } catch (error) {
-    console.error('Error reading all services:', error);
-    return [];
   }
+
+  return services.sort((a, b) => a.title.localeCompare(b.title));
 }
 
 // Lightweight function to get only metadata (for generateMetadata)

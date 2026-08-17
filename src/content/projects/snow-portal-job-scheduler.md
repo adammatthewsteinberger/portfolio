@@ -18,7 +18,7 @@ duration: 6 months
 status: completed
 challenge: Lima One Capital was heavily dependent on Alteryx for data processing and analytics workflows, which created licensing costs, performance bottlenecks, and operational dependencies. The organization needed a cost-effective alternative that could leverage their existing Snowflake investment while providing robust job scheduling, workflow automation, and data processing capabilities.
 solution: Developed Snow Portal, a comprehensive custom job scheduling system specifically designed for Snowflake environments. Built automated workflow management capabilities, intelligent job orchestration, and user-friendly interfaces that replicate and enhance Alteryx functionality while eliminating licensing dependencies and improving performance through native Snowflake integration.
-results: Successfully replaced Alteryx dependency with a custom solution that reduced operational costs by 60% while improving data processing performance and reliability. The system now manages hundreds of automated workflows, provides comprehensive monitoring and alerting, and enables self-service analytics capabilities for business users across the organization.
+results: Successfully replaced the Alteryx dependency with a custom solution that cut licensing costs while improving data processing performance and reliability. The system manages a large volume of automated workflows, provides comprehensive monitoring and alerting, and enables self-service analytics capabilities for business users across the organization.
 techStack: Built using Python for backend automation services, Snowflake SQL for data processing logic, REST APIs for system integration, web-based user interface for workflow management, automated scheduling framework, and comprehensive monitoring and logging systems for operational visibility.
 architecture: Implemented cloud-native architecture with Snowflake-centric design, automated job scheduling and dependency management, workflow orchestration engine, user-friendly portal interface, comprehensive error handling and retry mechanisms, and scalable infrastructure supporting high-volume data processing operations.
 lessons: Custom workflow automation systems require careful attention to user experience, robust error handling, and comprehensive monitoring. Replacing commercial tools with internal solutions can provide significant cost savings and performance improvements when properly architected and implemented.
@@ -78,17 +78,16 @@ Designed and implemented Snow Portal featuring:
 ## Results and Impact
 
 ### Cost Optimization
-- **60% Cost Reduction**: Eliminated expensive Alteryx licensing while improving functionality
+- **Licensing Costs Eliminated**: Removed the Alteryx license entirely while improving functionality
 - **Infrastructure Savings**: Reduced hardware and maintenance costs through cloud-native architecture
-- **Operational Efficiency**: Decreased manual workflow management overhead by 80%
+- **Operational Efficiency**: Meaningfully decreased manual workflow-management overhead
 - **Resource Optimization**: Improved Snowflake warehouse utilization and cost management
-- **ROI Achievement**: Complete project cost recovery within 8 months of deployment
 
 ### Performance Improvements
-- **Processing Speed**: 300% improvement in data processing performance through native Snowflake integration
-- **Scalability Enhancement**: Unlimited scaling capability leveraging Snowflake's elastic compute architecture
-- **Reliability Increase**: 99.9% job success rate with comprehensive error handling and retry mechanisms
-- **Concurrent Processing**: Support for hundreds of simultaneous workflows without performance degradation
+- **Processing Speed**: Faster data processing through native Snowflake integration instead of round-tripping through Alteryx
+- **Scalability Enhancement**: Scales with Snowflake's elastic compute rather than a fixed Alteryx server
+- **Reliability**: Comprehensive error handling and retry mechanisms across every scheduled job
+- **Concurrent Processing**: Support for many simultaneous workflows without performance degradation
 - **Data Freshness**: Real-time and near-real-time data processing capabilities for critical business operations
 
 ### Business Enablement
