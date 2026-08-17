@@ -3,91 +3,49 @@ import { render, screen } from '@testing-library/react';
 import MultipleCTAs from '../MultipleCTAs';
 
 describe('MultipleCTAs', () => {
-  it('renders the section heading', () => {
+  it('renders the availability heading', () => {
     render(<MultipleCTAs />);
-    expect(
-      screen.getByText('Ready to Transform Your Business with AI?')
-    ).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /available september 2026/i })).toBeInTheDocument();
   });
 
-  it('renders all primary CTA buttons', () => {
+  it('renders the primary Hire Me CTA', () => {
     render(<MultipleCTAs />);
-    expect(
-      screen.getByRole('link', { name: /schedule free consultation/i })
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole('link', { name: /contact for employment/i })
-    ).toBeInTheDocument();
+    const hireMe = screen.getByRole('link', { name: /hire me/i });
+    expect(hireMe).toBeInTheDocument();
+    expect(hireMe).toHaveAttribute('href', '/hire-me');
   });
 
-  it('renders secondary CTA buttons', () => {
+  it('renders secondary links', () => {
     render(<MultipleCTAs />);
-    expect(screen.getByRole('link', { name: /try the demo/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /learn about ai/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /read the blog/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /my services/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /book a consulting call/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /read the writing/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /consulting services/i })).toBeInTheDocument();
   });
 
-  it('renders descriptive text for each CTA', () => {
+  it('consulting call link opens in a new tab', () => {
     render(<MultipleCTAs />);
-    expect(
-      screen.getByText('For businesses ready to explore AI solutions')
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText('For employers looking to hire AI talent')
-    ).toBeInTheDocument();
-    expect(screen.getByText('Experience the technology')).toBeInTheDocument();
-    expect(screen.getByText('33-article education series')).toBeInTheDocument();
-    expect(screen.getByText('AI insights & case studies')).toBeInTheDocument();
-    expect(screen.getByText('Browse all of my services')).toBeInTheDocument();
-  });
-
-  it('consultation link opens in new tab', () => {
-    render(<MultipleCTAs />);
-    const consultationLink = screen.getByRole('link', {
-      name: /schedule free consultation/i,
-    });
-    expect(consultationLink).toHaveAttribute('target', '_blank');
-    expect(consultationLink).toHaveAttribute('rel', 'noopener noreferrer');
-  });
-
-  it('demo link opens in new tab', () => {
-    render(<MultipleCTAs />);
-    const demoLink = screen.getByRole('link', { name: /try the demo/i });
-    expect(demoLink).toHaveAttribute('target', '_blank');
+    const link = screen.getByRole('link', { name: /book a consulting call/i });
+    expect(link).toHaveAttribute('target', '_blank');
+    expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+    expect(link).toHaveAttribute('href', 'https://tidycal.com/adammatthewsteinberger');
   });
 
   it('internal links have correct hrefs', () => {
     render(<MultipleCTAs />);
-    expect(screen.getByRole('link', { name: /contact for employment/i })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: /read the writing/i })).toHaveAttribute(
       'href',
-      '/contact'
+      '/writing'
     );
-    expect(screen.getByRole('link', { name: /learn about ai/i })).toHaveAttribute(
-      'href',
-      '/novice-to-navigator'
-    );
-    expect(screen.getByRole('link', { name: /read the blog/i })).toHaveAttribute(
-      'href',
-      '/blog'
-    );
-    expect(screen.getByRole('link', { name: /my services/i })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: /consulting services/i })).toHaveAttribute(
       'href',
       '/services'
     );
   });
 
-  it('external links have correct URLs', () => {
+  it('mentions the target location and role in the supporting text', () => {
     render(<MultipleCTAs />);
     expect(
-      screen.getByRole('link', { name: /schedule free consultation/i })
-    ).toHaveAttribute('href', 'https://tidycal.com/adammatthewsteinberger');
-  });
-
-  it('renders with proper section element', () => {
-    render(<MultipleCTAs />);
-    const section = document.querySelector('section');
-    expect(section).toBeInTheDocument();
-    expect(section).toHaveClass('container');
+      screen.getByText(/staff software architect.*greenville, sc \(remote\)/i)
+    ).toBeInTheDocument();
   });
 });

@@ -209,6 +209,19 @@ Content`;
       expect(result[1].title).toBe('Old Post');
     });
 
+    it('skips a slug whose file has since been removed, without failing the batch', () => {
+      mockReaddirSync.mockReturnValue(['real-post.md', 'removed-post.md']);
+      mockExistsSync.mockImplementation(
+        (filePath) => !String(filePath).includes('removed-post')
+      );
+      mockReadFileSync.mockReturnValue(createMockBlogPost({ title: 'Real Post' }));
+
+      const result = getAllBlogPosts();
+
+      expect(result).toHaveLength(1);
+      expect(result[0].title).toBe('Real Post');
+    });
+
     it('returns empty array when no posts exist', () => {
       mockExistsSync.mockReturnValue(false);
 

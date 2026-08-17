@@ -48,3 +48,9 @@ public/novice-to-navigator-ebook.epub
 
 # Claude memories
 .remember
+
+# Generated RAG knowledge base (rebuilt at build time by scripts/build-kb.ts)
+src/generated/
+
+# Unpublished book drafts dropped in locally for reference (see docs/)
+docs/*.pdf

@@ -688,6 +688,35 @@ const nextConfig: NextConfig = {
           '/novice-to-navigator/how-do-i-get-my-own-custom-ai-chatbot',
         permanent: true,
       },
+      // --- 2026 site rebuild: old IA -> new IA ---
+      { source: '/about', destination: '/story', permanent: true },
+      { source: '/projects', destination: '/work', permanent: true },
+      {
+        source: '/projects/:slug',
+        destination: '/work/:slug',
+        permanent: true,
+      },
+      // Duplicate/near-duplicate "doorway" service pages collapsed to one canonical page each
+      {
+        source: '/services/ai-consultant',
+        destination: '/services/ai-consulting',
+        permanent: true,
+      },
+      {
+        source: '/services/ai-expert',
+        destination: '/services/ai-consulting',
+        permanent: true,
+      },
+      {
+        source: '/services/ai-solutions',
+        destination: '/services/ai-services',
+        permanent: true,
+      },
+      {
+        source: '/services/ai-business',
+        destination: '/services/ai-services',
+        permanent: true,
+      },
     ];
   },
 };

@@ -1,51 +1,110 @@
 @import "tailwindcss";
 
 /* ========================================
-   CSS CUSTOM PROPERTIES (Theme)
+   DESIGN TOKENS
+   Three-tier: primitive -> semantic -> component.
+   Dark is the default (matches the previous site); a light theme
+   is available via [data-theme="light"] or prefers-color-scheme.
    ======================================== */
 
-:root {
-  /* Colors - Dark Theme */
-  --color-dark-bg: #0f172a;
-  --color-dark-card: #1e293b;
-  --color-dark-card-alt: #374151;
-  --color-dark-border: #374151;
+@theme {
+  /* Primitives (brand hues) */
+  --color-brand-blue: oklch(0.75 0.14 245);
+  --color-brand-blue-light: oklch(0.83 0.1 245);
+  --color-brand-green: oklch(0.75 0.16 155);
+  --color-brand-green-light: oklch(0.83 0.14 155);
+  --color-brand-gold: oklch(0.88 0.14 95);
+  --color-brand-coral: oklch(0.72 0.17 25);
+  --color-brand-purple: oklch(0.62 0.18 305);
 
-  /* Text Colors */
-  --color-text-primary: #e2e8f0;
-  --color-text-muted: #9ca3af;
-  --color-text-light: #f3f4f6;
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* No separate display face yet — headings share the body font. A distinct
+     display face (e.g. Space Grotesk) is a nice-to-have for a later pass;
+     swap this alias to that font's CSS var when one is added via next/font. */
+  --font-display: var(--font-sans);
+  --font-mono: 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 
-  /* Accent Colors */
-  --color-accent-gold: #ffe066;
-  --color-accent-gold-light: #fffbe7;
-  --color-accent-coral: #f87171;
-  --color-accent-blue: #60a5fa;
-  --color-accent-blue-light: #93c5fd;
-  --color-accent-purple: #9333ea;
-  --color-accent-purple-light: #a855f7;
-  --color-accent-green: #059669;
-  --color-accent-green-light: #34d399;
-
-  /* Gradients */
-  --color-gradient-start: #60a5fa;
-  --color-gradient-end: #34d399;
-
-  /* Spacing */
-  --spacing-section: 3rem;
-
-  /* Border Radius */
   --radius-card: 1rem;
   --radius-button: 0.5rem;
+}
 
-  /* Shadows */
-  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.2);
-  --shadow-button: 0 4px 12px rgba(59, 130, 246, 0.3);
-  --shadow-hover: 0 6px 16px rgba(59, 130, 246, 0.4);
+:root {
+  /* Semantic tokens - dark (default) */
+  --color-bg: oklch(0.16 0.02 265);
+  --color-surface: oklch(0.21 0.02 265);
+  --color-surface-alt: oklch(0.27 0.02 265);
+  --color-border: oklch(0.32 0.02 265);
+
+  --color-text: oklch(0.93 0.01 265);
+  --color-text-muted: oklch(0.72 0.02 265);
+
+  --color-accent: var(--color-brand-blue);
+  --color-accent-strong: var(--color-brand-blue-light);
+  --color-success: var(--color-brand-green-light);
+  --color-warning: var(--color-brand-gold);
+  --color-danger: var(--color-brand-coral);
+
+  --color-gradient-start: var(--color-brand-blue);
+  --color-gradient-end: var(--color-brand-green);
+
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.25);
+  --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.35);
+
+  color-scheme: dark;
+
+  /* --- Back-compat aliases for the pre-2026-rebuild token names ---
+     A large surface of existing JSX still reads these directly via
+     arbitrary Tailwind values (e.g. bg-[var(--color-dark-bg)]). Keep
+     them pointing at the new semantic tokens so both old and new
+     components stay in sync and (eventually) can be migrated file by
+     file without a flag-day rename. Remove once no JSX references the
+     left-hand names (grep for `--color-dark-` and `--color-text-primary`
+     and `--color-accent-` under src/). */
+  --color-dark-bg: var(--color-bg);
+  --color-dark-card: var(--color-surface);
+  --color-dark-card-alt: var(--color-surface-alt);
+  --color-dark-border: var(--color-border);
+  --color-text-primary: var(--color-text);
+  --color-text-light: var(--color-text);
+  --color-accent-blue: var(--color-accent);
+  --color-accent-blue-light: var(--color-accent-strong);
+  --color-accent-green: var(--color-success);
+  --color-accent-green-light: var(--color-brand-green-light);
+  --color-accent-gold: var(--color-warning);
+  --color-accent-gold-light: oklch(0.95 0.06 95);
+  --color-accent-coral: var(--color-danger);
+  --color-accent-purple: var(--color-brand-purple);
+  --color-accent-purple-light: oklch(0.72 0.16 305);
+  --radius-card: 1rem;
+  --radius-button: 0.5rem;
+}
+
+/* Light theme: explicit opt-in via data-theme, or system preference
+   when no explicit choice has been made. */
+:root[data-theme="light"] {
+  --color-bg: oklch(0.99 0.003 265);
+  --color-surface: oklch(0.97 0.005 265);
+  --color-surface-alt: oklch(0.94 0.006 265);
+  --color-border: oklch(0.88 0.006 265);
+  --color-text: oklch(0.22 0.02 265);
+  --color-text-muted: oklch(0.42 0.02 265);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --color-bg: oklch(0.99 0.003 265);
+    --color-surface: oklch(0.97 0.005 265);
+    --color-surface-alt: oklch(0.94 0.006 265);
+    --color-border: oklch(0.88 0.006 265);
+    --color-text: oklch(0.22 0.02 265);
+    --color-text-muted: oklch(0.42 0.02 265);
+    color-scheme: light;
+  }
 }
 
 /* ========================================
-   BASE STYLES - Bootstrap-equivalent resets
+   BASE
    ======================================== */
 
 *, *::before, *::after {
@@ -60,28 +119,30 @@ html {
 
 body {
   margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-sans);
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: var(--color-text-primary);
-  background-color: var(--color-dark-bg);
+  color: var(--color-text);
+  background-color: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Typography */
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
+  font-family: var(--font-display);
   font-weight: 600;
-  line-height: 1.2;
-  color: var(--color-text-primary);
+  line-height: 1.15;
+  color: var(--color-text);
+  text-wrap: balance;
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.75rem; }
+h1 { font-size: clamp(2.25rem, 4vw + 1rem, 3.5rem); }
+h2 { font-size: clamp(1.75rem, 2.5vw + 1rem, 2.5rem); }
+h3 { font-size: clamp(1.375rem, 1.5vw + 1rem, 1.75rem); }
 h4 { font-size: 1.5rem; }
 h5 { font-size: 1.25rem; }
 h6 { font-size: 1rem; }
@@ -91,9 +152,8 @@ p {
   margin-bottom: 1rem;
 }
 
-/* Links */
 a {
-  color: var(--color-accent-blue-light);
+  color: var(--color-accent-strong);
   text-decoration: none;
 }
 
@@ -101,14 +161,12 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Lists */
 ol, ul {
-  padding-left: 2rem;
+  padding-left: 1.5rem;
   margin-top: 0;
   margin-bottom: 1rem;
 }
 
-/* Images */
 img, svg {
   vertical-align: middle;
 }
@@ -118,13 +176,11 @@ img {
   height: auto;
 }
 
-/* Tables */
 table {
   caption-side: bottom;
   border-collapse: collapse;
 }
 
-/* Forms */
 button, input, optgroup, select, textarea {
   margin: 0;
   font-family: inherit;
@@ -145,28 +201,24 @@ textarea {
   resize: vertical;
 }
 
-/* Horizontal rule */
 hr {
   margin: 1rem 0;
   color: inherit;
   border: 0;
-  border-top: 1px solid var(--color-dark-border);
-  opacity: 0.25;
+  border-top: 1px solid var(--color-border);
+  opacity: 0.6;
 }
 
-/* Strong/Bold */
 b, strong {
-  font-weight: bolder;
+  font-weight: 700;
 }
 
-/* Small */
 small {
   font-size: 0.875em;
 }
 
-/* Code */
 code, kbd, pre, samp {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: var(--font-mono);
   font-size: 1em;
 }
 
@@ -183,565 +235,91 @@ code {
   word-wrap: break-word;
 }
 
-/* Blockquote */
 blockquote {
   margin: 0 0 1rem;
-}
-
-/* ========================================
-   LAYOUT STYLES
-   ======================================== */
-
-/* Container */
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
   padding-left: 1rem;
-  padding-right: 1rem;
+  border-left: 3px solid var(--color-accent);
+  color: var(--color-text-muted);
 }
 
-/* Main Content Area */
 main {
-  background: var(--color-dark-bg);
+  background: var(--color-bg);
   min-height: calc(100vh - 200px);
 }
 
-/* Section styling - removed default padding, use Tailwind classes instead */
-
-/* ========================================
-   COMPONENT STYLES
-   ======================================== */
-
-/* Headline Gradient Effect */
-.headline-gradient {
-  background: linear-gradient(45deg, var(--color-gradient-start), var(--color-gradient-end));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-}
-
-/* Card base */
-.card {
-  background: var(--color-dark-card);
-  border: 1px solid var(--color-dark-border);
-  border-radius: var(--radius-card);
-}
-
-/* Button base styles */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1rem;
-  font-weight: 600;
-  border-radius: var(--radius-button);
-  transition: all 0.2s ease;
-  text-decoration: none;
-}
-
-.btn-primary {
-  background-color: #3b82f6;
-  color: white;
-}
-
-.btn-primary:hover {
-  background-color: #2563eb;
-  text-decoration: none;
-}
-
-.btn-outline-primary {
-  border: 2px solid #3b82f6;
-  color: #60a5fa;
-  background: transparent;
-}
-
-.btn-outline-primary:hover {
-  background-color: #3b82f6;
-  color: white;
-  text-decoration: none;
-}
-
-/* Form controls */
-.form-control {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border-radius: var(--radius-button);
-  border: 1px solid var(--color-dark-border);
-  background: var(--color-dark-card-alt);
-  color: var(--color-text-primary);
-  transition: all 0.2s ease;
-}
-
-.form-control:focus {
-  outline: none;
-  border-color: var(--color-accent-blue);
-  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.25);
-}
-
-.form-control::placeholder {
-  color: var(--color-text-muted);
-}
-
-.form-label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  color: var(--color-text-primary);
-}
-
-/* Badge */
-.badge {
-  display: inline-block;
-  padding: 0.25rem 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  border-radius: 0.25rem;
-}
-
-/* Alert */
-.alert {
-  padding: 1rem;
-  border-radius: var(--radius-button);
-  margin-bottom: 1rem;
-}
-
-.alert-success {
-  background: rgba(5, 150, 105, 0.2);
-  border: 1px solid var(--color-accent-green);
-  color: var(--color-accent-green-light);
-}
-
-.alert-danger {
-  background: rgba(248, 113, 113, 0.2);
-  border: 1px solid var(--color-accent-coral);
-  color: var(--color-accent-coral);
-}
-
-/* Lead text */
-.lead {
-  font-size: 1.25rem;
-  font-weight: 300;
-  color: var(--color-text-muted);
-}
-
-/* Text utilities */
-.text-muted {
-  color: var(--color-text-muted) !important;
-}
-
-.text-primary {
-  color: var(--color-text-primary) !important;
+.no-underline, .no-underline:hover {
+  text-decoration: none !important;
 }
 
 /* ========================================
-   NAVIGATION STYLES
+   PROSE (article / blog / case-study body copy)
    ======================================== */
 
-.main-navbar {
-  background: var(--color-dark-card);
-  border-bottom: 1px solid var(--color-dark-border);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  padding: 0.5rem 0;
-}
-
-.navbar-brand {
-  font-weight: 600;
-  background: linear-gradient(45deg, var(--color-gradient-start), var(--color-gradient-end));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.brand-text {
-  background: linear-gradient(45deg, var(--color-gradient-start), var(--color-gradient-end));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 600;
-  margin-left: 0.5rem;
-}
-
-@media (max-width: 575.98px) {
-  .brand-text {
-    display: none;
-  }
-}
-
-/* Desktop Navigation */
-.desktop-nav {
-  display: flex;
-  align-items: center;
-  flex: 1;
-  justify-content: flex-end;
-}
-
-.nav-list {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  white-space: nowrap;
-}
-
-.nav-link-desktop {
-  color: var(--color-text-primary);
-  text-decoration: none;
-  font-weight: 500;
-  padding: 0.5rem 0;
-  border: none;
-  background: none;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-.nav-link-desktop:hover {
-  background: linear-gradient(45deg, var(--color-gradient-start), var(--color-gradient-end));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-decoration: none;
-}
-
-/* Custom Dropdown */
-.dropdown-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.dropdown-btn .fa-chevron-down {
-  transition: transform 0.3s ease;
-  font-size: 0.8rem;
-}
-
-.dropdown-btn .fa-chevron-down.rotate {
-  transform: rotate(180deg);
-}
-
-.dropdown-menu-custom {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: var(--color-dark-card);
-  border: 1px solid var(--color-dark-border);
-  border-radius: var(--radius-button);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  min-width: 200px;
-  z-index: 1050;
-  margin-top: 0.5rem;
-  padding: 0.5rem 0;
-}
-
-.dropdown-item-custom {
-  display: block;
-  padding: 0.75rem 1rem;
-  color: var(--color-text-primary);
-  text-decoration: none;
-  transition: all 0.3s ease;
-  border: none;
-  background: none;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-}
-
-.dropdown-item-custom:hover {
-  background: var(--color-dark-card-alt);
-  text-decoration: none;
-}
-
-.dropdown-divider-custom {
-  height: 1px;
-  background: var(--color-dark-border);
-  margin: 0.5rem 0;
-}
-
-/* React Burger Menu Styles */
-.bm-burger-button {
-  position: fixed !important;
-  width: 32px !important;
-  height: 26px !important;
-  right: 1rem !important;
-  top: 1rem !important;
-  z-index: 1051 !important;
-}
-
-.bm-burger-bars {
-  background: var(--color-accent-blue) !important;
-  height: 4px !important;
-  border-radius: 2px !important;
-}
-
-.bm-cross-button {
-  height: 30px !important;
-  width: 30px !important;
-  right: 1rem !important;
-  top: 1rem !important;
-}
-
-.bm-cross {
-  background: var(--color-text-primary);
-  height: 3px !important;
-  width: 20px !important;
-}
-
-.bm-menu-wrap {
-  position: fixed;
-  height: 100%;
-  top: 0;
-  right: 0;
-}
-
-.bm-menu {
-  background: var(--color-dark-card);
-  padding: 3rem 1.5rem 2rem;
-  font-size: 1.1rem;
-  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3);
-}
-
-.bm-overlay {
-  background: rgba(0, 0, 0, 0.5);
-  top: 0;
-  left: 0;
-}
-
-/* Menu Items */
-.menu-item {
-  display: block;
-  padding: 1rem 0;
-  color: var(--color-text-primary);
-  text-decoration: none;
-  border-bottom: 1px solid var(--color-dark-border);
-  transition: all 0.3s ease;
-  font-weight: 500;
-}
-
-.menu-item:hover {
-  padding-left: 0.5rem;
-  text-decoration: none;
-}
-
-.menu-section-title {
-  background: linear-gradient(45deg, var(--color-gradient-start), var(--color-gradient-end));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  padding: 0.5rem 0;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.submenu-item {
-  padding: 0.75rem 0 0.75rem 1rem;
-  font-size: 0.95rem;
-  border-bottom: 1px solid var(--color-dark-border);
-}
-
-/* Responsive Burger Menu */
-@media (min-width: 992px) {
-  .bm-burger-button {
-    display: none !important;
-  }
-}
-
-@media (max-width: 991.98px) {
-  .desktop-nav {
-    display: none !important;
-  }
-
-  .bm-burger-button {
-    display: block !important;
-  }
-
-  .main-navbar {
-    padding-right: 4rem;
-  }
-}
-
-/* ========================================
-   FOOTER STYLES
-   ======================================== */
-
-footer {
-  background: var(--color-dark-card);
-  color: var(--color-text-muted);
-  border-top: 1px solid var(--color-dark-border);
-  margin-top: 5rem;
-  text-align: center;
-  padding: 2rem 0;
-  font-size: 0.9rem;
-}
-
-/* ========================================
-   ARTICLE CONTENT STYLES
-   ======================================== */
-
-.article-content {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  line-height: 1.75;
-  font-size: 1.1rem;
-  color: var(--color-text-primary);
-}
-
-.article-content p {
-  margin-bottom: 1.5rem;
-  color: var(--color-text-primary);
-}
-
-.article-content h2 {
-  font-size: 1.75rem;
-  font-weight: 700;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
-  color: var(--color-text-primary);
-}
-
-.article-content h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-top: 2rem;
-  margin-bottom: 0.75rem;
-  color: var(--color-text-primary);
-}
-
-.article-content ul, .article-content ol {
-  margin-bottom: 1.5rem;
-  padding-left: 1.5rem;
-}
-
-.article-content li {
-  margin-bottom: 0.5rem;
-  line-height: 1.6;
-}
-
-.article-content strong {
-  color: var(--color-text-primary);
-  font-weight: 600;
-}
-
-/* Article body - text selection blocking */
-.article-body {
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-}
-
-.article-body code, .article-body pre {
-  user-select: text;
-  -webkit-user-select: text;
-}
-
-/* Prose overrides for dark theme */
 .prose {
-  color: var(--color-text-primary);
+  max-width: 66ch;
+  color: var(--color-text);
+  line-height: 1.75;
+  font-size: 1.0625rem;
 }
 
-.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
-  color: var(--color-text-primary);
+.prose h2 {
+  font-size: 1.5rem;
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
 }
 
-.prose p {
-  color: var(--color-text-primary);
+.prose h3 {
+  font-size: 1.25rem;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose p, .prose ul, .prose ol {
+  margin-bottom: 1.25rem;
 }
 
 .prose strong {
-  color: var(--color-text-primary);
+  color: var(--color-text);
+  font-weight: 700;
 }
 
 .prose a {
-  color: var(--color-accent-blue-light);
+  color: var(--color-accent-strong);
+  text-underline-offset: 2px;
 }
 
 .prose code {
-  color: var(--color-accent-blue);
-  background: var(--color-dark-card-alt);
-  padding: 0.125rem 0.25rem;
-  border-radius: 0.25rem;
+  color: var(--color-accent-strong);
+  background: var(--color-surface-alt);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.3rem;
 }
 
 .prose pre {
-  background: var(--color-dark-card-alt);
-  border: 1px solid var(--color-dark-border);
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-button);
+  padding: 1rem;
+}
+
+.prose pre code {
+  background: transparent;
+  padding: 0;
 }
 
 .prose blockquote {
-  border-left-color: var(--color-accent-blue);
   color: var(--color-text-muted);
+  font-style: italic;
 }
 
-.prose ul > li::marker, .prose ol > li::marker {
-  color: var(--color-text-muted);
-}
-
-/* ========================================
-   CONTENT GATE MODAL STYLES
-   ======================================== */
-
-.content-gate-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(8px);
-  z-index: 9998;
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-.content-gate-modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: linear-gradient(135deg, var(--color-dark-card) 0%, var(--color-dark-bg) 100%);
-  border: 1px solid var(--color-dark-border);
-  border-radius: 1.5rem;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-  padding: 2.5rem;
-  max-width: 90%;
-  width: 500px;
-  z-index: 9999;
-  animation: slideUp 0.4s ease-out;
-}
-
-.modal-close-btn {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: transparent;
-  border: none;
-  color: var(--color-text-muted);
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  width: 2.5rem;
-  height: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.prose img {
   border-radius: var(--radius-button);
 }
 
-.modal-close-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--color-text-primary);
+@media (max-width: 768px) {
+  .prose {
+    font-size: 1rem;
+  }
 }
 
 /* ========================================
@@ -754,51 +332,15 @@ footer {
 }
 
 @keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -40%);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%);
-  }
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* ========================================
-   UTILITY OVERRIDES
-   ======================================== */
-
-/* Ensure no-underline works on links */
-.no-underline, .no-underline:hover {
-  text-decoration: none !important;
-}
-
-/* Fix for Tailwind prose on dark backgrounds */
-.prose-invert {
-  --tw-prose-body: var(--color-text-primary);
-  --tw-prose-headings: var(--color-text-primary);
-  --tw-prose-links: var(--color-accent-blue-light);
-  --tw-prose-bold: var(--color-text-primary);
-  --tw-prose-counters: var(--color-text-muted);
-  --tw-prose-bullets: var(--color-text-muted);
-  --tw-prose-hr: var(--color-dark-border);
-  --tw-prose-quotes: var(--color-text-muted);
-  --tw-prose-quote-borders: var(--color-accent-blue);
-  --tw-prose-captions: var(--color-text-muted);
-  --tw-prose-code: var(--color-accent-blue);
-  --tw-prose-pre-code: var(--color-text-primary);
-  --tw-prose-pre-bg: var(--color-dark-card-alt);
-  --tw-prose-th-borders: var(--color-dark-border);
-  --tw-prose-td-borders: var(--color-dark-border);
-}
-
-.text-primary {
-  color: var(--color-text-primary);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .article-content {
-    font-size: 1rem;
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

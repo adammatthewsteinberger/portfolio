@@ -24,16 +24,14 @@ test.describe('Responsive Design', () => {
     await page.setViewportSize({ width: 375, height: 667 });
     await gotoAndDismiss(page, '/');
 
-    // Mobile menu button should be visible (burger menu)
-    const burgerButton = page.locator('.bm-burger-button');
-    await expect(burgerButton).toBeVisible();
+    const menuButton = page.locator('button[aria-label="Open menu"]');
+    await expect(menuButton).toBeVisible();
 
-    await burgerButton.click();
-    await page.waitForTimeout(500);
+    await menuButton.click();
 
-    // Menu items should appear
-    const menuItems = page.locator('.bm-menu-wrap');
-    await expect(menuItems).toBeVisible();
+    const menuPanel = page.locator('[role="dialog"]');
+    await expect(menuPanel).toBeVisible();
+    await expect(menuPanel.locator('a[href="/hire-me"]')).toBeVisible();
   });
 
   test('footer is visible on all screen sizes', async ({ page }) => {

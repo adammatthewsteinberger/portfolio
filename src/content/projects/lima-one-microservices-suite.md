@@ -78,11 +78,11 @@ Designed and implemented a comprehensive platform featuring:
 ## Results and Impact
 
 ### Technical Achievements
-- **Scalable Architecture**: Microservices design supporting 10x transaction volume growth
+- **Scalable Architecture**: Microservices design built to absorb significant transaction volume growth without a redesign
 - **Performance Optimization**: Sub-second response times for critical loan processing operations
-- **System Reliability**: 99.9% uptime with comprehensive monitoring and alerting
-- **Integration Success**: Seamless connectivity with 15+ third-party financial services
-- **Development Efficiency**: 50% faster feature development through modular architecture
+- **System Reliability**: Comprehensive monitoring and alerting across every service
+- **Integration Success**: Seamless connectivity with over a dozen third-party financial services
+- **Development Efficiency**: Faster feature development once the monolith gave way to independently deployable services
 
 ### Business Impact
 - **Operational Scaling**: Platform supporting significant business growth and increased loan volumes

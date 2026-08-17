@@ -4,19 +4,3 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-
-# Prevent indexing of the press landing page and PDF
-[[headers]]
-  for = "/letter-to-the-press"
-  [headers.values]
-    X-Robots-Tag = "noindex, nofollow, noarchive, nosnippet, noodp"
-
-[[headers]]
-  for = "/letter-to-the-press/*"
-  [headers.values]
-    X-Robots-Tag = "noindex, nofollow, noarchive, nosnippet, noodp"
-
-[[headers]]
-  for = "/docs/letter-to-the-press.pdf"
-  [headers.values]
-    X-Robots-Tag = "noindex, nofollow, noarchive, nosnippet"

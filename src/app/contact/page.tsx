@@ -1,4 +1,5 @@
 import ContactForm from '@/components/ContactForm';
+import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -88,12 +89,12 @@ export default function ContactPage() {
             <p className="text-[var(--color-text-muted)] mb-4">
               Explore the full range of AI development services available for your business.
             </p>
-            <a
+            <Link
               href="/services"
               className="inline-flex items-center px-4 py-2 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white rounded-lg transition-colors no-underline font-medium"
             >
               View Services
-            </a>
+            </Link>
           </div>
         </div>
 
