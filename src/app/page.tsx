@@ -262,7 +262,7 @@ export default function Home() {
             </p>
           </a>
           <a
-            href="https://pypi.org/project/azure-bootstrap/"
+            href="https://pypi.org/project/vibey-bootstrap/"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] hover:border-[var(--color-accent-blue)]/50 rounded-xl p-5 no-underline transition-colors"

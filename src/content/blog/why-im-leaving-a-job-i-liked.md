@@ -11,7 +11,7 @@ featured: true
 
 Here's the version of this post I'm not writing: a vague LinkedIn announcement about "new opportunities" and "exciting chapters," timed for maximum ambiguity about whether I quit, got pushed, or something in between.
 
-Here's what actually happened. I spent the last year as Senior Azure and AI Development Engineer at The Vizius Group, a cybersecurity firm in Greenville. I built an Azure Service Bus payroll automation with a 45-day handoff. I migrated a production app between Azure tenants on zero-credential OIDC pipelines. I open-sourced a Python library — `azure-bootstrap` — that's now used across the org's Functions repos. I liked the work. I liked the team. And at the end of August 2026, I'm leaving, because we both looked honestly at the pipeline of AI work coming through the door and agreed there wasn't enough of it to justify keeping a Senior AI Development Engineer on staff long-term.
+Here's what actually happened. I spent the last year as Senior Azure and AI Development Engineer at The Vizius Group, a cybersecurity firm in Greenville. I built an Azure Service Bus payroll automation with a 45-day handoff. I migrated a production app between Azure tenants on zero-credential OIDC pipelines. I open-sourced a Python library — `azure-bootstrap`, since renamed `vibey-bootstrap` — that's now used across the org's Functions repos. I liked the work. I liked the team. And at the end of August 2026, I'm leaving, because we both looked honestly at the pipeline of AI work coming through the door and agreed there wasn't enough of it to justify keeping a Senior AI Development Engineer on staff long-term.
 
 That's it. That's the whole story. No drama, no burned bridge, no vague euphemism doing the work an honest sentence should do.
 
