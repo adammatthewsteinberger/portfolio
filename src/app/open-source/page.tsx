@@ -45,20 +45,20 @@ const packages: Package[] = [
     repo: 'https://github.com/adammatthewsteinberger/vibey',
   },
   {
-    name: 'vibe-engineering-skills',
+    name: 'vibey-skills',
     tagline: '18 plugins. 71 Agent Skills. MIT licensed.',
     description:
       'A Claude Code plugin marketplace of evidence-grounded practitioner references — security, cloud infrastructure, DevSecOps, AI/ML, software architecture, agile delivery, and technical writing. Every claim cites the standard, vendor doc, or paper it comes from.',
     pypi: 'https://pypi.org/project/vibe-engineering-skills/',
-    repo: 'https://github.com/TheViziusGroup/vibe-engineering-skills',
+    repo: 'https://github.com/adammatthewsteinberger/vibey-skills',
   },
   {
-    name: 'azure-bootstrap',
+    name: 'vibey-bootstrap',
     tagline: 'The Azure Functions cross-cutting layer, solved once',
     description:
-      'Configuration loading wants logging to report progress; App Insights logging wants configuration to initialize. azure-bootstrap breaks that cycle with a four-phase startup sequence, then layers on structured logging, Service Bus plumbing, rate limiting, and a scaffold CLI. Used across 17+ Azure Functions repos.',
+      'Configuration loading wants logging to report progress; App Insights logging wants configuration to initialize. vibey-bootstrap breaks that cycle with a four-phase startup sequence, then layers on structured logging, Service Bus plumbing, rate limiting, and a scaffold CLI. Used across 17+ Azure Functions repos.',
     pypi: 'https://pypi.org/project/azure-bootstrap/',
-    repo: 'https://github.com/adammatthewsteinberger/azure-bootstrap',
+    repo: 'https://github.com/adammatthewsteinberger/vibey-bootstrap',
   },
 ];
 

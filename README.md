@@ -1,75 +1,108 @@
-# Hire Adam Matthew Steinberger
+# hire-adam-steinberger
 
-The personal "hire me" site for Adam Matthew Steinberger — Staff Software Architect & AI Automation Engineer, based in Greenville, SC. It's a portfolio, a blog, a 33-article free educational series on AI chatbots for business, and a small Claude-powered "ask my résumé" widget, all in one Next.js app.
+Source for [hire.adam.matthewsteinberger.com](https://hire.adam.matthewsteinberger.com) — a portfolio site that doubles as a working demo of a shipped RAG feature. Portfolio, blog, a free 33-article course on AI chatbots for business, and an "Ask my résumé" widget that answers from the site's own content, all in one Next.js app.
 
-Live at [hire.adam.matthewsteinberger.com](https://hire.adam.matthewsteinberger.com).
+[![Live site](https://img.shields.io/badge/live-hire.adam.matthewsteinberger.com-0a7ea4)](https://hire.adam.matthewsteinberger.com)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b9c9fd48-2099-47f6-a2d1-4afd7436216c/deploy-status)](https://app.netlify.com/projects/hire-adam-steinberger/deploys)
+[![Next.js 16](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org)
+[![TypeScript strict](https://img.shields.io/badge/TypeScript-strict-3178c6)](tsconfig.json)
+[![License: proprietary](https://img.shields.io/badge/license-proprietary-lightgrey)](LICENSE)
 
-> **Working on this repo with an AI coding assistant?** Read [`AGENTS.md`](./AGENTS.md) first — it's the canonical, detailed guide (content schemas, the RAG bot's architecture, coverage requirements, conventions). `CLAUDE.md`, `WARP.md`, `GEMINI.md`, `.agent`, and `.agents` are all symlinks to it.
+## Why this repo exists
 
-## Tech stack
+- **It's the résumé, but it runs.** The site is Adam Matthew Steinberger's hire-me page (Staff Software Architect & AI Automation Engineer, Greenville, SC). Instead of a slide about RAG, the homepage has a RAG widget you can poke at.
+- **RAG with the boring parts included.** Feature flag, honeypot, per-IP rate limit, daily spend cap, 6-turn session cap, prompt that refuses to invent facts. All in `src/app/api/ask/` and `src/lib/ask/`.
+- **Content is Markdown, not a CMS.** 116 blog posts, 33 Novice to Navigator articles, 12 case studies, 45 service pages — each a `.md` file with typed frontmatter.
+- **Discoverability surfaces built in.** RSS (`/feed.xml`), sitemap, `llms.txt`, JSON-LD, per-page OG images.
 
-- **Framework**: [Next.js](https://nextjs.org) 16 (App Router), React 19, TypeScript 5 (strict mode)
-- **Styling**: [Tailwind CSS v4](https://tailwindcss.com), theme tokens defined as CSS custom properties in `src/app/globals.css` — there's no `tailwind.config.js`
-- **Content**: Markdown files with `gray-matter` frontmatter, rendered via `react-markdown`
-- **RAG bot**: `@anthropic-ai/sdk` (Claude) + `minisearch` for lexical retrieval over the site's own content
-- **Testing**: Vitest + React Testing Library (100% coverage enforced) and Playwright for e2e
-- **Deployment**: [Netlify](https://netlify.com), via `@netlify/plugin-nextjs`
+## Stack
 
-## Getting started
+Next.js 16 (App Router) · React 19 · TypeScript 5 strict · Tailwind CSS v4 (CSS-native `@theme` tokens, no `tailwind.config.js`) · `react-markdown` + `gray-matter` · `@anthropic-ai/sdk` + `minisearch` (BM25, no vector DB) · Vitest + Testing Library (100% coverage enforced) · Playwright · Netlify via `@netlify/plugin-nextjs`.
+
+## Quick start
+
+Node 22 (see `.nvmrc`).
 
 ```sh
-npm install
-npm run dev
+npm ci
+npm run dev            # http://localhost:3000 — predev rebuilds the RAG knowledge base first
+npm test               # Vitest (pretest rebuilds the KB)
+npm run test:coverage  # must stay at 100% statements/branches/functions/lines
+npm run test:e2e       # Playwright (e2e/*.spec.ts)
+npm run lint && npm run typecheck
 ```
 
-Open [http://localhost:3000](http://localhost:3000). The dev server automatically rebuilds the RAG bot's knowledge base first (`predev` → `scripts/build-kb.ts`) — no extra setup needed to browse the site locally. The "Ask my résumé" widget itself stays hidden unless `ASK_BOT_ENABLED=true` and `ANTHROPIC_API_KEY` are set in your environment; everything else works with no environment variables at all.
+Everything works with zero environment variables. The "Ask my résumé" widget stays hidden unless both `ASK_BOT_ENABLED=true` and `ANTHROPIC_API_KEY` are set.
 
-## Scripts
+<details>
+<summary>All npm scripts</summary>
 
 | Command | What it does |
 | --- | --- |
-| `npm run dev` | Start the dev server (Turbopack) |
-| `npm run build` | Production build |
-| `npm start` | Serve the production build |
-| `npm run lint` / `lint:fix` | ESLint |
+| `npm run dev` | Dev server (Turbopack) |
+| `npm run build` / `npm start` | Production build / serve |
+| `npm run lint` / `lint:fix` | ESLint 9 flat config |
 | `npm run typecheck` | `tsc --noEmit` |
-| `npm test` | Run the Vitest suite |
-| `npm run test:coverage` | Run tests with coverage (must stay at 100%) |
-| `npm run test:e2e` | Run the Playwright e2e suite |
-| `npm run build-kb` | Manually rebuild `src/generated/kb.json`, the RAG bot's knowledge base |
-| `npm run generate-ebook` | Rebuild the Novice to Navigator PDF/EPUB from its source articles |
+| `npm test` / `test:watch` / `test:ui` | Vitest |
+| `npm run test:coverage` | Vitest with v8 coverage (100% required) |
+| `npm run test:e2e` / `test:e2e:ui` / `test:e2e:headed` | Playwright |
+| `npm run build-kb` | Rebuild `src/generated/kb.json` (gitignored; also runs before dev/build/test/typecheck) |
+| `npm run generate-ebook` | Rebuild the Novice to Navigator PDF/EPUB from its articles |
 
-## Project structure
+Husky runs `lint-staged` + `typecheck` on pre-commit and `test` + `build` on pre-push.
+
+</details>
+
+## Content architecture
 
 ```
-src/
-├── app/            # Next.js App Router pages and API routes
-├── components/     # Shared React components
-├── content/        # Markdown content: blog/, projects/, services/, articles/
-├── data/           # Content metadata arrays + the RAG bot's curated source text
-├── lib/            # Content utilities, analytics, RAG bot retrieval/rate-limiting
-├── hooks/          # Shared React hooks
-└── generated/      # Build-time generated files (gitignored) — the RAG bot's kb.json
+src/content/
+├── blog/*.md        # 116 posts            → /blog/[slug]        (directory-scanned)
+├── articles/*.md    # 33 N2N articles      → /novice-to-navigator (metadata in src/data/articles.ts)
+├── projects/*.md    # 12 case studies      → /work/[slug]        (metadata in src/data/projects.ts)
+└── services/*.md    # 45 service pages     → /services/[slug]    (directory-scanned)
+src/data/kb-sources.ts   # hand-reviewed text the RAG bot is allowed to answer from
 ```
 
-See [`AGENTS.md`](./AGENTS.md) for the full breakdown, including the exact frontmatter schema each content type expects.
+Adding content = adding a `.md` file with the frontmatter schema in [`AGENTS.md`](./AGENTS.md#content-model--frontmatter-schemas), then (for articles/projects) an entry in the matching `src/data/*.ts` array. House rules that are enforced on purpose: no pricing anywhere on the site, no invented metrics in case studies, and the books are not for sale — email-capture only.
 
-## Adding content
+## The RAG widget (`/api/ask`)
 
-1. Add a `.md` file to the relevant `src/content/{blog,projects,services,articles}/` directory with the frontmatter fields documented in `AGENTS.md`.
-2. For projects and articles, also add a metadata entry to `src/data/projects.ts` or `src/data/articles.ts` — those two content types are metadata-array-driven rather than directory-scanned.
-3. Run `npm run build` locally to confirm the new page renders and the sitemap/RSS feed pick it up.
+1. `scripts/build-kb.ts` chunks `src/data/kb-sources.ts` plus live case-study and blog content into `src/generated/kb.json` (~900-char chunks; gitignored, rebuilt by npm pre-hooks so it's never stale).
+2. `src/lib/ask/kbIndex.ts` builds an in-memory MiniSearch (BM25) index on first request.
+3. `POST /api/ask` retrieves the top chunks, builds a per-request system prompt, and streams a Claude response (`max_tokens: 400`, thinking off for latency).
+4. `GET /api/ask` reports `{ enabled }`; the widget renders nothing when it's off.
 
-Metrics and claims in case studies and blog posts should be traceable to a real source (résumé, LinkedIn, or the author's own record) — don't round up or invent numbers.
+Guardrails: honeypot field, per-IP rate limit and daily output-token cap (`src/lib/ask/rateLimit.ts`, in-memory and documented as best-effort), 6-turn session cap client- and server-side, and a system prompt that must cite the source page and may not invent employment facts.
 
-## The RAG bot
+| Env var | Effect |
+| --- | --- |
+| `ASK_BOT_ENABLED=true` | Turns the widget on (requires the key too) |
+| `ANTHROPIC_API_KEY` | Server-side only; never shipped to the client |
+| `GOOGLE_SITE_VERIFICATION` | Optional Search Console tag |
 
-The homepage includes an "Ask my résumé" widget, backed by `POST /api/ask` — a streaming Claude endpoint that answers questions using only content retrieved from this site (never invented facts, never outside knowledge). It's feature-flagged off by default; see [`AGENTS.md`](./AGENTS.md#the-rag-bot-apiask) for the full architecture, guardrails, and required environment variables.
+Deploys to Netlify from `netlify.toml` (`npm run build` → `.next`). Set the two bot variables in the Netlify dashboard to enable it in production.
 
-## Deployment
+## Docs & links
 
-Deploys to Netlify. Build command is `npm run build`, publish directory is `.next`, configured in `netlify.toml` via `@netlify/plugin-nextjs`. Set `ANTHROPIC_API_KEY` and `ASK_BOT_ENABLED=true` in the Netlify dashboard to enable the RAG bot; `GOOGLE_SITE_VERIFICATION` is optional for Search Console.
+- [`AGENTS.md`](./AGENTS.md) — the canonical agent/contributor guide (schemas, conventions, RAG internals). `CLAUDE.md`, `WARP.md`, `GEMINI.md`, `.agent`, `.agents` are symlinks to it.
+- [`SECURITY.md`](./SECURITY.md) · [`CONTRIBUTING.md`](./CONTRIBUTING.md) · [`LICENSE`](./LICENSE)
+- Live: [Hire me](https://hire.adam.matthewsteinberger.com/hire-me) · [Work](https://hire.adam.matthewsteinberger.com/work) · [Writing](https://hire.adam.matthewsteinberger.com/writing) · [Novice to Navigator](https://hire.adam.matthewsteinberger.com/novice-to-navigator) · [Books](https://hire.adam.matthewsteinberger.com/books) · [Open source](https://hire.adam.matthewsteinberger.com/open-source) · [RSS](https://hire.adam.matthewsteinberger.com/feed.xml) · [llms.txt](https://hire.adam.matthewsteinberger.com/llms.txt)
+
+## Related repos
+
+Open source (MIT, on PyPI): [claudeloop](https://github.com/adammatthewsteinberger/claudeloop) · [codexloop](https://github.com/adammatthewsteinberger/codexloop) · [cursorloop](https://github.com/adammatthewsteinberger/cursorloop) · [agyloop](https://github.com/adammatthewsteinberger/agyloop) · [vibey](https://github.com/adammatthewsteinberger/vibey) · [vibey-bootstrap](https://github.com/adammatthewsteinberger/vibey-bootstrap) · [vibey-skills](https://github.com/adammatthewsteinberger/vibey-skills) · [homebrew-tap](https://github.com/adammatthewsteinberger/homebrew-tap)
+
+Sites and books: [engineering-influence](https://github.com/adammatthewsteinberger/engineering-influence) (book manuscripts + PDF/EPUB generator) · [the-autistic-apologist](https://github.com/adammatthewsteinberger/the-autistic-apologist) · [humbleberger](https://github.com/adammatthewsteinberger/humbleberger)
+
+## Contributing
+
+Personal site — issues welcome, PRs by arrangement. See [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 
 ## License
 
-Private, all rights reserved — this is a personal site, not an open-source project. (See [`/open-source`](https://hire.adam.matthewsteinberger.com/open-source) on the live site for Adam's actual MIT-licensed packages.)
+Proprietary, all rights reserved — this is a personal site, not an open-source project (see [`LICENSE`](./LICENSE)). The MIT-licensed packages live in their own repos, linked from [/open-source](https://hire.adam.matthewsteinberger.com/open-source).
+
+---
+
+Built by [Adam Matthew Steinberger](https://hire.adam.matthewsteinberger.com) · [more open source](https://hire.adam.matthewsteinberger.com/open-source)

@@ -51,7 +51,7 @@ In 2025 Adam was diagnosed autistic. He is also gifted in the specific, testable
     title: 'My Story',
     section: 'Leaving The Vizius Group',
     text: `After a year as Senior Azure & AI Development Engineer at The Vizius Group (September 2025–August 2026), Adam and Vizius agreed the volume of AI work didn't justify a long-term engagement, so as of September 2026 Adam is looking for the next team where AI, automation, and architecture are the whole job, not a side quest. He is autistic and does his best work deep in exactly those problems, and ships documentation that lets a junior developer own what he built.
-While at Vizius he shipped an Azure Service Bus payroll automation with a 45-day handoff, migrated a production app between Azure tenants on OIDC federated credentials, and open-sourced azure-bootstrap, a Python library now used across the org's Azure Functions repos.`,
+While at Vizius he shipped an Azure Service Bus payroll automation with a 45-day handoff, migrated a production app between Azure tenants on OIDC federated credentials, and open-sourced vibey-bootstrap, a Python library now used across the org's Azure Functions repos.`,
   },
   {
     id: 'story-timeline',
@@ -142,7 +142,7 @@ While at Vizius he shipped an Azure Service Bus payroll automation with a 45-day
     url: '/open-source',
     title: 'Open Source',
     section: 'Packages',
-    text: `Adam has authored and published seven open-source packages on PyPI: claudeloop, codexloop, cursorloop, and agyloop (onion-architected autonomous session runners, MIT licensed), vibey (a queue-based six-phase conductor using PostgreSQL row-level locking), vibe-engineering-skills (18 plugins, 71 skills for Claude Code), and azure-bootstrap (a Python library for bootstrapping Azure Functions, used across multiple Azure Functions repos).`,
+    text: `Adam has authored and published seven open-source packages on PyPI: claudeloop, codexloop, cursorloop, and agyloop (onion-architected autonomous session runners, MIT licensed), vibey (a queue-based six-phase conductor using PostgreSQL row-level locking), vibey-skills (18 plugins, 71 skills for Claude Code), and vibey-bootstrap (a Python library for bootstrapping Azure Functions, used across multiple Azure Functions repos).`,
   },
   {
     id: 'books',
