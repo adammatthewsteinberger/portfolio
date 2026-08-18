@@ -1,18 +1,22 @@
 ---
-title: AI Report Generator & Email Intake
-subtitle: A Kubernetes Queue That Reads a Shared Inbox and Ships PDF Reports
-description: Built a Kubernetes-based intake pipeline that reviews attachments from a shared Outlook mailbox, flags client signals with AI, and ships PDF reports back to senders while archiving copies to SharePoint
+title: Technical Report Generation Platform
+subtitle: From Raw Instrument Data to Standards-Aware Customer Deliverables
+description: Automated pipeline that turns raw electrical-testing instrument data into branded, standards-aware customer deliverables — mail-webhook ingestion with per-document fan-out, a multi-vendor parser seam, a deterministic deficiency analyzer fed by a scraped standards store plus LLM review, blocking data-quality validation, SAML 2.0 + Entra SSO, and deploys that prove they rolled out
 category: AI Solutions
-heroTitle: AI Report Generator & Email Intake
-heroSubtitle: Kubernetes Queue, AI Attachment Review, Automated PDF Delivery
+heroTitle: Technical Report Generation Platform
+heroSubtitle: Event-Driven Ingestion, Multi-Vendor Parsers, Deterministic Analysis + LLM Review
 technologies:
+  - Python
   - Kubernetes
   - Azure
-  - AI Document Review
   - Microsoft Graph API
   - SharePoint
+  - LLM Review
+  - SAML 2.0
+  - Entra ID
   - PDF Generation
-duration: Vizius engagement, 2025-2026
+  - GitOps
+duration: Vizius engagement, 2025–2026 — lead
 status: completed
 featured: true
 challenge: A shared Outlook mailbox was the intake point for client documents that needed review, but every attachment required a human to open it, read it, decide whether it flagged something worth escalating, generate a report, and file a copy — a manual bottleneck that didn't scale with volume and was easy to fall behind on.
@@ -52,6 +56,22 @@ Once review completes, a PDF report is generated and emailed back to the origina
 - Attachments are reviewed and reported on without a human opening every email first
 - Archival to SharePoint happens automatically instead of being a step someone can forget
 - The pipeline absorbs bursts of incoming mail instead of backing up in an inbox
+
+## The Platform It Became (2026)
+
+The intake pipeline above grew into a full technical report generation platform (~54k lines, 525 files) that turns raw electrical-testing instrument data into branded, standards-aware customer deliverables. Lead engineer.
+
+- **Event-driven ingestion** — a mail webhook triggers near-real-time processing, with a low-frequency cron poll as a safety net for subscription-renewal gaps; attachments (including nested archives) fan out one queue message per document so ingestion and generation scale independently
+- **Multi-vendor parser architecture** — a format-dispatch seam so new instrument vendors are added as parsers without touching the pipeline
+- **Standards-aware analysis** — a deterministic deficiency analyzer aware of multiple published testing standards, backed by a standards store populated by a scraper and fed back into the AI analysis prompt
+- **Blocking data-quality validation** ahead of report generation, so bad input fails loudly instead of producing a plausible-looking wrong deliverable
+- **Enterprise SSO** — SAML 2.0 alongside Entra ID with dual-issuer token validation, shipped behind a dark-launch flag; the auth path is hardened so it never fails open to admin
+- **Auth migration** — retired a shared-API-key backend-for-frontend in favor of per-user bearer tokens forwarded end to end
+- **Deployment reliability engineering** — a documented recovery plan, a live network audit, and CI fixes that eliminated silent false-success deploys (rollbacks from ambiguous image tags, empty-response polling, misinterpreted exit codes, post-deploy routing drift); deploys now verify the build SHA in-cluster rather than assume it
+- **Governance documentation** — SOC 2 readiness assessment, a threat model for the attachment ingestion pipeline, ADRs, a mutation-testing strategy, a network engineering deep-dive, and a permissions/governance model
+- **An evidence-based delivery operating model** grounded in published research (DORA, Standish CHAOS, QSM, McKinsey, and a randomized controlled trial): fixed-time/flexible-scope two-week cycles, 1–3 day batches, trunk-based development, ship-every-green-build, WIP limits, decision-latency SLAs, WSJF prioritization, mandatory capacity slack
+
+Client identity and deficiency-analysis criteria are withheld.
 
 ## Key Learnings
 
