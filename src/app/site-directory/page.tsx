@@ -22,7 +22,7 @@ const pages = [
   { icon: 'fa-user', color: 'purple', title: 'My Story', description: 'Background, career timeline, and how autism and giftedness shape my work.', href: '/story', cta: 'Read My Story' },
   { icon: 'fa-layer-group', color: 'blue', title: 'Expertise', description: 'The ten technical pillars — AI/ML, RAG, architecture, Azure, and more.', href: '/expertise', cta: 'See Expertise' },
   { icon: 'fa-diagram-project', color: 'green', title: 'Work', description: 'Case studies from thirteen-plus years of shipping software.', href: '/work', cta: 'Browse Work' },
-  { icon: 'fa-code-branch', color: 'purple', title: 'Open Source', description: 'Seven MIT-licensed packages on PyPI.', href: '/open-source', cta: 'See Open Source' },
+  { icon: 'fa-code-branch', color: 'purple', title: 'Open Source', description: 'Eight MIT-licensed packages on PyPI.', href: '/open-source', cta: 'See Open Source' },
   { icon: 'fa-pen-nib', color: 'coral', title: 'Writing', description: 'Blog, the free Novice to Navigator article series, and both books.', href: '/writing', cta: 'Start Reading' },
   { icon: 'fa-newspaper', color: 'coral', title: 'Blog', description: 'AI, automation, and architecture — including what\'s buzzing right now.', href: '/blog', cta: 'Read the Blog' },
   { icon: 'fa-graduation-cap', color: 'gold', title: 'Novice to Navigator', description: 'A free 33-article series on AI chatbots for business.', href: '/novice-to-navigator', cta: 'Start Learning' },
