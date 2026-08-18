@@ -40,10 +40,10 @@ const pillars = [
 ];
 
 const proof = [
-  { title: 'AI Payroll Processor', metric: '45-day handoff, junior dev now owns it', href: '/work/enterprise-ai-payroll-processor' },
-  { title: 'Self-Hosted RAG Chatbot', metric: 'Mistral-7B, zero external dependencies', href: '/work/self-hosted-rag-chatbot' },
-  { title: 'GodFocus Push Notifications', metric: '159/159 tests, 85.84% coverage, 5 billable hours', href: '/work/godfocus-push-notifications' },
-  { title: 'Lima One Microservices Suite', metric: 'NestJS/gRPC, replaced legacy Mulesoft', href: '/work/lima-one-microservices-suite' },
+  { title: 'AI Governance Gateway', metric: 'Five model vendors behind one policy-enforced API; three teams migrated, their credentials retired', href: '/work/ai-governance-gateway' },
+  { title: 'AI Payroll Processor', metric: '20 microservices, 585 test modules; 45-day architecture handoff, junior dev now owns it', href: '/work/enterprise-ai-payroll-processor' },
+  { title: 'Identity Governance as Code', metric: '40 resource kinds reconciled from Git; secretless multi-tenant auth', href: '/work/identity-governance-as-code' },
+  { title: 'Multi-System Ticket Relay', metric: '653 tests, 93% coverage, chaos-tested convergence', href: '/work/multi-system-ticket-relay' },
 ];
 
 export default function Home() {
