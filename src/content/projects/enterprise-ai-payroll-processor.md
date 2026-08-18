@@ -1,20 +1,24 @@
 ---
 title: AI Payroll Processor (GPT-5)
-subtitle: Azure-Based Microservices with RAG Pipeline
-description: Complete redesign of automated payroll processing system using Azure microservices and RAG architecture
+subtitle: 20 Microservices, Four Human-Approved Phases, One Irreversible Step
+description: End-to-end AI-assisted payroll platform — 20 microservices across four human-approved phases on private AKS, with the final submission modeled as irreversible; architecture production-ready at day 45 and a junior developer trained in parallel who now owns it
 category: AI Solutions
 heroTitle: AI Payroll Processor (GPT-5)
-heroSubtitle: Azure-Based Microservices with RAG Pipeline
+heroSubtitle: Azure Microservices, RAG, and Human-in-the-Loop Gating on Every Phase
 technologies:
   - GPT-5
   - Azure Service Bus
   - RAG
   - Microsoft Graph API
   - Python
-  - Microservices
+  - Onion Architecture
+  - Terraform
+  - Helm
+  - Kustomize
+  - Private AKS
+  - GitOps
   - Excel Automation
-  - ADP API
-duration: 45 days
+duration: 45-day architecture handoff; co-led through 2026
 status: completed
 challenge: Enterprise client needed a complete redesign of their automated payroll processing system. The existing manual workflows were error-prone, time-consuming, and couldn't scale with business growth. They required a comprehensive architectural solution that could be implemented by their internal team while ensuring accuracy and compliance.
 solution: Led complete project discovery and architectural design, transforming initial requirements into a production-ready implementation plan with Azure microservices architecture. Designed a Retrieval-Augmented Generation (RAG) pipeline architecture for scanning Outlook and SharePoint data, with specifications for vector databases, LLM-driven processing, Excel automation, and Microsoft Graph API integration.
@@ -149,6 +153,21 @@ Designed for seamless handoff to junior developers:
 - **GDPR Compliance**: Data privacy and right to deletion capabilities
 - **Industry Standards**: Adherence to payroll processing regulations
 - **Regular Audits**: Automated compliance checking and reporting
+
+## Scale and Engineering (2026)
+
+What started as a 45-day discovery-to-architecture handoff grew into a co-led platform build. The numbers below are drawn from the repository itself.
+
+- **20 microservices across four phases**, each phase gated by a human-in-the-loop approval before advancing, with the final submission step explicitly modeled as **irreversible**
+- **Monorepo, onion architecture** — shared libraries for contracts, models, repositories, services, controllers, adapters, factories, and an internal SDK, so 20 deployable services share one dependency graph and one build (~420k lines, 2,891 files)
+- **Document + data AI pipeline** — source retrieval from the document management system, AI-directed spreadsheet correction operations, earnings generation and AI review, report generation and review, and human-approved finalization
+- **Full IaC ownership** — Terraform modules (AKS, networking, container registry, key vault, monitoring, identity) across dev and prod, Kubernetes base/overlay manifests, 20 Helm charts on a shared library chart, GitOps continuous delivery
+- **10 CI/CD workflows** — build, quality gates, integration, contract testing, IaC validate and apply, identity provisioning, dev/prod deploy, and a scheduled security suite
+- **585 Python test modules** across unit, integration, contract, e2e, and smoke tiers
+- **Security remediation at scale** — resolved IaC policy findings, migrated every AI service call off app-held credentials and onto the [AI governance gateway](/work/ai-governance-gateway), then deleted the now-unnecessary role assignments and secret stubs
+- **Operational hardening** — fixed workload-identity failures in event-driven autoscaling, capacity-tuned node pools under real payroll load, built an operator console with per-service health and idle-state visibility, and drove image promotion by digest through GitOps
+
+Client identity, payroll rules, and commercial terms are withheld.
 
 ## Key Learnings
 

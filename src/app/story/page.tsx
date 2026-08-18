@@ -133,9 +133,37 @@ export default function StoryPage() {
               of September 2026 I&apos;m looking for the next team where AI, automation, and
               architecture are the whole job, not a side quest. I&apos;m autistic; I do my best
               work deep in exactly those problems, and I ship the documentation that lets a
-              junior developer own what I built. While I was there I shipped an Azure Service
-              Bus payroll automation with a 45-day handoff, migrated a production app between
-              Azure tenants on OIDC federated credentials, and open-sourced{' '}
+              junior developer own what I built.
+            </p>
+            <p>
+              The year was dense. I was sole architect of the firm&apos;s{' '}
+              <Link href="/work/ai-governance-gateway" className="text-[var(--color-accent-blue)] hover:underline">
+                AI governance gateway
+              </Link>{' '}
+              — five model vendors behind one policy-enforced API, with per-project cost caps, a
+              hash-chained audit trail, and no API keys anywhere in the path — and then migrated
+              three product teams onto it. I co-led a{' '}
+              <Link href="/work/enterprise-ai-payroll-processor" className="text-[var(--color-accent-blue)] hover:underline">
+                20-microservice AI payroll platform
+              </Link>{' '}
+              (585 test modules, human approval on every phase), led a{' '}
+              <Link href="/work/ai-report-generator-email-intake" className="text-[var(--color-accent-blue)] hover:underline">
+                technical report generation platform
+              </Link>
+              , and wrote two{' '}
+              <Link href="/work/identity-governance-as-code" className="text-[var(--color-accent-blue)] hover:underline">
+                identity-governance-as-code control planes
+              </Link>{' '}
+              for a SOX-regulated enterprise, a{' '}
+              <Link href="/work/multi-system-ticket-relay" className="text-[var(--color-accent-blue)] hover:underline">
+                ticket relay
+              </Link>{' '}
+              with 653 tests and chaos-proved convergence, and a{' '}
+              <Link href="/work/multi-tenant-observability-portal" className="text-[var(--color-accent-blue)] hover:underline">
+                multi-tenant observability portal
+              </Link>
+              . Underneath all of it: OIDC workload identity across 20 CI workflows in 9 repos,
+              supply-chain scanning and keyless signing, and{' '}
               <a
                 href="https://pypi.org/project/vibey-bootstrap/"
                 target="_blank"
@@ -144,7 +172,12 @@ export default function StoryPage() {
               >
                 vibey-bootstrap
               </a>
-              {' '}(published then as azure-bootstrap), a Python library now used across the org&apos;s Azure Functions repos.
+              {' '}(published then as azure-bootstrap), the shared Python platform library adopted by 17+
+              of the org&apos;s repositories. Around the code: five formal architecture document
+              sets, identity-governance advisory for ~5,700 workforce identities, an original
+              &ldquo;Security-First Scrum&rdquo; framework with training manuals and AI-agent rulesets,
+              and the firm&apos;s LinkedIn thought-leadership program end to end. Client identities
+              stay out of it.
             </p>
           </div>
 
