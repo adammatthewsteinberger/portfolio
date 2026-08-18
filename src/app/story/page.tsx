@@ -137,14 +137,14 @@ export default function StoryPage() {
               Bus payroll automation with a 45-day handoff, migrated a production app between
               Azure tenants on OIDC federated credentials, and open-sourced{' '}
               <a
-                href="https://pypi.org/project/azure-bootstrap/"
+                href="https://pypi.org/project/vibey-bootstrap/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[var(--color-accent-blue)] hover:underline"
               >
-                azure-bootstrap
+                vibey-bootstrap
               </a>
-              , a Python library now used across the org&apos;s Azure Functions repos.
+              {' '}(published then as azure-bootstrap), a Python library now used across the org&apos;s Azure Functions repos.
             </p>
           </div>
 

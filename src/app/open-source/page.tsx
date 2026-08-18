@@ -49,7 +49,7 @@ const packages: Package[] = [
     tagline: '18 plugins. 71 Agent Skills. MIT licensed.',
     description:
       'A Claude Code plugin marketplace of evidence-grounded practitioner references — security, cloud infrastructure, DevSecOps, AI/ML, software architecture, agile delivery, and technical writing. Every claim cites the standard, vendor doc, or paper it comes from.',
-    pypi: 'https://pypi.org/project/vibe-engineering-skills/',
+    pypi: 'https://pypi.org/project/vibey-skills/',
     repo: 'https://github.com/adammatthewsteinberger/vibey-skills',
   },
   {
@@ -57,7 +57,7 @@ const packages: Package[] = [
     tagline: 'The Azure Functions cross-cutting layer, solved once',
     description:
       'Configuration loading wants logging to report progress; App Insights logging wants configuration to initialize. vibey-bootstrap breaks that cycle with a four-phase startup sequence, then layers on structured logging, Service Bus plumbing, rate limiting, and a scaffold CLI. Used across 17+ Azure Functions repos.',
-    pypi: 'https://pypi.org/project/azure-bootstrap/',
+    pypi: 'https://pypi.org/project/vibey-bootstrap/',
     repo: 'https://github.com/adammatthewsteinberger/vibey-bootstrap',
   },
 ];
