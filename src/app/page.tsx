@@ -249,13 +249,13 @@ export default function Home() {
             </p>
           </a>
           <a
-            href="https://github.com/TheViziusGroup/vibe-engineering-skills"
+            href="https://github.com/adammatthewsteinberger/vibey-skills"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] hover:border-[var(--color-accent-blue)]/50 rounded-xl p-5 no-underline transition-colors"
           >
             <h3 className="font-bold text-[var(--color-text-primary)] mb-2">
-              vibe-engineering-skills
+              vibey-skills
             </h3>
             <p className="text-sm text-[var(--color-text-muted)]">
               18 plugins, 71 evidence-grounded practitioner references, MIT licensed.
@@ -267,7 +267,7 @@ export default function Home() {
             rel="noopener noreferrer"
             className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] hover:border-[var(--color-accent-blue)]/50 rounded-xl p-5 no-underline transition-colors"
           >
-            <h3 className="font-bold text-[var(--color-text-primary)] mb-2">azure-bootstrap</h3>
+            <h3 className="font-bold text-[var(--color-text-primary)] mb-2">vibey-bootstrap</h3>
             <p className="text-sm text-[var(--color-text-muted)]">
               v3, used across 17+ Azure Functions repos. Solves the logging↔config bootstrap
               paradox.
