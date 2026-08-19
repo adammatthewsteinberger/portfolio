@@ -179,6 +179,16 @@ export default function StoryPage() {
               and the firm&apos;s LinkedIn thought-leadership program end to end. Client identities
               stay out of it.
             </p>
+            <p>
+              On the side, unpaid: I&apos;m the volunteer architect behind{' '}
+              <Link href="/work/project-excite-relay" className="text-[var(--color-accent-blue)] hover:underline">
+                Project Excite
+              </Link>
+              , the relay that hands a seeker from an AI apologetics chatbot to a live volunteer
+              without losing the thread — designed in three technical summaries before a line of
+              code, then shipped across split PR stacks. And in 2026 I wrote business plans and
+              architecture documents for two SaaS concepts of my own; those stay unnamed here.
+            </p>
           </div>
 
           <div>
