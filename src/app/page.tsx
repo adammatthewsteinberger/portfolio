@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description:
       'RAG systems, event-driven Azure microservices, and automation pipelines that the people who inherit them can actually run. Available September 2026 — Greenville, SC (remote) or US remote.',
     url: 'https://hire.adam.matthewsteinberger.com',
-    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Adam Matthew Steinberger' }],
+    images: [{ url: '/images/og-home.png', width: 1200, height: 630, alt: 'Adam Matthew Steinberger — Staff Software Architect & AI Automation Engineer' }],
     locale: 'en_US',
     type: 'website',
   },
