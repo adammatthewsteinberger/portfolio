@@ -101,7 +101,7 @@ export default function BooksPage() {
             <p className="text-[var(--color-text-muted)] mb-4">
               A 246-page, 200-plus-source field manual on how influence, attention, and culture
               actually work — social engineering frameworks, virality mechanics, narrative
-              apologetics, organizational psychology, and a chapter on autistic cognition and
+              apologetics, organizational psychology, and a chapter on cognitive difference and
               faithful presence that&apos;s the most personal thing I&apos;ve written. It&apos;s
               explicitly a Christian book, written from a Messianic Jewish perspective, and it
               names that plainly rather than hiding it. Currently in development.

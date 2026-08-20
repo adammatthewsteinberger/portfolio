@@ -756,6 +756,12 @@ const nextConfig: NextConfig = {
         destination: '/services/ai-services',
         permanent: true,
       },
+      // Retired post — availability now lives on /hire-me rather than a narrative blog post.
+      {
+        source: '/blog/why-im-leaving-a-job-i-liked',
+        destination: '/hire-me',
+        permanent: true,
+      },
     ];
   },
 };
