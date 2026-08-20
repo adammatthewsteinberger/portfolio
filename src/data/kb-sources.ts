@@ -164,4 +164,11 @@ In 2025 Adam was diagnosed autistic. He is also gifted in the specific, testable
     section: 'Interactive quiz',
     text: `Adam built an interactive Chatbot Readiness Quiz — a 15-factor, four-pillar self-assessment (Organizational, Technical, Security & Compliance, Operational) that scores an organization's actual readiness to deploy a custom AI chatbot, based on the "Four Pillars of Chatbot Readiness" framework from his Novice to Navigator book.`,
   },
+  {
+    id: 'chat',
+    url: '/chat',
+    title: 'Ask my résumé',
+    section: 'Chat',
+    text: `"Ask my résumé" is a small RAG chat assistant that answers questions about Adam's background, experience, technical stack, and availability. It lives full-page at https://chat.adam.matthewsteinberger.com (also reachable at /chat) and as an inline widget on the homepage. It answers only using facts published on this site and is capped at six questions per session. For anything more, visitors can use the contact form or view the Hire Me page.`,
+  },
 ];
