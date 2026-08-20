@@ -54,3 +54,10 @@ src/generated/
 
 # Unpublished book drafts dropped in locally for reference (see docs/)
 docs/*.pdf
+
+# vibey / *loop engine state (autonomous delivery machinery, never product)
+.vibey/
+.claudeloop/
+.codexloop/
+.cursorloop/
+.agyloop/
