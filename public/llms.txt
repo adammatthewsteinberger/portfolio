@@ -4,6 +4,10 @@
 
 Adam Matthew Steinberger is a software architect and AI automation engineer specializing in Retrieval-Augmented Generation (RAG) systems, event-driven microservices on Azure, process engineering, and automation pipelines. He is autistic and gifted, and writes openly about neurodivergence as a professional advantage. He is currently available for full-time Staff Software Architect / AI Automation Engineer roles starting September 2026.
 
+## Interactive Features
+
+- [Ask My Résumé](https://hire.adam.matthewsteinberger.com/#ask-resume): A Claude-powered RAG chatbot on the homepage that answers questions about Adam's background, experience, and availability. Built with the Anthropic SDK, MiniSearch (BM25 retrieval), and a curated knowledge base covering his résumé, case studies, and technical writing.
+
 ## Key pages
 
 - [Hire Me](https://hire.adam.matthewsteinberger.com/hire-me): Availability, target roles, résumé, and how to reach him.
