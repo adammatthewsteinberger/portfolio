@@ -1,8 +1,47 @@
 import type { NextConfig } from 'next';
 
+// Hosts for the "Ask my résumé" chat subdomain. chat.adam.matthewsteinberger.com is a
+// Netlify domain alias of this same site; the host-aware rules below keep exactly one
+// canonical URL per page. See AGENTS.md → "Chat subdomain" for the curl checklist to
+// re-run after any Next.js / @netlify/plugin-nextjs upgrade.
+const CHAT_HOST = 'chat.adam.matthewsteinberger.com';
+const HIRE_HOST = 'hire.adam.matthewsteinberger.com';
+
 const nextConfig: NextConfig = {
+  async rewrites() {
+    return {
+      beforeFiles: [
+        // chat host: "/" serves the /chat page (URL unchanged).
+        { source: '/', has: [{ type: 'host', value: CHAT_HOST }], destination: '/chat' },
+      ],
+    };
+  },
   async redirects() {
     return [
+      // --- chat subdomain (must stay first) ---
+      // chat host: /chat is canonical at the root.
+      {
+        source: '/chat',
+        has: [{ type: 'host', value: CHAT_HOST }],
+        destination: `https://${CHAT_HOST}/`,
+        permanent: true,
+      },
+      // chat host: every other page belongs to the hire host. The lookahead keeps
+      // /api/*, /_next/* and file-extension assets serving on the chat host.
+      {
+        source: '/:path((?!api/|_next/|.*\\.[a-zA-Z0-9]+$).+)',
+        has: [{ type: 'host', value: CHAT_HOST }],
+        destination: `https://${HIRE_HOST}/:path`,
+        permanent: true,
+      },
+      // hire host: /chat lives on the chat host. Other hosts (localhost, deploy
+      // previews) are untouched so /chat serves directly there.
+      {
+        source: '/chat',
+        has: [{ type: 'host', value: HIRE_HOST }],
+        destination: `https://${CHAT_HOST}/`,
+        permanent: true,
+      },
       {
         source: '/ai-greer.html',
         destination: '/services/ai-greer',

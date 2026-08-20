@@ -173,7 +173,7 @@ describe('AskAdam', () => {
       expect(screen.getByText('Yes, in production.')).toBeInTheDocument();
     });
     expect(screen.getByText('Self-Hosted RAG')).toBeInTheDocument();
-    expect(mockTrack).toHaveBeenCalledWith('ask_message', { turn: 1 });
+    expect(mockTrack).toHaveBeenCalledWith('ask_message', { turn: 1, surface: 'widget' });
 
     const postCall = fetchMock.mock.calls.find(([, init]) => init?.method === 'POST');
     expect(postCall?.[0]).toBe('/api/ask');
@@ -429,5 +429,128 @@ describe('AskAdam', () => {
         await Promise.resolve();
       })(),
     ).resolves.not.toThrow();
+  });
+
+  it('renders an "Open full page" link to /chat in the widget dialog header', async () => {
+    global.fetch = vi.fn().mockResolvedValue(mockEnabledStatusResponse());
+    const user = userEvent.setup();
+    render(<AskAdam variant="widget" />);
+
+    const button = await screen.findByRole('button', { name: /ask my résumé/i });
+    await user.click(button);
+
+    const link = screen.getByRole('link', { name: /open full page/i });
+    expect(link).toBeInTheDocument();
+    expect(link).toHaveAttribute('href', '/chat');
+  });
+
+  describe('variant="page"', () => {
+    it('renders in page mode without open/close button', async () => {
+      global.fetch = vi.fn().mockResolvedValue(mockEnabledStatusResponse());
+      render(<AskAdam variant="page" />);
+
+      expect(screen.queryByRole('button', { name: /ask my résumé/i })).not.toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText(/ask about adam's experience/i)).toBeInTheDocument();
+      });
+    });
+
+    it('sends a question in page mode', async () => {
+      const fetchMock = vi.fn();
+      fetchMock.mockResolvedValueOnce(mockEnabledStatusResponse());
+      fetchMock.mockResolvedValueOnce(
+        mockStreamingResponse([{ type: 'delta', text: 'Answer.' }, { type: 'done', citations: [] }]),
+      );
+      global.fetch = fetchMock;
+      const user = userEvent.setup();
+      render(<AskAdam variant="page" />);
+
+      const input = await screen.findByPlaceholderText(/ask a question/i);
+      await user.type(input, 'Test question');
+      await user.click(screen.getByRole('button', { name: /^send$/i }));
+
+      await waitFor(() => expect(screen.getByText('Answer.')).toBeInTheDocument());
+    });
+  });
+
+  describe('page variant frame and resting notice', () => {
+    it('is a labelled region with no close button and taller scroll area', async () => {
+      global.fetch = vi.fn().mockResolvedValue(mockEnabledStatusResponse());
+      render(<AskAdam variant="page" />);
+
+      const region = await screen.findByRole('region', { name: 'Ask my résumé' });
+      expect(region).toBeInTheDocument();
+      expect(region.className).toContain('min-h-[60vh]');
+      expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+      expect(screen.queryByRole('button', { name: 'Close' })).not.toBeInTheDocument();
+      expect(screen.queryByRole('link', { name: /open full page/i })).not.toBeInTheDocument();
+      expect(screen.getByRole('heading', { level: 2, name: 'Ask my résumé' })).toBeInTheDocument();
+      expect(screen.getByPlaceholderText(/ask a question/i).parentElement?.previousElementSibling?.className).toContain(
+        'min-h-[320px]',
+      );
+    });
+
+    it('shows the resting notice when the bot is disabled', async () => {
+      global.fetch = vi.fn().mockResolvedValue({ ok: true, json: async () => ({ enabled: false }) } as unknown as Response);
+      render(<AskAdam variant="page" />);
+
+      const region = await screen.findByRole('region', { name: 'Ask my résumé' });
+      expect(region).toHaveTextContent(/resting right now/i);
+      expect(screen.getByRole('link', { name: 'Hire Me' })).toHaveAttribute('href', '/hire-me');
+      expect(screen.getByRole('link', { name: 'get in touch' })).toHaveAttribute('href', '/contact');
+      expect(screen.queryByPlaceholderText(/ask a question/i)).not.toBeInTheDocument();
+    });
+
+    it('shows the resting notice when the status check fails', async () => {
+      global.fetch = vi.fn().mockRejectedValue(new Error('network down'));
+      render(<AskAdam variant="page" />);
+
+      expect(await screen.findByText(/resting right now/i)).toBeInTheDocument();
+    });
+
+    it('shows the resting notice for detected bots instead of the chat', async () => {
+      mockUseBotDetection.mockReturnValue(true);
+      global.fetch = vi.fn().mockResolvedValue(mockEnabledStatusResponse());
+      render(<AskAdam variant="page" />);
+
+      expect(await screen.findByText(/resting right now/i)).toBeInTheDocument();
+      expect(screen.queryByPlaceholderText(/ask a question/i)).not.toBeInTheDocument();
+    });
+
+    it('says it is checking availability until the status check resolves', () => {
+      global.fetch = vi.fn(() => new Promise<Response>(() => {}));
+      render(<AskAdam variant="page" />);
+
+      expect(screen.getByRole('region', { name: 'Ask my résumé' })).toHaveTextContent(/checking availability/i);
+      expect(screen.queryByText(/resting right now/i)).not.toBeInTheDocument();
+    });
+
+    it('reports the surface in the analytics event', async () => {
+      const fetchMock = vi.fn();
+      fetchMock.mockResolvedValueOnce(mockEnabledStatusResponse());
+      fetchMock.mockResolvedValueOnce(
+        mockStreamingResponse([{ type: 'delta', text: 'Yes.' }, { type: 'done', citations: [] }]),
+      );
+      global.fetch = fetchMock;
+      const user = userEvent.setup();
+      render(<AskAdam variant="page" />);
+
+      await user.click(await screen.findByRole('button', { name: /shipped RAG in production/i }));
+
+      await waitFor(() => expect(mockTrack).toHaveBeenCalledWith('ask_message', { turn: 1, surface: 'page' }));
+    });
+
+    it('opens the full page in a new tab from the widget header', async () => {
+      global.fetch = vi.fn().mockResolvedValue(mockEnabledStatusResponse());
+      const user = userEvent.setup();
+      render(<AskAdam />);
+
+      await user.click(await screen.findByRole('button', { name: /ask my résumé/i }));
+
+      const link = screen.getByRole('link', { name: /open full page/i });
+      expect(link).toHaveAttribute('href', '/chat');
+      expect(link).toHaveAttribute('target', '_blank');
+      expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+    });
   });
 });

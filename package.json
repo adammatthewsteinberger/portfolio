@@ -23,7 +23,8 @@
     "test:e2e:headed": "playwright test --headed",
     "generate-ebook": "tsx scripts/generate-ebook.ts",
     "build-kb": "tsx scripts/build-kb.ts",
-    "prepare": "husky"
+    "prepare": "husky",
+    "worktree:deps": "node scripts/ensure-node-modules.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.70.0",
