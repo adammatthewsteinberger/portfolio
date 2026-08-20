@@ -430,4 +430,33 @@ describe('AskAdam', () => {
       })(),
     ).resolves.not.toThrow();
   });
+
+  describe('variant="page"', () => {
+    it('renders in page mode without open/close button', async () => {
+      global.fetch = vi.fn().mockResolvedValue(mockEnabledStatusResponse());
+      render(<AskAdam variant="page" />);
+
+      expect(screen.queryByRole('button', { name: /ask my résumé/i })).not.toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText(/ask about adam's experience/i)).toBeInTheDocument();
+      });
+    });
+
+    it('sends a question in page mode', async () => {
+      const fetchMock = vi.fn();
+      fetchMock.mockResolvedValueOnce(mockEnabledStatusResponse());
+      fetchMock.mockResolvedValueOnce(
+        mockStreamingResponse([{ type: 'delta', text: 'Answer.' }, { type: 'done', citations: [] }]),
+      );
+      global.fetch = fetchMock;
+      const user = userEvent.setup();
+      render(<AskAdam variant="page" />);
+
+      const input = await screen.findByPlaceholderText(/ask a question/i);
+      await user.type(input, 'Test question');
+      await user.click(screen.getByRole('button', { name: /^send$/i }));
+
+      await waitFor(() => expect(screen.getByText('Answer.')).toBeInTheDocument());
+    });
+  });
 });
