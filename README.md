@@ -93,7 +93,7 @@ Deploys to Netlify from `netlify.toml` (`npm run build` → `.next`). Set the tw
 
 Open source (MIT, on PyPI): [claudeloop](https://github.com/adammatthewsteinberger/claudeloop) · [codexloop](https://github.com/adammatthewsteinberger/codexloop) · [cursorloop](https://github.com/adammatthewsteinberger/cursorloop) · [agyloop](https://github.com/adammatthewsteinberger/agyloop) · [vibey](https://github.com/adammatthewsteinberger/vibey) · [vibey-bootstrap](https://github.com/adammatthewsteinberger/vibey-bootstrap) · [vibey-skills](https://github.com/adammatthewsteinberger/vibey-skills) · [homebrew-tap](https://github.com/adammatthewsteinberger/homebrew-tap)
 
-Sites and books: [engineering-influence](https://github.com/adammatthewsteinberger/engineering-influence) (book manuscripts + PDF/EPUB generator) · [the-autistic-apologist](https://github.com/adammatthewsteinberger/the-autistic-apologist) · [humbleberger](https://github.com/adammatthewsteinberger/humbleberger)
+Sites and books: [engineering-influence](https://github.com/adammatthewsteinberger/engineering-influence) (book manuscripts + PDF/EPUB generator) · [humbleberger](https://github.com/adammatthewsteinberger/humbleberger)
 
 ## Contributing
 
