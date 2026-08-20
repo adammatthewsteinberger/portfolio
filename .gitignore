@@ -56,7 +56,8 @@ src/generated/
 docs/*.pdf
 
 # vibey / *loop engine state (autonomous delivery machinery, never product)
-.vibey/
+.vibey/*
+!.vibey/context/
 .claudeloop/
 .codexloop/
 .cursorloop/
