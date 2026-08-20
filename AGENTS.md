@@ -29,6 +29,7 @@ src/
 │   ├── page.tsx                  # Homepage
 │   ├── story/                    # "About" page (renamed from /about; old URL 301s in next.config.ts)
 │   ├── hire-me/                  # Primary conversion page — the main CTA target
+│   ├── chat/                     # Full-page "Ask my résumé" chat; served at chat.adam.matthewsteinberger.com via host rules in next.config.ts
 │   ├── expertise/                # 10 technical pillars, CEO/engineer dual-audience copy
 │   ├── work/, work/[slug]/       # Case studies (renamed from /projects; old URL 301s)
 │   ├── open-source/              # PyPI package showcase
@@ -86,6 +87,18 @@ Do not invent or round up metrics in case studies, blog posts, or anywhere else 
 - **Guardrails**: feature-flagged off unless both `ASK_BOT_ENABLED=true` and `ANTHROPIC_API_KEY` are set (checked via `GET /api/ask`, which the widget polls on mount and renders nothing if disabled); 6-turn session cap enforced client- and server-side; honeypot field; in-memory per-IP rate limiting and a daily output-token spend cap in `src/lib/ask/rateLimit.ts` (documented there as best-effort only — it resets on cold start and doesn't share state across concurrent Netlify Function instances, which is an accepted tradeoff for this widget's stakes); system prompt explicitly forbids inventing employment facts and requires citing the source page.
 - If you add new pages that should be answerable by the bot, add curated source text to `src/data/kb-sources.ts` — don't try to scrape JSX from page components, the bot should only ever answer from hand-reviewed text.
 
+### Chat subdomain (`chat.adam.matthewsteinberger.com`)
+
+The RAG chat is also hosted as a full-page experience at `https://chat.adam.matthewsteinberger.com/` (rendered by `src/app/chat/page.tsx`). Host-based routing rules live in `next.config.ts` via `rewrites()` and `redirects()` using `has: [{ type: 'host', value: '<host>' }]` conditions:
+- **Rewrite**: Requests to `chat.adam.matthewsteinberger.com/` are rewritten to `/chat` (URL stays clean at the root, HTTP 200).
+- **Redirects**:
+  - `chat.adam.matthewsteinberger.com/chat` permanently redirects (308) to `https://chat.adam.matthewsteinberger.com/`.
+  - Non-chat pages on `chat.adam.matthewsteinberger.com` (e.g. `/story`, `/work/*`) permanently redirect (308) to `https://hire.adam.matthewsteinberger.com/:path` (query strings preserved; `/api/*`, `/_next/*`, and static assets excluded via regex lookahead).
+  - `hire.adam.matthewsteinberger.com/chat` permanently redirects (308) to `https://chat.adam.matthewsteinberger.com/`.
+  - `localhost` and preview hosts are untouched so `/chat` serves directly.
+
+This allows both the primary site and the chat subdomain to be served from the same Next.js application on a single Netlify site instance without middleware or separate deployments.
+
 ## Development commands
 
 ```sh
@@ -99,6 +112,7 @@ npm run test:coverage      # Vitest with coverage — must stay at 100% across a
 npm run test:e2e           # Playwright
 npm run build-kb           # Manually rebuild src/generated/kb.json
 npm run generate-ebook     # Rebuild the Novice to Navigator PDF/EPUB
+npm run worktree:deps      # Bootstrap node_modules inside a git worktree by cloning the main checkout's (used by vibey BUILD worktrees)
 ```
 
 Husky runs `lint-staged` + `npm run typecheck` on pre-commit, and `npm run test` + `npm run build` on pre-push — both paths already rebuild the KB via the hooks above, so you don't need to run `build-kb` manually before committing.
@@ -119,6 +133,13 @@ Netlify, `@netlify/plugin-nextjs`, build command `npm run build`, publish direct
 
 - `GOOGLE_SITE_VERIFICATION` — Search Console verification (optional; omitted safely if unset)
 - `ANTHROPIC_API_KEY` + `ASK_BOT_ENABLED=true` — required together to enable the RAG bot; the site functions completely normally with the widget simply absent if either is unset
+
+### Subdomain setup (manual steps)
+
+To route `chat.adam.matthewsteinberger.com` to the existing deployment:
+1. **Netlify**: In Site configuration → Domain management, add domain alias `chat.adam.matthewsteinberger.com` to the `hire-adam-steinberger` site.
+2. **Porkbun DNS**: For `matthewsteinberger.com`, add a CNAME record: `chat.adam` → `hire-adam-steinberger.netlify.app`.
+3. **SSL/TLS**: Netlify automatically provisions and renews the Let's Encrypt TLS certificate once the DNS CNAME record resolves.
 
 ## SEO / GEO surface
 
