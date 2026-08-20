@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
 import { useBotDetection } from '@/hooks/useBotDetection';
 import { track } from '@/lib/analytics';
 
@@ -25,12 +24,21 @@ const SUGGESTED_QUESTIONS = [
 ];
 
 export interface AskAdamProps {
+  /**
+   * `widget` (default) — the homepage launcher button that opens a floating dialog.
+   * `page` — the always-open inline panel used by /chat (chat.adam.matthewsteinberger.com).
+   */
   variant?: 'widget' | 'page';
 }
 
+const PANEL_CLASSES =
+  'bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl shadow-2xl flex flex-col';
+const LINK_CLASSES = 'underline hover:text-[var(--color-accent-blue)]';
+
 export function AskAdam({ variant = 'widget' }: AskAdamProps = {}) {
   const isBot = useBotDetection();
-  const [enabled, setEnabled] = useState(false);
+  // null = the /api/ask status check hasn't resolved yet (also the server-rendered state).
+  const [enabled, setEnabled] = useState<boolean | null>(null);
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState('');
@@ -59,8 +67,33 @@ export function AskAdam({ variant = 'widget' }: AskAdamProps = {}) {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' });
   }, [messages, streaming]);
 
-  if (isBot || !enabled) {
-    return null;
+  if (isBot || enabled !== true) {
+    // The homepage widget simply disappears. The full page must never look blank or
+    // broken (locally and in tests the bot is disabled), so it explains itself —
+    // and while the status check is still in flight it says so rather than
+    // flashing the resting notice at visitors who are about to get the chat.
+    if (variant === 'widget') return null;
+    const checking = !isBot && enabled === null;
+    return (
+      <section role="region" aria-label="Ask my résumé" className={`${PANEL_CLASSES} p-6 text-center`}>
+        {checking ? (
+          <p className="text-[var(--color-text-muted)]">Checking availability…</p>
+        ) : (
+          <p className="text-[var(--color-text-muted)]">
+            Ask my résumé is resting right now — it needs a live model key to answer. In the
+            meantime, the{' '}
+            <a href="/hire-me" className={LINK_CLASSES}>
+              Hire Me
+            </a>{' '}
+            page has the short version, or{' '}
+            <a href="/contact" className={LINK_CLASSES}>
+              get in touch
+            </a>{' '}
+            directly.
+          </p>
+        )}
+      </section>
+    );
   }
 
   const userTurns = messages.filter((m) => m.role === 'user').length;
@@ -77,7 +110,7 @@ export function AskAdam({ variant = 'widget' }: AskAdamProps = {}) {
     setMessages(nextMessages);
     setInput('');
     setStreaming(true);
-    track('ask_message', { turn: userTurns + 1 });
+    track('ask_message', { turn: userTurns + 1, surface: variant });
 
     try {
       const response = await fetch('/api/ask', {
@@ -138,14 +171,19 @@ export function AskAdam({ variant = 'widget' }: AskAdamProps = {}) {
     }
   };
 
-  const chatBody = (
+  // The conversation area + composer are identical in both variants; only the
+  // frame around them differs.
+  const panel = (
     <>
-      <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-3 min-h-[200px]">
+      <div
+        ref={scrollRef}
+        className={`flex-1 overflow-y-auto p-4 space-y-3 ${variant === 'page' ? 'min-h-[320px]' : 'min-h-[200px]'}`}
+      >
         {messages.length === 0 && (
           <div>
             <p className="text-sm text-[var(--color-text-muted)] mb-3">
-              Ask about Adam&apos;s experience, stack, or availability — answered only from what&apos;s actually on
-              this site.
+              Ask about Adam&apos;s experience, stack, or availability — answered only from what&apos;s
+              actually on this site.
             </p>
             <div className="flex flex-wrap gap-2">
               {SUGGESTED_QUESTIONS.map((question) => (
@@ -241,12 +279,12 @@ export function AskAdam({ variant = 'widget' }: AskAdamProps = {}) {
 
   if (variant === 'page') {
     return (
-      <div className="flex flex-col h-full bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl shadow-2xl">
-        <div className="flex items-center p-4 border-b border-[var(--color-dark-border)]">
-          <h3 className="font-bold text-[var(--color-text-primary)]">Ask my résumé</h3>
+      <section role="region" aria-label="Ask my résumé" className={`${PANEL_CLASSES} min-h-[60vh]`}>
+        <div className="flex items-center justify-between p-4 border-b border-[var(--color-dark-border)]">
+          <h2 className="font-bold text-[var(--color-text-primary)]">Ask my résumé</h2>
         </div>
-        {chatBody}
-      </div>
+        {panel}
+      </section>
     );
   }
 
@@ -266,17 +304,21 @@ export function AskAdam({ variant = 'widget' }: AskAdamProps = {}) {
         <div
           role="dialog"
           aria-label="Ask my résumé"
-          className="fixed inset-x-4 bottom-4 sm:right-6 sm:left-auto sm:bottom-6 sm:w-96 z-50 bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl shadow-2xl flex flex-col max-h-[80vh]"
+          className={`fixed inset-x-4 bottom-4 sm:right-6 sm:left-auto sm:bottom-6 sm:w-96 z-50 ${PANEL_CLASSES} max-h-[80vh]`}
         >
           <div className="flex items-center justify-between p-4 border-b border-[var(--color-dark-border)]">
             <h3 className="font-bold text-[var(--color-text-primary)]">Ask my résumé</h3>
             <div className="flex items-center gap-3">
-              <Link
+              {/* Relative on purpose: on the hire host this 308s to chat.adam.matthewsteinberger.com,
+                  while localhost and deploy previews serve /chat directly. */}
+              <a
                 href="/chat"
-                className="text-xs underline text-[var(--color-text-muted)] hover:text-[var(--color-accent-blue)]"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`text-xs text-[var(--color-text-muted)] ${LINK_CLASSES}`}
               >
                 Open full page
-              </Link>
+              </a>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
@@ -287,7 +329,7 @@ export function AskAdam({ variant = 'widget' }: AskAdamProps = {}) {
               </button>
             </div>
           </div>
-          {chatBody}
+          {panel}
         </div>
       )}
     </>
