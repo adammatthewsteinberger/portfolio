@@ -138,109 +138,114 @@ export function AskAdam({ variant = 'widget' }: AskAdamProps = {}) {
     }
   };
 
+  const chatBody = (
+    <>
+      <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-3 min-h-[200px]">
+        {messages.length === 0 && (
+          <div>
+            <p className="text-sm text-[var(--color-text-muted)] mb-3">
+              Ask about Adam&apos;s experience, stack, or availability — answered only from what&apos;s actually on
+              this site.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {SUGGESTED_QUESTIONS.map((question) => (
+                <button
+                  key={question}
+                  type="button"
+                  onClick={() => sendMessage(question)}
+                  className="text-xs px-3 py-1.5 rounded-full bg-[var(--color-dark-card-alt)] text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors"
+                >
+                  {question}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {messages.map((message, index) => (
+          <div
+            key={index}
+            className={`text-sm rounded-lg px-3 py-2 max-w-[85%] whitespace-pre-wrap ${
+              message.role === 'user'
+                ? 'ml-auto bg-[var(--color-accent-blue)] text-white'
+                : 'bg-[var(--color-dark-card-alt)] text-[var(--color-text-primary)]'
+            }`}
+          >
+            {message.content}
+          </div>
+        ))}
+
+        {streaming && messages[messages.length - 1]?.content === '' && (
+          <div className="text-sm text-[var(--color-text-muted)] italic">Thinking…</div>
+        )}
+
+        {citations.length > 0 && (
+          <div className="text-xs text-[var(--color-text-muted)] space-x-2">
+            {citations.map((citation) => (
+              <a key={citation.url} href={citation.url} className="underline hover:text-[var(--color-accent-blue)]">
+                {citation.title}
+              </a>
+            ))}
+          </div>
+        )}
+
+        {errorMessage && <p className="text-sm text-[var(--color-accent-coral)]">{errorMessage}</p>}
+
+        {turnLimitReached && (
+          <p className="text-xs text-[var(--color-text-muted)] italic">
+            That&apos;s the limit for this session — for anything more,{' '}
+            <a href="/contact" className="underline">
+              reach out directly
+            </a>
+            .
+          </p>
+        )}
+      </div>
+
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          sendMessage(input);
+        }}
+        className="p-3 border-t border-[var(--color-dark-border)] flex gap-2"
+      >
+        {/* Honeypot — hidden from real visitors via CSS, invisible to screen readers */}
+        <input
+          type="text"
+          name="website"
+          value={honeypot}
+          onChange={(event) => setHoneypot(event.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          className="absolute w-0 h-0 opacity-0 pointer-events-none"
+        />
+        <input
+          type="text"
+          value={input}
+          onChange={(event) => setInput(event.target.value)}
+          disabled={streaming || turnLimitReached}
+          placeholder={turnLimitReached ? 'Session limit reached' : 'Ask a question…'}
+          className="flex-1 px-3 py-2 text-sm rounded-lg bg-[var(--color-dark-card-alt)] text-[var(--color-text-primary)] border border-[var(--color-dark-border)] focus:outline-none focus:border-[var(--color-accent-blue)] disabled:opacity-50"
+        />
+        <button
+          type="submit"
+          disabled={streaming || turnLimitReached || !input.trim()}
+          className="px-4 py-2 text-sm font-bold rounded-lg bg-[var(--color-accent-blue)] text-white disabled:opacity-40 disabled:cursor-not-allowed"
+        >
+          Send
+        </button>
+      </form>
+    </>
+  );
+
   if (variant === 'page') {
     return (
       <div className="flex flex-col h-full bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl shadow-2xl">
         <div className="flex items-center p-4 border-b border-[var(--color-dark-border)]">
           <h3 className="font-bold text-[var(--color-text-primary)]">Ask my résumé</h3>
         </div>
-
-        <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-3 min-h-[200px]">
-          {messages.length === 0 && (
-            <div>
-              <p className="text-sm text-[var(--color-text-muted)] mb-3">
-                Ask about Adam&apos;s experience, stack, or availability — answered only from what&apos;s actually on
-                this site.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {SUGGESTED_QUESTIONS.map((question) => (
-                  <button
-                    key={question}
-                    type="button"
-                    onClick={() => sendMessage(question)}
-                    className="text-xs px-3 py-1.5 rounded-full bg-[var(--color-dark-card-alt)] text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors"
-                  >
-                    {question}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {messages.map((message, index) => (
-            <div
-              key={index}
-              className={`text-sm rounded-lg px-3 py-2 max-w-[85%] whitespace-pre-wrap ${
-                message.role === 'user'
-                  ? 'ml-auto bg-[var(--color-accent-blue)] text-white'
-                  : 'bg-[var(--color-dark-card-alt)] text-[var(--color-text-primary)]'
-              }`}
-            >
-              {message.content}
-            </div>
-          ))}
-
-          {streaming && messages[messages.length - 1]?.content === '' && (
-            <div className="text-sm text-[var(--color-text-muted)] italic">Thinking…</div>
-          )}
-
-          {citations.length > 0 && (
-            <div className="text-xs text-[var(--color-text-muted)] space-x-2">
-              {citations.map((citation) => (
-                <a key={citation.url} href={citation.url} className="underline hover:text-[var(--color-accent-blue)]">
-                  {citation.title}
-                </a>
-              ))}
-            </div>
-          )}
-
-          {errorMessage && <p className="text-sm text-[var(--color-accent-coral)]">{errorMessage}</p>}
-
-          {turnLimitReached && (
-            <p className="text-xs text-[var(--color-text-muted)] italic">
-              That&apos;s the limit for this session — for anything more,{' '}
-              <a href="/contact" className="underline">
-                reach out directly
-              </a>
-              .
-            </p>
-          )}
-        </div>
-
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-            sendMessage(input);
-          }}
-          className="p-3 border-t border-[var(--color-dark-border)] flex gap-2"
-        >
-          {/* Honeypot — hidden from real visitors via CSS, invisible to screen readers */}
-          <input
-            type="text"
-            name="website"
-            value={honeypot}
-            onChange={(event) => setHoneypot(event.target.value)}
-            tabIndex={-1}
-            autoComplete="off"
-            aria-hidden="true"
-            className="absolute w-0 h-0 opacity-0 pointer-events-none"
-          />
-          <input
-            type="text"
-            value={input}
-            onChange={(event) => setInput(event.target.value)}
-            disabled={streaming || turnLimitReached}
-            placeholder={turnLimitReached ? 'Session limit reached' : 'Ask a question…'}
-            className="flex-1 px-3 py-2 text-sm rounded-lg bg-[var(--color-dark-card-alt)] text-[var(--color-text-primary)] border border-[var(--color-dark-border)] focus:outline-none focus:border-[var(--color-accent-blue)] disabled:opacity-50"
-          />
-          <button
-            type="submit"
-            disabled={streaming || turnLimitReached || !input.trim()}
-            className="px-4 py-2 text-sm font-bold rounded-lg bg-[var(--color-accent-blue)] text-white disabled:opacity-40 disabled:cursor-not-allowed"
-          >
-            Send
-          </button>
-        </form>
+        {chatBody}
       </div>
     );
   }
@@ -282,103 +287,7 @@ export function AskAdam({ variant = 'widget' }: AskAdamProps = {}) {
               </button>
             </div>
           </div>
-
-          <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-3 min-h-[200px]">
-            {messages.length === 0 && (
-              <div>
-                <p className="text-sm text-[var(--color-text-muted)] mb-3">
-                  Ask about Adam&apos;s experience, stack, or availability — answered only from what&apos;s
-                  actually on this site.
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {SUGGESTED_QUESTIONS.map((question) => (
-                    <button
-                      key={question}
-                      type="button"
-                      onClick={() => sendMessage(question)}
-                      className="text-xs px-3 py-1.5 rounded-full bg-[var(--color-dark-card-alt)] text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors"
-                    >
-                      {question}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {messages.map((message, index) => (
-              <div
-                key={index}
-                className={`text-sm rounded-lg px-3 py-2 max-w-[85%] whitespace-pre-wrap ${
-                  message.role === 'user'
-                    ? 'ml-auto bg-[var(--color-accent-blue)] text-white'
-                    : 'bg-[var(--color-dark-card-alt)] text-[var(--color-text-primary)]'
-                }`}
-              >
-                {message.content}
-              </div>
-            ))}
-
-            {streaming && messages[messages.length - 1]?.content === '' && (
-              <div className="text-sm text-[var(--color-text-muted)] italic">Thinking…</div>
-            )}
-
-            {citations.length > 0 && (
-              <div className="text-xs text-[var(--color-text-muted)] space-x-2">
-                {citations.map((citation) => (
-                  <a key={citation.url} href={citation.url} className="underline hover:text-[var(--color-accent-blue)]">
-                    {citation.title}
-                  </a>
-                ))}
-              </div>
-            )}
-
-            {errorMessage && <p className="text-sm text-[var(--color-accent-coral)]">{errorMessage}</p>}
-
-            {turnLimitReached && (
-              <p className="text-xs text-[var(--color-text-muted)] italic">
-                That&apos;s the limit for this session — for anything more,{' '}
-                <a href="/contact" className="underline">
-                  reach out directly
-                </a>
-                .
-              </p>
-            )}
-          </div>
-
-          <form
-            onSubmit={(event) => {
-              event.preventDefault();
-              sendMessage(input);
-            }}
-            className="p-3 border-t border-[var(--color-dark-border)] flex gap-2"
-          >
-            {/* Honeypot — hidden from real visitors via CSS, invisible to screen readers */}
-            <input
-              type="text"
-              name="website"
-              value={honeypot}
-              onChange={(event) => setHoneypot(event.target.value)}
-              tabIndex={-1}
-              autoComplete="off"
-              aria-hidden="true"
-              className="absolute w-0 h-0 opacity-0 pointer-events-none"
-            />
-            <input
-              type="text"
-              value={input}
-              onChange={(event) => setInput(event.target.value)}
-              disabled={streaming || turnLimitReached}
-              placeholder={turnLimitReached ? 'Session limit reached' : 'Ask a question…'}
-              className="flex-1 px-3 py-2 text-sm rounded-lg bg-[var(--color-dark-card-alt)] text-[var(--color-text-primary)] border border-[var(--color-dark-border)] focus:outline-none focus:border-[var(--color-accent-blue)] disabled:opacity-50"
-            />
-            <button
-              type="submit"
-              disabled={streaming || turnLimitReached || !input.trim()}
-              className="px-4 py-2 text-sm font-bold rounded-lg bg-[var(--color-accent-blue)] text-white disabled:opacity-40 disabled:cursor-not-allowed"
-            >
-              Send
-            </button>
-          </form>
+          {chatBody}
         </div>
       )}
     </>
