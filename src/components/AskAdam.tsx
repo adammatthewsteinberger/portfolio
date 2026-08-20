@@ -20,7 +20,7 @@ const SUGGESTED_QUESTIONS = [
   'Has he shipped RAG in production?',
   'Is he open to remote work?',
   "What's onion architecture and why does he care?",
-  'Why is he leaving The Vizius Group?',
+  'What has he built with Azure?',
 ];
 
 export interface AskAdamProps {

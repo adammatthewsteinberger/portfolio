@@ -5,11 +5,11 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'My Story | Adam Matthew Steinberger',
   description:
-    'Staff Software Architect & AI Automation Engineer, gifted and autistic, in Greenville, SC. Thirteen-plus years, one diagnosis that explained the pattern, and why I do my best work deep in AI, automation, and architecture.',
+    'Staff Software Architect & AI Automation Engineer in Greenville, SC. Thirteen-plus years across insurance, fintech, and cybersecurity, and why I do my best work deep in AI, automation, and architecture.',
   openGraph: {
     title: 'My Story | Adam Matthew Steinberger',
     description:
-      'Staff Software Architect & AI Automation Engineer, gifted and autistic, in Greenville, SC. Thirteen-plus years, one diagnosis that explained the pattern.',
+      'Staff Software Architect & AI Automation Engineer in Greenville, SC. Thirteen-plus years of shipping RAG systems, microservices, and automation pipelines.',
     url: 'https://hire.adam.matthewsteinberger.com/story',
     type: 'profile',
   },
@@ -25,7 +25,6 @@ const timeline = [
   { year: '2021–2022', label: 'LeaseTrack — Python + AWS Textract for insurance document parsing' },
   { year: '2022–2023', label: 'Transcat — .NET Web APIs and React for lab equipment calibration' },
   { year: '2023–2025', label: 'Lima One Capital, Greenville SC — NestJS/gRPC microservices suite, replaced legacy Mulesoft' },
-  { year: '2025', label: 'Autism diagnosis — the explanation, not the excuse' },
   { year: 'Mar–Aug 2025', label: 'Adam Matthew Steinberger LLC — self-hosted RAG, cloud RAG, production push notifications' },
   { year: 'Sep 2025–Aug 2026', label: 'The Vizius Group — Senior Azure & AI Development Engineer' },
   { year: 'Sep 2026', label: 'Available — Staff Software Architect & AI Automation Engineer' },
@@ -69,8 +68,8 @@ export default function StoryPage() {
             My Story
           </h1>
           <p className="text-xl text-[var(--color-text-muted)]">
-            Thirteen-plus years of shipping software. One diagnosis, in 2025, that finally
-            explained why I do my best work the way I do it.
+            Thirteen-plus years of shipping software — insurance systems, fintech, toll
+            billing, and finally the AI and Azure architecture work I want to be doing.
           </p>
         </div>
 
@@ -86,22 +85,20 @@ export default function StoryPage() {
 
           <div>
             <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-3">
-              Gifted, autistic, and finally named
+              How I think about systems
             </h2>
             <p>
-              In 2025 I was diagnosed autistic. It didn&apos;t change how I think — it explained
-              it. The hyperfocus that lets me sit inside one hard architecture problem for six
-              hours without noticing the time pass. The pattern recognition that catches the one
-              row in a spreadsheet that doesn&apos;t match the other nine hundred. The directness
-              that some rooms read as blunt and other rooms — the good ones — read as exactly
-              what they needed someone to finally say out loud.
+              I go deep rather than wide. Give me one hard architecture problem and a clear
+              runway, and I&apos;ll sit inside it until it&apos;s actually solved rather than
+              patched — and I&apos;ll hand back a design document before I hand back code,
+              because the expensive decisions get made before anyone opens an editor.
             </p>
             <p>
-              I&apos;m also gifted, in the specific, testable sense: the same wiring that makes
-              small talk exhausting makes systems thinking effortless. I don&apos;t treat that as
-              a compensation story. It&apos;s the actual mechanism behind the work — the same
-              mechanism that, in a RAG pipeline, flags the one document that contradicts the
-              other nine hundred instead of averaging it away.
+              What I&apos;m good at is the row that doesn&apos;t match. In a spreadsheet, in a
+              log, in a RAG pipeline — the one document that contradicts the other nine hundred
+              is usually the one that matters, and averaging it away is how systems quietly go
+              wrong. That instinct is why I write things down, and why the documentation is a
+              deliverable rather than an afterthought.
             </p>
           </div>
 
@@ -119,21 +116,20 @@ export default function StoryPage() {
 
           <div>
             <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-3">
-              Leaving Vizius
+              The Vizius year
             </h2>
             <p>
-              After a year as Senior Azure &amp; AI Development Engineer at{' '}
+              I spent a year as Senior Azure &amp; AI Development Engineer at{' '}
               <a
                 href="https://www.vizius.com/"
                 className="text-[var(--color-accent-blue)] hover:underline"
               >
                 The Vizius Group
               </a>
-              , we agreed the volume of AI work didn&apos;t justify a long-term engagement — so as
-              of September 2026 I&apos;m looking for the next team where AI, automation, and
-              architecture are the whole job, not a side quest. I&apos;m autistic; I do my best
-              work deep in exactly those problems, and I ship the documentation that lets a
-              junior developer own what I built.
+              , a cybersecurity firm in Greenville. As of September 2026 I&apos;m looking for
+              the next team where AI, automation, and architecture are the whole job, not a side
+              quest — the problems I do my best work on, and the ones where I ship the
+              documentation that lets a junior developer own what I built.
             </p>
             <p>
               The year was dense. I was sole architect of the firm&apos;s{' '}
@@ -199,10 +195,8 @@ export default function StoryPage() {
               Thirteen-plus years of software engineering, starting in Albany, New York, and
               running through insurance systems, fintech, toll billing, mobile networking, and
               lab-equipment calibration before I landed on AI and Azure architecture as the work
-              I actually want to be doing every day. I&apos;ve been sober thirteen years, and I&apos;m
-              a Messianic Jewish believer — both are part of who I am, neither is the subject of
-              this page. If you want the fuller version of my story, including the parts about
-              faith and recovery, it&apos;s in{' '}
+              I actually want to be doing every day. If you want the fuller version of my story,
+              the parts that aren&apos;t about software are in{' '}
               <Link href="/books" className="text-[var(--color-accent-blue)] hover:underline">
                 the book I wrote
               </Link>

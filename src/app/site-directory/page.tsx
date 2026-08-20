@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 const pages = [
   { icon: 'fa-home', color: 'gold', title: 'Home', description: 'The whole pitch in one scroll.', href: '/', cta: 'Visit Home' },
   { icon: 'fa-briefcase', color: 'blue', title: 'Hire Me', description: 'Availability, target roles, résumé, and how to reach me.', href: '/hire-me', cta: 'See Hire Me' },
-  { icon: 'fa-user', color: 'purple', title: 'My Story', description: 'Background, career timeline, and how autism and giftedness shape my work.', href: '/story', cta: 'Read My Story' },
+  { icon: 'fa-user', color: 'purple', title: 'My Story', description: 'Background, career timeline, and how I approach architecture work.', href: '/story', cta: 'Read My Story' },
   { icon: 'fa-layer-group', color: 'blue', title: 'Expertise', description: 'The ten technical pillars — AI/ML, RAG, architecture, Azure, and more.', href: '/expertise', cta: 'See Expertise' },
   { icon: 'fa-diagram-project', color: 'green', title: 'Work', description: 'Case studies from thirteen-plus years of shipping software.', href: '/work', cta: 'Browse Work' },
   { icon: 'fa-code-branch', color: 'purple', title: 'Open Source', description: 'Eight MIT-licensed packages on PyPI.', href: '/open-source', cta: 'See Open Source' },
