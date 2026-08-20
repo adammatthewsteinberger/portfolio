@@ -1,14 +1,14 @@
 # Adam Matthew Steinberger
 
-> Staff Software Architect & AI Automation Engineer, gifted and autistic, based in Greenville, SC. 13+ years shipping RAG systems, event-driven Azure microservices, and automation pipelines. Available September 2026 — Greenville, SC (remote) or US remote.
+> Staff Software Architect & AI Automation Engineer based in Greenville, SC. 13+ years shipping RAG systems, event-driven Azure microservices, and automation pipelines. Available September 2026 — Greenville, SC (remote) or US remote.
 
-Adam Matthew Steinberger is a software architect and AI automation engineer specializing in Retrieval-Augmented Generation (RAG) systems, event-driven microservices on Azure, process engineering, and automation pipelines. He is autistic and gifted, and writes openly about neurodivergence as a professional advantage. He is currently available for full-time Staff Software Architect / AI Automation Engineer roles starting September 2026.
+Adam Matthew Steinberger is a software architect and AI automation engineer specializing in Retrieval-Augmented Generation (RAG) systems, event-driven microservices on Azure, process engineering, and automation pipelines. He is currently available for full-time Staff Software Architect / AI Automation Engineer roles starting September 2026.
 
 ## Key pages
 
 - [Ask my résumé](https://chat.adam.matthewsteinberger.com/): A small RAG chat that answers questions about Adam's experience, stack, and availability using only the content of this site (six questions per session).
 - [Hire Me](https://hire.adam.matthewsteinberger.com/hire-me): Availability, target roles, résumé, and how to reach him.
-- [Story](https://hire.adam.matthewsteinberger.com/story): Background, career timeline, and how autism and giftedness shape his engineering work.
+- [Story](https://hire.adam.matthewsteinberger.com/story): Background, career timeline, and how he approaches architecture and documentation work.
 - [Expertise](https://hire.adam.matthewsteinberger.com/expertise): The ten technical pillars — AI/ML, RAG, agents & automation, process engineering, Scrum/Agile, software architecture, onion layering, microservices, Azure cloud, and data/integration pipelines.
 - [Work](https://hire.adam.matthewsteinberger.com/work): Case studies — enterprise RAG systems, Azure microservices, and automation pipelines built for real clients.
 - [Open Source](https://hire.adam.matthewsteinberger.com/open-source): Eight MIT-licensed packages on PyPI, including the `*loop` family of autonomous AI-agent session runners and the `vibey-skills` Claude Code plugin marketplace (formerly vibe-engineering-skills).

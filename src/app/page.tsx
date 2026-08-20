@@ -7,7 +7,7 @@ import { getAllBlogPosts } from '@/lib/blogUtils';
 export const metadata: Metadata = {
   title: 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer',
   description:
-    'Staff Software Architect & AI Automation Engineer, gifted and autistic, in Greenville, SC. 13+ years shipping RAG systems, event-driven Azure microservices, and automation pipelines. Available September 2026.',
+    'Staff Software Architect & AI Automation Engineer in Greenville, SC. 13+ years shipping RAG systems, event-driven Azure microservices, and automation pipelines. Available September 2026.',
   alternates: { canonical: '/' },
   openGraph: {
     title: 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer',
@@ -63,9 +63,8 @@ export default function Home() {
           Staff Software Architect &amp; AI Automation Engineer
         </h2>
         <p className="text-lg text-[var(--color-text-muted)] max-w-2xl mx-auto mb-8">
-          Gifted, autistic, in Greenville, SC — 13+ years shipping RAG systems, event-driven
-          microservices, and automation pipelines that the people who inherit them can actually
-          run.
+          13+ years shipping RAG systems, event-driven microservices, and automation pipelines
+          that the people who inherit them can actually run. Greenville, SC — remote-first.
         </p>
         <div className="flex flex-wrap gap-3 justify-center mb-6">
           <Link
@@ -146,27 +145,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Neurodivergence as an engineering advantage */}
+      {/* How I work */}
       <section className="container mx-auto px-4 py-16">
         <div className="max-w-3xl mx-auto bg-[var(--color-dark-card)] border border-[var(--color-accent-purple)]/30 rounded-xl p-8">
           <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-4">
-            Autistic, Gifted, and That&apos;s the Point
+            How I Work
           </h2>
           <p className="text-[var(--color-text-muted)] mb-4 leading-relaxed">
-            I was diagnosed autistic in 2025. It didn&apos;t change how I think — it explained
-            it. The same wiring that makes hyperfocus effortless and small talk exhausting is
-            the reason I catch the one row in a dataset that contradicts the other nine hundred
-            instead of averaging it away. Research on autistic engineers backs this up: a 2024
-            study in <em>Frontiers in Psychology</em> documented an &ldquo;ethical advantage of
-            autistic employees&rdquo; — lower moral disengagement, less susceptibility to the
-            bystander effect. I write everything down for the same reason a RAG pipeline cites
-            its sources — because an auditable trail beats a confident guess.
+            I go deep rather than wide. Give me one hard architecture problem and uninterrupted
+            time, and I&apos;ll come back with a design document before I come back with code —
+            because the expensive decisions get made before anyone opens an editor. I write
+            everything down for the same reason a RAG pipeline cites its sources: an auditable
+            trail beats a confident guess.
           </p>
           <p className="text-[var(--color-text-muted)] mb-6 leading-relaxed">
-            After a year as Senior Azure &amp; AI Development Engineer at The Vizius Group, we
-            agreed the volume of AI work didn&apos;t justify a long-term engagement — so as of
-            September 2026 I&apos;m looking for the next team where AI, automation, and
-            architecture are the whole job, not a side quest.
+            The measure I hold myself to is whether the next engineer can own what I built.
+            Five formal architecture document sets, a 45-day handoff to a junior developer who
+            now owns a 20-microservice platform, and a shared Python library adopted across 17+
+            repositories are what that looks like in practice.
           </p>
           <Link href="/story" className="text-[var(--color-accent-blue)] hover:underline font-medium">
             Read the full story →

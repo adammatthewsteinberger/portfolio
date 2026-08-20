@@ -105,19 +105,18 @@ export default function HireMePage() {
       <section className="container mx-auto px-4 py-12">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-4">
-            How I interview best
+            How to get the best signal out of me
           </h2>
           <p className="text-[var(--color-text-muted)] mb-4">
-            I&apos;m autistic. Companies like Microsoft and SAP run formal autism-hiring programs
-            because they&apos;ve found the standard live-whiteboard interview measures social
-            performance under pressure, not engineering ability — and most of the accommodations
-            that fix that cost nothing. Here&apos;s what gets you my best work:
+            A live whiteboard measures how fast someone improvises under an audience. That is
+            not the job. If you want to see how I actually architect systems, these cost you
+            nothing and tell you far more:
           </p>
           <ul className="list-disc pl-6 space-y-2 text-[var(--color-text-muted)]">
-            <li>Written questions sent in advance, even a day ahead, instead of sprung live</li>
-            <li>A take-home exercise over a live whiteboard, where possible</li>
-            <li>Camera-optional video calls</li>
-            <li>A shared agenda before the call so I know what we&apos;re covering</li>
+            <li>A take-home or a walkthrough of real work over a live whiteboard, where possible</li>
+            <li>Technical questions shared in advance — you&apos;ll get a considered answer, not a rehearsed one</li>
+            <li>An agenda before the call so we spend the time on substance</li>
+            <li>Happy to be judged on shipped code: every case study on this site is real work with real constraints</li>
           </ul>
         </div>
       </section>
