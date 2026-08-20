@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import { useBotDetection } from '@/hooks/useBotDetection';
 import { track } from '@/lib/analytics';
 
@@ -23,7 +24,12 @@ const SUGGESTED_QUESTIONS = [
   'Why is he leaving The Vizius Group?',
 ];
 
-export function AskAdam() {
+interface AskAdamProps {
+  variant?: 'widget' | 'page';
+}
+
+export function AskAdam(props: AskAdamProps = {}) {
+  void props;
   const isBot = useBotDetection();
   const [enabled, setEnabled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -153,14 +159,22 @@ export function AskAdam() {
         >
           <div className="flex items-center justify-between p-4 border-b border-[var(--color-dark-border)]">
             <h3 className="font-bold text-[var(--color-text-primary)]">Ask my résumé</h3>
-            <button
-              type="button"
-              onClick={() => setOpen(false)}
-              aria-label="Close"
-              className="text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]"
-            >
-              ✕
-            </button>
+            <div className="flex items-center gap-3">
+              <Link
+                href="/chat"
+                className="text-xs underline text-[var(--color-text-muted)] hover:text-[var(--color-accent-blue)]"
+              >
+                Open full page
+              </Link>
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                aria-label="Close"
+                className="text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]"
+              >
+                ✕
+              </button>
+            </div>
           </div>
 
           <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-3 min-h-[200px]">

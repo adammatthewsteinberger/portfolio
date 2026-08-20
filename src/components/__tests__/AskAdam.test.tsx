@@ -430,4 +430,17 @@ describe('AskAdam', () => {
       })(),
     ).resolves.not.toThrow();
   });
+
+  it('renders an "Open full page" link to /chat in the widget dialog header', async () => {
+    global.fetch = vi.fn().mockResolvedValue(mockEnabledStatusResponse());
+    const user = userEvent.setup();
+    render(<AskAdam variant="widget" />);
+
+    const button = await screen.findByRole('button', { name: /ask my résumé/i });
+    await user.click(button);
+
+    const link = screen.getByRole('link', { name: /open full page/i });
+    expect(link).toBeInTheDocument();
+    expect(link).toHaveAttribute('href', '/chat');
+  });
 });

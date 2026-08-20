@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 mb-6 text-sm">
           <Link href="/hire-me" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] font-semibold transition-colors">Hire Me</Link>
           <span className="text-[var(--color-dark-border)]">|</span>
-          <Link href="/#ask-resume" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] font-semibold transition-colors">Ask My Résumé</Link>
+          <Link href="/chat" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] font-semibold transition-colors">Ask my résumé</Link>
           <span className="text-[var(--color-dark-border)]">|</span>
           <Link href="/work" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] font-semibold transition-colors">Work</Link>
           <span className="text-[var(--color-dark-border)]">|</span>

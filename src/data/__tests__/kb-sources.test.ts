@@ -17,4 +17,17 @@ describe('kbSources', () => {
     const ids = kbSources.map((s) => s.id);
     expect(new Set(ids).size).toBe(ids.length);
   });
+
+  it('contains the chat chunk with required fields and content', () => {
+    const chatChunk = kbSources.find((s) => s.id === 'chat');
+    expect(chatChunk).toBeDefined();
+    expect(chatChunk).toEqual({
+      id: 'chat',
+      url: '/chat',
+      title: 'Ask my résumé',
+      section: 'Chat',
+      text: expect.stringContaining('https://chat.adam.matthewsteinberger.com'),
+    });
+    expect(chatChunk?.text).toContain('six questions');
+  });
 });

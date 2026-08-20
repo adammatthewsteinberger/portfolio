@@ -165,10 +165,10 @@ In 2025 Adam was diagnosed autistic. He is also gifted in the specific, testable
     text: `Adam built an interactive Chatbot Readiness Quiz — a 15-factor, four-pillar self-assessment (Organizational, Technical, Security & Compliance, Operational) that scores an organization's actual readiness to deploy a custom AI chatbot, based on the "Four Pillars of Chatbot Readiness" framework from his Novice to Navigator book.`,
   },
   {
-    id: 'ask-resume-bot',
-    url: '/#ask-resume',
-    title: 'Ask My Résumé Bot',
-    section: 'Interactive RAG chatbot',
-    text: `"Ask my résumé" is an interactive Claude-powered RAG chatbot widget on the homepage that answers questions about Adam's background, experience, technical skills, case studies, and availability. It uses the Anthropic SDK (Claude Sonnet 5, streaming responses), MiniSearch for BM25 lexical retrieval (no vector database), and a curated knowledge base combining hand-written source text with live project and blog content. The knowledge base is rebuilt automatically before every dev/build/test run via scripts/build-kb.ts and never committed to the repo. The bot is feature-flagged (requires both ASK_BOT_ENABLED=true and ANTHROPIC_API_KEY to activate), enforces a 6-turn session cap, and includes in-memory per-IP rate limiting plus a daily output-token spend cap. The system prompt forbids inventing employment facts and requires citing the source page for every answer. Best-effort guardrails include a honeypot field and bot detection. The bot demonstrates Adam's RAG implementation skills: retrieval strategy (BM25, top-5 chunks, ~900 chars each), prompt engineering (rebuilt per-request from retrieved context), streaming UX, and production-ready rate limiting. It is a working example of the RAG systems Adam has shipped professionally, running live on this site. Users can ask it questions like "Has he shipped RAG in production?", "Is he open to remote work?", "What's onion architecture and why does he care?", or "Why is he leaving The Vizius Group?".`,
+    id: 'chat',
+    url: '/chat',
+    title: 'Ask my résumé',
+    section: 'Chat',
+    text: `"Ask my résumé" is a small RAG chat assistant that answers questions about Adam's background, experience, technical stack, and availability. It lives full-page at https://chat.adam.matthewsteinberger.com (also reachable at /chat) and as an inline widget on the homepage. It answers only using facts published on this site and is capped at six questions per session. For anything more, visitors can use the contact form or view the Hire Me page.`,
   },
 ];
