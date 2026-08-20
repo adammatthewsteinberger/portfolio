@@ -12,6 +12,7 @@ describe('Footer', () => {
   it('renders navigation links', () => {
     render(<Footer />);
     expect(screen.getByRole('link', { name: /hire me/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /ask my résumé/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /^work$/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /expertise/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /writing/i })).toBeInTheDocument();
@@ -73,6 +74,7 @@ describe('Footer', () => {
   it('internal links use Next.js Link component with correct hrefs', () => {
     render(<Footer />);
     expect(screen.getByRole('link', { name: /hire me/i })).toHaveAttribute('href', '/hire-me');
+    expect(screen.getByRole('link', { name: /ask my résumé/i })).toHaveAttribute('href', '/chat');
     expect(screen.getByRole('link', { name: /^work$/i })).toHaveAttribute('href', '/work');
     expect(screen.getByRole('link', { name: /expertise/i })).toHaveAttribute('href', '/expertise');
     expect(screen.getByRole('link', { name: /writing/i })).toHaveAttribute('href', '/writing');
