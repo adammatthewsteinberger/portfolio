@@ -3,11 +3,11 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Open Source | Adam Matthew Steinberger',
   description:
-    'Eight packages on PyPI: onion-architected autonomous AI-agent runners, a 71-skill Claude Code plugin marketplace, and a production Azure bootstrap library.',
+    'Seven packages on PyPI: onion-architected autonomous AI-agent runners, a 71-skill Claude Code plugin marketplace, and a production Azure bootstrap library.',
   openGraph: {
     title: 'Open Source | Adam Matthew Steinberger',
     description:
-      'Eight packages on PyPI: onion-architected autonomous AI-agent runners, a 71-skill Claude Code plugin marketplace, and a production Azure bootstrap library.',
+      'Seven packages on PyPI: onion-architected autonomous AI-agent runners, a 71-skill Claude Code plugin marketplace, and a production Azure bootstrap library.',
     url: 'https://hire.adam.matthewsteinberger.com/open-source',
   },
 };
@@ -60,14 +60,6 @@ const packages: Package[] = [
     pypi: 'https://pypi.org/project/vibey-bootstrap/',
     repo: 'https://github.com/adammatthewsteinberger/vibey-bootstrap',
   },
-  {
-    name: 'engineering-influence-skills',
-    tagline: 'The 14-phase content pipeline as six Claude Code Agent Skills',
-    description:
-      'The methodology behind Novice to Navigator and Engineering Influence — from a vague topic to a falsifiable thesis, a verified non-fiction book, a novel, a screenplay, an AI-generated film, and distribution. Every phase has entry conditions and a quality gate; architecture is always written before prose.',
-    pypi: 'https://pypi.org/project/engineering-influence-skills/',
-    repo: 'https://github.com/adammatthewsteinberger/engineering-influence-skills',
-  },
 ];
 
 export default function OpenSourcePage() {
@@ -78,7 +70,7 @@ export default function OpenSourcePage() {
           Open Source
         </h1>
         <p className="text-xl text-[var(--color-text-muted)] max-w-2xl mx-auto">
-          Eight packages on PyPI, all MIT licensed. This is the part of my work you can read
+          Seven packages on PyPI, all MIT licensed. This is the part of my work you can read
           before you ever talk to me.
         </p>
       </section>
@@ -115,20 +107,6 @@ export default function OpenSourcePage() {
         </div>
       </section>
 
-      <section className="container mx-auto px-4 py-8 text-center">
-        <p className="text-[var(--color-text-muted)] max-w-2xl mx-auto">
-          This site is open source too —{' '}
-          <a
-            href="https://github.com/adammatthewsteinberger/hire-adam-steinberger"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[var(--color-accent-blue)] hover:underline"
-          >
-            the repo is on GitHub
-          </a>
-          .
-        </p>
-      </section>
     </div>
   );
 }
