@@ -11,7 +11,7 @@ Adam Matthew Steinberger is a software architect and AI automation engineer spec
 - [Story](https://hire.adam.matthewsteinberger.com/story): Background, career timeline, and how he approaches architecture and documentation work.
 - [Expertise](https://hire.adam.matthewsteinberger.com/expertise): The ten technical pillars — AI/ML, RAG, agents & automation, process engineering, Scrum/Agile, software architecture, onion layering, microservices, Azure cloud, and data/integration pipelines.
 - [Work](https://hire.adam.matthewsteinberger.com/work): Case studies — enterprise RAG systems, Azure microservices, and automation pipelines built for real clients.
-- [Open Source](https://hire.adam.matthewsteinberger.com/open-source): Eight MIT-licensed packages on PyPI, including the `*loop` family of autonomous AI-agent session runners and the `vibey-skills` Claude Code plugin marketplace (formerly vibe-engineering-skills).
+- [Open Source](https://hire.adam.matthewsteinberger.com/open-source): Seven MIT-licensed packages on PyPI, including the `*loop` family of autonomous AI-agent session runners and the `vibey-skills` Claude Code plugin marketplace (formerly vibe-engineering-skills).
 - [Writing](https://hire.adam.matthewsteinberger.com/writing): Blog posts on AI and automation, plus a free 33-article series on AI chatbots for business.
 - [Books](https://hire.adam.matthewsteinberger.com/books): Two books currently in development — Novice to Navigator (AI chatbots for business) and Engineering Influence.
 

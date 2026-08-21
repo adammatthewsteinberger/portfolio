@@ -148,7 +148,7 @@ Adam does his best work in deep, uninterrupted blocks of time on one hard archit
     url: '/open-source',
     title: 'Open Source',
     section: 'Packages',
-    text: `Adam has authored and published eight open-source packages on PyPI: claudeloop, codexloop, cursorloop, and agyloop (onion-architected autonomous session runners, MIT licensed), vibey (a queue-based six-phase conductor using PostgreSQL row-level locking), vibey-skills (18 plugins, 71 skills for Claude Code), vibey-bootstrap (a Python library for bootstrapping Azure Functions, used across multiple Azure Functions repos), and engineering-influence-skills (the 14-phase Engineering Influence content pipeline as six Claude Code Agent Skills).`,
+    text: `Adam has authored and published seven open-source packages on PyPI: claudeloop, codexloop, cursorloop, and agyloop (onion-architected autonomous session runners, MIT licensed), vibey (a queue-based six-phase conductor using PostgreSQL row-level locking), vibey-skills (18 plugins, 71 skills for Claude Code), and vibey-bootstrap (a Python library for bootstrapping Azure Functions, used across multiple Azure Functions repos).`,
   },
   {
     id: 'books',
