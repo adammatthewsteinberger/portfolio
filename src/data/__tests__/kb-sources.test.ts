@@ -30,4 +30,12 @@ describe('kbSources', () => {
     });
     expect(chatChunk?.text).toContain('six questions');
   });
+
+  it('lists seven public PyPI packages and omits the closed engineering-influence-skills project', () => {
+    const openSource = kbSources.find((s) => s.id === 'open-source');
+    expect(openSource).toBeDefined();
+    expect(openSource?.text).toMatch(/seven open-source packages/i);
+    expect(openSource?.text).not.toMatch(/engineering-influence-skills/i);
+    expect(openSource?.text).not.toMatch(/\beight open-source packages\b/i);
+  });
 });
