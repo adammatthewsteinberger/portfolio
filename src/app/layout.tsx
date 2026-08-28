@@ -3,7 +3,6 @@ import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
 import { availabilityLong, availabilityShort } from '@/lib/availability';
 import { isPreview } from '@/lib/siteEnv';
-import { HIRE_HOST } from '@/lib/hostRouting';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import './globals.css';
@@ -132,12 +131,6 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans">
-        {PREVIEW && (
-          <div className="bg-[var(--color-accent-gold)] text-black text-xs font-mono text-center py-1 px-4">
-            Preview build — the <code>develop</code> branch. The live site is{' '}
-            <a href={`https://${HIRE_HOST}/`} className="underline text-black">{HIRE_HOST}</a>.
-          </div>
-        )}
         {/* Analytics only on the production site. */}
         {!PREVIEW && (<>
         {/* Google Consent Mode v2 - Default Settings */}
@@ -176,7 +169,7 @@ export default function RootLayout({
         </Script>
         </>)}
 
-        <Header availabilityShortLabel={availabilityShort()} availabilityLongLabel={availabilityLong()} />
+        <Header availabilityShortLabel={availabilityShort()} availabilityLongLabel={availabilityLong()} preview={PREVIEW} />
         <main>{children}</main>
         <Footer />
         <CookieConsent />
