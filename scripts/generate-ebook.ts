@@ -140,7 +140,7 @@ const bookMetadata: BookMetadata = {
   description:
     'A comprehensive guide to understanding and implementing AI chatbots for business success. From foundational concepts to advanced techniques, learn how to leverage AI to transform your customer experience, streamline operations, and drive growth.',
   publisher: 'Adam Matthew Steinberger',
-  website: 'https://vibe.with.adam.matthewsteinberger.com',
+  website: 'https://vibewithadam.matthewsteinberger.com',
   email: 'adam@matthewsteinberger.com',
   language: 'en',
   isbn: '', // To be filled when ready for Amazon

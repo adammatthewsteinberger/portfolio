@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: 'Open Source | Adam Matthew Steinberger',
     description:
       'MIT-licensed packages on PyPI: the *loop family of autonomous AI-agent session runners, the vibey conductor and its release automation, a Claude Code skills marketplace, and a production Azure Functions bootstrap library.',
-    url: 'https://vibe.with.adam.matthewsteinberger.com/open-source',
+    url: 'https://vibewithadam.matthewsteinberger.com/open-source',
   },
 };
 

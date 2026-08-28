@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer',
     description:
       'Free and open-source autonomous software-delivery tooling, MIT on PyPI. Run it in ten minutes; volunteers welcome. Available from September 2026 — Greenville, SC (remote) or US remote.',
-    url: 'https://vibe.with.adam.matthewsteinberger.com',
+    url: 'https://vibewithadam.matthewsteinberger.com',
     images: [{ url: '/images/og-home.png', width: 1200, height: 630, alt: 'Adam Matthew Steinberger — Staff Software Architect & AI Automation Engineer' }],
     locale: 'en_US',
     type: 'website',

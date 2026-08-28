@@ -184,7 +184,7 @@ export function CyberFrame({
             ADAM MATTHEW STEINBERGER · AVAILABLE SEPTEMBER 2026
           </div>
           <div style={{ display: 'flex', fontSize: 18, color: og.muted, letterSpacing: 1, whiteSpace: 'nowrap' }}>
-            vibe.with.adam.matthewsteinberger.com
+            vibewithadam.matthewsteinberger.com
           </div>
         </div>
       </div>

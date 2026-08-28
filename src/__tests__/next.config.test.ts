@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import nextConfig from '../../next.config';
 
-const CHAT_HOST = 'chat.with.adam.matthewsteinberger.com';
-const HIRE_HOST = 'vibe.with.adam.matthewsteinberger.com';
+const CHAT_HOST = 'chatwithadam.matthewsteinberger.com';
+const HIRE_HOST = 'vibewithadam.matthewsteinberger.com';
 const onChatHost = [{ type: 'host', value: CHAT_HOST }];
 const onHireHost = [{ type: 'host', value: HIRE_HOST }];
 

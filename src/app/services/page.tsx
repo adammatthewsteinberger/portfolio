@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: 'AI Development Services for Greenville & Upstate SC Businesses',
     description:
       'From custom chatbots to enterprise AI solutions, comprehensive services tailored for your business needs across all industries.',
-    url: 'https://vibe.with.adam.matthewsteinberger.com/services',
+    url: 'https://vibewithadam.matthewsteinberger.com/services',
     siteName: 'Adam Matthew Steinberger',
     images: [
       {

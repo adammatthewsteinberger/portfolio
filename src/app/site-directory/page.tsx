@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Site Directory | Adam Matthew Steinberger',
     description: 'Every page on the site in one place.',
-    url: 'https://vibe.with.adam.matthewsteinberger.com/site-directory',
+    url: 'https://vibewithadam.matthewsteinberger.com/site-directory',
   },
 };
 

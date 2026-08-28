@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Contact | Adam Matthew Steinberger',
     description: 'For a role, an open-source contribution, or a business engagement. Replies within 24 hours.',
-    url: 'https://vibe.with.adam.matthewsteinberger.com/contact',
+    url: 'https://vibewithadam.matthewsteinberger.com/contact',
     siteName: 'Adam Matthew Steinberger',
     locale: 'en_US',
     type: 'website',
