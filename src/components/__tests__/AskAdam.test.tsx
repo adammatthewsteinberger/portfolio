@@ -232,6 +232,27 @@ describe('AskAdam', () => {
     });
   });
 
+  it('renders the out-of-coffee message with /join-me as a link', async () => {
+    const fetchMock = vi.fn();
+    fetchMock.mockResolvedValueOnce(mockEnabledStatusResponse());
+    fetchMock.mockResolvedValueOnce({
+      ok: false,
+      body: null,
+      json: async () => ({ message: 'Out of coffee — send more, please! ☕ (Or join us at /join-me; we need all the brainpower we can get.)' }),
+    });
+    global.fetch = fetchMock;
+    const user = userEvent.setup();
+    render(<AskAdam />);
+
+    await user.click(await screen.findByRole('button', { name: /ask my résumé/i }));
+    await user.click(screen.getByText(/is he open to remote work/i));
+
+    await waitFor(() => {
+      expect(screen.getByText(/out of coffee/i)).toBeInTheDocument();
+    });
+    expect(screen.getByRole('link', { name: '/join-me' })).toHaveAttribute('href', '/join-me');
+  });
+
   it('falls back to a generic error message when the error response has no body', async () => {
     const fetchMock = vi.fn();
     fetchMock.mockResolvedValueOnce(mockEnabledStatusResponse());
