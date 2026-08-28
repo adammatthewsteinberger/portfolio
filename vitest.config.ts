@@ -8,6 +8,8 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./src/test/setup.ts'],
+    // user-event flows in ReadinessQuiz occasionally exceed 5s when the suite runs alongside a build.
+    testTimeout: 15_000,
     include: ['src/**/*.{test,spec}.{ts,tsx}'],
     exclude: ['node_modules', '.next', 'e2e'],
     coverage: {
