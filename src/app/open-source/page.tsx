@@ -107,6 +107,10 @@ export default function OpenSourcePage() {
           >
             GitHub
           </a>
+          . Want to run the whole stack, contribute, or just say hi?{' '}
+          <Link href="/join-me" className="text-[var(--color-accent-blue)] hover:underline">
+            Join me
+          </Link>
           . Want the person who wrote them on your team?{' '}
           <Link href="/hire-me" className="text-[var(--color-accent-blue)] hover:underline">
             Here&apos;s what I&apos;m looking for

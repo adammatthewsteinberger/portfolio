@@ -20,6 +20,7 @@ import { metadata as privacy } from '@/app/privacy/page';
 import { metadata as siteDirectory } from '@/app/site-directory/page';
 import { generateMetadata as workSlugMetadata } from '@/app/work/[slug]/page';
 import { metadata as forExecutives } from '@/app/for-executives/page';
+import { metadata as joinMe } from '@/app/join-me/page';
 import { metadata as execWork } from '@/app/for-executives/work/page';
 import { metadata as execEngage } from '@/app/for-executives/engage/page';
 import { generateMetadata as execSlugMetadata } from '@/app/for-executives/work/[slug]/page';
@@ -44,6 +45,7 @@ const staticPages: [string, Metadata][] = [
   ['/contact', contact],
   ['/privacy', privacy],
   ['/site-directory', siteDirectory],
+  ['/join-me', joinMe],
   ['/for-executives', forExecutives],
   ['/for-executives/work', execWork],
   ['/for-executives/engage', execEngage],
