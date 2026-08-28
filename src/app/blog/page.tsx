@@ -6,6 +6,7 @@ import InfiniteScrollBlog from '@/components/InfiniteScrollBlog';
 export const metadata = {
   title: 'AI Development Blog | Adam Matthew Steinberger',
   description: 'Insights on AI development, chatbot implementation, and business technology from an experienced AI developer in Greenville, SC.',
+  alternates: { canonical: '/blog' },
 };
 
 export default async function BlogPage() {

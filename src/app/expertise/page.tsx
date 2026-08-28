@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Expertise | Adam Matthew Steinberger',
   description:
     'AI/ML, RAG chat systems, agents & automation, process engineering, Scrum/Agile, software architecture, onion layering, microservices, Azure cloud, and data & integration pipelines.',
+  alternates: { canonical: '/expertise' },
   openGraph: {
     title: 'Expertise | Adam Matthew Steinberger',
     description:

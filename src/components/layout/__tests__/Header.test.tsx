@@ -1,8 +1,12 @@
-import { describe, it, expect } from 'vitest';
+import { afterEach, describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Header from '../Header';
 
 describe('Header', () => {
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
   it('renders the brand link back to home', () => {
     render(<Header />);
     expect(screen.getAllByRole('link', { name: /adam matthew steinberger/i })[0]).toHaveAttribute(
@@ -23,7 +27,14 @@ describe('Header', () => {
     expect(screen.getAllByRole('link', { name: 'Hire Me' }).length).toBeGreaterThan(0);
   });
 
-  it('shows the availability pill', () => {
+  it('shows the availability pill text it is given', () => {
+    render(<Header availabilityShortLabel="Available now" availabilityLongLabel="Available now · Greenville, SC (remote) · US remote" />);
+    expect(screen.getAllByText(/available now/i).length).toBeGreaterThan(0);
+  });
+
+  it('derives the availability pill from the clock when no label is passed', () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-08-27T12:00:00-04:00'));
     render(<Header />);
     expect(screen.getAllByText(/available sept 2026/i).length).toBeGreaterThan(0);
   });

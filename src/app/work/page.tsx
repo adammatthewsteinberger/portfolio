@@ -1,10 +1,12 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { projects, projectCategories } from '@/data/projects';
+import { availabilitySentence } from '@/lib/availability';
 
 export const metadata: Metadata = {
   title: 'Work | Case Studies in AI, Azure & Automation | Adam Matthew Steinberger',
   description: 'Case studies in RAG systems, event-driven microservices, and AI automation — built by Adam Matthew Steinberger, Staff Software Architect & AI Automation Engineer.',
+  alternates: { canonical: '/work' },
   openGraph: {
     title: 'Work | Case Studies in AI, Azure & Automation | Adam Matthew Steinberger',
     description: 'Case studies in RAG systems, event-driven microservices, and AI automation — built by Adam Matthew Steinberger, Staff Software Architect & AI Automation Engineer.',
@@ -129,7 +131,7 @@ export default function WorkPage() {
           Want Something Like This Built?
         </h2>
         <p className="text-xl text-[var(--color-text-muted)] mb-8 max-w-2xl mx-auto">
-          I&apos;m available starting September 2026 — let&apos;s talk about what you&apos;re trying to build.
+          {availabilitySentence()} — let&apos;s talk about what you&apos;re trying to build.
         </p>
         <div className="flex gap-4 justify-center flex-wrap">
           <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] text-white font-bold rounded-lg transition-colors no-underline">

@@ -22,7 +22,7 @@ export const kbSources: KBSource[] = [
     url: '/hire-me',
     title: 'Hire Me',
     section: 'At a glance',
-    text: `Adam Matthew Steinberger is a Staff Software Architect & AI Automation Engineer, available September 2026.
+    text: `Adam Matthew Steinberger is a Staff Software Architect & AI Automation Engineer, available from September 2026.
 Target titles: Staff Software Architect, AI Automation Engineer, Staff/Principal AI Engineer, Solutions Architect.
 Location: Greenville, South Carolina — remote preferred; open to US remote anywhere.
 Employment types: W2 full-time preferred; contract-to-hire considered.
@@ -148,7 +148,7 @@ Adam does his best work in deep, uninterrupted blocks of time on one hard archit
     url: '/open-source',
     title: 'Open Source',
     section: 'Packages',
-    text: `Adam has authored and published seven open-source packages on PyPI: claudeloop, codexloop, cursorloop, and agyloop (onion-architected autonomous session runners, MIT licensed), vibey (a queue-based six-phase conductor using PostgreSQL row-level locking), vibey-skills (18 plugins, 71 skills for Claude Code), and vibey-bootstrap (a Python library for bootstrapping Azure Functions, used across multiple Azure Functions repos).`,
+    text: `Adam publishes his open-source work on PyPI under the MIT license. The *loop family — claudeloop, codexloop, cursorloop, agyloop, and qwenloop — are onion-architected autonomous session runners for Claude Code, OpenAI Codex, Cursor Agent, Google Antigravity/Gemini, and a fully local Qwen 2.5 Coder model; they never block on a human and tell an exhausted rate-limit window apart from exhausted credits. vibey is a queue-based, six-phase conductor for autonomous software delivery built on those runners (PostgreSQL row-level locking); vibey-gh is stdlib-only release automation for GitHub repositories (provenance, merge train, dual-channel releases, documentation maintenance); vibey-skills is a Claude Code plugin marketplace of evidence-grounded practitioner references; vibey-bootstrap (formerly azure-bootstrap) is the Azure Functions cross-cutting layer used across 17+ repos. The site lists the packages by name and does not state a count.`,
   },
   {
     id: 'books',

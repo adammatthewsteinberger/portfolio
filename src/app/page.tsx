@@ -3,16 +3,17 @@ import type { Metadata } from 'next';
 import { AudienceToggle, ForAudience } from '@/components/AudienceToggle';
 import { AskAdam } from '@/components/AskAdam';
 import { getAllBlogPosts } from '@/lib/blogUtils';
+import { availabilityLong } from '@/lib/availability';
 
 export const metadata: Metadata = {
   title: 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer',
   description:
-    'Staff Software Architect & AI Automation Engineer in Greenville, SC. 13+ years shipping RAG systems, event-driven Azure microservices, and automation pipelines. Available September 2026.',
+    'Staff Software Architect & AI Automation Engineer in Greenville, SC. 13+ years shipping RAG systems, event-driven Azure microservices, and automation pipelines. Available from September 2026.',
   alternates: { canonical: '/' },
   openGraph: {
     title: 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer',
     description:
-      'RAG systems, event-driven Azure microservices, and automation pipelines that the people who inherit them can actually run. Available September 2026 — Greenville, SC (remote) or US remote.',
+      'RAG systems, event-driven Azure microservices, and automation pipelines that the people who inherit them can actually run. Available from September 2026 — Greenville, SC (remote) or US remote.',
     url: 'https://hire.adam.matthewsteinberger.com',
     images: [{ url: '/images/og-home.png', width: 1200, height: 630, alt: 'Adam Matthew Steinberger — Staff Software Architect & AI Automation Engineer' }],
     locale: 'en_US',
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer',
     description:
-      'RAG systems, event-driven Azure microservices, and automation pipelines. Available September 2026.',
+      'RAG systems, event-driven Azure microservices, and automation pipelines. Available from September 2026.',
   },
 };
 
@@ -54,7 +55,7 @@ export default function Home() {
       {/* Hero */}
       <section className="container mx-auto px-4 text-center pt-8 pb-16">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-[var(--color-accent-green)]/15 border border-[var(--color-accent-green)]/30 text-[var(--color-accent-green)] text-sm font-semibold">
-          Available September 2026 · Greenville, SC (remote) · US remote
+          {availabilityLong()}
         </div>
         <h1 className="text-4xl md:text-5xl font-bold text-[var(--color-text-primary)] mb-3">
           Adam Matthew Steinberger
@@ -241,7 +242,7 @@ export default function Home() {
               claudeloop &amp; the *loop family
             </h3>
             <p className="text-sm text-[var(--color-text-muted)]">
-              Onion-architected, autonomous AI-agent session runners — 5 packages on PyPI.
+              Onion-architected, autonomous AI-agent session runners for Claude Code, Codex, Cursor, Gemini, and local Qwen.
             </p>
           </a>
           <a
@@ -265,7 +266,7 @@ export default function Home() {
           >
             <h3 className="font-bold text-[var(--color-text-primary)] mb-2">vibey-bootstrap</h3>
             <p className="text-sm text-[var(--color-text-muted)]">
-              v3, used across 17+ Azure Functions repos. Solves the logging↔config bootstrap
+              Used across 17+ Azure Functions repos. Solves the logging↔config bootstrap
               paradox.
             </p>
           </a>

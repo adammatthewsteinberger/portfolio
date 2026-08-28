@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Chatbot Readiness Quiz | Novice to Navigator',
   description:
     'A 15-factor, four-pillar self-assessment: is your organization actually ready for a custom AI chatbot? Answer honestly and find out which pillar is your weakest.',
+  alternates: { canonical: "/novice-to-navigator/readiness" },
   openGraph: {
     title: 'Chatbot Readiness Quiz | Novice to Navigator',
     description: 'A 15-factor self-assessment for AI chatbot readiness.',
