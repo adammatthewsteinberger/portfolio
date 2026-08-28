@@ -12,7 +12,7 @@ Source for [hire.adam.matthewsteinberger.com](https://hire.adam.matthewsteinberg
 
 - **It's the résumé, but it runs.** The site is Adam Matthew Steinberger's hire-me page (Staff Software Architect & AI Automation Engineer, Greenville, SC). Instead of a slide about RAG, the homepage has a RAG widget you can poke at.
 - **RAG with the boring parts included.** Feature flag, honeypot, per-IP rate limit, daily spend cap, 6-turn session cap, prompt that refuses to invent facts. All in `src/app/api/ask/` and `src/lib/ask/`.
-- **Content is Markdown, not a CMS.** 116 blog posts, 33 Novice to Navigator articles, 12 case studies, 45 service pages — each a `.md` file with typed frontmatter.
+- **Content is Markdown, not a CMS.** 115 blog posts, 33 Novice to Navigator articles, 17 case studies, 45 service pages — each a `.md` file with typed frontmatter.
 - **Discoverability surfaces built in.** RSS (`/feed.xml`), sitemap, `llms.txt`, JSON-LD, per-page OG images.
 
 ## Stack
@@ -57,9 +57,9 @@ Husky runs `lint-staged` + `typecheck` on pre-commit and `test` + `build` on pre
 
 ```
 src/content/
-├── blog/*.md        # 116 posts            → /blog/[slug]        (directory-scanned)
+├── blog/*.md        # 115 posts            → /blog/[slug]        (directory-scanned)
 ├── articles/*.md    # 33 N2N articles      → /novice-to-navigator (metadata in src/data/articles.ts)
-├── projects/*.md    # 12 case studies      → /work/[slug]        (metadata in src/data/projects.ts)
+├── projects/*.md    # 17 case studies      → /work/[slug]        (metadata in src/data/projects.ts)
 └── services/*.md    # 45 service pages     → /services/[slug]    (directory-scanned)
 src/data/kb-sources.ts   # hand-reviewed text the RAG bot is allowed to answer from
 ```
@@ -91,7 +91,7 @@ Deploys to Netlify from `netlify.toml` (`npm run build` → `.next`). Set the tw
 
 ## Related repos
 
-Open source (MIT, on PyPI): [claudeloop](https://github.com/adammatthewsteinberger/claudeloop) · [codexloop](https://github.com/adammatthewsteinberger/codexloop) · [cursorloop](https://github.com/adammatthewsteinberger/cursorloop) · [agyloop](https://github.com/adammatthewsteinberger/agyloop) · [vibey](https://github.com/adammatthewsteinberger/vibey) · [vibey-bootstrap](https://github.com/adammatthewsteinberger/vibey-bootstrap) · [vibey-skills](https://github.com/adammatthewsteinberger/vibey-skills) · [homebrew-tap](https://github.com/adammatthewsteinberger/homebrew-tap)
+Open source (MIT, on PyPI): [claudeloop](https://github.com/adammatthewsteinberger/claudeloop) · [codexloop](https://github.com/adammatthewsteinberger/codexloop) · [cursorloop](https://github.com/adammatthewsteinberger/cursorloop) · [agyloop](https://github.com/adammatthewsteinberger/agyloop) · [qwenloop](https://github.com/adammatthewsteinberger/qwenloop) · [vibey](https://github.com/adammatthewsteinberger/vibey) · [vibey-gh](https://github.com/adammatthewsteinberger/vibey-gh) · [vibey-bootstrap](https://github.com/adammatthewsteinberger/vibey-bootstrap) · [vibey-skills](https://github.com/adammatthewsteinberger/vibey-skills) · [homebrew-tap](https://github.com/adammatthewsteinberger/homebrew-tap)
 
 Sites and books: [engineering-influence](https://github.com/adammatthewsteinberger/engineering-influence) (book manuscripts + PDF/EPUB generator) · [humbleberger](https://github.com/adammatthewsteinberger/humbleberger)
 

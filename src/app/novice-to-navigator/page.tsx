@@ -47,12 +47,12 @@ export default function NoviceToNavigator() {
     <>
       {/* Hero Section */}
       <section className="container mx-auto px-4 text-center pt-8 pb-16">
-        <h2 className="text-4xl font-bold bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-green)] bg-clip-text text-transparent mb-4">
+        <h1 className="text-4xl font-bold bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-green)] bg-clip-text text-transparent mb-4">
           Novice to Navigator
-        </h2>
-        <h3 className="text-xl font-semibold text-[var(--color-text-muted)] mb-6">
+        </h1>
+        <p className="text-xl font-semibold text-[var(--color-text-muted)] mb-6">
           Master AI Chatbot Knowledge to Make Confident Business Decisions
-        </h3>
+        </p>
         <div className="max-w-2xl mx-auto">
           <div className="bg-[var(--color-dark-card)] border border-[var(--color-accent-coral)]/30 rounded-xl p-6 shadow-lg text-[var(--color-text-muted)]">
             A comprehensive 33-article series designed to take you from complete beginner to confident decision-maker. Learn what AI chatbots are, how they work, and what to look for when hiring an expert to build your custom solution. No technical background required.
