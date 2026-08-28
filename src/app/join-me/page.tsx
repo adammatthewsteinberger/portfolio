@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { openSourcePackages } from '@/data/open-source';
+import { INVITATION, quickstart } from '@/data/quickstart';
 
 export const metadata: Metadata = {
   title: 'Join Me | Adam Matthew Steinberger',
@@ -16,18 +17,7 @@ export const metadata: Metadata = {
 
 const GITHUB = 'https://github.com/adammatthewsteinberger';
 
-// Lifted from vibey's README and kept generic on purpose: nothing here is
-// tailored to this site or to any customer. An average developer with Python,
-// PostgreSQL, and one agent login gets an autonomous software-engineering
-// agent out of it.
-const quickstart = [
-  { cmd: 'uv tool install vibey', note: 'or pipx / pip. Python 3.12+ and PostgreSQL required; Windows is not a target.' },
-  { cmd: 'uv tool install claudeloop', note: 'at least one engine; add codexloop, cursorloop, agyloop, or qwenloop for rotation' },
-  { cmd: 'vibey doctor --conformance --record', note: 'pre-flight: database, engines, auth — and a recorded contract check per engine' },
-  { cmd: 'vibey new my-app --repo ~/src/my-app --max-cycle-dollars 15', note: 'a real budget brake, enforced from the ledger' },
-  { cmd: 'vibey worker --project <id> --engines claudeloop -j 1', note: 'unattended build; pin --project so a second worker never takes over yours' },
-  { cmd: 'vibey answer <gate-id> --defaults', note: 'when it parks for your input: design gates, review, budget grants' },
-];
+// The quickstart lives in src/data/quickstart.ts and is shared with the homepage.
 
 const contribute = [
   { title: 'Open an issue', body: 'Bug, rough edge, or a doc that lied to you — say so on the repo it belongs to. Every repo has a CONTRIBUTING and a SECURITY policy.' },
@@ -44,8 +34,7 @@ export default function JoinMePage() {
         <h1 className="text-4xl md:text-5xl font-bold text-[var(--color-text-primary)] mb-4">Join Me</h1>
         <p className="text-xl text-[var(--color-text-muted)] max-w-2xl mx-auto">
           I primarily develop free and open-source software, and I&apos;m always open for a
-          connection or a coffee — Greenville-remote or US-remote volunteers are welcome and
-          encouraged to get involved at any time. Everything a developer needs to get started is
+          connection or a coffee — {INVITATION} Everything a developer needs to get started is
           on this page.
         </p>
         <p className="mt-4 text-[var(--color-text-muted)]">
