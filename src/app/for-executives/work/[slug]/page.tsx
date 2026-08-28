@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { execOffer } from '@/data/exec';
 import { EXEC_PREFIX } from '@/lib/edition';
 import { getExecProjects, getProjectBySlug } from '@/lib/projectUtils';
+import { OG_IMAGE } from '@/lib/seo';
 
 interface ExecProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -27,6 +28,7 @@ export async function generateMetadata({ params }: ExecProjectPageProps): Promis
     description: project.execProblem,
     alternates: { canonical: url },
     openGraph: {
+      images: [OG_IMAGE],
       title: `${project.title} | For Executives | Adam Matthew Steinberger`,
       description: project.execProblem,
       url: `https://vibewithadam.matthewsteinberger.com${url}`,

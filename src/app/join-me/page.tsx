@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { openSourcePackages } from '@/data/open-source';
 import { INVITATION, quickstart } from '@/data/quickstart';
+import { OG_IMAGE } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Join Me | Adam Matthew Steinberger',
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
     'Everything a developer needs to get started with contributing to Adam’s open-source work: run the whole autonomous-delivery stack for free, see how this site is built with it, and where to start. Volunteers welcome — Greenville-remote or US-remote.',
   alternates: { canonical: '/join-me' },
   openGraph: {
+    images: [OG_IMAGE],
     title: 'Join Me | Adam Matthew Steinberger',
     description: 'Run the whole stack for free, see how this site is built with it, and get involved.',
     url: 'https://vibewithadam.matthewsteinberger.com/join-me',

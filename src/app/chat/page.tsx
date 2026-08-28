@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { AskAdam } from '@/components/AskAdam';
+import { OG_IMAGE } from '@/lib/seo';
 
 // Canonical home of this page. vibewithadam.matthewsteinberger.com/chat 308s here and the
 // chat host's "/" is rewritten to this route — see next.config.ts.
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     canonical: CHAT_URL,
   },
   openGraph: {
+    images: [OG_IMAGE],
     title: 'Ask my résumé | Adam Matthew Steinberger',
     description:
       "A small RAG assistant that answers questions about Adam's experience, stack, and availability using only what's on his site.",

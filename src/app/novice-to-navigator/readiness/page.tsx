@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { ReadinessQuiz } from '@/components/ReadinessQuiz';
+import { OG_IMAGE } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Chatbot Readiness Quiz | Novice to Navigator',
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
     'A 15-factor, four-pillar self-assessment: is your organization actually ready for a custom AI chatbot? Answer honestly and find out which pillar is your weakest.',
   alternates: { canonical: "/novice-to-navigator/readiness" },
   openGraph: {
+    images: [OG_IMAGE],
     title: 'Chatbot Readiness Quiz | Novice to Navigator',
     description: 'A 15-factor self-assessment for AI chatbot readiness.',
     url: 'https://vibewithadam.matthewsteinberger.com/novice-to-navigator/readiness',

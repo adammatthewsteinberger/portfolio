@@ -8,6 +8,7 @@ import Link from 'next/link';
 import MultipleCTAs from '@/components/MultipleCTAs';
 import SecondEditionNudge from '@/components/SecondEditionNudge';
 import type { Metadata } from 'next';
+import { OG_IMAGE } from '@/lib/seo';
 
 interface ArticlePageProps {
   params: Promise<{
@@ -45,18 +46,11 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
       canonical: `/novice-to-navigator/${slug}`,
     },
     openGraph: {
+      images: [OG_IMAGE],
       title: articleMetadata.title,
       description: description,
       url: pageUrl,
       siteName: 'Adam Matthew Steinberger',
-      images: [
-        {
-          url: '/images/social-preview.png',
-          width: 1200,
-          height: 630,
-          alt: articleMetadata.title,
-        },
-      ],
       locale: 'en_US',
       type: 'article',
       publishedTime: articleMetadata.meta.date,
@@ -65,9 +59,9 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     },
     twitter: {
       card: 'summary_large_image',
+      images: [OG_IMAGE],
       title: articleMetadata.title,
       description: description,
-      images: ['/images/social-preview.png'],
     },
   };
 }

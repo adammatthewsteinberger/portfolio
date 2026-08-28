@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { openSourcePackages, type OpenSourcePackage } from '@/data/open-source';
+import { OG_IMAGE } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Open Source | Adam Matthew Steinberger',
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
     'MIT-licensed packages on PyPI: the *loop family of autonomous AI-agent session runners, the vibey conductor and its release automation, a Claude Code skills marketplace, and a production Azure Functions bootstrap library.',
   alternates: { canonical: '/open-source' },
   openGraph: {
+    images: [OG_IMAGE],
     title: 'Open Source | Adam Matthew Steinberger',
     description:
       'MIT-licensed packages on PyPI: the *loop family of autonomous AI-agent session runners, the vibey conductor and its release automation, a Claude Code skills marketplace, and a production Azure Functions bootstrap library.',

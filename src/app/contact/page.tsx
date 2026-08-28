@@ -2,6 +2,7 @@ import ContactForm from '@/components/ContactForm';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import Icon from '@/components/Icon';
+import { OG_IMAGE } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Contact | Adam Matthew Steinberger',
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
     'Reach Adam Matthew Steinberger — for a role, to contribute to his open-source work, or to talk about a business engagement. Email or the form; replies within 24 hours.',
   alternates: { canonical: '/contact' },
   openGraph: {
+    images: [OG_IMAGE],
     title: 'Contact | Adam Matthew Steinberger',
     description: 'For a role, an open-source contribution, or a business engagement. Replies within 24 hours.',
     url: 'https://vibewithadam.matthewsteinberger.com/contact',
@@ -18,6 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
+    images: [OG_IMAGE],
     title: 'Contact | Adam Matthew Steinberger',
     description: 'For a role, an open-source contribution, or a business engagement.',
   },
