@@ -27,7 +27,7 @@ const pages = [
   { icon: 'fa-newspaper', color: 'coral', title: 'Blog', description: 'AI, automation, and architecture — including what\'s buzzing right now.', href: '/blog', cta: 'Read the Blog' },
   { icon: 'fa-graduation-cap', color: 'gold', title: 'Novice to Navigator', description: 'A free 33-article series on AI chatbots for business.', href: '/novice-to-navigator', cta: 'Start Learning' },
   { icon: 'fa-book', color: 'gold', title: 'Books', description: 'Two books, both currently in development.', href: '/books', cta: 'See Books' },
-  { icon: 'fa-tools', color: 'green', title: 'Consulting Services', description: 'The full range of AI and automation consulting services.', href: '/services', cta: 'Browse Services' },
+  { icon: 'fa-user-tie', color: 'green', title: 'For Executives', description: 'The executive edition — the problem first, then what changed, then how to engage. The service pages live under it.', href: '/for-executives', cta: 'Read the Executive Edition' },
   { icon: 'fa-envelope', color: 'blue', title: 'Contact', description: 'Send a message directly.', href: '/contact', cta: 'Contact Me' },
   { icon: 'fa-shield-halved', color: 'purple', title: 'Privacy Policy', description: 'How this site handles data and cookies.', href: '/privacy', cta: 'Read Privacy Policy' },
 ];

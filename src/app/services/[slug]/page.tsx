@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
       title: serviceMetadata.title,
       description: cleanDescription,
       url: pageUrl,
-      siteName: 'Hire Adam Matthew Steinberger - Upstate South Carolina AI Expert',
+      siteName: 'Adam Matthew Steinberger',
       images: [
         {
           url: '/images/social-preview.png',
@@ -232,7 +232,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
         </div>
       </section>
 
-      <MultipleCTAs />
+      <MultipleCTAs edition="exec" />
     </div>
   );
 }

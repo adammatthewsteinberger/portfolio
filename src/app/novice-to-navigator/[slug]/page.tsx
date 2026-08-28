@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
       title: articleMetadata.title,
       description: description,
       url: pageUrl,
-      siteName: 'Hire Adam Matthew Steinberger - Upstate South Carolina AI Expert',
+      siteName: 'Adam Matthew Steinberger',
       images: [
         {
           url: '/images/social-preview.png',

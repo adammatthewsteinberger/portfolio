@@ -56,7 +56,8 @@ test.describe('Navigation', () => {
     await expect(footer).toBeVisible();
     await expect(footer.locator('a[href="/hire-me"]')).toBeVisible();
     await expect(footer.locator('a[href="/work"]')).toBeVisible();
-    await expect(footer.locator('a[href="/services"]')).toBeVisible();
+    await expect(footer.locator('a[href="/for-executives"]')).toBeVisible();
+    await expect(footer.locator('a[href="/services"]')).toHaveCount(0);
   });
 
   test('social media links open in new tab', async ({ page }) => {

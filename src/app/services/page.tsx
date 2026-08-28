@@ -20,8 +20,7 @@ export const metadata: Metadata = {
     description:
       'From custom chatbots to enterprise AI solutions, comprehensive services tailored for your business needs across all industries.',
     url: 'https://hire.adam.matthewsteinberger.com/services',
-    siteName:
-      'Hire Adam Matthew Steinberger - Upstate South Carolina AI Expert',
+    siteName: 'Adam Matthew Steinberger',
     images: [
       {
         url: '/images/social-preview.png',
@@ -90,7 +89,7 @@ export default function ServicesPage() {
             </div>
           ))}
 
-          <MultipleCTAs />
+          <MultipleCTAs edition="exec" />
         </div>
       </div>
     </div>

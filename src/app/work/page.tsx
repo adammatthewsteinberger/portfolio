@@ -128,19 +128,19 @@ export default function WorkPage() {
       {/* Call to Action */}
       <section className="container mx-auto px-4 py-16 text-center">
         <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-blue-light)] bg-clip-text text-transparent">
-          Want Something Like This Built?
+          Want the Person Who Built These on Your Team?
         </h2>
         <p className="text-xl text-[var(--color-text-muted)] mb-8 max-w-2xl mx-auto">
-          {availabilitySentence()} — let&apos;s talk about what you&apos;re trying to build.
+          {availabilitySentence()} — here&apos;s what I&apos;m looking for and how I interview best.
         </p>
         <div className="flex gap-4 justify-center flex-wrap">
-          <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] text-white font-bold rounded-lg transition-colors no-underline">
-            <i className="fas fa-envelope"></i>
-            Get In Touch
+          <Link href="/hire-me" className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] text-white font-bold rounded-lg transition-colors no-underline">
+            <i className="fas fa-briefcase"></i>
+            Hire Me
           </Link>
-          <Link href="/services" className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white font-bold rounded-lg transition-colors no-underline">
-            <i className="fas fa-cogs"></i>
-            View Services
+          <Link href="/expertise" className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white font-bold rounded-lg transition-colors no-underline">
+            <i className="fas fa-layer-group"></i>
+            The Specialties
           </Link>
         </div>
       </section>
