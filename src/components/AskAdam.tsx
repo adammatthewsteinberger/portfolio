@@ -228,7 +228,17 @@ export function AskAdam({ variant = 'widget' }: AskAdamProps = {}) {
           </div>
         )}
 
-        {errorMessage && <p className="text-sm text-[var(--color-accent-coral)]">{errorMessage}</p>}
+        {errorMessage && (
+          <p className="text-sm text-[var(--color-accent-coral)]">
+            {errorMessage.includes('/join-me')
+              ? errorMessage.split('/join-me').flatMap((part, i, parts) =>
+                  i < parts.length - 1
+                    ? [part, <a key={i} href="/join-me" className={LINK_CLASSES}>/join-me</a>]
+                    : [part],
+                )
+              : errorMessage}
+          </p>
+        )}
 
         {turnLimitReached && (
           <p className="text-xs text-[var(--color-text-muted)] italic">

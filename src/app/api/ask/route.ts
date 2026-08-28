@@ -2,6 +2,7 @@ import Anthropic from '@anthropic-ai/sdk';
 import { z } from 'zod';
 import { retrieveContext } from '@/lib/ask/kbIndex';
 import { checkRateLimit, checkDailySpendCap, recordOutputTokens, clientKeyFromHeaders } from '@/lib/ask/rateLimit';
+import { OUT_OF_COFFEE, failureMessage } from '@/lib/ask/messages';
 
 export const runtime = 'nodejs';
 
@@ -82,7 +83,7 @@ export async function POST(request: Request) {
 
   if (!checkDailySpendCap()) {
     return Response.json(
-      { error: 'resting', message: "Ask my résumé has hit its daily budget — try again tomorrow, or use the contact form." },
+      { error: 'resting', message: OUT_OF_COFFEE },
       { status: 503 },
     );
   }
@@ -126,7 +127,7 @@ export async function POST(request: Request) {
         });
       } catch (error) {
         console.error('Ask bot error:', error);
-        send({ type: 'error', message: 'Something went wrong answering that — try again in a moment.' });
+        send({ type: 'error', message: failureMessage(error) });
       } finally {
         controller.close();
       }
