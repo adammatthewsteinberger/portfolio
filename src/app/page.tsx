@@ -1,19 +1,20 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { AudienceToggle, ForAudience } from '@/components/AudienceToggle';
 import { AskAdam } from '@/components/AskAdam';
 import { getAllBlogPosts } from '@/lib/blogUtils';
 import { availabilityLong } from '@/lib/availability';
+import { specialties } from '@/data/expertise';
+import { openSourcePackages } from '@/data/open-source';
 
 export const metadata: Metadata = {
   title: 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer',
   description:
-    'Staff Software Architect & AI Automation Engineer in Greenville, SC. 13+ years shipping RAG systems, event-driven Azure microservices, and automation pipelines. Available from September 2026.',
+    'Staff Software Architect & AI Automation Engineer in Greenville, SC. Production-grade AI platforms for enterprise environments — real data, real security requirements, real organizational complexity. Available from September 2026.',
   alternates: { canonical: '/' },
   openGraph: {
     title: 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer',
     description:
-      'RAG systems, event-driven Azure microservices, and automation pipelines that the people who inherit them can actually run. Available from September 2026 — Greenville, SC (remote) or US remote.',
+      'AI systems that actually work inside enterprise environments — not just demos. Available from September 2026 — Greenville, SC (remote) or US remote.',
     url: 'https://hire.adam.matthewsteinberger.com',
     images: [{ url: '/images/og-home.png', width: 1200, height: 630, alt: 'Adam Matthew Steinberger — Staff Software Architect & AI Automation Engineer' }],
     locale: 'en_US',
@@ -23,28 +24,49 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer',
     description:
-      'RAG systems, event-driven Azure microservices, and automation pipelines. Available from September 2026.',
+      'AI systems that actually work inside enterprise environments — not just demos. Available from September 2026.',
   },
 };
 
-const pillars = [
-  { title: 'AI & ML', href: '/expertise#ai-ml', ceo: 'Telling real AI opportunities apart from vendor pitches.', engineer: 'AI ⊃ ML ⊃ DL ⊃ transformers — build order is prompting, then RAG, then fine-tuning.' },
-  { title: 'RAG chat systems', href: '/expertise#rag-chat-systems', ceo: 'A chatbot is only as good as what it can retrieve, not which model it runs.', engineer: 'Retrieval, indexing, generation — parent-child chunking and contextual retrieval close the accuracy gap.' },
-  { title: 'Agents & automation', href: '/expertise#agents-automation', ceo: 'The hard part is never the model. It’s the guardrails.', engineer: 'Hard iteration caps, token/time budgets, human-in-the-loop checkpoints — mandatory, not polish.' },
-  { title: 'Process engineering', href: '/expertise#process-engineering', ceo: 'Most expensive mistakes are scope decisions made before the work even begins.', engineer: 'Cynefin for method selection; structured interviews; Event Storming before code.' },
-  { title: 'Scrum & Agile', href: '/expertise#scrum-agile', ceo: 'Security-First Scrum: secure, working, tested, clean — in that order.', engineer: 'Certified ScrumMaster. Threat modeling in backlog refinement, not a waterfall gate.' },
-  { title: 'Software architecture', href: '/expertise#software-architecture', ceo: 'Every architecture decision is a trade-off — I help you find it before it costs you.', engineer: 'Modular monolith first. Split along business boundaries, not technical layers.' },
-  { title: 'Onion layering', href: '/expertise#onion-clean-layering', ceo: 'Your business logic shouldn’t care what database sits underneath it.', engineer: 'One dependency rule, pointing inward. Domain has zero framework dependencies.' },
-  { title: 'Microservices', href: '/expertise#microservices', ceo: 'I don’t reach for microservices by default — only when a real boundary demands it.', engineer: 'Service Bus, Event Grid, Event Hubs — complementary, not competing. Outbox pattern, always.' },
-  { title: 'Azure cloud', href: '/expertise#azure-cloud', ceo: '13+ years on Microsoft’s cloud stack — Service Bus, Functions, Key Vault, AKS.', engineer: 'Control-plane "*" does not grant DataActions. Cosmos partition key is an irreversible decision.' },
-  { title: 'Data & integration', href: '/expertise#data-integration-pipelines', ceo: 'Connecting the systems that don’t want to talk to each other.', engineer: 'ELT default, idempotency non-negotiable, dbt three-layer discipline.' },
+// Every figure below is on the corresponding case study or on /story — nothing new.
+const shipped = [
+  {
+    title: 'AI Governance Gateway',
+    role: 'Sole architect',
+    proof: 'Five model vendors behind one policy-enforced API — per-project cost caps, hash-chained audit trail, no API keys in the path. Three product teams migrated onto it; their credentials retired.',
+    href: '/work/ai-governance-gateway',
+  },
+  {
+    title: 'AI Payroll Platform',
+    role: 'Co-lead',
+    proof: '20 microservices, 585 test modules, human approval on every phase. Architecture production-ready at day 45; a junior developer trained in parallel now owns it.',
+    href: '/work/enterprise-ai-payroll-processor',
+  },
+  {
+    title: 'Identity Governance as Code',
+    role: 'Sole author',
+    proof: 'Two control planes for a SOX-regulated enterprise — 40 resource kinds reconciled from Git, secretless multi-tenant auth, a human in front of anything destructive.',
+    href: '/work/identity-governance-as-code',
+  },
+  {
+    title: 'Multi-System Ticket Relay',
+    role: 'Sole author',
+    proof: 'N-way sync with no privileged hub. 653 tests, 93% coverage, chaos-proved convergence.',
+    href: '/work/multi-system-ticket-relay',
+  },
+  {
+    title: 'Multi-Tenant Observability Portal',
+    role: 'Lead',
+    proof: 'Logs, traces, cost, and health from three data planes — every payload tagged with how fresh it really is.',
+    href: '/work/multi-tenant-observability-portal',
+  },
 ];
 
-const proof = [
-  { title: 'AI Governance Gateway', metric: 'Five model vendors behind one policy-enforced API; three teams migrated, their credentials retired', href: '/work/ai-governance-gateway' },
-  { title: 'AI Payroll Processor', metric: '20 microservices, 585 test modules; 45-day architecture handoff, junior dev now owns it', href: '/work/enterprise-ai-payroll-processor' },
-  { title: 'Identity Governance as Code', metric: '40 resource kinds reconciled from Git; secretless multi-tenant auth', href: '/work/identity-governance-as-code' },
-  { title: 'Multi-System Ticket Relay', metric: '653 tests, 93% coverage, chaos-tested convergence', href: '/work/multi-system-ticket-relay' },
+const beforeVizius = [
+  { title: 'Self-hosted RAG (Mistral-7B)', href: '/work/self-hosted-rag-chatbot' },
+  { title: 'Cloud RAG (Gemini)', href: '/work/cloud-rag-chatbot-gemini' },
+  { title: 'Push notifications, TDD', href: '/work/godfocus-push-notifications' },
+  { title: 'Code review & refactor roadmap', href: '/work/chosen-people-answers-architecture' },
 ];
 
 export default function Home() {
@@ -64,8 +86,9 @@ export default function Home() {
           Staff Software Architect &amp; AI Automation Engineer
         </h2>
         <p className="text-lg text-[var(--color-text-muted)] max-w-2xl mx-auto mb-8">
-          13+ years shipping RAG systems, event-driven microservices, and automation pipelines
-          that the people who inherit them can actually run. Greenville, SC — remote-first.
+          I build AI systems that actually work inside enterprise environments — production-grade
+          platforms that handle real data, real security requirements, and real organizational
+          complexity. Not just demos.
         </p>
         <div className="flex flex-wrap gap-3 justify-center mb-6">
           <Link
@@ -85,64 +108,67 @@ export default function Home() {
           </a>
           <AskAdam />
         </div>
-        <p className="text-sm text-[var(--color-text-muted)] max-w-lg mx-auto">
-          159/159 tests, 85.84% coverage, 5 billable hours — that&apos;s what &ldquo;AI-assisted
-          TDD&rdquo; means when someone who ships owns it.
+        <p className="text-sm text-[var(--color-text-muted)] max-w-xl mx-auto">
+          Most recently: five model vendors behind one policy-enforced API, three product teams
+          migrated onto it, their credentials retired.
         </p>
       </section>
 
-      {/* What I actually do */}
+      {/* What I ship */}
       <section className="container mx-auto px-4 py-16">
         <h2 className="text-2xl font-bold mb-2 text-center text-[var(--color-text-primary)]">
-          What I Actually Do
+          What I Ship
         </h2>
         <p className="text-center text-[var(--color-text-muted)] mb-8">
-          Ten pillars. Pick your altitude.
+          The past year at The Vizius Group. Every number is on the case study.
         </p>
-        <AudienceToggle>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
-            {pillars.map((pillar) => (
-              <Link
-                key={pillar.title}
-                href={pillar.href}
-                className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] hover:border-[var(--color-accent-blue)]/50 rounded-xl p-4 no-underline transition-colors"
-              >
-                <h3 className="font-bold text-[var(--color-text-primary)] mb-2 text-sm">
-                  {pillar.title}
-                </h3>
-                <ForAudience audience="ceo">
-                  <p className="text-xs text-[var(--color-text-muted)]">{pillar.ceo}</p>
-                </ForAudience>
-                <ForAudience audience="engineer">
-                  <p className="text-xs text-[var(--color-text-muted)]">{pillar.engineer}</p>
-                </ForAudience>
-              </Link>
-            ))}
-          </div>
-        </AudienceToggle>
-      </section>
-
-      {/* Proof */}
-      <section className="container mx-auto px-4 py-16">
-        <h2 className="text-2xl font-bold mb-8 text-center text-[var(--color-text-primary)]">
-          Proof, Not Promises
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
-          {proof.map((item) => (
+        <div className="max-w-4xl mx-auto divide-y divide-[var(--color-dark-border)] border-y border-[var(--color-dark-border)]">
+          {shipped.map((item) => (
             <Link
-              key={item.title}
+              key={item.href}
               href={item.href}
-              className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] hover:border-[var(--color-accent-blue)]/50 rounded-xl p-5 no-underline transition-colors flex flex-col"
+              className="grid grid-cols-1 md:grid-cols-[14rem_1fr] gap-1 md:gap-6 py-4 no-underline hover:bg-[var(--color-dark-card)] transition-colors"
             >
-              <h3 className="font-bold text-[var(--color-text-primary)] mb-2">{item.title}</h3>
-              <p className="text-sm text-[var(--color-accent-green)] font-medium">{item.metric}</p>
+              <div>
+                <h3 className="font-bold text-[var(--color-text-primary)]">{item.title}</h3>
+                <span className="text-xs font-mono uppercase tracking-wider text-[var(--color-accent-green)]">{item.role}</span>
+              </div>
+              <p className="text-sm text-[var(--color-text-muted)] mb-0">{item.proof}</p>
             </Link>
           ))}
         </div>
-        <div className="text-center mt-8">
+        <p className="max-w-4xl mx-auto mt-6 text-sm text-[var(--color-text-muted)]">
+          All of it on private AKS with OIDC workload identity and supply-chain scanning in CI.
+          Around the code: five architecture document sets, identity-governance advisory for
+          ~5,700 identities, the Security-First Scrum framework, and the firm&apos;s
+          thought-leadership program.
+        </p>
+        <div className="text-center mt-6">
           <Link href="/work" className="text-[var(--color-accent-blue)] hover:underline font-medium">
             See all the work →
           </Link>
+        </div>
+      </section>
+
+      {/* Specialties */}
+      <section className="container mx-auto px-4 py-16">
+        <h2 className="text-2xl font-bold mb-8 text-center text-[var(--color-text-primary)]">
+          Specialties
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
+          {specialties.map((group) => (
+            <Link
+              key={group.id}
+              href={`/expertise#${group.id}`}
+              className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] hover:border-[var(--color-accent-blue)]/50 rounded-xl p-5 no-underline transition-colors"
+            >
+              <h3 className="font-bold text-[var(--color-text-primary)] mb-2">{group.title}</h3>
+              <p className="text-sm text-[var(--color-text-muted)] mb-3">{group.summary}</p>
+              <p className="text-xs font-mono text-[var(--color-accent-blue)] mb-0">
+                {group.stack.slice(0, 5).join(' · ')}
+              </p>
+            </Link>
+          ))}
         </div>
       </section>
 
@@ -153,17 +179,31 @@ export default function Home() {
             How I Work
           </h2>
           <p className="text-[var(--color-text-muted)] mb-4 leading-relaxed">
-            I go deep rather than wide. Give me one hard architecture problem and uninterrupted
-            time, and I&apos;ll come back with a design document before I come back with code —
-            because the expensive decisions get made before anyone opens an editor. I write
-            everything down for the same reason a RAG pipeline cites its sources: an auditable
-            trail beats a confident guess.
+            After 13+ years: the hardest part is never the technology — it&apos;s designing so
+            the people who inherit it get a product that just works. Architecture before code.
+            Juniors trained in parallel. Handoffs that hold.
           </p>
           <p className="text-[var(--color-text-muted)] mb-6 leading-relaxed">
-            The measure I hold myself to is whether the next engineer can own what I built.
-            Five formal architecture document sets, a 45-day handoff to a junior developer who
-            now owns a 20-microservice platform, and a shared Python library adopted across 17+
-            repositories are what that looks like in practice.
+            I&apos;m a deep thinker and a purpose-driven craftsman. I document everything for the
+            same reason a RAG pipeline cites its sources, and I communicate best with written
+            documentation — a design document comes back before code does, because the expensive
+            decisions get made before anyone opens an editor.
+          </p>
+          <p className="text-[var(--color-text-muted)] mb-6 leading-relaxed">
+            Before Vizius: four consulting engagements in six months —{' '}
+            {beforeVizius.map((item, i) => (
+              <span key={item.href}>
+                <Link href={item.href} className="text-[var(--color-accent-blue)] hover:underline">
+                  {item.title}
+                </Link>
+                {i < beforeVizius.length - 1 ? ', ' : ''}
+              </span>
+            ))}{' '}
+            — and two years moving{' '}
+            <Link href="/work/lima-one-microservices-suite" className="text-[var(--color-accent-blue)] hover:underline">
+              Lima One Capital&apos;s integration layer from Mulesoft to NestJS microservices
+            </Link>
+            .
           </p>
           <Link href="/story" className="text-[var(--color-accent-blue)] hover:underline font-medium">
             Read the full story →
@@ -171,12 +211,45 @@ export default function Home() {
         </div>
       </section>
 
-      {/* What's buzzing */}
-      {latestPosts.length > 0 && (
-        <section className="container mx-auto px-4 py-16">
-          <h2 className="text-2xl font-bold mb-8 text-center text-[var(--color-text-primary)]">
-            What&apos;s Buzzing in AI
-          </h2>
+      {/* Open source */}
+      <section className="container mx-auto px-4 py-16">
+        <h2 className="text-2xl font-bold mb-2 text-center text-[var(--color-text-primary)]">
+          Open Source
+        </h2>
+        <p className="text-center text-[var(--color-text-muted)] mb-8">
+          I primarily develop free and open-source software. All of it is MIT licensed and on PyPI.
+        </p>
+        <div className="max-w-4xl mx-auto overflow-x-auto border border-[var(--color-dark-border)] rounded-xl">
+          <table className="w-full text-sm">
+            <tbody>
+              {openSourcePackages.map((pkg) => (
+                <tr key={pkg.name} className="border-b border-[var(--color-dark-border)] last:border-b-0">
+                  <td className="px-4 py-3 font-mono font-semibold text-[var(--color-text-primary)] whitespace-nowrap">{pkg.name}</td>
+                  <td className="px-4 py-3 text-[var(--color-text-muted)]">{pkg.tagline}</td>
+                  <td className="px-4 py-3 whitespace-nowrap">
+                    <a href={pkg.pypi} target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent-blue)] hover:underline mr-3">PyPI</a>
+                    <a href={pkg.repo} target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent-blue)] hover:underline">GitHub</a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-center text-[var(--color-text-muted)] mt-6 max-w-2xl mx-auto">
+          Always open for a connection or a coffee — Greenville-remote or US-remote volunteers are
+          welcome and encouraged to get involved at any time.{' '}
+          <Link href="/open-source" className="text-[var(--color-accent-blue)] hover:underline">
+            Start with the packages →
+          </Link>
+        </p>
+      </section>
+
+      {/* Writing */}
+      <section className="container mx-auto px-4 py-16">
+        <h2 className="text-2xl font-bold mb-8 text-center text-[var(--color-text-primary)]">
+          Writing
+        </h2>
+        {latestPosts.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
             {latestPosts.map((post) => (
               <Link
@@ -191,89 +264,17 @@ export default function Home() {
               </Link>
             ))}
           </div>
-          <div className="text-center mt-8">
-            <Link href="/blog" className="text-[var(--color-accent-blue)] hover:underline font-medium">
-              Read the blog →
-            </Link>
-          </div>
-        </section>
-      )}
-
-      {/* Books */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="max-w-3xl mx-auto bg-[var(--color-dark-card)] border border-[var(--color-accent-gold)]/30 rounded-xl p-8 text-center">
-          <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-4">Books</h2>
-          <p className="text-[var(--color-text-muted)] mb-6">
-            <strong className="text-[var(--color-text-primary)]">Novice to Navigator</strong> —
-            read the first edition free, right here, 33 articles on AI chatbots for business. A
-            second edition is in development.
-          </p>
-          <div className="flex flex-wrap gap-3 justify-center">
-            <Link
-              href="/novice-to-navigator"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[var(--color-accent-gold)] to-amber-500 hover:from-amber-500 hover:to-[var(--color-accent-gold)] font-bold rounded-lg transition-all no-underline"
-              style={{ color: '#000000' }}
-            >
-              Read Free
-            </Link>
-            <Link
-              href="/books"
-              className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[var(--color-accent-gold)] text-[var(--color-accent-gold)] hover:bg-[var(--color-accent-gold)] hover:text-black font-bold rounded-lg transition-colors no-underline"
-            >
-              See Both Books
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Open source */}
-      <section className="container mx-auto px-4 py-16">
-        <h2 className="text-2xl font-bold mb-8 text-center text-[var(--color-text-primary)]">
-          Open Source
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
-          <a
-            href="https://github.com/adammatthewsteinberger/claudeloop"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] hover:border-[var(--color-accent-blue)]/50 rounded-xl p-5 no-underline transition-colors"
-          >
-            <h3 className="font-bold text-[var(--color-text-primary)] mb-2">
-              claudeloop &amp; the *loop family
-            </h3>
-            <p className="text-sm text-[var(--color-text-muted)]">
-              Onion-architected, autonomous AI-agent session runners for Claude Code, Codex, Cursor, Gemini, and local Qwen.
-            </p>
-          </a>
-          <a
-            href="https://github.com/adammatthewsteinberger/vibey-skills"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] hover:border-[var(--color-accent-blue)]/50 rounded-xl p-5 no-underline transition-colors"
-          >
-            <h3 className="font-bold text-[var(--color-text-primary)] mb-2">
-              vibey-skills
-            </h3>
-            <p className="text-sm text-[var(--color-text-muted)]">
-              18 plugins, 71 evidence-grounded practitioner references, MIT licensed.
-            </p>
-          </a>
-          <a
-            href="https://pypi.org/project/vibey-bootstrap/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] hover:border-[var(--color-accent-blue)]/50 rounded-xl p-5 no-underline transition-colors"
-          >
-            <h3 className="font-bold text-[var(--color-text-primary)] mb-2">vibey-bootstrap</h3>
-            <p className="text-sm text-[var(--color-text-muted)]">
-              Used across 17+ Azure Functions repos. Solves the logging↔config bootstrap
-              paradox.
-            </p>
-          </a>
-        </div>
-        <div className="text-center mt-8">
-          <Link href="/open-source" className="text-[var(--color-accent-blue)] hover:underline font-medium">
-            See everything I&apos;ve open-sourced →
+        )}
+        <p className="text-center text-[var(--color-text-muted)] mt-8 max-w-2xl mx-auto">
+          Author of{' '}
+          <Link href="/novice-to-navigator" className="text-[var(--color-accent-blue)] hover:underline">
+            <em>Novice to Navigator: Your Guide to AI Chatbots for Business</em>
+          </Link>{' '}
+          — the first edition is free to read here. A second edition is in development.
+        </p>
+        <div className="text-center mt-4">
+          <Link href="/writing" className="text-[var(--color-accent-blue)] hover:underline font-medium">
+            All the writing →
           </Link>
         </div>
       </section>

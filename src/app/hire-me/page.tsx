@@ -23,9 +23,14 @@ const facts: { label: string; value: string }[] = [
   { label: 'Employment types', value: 'W2 full-time preferred; contract-to-hire considered' },
   { label: 'Work authorization', value: 'US citizen — no sponsorship required' },
   {
-    label: 'Core stack',
+    label: 'Specialties',
     value:
-      'Python, TypeScript/NestJS, C#/.NET, Next.js/React, PostgreSQL/pgvector, Snowflake, Azure (Functions, Service Bus, App Config, Key Vault, App Insights, AKS), Docker, vLLM/Ollama/FAISS, LangChain/MCP, Claude/GPT/Gemini/Mistral',
+      'Azure (AKS, Functions, Service Bus, Bicep, Terraform, Key Vault) · Python and .NET backends · event-driven microservices · RAG, multi-vendor LLM gateways, AI governance (Claude, GPT, Gemini, Mistral, vLLM) · Kubernetes, Helm, GitOps, secretless DevSecOps · identity governance (Okta IGA, Entra ID, SAML/OIDC)',
+  },
+  {
+    label: 'Verify me',
+    value:
+      'Ask my résumé at chat.adam.matthewsteinberger.com, read the packages on PyPI, or read the code on GitHub — every claim on this site is checkable.',
   },
 ];
 
