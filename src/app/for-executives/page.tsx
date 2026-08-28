@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { execOffer, execRoutes } from '@/data/exec';
 import { EXEC_PREFIX } from '@/lib/edition';
 import { getExecProjects } from '@/lib/projectUtils';
+import { OG_IMAGE } from '@/lib/seo';
 
 const route = execRoutes[0];
 
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
     'Enterprise AI initiatives stall on security, data, and handoff — not on models. What changed for the teams Adam Matthew Steinberger worked with, and two ways to work with him.',
   alternates: { canonical: EXEC_PREFIX },
   openGraph: {
+    images: [OG_IMAGE],
     title: 'For Executives | Adam Matthew Steinberger',
     description: 'Enterprise AI initiatives stall on security, data, and handoff — not on models.',
     url: `https://vibewithadam.matthewsteinberger.com${EXEC_PREFIX}`,

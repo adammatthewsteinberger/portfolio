@@ -2,6 +2,7 @@ import Link from 'next/link';
 import MultipleCTAs from '@/components/MultipleCTAs';
 import type { Metadata } from 'next';
 import Icon from '@/components/Icon';
+import { OG_IMAGE } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Site Directory | Adam Matthew Steinberger',
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
     canonical: '/site-directory',
   },
   openGraph: {
+    images: [OG_IMAGE],
     title: 'Site Directory | Adam Matthew Steinberger',
     description: 'Every page on the site in one place.',
     url: 'https://vibewithadam.matthewsteinberger.com/site-directory',

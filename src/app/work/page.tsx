@@ -3,12 +3,14 @@ import { Metadata } from 'next';
 import { projects, projectCategories } from '@/data/projects';
 import { availabilitySentence } from '@/lib/availability';
 import Icon from '@/components/Icon';
+import { OG_IMAGE } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Work | Case Studies in AI, Azure & Automation | Adam Matthew Steinberger',
   description: 'Case studies in RAG systems, event-driven microservices, and AI automation — built by Adam Matthew Steinberger, Staff Software Architect & AI Automation Engineer.',
   alternates: { canonical: '/work' },
   openGraph: {
+    images: [OG_IMAGE],
     title: 'Work | Case Studies in AI, Azure & Automation | Adam Matthew Steinberger',
     description: 'Case studies in RAG systems, event-driven microservices, and AI automation — built by Adam Matthew Steinberger, Staff Software Architect & AI Automation Engineer.',
     url: 'https://vibewithadam.matthewsteinberger.com/work',

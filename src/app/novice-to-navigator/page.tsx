@@ -3,6 +3,7 @@ import Link from 'next/link';
 import MultipleCTAs from '@/components/MultipleCTAs';
 import type { Metadata } from 'next';
 import Icon from '@/components/Icon';
+import { OG_IMAGE } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Novice to Navigator: AI Chatbot Education Series | Adam Matthew Steinberger',
@@ -17,28 +18,21 @@ export const metadata: Metadata = {
     canonical: '/novice-to-navigator',
   },
   openGraph: {
+    images: [OG_IMAGE],
     title: 'Novice to Navigator: Master AI Chatbot Knowledge',
     description:
       'A comprehensive 33-article series designed to take you from complete beginner to confident decision-maker in AI chatbot development.',
     url: 'https://vibewithadam.matthewsteinberger.com/novice-to-navigator',
     siteName: 'Adam Matthew Steinberger',
-    images: [
-      {
-        url: '/images/social-preview.png',
-        width: 1200,
-        height: 630,
-        alt: 'Novice to Navigator AI Education Series',
-      },
-    ],
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
+    images: [OG_IMAGE],
     title: 'Novice to Navigator: AI Chatbot Education Series',
     description:
       '33-article series taking you from beginner to expert in AI chatbot knowledge. Learn how to make confident business decisions.',
-    images: ['/images/social-preview.png'],
   },
 };
 

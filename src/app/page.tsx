@@ -6,6 +6,7 @@ import { availabilityLong } from '@/lib/availability';
 import { specialties } from '@/data/expertise';
 import { openSourcePackages } from '@/data/open-source';
 import { INVITATION, INVITATION_CTA, quickstart } from '@/data/quickstart';
+import { OG_IMAGE } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer',
@@ -13,16 +14,17 @@ export const metadata: Metadata = {
     'Free and open-source autonomous software-delivery tooling — the *loop agent runners, the vibey conductor, vibey-gh release automation — all MIT on PyPI, from a Staff Software Architect & AI Automation Engineer in Greenville, SC. Volunteers welcome. Available from September 2026.',
   alternates: { canonical: '/' },
   openGraph: {
+    images: [OG_IMAGE],
     title: 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer',
     description:
       'Free and open-source autonomous software-delivery tooling, MIT on PyPI. Run it in ten minutes; volunteers welcome. Available from September 2026 — Greenville, SC (remote) or US remote.',
     url: 'https://vibewithadam.matthewsteinberger.com',
-    images: [{ url: '/images/og-home.png', width: 1200, height: 630, alt: 'Adam Matthew Steinberger — Staff Software Architect & AI Automation Engineer' }],
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
+    images: [OG_IMAGE],
     title: 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer',
     description: 'Free and open-source autonomous software-delivery tooling, MIT on PyPI. Run it in ten minutes; volunteers welcome.',
   },
