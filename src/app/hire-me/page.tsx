@@ -179,6 +179,10 @@ export default function HireMePage() {
           .
         </p>
         <p className="text-sm text-[var(--color-text-muted)] mt-6">
+          Prefer to contribute first?{' '}
+          <Link href="/join-me" className="hover:underline">Everything a developer needs is on Join Me</Link>.
+        </p>
+        <p className="text-sm text-[var(--color-text-muted)] mt-2">
           Hiring for a business rather than an engineering team?{' '}
           <Link href="/for-executives" className="hover:underline">Read the executive edition</Link>.
         </p>

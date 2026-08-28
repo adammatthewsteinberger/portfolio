@@ -21,6 +21,7 @@ const engineeringLinks: FooterLink[] = [
   { href: '/work', label: 'Work' },
   { href: '/expertise', label: 'Expertise' },
   { href: '/open-source', label: 'Open Source' },
+  { href: '/join-me', label: 'Join Me' },
   { href: '/writing', label: 'Writing' },
   NEWSLETTER,
   { href: '/site-directory', label: 'Site Directory' },

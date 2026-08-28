@@ -238,8 +238,8 @@ export default function Home() {
         <p className="text-center text-[var(--color-text-muted)] mt-6 max-w-2xl mx-auto">
           Always open for a connection or a coffee — Greenville-remote or US-remote volunteers are
           welcome and encouraged to get involved at any time.{' '}
-          <Link href="/open-source" className="text-[var(--color-accent-blue)] hover:underline">
-            Start with the packages →
+          <Link href="/join-me" className="text-[var(--color-accent-blue)] hover:underline">
+            Everything a developer needs to get started →
           </Link>
         </p>
       </section>

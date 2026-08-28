@@ -87,7 +87,7 @@ Deploys to Netlify from `netlify.toml` (`npm run build` → `.next`). Set the tw
 
 - [`AGENTS.md`](./AGENTS.md) — the canonical agent/contributor guide (schemas, conventions, RAG internals). `CLAUDE.md`, `WARP.md`, `GEMINI.md`, `.agent`, `.agents` are symlinks to it.
 - [`SECURITY.md`](./SECURITY.md) · [`CONTRIBUTING.md`](./CONTRIBUTING.md) · [`LICENSE`](./LICENSE)
-- Live: [Hire me](https://hire.adam.matthewsteinberger.com/hire-me) · [Work](https://hire.adam.matthewsteinberger.com/work) · [Writing](https://hire.adam.matthewsteinberger.com/writing) · [Novice to Navigator](https://hire.adam.matthewsteinberger.com/novice-to-navigator) · [Books](https://hire.adam.matthewsteinberger.com/books) · [Open source](https://hire.adam.matthewsteinberger.com/open-source) · [RSS](https://hire.adam.matthewsteinberger.com/feed.xml) · [llms.txt](https://hire.adam.matthewsteinberger.com/llms.txt)
+- Live: [Hire me](https://hire.adam.matthewsteinberger.com/hire-me) · [Work](https://hire.adam.matthewsteinberger.com/work) · [Writing](https://hire.adam.matthewsteinberger.com/writing) · [Novice to Navigator](https://hire.adam.matthewsteinberger.com/novice-to-navigator) · [Books](https://hire.adam.matthewsteinberger.com/books) · [Open source](https://hire.adam.matthewsteinberger.com/open-source) · [Join me](https://hire.adam.matthewsteinberger.com/join-me) · [RSS](https://hire.adam.matthewsteinberger.com/feed.xml) · [llms.txt](https://hire.adam.matthewsteinberger.com/llms.txt)
 
 ## Related repos
 

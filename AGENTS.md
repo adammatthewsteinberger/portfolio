@@ -29,6 +29,7 @@ src/
 │   ├── page.tsx                  # Homepage
 │   ├── story/                    # "About" page (renamed from /about; old URL 301s in next.config.ts)
 │   ├── hire-me/                  # Primary conversion page — the main CTA target
+│   ├── join-me/                  # FOSS onboarding: generic free quickstart for the vibey stack, dogfooding, ways to contribute, volunteers
 │   ├── for-executives/           # Executive edition (secondary): layout banner + /, /work, /work/[slug], /engage — see "Two editions"
 │   ├── chat/                     # Full-page "Ask my résumé" chat; served at chat.adam.matthewsteinberger.com via host rules in next.config.ts
 │   ├── expertise/                # 10 technical pillars, CEO/engineer dual-audience copy

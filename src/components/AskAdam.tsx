@@ -21,6 +21,7 @@ const SUGGESTED_QUESTIONS = [
   'Is he open to remote work?',
   "What's onion architecture and why does he care?",
   'What has he built with Azure?',
+  'How can I contribute to his open source?',
 ];
 
 export interface AskAdamProps {
