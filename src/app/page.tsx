@@ -297,6 +297,10 @@ export default function Home() {
           >
             Everything a Recruiter Needs →
           </Link>
+          <p className="text-sm text-[var(--color-text-muted)] mt-6 mb-0">
+            Hiring for a business rather than an engineering team?{' '}
+            <Link href="/for-executives" className="hover:underline">Read the executive edition</Link>.
+          </p>
         </div>
       </section>
     </>

@@ -20,8 +20,7 @@ export const metadata: Metadata = {
     description:
       'A comprehensive 33-article series designed to take you from complete beginner to confident decision-maker in AI chatbot development.',
     url: 'https://hire.adam.matthewsteinberger.com/novice-to-navigator',
-    siteName:
-      'Hire Adam Matthew Steinberger - Upstate South Carolina AI Expert',
+    siteName: 'Adam Matthew Steinberger',
     images: [
       {
         url: '/images/social-preview.png',

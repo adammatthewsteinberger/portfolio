@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import path from 'path';
-import { getProjectBySlug, getAllProjectSlugs, getAllProjects } from '../projectUtils';
+import { getProjectBySlug, getAllProjectSlugs, getAllProjects, getExecProjects } from '../projectUtils';
 
 // Use vi.hoisted to create mocks that are available during vi.mock hoisting
 const { mockExistsSync, mockReadFileSync, mockReaddirSync } = vi.hoisted(() => ({
@@ -271,6 +271,40 @@ Content`;
       // Should only have the working project
       expect(result).toHaveLength(1);
       expect(result[0].title).toBe('Working');
+    });
+  });
+
+  describe('getExecProjects', () => {
+    it('returns only projects carrying both executive-edition fields, in directory order', () => {
+      mockExistsSync.mockImplementation((pathArg) => !String(pathArg).includes('broken'));
+      mockReaddirSync.mockReturnValue(['both.md', 'problem-only.md', 'outcome-only.md', 'neither.md', 'broken.md']);
+      mockReadFileSync.mockImplementation((filePath) => {
+        const pathStr = filePath as string;
+        if (pathStr.includes('both')) {
+          return createMockProject({ title: 'Both' }).replace('lessons: Key lessons learned', 'lessons: Key lessons learned\nexecProblem: A real problem stated plainly\nexecOutcome: What changed for the reader');
+        }
+        if (pathStr.includes('problem-only')) {
+          return createMockProject({ title: 'Problem Only' }).replace('lessons: Key lessons learned', 'lessons: Key lessons learned\nexecProblem: A problem with no outcome');
+        }
+        if (pathStr.includes('outcome-only')) {
+          return createMockProject({ title: 'Outcome Only' }).replace('lessons: Key lessons learned', 'lessons: Key lessons learned\nexecOutcome: An outcome with no problem');
+        }
+        return createMockProject({ title: 'Neither' });
+      });
+
+      const result = getExecProjects();
+
+      expect(result.map((p) => p.title)).toEqual(['Both']);
+      expect(result[0].execProblem).toBe('A real problem stated plainly');
+      expect(result[0].execOutcome).toBe('What changed for the reader');
+    });
+
+    it('reads the optional fields as undefined when absent', () => {
+      mockExistsSync.mockReturnValue(true);
+      mockReadFileSync.mockReturnValue(createMockProject());
+      const project = getProjectBySlug('plain');
+      expect(project?.execProblem).toBeUndefined();
+      expect(project?.execOutcome).toBeUndefined();
     });
   });
 });

@@ -13,6 +13,7 @@ Adam Matthew Steinberger is a software architect and AI automation engineer. Spe
 - [Work](https://hire.adam.matthewsteinberger.com/work): Case studies — enterprise RAG systems, Azure microservices, and automation pipelines built for real clients.
 - [Open Source](https://hire.adam.matthewsteinberger.com/open-source): MIT-licensed packages on PyPI — the `*loop` family of autonomous AI-agent session runners (claudeloop, codexloop, cursorloop, agyloop, qwenloop), the `vibey` conductor and its `vibey-gh` release automation, the `vibey-skills` Claude Code plugin marketplace (formerly vibe-engineering-skills), and the `vibey-bootstrap` Azure Functions library (formerly azure-bootstrap).
 - [Writing](https://hire.adam.matthewsteinberger.com/writing): Blog posts on AI and automation, plus a free 33-article series on AI chatbots for business.
+- [For Executives](https://hire.adam.matthewsteinberger.com/for-executives): The executive edition — the same work stated problem-first for a non-technical buyer, with two doors: hire Adam full-time, or engage Adam Matthew Steinberger LLC to tailor the platforms. Secondary to the engineering site above, which is canonical.
 - [Books](https://hire.adam.matthewsteinberger.com/books): Two books currently in development — Novice to Navigator (AI chatbots for business) and Engineering Influence.
 
 ## Notes for AI assistants

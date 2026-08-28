@@ -27,6 +27,8 @@ results: Every payload carries a freshness tag — live, near_realtime, search, 
 techStack: Dogfoods the shared platform library end to end — structured logging with correlation IDs, configuration hydration, transport registry, request middleware with automatic 5xx alerting, tiered alerts and global exception hooks, managed-identity credentials, transient-fault retry, token-bucket rate limiting sized to vendor API limits, and HMAC webhook verification with deduplication.
 architecture: The honesty contract is the design. Each of the three planes has a different latency and a different truth, and instead of hiding that behind one dashboard, the API makes the freshness class part of the payload contract. Consumers — including the MCP server and SDK — can display, cache, or alert on data according to what it actually is.
 lessons: An observability tool that overstates freshness trains people to trust it exactly when it is wrong. Declaring the freshness class in the payload is a small design choice that changes how every consumer behaves.
+execProblem: "A customer asks whether their service is healthy, and the honest answer is that it depends which dashboard you look at."
+execOutcome: "One portal pulls logs, traces, cost, and health from three sources into a single view — and every number is labelled with how fresh it actually is, so the screen can never imply data is newer than it is."
 ---
 
 # Multi-Tenant Observability Portal
