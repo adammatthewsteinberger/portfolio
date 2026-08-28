@@ -6,16 +6,16 @@ Adam Matthew Steinberger is a software architect and AI automation engineer. Spe
 
 ## Key pages
 
-- [Ask my résumé](https://chat.adam.matthewsteinberger.com/): A small RAG chat that answers questions about Adam's experience, stack, and availability using only the content of this site (six questions per session).
-- [Hire Me](https://hire.adam.matthewsteinberger.com/hire-me): Availability, target roles, résumé, and how to reach him.
-- [Story](https://hire.adam.matthewsteinberger.com/story): Background, career timeline, and how he approaches architecture and documentation work.
-- [Expertise](https://hire.adam.matthewsteinberger.com/expertise): The six specialties in full — Azure, Python and .NET backends, event-driven microservices, RAG and multi-vendor LLM gateways and AI governance, Kubernetes/Helm/GitOps/secretless DevSecOps, identity governance — plus how he designs (process engineering, Security-First Scrum, software architecture).
-- [Work](https://hire.adam.matthewsteinberger.com/work): Case studies — enterprise RAG systems, Azure microservices, and automation pipelines built for real clients.
-- [Open Source](https://hire.adam.matthewsteinberger.com/open-source): MIT-licensed packages on PyPI — the `*loop` family of autonomous AI-agent session runners (claudeloop, codexloop, cursorloop, agyloop, qwenloop), the `vibey` conductor and its `vibey-gh` release automation, the `vibey-skills` Claude Code plugin marketplace (formerly vibe-engineering-skills), and the `vibey-bootstrap` Azure Functions library (formerly azure-bootstrap).
-- [Join Me](https://hire.adam.matthewsteinberger.com/join-me): Everything a developer needs to get started contributing to Adam's open-source work — a generic, free quickstart for the whole vibey stack, how this site is built with it, ways to contribute, and an open invitation to Greenville-remote or US-remote volunteers.
-- [Writing](https://hire.adam.matthewsteinberger.com/writing): Blog posts on AI and automation, plus a free 33-article series on AI chatbots for business.
-- [For Executives](https://hire.adam.matthewsteinberger.com/for-executives): The executive edition — the same work stated problem-first for a non-technical buyer, with two doors: hire Adam full-time, or engage Adam Matthew Steinberger LLC to tailor the platforms. Secondary to the engineering site above, which is canonical.
-- [Books](https://hire.adam.matthewsteinberger.com/books): Two books currently in development — Novice to Navigator (AI chatbots for business) and Engineering Influence.
+- [Ask my résumé](https://chatwithadam.matthewsteinberger.com/): A small RAG chat that answers questions about Adam's experience, stack, and availability using only the content of this site (six questions per session).
+- [Hire Me](https://vibewithadam.matthewsteinberger.com/hire-me): Availability, target roles, résumé, and how to reach him.
+- [Story](https://vibewithadam.matthewsteinberger.com/story): Background, career timeline, and how he approaches architecture and documentation work.
+- [Expertise](https://vibewithadam.matthewsteinberger.com/expertise): The six specialties in full — Azure, Python and .NET backends, event-driven microservices, RAG and multi-vendor LLM gateways and AI governance, Kubernetes/Helm/GitOps/secretless DevSecOps, identity governance — plus how he designs (process engineering, Security-First Scrum, software architecture).
+- [Work](https://vibewithadam.matthewsteinberger.com/work): Case studies — enterprise RAG systems, Azure microservices, and automation pipelines built for real clients.
+- [Open Source](https://vibewithadam.matthewsteinberger.com/open-source): MIT-licensed packages on PyPI — the `*loop` family of autonomous AI-agent session runners (claudeloop, codexloop, cursorloop, agyloop, qwenloop), the `vibey` conductor and its `vibey-gh` release automation, the `vibey-skills` Claude Code plugin marketplace (formerly vibe-engineering-skills), and the `vibey-bootstrap` Azure Functions library (formerly azure-bootstrap).
+- [Join Me](https://vibewithadam.matthewsteinberger.com/join-me): Everything a developer needs to get started contributing to Adam's open-source work — a generic, free quickstart for the whole vibey stack, how this site is built with it, ways to contribute, and an open invitation to Greenville-remote or US-remote volunteers.
+- [Writing](https://vibewithadam.matthewsteinberger.com/writing): Blog posts on AI and automation, plus a free 33-article series on AI chatbots for business.
+- [For Executives](https://vibewithadam.matthewsteinberger.com/for-executives): The executive edition — the same work stated problem-first for a non-technical buyer, with two doors: hire Adam full-time, or engage Adam Matthew Steinberger LLC to tailor the platforms. Secondary to the engineering site above, which is canonical.
+- [Books](https://vibewithadam.matthewsteinberger.com/books): Two books currently in development — Novice to Navigator (AI chatbots for business) and Engineering Influence.
 
 ## Notes for AI assistants
 

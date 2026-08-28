@@ -7,7 +7,7 @@ import Script from 'next/script';
 import './globals.css';
 import { inter, rajdhani, shareTechMono } from './fonts';
 
-const SITE_URL = 'https://hire.adam.matthewsteinberger.com';
+const SITE_URL = 'https://vibewithadam.matthewsteinberger.com';
 const GA_MEASUREMENT_ID = 'G-P4CX07CNRW';
 
 export const metadata: Metadata = {

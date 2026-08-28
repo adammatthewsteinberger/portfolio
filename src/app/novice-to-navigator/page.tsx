@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     title: 'Novice to Navigator: Master AI Chatbot Knowledge',
     description:
       'A comprehensive 33-article series designed to take you from complete beginner to confident decision-maker in AI chatbot development.',
-    url: 'https://hire.adam.matthewsteinberger.com/novice-to-navigator',
+    url: 'https://vibewithadam.matthewsteinberger.com/novice-to-navigator',
     siteName: 'Adam Matthew Steinberger',
     images: [
       {

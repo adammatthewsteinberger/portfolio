@@ -1,12 +1,11 @@
-# hire-adam-steinberger
+# portfolio
 
-Source for [hire.adam.matthewsteinberger.com](https://hire.adam.matthewsteinberger.com) — a portfolio site that doubles as a working demo of a shipped RAG feature. Portfolio, blog, a free 33-article course on AI chatbots for business, and an "Ask my résumé" widget that answers from the site's own content, all in one Next.js app.
+Source for [vibewithadam.matthewsteinberger.com](https://vibewithadam.matthewsteinberger.com) (formerly hire.adam.matthewsteinberger.com, which now redirects) — a portfolio site that doubles as a working demo of a shipped RAG feature. Portfolio, blog, a free 33-article course on AI chatbots for business, and an "Ask my résumé" widget that answers from the site's own content, all in one Next.js app.
 
-[![Live site](https://img.shields.io/badge/live-hire.adam.matthewsteinberger.com-0a7ea4)](https://hire.adam.matthewsteinberger.com)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b9c9fd48-2099-47f6-a2d1-4afd7436216c/deploy-status)](https://app.netlify.com/projects/hire-adam-steinberger/deploys)
+[![Live site](https://img.shields.io/badge/live-vibewithadam.matthewsteinberger.com-0a7ea4)](https://vibewithadam.matthewsteinberger.com)
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org)
 [![TypeScript strict](https://img.shields.io/badge/TypeScript-strict-3178c6)](tsconfig.json)
-[![License: proprietary](https://img.shields.io/badge/license-proprietary-lightgrey)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/code-MIT-green)](LICENSE) [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-blue)](LICENSE-CONTENT.md)
 
 ## Why this repo exists
 
@@ -17,7 +16,7 @@ Source for [hire.adam.matthewsteinberger.com](https://hire.adam.matthewsteinberg
 
 ## Stack
 
-Next.js 16 (App Router) · React 19 · TypeScript 5 strict · Tailwind CSS v4 (CSS-native `@theme` tokens, no `tailwind.config.js`) · `react-markdown` + `gray-matter` · `@anthropic-ai/sdk` + `minisearch` (BM25, no vector DB) · Vitest + Testing Library (100% coverage enforced) · Playwright · Netlify via `@netlify/plugin-nextjs`.
+Next.js 16 (App Router) · React 19 · TypeScript 5 strict · Tailwind CSS v4 (CSS-native `@theme` tokens, no `tailwind.config.js`) · `react-markdown` + `gray-matter` · `@anthropic-ai/sdk` + `minisearch` (BM25, no vector DB) · Vitest + Testing Library (100% coverage enforced) · Playwright · Cloudflare Workers via `@opennextjs/cloudflare`.
 
 ## Quick start
 
@@ -40,6 +39,7 @@ Everything works with zero environment variables. The "Ask my résumé" widget s
 | Command | What it does |
 | --- | --- |
 | `npm run dev` | Dev server (Turbopack) |
+| `npm run preview` / `deploy` | Build the Cloudflare Worker with OpenNext and run it locally / deploy it |
 | `npm run build` / `npm start` | Production build / serve |
 | `npm run lint` / `lint:fix` | ESLint 9 flat config |
 | `npm run typecheck` | `tsc --noEmit` |
@@ -81,13 +81,13 @@ Guardrails: honeypot field, per-IP rate limit and daily output-token cap (`src/l
 | `ANTHROPIC_API_KEY` | Server-side only; never shipped to the client |
 | `GOOGLE_SITE_VERIFICATION` | Optional Search Console tag |
 
-Deploys to Netlify from `netlify.toml` (`npm run build` → `.next`). Set the two bot variables in the Netlify dashboard to enable it in production.
+Deploys to Cloudflare Workers from `.github/workflows/deploy.yml` on push to `main` (`npm run deploy` does the same from a logged-in machine; `npm run preview` runs the Worker locally). `ASK_BOT_ENABLED` is a var in `wrangler.jsonc`; `ANTHROPIC_API_KEY` is a Worker secret.
 
 ## Docs & links
 
 - [`AGENTS.md`](./AGENTS.md) — the canonical agent/contributor guide (schemas, conventions, RAG internals). `CLAUDE.md`, `WARP.md`, `GEMINI.md`, `.agent`, `.agents` are symlinks to it.
 - [`SECURITY.md`](./SECURITY.md) · [`CONTRIBUTING.md`](./CONTRIBUTING.md) · [`LICENSE`](./LICENSE)
-- Live: [Hire me](https://hire.adam.matthewsteinberger.com/hire-me) · [Work](https://hire.adam.matthewsteinberger.com/work) · [Writing](https://hire.adam.matthewsteinberger.com/writing) · [Novice to Navigator](https://hire.adam.matthewsteinberger.com/novice-to-navigator) · [Books](https://hire.adam.matthewsteinberger.com/books) · [Open source](https://hire.adam.matthewsteinberger.com/open-source) · [Join me](https://hire.adam.matthewsteinberger.com/join-me) · [RSS](https://hire.adam.matthewsteinberger.com/feed.xml) · [llms.txt](https://hire.adam.matthewsteinberger.com/llms.txt)
+- Live: [Hire me](https://vibewithadam.matthewsteinberger.com/hire-me) · [Work](https://vibewithadam.matthewsteinberger.com/work) · [Writing](https://vibewithadam.matthewsteinberger.com/writing) · [Novice to Navigator](https://vibewithadam.matthewsteinberger.com/novice-to-navigator) · [Books](https://vibewithadam.matthewsteinberger.com/books) · [Open source](https://vibewithadam.matthewsteinberger.com/open-source) · [Join me](https://vibewithadam.matthewsteinberger.com/join-me) · [RSS](https://vibewithadam.matthewsteinberger.com/feed.xml) · [llms.txt](https://vibewithadam.matthewsteinberger.com/llms.txt)
 
 ## Related repos
 
@@ -97,12 +97,12 @@ Sites and books: [engineering-influence](https://github.com/adammatthewsteinberg
 
 ## Contributing
 
-Personal site — issues welcome, PRs by arrangement. See [`CONTRIBUTING.md`](./CONTRIBUTING.md).
+Free and open-source software — issues and pull requests welcome. Start with [`CONTRIBUTING.md`](./CONTRIBUTING.md) and [`AGENTS.md`](./AGENTS.md), or with the wider stack at [/join-me](https://vibewithadam.matthewsteinberger.com/join-me).
 
 ## License
 
-Proprietary, all rights reserved — this is a personal site, not an open-source project (see [`LICENSE`](./LICENSE)). The MIT-licensed packages live in their own repos, linked from [/open-source](https://hire.adam.matthewsteinberger.com/open-source).
+Code: [MIT](./LICENSE). Written content (posts, articles, case studies, service pages, curated prose): [CC BY 4.0](./LICENSE-CONTENT.md). Adam's name, likeness, and the book titles and cover art are reserved.
 
 ---
 
-Built by [Adam Matthew Steinberger](https://hire.adam.matthewsteinberger.com) · [more open source](https://hire.adam.matthewsteinberger.com/open-source)
+Built by [Adam Matthew Steinberger](https://vibewithadam.matthewsteinberger.com) · [more open source](https://vibewithadam.matthewsteinberger.com/open-source)

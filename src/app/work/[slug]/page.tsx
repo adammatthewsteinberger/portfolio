@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     openGraph: {
       title: `${project.title} | Adam Matthew Steinberger — Work`,
       description: project.description,
-      url: `https://hire.adam.matthewsteinberger.com/work/${slug}`,
+      url: `https://vibewithadam.matthewsteinberger.com/work/${slug}`,
     },
   };
 }
@@ -69,7 +69,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     '@type': 'CreativeWork',
     name: project.title,
     description: project.description,
-    creator: { '@type': 'Person', name: 'Adam Matthew Steinberger', url: 'https://hire.adam.matthewsteinberger.com/story' },
+    creator: { '@type': 'Person', name: 'Adam Matthew Steinberger', url: 'https://vibewithadam.matthewsteinberger.com/story' },
     about: projectData.category,
     keywords: (project.technologies || []).join(', '),
   };

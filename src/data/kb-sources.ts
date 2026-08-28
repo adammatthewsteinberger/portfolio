@@ -50,7 +50,7 @@ Location: Greenville, South Carolina — remote preferred; open to US remote any
 Employment types: W2 full-time preferred; contract-to-hire considered.
 Work authorization: US citizen, no sponsorship required.
 Specialties: Azure (AKS, Functions, Service Bus, Bicep, Terraform, Key Vault); Python and .NET backends; event-driven microservices; RAG, multi-vendor LLM gateways, and AI governance (Claude, GPT, Gemini, Mistral, vLLM); Kubernetes, Helm, GitOps, and secretless DevSecOps; identity governance (Okta IGA, Entra ID, SAML/OIDC).
-Verify him: ask the résumé bot at chat.adam.matthewsteinberger.com, read the packages on PyPI, or read the code on GitHub.`,
+Verify him: ask the résumé bot at chatwithadam.matthewsteinberger.com, read the packages on PyPI, or read the code on GitHub.`,
   },
   {
     id: 'hire-me-looking',
@@ -138,6 +138,6 @@ Before Vizius: four consulting engagements in six months through Adam Matthew St
     url: '/chat',
     title: 'Ask my résumé',
     section: 'Chat',
-    text: `"Ask my résumé" is a small RAG chat assistant that answers questions about Adam's background, experience, technical stack, and availability. It lives full-page at https://chat.adam.matthewsteinberger.com (also reachable at /chat) and as an inline widget on the homepage. It answers only using facts published on this site and is capped at six questions per session. For anything more, visitors can use the contact form or view the Hire Me page.`,
+    text: `"Ask my résumé" is a small RAG chat assistant that answers questions about Adam's background, experience, technical stack, and availability. It lives full-page at https://chatwithadam.matthewsteinberger.com (also reachable at /chat) and as an inline widget on the homepage. It answers only using facts published on this site and is capped at six questions per session. For anything more, visitors can use the contact form or view the Hire Me page.`,
   },
 ];

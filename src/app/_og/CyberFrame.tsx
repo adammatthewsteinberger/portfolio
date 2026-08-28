@@ -1,6 +1,5 @@
-import { readFile } from 'node:fs/promises';
-import path from 'node:path';
 import type { ReactNode } from 'react';
+import { RAJDHANI_BOLD_B64, SHARE_TECH_MONO_B64 } from './fonts.generated';
 
 /**
  * Shared cyberpunk frame for the dynamic Open Graph images (blog posts, case
@@ -11,14 +10,20 @@ import type { ReactNode } from 'react';
  */
 export const OG_SIZE = { width: 1200, height: 630 };
 
-const FONT_DIR = path.join(process.cwd(), 'src', 'app', '_og', 'fonts');
+function decode(b64: string): ArrayBuffer {
+  const bin = atob(b64);
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return bytes.buffer;
+}
 
-/** Fonts for next/og (SIL OFL, vendored in ./fonts). Node runtime only. */
+/**
+ * Fonts for next/og (SIL OFL, vendored in ./fonts). Embedded as Latin subsets
+ * (src/app/_og/fonts.generated.ts, from scripts/build-og-fonts.py) because the
+ * image routes run on the Workers runtime, which has no filesystem.
+ */
 export async function loadOgFonts() {
-  const [rajdhani, mono] = await Promise.all([
-    readFile(path.join(FONT_DIR, 'Rajdhani-Bold.ttf')),
-    readFile(path.join(FONT_DIR, 'ShareTechMono-Regular.ttf')),
-  ]);
+  const [rajdhani, mono] = [decode(RAJDHANI_BOLD_B64), decode(SHARE_TECH_MONO_B64)];
   return [
     { name: 'Rajdhani', data: rajdhani, weight: 700 as const, style: 'normal' as const },
     { name: 'ShareTechMono', data: mono, weight: 400 as const, style: 'normal' as const },
@@ -179,7 +184,7 @@ export function CyberFrame({
             ADAM MATTHEW STEINBERGER · AVAILABLE SEPTEMBER 2026
           </div>
           <div style={{ display: 'flex', fontSize: 18, color: og.muted, letterSpacing: 1, whiteSpace: 'nowrap' }}>
-            hire.adam.matthewsteinberger.com
+            vibewithadam.matthewsteinberger.com
           </div>
         </div>
       </div>

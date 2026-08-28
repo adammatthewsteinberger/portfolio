@@ -15,6 +15,11 @@ interface ArticlePageProps {
   }>;
 }
 
+// Prerendered at build: the Workers runtime has no filesystem, and these pages read Markdown.
+export async function generateStaticParams() {
+  return articles.map((article) => ({ slug: article.slug }));
+}
+
 export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
   const { slug } = await params;
   const articleMetadata = getArticleMetadata(slug);
@@ -26,7 +31,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   }
 
   const pageTitle = `${articleMetadata.title} | Novice to Navigator | Adam Matthew Steinberger`;
-  const pageUrl = `https://hire.adam.matthewsteinberger.com/novice-to-navigator/${slug}`;
+  const pageUrl = `https://vibewithadam.matthewsteinberger.com/novice-to-navigator/${slug}`;
   const description = `${articleMetadata.title} - ${articleMetadata.meta.section}. Learn about AI chatbot development and custom GPT solutions from Adam Matthew Steinberger.`;
 
   return {
