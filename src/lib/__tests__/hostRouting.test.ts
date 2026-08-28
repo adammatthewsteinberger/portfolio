@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { CHAT_HOST, HIRE_HOST, LEGACY_HOSTS, routeByHost } from '../hostRouting';
+import { CHAT_HOST, HIRE_HOST, LEGACY_HOSTS, PREVIEW_CHAT_HOST, PREVIEW_HIRE_HOST, routeByHost } from '../hostRouting';
 
 const at = (host: string, path = '/') => routeByHost(new URL(`https://${host}${path}`));
 
@@ -25,6 +25,15 @@ describe('routeByHost', () => {
     }
     expect(at(CHAT_HOST, '/story')).toEqual({ kind: 'redirect', status: 308, location: `https://${HIRE_HOST}/story` });
     expect(at(CHAT_HOST, '/work/x?y=2')).toEqual({ kind: 'redirect', status: 308, location: `https://${HIRE_HOST}/work/x?y=2` });
+  });
+
+  it('routes the preview pair the same way, and never crosses into production', () => {
+    expect(at(PREVIEW_CHAT_HOST, '/')).toEqual({ kind: 'rewrite', pathname: '/chat' });
+    expect(at(PREVIEW_CHAT_HOST, '/chat')).toEqual({ kind: 'redirect', status: 308, location: `https://${PREVIEW_CHAT_HOST}/` });
+    expect(at(PREVIEW_CHAT_HOST, '/story?y=1')).toEqual({ kind: 'redirect', status: 308, location: `https://${PREVIEW_HIRE_HOST}/story?y=1` });
+    expect(at(PREVIEW_CHAT_HOST, '/api/ask')).toEqual({ kind: 'pass' });
+    expect(at(PREVIEW_HIRE_HOST, '/chat')).toEqual({ kind: 'redirect', status: 308, location: `https://${PREVIEW_CHAT_HOST}/` });
+    expect(at(PREVIEW_HIRE_HOST, '/hire-me')).toEqual({ kind: 'pass' });
   });
 
   it('prefers the Host header over the URL host and ignores a port', () => {
