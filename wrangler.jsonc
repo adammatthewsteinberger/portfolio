@@ -1,0 +1,27 @@
+// Cloudflare Workers config for the site (OpenNext adapter).
+// Deploy: `npm run deploy` (or the GitHub Actions workflow on push to main).
+// Secrets: `npx wrangler secret put ANTHROPIC_API_KEY` — never put it in vars.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "hire-adam-steinberger",
+  "main": "worker-entry.ts",
+  "compatibility_date": "2026-08-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "observability": { "enabled": true },
+  "vars": {
+    // Pairs with the ANTHROPIC_API_KEY secret; the widget stays hidden unless both are set.
+    "ASK_BOT_ENABLED": "true"
+  },
+  // Custom domains: the zone must be on Cloudflare DNS (registrar can stay Porkbun).
+  // The apex and www hosts exist only to 301 to the hire host — see next.config.ts.
+  "routes": [
+    { "pattern": "hire.adam.matthewsteinberger.com", "custom_domain": true },
+    { "pattern": "chat.adam.matthewsteinberger.com", "custom_domain": true },
+    { "pattern": "matthewsteinberger.com", "custom_domain": true },
+    { "pattern": "www.matthewsteinberger.com", "custom_domain": true }
+  ]
+}
