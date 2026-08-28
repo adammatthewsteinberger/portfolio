@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Books | Adam Matthew Steinberger',
     description: 'Novice to Navigator and Engineering Influence — both currently in development.',
-    url: 'https://vibe.with.adam.matthewsteinberger.com/books',
+    url: 'https://vibewithadam.matthewsteinberger.com/books',
   },
 };
 
@@ -22,14 +22,14 @@ const jsonLd = {
       name: 'Novice to Navigator: Your Guide to AI Chatbots for Business',
       description: 'Your guide to AI chatbots for business. Second edition in development.',
       author: { '@type': 'Person', name: 'Adam Matthew Steinberger' },
-      url: 'https://vibe.with.adam.matthewsteinberger.com/books',
+      url: 'https://vibewithadam.matthewsteinberger.com/books',
     },
     {
       '@type': 'Book',
       name: 'Engineering Influence',
       description: 'A Playbook for the Remnant to Bring Christian Culture Back to America. In development.',
       author: { '@type': 'Person', name: 'Adam Matthew Steinberger' },
-      url: 'https://vibe.with.adam.matthewsteinberger.com/books',
+      url: 'https://vibewithadam.matthewsteinberger.com/books',
     },
   ],
 };

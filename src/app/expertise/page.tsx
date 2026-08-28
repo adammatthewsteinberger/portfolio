@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: 'Expertise | Adam Matthew Steinberger',
     description:
       'Azure · Python and .NET backends · event-driven microservices · RAG, multi-vendor LLM gateways, AI governance · Kubernetes, Helm, GitOps, secretless DevSecOps · identity governance.',
-    url: 'https://vibe.with.adam.matthewsteinberger.com/expertise',
+    url: 'https://vibewithadam.matthewsteinberger.com/expertise',
   },
 };
 

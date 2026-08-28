@@ -1,8 +1,8 @@
 # portfolio
 
-Source for [vibe.with.adam.matthewsteinberger.com](https://vibe.with.adam.matthewsteinberger.com) (formerly hire.adam.matthewsteinberger.com, which now redirects) — a portfolio site that doubles as a working demo of a shipped RAG feature. Portfolio, blog, a free 33-article course on AI chatbots for business, and an "Ask my résumé" widget that answers from the site's own content, all in one Next.js app.
+Source for [vibewithadam.matthewsteinberger.com](https://vibewithadam.matthewsteinberger.com) (formerly hire.adam.matthewsteinberger.com, which now redirects) — a portfolio site that doubles as a working demo of a shipped RAG feature. Portfolio, blog, a free 33-article course on AI chatbots for business, and an "Ask my résumé" widget that answers from the site's own content, all in one Next.js app.
 
-[![Live site](https://img.shields.io/badge/live-vibe.with.adam.matthewsteinberger.com-0a7ea4)](https://vibe.with.adam.matthewsteinberger.com)
+[![Live site](https://img.shields.io/badge/live-vibewithadam.matthewsteinberger.com-0a7ea4)](https://vibewithadam.matthewsteinberger.com)
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org)
 [![TypeScript strict](https://img.shields.io/badge/TypeScript-strict-3178c6)](tsconfig.json)
 [![License: MIT](https://img.shields.io/badge/code-MIT-green)](LICENSE) [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-blue)](LICENSE-CONTENT.md)
@@ -87,7 +87,7 @@ Deploys to Cloudflare Workers from `.github/workflows/deploy.yml` on push to `ma
 
 - [`AGENTS.md`](./AGENTS.md) — the canonical agent/contributor guide (schemas, conventions, RAG internals). `CLAUDE.md`, `WARP.md`, `GEMINI.md`, `.agent`, `.agents` are symlinks to it.
 - [`SECURITY.md`](./SECURITY.md) · [`CONTRIBUTING.md`](./CONTRIBUTING.md) · [`LICENSE`](./LICENSE)
-- Live: [Hire me](https://vibe.with.adam.matthewsteinberger.com/hire-me) · [Work](https://vibe.with.adam.matthewsteinberger.com/work) · [Writing](https://vibe.with.adam.matthewsteinberger.com/writing) · [Novice to Navigator](https://vibe.with.adam.matthewsteinberger.com/novice-to-navigator) · [Books](https://vibe.with.adam.matthewsteinberger.com/books) · [Open source](https://vibe.with.adam.matthewsteinberger.com/open-source) · [Join me](https://vibe.with.adam.matthewsteinberger.com/join-me) · [RSS](https://vibe.with.adam.matthewsteinberger.com/feed.xml) · [llms.txt](https://vibe.with.adam.matthewsteinberger.com/llms.txt)
+- Live: [Hire me](https://vibewithadam.matthewsteinberger.com/hire-me) · [Work](https://vibewithadam.matthewsteinberger.com/work) · [Writing](https://vibewithadam.matthewsteinberger.com/writing) · [Novice to Navigator](https://vibewithadam.matthewsteinberger.com/novice-to-navigator) · [Books](https://vibewithadam.matthewsteinberger.com/books) · [Open source](https://vibewithadam.matthewsteinberger.com/open-source) · [Join me](https://vibewithadam.matthewsteinberger.com/join-me) · [RSS](https://vibewithadam.matthewsteinberger.com/feed.xml) · [llms.txt](https://vibewithadam.matthewsteinberger.com/llms.txt)
 
 ## Related repos
 
@@ -97,7 +97,7 @@ Sites and books: [engineering-influence](https://github.com/adammatthewsteinberg
 
 ## Contributing
 
-Free and open-source software — issues and pull requests welcome. Start with [`CONTRIBUTING.md`](./CONTRIBUTING.md) and [`AGENTS.md`](./AGENTS.md), or with the wider stack at [/join-me](https://vibe.with.adam.matthewsteinberger.com/join-me).
+Free and open-source software — issues and pull requests welcome. Start with [`CONTRIBUTING.md`](./CONTRIBUTING.md) and [`AGENTS.md`](./AGENTS.md), or with the wider stack at [/join-me](https://vibewithadam.matthewsteinberger.com/join-me).
 
 ## License
 
@@ -105,4 +105,4 @@ Code: [MIT](./LICENSE). Written content (posts, articles, case studies, service 
 
 ---
 
-Built by [Adam Matthew Steinberger](https://vibe.with.adam.matthewsteinberger.com) · [more open source](https://vibe.with.adam.matthewsteinberger.com/open-source)
+Built by [Adam Matthew Steinberger](https://vibewithadam.matthewsteinberger.com) · [more open source](https://vibewithadam.matthewsteinberger.com/open-source)

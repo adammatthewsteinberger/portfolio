@@ -6,8 +6,8 @@
  * so the Worker applies them before handing the request to Next. Pure and
  * unit-tested; nothing here touches the runtime.
  */
-export const HIRE_HOST = 'vibe.with.adam.matthewsteinberger.com';
-export const CHAT_HOST = 'chat.with.adam.matthewsteinberger.com';
+export const HIRE_HOST = 'vibewithadam.matthewsteinberger.com';
+export const CHAT_HOST = 'chatwithadam.matthewsteinberger.com';
 
 /**
  * Deprecated hosts, each permanently forwarded (path and query preserved).

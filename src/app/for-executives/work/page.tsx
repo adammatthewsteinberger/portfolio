@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'What Changed | For Executives | Adam Matthew Steinberger',
     description: 'Six enterprise AI platforms, each stated as the problem it removed and what changed.',
-    url: `https://vibe.with.adam.matthewsteinberger.com${route.execUrl}`,
+    url: `https://vibewithadam.matthewsteinberger.com${route.execUrl}`,
   },
 };
 

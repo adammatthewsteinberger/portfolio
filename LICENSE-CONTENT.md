@@ -12,7 +12,7 @@ The written content in this repository is licensed under the
 
 You may share and adapt it, including commercially, as long as you credit
 **Adam Matthew Steinberger** and link to
-https://vibe.with.adam.matthewsteinberger.com.
+https://vibewithadam.matthewsteinberger.com.
 
 Not covered by any license here: Adam's name, likeness (`public/images/profile-picture.jpg`),
 and the *Novice to Navigator* / *Engineering Influence* book titles and cover art, which

@@ -30,8 +30,8 @@ export default function PrivacyPage() {
             This Privacy Policy explains how Adam Matthew Steinberger
             (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) collects, uses, and protects
             your personal information when you visit our website at{' '}
-            <a href="https://vibe.with.adam.matthewsteinberger.com" className="text-[var(--color-accent-blue)] hover:underline">
-              vibe.with.adam.matthewsteinberger.com
+            <a href="https://vibewithadam.matthewsteinberger.com" className="text-[var(--color-accent-blue)] hover:underline">
+              vibewithadam.matthewsteinberger.com
             </a>
             .
           </p>
@@ -265,8 +265,8 @@ export default function PrivacyPage() {
             </li>
             <li>
               <strong className="text-[var(--color-text-primary)]">Website:</strong>{' '}
-              <a href="https://vibe.with.adam.matthewsteinberger.com" className="text-[var(--color-accent-blue)] hover:underline">
-                vibe.with.adam.matthewsteinberger.com
+              <a href="https://vibewithadam.matthewsteinberger.com" className="text-[var(--color-accent-blue)] hover:underline">
+                vibewithadam.matthewsteinberger.com
               </a>
             </li>
           </ul>

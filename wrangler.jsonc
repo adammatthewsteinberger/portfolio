@@ -21,8 +21,8 @@
   // the Worker can 301 them (src/lib/hostRouting.ts): hire.adam.* and chat.adam.* were
   // the site's homes until 2026-08-28; apex and www never served content.
   "routes": [
-    { "pattern": "vibe.with.adam.matthewsteinberger.com", "custom_domain": true },
-    { "pattern": "chat.with.adam.matthewsteinberger.com", "custom_domain": true },
+    { "pattern": "vibewithadam.matthewsteinberger.com", "custom_domain": true },
+    { "pattern": "chatwithadam.matthewsteinberger.com", "custom_domain": true },
     { "pattern": "hire.adam.matthewsteinberger.com", "custom_domain": true },
     { "pattern": "chat.adam.matthewsteinberger.com", "custom_domain": true },
     { "pattern": "matthewsteinberger.com", "custom_domain": true },

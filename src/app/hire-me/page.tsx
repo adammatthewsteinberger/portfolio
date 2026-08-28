@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: 'Hire Me | Adam Matthew Steinberger',
     description:
       'Available from September 2026. Staff Software Architect & AI Automation Engineer — RAG systems, event-driven Azure microservices, automation pipelines.',
-    url: 'https://vibe.with.adam.matthewsteinberger.com/hire-me',
+    url: 'https://vibewithadam.matthewsteinberger.com/hire-me',
   },
 };
 
@@ -30,7 +30,7 @@ const facts: { label: string; value: string }[] = [
   {
     label: 'Verify me',
     value:
-      'Ask my résumé at chat.with.adam.matthewsteinberger.com, read the packages on PyPI, or read the code on GitHub — every claim on this site is checkable.',
+      'Ask my résumé at chatwithadam.matthewsteinberger.com, read the packages on PyPI, or read the code on GitHub — every claim on this site is checkable.',
   },
 ];
 

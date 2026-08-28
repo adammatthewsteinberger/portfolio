@@ -6,7 +6,7 @@ vi.mock('@/components/AskAdam', () => ({
   AskAdam: ({ variant }: { variant?: string }) => <div data-testid="ask-adam" data-variant={variant} />,
 }));
 
-const CHAT_URL = 'https://chat.with.adam.matthewsteinberger.com/';
+const CHAT_URL = 'https://chatwithadam.matthewsteinberger.com/';
 
 describe('ChatPage', () => {
   it('renders the heading, intro, and the page variant of AskAdam', () => {
