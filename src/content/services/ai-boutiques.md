@@ -1,7 +1,7 @@
 ---
 title: 'AI Solutions for Boutiques'
 subtitle: 'Retail Automation & Customer Experience Enhancement'
-description: 'I build affordable, high-impact AI solutions specifically designed for boutiques and small retail shops in the Upstate Region. Your boutique deserves the same AI-powered customer experience and operational efficiency that big retailers enjoy—without the enterprise price tag. From 24/7 customer service chatbots that help shoppers find products and answer sizing questions, to smart inventory tracking that prevents stockouts and overordering, to personalized product recommendations that boost average order value by 25%, I create tailored AI systems that fit your budget and grow with your business.<newline>These solutions integrate with your point-of-sale, e-commerce platform, and marketing tools, automating everything from customer follow-ups and appointment scheduling to social media content creation and email campaigns. Your AI systems deliver consistent customer experiences while freeing you to focus on merchandising and relationship building.<newline>Boutique owners typically see 35% improvement in customer satisfaction, 40% reduction in administrative time, 30% increase in repeat customers, and ROI within 4-6 months. Whether you run a fashion boutique, gift shop, jewelry store, or specialty retail space in Greenville, Greer, or Simpsonville, AI can help you compete with larger retailers while maintaining that personal touch your customers love. Scroll down to see exactly how boutique-focused AI solutions deliver measurable ROI for your specific retail business.'
+description: 'I build affordable, high-impact AI solutions specifically designed for boutiques and small retail shops in the Upstate Region. Your boutique deserves the same AI-powered customer experience and operational efficiency that big retailers enjoy—without the enterprise price tag.<newline>These solutions integrate with your point-of-sale, e-commerce platform, and marketing tools, automating everything from customer follow-ups and appointment scheduling to social media content creation and email campaigns. Your AI systems deliver consistent customer experiences while freeing you to focus on merchandising and relationship building.<newline>Whether you run a fashion boutique, gift shop, jewelry store, or specialty retail space in Greenville, Greer, or Simpsonville, AI can help you compete with larger retailers while maintaining that personal touch your customers love. Scroll down to see exactly how boutique-focused AI solutions deliver measurable ROI for your specific retail business.'
 category: 'Retail AI Solutions'
 heroTitle: 'AI Solutions for Boutiques'
 heroSubtitle: 'Retail Automation & Customer Experience Enhancement'
@@ -46,12 +46,6 @@ I provide AI-powered solutions built specifically for small retailers and boutiq
 ### AI Benefits for Boutiques
 
 - **Customer Experience:** 24/7 service and personalization with chatbots
-- **Inventory Efficiency:** Reduce stockouts by 30% with automated tracking
-- **Sales Growth:** Boost average order value by 25% with AI-driven recommendations
-- **Operational Efficiency:** Cut admin time by 40% through automation
-- **Customer Retention:** Improve loyalty by 35% with tailored experiences
-- **Marketing ROI:** Increase campaign performance by 50%
-- **Cost Reduction:** Reduce operational costs by 20%
 - **Scalability:** Solutions grow with your business
 
 ### AI Use Cases by Retail Type

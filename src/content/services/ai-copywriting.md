@@ -1,7 +1,7 @@
 ---
 title: 'AI Solutions for Copywriters'
 subtitle: 'Content Creation & Writing Enhancement Automation'
-description: 'I build specialized AI solutions for copywriters and content creators in the Upstate that enhance creative output without replacing your unique voice or strategic thinking. From intelligent content generation assistants that speed up first drafts and beat writer''s block, to brand voice consistency tools that ensure every piece matches your client''s tone, to AI-powered editing and enhancement systems that polish grammar, structure, and flow, my solutions amplify your creative capabilities while you retain complete creative control.<newline>These aren''t generic ChatGPT wrappers—they''re custom systems trained on your writing style, integrated with your workflow tools, and designed to handle the repetitive heavy lifting that drains creative energy. Copywriters using AI assistance typically see 60-80% faster content production, 45% reduction in revision cycles through better first drafts, consistent brand voice across all content pieces, more time for high-value strategic and creative work, and the ability to take on 2-3x more clients without quality compromise or burnout. Whether you write web copy, ad campaigns, email sequences, blog content, or social media, AI can multiply your output and income while preserving the creativity and strategic insight that makes you valuable.<newline>Scroll down to see exactly how AI copywriting solutions deliver measurable ROI for freelance writers, content agencies, and in-house creative teams.'
+description: 'I build specialized AI solutions for copywriters and content creators in the Upstate that enhance creative output without replacing your unique voice or strategic thinking. From intelligent content generation assistants that speed up first drafts and beat writer''s block, to brand voice consistency tools that ensure every piece matches your client''s tone, to AI-powered editing and enhancement systems that polish grammar, structure, and flow, my solutions amplify your creative capabilities while you retain complete creative control.<newline>These aren''t generic ChatGPT wrappers—they''re custom systems trained on your writing style, integrated with your workflow tools, and designed to handle the repetitive heavy lifting that drains creative energy. Whether you write web copy, ad campaigns, email sequences, blog content, or social media, AI can multiply your output and income while preserving the creativity and strategic insight that makes you valuable.<newline>Scroll down to see exactly how AI copywriting solutions deliver measurable ROI for freelance writers, content agencies, and in-house creative teams.'
 category: 'Creative AI Solutions'
 heroTitle: 'AI Solutions for Copywriters'
 heroSubtitle: 'Content Creation & Writing Enhancement Automation'
@@ -45,13 +45,6 @@ I provide AI solutions built specifically for copywriters and content creators a
 
 ### AI Benefits for Copywriting
 
-- **Content Creation:** 80% faster content production
-- **Brand Consistency:** 90% improvement in voice alignment
-- **Writing Quality:** 60% better clarity and readability
-- **SEO Performance:** 50% higher search rankings with optimized content
-- **Conversion Rates:** 40% boost in campaign results
-- **Creative Efficiency:** 70% reduction in writer’s block
-- **Client Satisfaction:** 45% better feedback on final deliverables
 - **Scalability:** Solutions that grow with your business or agency
 
 ### AI Use Cases for Content Creators
