@@ -16,6 +16,7 @@ describe('Footer (engineering edition)', () => {
     expect(screen.getByRole('link', { name: /^work$/i })).toHaveAttribute('href', '/work');
     expect(screen.getByRole('link', { name: /expertise/i })).toHaveAttribute('href', '/expertise');
     expect(screen.getByRole('link', { name: /open source/i })).toHaveAttribute('href', '/open-source');
+    expect(screen.getByRole('link', { name: /join me/i })).toHaveAttribute('href', '/join-me');
     expect(screen.getByRole('link', { name: /writing/i })).toHaveAttribute('href', '/writing');
     expect(screen.getByRole('link', { name: /site directory/i })).toHaveAttribute('href', '/site-directory');
     expect(screen.getByRole('link', { name: /^privacy$/i })).toHaveAttribute('href', '/privacy');

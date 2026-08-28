@@ -120,6 +120,13 @@ Before Vizius: four consulting engagements in six months through Adam Matthew St
     text: `Adam built an interactive Chatbot Readiness Quiz — a 15-factor, four-pillar self-assessment (Organizational, Technical, Security & Compliance, Operational) that scores an organization's actual readiness to deploy a custom AI chatbot, based on the "Four Pillars of Chatbot Readiness" framework from his Novice to Navigator book.`,
   },
   {
+    id: 'join-me',
+    url: '/join-me',
+    title: 'Join Me',
+    section: 'Contributing and volunteering',
+    text: `Adam primarily develops free and open-source software and is always open for a connection or a coffee; Greenville-remote or US-remote volunteers are welcome and encouraged to get involved at any time. The /join-me page has everything a developer needs to get started: a generic, free quickstart for the whole stack (install vibey and at least one *loop engine such as claudeloop with uv tool install, run vibey doctor, vibey new, vibey worker, and answer gates with vibey answer — Python 3.12+ and PostgreSQL required), how this very site is built with it (the chat subdomain shipped as a vibey project), ways to contribute (issues, pull requests against develop, new *loop engines, new skills for vibey-skills, documentation), the repositories with their code of conduct and security policy, and his volunteer architecture work for a nonprofit (Project Excite). Contact: adam@matthewsteinberger.com.`,
+  },
+  {
     id: 'for-executives',
     url: '/for-executives',
     title: 'For Executives',

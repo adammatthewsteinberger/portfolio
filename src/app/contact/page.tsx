@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 const doors = [
   { icon: 'fa-briefcase', title: 'Hiring?', body: 'Availability, target roles, résumé, and how I interview best — all on one page.', href: '/hire-me', cta: 'Hire Me' },
-  { icon: 'fa-code-branch', title: 'Contributing?', body: 'Everything I build in the open is MIT licensed on PyPI. Volunteers are welcome — Greenville-remote or US-remote.', href: '/open-source', cta: 'Open Source' },
+  { icon: 'fa-code-branch', title: 'Contributing?', body: 'Everything I build in the open is MIT licensed on PyPI. Volunteers are welcome — Greenville-remote or US-remote.', href: '/join-me', cta: 'Join Me' },
   { icon: 'fa-user-tie', title: 'Running a business?', body: 'The executive edition states the problem first, then what changed, then how an engagement works.', href: '/for-executives', cta: 'For Executives' },
 ];
 
