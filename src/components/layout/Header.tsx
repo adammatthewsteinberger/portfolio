@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { availabilityLong, availabilityShort } from '@/lib/availability';
 import { EXEC_PREFIX, editionFor } from '@/lib/edition';
+import { HIRE_HOST } from '@/lib/hostRouting';
 
 const engineeringNav = [
   { href: '/', label: 'Home' },
@@ -29,11 +30,14 @@ export interface HeaderProps {
   /** Pill text; the root layout passes build-time values so server and client agree. */
   availabilityShortLabel?: string;
   availabilityLongLabel?: string;
+  /** Preview-build banner, stacked above the nav inside the fixed header so neither hides the other. */
+  preview?: boolean;
 }
 
 export default function Header({
   availabilityShortLabel = availabilityShort(),
   availabilityLongLabel = availabilityLong(),
+  preview = false,
 }: HeaderProps = {}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const edition = editionFor(usePathname());
@@ -57,7 +61,23 @@ export default function Header({
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[var(--color-dark-bg)]/95 backdrop-blur-sm border-b border-[var(--color-dark-border)]">
+      <div className="fixed top-0 left-0 right-0 z-50">
+        {preview && (
+          <div
+            role="status"
+            className="h-7 flex items-center justify-center bg-[var(--color-accent-gold)] text-black text-xs font-mono px-4 truncate"
+          >
+            <span className="sm:hidden">
+              Preview build (<code>develop</code>) ·&nbsp;
+              <a href={`https://${HIRE_HOST}/`} className="underline" style={{ color: '#000000' }}>live site</a>
+            </span>
+            <span className="hidden sm:inline">
+              Preview build — the&nbsp;<code>develop</code>&nbsp;branch. The live site is&nbsp;
+              <a href={`https://${HIRE_HOST}/`} className="underline" style={{ color: '#000000' }}>{HIRE_HOST}</a>.
+            </span>
+          </div>
+        )}
+      <nav className="bg-[var(--color-dark-bg)]/95 backdrop-blur-sm border-b border-[var(--color-dark-border)]">
         <div className="container mx-auto px-4 flex items-center justify-between h-16">
           <Link href={edition === 'exec' ? EXEC_PREFIX : '/'} className="flex items-center gap-2 no-underline" onClick={closeMenu}>
             <Image
@@ -112,11 +132,12 @@ export default function Header({
           </button>
         </div>
       </nav>
+      </div>
 
       {/* Mobile menu panel */}
       {isMenuOpen && (
         <div
-          className="lg:hidden fixed inset-0 top-16 z-40 bg-[var(--color-dark-bg)]"
+          className={`lg:hidden fixed inset-0 z-40 bg-[var(--color-dark-bg)] ${preview ? 'top-[5.75rem]' : 'top-16'}`}
           role="dialog"
           aria-modal="true"
         >
@@ -145,8 +166,8 @@ export default function Header({
         </div>
       )}
 
-      {/* Spacer for the fixed nav */}
-      <div className="h-16" />
+      {/* Spacer for the fixed header (nav, plus the preview banner when present) */}
+      <div className={preview ? 'h-[5.75rem]' : 'h-16'} />
     </>
   );
 }

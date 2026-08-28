@@ -40,6 +40,23 @@ describe('Header', () => {
     expect(screen.getAllByText(/available sept 2026/i).length).toBeGreaterThan(0);
   });
 
+  it('stacks the preview banner above the nav inside the fixed header, and enlarges the spacer', () => {
+    const { container } = render(<Header preview />);
+    const banner = screen.getByRole('status');
+    expect(banner).toHaveTextContent(/preview build/i);
+    expect(banner.parentElement?.className).toContain('fixed');
+    expect(banner.nextElementSibling?.tagName).toBe('NAV');
+    expect(container.querySelector('.h-\\[5\\.75rem\\]')).not.toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: 'Open menu' }));
+    expect(screen.getByRole('dialog').className).toContain('top-[5.75rem]');
+  });
+
+  it('renders no banner and the normal spacer without the preview flag', () => {
+    const { container } = render(<Header />);
+    expect(screen.queryByRole('status')).not.toBeInTheDocument();
+    expect(container.querySelector('.h-16')).not.toBeNull();
+  });
+
   it('mobile menu is closed by default', () => {
     render(<Header />);
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
