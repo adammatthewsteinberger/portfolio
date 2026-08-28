@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Chatbot Readiness Quiz | Novice to Navigator',
     description: 'A 15-factor self-assessment for AI chatbot readiness.',
-    url: 'https://hire.adam.matthewsteinberger.com/novice-to-navigator/readiness',
+    url: 'https://vibewithadam.matthewsteinberger.com/novice-to-navigator/readiness',
   },
 };
 

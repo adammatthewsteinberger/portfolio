@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
     .trim();
 
   const pageTitle = `${serviceMetadata.title} | Adam Matthew Steinberger`;
-  const pageUrl = `https://hire.adam.matthewsteinberger.com/services/${slug}`;
+  const pageUrl = `https://vibewithadam.matthewsteinberger.com/services/${slug}`;
 
   return {
     title: pageTitle,

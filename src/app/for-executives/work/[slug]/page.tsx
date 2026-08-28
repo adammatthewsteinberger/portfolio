@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: ExecProjectPageProps): Promis
     openGraph: {
       title: `${project.title} | For Executives | Adam Matthew Steinberger`,
       description: project.execProblem,
-      url: `https://hire.adam.matthewsteinberger.com${url}`,
+      url: `https://vibewithadam.matthewsteinberger.com${url}`,
     },
   };
 }

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'For Executives | Adam Matthew Steinberger',
     description: 'Enterprise AI initiatives stall on security, data, and handoff — not on models.',
-    url: `https://hire.adam.matthewsteinberger.com${EXEC_PREFIX}`,
+    url: `https://vibewithadam.matthewsteinberger.com${EXEC_PREFIX}`,
   },
 };
 

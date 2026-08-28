@@ -4,10 +4,13 @@ import { CHAT_HOST, HIRE_HOST, LEGACY_HOSTS, routeByHost } from '../hostRouting'
 const at = (host: string, path = '/') => routeByHost(new URL(`https://${host}${path}`));
 
 describe('routeByHost', () => {
-  it('sends the legacy apex/www hosts to the hire host, path and query preserved', () => {
-    for (const host of LEGACY_HOSTS) {
-      expect(at(host, '/story?x=1')).toEqual({ kind: 'redirect', status: 301, location: `https://${HIRE_HOST}/story?x=1` });
+  it('permanently forwards every deprecated host to its replacement, path and query preserved', () => {
+    for (const [host, target] of Object.entries(LEGACY_HOSTS)) {
+      expect(at(host, '/story?x=1')).toEqual({ kind: 'redirect', status: 301, location: `https://${target}/story?x=1` });
     }
+    expect(at('hire.adam.matthewsteinberger.com', '/hire-me')).toEqual({ kind: 'redirect', status: 301, location: `https://${HIRE_HOST}/hire-me` });
+    expect(at('chat.adam.matthewsteinberger.com', '/')).toEqual({ kind: 'redirect', status: 301, location: `https://${CHAT_HOST}/` });
+    expect(at('chat.adam.matthewsteinberger.com', '/chat?q=1')).toEqual({ kind: 'redirect', status: 301, location: `https://${CHAT_HOST}/?q=1` });
     expect(at('WWW.MATTHEWSTEINBERGER.COM')).toEqual({ kind: 'redirect', status: 301, location: `https://${HIRE_HOST}/` });
   });
 

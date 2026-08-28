@@ -26,7 +26,7 @@ describe('kbSources', () => {
       url: '/chat',
       title: 'Ask my résumé',
       section: 'Chat',
-      text: expect.stringContaining('https://chat.adam.matthewsteinberger.com'),
+      text: expect.stringContaining('https://chatwithadam.matthewsteinberger.com'),
     });
     expect(chatChunk?.text).toContain('six questions');
   });

@@ -33,7 +33,7 @@ describe('editions: the engineering site stays the default', () => {
 
 describe('editions: parity and content contract', () => {
   const urls = sitemap();
-  const byUrl = new Map(urls.map((entry) => [entry.url.replace('https://hire.adam.matthewsteinberger.com', ''), entry]));
+  const byUrl = new Map(urls.map((entry) => [entry.url.replace('https://vibewithadam.matthewsteinberger.com', ''), entry]));
 
   it('every static exec route has an engineering counterpart in the sitemap', () => {
     for (const route of execRoutes) {

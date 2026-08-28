@@ -3,7 +3,7 @@
 // Secrets: `npx wrangler secret put ANTHROPIC_API_KEY` — never put it in vars.
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "hire-adam-steinberger",
+  "name": "portfolio",
   "main": "worker-entry.ts",
   "compatibility_date": "2026-08-01",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
@@ -17,8 +17,12 @@
     "ASK_BOT_ENABLED": "true"
   },
   // Custom domains: the zone must be on Cloudflare DNS (registrar can stay Porkbun).
-  // The apex and www hosts exist only to 301 to the hire host — see next.config.ts.
+  // Only the first two are canonical. The rest are deprecated hosts kept attached so
+  // the Worker can 301 them (src/lib/hostRouting.ts): hire.adam.* and chat.adam.* were
+  // the site's homes until 2026-08-28; apex and www never served content.
   "routes": [
+    { "pattern": "vibewithadam.matthewsteinberger.com", "custom_domain": true },
+    { "pattern": "chatwithadam.matthewsteinberger.com", "custom_domain": true },
     { "pattern": "hire.adam.matthewsteinberger.com", "custom_domain": true },
     { "pattern": "chat.adam.matthewsteinberger.com", "custom_domain": true },
     { "pattern": "matthewsteinberger.com", "custom_domain": true },
