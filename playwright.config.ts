@@ -7,8 +7,13 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : '75%',
   reporter: 'html',
+  // First navigation to a heavy route (the 115-post blog index) can exceed the
+  // default 30s on Firefox while the dev server compiles it; give navigations
+  // room instead of retrying flakes.
+  timeout: 60_000,
   use: {
     baseURL: 'http://localhost:3000',
+    navigationTimeout: 45_000,
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
   },
