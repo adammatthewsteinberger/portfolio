@@ -5,6 +5,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import MultipleCTAs from '@/components/MultipleCTAs';
 import Link from 'next/link';
+import Icon from '@/components/Icon';
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -120,11 +121,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="mb-6">
             <div className="flex justify-center items-center gap-6 flex-wrap">
               <div className="flex items-center">
-                <i className="fas fa-user-circle mr-2 text-[var(--color-accent-blue)]"></i>
+                <Icon name="user-circle" className="mr-2 text-[var(--color-accent-blue)]" />
                 <span className="text-[var(--color-text-muted)]">By <strong className="text-[var(--color-text-primary)]">{post.author}</strong></span>
               </div>
               <div className="flex items-center">
-                <i className="fas fa-calendar-alt mr-2 text-[var(--color-accent-blue)]"></i>
+                <Icon name="calendar-alt" className="mr-2 text-[var(--color-accent-blue)]" />
                 <span className="text-[var(--color-text-muted)]">{new Date(post.publishedDate).toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "long",
@@ -132,7 +133,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 })}</span>
               </div>
               <div className="flex items-center">
-                <i className="fas fa-clock mr-2 text-[var(--color-accent-blue)]"></i>
+                <Icon name="clock" className="mr-2 text-[var(--color-accent-blue)]" />
                 <span className="text-[var(--color-text-muted)]">{post.readTime}</span>
               </div>
             </div>
@@ -172,7 +173,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <section className="container mx-auto px-4 py-16">
         <div className="text-center">
           <Link href="/blog" className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white rounded-lg transition-colors no-underline font-medium">
-            <i className="fas fa-arrow-left"></i>
+            <Icon name="arrow-left" />
             Back to Blog
           </Link>
         </div>

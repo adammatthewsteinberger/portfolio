@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { availabilityHeading } from '@/lib/availability';
 import { EXEC_BOOKING_URL, execOffer } from '@/data/exec';
 import type { Edition } from '@/lib/edition';
+import Icon from '@/components/Icon';
 
 interface MultipleCTAsProps {
   /**
@@ -25,7 +26,7 @@ export default function MultipleCTAs({ edition = 'engineering' }: MultipleCTAsPr
             className="flex items-center justify-center gap-2 w-full px-6 py-4 font-bold bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 no-underline mb-6"
             style={{ color: '#ffffff' }}
           >
-            <i className="fas fa-handshake"></i> {execOffer.engage.cta}
+            <Icon name="handshake" /> {execOffer.engage.cta}
           </Link>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm">
             <a
@@ -34,13 +35,13 @@ export default function MultipleCTAs({ edition = 'engineering' }: MultipleCTAsPr
               rel="noopener noreferrer"
               className="text-[var(--color-text-muted)] hover:text-[var(--color-accent-blue)] transition-colors"
             >
-              <i className="fas fa-calendar mr-1"></i> Book a call
+              <Icon name="calendar" className="mr-1" /> Book a call
             </a>
             <Link href="/hire-me" className="text-[var(--color-text-muted)] hover:text-[var(--color-accent-blue)] transition-colors">
-              <i className="fas fa-briefcase mr-1"></i> Or hire me full-time
+              <Icon name="briefcase" className="mr-1" /> Or hire me full-time
             </Link>
             <Link href="/" className="text-[var(--color-text-muted)] hover:text-[var(--color-accent-blue)] transition-colors">
-              <i className="fas fa-code mr-1"></i> Engineering edition
+              <Icon name="code" className="mr-1" /> Engineering edition
             </Link>
           </div>
         </div>
@@ -62,15 +63,15 @@ export default function MultipleCTAs({ edition = 'engineering' }: MultipleCTAsPr
           className="flex items-center justify-center gap-2 w-full px-6 py-4 font-bold bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 no-underline mb-6"
           style={{ color: '#ffffff' }}
         >
-          <i className="fas fa-briefcase"></i> Hire Me
+          <Icon name="briefcase" /> Hire Me
         </Link>
 
         <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm">
           <Link href="/open-source" className="text-[var(--color-text-muted)] hover:text-[var(--color-accent-blue)] transition-colors">
-            <i className="fas fa-code-branch mr-1"></i> Open source
+            <Icon name="code-branch" className="mr-1" /> Open source
           </Link>
           <Link href="/writing" className="text-[var(--color-text-muted)] hover:text-[var(--color-accent-blue)] transition-colors">
-            <i className="fas fa-book-open mr-1"></i> Read the writing
+            <Icon name="book-open" className="mr-1" /> Read the writing
           </Link>
           <a
             href="https://eepurl.com/jiYXCQ"
@@ -78,7 +79,7 @@ export default function MultipleCTAs({ edition = 'engineering' }: MultipleCTAsPr
             rel="noopener noreferrer"
             className="text-[var(--color-text-muted)] hover:text-[var(--color-accent-blue)] transition-colors"
           >
-            <i className="fas fa-envelope-open-text mr-1"></i> Newsletter
+            <Icon name="envelope-open-text" className="mr-1" /> Newsletter
           </a>
         </div>
       </div>
