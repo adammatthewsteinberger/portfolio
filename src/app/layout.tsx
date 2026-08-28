@@ -3,11 +3,9 @@ import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
 import { availabilityLong, availabilityShort } from '@/lib/availability';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
-
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
+import { inter, rajdhani, shareTechMono } from './fonts';
 
 const SITE_URL = 'https://hire.adam.matthewsteinberger.com';
 const GA_MEASUREMENT_ID = 'G-P4CX07CNRW';
@@ -116,7 +114,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${inter.variable} ${rajdhani.variable} ${shareTechMono.variable}`}>
       <head>
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
