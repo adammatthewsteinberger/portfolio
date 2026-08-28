@@ -1,0 +1,44 @@
+name: Deploy preview to Cloudflare
+
+# The develop branch, live at preview.vibewithadam / preview.chatwithadam.
+# Same secrets as deploy.yml; builds with SITE_ENV=preview (noindex, banner,
+# no analytics) and deploys the `preview` wrangler environment.
+
+on:
+  push:
+    branches: [develop]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-preview
+  cancel-in-progress: true
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run test
+      - name: Build (OpenNext for Cloudflare, preview)
+        run: npm run build-kb && npx opennextjs-cloudflare build
+        env:
+          SITE_ENV: preview
+          GOOGLE_SITE_VERIFICATION: ${{ secrets.GOOGLE_SITE_VERIFICATION }}
+      - name: Deploy preview
+        run: npx opennextjs-cloudflare deploy -- --env preview
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      - name: Sync the résumé-bot secret to the preview Worker
+        if: ${{ env.ANTHROPIC_API_KEY != '' }}
+        run: printf '%s' "$ANTHROPIC_API_KEY" | npx wrangler secret put ANTHROPIC_API_KEY --env preview
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

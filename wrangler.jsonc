@@ -27,5 +27,19 @@
     { "pattern": "chat.adam.matthewsteinberger.com", "custom_domain": true },
     { "pattern": "matthewsteinberger.com", "custom_domain": true },
     { "pattern": "www.matthewsteinberger.com", "custom_domain": true }
-  ]
+  ],
+  // The develop-branch preview: a second Worker deployed by deploy-preview.yml with
+  // `--env preview`. Environments do not inherit routes, vars, or assets, so they are
+  // repeated here. Built with SITE_ENV=preview (noindex, banner, no analytics).
+  "env": {
+    "preview": {
+      "name": "portfolio-preview",
+      "assets": { "directory": ".open-next/assets", "binding": "ASSETS" },
+      "vars": { "ASK_BOT_ENABLED": "true", "SITE_ENV": "preview" },
+      "routes": [
+        { "pattern": "preview.vibewithadam.matthewsteinberger.com", "custom_domain": true },
+        { "pattern": "preview.chatwithadam.matthewsteinberger.com", "custom_domain": true }
+      ]
+    }
+  }
 }
