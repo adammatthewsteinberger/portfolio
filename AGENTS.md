@@ -4,6 +4,8 @@ Guidance for AI coding agents (Claude Code, Cursor, Codex CLI, Gemini CLI, Copil
 
 ## What this is
 
+Free and open-source: code under MIT (`LICENSE`), written content under CC BY 4.0 (`LICENSE-CONTENT.md`). Public repository: https://github.com/adammatthewsteinberger/portfolio.
+
 `vibe.with.adam.matthewsteinberger.com` — a personal "hire me" site for Adam Matthew Steinberger, positioned as **Staff Software Architect & AI Automation Engineer**. It is not a generic business template: it is a portfolio, blog, educational content hub, and lightweight RAG-powered Q&A widget, all served from one Next.js app. Primary goal of the site is full-time employment; consulting services are a secondary, demoted track.
 
 ## Tech stack (verify before trusting anything older)
