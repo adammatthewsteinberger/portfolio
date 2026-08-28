@@ -62,3 +62,7 @@ docs/*.pdf
 .codexloop/
 .cursorloop/
 .agyloop/
+
+# Cloudflare / OpenNext build output and wrangler state
+.open-next/
+.wrangler/

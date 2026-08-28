@@ -15,6 +15,11 @@ interface ArticlePageProps {
   }>;
 }
 
+// Prerendered at build: the Workers runtime has no filesystem, and these pages read Markdown.
+export async function generateStaticParams() {
+  return articles.map((article) => ({ slug: article.slug }));
+}
+
 export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
   const { slug } = await params;
   const articleMetadata = getArticleMetadata(slug);

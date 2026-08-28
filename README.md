@@ -3,7 +3,6 @@
 Source for [hire.adam.matthewsteinberger.com](https://hire.adam.matthewsteinberger.com) — a portfolio site that doubles as a working demo of a shipped RAG feature. Portfolio, blog, a free 33-article course on AI chatbots for business, and an "Ask my résumé" widget that answers from the site's own content, all in one Next.js app.
 
 [![Live site](https://img.shields.io/badge/live-hire.adam.matthewsteinberger.com-0a7ea4)](https://hire.adam.matthewsteinberger.com)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b9c9fd48-2099-47f6-a2d1-4afd7436216c/deploy-status)](https://app.netlify.com/projects/hire-adam-steinberger/deploys)
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org)
 [![TypeScript strict](https://img.shields.io/badge/TypeScript-strict-3178c6)](tsconfig.json)
 [![License: proprietary](https://img.shields.io/badge/license-proprietary-lightgrey)](LICENSE)
@@ -17,7 +16,7 @@ Source for [hire.adam.matthewsteinberger.com](https://hire.adam.matthewsteinberg
 
 ## Stack
 
-Next.js 16 (App Router) · React 19 · TypeScript 5 strict · Tailwind CSS v4 (CSS-native `@theme` tokens, no `tailwind.config.js`) · `react-markdown` + `gray-matter` · `@anthropic-ai/sdk` + `minisearch` (BM25, no vector DB) · Vitest + Testing Library (100% coverage enforced) · Playwright · Netlify via `@netlify/plugin-nextjs`.
+Next.js 16 (App Router) · React 19 · TypeScript 5 strict · Tailwind CSS v4 (CSS-native `@theme` tokens, no `tailwind.config.js`) · `react-markdown` + `gray-matter` · `@anthropic-ai/sdk` + `minisearch` (BM25, no vector DB) · Vitest + Testing Library (100% coverage enforced) · Playwright · Cloudflare Workers via `@opennextjs/cloudflare`.
 
 ## Quick start
 
@@ -40,6 +39,7 @@ Everything works with zero environment variables. The "Ask my résumé" widget s
 | Command | What it does |
 | --- | --- |
 | `npm run dev` | Dev server (Turbopack) |
+| `npm run preview` / `deploy` | Build the Cloudflare Worker with OpenNext and run it locally / deploy it |
 | `npm run build` / `npm start` | Production build / serve |
 | `npm run lint` / `lint:fix` | ESLint 9 flat config |
 | `npm run typecheck` | `tsc --noEmit` |
@@ -81,7 +81,7 @@ Guardrails: honeypot field, per-IP rate limit and daily output-token cap (`src/l
 | `ANTHROPIC_API_KEY` | Server-side only; never shipped to the client |
 | `GOOGLE_SITE_VERIFICATION` | Optional Search Console tag |
 
-Deploys to Netlify from `netlify.toml` (`npm run build` → `.next`). Set the two bot variables in the Netlify dashboard to enable it in production.
+Deploys to Cloudflare Workers from `.github/workflows/deploy.yml` on push to `main` (`npm run deploy` does the same from a logged-in machine; `npm run preview` runs the Worker locally). `ASK_BOT_ENABLED` is a var in `wrangler.jsonc`; `ANTHROPIC_API_KEY` is a Worker secret.
 
 ## Docs & links
 

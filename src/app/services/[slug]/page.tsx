@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { services } from '@/data/services';
-import { getServiceBySlug, getServiceMetadata } from '@/lib/serviceUtils';
+import { getAllServiceSlugs, getServiceBySlug, getServiceMetadata } from '@/lib/serviceUtils';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
@@ -12,6 +12,11 @@ interface ServicePageProps {
   params: Promise<{
     slug: string;
   }>;
+}
+
+// Prerendered at build: the Workers runtime has no filesystem, and these pages read Markdown.
+export async function generateStaticParams() {
+  return getAllServiceSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
