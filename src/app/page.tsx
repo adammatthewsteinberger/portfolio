@@ -75,22 +75,23 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="container mx-auto px-4 text-center pt-8 pb-16">
+      <section className="container mx-auto px-4 text-center md:text-left pt-8 pb-16">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-[var(--color-accent-green)]/15 border border-[var(--color-accent-green)]/30 text-[var(--color-accent-green)] text-sm font-semibold">
           {availabilityLong()}
         </div>
         <h1 className="text-4xl md:text-5xl font-bold text-[var(--color-text-primary)] mb-3">
           Adam Matthew Steinberger
         </h1>
-        <h2 className="text-xl md:text-2xl font-semibold bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-green)] bg-clip-text text-transparent mb-6">
+        <h2 className="text-xl md:text-2xl font-semibold bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-green)] bg-clip-text text-transparent mb-4">
           Staff Software Architect &amp; AI Automation Engineer
         </h2>
-        <p className="text-lg text-[var(--color-text-muted)] max-w-2xl mx-auto mb-8">
+        <div className="scanline mx-auto md:mx-0 mb-6" aria-hidden="true" />
+        <p className="text-lg text-[var(--color-text-muted)] max-w-2xl mx-auto md:mx-0 mb-8">
           I build AI systems that actually work inside enterprise environments — production-grade
           platforms that handle real data, real security requirements, and real organizational
           complexity. Not just demos.
         </p>
-        <div className="flex flex-wrap gap-3 justify-center mb-6">
+        <div className="flex flex-wrap gap-3 justify-center md:justify-start mb-6">
           <Link
             href="/hire-me"
             className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] font-bold rounded-lg transition-colors no-underline"
@@ -108,7 +109,7 @@ export default function Home() {
           </a>
           <AskAdam />
         </div>
-        <p className="text-sm text-[var(--color-text-muted)] max-w-xl mx-auto">
+        <p className="text-sm font-mono text-[var(--color-text-muted)] max-w-xl mx-auto md:mx-0">
           Most recently: five model vendors behind one policy-enforced API, three product teams
           migrated onto it, their credentials retired.
         </p>
