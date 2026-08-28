@@ -9,6 +9,16 @@
 export const HIRE_HOST = 'vibewithadam.matthewsteinberger.com';
 export const CHAT_HOST = 'chatwithadam.matthewsteinberger.com';
 
+/** The develop-branch preview: same app, second Worker, its own site/chat pair. */
+export const PREVIEW_HIRE_HOST = 'preview.vibewithadam.matthewsteinberger.com';
+export const PREVIEW_CHAT_HOST = 'preview.chatwithadam.matthewsteinberger.com';
+
+/** Each site host and the chat host that belongs with it. */
+export const HOST_PAIRS: { site: string; chat: string }[] = [
+  { site: HIRE_HOST, chat: CHAT_HOST },
+  { site: PREVIEW_HIRE_HOST, chat: PREVIEW_CHAT_HOST },
+];
+
 /**
  * Deprecated hosts, each permanently forwarded (path and query preserved).
  * hire.adam.* was the site's home until 2026-08-28; chat.adam.* was the chat's.
@@ -46,15 +56,18 @@ export function routeByHost(url: URL, hostHeader?: string | null): HostRoute {
     return { kind: 'redirect', status: 301, location: `https://${target}${newPath}${url.search}` };
   }
 
-  if (host === CHAT_HOST) {
+  const pair = HOST_PAIRS.find((p) => p.site === host || p.chat === host);
+  if (!pair) return { kind: 'pass' };
+
+  if (host === pair.chat) {
     if (path === '/') return { kind: 'rewrite', pathname: '/chat' };
-    if (path === '/chat') return { kind: 'redirect', status: 308, location: `https://${CHAT_HOST}/` };
+    if (path === '/chat') return { kind: 'redirect', status: 308, location: `https://${pair.chat}/` };
     if (CHAT_PASSTHROUGH.test(path)) return { kind: 'pass' };
-    return { kind: 'redirect', status: 308, location: `https://${HIRE_HOST}${path}${url.search}` };
+    return { kind: 'redirect', status: 308, location: `https://${pair.site}${path}${url.search}` };
   }
 
-  if (host === HIRE_HOST && path === '/chat') {
-    return { kind: 'redirect', status: 308, location: `https://${CHAT_HOST}/` };
+  if (path === '/chat') {
+    return { kind: 'redirect', status: 308, location: `https://${pair.chat}/` };
   }
 
   return { kind: 'pass' };

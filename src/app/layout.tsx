@@ -2,6 +2,8 @@ import CookieConsent from '@/components/CookieConsent';
 import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
 import { availabilityLong, availabilityShort } from '@/lib/availability';
+import { isPreview } from '@/lib/siteEnv';
+import { HIRE_HOST } from '@/lib/hostRouting';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import './globals.css';
@@ -10,6 +12,8 @@ import { OG_IMAGE } from '@/lib/seo';
 
 const SITE_URL = 'https://vibewithadam.matthewsteinberger.com';
 const GA_MEASUREMENT_ID = 'G-P4CX07CNRW';
+// Set at build time (SITE_ENV=preview) for the develop-branch preview Worker.
+const PREVIEW = isPreview();
 
 export const metadata: Metadata = {
   title: {
@@ -42,7 +46,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     images: [OG_IMAGE],
   },
-  robots: {
+  // The preview site canonicalizes to production (metadataBase) and is never indexed.
+  robots: PREVIEW ? { index: false, follow: false } : {
     index: true,
     follow: true,
     googleBot: {
@@ -117,14 +122,24 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#161a26" />
+        {!PREVIEW && (<>
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
+        </>)}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body className="font-sans">
+        {PREVIEW && (
+          <div className="bg-[var(--color-accent-gold)] text-black text-xs font-mono text-center py-1 px-4">
+            Preview build — the <code>develop</code> branch. The live site is{' '}
+            <a href={`https://${HIRE_HOST}/`} className="underline text-black">{HIRE_HOST}</a>.
+          </div>
+        )}
+        {/* Analytics only on the production site. */}
+        {!PREVIEW && (<>
         {/* Google Consent Mode v2 - Default Settings */}
         <Script id="google-consent-default" strategy="beforeInteractive">
           {`
@@ -159,6 +174,7 @@ export default function RootLayout({
             });
           `}
         </Script>
+        </>)}
 
         <Header availabilityShortLabel={availabilityShort()} availabilityLongLabel={availabilityLong()} />
         <main>{children}</main>
