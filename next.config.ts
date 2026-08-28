@@ -1,11 +1,11 @@
 import type { NextConfig } from 'next';
 
-// Hosts for the "Ask my résumé" chat subdomain. chat.adam.matthewsteinberger.com is a
+// Hosts for the "Ask my résumé" chat subdomain. chat.with.adam.matthewsteinberger.com is a
 // second custom domain on the same Cloudflare Worker; the host-aware rules below keep
 // exactly one canonical URL per page. See AGENTS.md → "Chat subdomain" for the curl
 // checklist to re-run after any Next.js / @opennextjs/cloudflare upgrade.
-const CHAT_HOST = 'chat.adam.matthewsteinberger.com';
-const HIRE_HOST = 'hire.adam.matthewsteinberger.com';
+const CHAT_HOST = 'chat.with.adam.matthewsteinberger.com';
+const HIRE_HOST = 'vibe.with.adam.matthewsteinberger.com';
 
 const nextConfig: NextConfig = {
   async rewrites() {

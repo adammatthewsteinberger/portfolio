@@ -3,7 +3,7 @@ import { getAllBlogPosts } from '@/lib/blogUtils';
 // Generated at build (reads Markdown with fs); served as a static asset on Workers.
 export const dynamic = 'force-static';
 
-const DOMAIN = 'https://hire.adam.matthewsteinberger.com';
+const DOMAIN = 'https://vibe.with.adam.matthewsteinberger.com';
 const SITE_TITLE = 'Adam Matthew Steinberger — Writing';
 const SITE_DESCRIPTION =
   'AI, automation, and software architecture — written by Adam Matthew Steinberger, Staff Software Architect & AI Automation Engineer.';

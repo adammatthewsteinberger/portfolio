@@ -1,8 +1,8 @@
-# hire-adam-steinberger
+# portfolio
 
-Source for [hire.adam.matthewsteinberger.com](https://hire.adam.matthewsteinberger.com) — a portfolio site that doubles as a working demo of a shipped RAG feature. Portfolio, blog, a free 33-article course on AI chatbots for business, and an "Ask my résumé" widget that answers from the site's own content, all in one Next.js app.
+Source for [vibe.with.adam.matthewsteinberger.com](https://vibe.with.adam.matthewsteinberger.com) (formerly hire.adam.matthewsteinberger.com, which now redirects) — a portfolio site that doubles as a working demo of a shipped RAG feature. Portfolio, blog, a free 33-article course on AI chatbots for business, and an "Ask my résumé" widget that answers from the site's own content, all in one Next.js app.
 
-[![Live site](https://img.shields.io/badge/live-hire.adam.matthewsteinberger.com-0a7ea4)](https://hire.adam.matthewsteinberger.com)
+[![Live site](https://img.shields.io/badge/live-vibe.with.adam.matthewsteinberger.com-0a7ea4)](https://vibe.with.adam.matthewsteinberger.com)
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org)
 [![TypeScript strict](https://img.shields.io/badge/TypeScript-strict-3178c6)](tsconfig.json)
 [![License: proprietary](https://img.shields.io/badge/license-proprietary-lightgrey)](LICENSE)
@@ -87,7 +87,7 @@ Deploys to Cloudflare Workers from `.github/workflows/deploy.yml` on push to `ma
 
 - [`AGENTS.md`](./AGENTS.md) — the canonical agent/contributor guide (schemas, conventions, RAG internals). `CLAUDE.md`, `WARP.md`, `GEMINI.md`, `.agent`, `.agents` are symlinks to it.
 - [`SECURITY.md`](./SECURITY.md) · [`CONTRIBUTING.md`](./CONTRIBUTING.md) · [`LICENSE`](./LICENSE)
-- Live: [Hire me](https://hire.adam.matthewsteinberger.com/hire-me) · [Work](https://hire.adam.matthewsteinberger.com/work) · [Writing](https://hire.adam.matthewsteinberger.com/writing) · [Novice to Navigator](https://hire.adam.matthewsteinberger.com/novice-to-navigator) · [Books](https://hire.adam.matthewsteinberger.com/books) · [Open source](https://hire.adam.matthewsteinberger.com/open-source) · [Join me](https://hire.adam.matthewsteinberger.com/join-me) · [RSS](https://hire.adam.matthewsteinberger.com/feed.xml) · [llms.txt](https://hire.adam.matthewsteinberger.com/llms.txt)
+- Live: [Hire me](https://vibe.with.adam.matthewsteinberger.com/hire-me) · [Work](https://vibe.with.adam.matthewsteinberger.com/work) · [Writing](https://vibe.with.adam.matthewsteinberger.com/writing) · [Novice to Navigator](https://vibe.with.adam.matthewsteinberger.com/novice-to-navigator) · [Books](https://vibe.with.adam.matthewsteinberger.com/books) · [Open source](https://vibe.with.adam.matthewsteinberger.com/open-source) · [Join me](https://vibe.with.adam.matthewsteinberger.com/join-me) · [RSS](https://vibe.with.adam.matthewsteinberger.com/feed.xml) · [llms.txt](https://vibe.with.adam.matthewsteinberger.com/llms.txt)
 
 ## Related repos
 
@@ -101,8 +101,8 @@ Personal site — issues welcome, PRs by arrangement. See [`CONTRIBUTING.md`](./
 
 ## License
 
-Proprietary, all rights reserved — this is a personal site, not an open-source project (see [`LICENSE`](./LICENSE)). The MIT-licensed packages live in their own repos, linked from [/open-source](https://hire.adam.matthewsteinberger.com/open-source).
+Proprietary, all rights reserved — this is a personal site, not an open-source project (see [`LICENSE`](./LICENSE)). The MIT-licensed packages live in their own repos, linked from [/open-source](https://vibe.with.adam.matthewsteinberger.com/open-source).
 
 ---
 
-Built by [Adam Matthew Steinberger](https://hire.adam.matthewsteinberger.com) · [more open source](https://hire.adam.matthewsteinberger.com/open-source)
+Built by [Adam Matthew Steinberger](https://vibe.with.adam.matthewsteinberger.com) · [more open source](https://vibe.with.adam.matthewsteinberger.com/open-source)

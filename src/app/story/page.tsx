@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: 'My Story | Adam Matthew Steinberger',
     description:
       'Staff Software Architect & AI Automation Engineer in Greenville, SC. Thirteen-plus years of shipping RAG systems, microservices, and automation pipelines.',
-    url: 'https://hire.adam.matthewsteinberger.com/story',
+    url: 'https://vibe.with.adam.matthewsteinberger.com/story',
     type: 'profile',
   },
 };
@@ -38,8 +38,8 @@ const jsonLd = {
     '@type': 'Person',
     name: 'Adam Matthew Steinberger',
     jobTitle: 'Staff Software Architect & AI Automation Engineer',
-    url: 'https://hire.adam.matthewsteinberger.com/story',
-    image: 'https://hire.adam.matthewsteinberger.com/images/profile-picture.jpg',
+    url: 'https://vibe.with.adam.matthewsteinberger.com/story',
+    image: 'https://vibe.with.adam.matthewsteinberger.com/images/profile-picture.jpg',
     address: { '@type': 'PostalAddress', addressLocality: 'Greenville', addressRegion: 'SC', addressCountry: 'US' },
     sameAs: [
       'https://www.linkedin.com/in/adammatthewsteinberger/',

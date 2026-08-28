@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: 'Writing | Adam Matthew Steinberger',
     description:
       'Blog posts on AI and automation, a free 33-article series on AI chatbots for business, and two books in development.',
-    url: 'https://hire.adam.matthewsteinberger.com/writing',
+    url: 'https://vibe.with.adam.matthewsteinberger.com/writing',
   },
 };
 

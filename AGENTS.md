@@ -4,7 +4,7 @@ Guidance for AI coding agents (Claude Code, Cursor, Codex CLI, Gemini CLI, Copil
 
 ## What this is
 
-`hire.adam.matthewsteinberger.com` — a personal "hire me" site for Adam Matthew Steinberger, positioned as **Staff Software Architect & AI Automation Engineer**. It is not a generic business template: it is a portfolio, blog, educational content hub, and lightweight RAG-powered Q&A widget, all served from one Next.js app. Primary goal of the site is full-time employment; consulting services are a secondary, demoted track.
+`vibe.with.adam.matthewsteinberger.com` — a personal "hire me" site for Adam Matthew Steinberger, positioned as **Staff Software Architect & AI Automation Engineer**. It is not a generic business template: it is a portfolio, blog, educational content hub, and lightweight RAG-powered Q&A widget, all served from one Next.js app. Primary goal of the site is full-time employment; consulting services are a secondary, demoted track.
 
 ## Tech stack (verify before trusting anything older)
 
@@ -31,7 +31,7 @@ src/
 │   ├── hire-me/                  # Primary conversion page — the main CTA target
 │   ├── join-me/                  # FOSS onboarding: generic free quickstart for the vibey stack, dogfooding, ways to contribute, volunteers
 │   ├── for-executives/           # Executive edition (secondary): layout banner + /, /work, /work/[slug], /engage — see "Two editions"
-│   ├── chat/                     # Full-page "Ask my résumé" chat; served at chat.adam.matthewsteinberger.com via host rules in next.config.ts
+│   ├── chat/                     # Full-page "Ask my résumé" chat; served at chat.with.adam.matthewsteinberger.com via host rules in next.config.ts
 │   ├── expertise/                # 10 technical pillars, CEO/engineer dual-audience copy
 │   ├── work/, work/[slug]/       # Case studies (renamed from /projects; old URL 301s)
 │   ├── open-source/              # PyPI package showcase
@@ -98,14 +98,14 @@ The site follows the doctrine in vibey-gh #134/#135: **this is a site by an engi
 - **Guardrails**: feature-flagged off unless both `ASK_BOT_ENABLED=true` and `ANTHROPIC_API_KEY` are set (checked via `GET /api/ask`, which the widget polls on mount and renders nothing if disabled); 6-turn session cap enforced client- and server-side; honeypot field; in-memory per-IP rate limiting and a daily output-token spend cap in `src/lib/ask/rateLimit.ts` (documented there as best-effort only — it resets on cold start and doesn't share state across Worker isolates, which is an accepted tradeoff for this widget's stakes); system prompt explicitly forbids inventing employment facts and requires citing the source page.
 - If you add new pages that should be answerable by the bot, add curated source text to `src/data/kb-sources.ts` — don't try to scrape JSX from page components, the bot should only ever answer from hand-reviewed text.
 
-### Chat subdomain (`chat.adam.matthewsteinberger.com`)
+### Chat subdomain (`chat.with.adam.matthewsteinberger.com`)
 
-The RAG chat is also hosted as a full-page experience at `https://chat.adam.matthewsteinberger.com/` (rendered by `src/app/chat/page.tsx`). Host-based routing rules live in `next.config.ts` via `rewrites()` and `redirects()` using `has: [{ type: 'host', value: '<host>' }]` conditions:
-- **Rewrite**: Requests to `chat.adam.matthewsteinberger.com/` are rewritten to `/chat` (URL stays clean at the root, HTTP 200).
+The RAG chat is also hosted as a full-page experience at `https://chat.with.adam.matthewsteinberger.com/` (rendered by `src/app/chat/page.tsx`). Host-based routing rules live in `next.config.ts` via `rewrites()` and `redirects()` using `has: [{ type: 'host', value: '<host>' }]` conditions:
+- **Rewrite**: Requests to `chat.with.adam.matthewsteinberger.com/` are rewritten to `/chat` (URL stays clean at the root, HTTP 200).
 - **Redirects**:
-  - `chat.adam.matthewsteinberger.com/chat` permanently redirects (308) to `https://chat.adam.matthewsteinberger.com/`.
-  - Non-chat pages on `chat.adam.matthewsteinberger.com` (e.g. `/story`, `/work/*`) permanently redirect (308) to `https://hire.adam.matthewsteinberger.com/:path` (query strings preserved; `/api/*`, `/_next/*`, and static assets excluded via regex lookahead).
-  - `hire.adam.matthewsteinberger.com/chat` permanently redirects (308) to `https://chat.adam.matthewsteinberger.com/`.
+  - `chat.with.adam.matthewsteinberger.com/chat` permanently redirects (308) to `https://chat.with.adam.matthewsteinberger.com/`.
+  - Non-chat pages on `chat.with.adam.matthewsteinberger.com` (e.g. `/story`, `/work/*`) permanently redirect (308) to `https://vibe.with.adam.matthewsteinberger.com/:path` (query strings preserved; `/api/*`, `/_next/*`, and static assets excluded via regex lookahead).
+  - `vibe.with.adam.matthewsteinberger.com/chat` permanently redirects (308) to `https://chat.with.adam.matthewsteinberger.com/`.
   - `localhost` and preview hosts are untouched so `/chat` serves directly.
 
 This allows both the primary site and the chat subdomain to be served from the same Next.js application on a single Cloudflare Worker (both hosts are custom domains in `wrangler.jsonc`) without middleware or separate deployments.
@@ -146,11 +146,11 @@ Husky runs `lint-staged` + `npm run typecheck` on pre-commit, and `npm run test`
 
 The site runs on Cloudflare Workers through the OpenNext adapter — free plan: 100k requests/day, unlimited static bandwidth, no "site paused" mode. Netlify was dropped on 2026-08-28 after its free tier suspended the site.
 
-- `wrangler.jsonc` — Worker name, `nodejs_compat`, the static-assets binding, `ASK_BOT_ENABLED` var, and the four custom domains (`hire.`, `chat.`, apex, `www`).
-- `worker-entry.ts` — the Worker's `main`: applies **host routing** (`src/lib/hostRouting.ts`, unit-tested) and then hands off to the OpenNext handler. The chat-subdomain rewrite/redirects and the apex/www → `hire.` redirects live there for production; the equivalent rules in `next.config.ts` remain for `next start`, previews, and tests — OpenNext's router does not honour host-conditioned rewrites or regex sources, which is why the Worker does it.
+- `wrangler.jsonc` — Worker name, `nodejs_compat`, the static-assets binding, `ASK_BOT_ENABLED` var, and the custom domains: **canonical** `vibe.with.adam.matthewsteinberger.com` (site) and `chat.with.adam.matthewsteinberger.com` (chat); **deprecated** `hire.adam.*` and `chat.adam.*` (the homes until 2026-08-28) plus apex and `www`, all kept attached only so the Worker can 301 them to the canonical hosts with path and query preserved (`LEGACY_HOSTS` in `src/lib/hostRouting.ts`). Never remove a deprecated host from `routes` — inbound links and search results still use them.
+- `worker-entry.ts` — the Worker's `main`: applies **host routing** (`src/lib/hostRouting.ts`, unit-tested) and then hands off to the OpenNext handler. The chat-subdomain rewrite/redirects and the deprecated-host 301s live there for production; the equivalent rules in `next.config.ts` remain for `next start`, previews, and tests — OpenNext's router does not honour host-conditioned rewrites or regex sources, which is why the Worker does it.
 - `open-next.config.ts` — adapter config with the read-only **static-assets incremental cache**: OpenNext serves prerendered dynamic-segment pages (`/services/[slug]`, `/blog/[slug]`, …) and `force-static` routes from the incremental cache, so without it they 404 in production.
 - OG-image fonts are embedded as Latin subsets in `src/app/_og/fonts.generated.ts` (regenerate with `scripts/build-og-fonts.py`); Workers cannot `fetch` bundled files or read the filesystem.
-- `npm run preview` — builds, populates the prerender cache, and serves the Worker locally with workerd (the truest local check). `wrangler dev` stamps every request with the **first** custom domain in `wrangler.jsonc`, so to exercise another host locally use `npx wrangler dev --host chat.adam.matthewsteinberger.com` (or the apex) rather than a spoofed `Host` header. Raw `wrangler dev` after a build also needs `npx opennextjs-cloudflare populateCache local` first, or every prerendered slug route 404s. `npm run deploy` — builds and deploys with your own `wrangler login`. Production deploys run from `.github/workflows/deploy.yml` on every push to `main`.
+- `npm run preview` — builds, populates the prerender cache, and serves the Worker locally with workerd (the truest local check). `wrangler dev` stamps every request with the **first** custom domain in `wrangler.jsonc`, so to exercise another host locally use `npx wrangler dev --host chat.with.adam.matthewsteinberger.com` (or the apex) rather than a spoofed `Host` header. Raw `wrangler dev` after a build also needs `npx opennextjs-cloudflare populateCache local` first, or every prerendered slug route 404s. `npm run deploy` — builds and deploys with your own `wrangler login`. Production deploys run from `.github/workflows/deploy.yml` on every push to `main`.
 - **The Workers runtime has no filesystem**, so every route that reads Markdown must be prerendered: `generateStaticParams` on `blog/[slug]`, `work/[slug]`, `services/[slug]`, `novice-to-navigator/[slug]`, and `force-static` on `feed.xml`. Only `/api/ask` and the OG-image routes run on the Worker at request time, and they read nothing from disk (OG fonts are bundled assets). Adding a new dynamic route that calls `blogUtils`/`projectUtils`/`serviceUtils`/`markdownUtils` at request time will break in production — prerender it.
 - `src/generated/kb.json` must exist before `next build`; `npm run deploy`/`preview` and the workflow run `npm run build-kb` first because the adapter invokes `next build` directly (not the npm `prebuild` hook).
 

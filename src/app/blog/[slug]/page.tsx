@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
     openGraph: {
       title: post.title,
       description: post.description,
-      url: `https://hire.adam.matthewsteinberger.com/blog/${slug}`,
+      url: `https://vibe.with.adam.matthewsteinberger.com/blog/${slug}`,
       siteName: 'Adam Matthew Steinberger',
       locale: 'en_US',
       type: 'article',
@@ -77,9 +77,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     headline: post.title,
     description: post.description,
     datePublished: post.publishedDate,
-    author: { '@type': 'Person', name: post.author, url: 'https://hire.adam.matthewsteinberger.com/story' },
+    author: { '@type': 'Person', name: post.author, url: 'https://vibe.with.adam.matthewsteinberger.com/story' },
     publisher: { '@type': 'Organization', name: 'Adam Matthew Steinberger LLC' },
-    mainEntityOfPage: `https://hire.adam.matthewsteinberger.com/blog/${slug}`,
+    mainEntityOfPage: `https://vibe.with.adam.matthewsteinberger.com/blog/${slug}`,
     keywords: post.tags.join(', '),
   };
 

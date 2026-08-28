@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Join Me | Adam Matthew Steinberger',
     description: 'Run the whole stack for free, see how this site is built with it, and get involved.',
-    url: 'https://hire.adam.matthewsteinberger.com/join-me',
+    url: 'https://vibe.with.adam.matthewsteinberger.com/join-me',
   },
 };
 
@@ -83,7 +83,7 @@ export default function JoinMePage() {
           <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-2">Dogfooding: this site is built with it</h2>
           <p className="text-[var(--color-text-muted)]">
             The full-page chat at{' '}
-            <a href="https://chat.adam.matthewsteinberger.com/" className="text-[var(--color-accent-blue)] hover:underline">chat.adam.matthewsteinberger.com</a>{' '}
+            <a href="https://chat.with.adam.matthewsteinberger.com/" className="text-[var(--color-accent-blue)] hover:underline">chat.with.adam.matthewsteinberger.com</a>{' '}
             shipped as vibey project cycle one: an authored spec with acceptance criteria and
             non-functional requirements, 23 of 23 jobs green across two engines in about fifty
             minutes, and a review gate before merge.

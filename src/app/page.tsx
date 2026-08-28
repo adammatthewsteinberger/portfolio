@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer',
     description:
       'AI systems that actually work inside enterprise environments — not just demos. Available from September 2026 — Greenville, SC (remote) or US remote.',
-    url: 'https://hire.adam.matthewsteinberger.com',
+    url: 'https://vibe.with.adam.matthewsteinberger.com',
     images: [{ url: '/images/og-home.png', width: 1200, height: 630, alt: 'Adam Matthew Steinberger — Staff Software Architect & AI Automation Engineer' }],
     locale: 'en_US',
     type: 'website',

@@ -6,7 +6,7 @@ import { getAllBlogPosts } from '@/lib/blogUtils';
 import { getExecProjects } from '@/lib/projectUtils';
 import { execRoutes } from '@/data/exec';
 
-const DOMAIN = 'https://hire.adam.matthewsteinberger.com';
+const DOMAIN = 'https://vibe.with.adam.matthewsteinberger.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // A fallback for pages whose content has no per-item date of its own
@@ -29,7 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${DOMAIN}/contact`, lastModified: buildDate, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${DOMAIN}/privacy`, lastModified: buildDate, changeFrequency: 'yearly', priority: 0.3 },
     { url: `${DOMAIN}/site-directory`, lastModified: buildDate, changeFrequency: 'monthly', priority: 0.5 },
-    { url: 'https://chat.adam.matthewsteinberger.com/', lastModified: buildDate, changeFrequency: 'monthly', priority: 0.7 },
+    { url: 'https://chat.with.adam.matthewsteinberger.com/', lastModified: buildDate, changeFrequency: 'monthly', priority: 0.7 },
   ];
 
   // Executive edition (vibey-gh #134): indexable, self-canonical, and never

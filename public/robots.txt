@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://hire.adam.matthewsteinberger.com/sitemap.xml
+Sitemap: https://vibe.with.adam.matthewsteinberger.com/sitemap.xml

@@ -27,7 +27,7 @@ const SUGGESTED_QUESTIONS = [
 export interface AskAdamProps {
   /**
    * `widget` (default) — the homepage launcher button that opens a floating dialog.
-   * `page` — the always-open inline panel used by /chat (chat.adam.matthewsteinberger.com).
+   * `page` — the always-open inline panel used by /chat (chat.with.adam.matthewsteinberger.com).
    */
   variant?: 'widget' | 'page';
 }
@@ -310,7 +310,7 @@ export function AskAdam({ variant = 'widget' }: AskAdamProps = {}) {
           <div className="flex items-center justify-between p-4 border-b border-[var(--color-dark-border)]">
             <h3 className="font-bold text-[var(--color-text-primary)]">Ask my résumé</h3>
             <div className="flex items-center gap-3">
-              {/* Relative on purpose: on the hire host this 308s to chat.adam.matthewsteinberger.com,
+              {/* Relative on purpose: on the hire host this 308s to chat.with.adam.matthewsteinberger.com,
                   while localhost and deploy previews serve /chat directly. */}
               <a
                 href="/chat"

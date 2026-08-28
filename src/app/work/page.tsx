@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Work | Case Studies in AI, Azure & Automation | Adam Matthew Steinberger',
     description: 'Case studies in RAG systems, event-driven microservices, and AI automation — built by Adam Matthew Steinberger, Staff Software Architect & AI Automation Engineer.',
-    url: 'https://hire.adam.matthewsteinberger.com/work',
+    url: 'https://vibe.with.adam.matthewsteinberger.com/work',
   },
 };
 

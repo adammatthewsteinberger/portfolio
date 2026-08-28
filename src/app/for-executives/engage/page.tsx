@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Engage | For Executives | Adam Matthew Steinberger',
     description: 'Tailored and whitelabeled enterprise AI platforms, with the handoff included.',
-    url: `https://hire.adam.matthewsteinberger.com${route.execUrl}`,
+    url: `https://vibe.with.adam.matthewsteinberger.com${route.execUrl}`,
   },
 };
 

@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { AskAdam } from '@/components/AskAdam';
 
-// Canonical home of this page. hire.adam.matthewsteinberger.com/chat 308s here and the
+// Canonical home of this page. vibe.with.adam.matthewsteinberger.com/chat 308s here and the
 // chat host's "/" is rewritten to this route — see next.config.ts.
-const CHAT_URL = 'https://chat.adam.matthewsteinberger.com/';
+const CHAT_URL = 'https://chat.with.adam.matthewsteinberger.com/';
 
 export const metadata: Metadata = {
   title: 'Ask my résumé',
