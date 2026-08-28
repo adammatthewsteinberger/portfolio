@@ -125,6 +125,9 @@ export default function JoinMePage() {
             Ground rules travel with each repo: a code of conduct, a security policy (report
             privately, never in a public issue), and the MIT license. Start with{' '}
             <a href={`${GITHUB}/vibey/blob/develop/CONTRIBUTING.md`} target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent-blue)] hover:underline">vibey&apos;s CONTRIBUTING</a>.
+            This site is open source too —{' '}
+            <a href={`${GITHUB}/portfolio`} target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent-blue)] hover:underline">the repository</a>{' '}
+            is MIT for the code and CC BY 4.0 for the writing, and it is the dogfooding target for everything above.
           </p>
         </div>
       </section>

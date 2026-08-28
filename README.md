@@ -5,7 +5,7 @@ Source for [vibewithadam.matthewsteinberger.com](https://vibewithadam.matthewste
 [![Live site](https://img.shields.io/badge/live-vibewithadam.matthewsteinberger.com-0a7ea4)](https://vibewithadam.matthewsteinberger.com)
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org)
 [![TypeScript strict](https://img.shields.io/badge/TypeScript-strict-3178c6)](tsconfig.json)
-[![License: proprietary](https://img.shields.io/badge/license-proprietary-lightgrey)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/code-MIT-green)](LICENSE) [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-blue)](LICENSE-CONTENT.md)
 
 ## Why this repo exists
 
@@ -97,11 +97,11 @@ Sites and books: [engineering-influence](https://github.com/adammatthewsteinberg
 
 ## Contributing
 
-Personal site — issues welcome, PRs by arrangement. See [`CONTRIBUTING.md`](./CONTRIBUTING.md).
+Free and open-source software — issues and pull requests welcome. Start with [`CONTRIBUTING.md`](./CONTRIBUTING.md) and [`AGENTS.md`](./AGENTS.md), or with the wider stack at [/join-me](https://vibewithadam.matthewsteinberger.com/join-me).
 
 ## License
 
-Proprietary, all rights reserved — this is a personal site, not an open-source project (see [`LICENSE`](./LICENSE)). The MIT-licensed packages live in their own repos, linked from [/open-source](https://vibewithadam.matthewsteinberger.com/open-source).
+Code: [MIT](./LICENSE). Written content (posts, articles, case studies, service pages, curated prose): [CC BY 4.0](./LICENSE-CONTENT.md). Adam's name, likeness, and the book titles and cover art are reserved.
 
 ---
 

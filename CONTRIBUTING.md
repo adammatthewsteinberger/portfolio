@@ -1,6 +1,6 @@
 # Contributing
 
-This is a personal site. It is not accepting drive-by feature PRs, but bug reports are genuinely useful.
+This is a personal site, and it is free and open-source software (code MIT, content CC BY 4.0). Issues and pull requests are welcome — the same house rules apply to everyone, including the owner.
 
 ## Issues welcome
 
@@ -12,9 +12,9 @@ Open a GitHub issue for:
 
 Security issues: do **not** open a public issue — see [`SECURITY.md`](./SECURITY.md).
 
-## Pull requests by arrangement
+## Pull requests
 
-If you want to change something larger than a typo, open an issue first and describe the change. If it's a fit, you'll be asked to send a PR against `develop`. When you do:
+For anything larger than a typo, open an issue first so the change is agreed before the work. Then send a PR against `develop`:
 
 1. Read [`AGENTS.md`](./AGENTS.md) — it has the content schemas, conventions, and the rules the site enforces on purpose (no pricing, no invented metrics, books not for sale).
 2. `npm ci`, then make sure `npm run lint`, `npm run typecheck`, `npm run test:coverage` (100% required), and `npm run test:e2e` pass. Husky runs most of this on commit/push anyway.
