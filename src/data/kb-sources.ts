@@ -120,6 +120,13 @@ Before Vizius: four consulting engagements in six months through Adam Matthew St
     text: `Adam built an interactive Chatbot Readiness Quiz — a 15-factor, four-pillar self-assessment (Organizational, Technical, Security & Compliance, Operational) that scores an organization's actual readiness to deploy a custom AI chatbot, based on the "Four Pillars of Chatbot Readiness" framework from his Novice to Navigator book.`,
   },
   {
+    id: 'for-executives',
+    url: '/for-executives',
+    title: 'For Executives',
+    section: 'Executive edition',
+    text: `The site has two editions. The engineering site (the root and every page on it) is the canonical, default version. The executive edition at /for-executives restates the same work for a non-technical buyer — the problem first, then what changed, then two ways to work with Adam: hire him full-time into an engineering organization (/hire-me), or engage Adam Matthew Steinberger LLC to tailor and whitelabel the platforms to their environment (/for-executives/engage; the service pages are at /services). The engineering site is never reduced to make the executive edition more attractive, and it contains no sales framing. No pricing is published anywhere.`,
+  },
+  {
     id: 'chat',
     url: '/chat',
     title: 'Ask my résumé',

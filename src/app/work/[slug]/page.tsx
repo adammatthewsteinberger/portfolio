@@ -247,23 +247,20 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-blue-light)] bg-clip-text text-transparent">
-              Interested in Similar Work?
+              Want This Kind of Work on Your Team?
             </h2>
             <p className="text-lg text-[var(--color-text-muted)] mb-8">
-              I&apos;d love to discuss how I can help you achieve similar results for your organization.
+              Every case study here is real work under real constraints. Here&apos;s what I&apos;m
+              looking for next, and how to get the best signal out of me.
             </p>
             <div className="flex gap-4 justify-center flex-wrap">
-              <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] font-bold rounded-lg transition-colors no-underline" style={{ color: '#000000' }}>
-                <i className="fas fa-envelope"></i>
-                Get In Touch
+              <Link href="/hire-me" className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] font-bold rounded-lg transition-colors no-underline" style={{ color: '#ffffff' }}>
+                <i className="fas fa-briefcase"></i>
+                Hire Me
               </Link>
               <Link href="/work" className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white font-bold rounded-lg transition-colors no-underline">
                 <i className="fas fa-arrow-left"></i>
                 View All Work
-              </Link>
-              <Link href="/services" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[var(--color-accent-gold)] to-amber-500 hover:from-amber-500 hover:to-[var(--color-accent-gold)] font-bold rounded-lg transition-all no-underline" style={{ color: '#000000' }}>
-                <i className="fas fa-cogs"></i>
-                View Services
               </Link>
             </div>
           </div>

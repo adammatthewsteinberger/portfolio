@@ -25,6 +25,8 @@ results: A genuinely pure domain layer with zero third-party imports, enforced b
 techStack: Python with a strictly layered onion architecture; HMAC signature verification at the edge before any payload reaches a connector, with per-tenant secrets resolved through a vault-backed provider; a documented HMAC contract, normalization contract, and onboarding guide for the generic connector; keyless-signed images and GitOps delivery to private AKS.
 architecture: The conflict policy engine supports authoritative-system auto-resolution and manual hold — and, notably, unimplemented strategies safely downgrade to manual hold rather than silently misapplying. That "fail to a human" stance repeats everywhere — layering is enforced mechanically, not merely intended; edge verification means a bad signature never reaches business logic; and convergence is proved by a chaos test, not assumed.
 lessons: The value of a symmetric schema is that no team has to accept that their system is "secondary." The value of enforcing the domain's purity in CI is that it stays pure after the author leaves.
+execProblem: "Your teams work the same issue in different ticketing systems, and the copies drift until a customer notices."
+execOutcome: "Tickets stay synchronized across systems with no privileged hub. Conflicts fall to a manual hold instead of silently overwriting, and 653 tests plus chaos testing prove the whole thing converges after failures."
 ---
 
 # Multi-System Ticket Relay

@@ -1,30 +1,11 @@
 import Link from 'next/link';
+import FooterNav from './FooterNav';
 
 export default function Footer() {
   return (
     <footer className="mt-12 py-8 bg-[var(--color-dark-card)] border-t border-[var(--color-dark-border)]">
       <div className="container mx-auto px-4">
-        <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 mb-6 text-sm">
-          <Link href="/hire-me" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] font-semibold transition-colors">Hire Me</Link>
-          <span className="text-[var(--color-dark-border)]">|</span>
-          <Link href="/chat" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] font-semibold transition-colors">Ask my résumé</Link>
-          <span className="text-[var(--color-dark-border)]">|</span>
-          <Link href="/work" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] font-semibold transition-colors">Work</Link>
-          <span className="text-[var(--color-dark-border)]">|</span>
-          <Link href="/expertise" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] font-semibold transition-colors">Expertise</Link>
-          <span className="text-[var(--color-dark-border)]">|</span>
-          <Link href="/writing" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] font-semibold transition-colors">Writing</Link>
-          <span className="text-[var(--color-dark-border)]">|</span>
-          <a href="https://tidycal.com/adammatthewsteinberger" target="_blank" rel="noopener noreferrer" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] font-semibold transition-colors">Consulting Call</a>
-          <span className="text-[var(--color-dark-border)]">|</span>
-          <a href="https://eepurl.com/jiYXCQ" target="_blank" rel="noopener noreferrer" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] font-semibold transition-colors">Newsletter</a>
-          <span className="text-[var(--color-dark-border)]">|</span>
-          <Link href="/services" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] font-semibold transition-colors">Consulting Services</Link>
-          <span className="text-[var(--color-dark-border)]">|</span>
-          <Link href="/site-directory" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] font-semibold transition-colors">Site Directory</Link>
-          <span className="text-[var(--color-dark-border)]">|</span>
-          <Link href="/privacy" className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-blue)] font-semibold transition-colors">Privacy</Link>
-        </div>
+        <FooterNav />
 
         <div className="flex flex-wrap justify-center gap-4 mb-6">
           <a

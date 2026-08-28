@@ -29,6 +29,7 @@ src/
 │   ├── page.tsx                  # Homepage
 │   ├── story/                    # "About" page (renamed from /about; old URL 301s in next.config.ts)
 │   ├── hire-me/                  # Primary conversion page — the main CTA target
+│   ├── for-executives/           # Executive edition (secondary): layout banner + /, /work, /work/[slug], /engage — see "Two editions"
 │   ├── chat/                     # Full-page "Ask my résumé" chat; served at chat.adam.matthewsteinberger.com via host rules in next.config.ts
 │   ├── expertise/                # 10 technical pillars, CEO/engineer dual-audience copy
 │   ├── work/, work/[slug]/       # Case studies (renamed from /projects; old URL 301s)
@@ -51,8 +52,8 @@ src/
 │   ├── projects/*.md             # 17 case studies
 │   ├── services/*.md             # 45 service pages
 │   └── articles/*.md             # 33 Novice to Navigator articles
-├── data/                         # Metadata arrays (articles.ts, projects.ts, services.ts, open-source.ts, expertise.ts) + kb-sources.ts (KB chunks for expertise are generated from expertise.ts)
-├── lib/                          # Content utils (blogUtils, projectUtils, serviceUtils, markdownUtils), analytics.ts, availability.ts, ask/ (RAG bot retrieval + rate limiting)
+├── data/                         # Metadata arrays (articles.ts, projects.ts, services.ts, open-source.ts, expertise.ts, exec.ts) + kb-sources.ts (KB chunks for expertise are generated from expertise.ts)
+├── lib/                          # Content utils (blogUtils, projectUtils, serviceUtils, markdownUtils), analytics.ts, availability.ts, edition.ts, ask/ (RAG bot retrieval + rate limiting)
 ├── hooks/                        # useConsent, useBotDetection, useScrollDepth
 ├── test/setup.ts                 # Vitest global setup (jsdom polyfills, mocks)
 └── generated/kb.json             # RAG bot knowledge base — GITIGNORED, rebuilt by scripts/build-kb.ts before dev/build/test/typecheck
@@ -76,6 +77,15 @@ After adding a `.md` file, also add its slug/metadata to the corresponding `src/
 ## Content integrity rule
 
 Do not invent or round up metrics in case studies, blog posts, or anywhere else on the site. Every stat on `/work/*` should be traceable to the résumé, LinkedIn, or a source doc — if you can't verify a number, use honest qualitative language instead ("significant growth" rather than "10x growth"). This has already caused one cleanup pass (removing fabricated percentages from several case studies) — don't reintroduce the pattern.
+
+## Two editions (engineers first)
+
+The site follows the doctrine in vibey-gh #134/#135: **this is a site by an engineer, for engineers, and the engineering edition is the default.** Concretely:
+
+- **Engineering edition** = the root and every pre-existing URL. It is canonical, complete, and carries no sales framing — no booking links, no "consulting", no "free consultation". The only affordance to the other edition is a de-emphasized "For Executives" link last in the footer and a one-line pointer at the bottom of `/`, `/hire-me`, and `/contact`. The header never links to it.
+- **Executive edition** = `/for-executives` (`/`, `/work`, `/work/[slug]`, `/engage`). Bottom line up front; the problem before the solution, in the reader's terms; then the offer (hire full-time, or engage the LLC to tailor/whitelabel — still **no pricing**). `src/app/for-executives/layout.tsx` adds the edition banner; `Header`/`FooterNav`/`MultipleCTAs` switch by pathname via `src/lib/edition.ts`. `/services/*` keeps its URLs and is reached from `/for-executives/engage` and the exec footer only.
+- **Same source, no drift.** Exec case-study pages come from the same `.md` as the engineering case study: add `execProblem` and `execOutcome` to a project's frontmatter and it gets a `/for-executives/work/[slug]` page; leave them off and it doesn't. Static exec routes and the offer copy live in `src/data/exec.ts`, which is also the **only** file allowed to hold the booking URL.
+- **Enforced, not promised.** `src/__tests__/editions.test.ts` (no rewrite/redirect into the exec edition, every exec page has an engineering counterpart, first heading is a problem, exec sitemap priority always below its counterpart), `src/__tests__/no-sales-framing.test.ts` (commercial terms forbidden outside `src/app/for-executives/**`, `src/app/services/**`, `src/data/exec.ts`), and `e2e/editions.spec.ts`. If a change would make the engineering edition worse to make the executive edition better, it is out of scope by definition.
 
 ## The RAG bot (`/api/ask`)
 
@@ -122,7 +132,7 @@ Husky runs `lint-staged` + `npm run typecheck` on pre-commit, and `npm run test`
 - **Path alias**: `@/*` → `./src/*` (see `tsconfig.json`)
 - **Styling**: Tailwind utility classes + CSS custom properties for theme tokens (`var(--color-text-primary)` etc.), defined in `src/app/globals.css`. Never hardcode hex colors in JSX — use a theme token, and if the color you need doesn't have one, add it to `globals.css` first.
 - **Server-first**: default to Server Components; add `'use client'` only at the leaf that actually needs interactivity/state (see `AskAdam.tsx`, `AudienceToggle.tsx`, `ReadinessQuiz.tsx` for examples of the pattern)
-- **No pricing anywhere on the site** — this was a deliberate removal; don't reintroduce dollar figures on `/services/*` or elsewhere
+- **No pricing anywhere on the site** — this was a deliberate removal; don't reintroduce dollar figures on `/services/*` or elsewhere. Commercial framing of any kind belongs only in the executive edition (see "Two editions")
 - **Books are not for sale** — no Amazon links, no prices; only email-capture "get notified" CTAs (Mailchimp, `https://eepurl.com/jiYXCQ`)
 - **Redirects** for renamed/merged routes live in `next.config.ts` under the `redirects()` function — add one there whenever a route is renamed or a duplicate page is merged, don't just delete the old page
 - **Every page sets its own `alternates.canonical`** (static pages in `metadata`, dynamic routes in `generateMetadata`), and the root layout must never declare one — Next.js does not deep-merge `alternates`, so a root canonical is inherited verbatim by every page that omits it (that bug shipped once: every URL canonicalized to the homepage). `src/__tests__/canonicals.test.ts` guards both halves.

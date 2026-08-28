@@ -19,6 +19,10 @@ import { metadata as contact } from '@/app/contact/page';
 import { metadata as privacy } from '@/app/privacy/page';
 import { metadata as siteDirectory } from '@/app/site-directory/page';
 import { generateMetadata as workSlugMetadata } from '@/app/work/[slug]/page';
+import { metadata as forExecutives } from '@/app/for-executives/page';
+import { metadata as execWork } from '@/app/for-executives/work/page';
+import { metadata as execEngage } from '@/app/for-executives/engage/page';
+import { generateMetadata as execSlugMetadata } from '@/app/for-executives/work/[slug]/page';
 
 // Regression guard for a real bug: the root layout used to set
 // `alternates.canonical: '/'`, and Next.js does not deep-merge `alternates`,
@@ -40,6 +44,9 @@ const staticPages: [string, Metadata][] = [
   ['/contact', contact],
   ['/privacy', privacy],
   ['/site-directory', siteDirectory],
+  ['/for-executives', forExecutives],
+  ['/for-executives/work', execWork],
+  ['/for-executives/engage', execEngage],
 ];
 
 describe('canonical URLs', () => {
@@ -50,6 +57,13 @@ describe('canonical URLs', () => {
   it('case studies canonicalize to their own slug', async () => {
     const meta = await workSlugMetadata({ params: Promise.resolve({ slug: 'ai-governance-gateway' }) });
     expect(meta.alternates?.canonical).toBe('/work/ai-governance-gateway');
+  });
+
+  it('exec case studies canonicalize to their own exec URL, and unknown slugs get no canonical', async () => {
+    const meta = await execSlugMetadata({ params: Promise.resolve({ slug: 'ai-governance-gateway' }) });
+    expect(meta.alternates?.canonical).toBe('/for-executives/work/ai-governance-gateway');
+    const missing = await execSlugMetadata({ params: Promise.resolve({ slug: 'lima-one-microservices-suite' }) });
+    expect(missing.alternates).toBeUndefined();
   });
 
   it('the root layout no longer declares a canonical for children to inherit', () => {

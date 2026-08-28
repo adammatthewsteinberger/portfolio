@@ -15,8 +15,9 @@ describe('Header', () => {
     );
   });
 
-  it('renders the desktop nav items', () => {
+  it('renders the desktop nav items and no link to the executive edition', () => {
     render(<Header />);
+    expect(document.querySelector('nav a[href^="/for-executives"]')).toBeNull();
     // Desktop nav is present in the DOM even on narrow test viewports
     // (hidden via a lg: class, not removed), so getAllByRole is used since
     // the mobile panel can also contain matching links once opened.
@@ -45,7 +46,7 @@ describe('Header', () => {
     expect(screen.getByRole('button', { name: 'Open menu' })).toBeInTheDocument();
   });
 
-  it('opens the mobile menu on click, and it contains the nav links plus services/contact', () => {
+  it('opens the mobile menu on click, and it contains the nav links plus contact — never the exec edition or services', () => {
     render(<Header />);
 
     fireEvent.click(screen.getByRole('button', { name: 'Open menu' }));
@@ -54,7 +55,8 @@ describe('Header', () => {
     expect(dialog).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Close menu' })).toBeInTheDocument();
     expect(dialog.querySelector('a[href="/hire-me"]')).toBeInTheDocument();
-    expect(dialog.querySelector('a[href="/services"]')).toBeInTheDocument();
+    expect(dialog.querySelector('a[href="/services"]')).not.toBeInTheDocument();
+    expect(dialog.querySelector('a[href^="/for-executives"]')).not.toBeInTheDocument();
     expect(dialog.querySelector('a[href="/contact"]')).toBeInTheDocument();
   });
 

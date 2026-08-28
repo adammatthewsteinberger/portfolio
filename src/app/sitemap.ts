@@ -3,6 +3,8 @@ import { services } from '@/data/services';
 import { articles } from '@/data/articles';
 import { projects } from '@/data/projects';
 import { getAllBlogPosts } from '@/lib/blogUtils';
+import { getExecProjects } from '@/lib/projectUtils';
+import { execRoutes } from '@/data/exec';
 
 const DOMAIN = 'https://hire.adam.matthewsteinberger.com';
 
@@ -27,6 +29,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${DOMAIN}/privacy`, lastModified: buildDate, changeFrequency: 'yearly', priority: 0.3 },
     { url: `${DOMAIN}/site-directory`, lastModified: buildDate, changeFrequency: 'monthly', priority: 0.5 },
     { url: 'https://chat.adam.matthewsteinberger.com/', lastModified: buildDate, changeFrequency: 'monthly', priority: 0.7 },
+  ];
+
+  // Executive edition (vibey-gh #134): indexable, self-canonical, and never
+  // ranked above the engineering page it mirrors.
+  const execPages: MetadataRoute.Sitemap = [
+    ...execRoutes.map((route) => ({
+      url: `${DOMAIN}${route.execUrl}`,
+      lastModified: buildDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    })),
+    ...getExecProjects().map((project) => ({
+      url: `${DOMAIN}/for-executives/work/${project.slug}`,
+      lastModified: buildDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.4,
+    })),
   ];
 
   const servicePages: MetadataRoute.Sitemap = services.map((service) => ({
@@ -59,5 +78,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: post.featured ? 0.8 : 0.6,
   }));
 
-  return [...staticPages, ...servicePages, ...articlePages, ...projectPages, ...blogPages];
+  return [...staticPages, ...servicePages, ...articlePages, ...projectPages, ...blogPages, ...execPages];
 }

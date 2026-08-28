@@ -19,6 +19,9 @@ export interface ProjectContent {
   techStack: string;
   architecture: string;
   lessons: string;
+  /** Executive-edition fields (optional). A study gets a /for-executives/work page only when both are present. */
+  execProblem?: string;
+  execOutcome?: string;
   content: string;
 }
 
@@ -51,6 +54,8 @@ export function getProjectBySlug(slug: string): ProjectContent | null {
       techStack: data.techStack,
       architecture: data.architecture,
       lessons: data.lessons,
+      execProblem: data.execProblem,
+      execOutcome: data.execOutcome,
       content
     };
   } catch (error) {
@@ -92,4 +97,14 @@ export function getAllProjects(): ProjectContent[] {
   }
 
   return projects.sort((a, b) => a.title.localeCompare(b.title));
+}
+/**
+ * Case studies that carry both executive-edition fields, in the order of
+ * src/data/projects.ts. By construction an exec case-study page cannot exist
+ * without its engineering counterpart — the source file is the same one.
+ */
+export function getExecProjects(): ProjectContent[] {
+  return getAllProjectSlugs()
+    .map((slug) => getProjectBySlug(slug))
+    .filter((project): project is ProjectContent => Boolean(project && project.execProblem && project.execOutcome));
 }

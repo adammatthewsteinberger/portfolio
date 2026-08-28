@@ -26,6 +26,8 @@ results: Delivered a comprehensive implementation package within 45 days includi
 techStack: Built on Azure cloud platform using Service Bus for event-driven architecture, GPT-5 for intelligent document processing, Python for backend services, and Microsoft Graph API for SharePoint and Outlook integration. Includes Excel automation, vector databases for RAG implementation, and ADP API connectivity.
 architecture: Designed using Azure microservices with Service Bus messaging, RAG pipeline for document processing, Onion Architecture patterns for clean separation of concerns, and multiple HITL checkpoints for quality assurance. Fully containerized with CI/CD pipelines for automated deployment.
 lessons: This project emphasized the importance of thorough discovery and process engineering before technical implementation. Proper decomposition into actionable user stories and comprehensive documentation are crucial for successful team handoffs and long-term maintainability.
+execProblem: "A payroll process that depends on people re-keying documents cannot scale, and an automated one that nobody trusts never ships."
+execOutcome: "A 20-service platform with a human approving every phase before the one irreversible step. The architecture was production-ready at day 45, and the junior developer trained alongside it now owns it — no senior-level dependency left behind."
 ---
 
 # AI Payroll Processor (GPT-5)

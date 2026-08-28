@@ -2,16 +2,27 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { availabilityLong, availabilityShort } from '@/lib/availability';
+import { EXEC_PREFIX, editionFor } from '@/lib/edition';
 
-const navItems = [
+const engineeringNav = [
   { href: '/', label: 'Home' },
   { href: '/story', label: 'Story' },
   { href: '/expertise', label: 'Expertise' },
   { href: '/work', label: 'Work' },
   { href: '/writing', label: 'Writing' },
   { href: '/hire-me', label: 'Hire Me' },
+];
+
+// The exec edition gets its own nav; the engineering nav never links to it
+// (that affordance lives in the footer and at the bottom of a few pages).
+const execNav = [
+  { href: EXEC_PREFIX, label: 'Overview' },
+  { href: `${EXEC_PREFIX}/work`, label: 'What Changed' },
+  { href: `${EXEC_PREFIX}/engage`, label: 'Engage' },
+  { href: '/', label: 'Engineering Edition' },
 ];
 
 export interface HeaderProps {
@@ -25,6 +36,8 @@ export default function Header({
   availabilityLongLabel = availabilityLong(),
 }: HeaderProps = {}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const edition = editionFor(usePathname());
+  const navItems = edition === 'exec' ? execNav : engineeringNav;
 
   // Close the mobile menu on Escape and lock body scroll while it's open.
   useEffect(() => {
@@ -46,7 +59,7 @@ export default function Header({
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[var(--color-dark-bg)]/95 backdrop-blur-sm border-b border-[var(--color-dark-border)]">
         <div className="container mx-auto px-4 flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center gap-2 no-underline" onClick={closeMenu}>
+          <Link href={edition === 'exec' ? EXEC_PREFIX : '/'} className="flex items-center gap-2 no-underline" onClick={closeMenu}>
             <Image
               src="/images/profile-picture.jpg"
               alt="Adam Matthew Steinberger"
@@ -58,6 +71,11 @@ export default function Header({
             <span className="text-[var(--color-text-primary)] font-semibold text-lg hidden sm:inline">
               Adam Matthew Steinberger
             </span>
+            {edition === 'exec' && (
+              <span className="hidden sm:inline text-xs font-mono uppercase tracking-wider text-[var(--color-accent-purple)]">
+                For executives
+              </span>
+            )}
           </Link>
 
           {/* Desktop nav */}
@@ -113,13 +131,6 @@ export default function Header({
                 {item.label}
               </Link>
             ))}
-            <Link
-              href="/services"
-              onClick={closeMenu}
-              className="py-3 px-2 text-[var(--color-text-muted)] border-b border-[var(--color-dark-border)] no-underline"
-            >
-              Consulting services
-            </Link>
             <Link
               href="/contact"
               onClick={closeMenu}

@@ -25,6 +25,8 @@ results: Attachment review and report delivery now happen without a human openin
 techStack: A Kubernetes-based queue consuming from the shared mailbox via Microsoft Graph API, an AI review step over each attachment, PDF generation for the outbound report, and Microsoft Graph/SharePoint integration for archival.
 architecture: Queue-based intake — new mail triggers a Kubernetes job that pulls the attachment, runs it through AI-assisted review, generates a PDF report, emails it back to the sender, and writes an archival copy to SharePoint, all without manual intervention unless the AI review step flags something for a human to look at.
 lessons: The bottleneck in a workflow like this was never really "can AI read a document" — it was building a queue that reliably watches a shared mailbox, handles retries when Graph API calls fail, and doesn't lose an attachment between steps. The AI review step is the visible part; the boring queueing and retry logic underneath it is what makes it trustworthy enough to run unattended.
+execProblem: "Client documents arrive in a shared mailbox, and every one of them needs a person to open it, judge it, write the report, and file it — a queue that only gets longer."
+execOutcome: "Attachments are reviewed and reports delivered without a person opening every email first. The AI review surfaces what actually needs attention; the report and the archive copy happen automatically; the people who sign off log in with the company's own SSO."
 ---
 
 # AI Report Generator & Email Intake
