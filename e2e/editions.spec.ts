@@ -12,7 +12,7 @@ test.describe('Editions', () => {
     await gotoAndDismiss(page, '/for-executives');
     await expect(page).toHaveURL('/for-executives');
     await expect(page.locator('h1').first()).toContainText(/stalling on security, data, and handoff/i);
-    await expect(page.locator('a[href="/"]').first()).toBeVisible();
+    await expect(page.getByRole('link', { name: /full technical version/i }).first()).toBeVisible();
   });
 
   test('an exec case study mirrors its engineering case study', async ({ page }) => {
