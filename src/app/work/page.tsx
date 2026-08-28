@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import { projects, projectCategories } from '@/data/projects';
 import { availabilitySentence } from '@/lib/availability';
+import Icon from '@/components/Icon';
 
 export const metadata: Metadata = {
   title: 'Work | Case Studies in AI, Azure & Automation | Adam Matthew Steinberger',
@@ -62,14 +63,14 @@ export default function WorkPage() {
                   </div>
                 )}
                 <div className="flex items-center gap-4 text-sm text-[var(--color-text-muted)]">
-                  <span><i className="fas fa-clock mr-1"></i>{project.duration}</span>
+                  <span><Icon name="clock" className="mr-1" />{project.duration}</span>
                   <span className={project.status === 'completed' ? 'text-[var(--color-accent-green)]' : 'text-[var(--color-accent-gold)]'}>
-                    <i className="fas fa-circle mr-1 text-xs"></i>{project.status}
+                    <Icon name="circle" className="mr-1 text-xs" />{project.status}
                   </span>
                 </div>
               </div>
               <Link href={`/work/${project.slug}`} className="inline-flex items-center justify-center px-4 py-2 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white rounded-lg transition-colors no-underline font-medium mt-auto">
-                View Project <i className="fas fa-arrow-right ml-2"></i>
+                View Project <Icon name="arrow-right" className="ml-2" />
               </Link>
             </div>
           ))}
@@ -108,9 +109,9 @@ export default function WorkPage() {
                     )}
                     <div className="flex justify-between items-center">
                       <div className="flex items-center gap-4 text-sm text-[var(--color-text-muted)]">
-                        <span><i className="fas fa-clock mr-1"></i>{project.duration}</span>
+                        <span><Icon name="clock" className="mr-1" />{project.duration}</span>
                         <span className={project.status === 'completed' ? 'text-[var(--color-accent-green)]' : 'text-[var(--color-accent-gold)]'}>
-                          <i className="fas fa-circle mr-1 text-xs"></i>{project.status}
+                          <Icon name="circle" className="mr-1 text-xs" />{project.status}
                         </span>
                       </div>
                       <Link href={`/work/${project.slug}`} className="px-3 py-1 text-sm border border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white rounded-lg transition-colors no-underline">
@@ -135,11 +136,11 @@ export default function WorkPage() {
         </p>
         <div className="flex gap-4 justify-center flex-wrap">
           <Link href="/hire-me" className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] text-white font-bold rounded-lg transition-colors no-underline">
-            <i className="fas fa-briefcase"></i>
+            <Icon name="briefcase" />
             Hire Me
           </Link>
           <Link href="/expertise" className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white font-bold rounded-lg transition-colors no-underline">
-            <i className="fas fa-layer-group"></i>
+            <Icon name="layer-group" />
             The Specialties
           </Link>
         </div>

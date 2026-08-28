@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import MultipleCTAs from '@/components/MultipleCTAs';
 import type { Metadata } from 'next';
+import Icon from '@/components/Icon';
 
 interface ServicePageProps {
   params: Promise<{
@@ -110,17 +111,17 @@ export default async function ServicePage({ params }: ServicePageProps) {
         </h4>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           <div className="bg-[var(--color-dark-card)] border border-[var(--color-accent-gold)]/30 rounded-xl p-6 text-center">
-            <i className={`fas ${serviceContent.choice1Icon} text-4xl text-[var(--color-accent-gold)] mb-4`}></i>
+            <Icon name={serviceContent.choice1Icon} className="text-4xl text-[var(--color-accent-gold)] mb-4" />
             <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-2">{serviceContent.choice1Title}</h5>
             <p className="text-[var(--color-text-muted)]">{serviceContent.choice1Description}</p>
           </div>
           <div className="bg-[var(--color-dark-card)] border border-[var(--color-accent-gold)]/30 rounded-xl p-6 text-center">
-            <i className={`fas ${serviceContent.choice2Icon} text-4xl text-[var(--color-accent-blue)] mb-4`}></i>
+            <Icon name={serviceContent.choice2Icon} className="text-4xl text-[var(--color-accent-blue)] mb-4" />
             <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-2">{serviceContent.choice2Title}</h5>
             <p className="text-[var(--color-text-muted)]">{serviceContent.choice2Description}</p>
           </div>
           <div className="bg-[var(--color-dark-card)] border border-[var(--color-accent-gold)]/30 rounded-xl p-6 text-center">
-            <i className={`fas ${serviceContent.choice3Icon} text-4xl text-[var(--color-accent-purple)] mb-4`}></i>
+            <Icon name={serviceContent.choice3Icon} className="text-4xl text-[var(--color-accent-purple)] mb-4" />
             <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-2">{serviceContent.choice3Title}</h5>
             <p className="text-[var(--color-text-muted)]">{serviceContent.choice3Description}</p>
           </div>
@@ -135,28 +136,28 @@ export default async function ServicePage({ params }: ServicePageProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6">
             <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 flex items-center gap-2">
-              <i className={`fas ${serviceContent.feature1Icon} text-[var(--color-accent-blue)]`}></i>
+              <Icon name={serviceContent.feature1Icon} className="text-[var(--color-accent-blue)]" />
               {serviceContent.feature1Title}
             </h5>
             <p className="text-[var(--color-text-muted)]">{serviceContent.feature1Description}</p>
           </div>
           <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6">
             <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 flex items-center gap-2">
-              <i className={`fas ${serviceContent.feature2Icon} text-[var(--color-accent-blue)]`}></i>
+              <Icon name={serviceContent.feature2Icon} className="text-[var(--color-accent-blue)]" />
               {serviceContent.feature2Title}
             </h5>
             <p className="text-[var(--color-text-muted)]">{serviceContent.feature2Description}</p>
           </div>
           <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6">
             <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 flex items-center gap-2">
-              <i className={`fas ${serviceContent.feature3Icon} text-[var(--color-accent-blue)]`}></i>
+              <Icon name={serviceContent.feature3Icon} className="text-[var(--color-accent-blue)]" />
               {serviceContent.feature3Title}
             </h5>
             <p className="text-[var(--color-text-muted)]">{serviceContent.feature3Description}</p>
           </div>
           <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6">
             <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 flex items-center gap-2">
-              <i className={`fas ${serviceContent.feature4Icon} text-[var(--color-accent-blue)]`}></i>
+              <Icon name={serviceContent.feature4Icon} className="text-[var(--color-accent-blue)]" />
               {serviceContent.feature4Title}
             </h5>
             <p className="text-[var(--color-text-muted)]">{serviceContent.feature4Description}</p>
@@ -164,7 +165,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
           {serviceContent.feature5Title && serviceContent.feature5Description && (
             <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6">
               <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 flex items-center gap-2">
-                <i className={`fas ${serviceContent.feature5Icon} text-[var(--color-accent-blue)]`}></i>
+                <Icon name={serviceContent.feature5Icon} className="text-[var(--color-accent-blue)]" />
                 {serviceContent.feature5Title}
               </h5>
               <p className="text-[var(--color-text-muted)]">{serviceContent.feature5Description}</p>
@@ -173,7 +174,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
           {serviceContent.feature6Title && serviceContent.feature6Description && (
             <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6">
               <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 flex items-center gap-2">
-                <i className={`fas ${serviceContent.feature6Icon} text-[var(--color-accent-blue)]`}></i>
+                <Icon name={serviceContent.feature6Icon} className="text-[var(--color-accent-blue)]" />
                 {serviceContent.feature6Title}
               </h5>
               <p className="text-[var(--color-text-muted)]">{serviceContent.feature6Description}</p>
@@ -182,7 +183,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
           {serviceContent.feature7Title && serviceContent.feature7Description && (
             <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6">
               <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 flex items-center gap-2">
-                <i className={`fas ${serviceContent.feature7Icon} text-[var(--color-accent-blue)]`}></i>
+                <Icon name={serviceContent.feature7Icon} className="text-[var(--color-accent-blue)]" />
                 {serviceContent.feature7Title}
               </h5>
               <p className="text-[var(--color-text-muted)]">{serviceContent.feature7Description}</p>
@@ -191,7 +192,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
           {serviceContent.feature8Title && serviceContent.feature8Description && (
             <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6">
               <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 flex items-center gap-2">
-                <i className={`fas ${serviceContent.feature8Icon} text-[var(--color-accent-blue)]`}></i>
+                <Icon name={serviceContent.feature8Icon} className="text-[var(--color-accent-blue)]" />
                 {serviceContent.feature8Title}
               </h5>
               <p className="text-[var(--color-text-muted)]">{serviceContent.feature8Description}</p>
@@ -200,7 +201,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
           {serviceContent.feature9Title && serviceContent.feature9Description && (
             <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6">
               <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 flex items-center gap-2">
-                <i className={`fas ${serviceContent.feature9Icon} text-[var(--color-accent-blue)]`}></i>
+                <Icon name={serviceContent.feature9Icon} className="text-[var(--color-accent-blue)]" />
                 {serviceContent.feature9Title}
               </h5>
               <p className="text-[var(--color-text-muted)]">{serviceContent.feature9Description}</p>
@@ -209,7 +210,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
           {serviceContent.feature10Title && serviceContent.feature10Description && (
             <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6">
               <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 flex items-center gap-2">
-                <i className={`fas ${serviceContent.feature10Icon} text-[var(--color-accent-blue)]`}></i>
+                <Icon name={serviceContent.feature10Icon} className="text-[var(--color-accent-blue)]" />
                 {serviceContent.feature10Title}
               </h5>
               <p className="text-[var(--color-text-muted)]">{serviceContent.feature10Description}</p>

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import { getProjectBySlug, getAllProjectSlugs } from '@/lib/projectUtils';
 import { projects } from '@/data/projects';
+import Icon from '@/components/Icon';
 
 interface ProjectPageProps {
   params: Promise<{
@@ -52,7 +53,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <h1 className="text-4xl font-bold text-[var(--color-text-primary)] mb-6">Work Not Found</h1>
         <p className="text-xl text-[var(--color-text-muted)] mb-6">The requested case study could not be found.</p>
         <Link href="/work" className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] text-white font-bold rounded-lg transition-colors no-underline">
-          <i className="fas fa-arrow-left"></i>
+          <Icon name="arrow-left" />
           Back to Work
         </Link>
       </div>
@@ -114,7 +115,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <div className="mb-4">
                   <strong className="text-[var(--color-text-primary)]">Status:</strong>
                   <span className={`ml-2 inline-flex items-center gap-1 ${project.status === 'completed' ? 'text-[var(--color-accent-green)]' : 'text-[var(--color-accent-gold)]'}`}>
-                    <i className="fas fa-circle text-xs"></i>
+                    <Icon name="circle" className="text-xs" />
                     {project.status}
                   </span>
                 </div>
@@ -140,21 +141,21 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-[var(--color-dark-card)] border border-[var(--color-accent-coral)]/30 rounded-xl p-6">
               <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-3 flex items-center gap-2">
-                <i className="fas fa-exclamation-triangle text-[var(--color-accent-coral)]"></i>
+                <Icon name="exclamation-triangle" className="text-[var(--color-accent-coral)]" />
                 Challenge
               </h3>
               <p className="text-[var(--color-text-muted)]">{project.challenge}</p>
             </div>
             <div className="bg-[var(--color-dark-card)] border border-[var(--color-accent-gold)]/30 rounded-xl p-6">
               <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-3 flex items-center gap-2">
-                <i className="fas fa-lightbulb text-[var(--color-accent-gold)]"></i>
+                <Icon name="lightbulb" className="text-[var(--color-accent-gold)]" />
                 Solution
               </h3>
               <p className="text-[var(--color-text-muted)]">{project.solution}</p>
             </div>
             <div className="bg-[var(--color-dark-card)] border border-[var(--color-accent-green)]/30 rounded-xl p-6">
               <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-3 flex items-center gap-2">
-                <i className="fas fa-trophy text-[var(--color-accent-green)]"></i>
+                <Icon name="trophy" className="text-[var(--color-accent-green)]" />
                 Results
               </h3>
               <p className="text-[var(--color-text-muted)]">{project.results}</p>
@@ -255,11 +256,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </p>
             <div className="flex gap-4 justify-center flex-wrap">
               <Link href="/hire-me" className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] font-bold rounded-lg transition-colors no-underline" style={{ color: '#ffffff' }}>
-                <i className="fas fa-briefcase"></i>
+                <Icon name="briefcase" />
                 Hire Me
               </Link>
               <Link href="/work" className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white font-bold rounded-lg transition-colors no-underline">
-                <i className="fas fa-arrow-left"></i>
+                <Icon name="arrow-left" />
                 View All Work
               </Link>
             </div>

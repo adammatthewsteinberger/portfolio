@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import MultipleCTAs from '@/components/MultipleCTAs';
 import type { Metadata } from 'next';
+import Icon from '@/components/Icon';
 
 export const metadata: Metadata = {
   title: 'Site Directory | Adam Matthew Steinberger',
@@ -61,7 +62,7 @@ export default function SiteDirectoryPage() {
               key={page.href}
               className={`bg-[var(--color-dark-card)] border ${colors.border} rounded-xl p-6 text-center`}
             >
-              <i className={`fas ${page.icon} text-4xl ${colors.text} mb-4`}></i>
+              <Icon name={page.icon} className="text-4xl ${colors.text} mb-4" />
               <h5 className="text-xl font-bold text-[var(--color-text-primary)] mb-2">{page.title}</h5>
               <p className="text-[var(--color-text-muted)] mb-4">{page.description}</p>
               <Link
@@ -74,7 +75,7 @@ export default function SiteDirectoryPage() {
             );
           })}
           <div className="md:col-span-2 bg-[var(--color-dark-card)] border border-[var(--color-accent-purple)]/30 rounded-xl p-6 text-center max-w-md mx-auto w-full">
-            <i className="fas fa-envelope-open-text text-4xl text-[var(--color-accent-blue)] mb-4"></i>
+            <Icon name="envelope-open-text" className="text-4xl text-[var(--color-accent-blue)] mb-4" />
             <h5 className="text-xl font-bold text-[var(--color-text-primary)] mb-2">Newsletter</h5>
             <p className="text-[var(--color-text-muted)] mb-4">Get notified when the books ship, plus occasional writing updates.</p>
             <a

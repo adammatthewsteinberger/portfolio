@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useScrollDepth } from '@/hooks/useScrollDepth';
 import { useBotDetection } from '@/hooks/useBotDetection';
 import { track } from '@/lib/analytics';
+import Icon from '@/components/Icon';
 
 const DISMISSED_KEY = 'n2n-second-edition-nudge-dismissed';
 
@@ -49,7 +50,7 @@ export default function SecondEditionNudge() {
         aria-label="Dismiss"
         className="absolute top-2 right-2 w-8 h-8 flex items-center justify-center text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] bg-transparent border-none cursor-pointer"
       >
-        <i className="fas fa-times"></i>
+        <Icon name="times" />
       </button>
       <h3 className="font-bold text-[var(--color-text-primary)] mb-2 pr-6">
         A second edition is in the works
