@@ -31,7 +31,7 @@ describe('next.config host-aware routing for the chat subdomain', () => {
   it('keeps /api/*, /_next/* and asset paths out of the chat-host catch-all', async () => {
     const [, catchAll] = await nextConfig.redirects!();
     const pattern = new RegExp(`^/${catchAll.source.slice('/:path('.length, -1)}$`);
-    for (const served of ['/api/ask', '/_next/static/chunks/app.js', '/favicon.ico', '/robots.txt', '/images/profile-picture.jpg', '/font-awesome.min.css']) {
+    for (const served of ['/api/ask', '/_next/static/chunks/app.js', '/favicon.ico', '/robots.txt', '/images/profile-picture.jpg', '/site.webmanifest']) {
       expect(served).not.toMatch(pattern);
     }
     for (const redirected of ['/story', '/work/self-hosted-rag-chatbot', '/hire-me', '/blog/some-post']) {

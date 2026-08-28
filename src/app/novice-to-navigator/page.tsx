@@ -2,6 +2,7 @@ import { sections } from '@/data/articles';
 import Link from 'next/link';
 import MultipleCTAs from '@/components/MultipleCTAs';
 import type { Metadata } from 'next';
+import Icon from '@/components/Icon';
 
 export const metadata: Metadata = {
   title: 'Novice to Navigator: AI Chatbot Education Series | Adam Matthew Steinberger',
@@ -75,7 +76,7 @@ export default function NoviceToNavigator() {
               href="/novice-to-navigator/readiness"
               className="inline-flex items-center gap-2 px-5 py-2.5 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white rounded-lg transition-colors no-underline text-sm font-semibold"
             >
-              <i className="fas fa-clipboard-check"></i> Take the Chatbot Readiness Quiz
+              <Icon name="clipboard-check" /> Take the Chatbot Readiness Quiz
             </Link>
           </div>
         </div>
@@ -89,7 +90,7 @@ export default function NoviceToNavigator() {
         <div className="max-w-3xl mx-auto">
           <div className="bg-[var(--color-dark-card)] border border-[var(--color-accent-purple)]/30 rounded-xl p-6">
             <h5 className="text-xl font-bold text-[var(--color-text-primary)] mb-4 flex items-center gap-2">
-              <i className="fas fa-graduation-cap text-[var(--color-accent-blue)]"></i>
+              <Icon name="graduation-cap" className="text-[var(--color-accent-blue)]" />
               Your Learning Journey
             </h5>
             <p className="text-[var(--color-text-muted)] mb-6">
@@ -127,7 +128,7 @@ export default function NoviceToNavigator() {
             {section.articles.map((article) => (
               <div key={article.slug} className="bg-[var(--color-dark-card)] border border-[var(--color-accent-gold)]/30 rounded-xl p-6">
                 <h5 className="text-lg font-bold text-[var(--color-text-primary)] mb-3 flex items-center gap-2">
-                  <i className="fas fa-question-circle text-[var(--color-accent-gold)]"></i>
+                  <Icon name="question-circle" className="text-[var(--color-accent-gold)]" />
                   {article.title}
                 </h5>
                 <p className="text-[var(--color-text-muted)] mb-4">{article.description}</p>
@@ -154,7 +155,7 @@ export default function NoviceToNavigator() {
             className="inline-flex items-center gap-2 px-8 py-4 text-lg font-bold bg-gradient-to-r from-[var(--color-accent-gold)] to-amber-500 hover:from-amber-500 hover:to-[var(--color-accent-gold)] rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 no-underline"
             style={{ color: '#000000' }}
           >
-            <i className="fas fa-play"></i> Start with my First Article: &ldquo;What is AI Really?&rdquo;
+            <Icon name="play" /> Start with my First Article: &ldquo;What is AI Really?&rdquo;
           </Link>
           <p className="mt-4 text-sm text-[var(--color-text-muted)]">Begin your journey from novice to navigator</p>
         </div>

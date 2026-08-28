@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import FooterNav from './FooterNav';
+import Icon from '@/components/Icon';
 
 export default function Footer() {
   return (
@@ -15,7 +16,7 @@ export default function Footer() {
             aria-label="LinkedIn"
             className="text-[var(--color-text-muted)] hover:text-[var(--color-accent-blue)] transition-colors"
           >
-            <i className="fab fa-linkedin text-2xl"></i>
+            <Icon name="linkedin" className="text-2xl" />
           </a>
           <a
             href="https://github.com/adammatthewsteinberger"
@@ -24,14 +25,14 @@ export default function Footer() {
             aria-label="GitHub"
             className="text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors"
           >
-            <i className="fab fa-github text-2xl"></i>
+            <Icon name="github" className="text-2xl" />
           </a>
           <Link
             href="/contact"
             aria-label="Contact"
             className="text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors"
           >
-            <i className="fas fa-envelope"></i>
+            <Icon name="envelope" />
           </Link>
           <a
             href="https://github.com/adammatthewsteinberger/resume/raw/main/adam-steinberger-resume.pdf"
@@ -40,14 +41,14 @@ export default function Footer() {
             aria-label="Download Resume"
             className="text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors"
           >
-            <i className="fas fa-download"></i>
+            <Icon name="download" />
           </a>
           <a
             href="/feed.xml"
             aria-label="RSS feed"
             className="text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors"
           >
-            <i className="fas fa-rss"></i>
+            <Icon name="rss" />
           </a>
         </div>
 

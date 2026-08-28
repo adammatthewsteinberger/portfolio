@@ -1,6 +1,7 @@
 import ContactForm from '@/components/ContactForm';
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import Icon from '@/components/Icon';
 
 export const metadata: Metadata = {
   title: 'Contact | Adam Matthew Steinberger',
@@ -46,7 +47,7 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           {doors.map((door) => (
             <div key={door.href} className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6 shadow-lg text-center h-full flex flex-col">
-              <i className={`fas ${door.icon} text-4xl text-[var(--color-accent-blue)] mb-4`}></i>
+              <Icon name={door.icon} className="text-4xl text-[var(--color-accent-blue)] mb-4" />
               <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-2">{door.title}</h2>
               <p className="text-[var(--color-text-muted)] mb-4 flex-grow">{door.body}</p>
               <Link

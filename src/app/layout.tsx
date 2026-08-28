@@ -124,27 +124,6 @@ export default function RootLayout({
         <meta name="theme-color" content="#161a26" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
-        {/* Font Awesome is loaded non-blocking: the browser fetches it at
-            print-media priority (so it doesn't block first paint) and the
-            inline script below flips it to all-media once it has arrived.
-            suppressHydrationWarning is required here — that flip runs before
-            React hydrates, so the client's `media` attribute intentionally
-            differs from the server-rendered one. */}
-        <link
-          rel="stylesheet"
-          href="/font-awesome.min.css"
-          media="print"
-          data-lazy-stylesheet="true"
-          suppressHydrationWarning
-        />
-        <script
-          // Tiny inline script (no external round-trip): flips the lazy
-          // Font Awesome stylesheet from print-only to all-media once the
-          // browser has actually fetched it, keeping first paint unblocked.
-          dangerouslySetInnerHTML={{
-            __html: `document.querySelectorAll('link[data-lazy-stylesheet]').forEach(function(l){l.media='all';});`,
-          }}
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
