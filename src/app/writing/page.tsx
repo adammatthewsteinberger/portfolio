@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { getAllBlogPosts } from '@/lib/blogUtils';
+import { OG_IMAGE } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Writing | Adam Matthew Steinberger',
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
     'Blog posts on AI and automation, a free 33-article series on AI chatbots for business, and two books in development.',
   alternates: { canonical: '/writing' },
   openGraph: {
+    images: [OG_IMAGE],
     title: 'Writing | Adam Matthew Steinberger',
     description:
       'Blog posts on AI and automation, a free 33-article series on AI chatbots for business, and two books in development.',

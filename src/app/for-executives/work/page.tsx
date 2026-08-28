@@ -4,6 +4,7 @@ import MultipleCTAs from '@/components/MultipleCTAs';
 import { execRoutes } from '@/data/exec';
 import { EXEC_PREFIX } from '@/lib/edition';
 import { getExecProjects } from '@/lib/projectUtils';
+import { OG_IMAGE } from '@/lib/seo';
 
 const route = execRoutes[1];
 
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
   description: 'Six enterprise AI platforms, each stated as the problem it removed and what changed — for the reader who has to decide, not build.',
   alternates: { canonical: route.execUrl },
   openGraph: {
+    images: [OG_IMAGE],
     title: 'What Changed | For Executives | Adam Matthew Steinberger',
     description: 'Six enterprise AI platforms, each stated as the problem it removed and what changed.',
     url: `https://vibewithadam.matthewsteinberger.com${route.execUrl}`,
