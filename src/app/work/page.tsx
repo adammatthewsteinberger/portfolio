@@ -28,8 +28,8 @@ export default function WorkPage() {
       <section className="text-center pt-8 pb-16 container mx-auto px-4">
         <h1 className="text-4xl md:text-5xl font-bold text-[var(--color-text-primary)] mb-4">Work</h1>
         <p className="text-xl text-[var(--color-text-muted)] max-w-3xl mx-auto">
-          Case studies from thirteen-plus years of shipping RAG systems, event-driven microservices, and
-          automation pipelines — for enterprise clients, non-profits, and my own open-source tools.
+          Case studies from 13+ years of shipping software — the past year at The Vizius Group first,
+          then consulting engagements, Lima One Capital, and volunteer work. Every number is traceable.
         </p>
       </section>
 

@@ -51,7 +51,7 @@ src/
 │   ├── projects/*.md             # 17 case studies
 │   ├── services/*.md             # 45 service pages
 │   └── articles/*.md             # 33 Novice to Navigator articles
-├── data/                         # Metadata arrays (articles.ts, projects.ts, services.ts, open-source.ts) + kb-sources.ts
+├── data/                         # Metadata arrays (articles.ts, projects.ts, services.ts, open-source.ts, expertise.ts) + kb-sources.ts (KB chunks for expertise are generated from expertise.ts)
 ├── lib/                          # Content utils (blogUtils, projectUtils, serviceUtils, markdownUtils), analytics.ts, availability.ts, ask/ (RAG bot retrieval + rate limiting)
 ├── hooks/                        # useConsent, useBotDetection, useScrollDepth
 ├── test/setup.ts                 # Vitest global setup (jsdom polyfills, mocks)
@@ -128,6 +128,7 @@ Husky runs `lint-staged` + `npm run typecheck` on pre-commit, and `npm run test`
 - **Every page sets its own `alternates.canonical`** (static pages in `metadata`, dynamic routes in `generateMetadata`), and the root layout must never declare one — Next.js does not deep-merge `alternates`, so a root canonical is inherited verbatim by every page that omits it (that bug shipped once: every URL canonicalized to the homepage). `src/__tests__/canonicals.test.ts` guards both halves.
 - **Never state a count of the open-source packages** — list them by name from `src/data/open-source.ts`. Counts drifted three times in a month; `src/data/__tests__/open-source.test.ts` fails on any spelled-out or numeric package count in `src/app`, `src/components`, `src/data`, or `public/llms.txt`.
 - **Availability copy** (the "Available Sept 2026" / "Available now" pills, headings, and fact rows) comes from `src/lib/availability.ts`, never a literal. It is evaluated at build time, so redeploy after 2026-09-01 for the flip to show.
+- **Expertise has one source**: `src/data/expertise.ts` drives the homepage specialties, `/expertise`, and the RAG KB chunks. Each pillar carries `engineer` + `rule` (rendered on the engineering pages) and `plain` (the seed for the executive edition — never rendered on engineering pages; `src/__tests__/positioning.test.ts` checks).
 - **Tests are colocated** in `__tests__/` directories next to the code they cover, and coverage must stay at 100% — see `vitest.config.ts` for the exact include/exclude globs (roughly: `src/lib`, `src/data`, `src/components`, `src/hooks`; `src/app/**` route handlers and pages are intentionally excluded from the coverage requirement, matching how `/api/ask/route.ts` and the OG image routes are handled)
 
 ## Deployment

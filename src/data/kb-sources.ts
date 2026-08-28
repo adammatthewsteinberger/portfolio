@@ -8,12 +8,34 @@
  * blog content to produce src/generated/kb.json.
  */
 
+import { fullStack, specialtyGroups } from './expertise';
+
 export interface KBSource {
   id: string;
   url: string;
   title: string;
   section: string;
   text: string;
+}
+
+/** One chunk per specialty group and one per pillar, generated from src/data/expertise.ts so the bot and /expertise never drift. */
+export function expertiseChunks(): KBSource[] {
+  return specialtyGroups.flatMap((group) => [
+    {
+      id: `specialty-${group.id}`,
+      url: `/expertise#${group.id}`,
+      title: `Expertise: ${group.title}`,
+      section: group.title,
+      text: `Specialty: ${group.title}. ${group.summary} Stack: ${group.stack.join(', ')}. Case studies: ${group.where.map((slug) => `/work/${slug}`).join(', ')}.`,
+    },
+    ...group.pillars.map((pillar) => ({
+      id: `expertise-${pillar.id}`,
+      url: `/expertise#${pillar.id}`,
+      title: `Expertise: ${pillar.title}`,
+      section: pillar.title,
+      text: `${pillar.title}. In plain terms: ${pillar.plain} For engineers: ${pillar.engineer} Rule: ${pillar.rule}`,
+    })),
+  ]);
 }
 
 export const kbSources: KBSource[] = [
@@ -27,7 +49,8 @@ Target titles: Staff Software Architect, AI Automation Engineer, Staff/Principal
 Location: Greenville, South Carolina — remote preferred; open to US remote anywhere.
 Employment types: W2 full-time preferred; contract-to-hire considered.
 Work authorization: US citizen, no sponsorship required.
-Core stack: Python, TypeScript/NestJS, C#/.NET, Next.js/React, PostgreSQL/pgvector, Snowflake, Azure (Functions, Service Bus, App Config, Key Vault, App Insights, AKS), Docker, vLLM/Ollama/FAISS, LangChain/MCP, Claude/GPT/Gemini/Mistral.`,
+Specialties: Azure (AKS, Functions, Service Bus, Bicep, Terraform, Key Vault); Python and .NET backends; event-driven microservices; RAG, multi-vendor LLM gateways, and AI governance (Claude, GPT, Gemini, Mistral, vLLM); Kubernetes, Helm, GitOps, and secretless DevSecOps; identity governance (Okta IGA, Entra ID, SAML/OIDC).
+Verify him: ask the résumé bot at chat.adam.matthewsteinberger.com, read the packages on PyPI, or read the code on GitHub.`,
   },
   {
     id: 'hire-me-looking',
@@ -42,8 +65,9 @@ What Adam is not looking for: pure front-end or design roles with no backend/arc
     url: '/story',
     title: 'My Story',
     section: 'Who Adam is',
-    text: `Adam Matthew Steinberger is a Staff Software Architect and AI Automation Engineer based in Greenville, South Carolina. He builds RAG systems, event-driven microservices, and automation pipelines, and writes documentation thorough enough that the person who inherits a system can actually run it. He has 13+ years of professional software engineering experience.
-Adam does his best work in deep, uninterrupted blocks of time on one hard architecture problem, communicating via written specs and async communication rather than live whiteboards or drive-by pings. He works remote-first from Greenville, SC.`,
+    text: `Adam Matthew Steinberger is a Staff Software Architect and AI Automation Engineer based in Greenville, South Carolina. He builds AI systems that actually work inside enterprise environments — production-grade platforms that handle real data, real security requirements, and real organizational complexity, not just demos. He has 13+ years of professional software engineering experience. His view after those years: the hardest part is never the technology, it is designing so the people who inherit the system get a product that just works — architecture before code, juniors trained in parallel, handoffs that hold.
+Adam describes himself as a deep thinker and a purpose-driven craftsman. He documents everything for the same reason a RAG pipeline cites its sources, and he communicates best with written documentation — written specs and async communication rather than live whiteboards or drive-by pings. He does his best work in deep, uninterrupted blocks of time on one hard architecture problem, and works remote-first from Greenville, SC. He primarily develops free and open-source software and is always open for a connection or a coffee; Greenville-remote or US-remote volunteers are welcome to get involved.
+Before Vizius: four consulting engagements in six months through Adam Matthew Steinberger LLC (a self-hosted RAG chatbot, a cloud RAG chatbot, a production push-notification system, and a codebase review with a refactor roadmap), and two years moving Lima One Capital's integration layer from Mulesoft to NestJS microservices.`,
   },
   {
     id: 'story-vizius',
@@ -66,82 +90,13 @@ Adam does his best work in deep, uninterrupted blocks of time on one hard archit
     section: 'Career timeline',
     text: `Career timeline: B.A. Computer Science, Skidmore College (2012). Town & Country Computer Services, junior engineer, insurance software (2013-2015). New York State Insurance Fund — migrated VB6 to C# MVC, mentored junior devs (2015-2019). Bestpass — toll billing systems, introduced automated testing to a legacy codebase (2019-2020). Akmazio — led Agile delivery for a mobile networking platform (2020-2021). Certified ScrumMaster (2021). LeaseTrack — Python + AWS Textract for insurance document parsing (2021-2022). Transcat — .NET Web APIs and React for lab equipment calibration (2022-2023). Lima One Capital, Greenville SC — NestJS/gRPC microservices suite, replaced legacy Mulesoft (2023-2025). Adam Matthew Steinberger LLC — self-hosted RAG, cloud RAG, production push notifications (March-August 2025). The Vizius Group — Senior Azure & AI Development Engineer (September 2025-August 2026). Available as Staff Software Architect & AI Automation Engineer (September 2026).`,
   },
-  {
-    id: 'expertise-ai-ml',
-    url: '/expertise#ai-ml',
-    title: 'Expertise: AI & ML',
-    section: 'AI & ML',
-    text: `AI & ML. In plain terms: Adam helps distinguish a genuine AI opportunity from a vendor pitch — most of what gets sold as "AI" is a decision tree with better marketing. For engineers: AI contains ML contains deep learning contains transformers/LLMs, a nested hierarchy, and knowing where a use case sits in it is the first question before choosing a vendor or a model. Build order: prompting, then RAG, then fine-tuning, in that order, because each step adds cost and most problems never need the third. Rule: the word "AI" in a vendor pitch tells you nothing about which level of that hierarchy is actually involved.`,
-  },
-  {
-    id: 'expertise-rag',
-    url: '/expertise#rag-chat-systems',
-    title: 'Expertise: RAG chat systems',
-    section: 'RAG chat systems',
-    text: `RAG chat systems. In plain terms: a chatbot with a 35% resolution rate and one with an 85% resolution rate are almost never running different AI models — they're running on different data. For engineers: RAG turns a closed-book exam into an open-book one — retrieval, indexing, and generation, each of which can fail independently. Parent-child chunking, contextual retrieval, and hybrid search close most of the gap before the model is ever touched. Rule: the AI is a commodity. The knowledge base is the only genuinely proprietary part of the stack.`,
-  },
-  {
-    id: 'expertise-agents',
-    url: '/expertise#agents-automation',
-    title: 'Expertise: Agents & automation',
-    section: 'Agents & automation',
-    text: `Agents & automation. In plain terms: the hard part of an AI agent is never the model — it's the guardrails, the limits that stop it from running away with a cloud bill or doing something you didn't ask for. For engineers: hard iteration caps, token/time budgets per run, explicit completion criteria, and human-in-the-loop checkpoints are mandatory production controls, not polish. Model Context Protocol (MCP) is becoming the standard way agents reach tools and data. Rule: single-agent architectures handle roughly 80% of real cases; multi-agent adds cost and non-determinism most problems don't need.`,
-  },
-  {
-    id: 'expertise-process',
-    url: '/expertise#process-engineering',
-    title: 'Expertise: Process engineering',
-    section: 'Process engineering',
-    text: `Process engineering. In plain terms: most expensive project mistakes aren't technical failures — they're scope decisions made before the technical work even begins, or never made at all. For engineers: Cynefin for method selection (the most damaging error is treating a Complex problem as merely Complicated and over-planning the unknowable); structured interviews as the highest-yield requirements technique; Event Storming and Example Mapping to surface bounded contexts before a line of code is written. Rule: no single methodology wins — context-fit and execution discipline win.`,
-  },
-  {
-    id: 'expertise-scrum',
-    url: '/expertise#scrum-agile',
-    title: 'Expertise: Scrum & Agile',
-    section: 'Scrum & Agile',
-    text: `Scrum & Agile. Adam is a Certified ScrumMaster who runs "Security-First Scrum": secure, working, tested, clean code, in that order, never traded away for speed. Threat modeling belongs in backlog refinement (a 5-10 minute STRIDE pass), not a waterfall gate. Retrospective action items get a single named owner and become backlog tickets, or they die. Rule: psychological safety is a security control — teams without it hide vulnerabilities instead of reporting them.`,
-  },
-  {
-    id: 'expertise-architecture',
-    url: '/expertise#software-architecture',
-    title: 'Expertise: Software architecture',
-    section: 'Software architecture',
-    text: `Software architecture. In plain terms: every architecture decision is a trade-off. For engineers: start with a modular monolith, not microservices — roughly 80% of microservices' benefits come from logical boundaries, not independent deployment, and the infrastructure cost runs 3.75-6x higher. Split along business boundaries, not technical layers. Rule: a dedicated "release coordination manager" role is the tell-tale sign of a distributed monolith, not a real microservices win.`,
-  },
-  {
-    id: 'expertise-onion',
-    url: '/expertise#onion-clean-layering',
-    title: 'Expertise: Onion / clean layering',
-    section: 'Onion / clean layering',
-    text: `Onion / clean layering. In plain terms: Adam builds systems where the core business logic doesn't know or care what database or framework is running underneath it, so swapping either one later doesn't require a rewrite. For engineers: Hexagonal, Clean, and Onion architecture are the same idea in three vocabularies — a dependency rule pointing inward to a framework-independent domain core, with adapters at the edges. Domain has zero dependencies on API or infrastructure, no exceptions. Rule: dependencies point inward only.`,
-  },
-  {
-    id: 'expertise-microservices',
-    url: '/expertise#microservices',
-    title: 'Expertise: Microservices',
-    section: 'Microservices',
-    text: `Microservices. In plain terms: Adam doesn't reach for microservices by default — only when a specific business boundary or compliance requirement genuinely demands independent deployment. For engineers: event-driven patterns via Azure Service Bus (ordering, transactions, DLQ), Event Grid (reactive pub/sub), and Event Hubs are complementary, not competing. The Outbox pattern is mandatory wherever a business change and an event need to land together. Rule: redundancy is architecture; resiliency is behavior.`,
-  },
-  {
-    id: 'expertise-azure',
-    url: '/expertise#azure-cloud',
-    title: 'Expertise: Azure cloud',
-    section: 'Azure cloud',
-    text: `Azure cloud. Adam has spent 13+ years building on Azure — Service Bus, Functions, Key Vault, App Config, AKS — and knows which of its 250+ built-in roles map to a data-plane action. Control-plane "*" in Actions does not grant DataActions, the single most common source of production RBAC incidents. Managed identity, zero stored secrets, OIDC federation for CI/CD. Cosmos DB partition key is an irreversible decision. Rule: Owner can fully manage a storage account and still not read a single blob without a separate data-plane role assignment.`,
-  },
-  {
-    id: 'expertise-data',
-    url: '/expertise#data-integration-pipelines',
-    title: 'Expertise: Data & integration pipelines',
-    section: 'Data & integration pipelines',
-    text: `Data & integration pipelines. In plain terms: Adam connects systems that don't want to talk to each other — HubSpot, SharePoint, Snowflake, Salesforce, legacy APIs — without a fragile spaghetti of point-to-point scripts. For engineers: ELT is the production default on modern warehouses; idempotency is non-negotiable so re-running a failed job never double-writes. dbt three-layer discipline: staging views with no joins, intermediate as ephemeral, marts capped at 4-6 joins. Rule: watermark storage belongs in an audit table in the target database, not just an orchestrator variable.`,
-  },
+  ...expertiseChunks(),
   {
     id: 'expertise-stack',
     url: '/expertise',
     title: 'Expertise: The stack',
     section: 'Full technical stack',
-    text: `Full stack: Python, TypeScript/NestJS, C#/.NET, Next.js/React, PostgreSQL/pgvector, MongoDB, Snowflake, Azure Functions, Azure Service Bus, Azure App Config & Key Vault, Azure App Insights, AKS/Helm/GitOps, Bicep, Docker/Kubernetes, vLLM/Ollama/FAISS, LangChain/MCP, Claude/GPT/Gemini/Mistral, Grafana/Prometheus, GitHub Actions/Bitbucket/Azure DevOps, Jira/Scrum (CSM).`,
+    text: `Full stack: ${fullStack().join(', ')}.`,
   },
   {
     id: 'open-source',

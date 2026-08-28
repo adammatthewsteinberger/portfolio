@@ -25,7 +25,7 @@ const timeline = [
   { year: '2021', label: 'Certified ScrumMaster' },
   { year: '2021–2022', label: 'LeaseTrack — Python + AWS Textract for insurance document parsing' },
   { year: '2022–2023', label: 'Transcat — .NET Web APIs and React for lab equipment calibration' },
-  { year: '2023–2025', label: 'Lima One Capital, Greenville SC — NestJS/gRPC microservices suite, replaced legacy Mulesoft' },
+  { year: '2023–2025', label: 'Lima One Capital, Greenville SC — moved the integration layer from Mulesoft to NestJS/gRPC microservices' },
   { year: 'Mar–Aug 2025', label: 'Adam Matthew Steinberger LLC — self-hosted RAG, cloud RAG, production push notifications' },
   { year: 'Sep 2025–Aug 2026', label: 'The Vizius Group — Senior Azure & AI Development Engineer' },
   { year: 'Sep 2026', label: 'Available — Staff Software Architect & AI Automation Engineer' },
@@ -78,9 +78,11 @@ export default function StoryPage() {
           <div>
             <p>
               I&apos;m Adam Matthew Steinberger — a Staff Software Architect and AI Automation
-              Engineer based in Greenville, South Carolina. I build RAG systems, event-driven
-              microservices, and automation pipelines, and I write down how they work well
-              enough that the person who inherits them can actually run them.
+              Engineer based in Greenville, South Carolina. I build AI systems that actually work
+              inside enterprise environments: production-grade platforms that handle real data,
+              real security requirements, and real organizational complexity. Not just demos.
+              After 13+ years, the hardest part is never the technology — it&apos;s designing so
+              the people who inherit it get a product that just works.
             </p>
           </div>
 
@@ -108,10 +110,11 @@ export default function StoryPage() {
               How I work best
             </h2>
             <ul className="list-disc pl-6 space-y-2">
-              <li>Written specs and async communication over live whiteboards and drive-by Slack pings</li>
+              <li>Written specs and async communication over live whiteboards and drive-by Slack pings — I document everything for the same reason a RAG pipeline cites its sources</li>
               <li>Deep, uninterrupted blocks of time on one hard problem, not context-switched across five</li>
               <li>Remote-first — Greenville, SC is home; the work travels fine over a network connection</li>
-              <li>Documentation as a deliverable, not an afterthought — the goal is a system a junior engineer can own</li>
+              <li>Architecture before code, juniors trained in parallel, handoffs that hold — the goal is a system a junior engineer can own</li>
+              <li>I primarily develop free and open-source software, and I&apos;m always open for a connection or a coffee</li>
             </ul>
           </div>
 
@@ -193,10 +196,17 @@ export default function StoryPage() {
               Before that
             </h2>
             <p>
-              Thirteen-plus years of software engineering, starting in Albany, New York, and
-              running through insurance systems, fintech, toll billing, mobile networking, and
-              lab-equipment calibration before I landed on AI and Azure architecture as the work
-              I actually want to be doing every day. If you want the fuller version of my story,
+              Immediately before Vizius: four consulting engagements in six months through my own
+              LLC — a self-hosted RAG chatbot, a cloud RAG chatbot, a production push-notification
+              system, and a codebase review with a refactor roadmap — and, before that, two years
+              moving{' '}
+              <Link href="/work/lima-one-microservices-suite" className="text-[var(--color-accent-blue)] hover:underline">
+                Lima One Capital&apos;s integration layer from Mulesoft to NestJS microservices
+              </Link>
+              . Thirteen-plus years in total, starting in Albany, New York, and running through
+              insurance systems, fintech, toll billing, mobile networking, and lab-equipment
+              calibration before I landed on AI and Azure architecture as the work I actually
+              want to be doing every day. If you want the fuller version of my story,
               the parts that aren&apos;t about software are in{' '}
               <Link href="/books" className="text-[var(--color-accent-blue)] hover:underline">
                 the book I wrote
