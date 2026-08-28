@@ -1,15 +1,17 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
 import ContactForm from '@/components/ContactForm';
+import { availabilityFact, availabilityLong } from '@/lib/availability';
 
 export const metadata: Metadata = {
   title: 'Hire Me | Adam Matthew Steinberger — Staff Software Architect & AI Automation Engineer',
   description:
-    'Available September 2026. Staff Software Architect & AI Automation Engineer — RAG systems, event-driven Azure microservices, automation pipelines. Greenville, SC (remote) or US remote.',
+    'Available from September 2026. Staff Software Architect & AI Automation Engineer — RAG systems, event-driven Azure microservices, automation pipelines. Greenville, SC (remote) or US remote.',
+  alternates: { canonical: '/hire-me' },
   openGraph: {
     title: 'Hire Me | Adam Matthew Steinberger',
     description:
-      'Available September 2026. Staff Software Architect & AI Automation Engineer — RAG systems, event-driven Azure microservices, automation pipelines.',
+      'Available from September 2026. Staff Software Architect & AI Automation Engineer — RAG systems, event-driven Azure microservices, automation pipelines.',
     url: 'https://hire.adam.matthewsteinberger.com/hire-me',
   },
 };
@@ -17,7 +19,7 @@ export const metadata: Metadata = {
 const facts: { label: string; value: string }[] = [
   { label: 'Target titles', value: 'Staff Software Architect · AI Automation Engineer · Staff/Principal AI Engineer · Solutions Architect' },
   { label: 'Location', value: 'Greenville, SC — remote preferred; open to US remote anywhere' },
-  { label: 'Available', value: 'September 2026' },
+  { label: 'Available', value: availabilityFact() },
   { label: 'Employment types', value: 'W2 full-time preferred; contract-to-hire considered' },
   { label: 'Work authorization', value: 'US citizen — no sponsorship required' },
   {
@@ -45,7 +47,7 @@ export default function HireMePage() {
     <div>
       <section className="container mx-auto px-4 pt-8 pb-12 text-center">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-[var(--color-accent-green)]/15 border border-[var(--color-accent-green)]/30 text-[var(--color-accent-green)] text-sm font-semibold">
-          Available September 2026 · Greenville, SC (remote) · US remote
+          {availabilityLong()}
         </div>
         <h1 className="text-4xl md:text-5xl font-bold text-[var(--color-text-primary)] mb-4">
           Hire Me

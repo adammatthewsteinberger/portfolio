@@ -47,12 +47,12 @@ src/
 │   ├── blog/[slug]/opengraph-image.tsx, work/[slug]/opengraph-image.tsx  # Per-page OG images (Node runtime — they call fs-backed content utils, so edge is NOT used here)
 ├── components/                   # Shared React components; layout/ has Header + Footer
 ├── content/
-│   ├── blog/*.md                 # 116 posts
-│   ├── projects/*.md             # 12 case studies
+│   ├── blog/*.md                 # 115 posts
+│   ├── projects/*.md             # 17 case studies
 │   ├── services/*.md             # 45 service pages
 │   └── articles/*.md             # 33 Novice to Navigator articles
-├── data/                         # Metadata arrays (articles.ts, projects.ts, services.ts) + kb-sources.ts
-├── lib/                          # Content utils (blogUtils, projectUtils, serviceUtils, markdownUtils), analytics.ts, ask/ (RAG bot retrieval + rate limiting)
+├── data/                         # Metadata arrays (articles.ts, projects.ts, services.ts, open-source.ts) + kb-sources.ts
+├── lib/                          # Content utils (blogUtils, projectUtils, serviceUtils, markdownUtils), analytics.ts, availability.ts, ask/ (RAG bot retrieval + rate limiting)
 ├── hooks/                        # useConsent, useBotDetection, useScrollDepth
 ├── test/setup.ts                 # Vitest global setup (jsdom polyfills, mocks)
 └── generated/kb.json             # RAG bot knowledge base — GITIGNORED, rebuilt by scripts/build-kb.ts before dev/build/test/typecheck
@@ -125,6 +125,9 @@ Husky runs `lint-staged` + `npm run typecheck` on pre-commit, and `npm run test`
 - **No pricing anywhere on the site** — this was a deliberate removal; don't reintroduce dollar figures on `/services/*` or elsewhere
 - **Books are not for sale** — no Amazon links, no prices; only email-capture "get notified" CTAs (Mailchimp, `https://eepurl.com/jiYXCQ`)
 - **Redirects** for renamed/merged routes live in `next.config.ts` under the `redirects()` function — add one there whenever a route is renamed or a duplicate page is merged, don't just delete the old page
+- **Every page sets its own `alternates.canonical`** (static pages in `metadata`, dynamic routes in `generateMetadata`), and the root layout must never declare one — Next.js does not deep-merge `alternates`, so a root canonical is inherited verbatim by every page that omits it (that bug shipped once: every URL canonicalized to the homepage). `src/__tests__/canonicals.test.ts` guards both halves.
+- **Never state a count of the open-source packages** — list them by name from `src/data/open-source.ts`. Counts drifted three times in a month; `src/data/__tests__/open-source.test.ts` fails on any spelled-out or numeric package count in `src/app`, `src/components`, `src/data`, or `public/llms.txt`.
+- **Availability copy** (the "Available Sept 2026" / "Available now" pills, headings, and fact rows) comes from `src/lib/availability.ts`, never a literal. It is evaluated at build time, so redeploy after 2026-09-01 for the flip to show.
 - **Tests are colocated** in `__tests__/` directories next to the code they cover, and coverage must stay at 100% — see `vitest.config.ts` for the exact include/exclude globs (roughly: `src/lib`, `src/data`, `src/components`, `src/hooks`; `src/app/**` route handlers and pages are intentionally excluded from the coverage requirement, matching how `/api/ask/route.ts` and the OG image routes are handled)
 
 ## Deployment

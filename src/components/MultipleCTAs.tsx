@@ -1,10 +1,11 @@
 import Link from 'next/link';
+import { availabilityHeading } from '@/lib/availability';
 
 export default function MultipleCTAs() {
   return (
     <section className="container mx-auto px-4 py-16">
       <h4 className="text-2xl font-bold text-center mb-2 bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-green)] bg-clip-text text-transparent">
-        Available September 2026
+        {availabilityHeading()}
       </h4>
       <p className="text-center text-[var(--color-text-muted)] mb-8">
         Staff Software Architect &amp; AI Automation Engineer — Greenville, SC (remote) or US remote.

@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: 'Privacy Policy | Adam Matthew Steinberger',
   description:
     'Learn how we collect, use, and protect your personal information when you visit our website.',
+  alternates: { canonical: '/privacy' },
   robots: {
     index: true,
     follow: true,

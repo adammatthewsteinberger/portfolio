@@ -1,11 +1,24 @@
-import { describe, it, expect } from 'vitest';
+import { afterEach, describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import MultipleCTAs from '../MultipleCTAs';
 
 describe('MultipleCTAs', () => {
-  it('renders the availability heading', () => {
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  it('renders the September heading before the availability date', () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-08-27T12:00:00-04:00'));
     render(<MultipleCTAs />);
     expect(screen.getByRole('heading', { name: /available september 2026/i })).toBeInTheDocument();
+  });
+
+  it('renders the "now" heading once the date has passed', () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-09-01T09:00:00-04:00'));
+    render(<MultipleCTAs />);
+    expect(screen.getByRole('heading', { name: /^available now$/i })).toBeInTheDocument();
   });
 
   it('renders the primary Hire Me CTA', () => {

@@ -1,6 +1,7 @@
 import CookieConsent from '@/components/CookieConsent';
 import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
+import { availabilityLong, availabilityShort } from '@/lib/availability';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     template: '%s | Adam Matthew Steinberger',
   },
   description:
-    'Staff Software Architect & AI Automation Engineer in Greenville, SC. RAG systems, event-driven Azure microservices, and automation pipelines. Available September 2026.',
+    'Staff Software Architect & AI Automation Engineer in Greenville, SC. RAG systems, event-driven Azure microservices, and automation pipelines. Available from September 2026.',
   authors: [{ name: 'Adam Matthew Steinberger' }],
   creator: 'Adam Matthew Steinberger',
   publisher: 'Adam Matthew Steinberger LLC',
@@ -28,7 +29,6 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL(SITE_URL),
   alternates: {
-    canonical: '/',
     types: {
       'application/rss+xml': `${SITE_URL}/feed.xml`,
     },
@@ -89,12 +89,15 @@ const jsonLd = {
         'https://github.com/adammatthewsteinberger',
       ],
       knowsAbout: [
-        'Artificial Intelligence',
-        'Retrieval-Augmented Generation',
-        'Microservices Architecture',
-        'Azure Cloud',
         'Software Architecture',
-        'Process Engineering',
+        'Retrieval-Augmented Generation',
+        'Multi-vendor LLM Gateways and AI Governance',
+        'Event-driven Microservices',
+        'Microsoft Azure (AKS, Functions, Service Bus, Bicep, Terraform, Key Vault)',
+        'Python and .NET Backends',
+        'Kubernetes, Helm, GitOps, and Secretless DevSecOps',
+        'Identity Governance (Okta IGA, Entra ID, SAML/OIDC)',
+        'Process Engineering and Security-First Scrum',
       ],
     },
     {
@@ -185,7 +188,7 @@ export default function RootLayout({
           `}
         </Script>
 
-        <Header />
+        <Header availabilityShortLabel={availabilityShort()} availabilityLongLabel={availabilityLong()} />
         <main>{children}</main>
         <Footer />
         <CookieConsent />

@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { availabilityLong, availabilityShort } from '@/lib/availability';
 
 const navItems = [
   { href: '/', label: 'Home' },
@@ -13,7 +14,16 @@ const navItems = [
   { href: '/hire-me', label: 'Hire Me' },
 ];
 
-export default function Header() {
+export interface HeaderProps {
+  /** Pill text; the root layout passes build-time values so server and client agree. */
+  availabilityShortLabel?: string;
+  availabilityLongLabel?: string;
+}
+
+export default function Header({
+  availabilityShortLabel = availabilityShort(),
+  availabilityLongLabel = availabilityLong(),
+}: HeaderProps = {}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Close the mobile menu on Escape and lock body scroll while it's open.
@@ -62,7 +72,7 @@ export default function Header() {
               </Link>
             ))}
             <span className="mx-2 hidden xl:inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-accent-green)]/15 border border-[var(--color-accent-green)]/30 text-[var(--color-accent-green)] text-xs font-semibold whitespace-nowrap">
-              Available Sept 2026
+              {availabilityShortLabel}
             </span>
           </div>
 
@@ -118,7 +128,7 @@ export default function Header() {
               Contact
             </Link>
             <span className="mt-4 self-start inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-accent-green)]/15 border border-[var(--color-accent-green)]/30 text-[var(--color-accent-green)] text-xs font-semibold">
-              Available Sept 2026 · Greenville, SC (remote) · US remote
+              {availabilityLongLabel}
             </span>
           </div>
         </div>

@@ -5,11 +5,12 @@ import { getAllBlogPosts } from '@/lib/blogUtils';
 export const metadata: Metadata = {
   title: 'Writing | Adam Matthew Steinberger',
   description:
-    'Blog posts on AI and automation, a free 33-article series on AI chatbots for business, and two books — one published, one in development.',
+    'Blog posts on AI and automation, a free 33-article series on AI chatbots for business, and two books in development.',
+  alternates: { canonical: '/writing' },
   openGraph: {
     title: 'Writing | Adam Matthew Steinberger',
     description:
-      'Blog posts on AI and automation, a free 33-article series on AI chatbots for business, and two books.',
+      'Blog posts on AI and automation, a free 33-article series on AI chatbots for business, and two books in development.',
     url: 'https://hire.adam.matthewsteinberger.com/writing',
   },
 };
@@ -58,8 +59,8 @@ export default function WritingPage() {
           >
             <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-2">Books</h2>
             <p className="text-[var(--color-text-muted)]">
-              Novice to Navigator and Engineering Influence — one in development, one already
-              underway.
+              Novice to Navigator and Engineering Influence — both in development. The first
+              edition of Novice to Navigator is free to read right now.
             </p>
           </Link>
         </div>

@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Books | Adam Matthew Steinberger',
   description:
     'Novice to Navigator (second edition in development) and Engineering Influence — both currently in development. Get notified when either ships.',
+  alternates: { canonical: '/books' },
   openGraph: {
     title: 'Books | Adam Matthew Steinberger',
     description: 'Novice to Navigator and Engineering Influence — both currently in development.',
@@ -18,7 +19,7 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'Book',
-      name: 'Novice to Navigator',
+      name: 'Novice to Navigator: Your Guide to AI Chatbots for Business',
       description: 'Your guide to AI chatbots for business. Second edition in development.',
       author: { '@type': 'Person', name: 'Adam Matthew Steinberger' },
       url: 'https://hire.adam.matthewsteinberger.com/books',
