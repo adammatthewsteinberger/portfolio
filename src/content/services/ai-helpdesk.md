@@ -1,14 +1,14 @@
 ---
 title: 'AI Solutions for Helpdesk'
 subtitle: 'Customer Support Automation & Service Enhancement'
-description: 'I build specialized AI-powered helpdesk solutions that dramatically reduce ticket volume, improve resolution times, and boost customer satisfaction—all while lowering your support costs. Your support team spends too much time answering repetitive questions, routing tickets, and searching for information that should be instantly accessible. My helpdesk AI systems automate tier-1 support with intelligent chatbots that understand context and provide accurate answers 24/7, automatically route and prioritize tickets based on urgency and expertise required, suggest relevant knowledge base articles to agents in real-time, and generate draft responses that agents can review and send in seconds.<newline>These systems integrate seamlessly with Zendesk, Freshdesk, ServiceNow, Salesforce Service Cloud, and custom helpdesk platforms, learning from your historical tickets and knowledge base to continuously improve accuracy. Your helpdesk AI includes conversation analytics that identify common issues and gaps in documentation, agent performance insights that highlight training opportunities, and intelligent escalation that knows when human intervention is truly needed.<newline>Upstate companies deploying helpdesk AI typically see 60% reduction in ticket volume through self-service, 45% faster average resolution times, 70% improvement in first-contact resolution, 35% reduction in support costs, and 50% higher customer satisfaction scores. Support teams love it because AI handles routine inquiries while they focus on complex problems that truly require human expertise and empathy. Scroll down to see exactly how helpdesk AI solutions deliver measurable ROI for your specific support operations, team size, and customer base.'
+description: 'I build specialized AI-powered helpdesk solutions that dramatically reduce ticket volume, improve resolution times, and boost customer satisfaction—all while lowering your support costs. Your support team spends too much time answering repetitive questions, routing tickets, and searching for information that should be instantly accessible. My helpdesk AI systems automate tier-1 support with intelligent chatbots that understand context and provide accurate answers 24/7, automatically route and prioritize tickets based on urgency and expertise required, suggest relevant knowledge base articles to agents in real-time, and generate draft responses that agents can review and send in seconds.<newline>These systems integrate seamlessly with Zendesk, Freshdesk, ServiceNow, Salesforce Service Cloud, and custom helpdesk platforms, learning from your historical tickets and knowledge base to continuously improve accuracy. Your helpdesk AI includes conversation analytics that identify common issues and gaps in documentation, agent performance insights that highlight training opportunities, and intelligent escalation that knows when human intervention is truly needed.<newline>Support teams love it because AI handles routine inquiries while they focus on complex problems that truly require human expertise and empathy. Scroll down to see exactly how helpdesk AI solutions deliver measurable ROI for your specific support operations, team size, and customer base.'
 category: 'Customer Support AI'
 heroTitle: 'AI Solutions for Helpdesk'
 heroSubtitle: 'Customer Support Automation & Service Enhancement'
 whyChoose: 'Why Choose AI for Helpdesk Support?'
 choice1Icon: 'fa-headset'
 choice1Title: 'Faster Resolutions'
-choice1Description: 'Automate ticket handling and customer responses for 60% faster resolutions'
+choice1Description: 'Automate ticket handling and customer responses so your team resolves issues faster'
 choice2Icon: 'fa-smile'
 choice2Title: 'Improved Satisfaction'
 choice2Description: 'Deliver consistent, helpful support that boosts customer experience'
@@ -45,12 +45,6 @@ I help Greenville businesses automate and scale customer support using secure, i
 
 ### Key Helpdesk Benefits
 
-- **Ticket Resolution:** 60% faster average handling times
-- **Customer Satisfaction:** 45% higher CSAT scores with AI support
-- **Response Time:** 70% quicker replies and issue recognition
-- **Self-Service Usage:** 50% increase in knowledge base engagement
-- **Agent Productivity:** 40% more tickets resolved per agent
-- **Cost Reduction:** 35% cut in operating costs via automation
 - **Support Analytics:** Real-time dashboards with actionable data
 - **Scalability:** Grow support without growing overhead
 
