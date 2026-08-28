@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import ContactForm from '@/components/ContactForm';
 import { availabilityFact, availabilityLong } from '@/lib/availability';
+import { OG_IMAGE } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Hire Me | Adam Matthew Steinberger — Staff Software Architect & AI Automation Engineer',
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
     'Available from September 2026. Staff Software Architect & AI Automation Engineer — RAG systems, event-driven Azure microservices, automation pipelines. Greenville, SC (remote) or US remote.',
   alternates: { canonical: '/hire-me' },
   openGraph: {
+    images: [OG_IMAGE],
     title: 'Hire Me | Adam Matthew Steinberger',
     description:
       'Available from September 2026. Staff Software Architect & AI Automation Engineer — RAG systems, event-driven Azure microservices, automation pipelines.',

@@ -7,6 +7,7 @@ import rehypeHighlight from 'rehype-highlight';
 import MultipleCTAs from '@/components/MultipleCTAs';
 import type { Metadata } from 'next';
 import Icon from '@/components/Icon';
+import { OG_IMAGE } from '@/lib/seo';
 
 interface ServicePageProps {
   params: Promise<{
@@ -49,26 +50,19 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
       canonical: `/services/${slug}`,
     },
     openGraph: {
+      images: [OG_IMAGE],
       title: serviceMetadata.title,
       description: cleanDescription,
       url: pageUrl,
       siteName: 'Adam Matthew Steinberger',
-      images: [
-        {
-          url: '/images/social-preview.png',
-          width: 1200,
-          height: 630,
-          alt: serviceMetadata.title,
-        },
-      ],
       locale: 'en_US',
       type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
+      images: [OG_IMAGE],
       title: serviceMetadata.title,
       description: cleanDescription,
-      images: ['/images/social-preview.png'],
     },
   };
 }

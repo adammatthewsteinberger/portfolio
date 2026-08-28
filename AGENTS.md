@@ -159,7 +159,7 @@ The site runs on Cloudflare Workers through the OpenNext adapter — free plan: 
 
 ### Secrets and variables
 
-- `ANTHROPIC_API_KEY` — a Worker secret: `npx wrangler secret put ANTHROPIC_API_KEY` (once). Pairs with `ASK_BOT_ENABLED=true` in `wrangler.jsonc`; the widget stays hidden unless both are set.
+- `ANTHROPIC_API_KEY` — a GitHub Actions secret; the deploy workflow pushes it to the Worker with `wrangler secret put` on every run (it is never baked into the bundle). Pairs with `ASK_BOT_ENABLED=true` in `wrangler.jsonc`; the widget stays hidden unless both are set.
 - `CLOUDFLARE_API_TOKEN` (Workers Scripts: Edit + Zone DNS: Edit) and `CLOUDFLARE_ACCOUNT_ID` — GitHub repository secrets for the workflow.
 - `GOOGLE_SITE_VERIFICATION` — optional GitHub secret, baked in at build.
 
@@ -168,7 +168,7 @@ The site runs on Cloudflare Workers through the OpenNext adapter — free plan: 
 1. **Cloudflare → Add a site**: `matthewsteinberger.com` (free plan). Cloudflare imports the existing DNS records; check MX/TXT came across.
 2. **Porkbun**: change the domain's nameservers to the two Cloudflare assigns. Registrar stays Porkbun.
 3. First deploy (`npm run deploy` after `npx wrangler login`, or push to `main` with the GitHub secrets set). The custom domains in `wrangler.jsonc` are created on deploy; remove any old CNAME records for `hire.adam` / `chat.adam` that still point at Netlify.
-4. `npx wrangler secret put ANTHROPIC_API_KEY`.
+4. Add `ANTHROPIC_API_KEY` to the repository's Actions secrets; the next deploy syncs it to the Worker.
 5. Netlify: delete the site (or at least remove its custom domains) so nothing answers there.
 
 ## SEO / GEO surface

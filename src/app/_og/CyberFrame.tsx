@@ -5,8 +5,7 @@ import { RAJDHANI_BOLD_B64, SHARE_TECH_MONO_B64 } from './fonts.generated';
  * Shared cyberpunk frame for the dynamic Open Graph images (blog posts, case
  * studies). Satori (next/og) supports only a subset of CSS, so this uses
  * gradients, borders and absolutely-positioned divs — no filters or SVG.
- * The static home/social image (public/images/og-home.png) is the same design
- * rendered from SVG.
+ * The site-wide card (src/app/opengraph-image.tsx) uses the same frame.
  */
 export const OG_SIZE = { width: 1200, height: 630 };
 

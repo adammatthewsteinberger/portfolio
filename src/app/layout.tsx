@@ -8,6 +8,7 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import './globals.css';
 import { inter, rajdhani, shareTechMono } from './fonts';
+import { OG_IMAGE } from '@/lib/seo';
 
 const SITE_URL = 'https://vibewithadam.matthewsteinberger.com';
 const GA_MEASUREMENT_ID = 'G-P4CX07CNRW';
@@ -36,20 +37,14 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
+    images: [OG_IMAGE],
     siteName: 'Adam Matthew Steinberger',
     locale: 'en_US',
     type: 'website',
-    images: [
-      {
-        url: '/images/og-home.png',
-        width: 1200,
-        height: 630,
-        alt: 'Adam Matthew Steinberger — Staff Software Architect & AI Automation Engineer',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
+    images: [OG_IMAGE],
   },
   // The preview site canonicalizes to production (metadataBase) and is never indexed.
   robots: PREVIEW ? { index: false, follow: false } : {

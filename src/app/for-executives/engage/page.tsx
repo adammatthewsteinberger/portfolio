@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import ContactForm from '@/components/ContactForm';
 import { EXEC_BOOKING_URL, execOffer, execRoutes } from '@/data/exec';
+import { OG_IMAGE } from '@/lib/seo';
 
 const route = execRoutes[2];
 
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
     'Adam Matthew Steinberger LLC tailors and whitelabels enterprise AI platforms to your systems, identity provider, and compliance regime — with the documentation and handoff that let your team run them.',
   alternates: { canonical: route.execUrl },
   openGraph: {
+    images: [OG_IMAGE],
     title: 'Engage | For Executives | Adam Matthew Steinberger',
     description: 'Tailored and whitelabeled enterprise AI platforms, with the handoff included.',
     url: `https://vibewithadam.matthewsteinberger.com${route.execUrl}`,

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import { fullStack, specialtyGroups } from '@/data/expertise';
 import { projects } from '@/data/projects';
+import { OG_IMAGE } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Expertise | Adam Matthew Steinberger',
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
     'Azure (AKS, Functions, Service Bus, Bicep, Terraform, Key Vault) · Python and .NET backends · event-driven microservices · RAG, multi-vendor LLM gateways, AI governance · Kubernetes, Helm, GitOps, secretless DevSecOps · identity governance (Okta IGA, Entra ID, SAML/OIDC).',
   alternates: { canonical: '/expertise' },
   openGraph: {
+    images: [OG_IMAGE],
     title: 'Expertise | Adam Matthew Steinberger',
     description:
       'Azure · Python and .NET backends · event-driven microservices · RAG, multi-vendor LLM gateways, AI governance · Kubernetes, Helm, GitOps, secretless DevSecOps · identity governance.',

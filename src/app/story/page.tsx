@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { OG_IMAGE } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'My Story | Adam Matthew Steinberger',
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
     'Staff Software Architect & AI Automation Engineer in Greenville, SC. Thirteen-plus years across insurance, fintech, and cybersecurity, and why I do my best work deep in AI, automation, and architecture.',
   alternates: { canonical: '/story' },
   openGraph: {
+    images: [OG_IMAGE],
     title: 'My Story | Adam Matthew Steinberger',
     description:
       'Staff Software Architect & AI Automation Engineer in Greenville, SC. Thirteen-plus years of shipping RAG systems, microservices, and automation pipelines.',
