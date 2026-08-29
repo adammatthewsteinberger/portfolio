@@ -18,7 +18,7 @@ Out of scope:
 
 ## Supported versions
 
-This is a single, continuously-deployed application on `main` — there is no versioned release history to track. Only the version currently deployed at [hire.adam.matthewsteinberger.com](https://hire.adam.matthewsteinberger.com) is "supported"; there's no LTS branch.
+This is a single, continuously-deployed application on `main` — there is no versioned release history to track. Only the version currently deployed at [vibewithadam.matthewsteinberger.com](https://vibewithadam.matthewsteinberger.com) is "supported"; there's no LTS branch.
 
 ## Reporting a vulnerability
 
