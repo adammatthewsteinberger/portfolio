@@ -1,6 +1,6 @@
 # portfolio
 
-Source for [vibewithadam.matthewsteinberger.com](https://vibewithadam.matthewsteinberger.com) (formerly hire.adam.matthewsteinberger.com, which now redirects) — a portfolio site that doubles as a working demo of a shipped RAG feature. Portfolio, blog, a free 33-article course on AI chatbots for business, and an "Ask my résumé" widget that answers from the site's own content, all in one Next.js app.
+Source for [vibewithadam.matthewsteinberger.com](https://vibewithadam.matthewsteinberger.com) (formerly vibewithadam.matthewsteinberger.com, which now redirects) — a portfolio site that doubles as a working demo of a shipped RAG feature. Portfolio, blog, a free 33-article course on AI chatbots for business, and an "Ask my résumé" widget that answers from the site's own content, all in one Next.js app.
 
 [![Live site](https://img.shields.io/badge/live-vibewithadam.matthewsteinberger.com-0a7ea4)](https://vibewithadam.matthewsteinberger.com)
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org)

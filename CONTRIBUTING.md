@@ -22,4 +22,4 @@ For anything larger than a typo, open an issue first so the change is agreed bef
 
 ## Contact
 
-adam@matthewsteinberger.com · [hire.adam.matthewsteinberger.com/contact](https://hire.adam.matthewsteinberger.com/contact)
+adam@matthewsteinberger.com · [vibewithadam.matthewsteinberger.com/contact](https://vibewithadam.matthewsteinberger.com/contact)
