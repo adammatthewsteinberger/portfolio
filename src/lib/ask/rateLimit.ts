@@ -1,12 +1,12 @@
 /**
  * In-memory rate limiting and spend cap for the "Ask my résumé" bot.
  *
- * Netlify Functions can scale to multiple concurrent instances, each with
- * its own memory, and cold starts reset it entirely — so these caps are a
- * best-effort backstop against a single hot instance being hammered, not a
- * hard guarantee across the whole deployment. Combined with the per-request
- * turn cap and honeypot check, that's an acceptable tradeoff for a low-value
- * chat widget without provisioning Netlify Blobs/KV for this.
+ * Cloudflare Workers (and formerly Netlify Functions) can scale to multiple
+ * concurrent isolates, each with its own memory, and cold starts reset it
+ * entirely — so these caps are a best-effort backstop against a single hot
+ * isolate being hammered, not a hard guarantee across the whole deployment.
+ * Combined with the per-request turn cap and honeypot check, that's an
+ * acceptable tradeoff for a low-value chat widget without shared KV state.
  */
 
 const WINDOW_MS = 60_000;
@@ -72,7 +72,10 @@ export function recordOutputTokens(count: number): void {
 }
 
 export function clientKeyFromHeaders(headers: Headers): string {
+  // Prefer Cloudflare's connecting IP (production Workers), then the legacy
+  // Netlify header (preview/local), then the first XFF hop.
   return (
+    headers.get('cf-connecting-ip') ||
     headers.get('x-nf-client-connection-ip') ||
     headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
     'unknown'
