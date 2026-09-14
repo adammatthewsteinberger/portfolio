@@ -100,19 +100,37 @@ describe('rateLimit', () => {
   });
 
   describe('clientKeyFromHeaders', () => {
-    it('prefers the Netlify client connection IP header', async () => {
+    it('prefers the Cloudflare connecting IP over spoofable headers', async () => {
+      const { clientKeyFromHeaders } = await import('../rateLimit');
+      const headers = new Headers({
+        'cf-connecting-ip': '203.0.113.10',
+        'x-nf-client-connection-ip': '1.2.3.4',
+        'x-forwarded-for': '5.6.7.8, 9.9.9.9',
+      });
+      expect(clientKeyFromHeaders(headers)).toBe('203.0.113.10');
+    });
+
+    it('ignores a client-spoofed Netlify IP header on Workers', async () => {
       const { clientKeyFromHeaders } = await import('../rateLimit');
       const headers = new Headers({
         'x-nf-client-connection-ip': '1.2.3.4',
-        'x-forwarded-for': '5.6.7.8',
+        'x-forwarded-for': '5.6.7.8, 9.9.9.9',
       });
-      expect(clientKeyFromHeaders(headers)).toBe('1.2.3.4');
+      // Without CF-Connecting-IP, trust the last XFF hop (what CF appends), not Netlify.
+      expect(clientKeyFromHeaders(headers)).toBe('9.9.9.9');
+      expect(clientKeyFromHeaders(headers)).not.toBe('1.2.3.4');
     });
 
-    it('falls back to the first x-forwarded-for entry', async () => {
+    it('uses the last x-forwarded-for hop, not the first (client-controlled)', async () => {
       const { clientKeyFromHeaders } = await import('../rateLimit');
       const headers = new Headers({ 'x-forwarded-for': '5.6.7.8, 9.9.9.9' });
-      expect(clientKeyFromHeaders(headers)).toBe('5.6.7.8');
+      expect(clientKeyFromHeaders(headers)).toBe('9.9.9.9');
+    });
+
+    it('falls back to "unknown" when x-forwarded-for has no usable hops', async () => {
+      const { clientKeyFromHeaders } = await import('../rateLimit');
+      const headers = new Headers({ 'x-forwarded-for': '  ,  ' });
+      expect(clientKeyFromHeaders(headers)).toBe('unknown');
     });
 
     it('falls back to "unknown" with no identifying headers', async () => {

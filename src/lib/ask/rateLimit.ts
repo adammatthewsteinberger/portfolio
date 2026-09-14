@@ -1,12 +1,12 @@
 /**
  * In-memory rate limiting and spend cap for the "Ask my résumé" bot.
  *
- * Netlify Functions can scale to multiple concurrent instances, each with
+ * Cloudflare Workers can scale to multiple concurrent isolates, each with
  * its own memory, and cold starts reset it entirely — so these caps are a
- * best-effort backstop against a single hot instance being hammered, not a
+ * best-effort backstop against a single hot isolate being hammered, not a
  * hard guarantee across the whole deployment. Combined with the per-request
  * turn cap and honeypot check, that's an acceptable tradeoff for a low-value
- * chat widget without provisioning Netlify Blobs/KV for this.
+ * chat widget without shared KV state.
  */
 
 const WINDOW_MS = 60_000;
@@ -72,9 +72,22 @@ export function recordOutputTokens(count: number): void {
 }
 
 export function clientKeyFromHeaders(headers: Headers): string {
-  return (
-    headers.get('x-nf-client-connection-ip') ||
-    headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
-    'unknown'
-  );
+  // Cloudflare sets CF-Connecting-IP at the edge; clients cannot override it.
+  // Do not trust x-nf-client-connection-ip or the first XFF hop — both are
+  // client-spoofable on Workers and would let an attacker rotate rate-limit keys.
+  const cfIp = headers.get('cf-connecting-ip')?.trim();
+  if (cfIp) return cfIp;
+
+  // When CF appends to X-Forwarded-For, the rightmost hop is the connecting IP.
+  const xff = headers.get('x-forwarded-for');
+  if (xff) {
+    const hops = xff
+      .split(',')
+      .map((s) => s.trim())
+      .filter(Boolean);
+    const last = hops.at(-1);
+    if (last) return last;
+  }
+
+  return 'unknown';
 }
