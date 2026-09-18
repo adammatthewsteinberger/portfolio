@@ -6,17 +6,18 @@
  * so the Worker applies them before handing the request to Next. Pure and
  * unit-tested; nothing here touches the runtime.
  */
-export const HIRE_HOST = 'vibewithadam.matthewsteinberger.com';
+/** The canonical host of the main site; the chat has its own, CHAT_HOST. */
+export const SITE_HOST = 'vibewithadam.matthewsteinberger.com';
 export const CHAT_HOST = 'chatwithadam.matthewsteinberger.com';
 
 /** The develop-branch preview: same app, second Worker, its own site/chat pair. */
-export const PREVIEW_HIRE_HOST = 'preview.vibewithadam.matthewsteinberger.com';
+export const PREVIEW_SITE_HOST = 'preview.vibewithadam.matthewsteinberger.com';
 export const PREVIEW_CHAT_HOST = 'preview.chatwithadam.matthewsteinberger.com';
 
 /** Each site host and the chat host that belongs with it. */
 export const HOST_PAIRS: { site: string; chat: string }[] = [
-  { site: HIRE_HOST, chat: CHAT_HOST },
-  { site: PREVIEW_HIRE_HOST, chat: PREVIEW_CHAT_HOST },
+  { site: SITE_HOST, chat: CHAT_HOST },
+  { site: PREVIEW_SITE_HOST, chat: PREVIEW_CHAT_HOST },
 ];
 
 /**
@@ -24,12 +25,12 @@ export const HOST_PAIRS: { site: string; chat: string }[] = [
  * hire.adam.* was the site's home until 2026-08-28; chat.adam.* was the chat's.
  */
 export const LEGACY_HOSTS: Record<string, string> = {
-  'hire.adam.matthewsteinberger.com': HIRE_HOST,
-  'www.hire.adam.matthewsteinberger.com': HIRE_HOST,
+  'hire.adam.matthewsteinberger.com': SITE_HOST,
+  'www.hire.adam.matthewsteinberger.com': SITE_HOST,
   'chat.adam.matthewsteinberger.com': CHAT_HOST,
-  'matthewsteinberger.com': HIRE_HOST,
-  'www.matthewsteinberger.com': HIRE_HOST,
-  [`www.${HIRE_HOST}`]: HIRE_HOST,
+  'matthewsteinberger.com': SITE_HOST,
+  'www.matthewsteinberger.com': SITE_HOST,
+  [`www.${SITE_HOST}`]: SITE_HOST,
 };
 
 export type HostRoute =

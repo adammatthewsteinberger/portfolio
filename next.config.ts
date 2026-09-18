@@ -5,7 +5,8 @@ import type { NextConfig } from 'next';
 // exactly one canonical URL per page. See AGENTS.md → "Chat subdomain" for the curl
 // checklist to re-run after any Next.js / @opennextjs/cloudflare upgrade.
 const CHAT_HOST = 'chatwithadam.matthewsteinberger.com';
-const HIRE_HOST = 'vibewithadam.matthewsteinberger.com'; // Canonical primary-site host (historical name)
+// The canonical host of the main site; the chat has its own, CHAT_HOST.
+const SITE_HOST = 'vibewithadam.matthewsteinberger.com';
 
 // The consulting catalogue (/services/*) and its pre-2026 root-level aliases
 // (/ai-greenville, /ai-greenville.html, …) were retired with the rest of the
@@ -43,19 +44,19 @@ const nextConfig: NextConfig = {
         destination: `https://${CHAT_HOST}/`,
         permanent: true,
       },
-      // chat host: every other page belongs to the hire host. The lookahead keeps
+      // chat host: every other page belongs to the site host. The lookahead keeps
       // /api/*, /_next/* and file-extension assets serving on the chat host.
       {
         source: '/:path((?!api/|_next/|.*\\.[a-zA-Z0-9]+$).+)',
         has: [{ type: 'host', value: CHAT_HOST }],
-        destination: `https://${HIRE_HOST}/:path`,
+        destination: `https://${SITE_HOST}/:path`,
         permanent: true,
       },
-      // hire host: /chat lives on the chat host. Other hosts (localhost, deploy
+      // site host: /chat lives on the chat host. Other hosts (localhost, deploy
       // previews) are untouched so /chat serves directly there.
       {
         source: '/chat',
-        has: [{ type: 'host', value: HIRE_HOST }],
+        has: [{ type: 'host', value: SITE_HOST }],
         destination: `https://${CHAT_HOST}/`,
         permanent: true,
       },
