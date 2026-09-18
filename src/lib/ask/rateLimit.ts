@@ -1,12 +1,12 @@
 /**
  * In-memory rate limiting and spend cap for the "Ask my résumé" bot.
  *
- * Cloudflare Workers (and formerly Netlify Functions) can scale to multiple
- * concurrent isolates, each with its own memory, and cold starts reset it
- * entirely — so these caps are a best-effort backstop against a single hot
- * isolate being hammered, not a hard guarantee across the whole deployment.
- * Combined with the per-request turn cap and honeypot check, that's an
- * acceptable tradeoff for a low-value chat widget without shared KV state.
+ * Cloudflare Workers can scale to multiple concurrent isolates, each with
+ * its own memory, and cold starts reset it entirely — so these caps are a
+ * best-effort backstop against a single hot isolate being hammered, not a
+ * hard guarantee across the whole deployment. Combined with the per-request
+ * turn cap and honeypot check, that's an acceptable tradeoff for a low-value
+ * chat widget without shared KV state.
  */
 
 const WINDOW_MS = 60_000;
@@ -72,12 +72,25 @@ export function recordOutputTokens(count: number): void {
 }
 
 export function clientKeyFromHeaders(headers: Headers): string {
-  // Prefer Cloudflare's connecting IP (production Workers), then the legacy
-  // Netlify header (preview/local), then the first XFF hop.
-  return (
-    headers.get('cf-connecting-ip') ||
-    headers.get('x-nf-client-connection-ip') ||
-    headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
-    'unknown'
-  );
+  // Cloudflare sets CF-Connecting-IP at the edge; clients cannot override it.
+  // Do not trust x-nf-client-connection-ip or the first XFF hop — both are
+  // client-spoofable on Workers and would let an attacker rotate rate-limit keys.
+  const cfIp = headers.get('cf-connecting-ip')?.trim();
+  if (cfIp) return cfIp;
+
+  // When CF appends to X-Forwarded-For, the rightmost hop is the connecting IP.
+  const xff = headers.get('x-forwarded-for');
+  if (xff) {
+    // Extract the last non-empty hop without allocating arrays per request.
+    let end = xff.length;
+    while (end > 0) {
+      const comma = xff.lastIndexOf(',', end - 1);
+      const hop = xff.slice(comma + 1, end).trim();
+      if (hop) return hop;
+      if (comma === -1) break;
+      end = comma;
+    }
+  }
+
+  return 'unknown';
 }
