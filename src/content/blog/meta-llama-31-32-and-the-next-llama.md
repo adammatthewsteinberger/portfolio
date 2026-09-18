@@ -66,7 +66,3 @@ A global retailer fine-tuned Llama 3.1 on product catalogs + customer queries.
 ## Path Forward
 
 Meta’s open-weight strategy is accelerating adoption. Llama 3.1/3.2 prove that **open models are enterprise-ready**, and the next Llama generation will only strengthen that position.  
-
----
-
-*I help businesses deploy and fine-tune open-weight models like Llama for privacy-first, cost-efficient AI. [Schedule your consultation today.](/services/ai-consulting)*

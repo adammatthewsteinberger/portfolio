@@ -95,7 +95,3 @@ One telecom firm piloted Realtime Voice AI for customer billing inquiries.
 ## The Path Forward
 
 Within five years, phone trees will be obsolete. Businesses that adopt realtime voice now will set new standards for service, while laggards risk frustrating customers with outdated systems.  
-
----
-
-*I design AI support systems that combine Realtime Voice with RAG for accurate, brand-safe responses. [Book a consultation today.](/services/ai-consulting)*

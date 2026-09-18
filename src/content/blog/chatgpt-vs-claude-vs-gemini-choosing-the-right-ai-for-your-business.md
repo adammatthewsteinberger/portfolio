@@ -330,7 +330,3 @@ The most important factor isn't which model you choose initially—it's building
 5. **Plan for iteration and improvement** as models evolve
 
 Don't get stuck in analysis paralysis. The AI landscape changes rapidly, and the best way to learn what works for your business is to start testing with real applications.
-
----
-
-*Need help evaluating AI models for your specific use case? I provide technical assessments that include model testing, performance benchmarking, and implementation recommendations. [Schedule your AI model consultation today.](/services/ai-consulting)*

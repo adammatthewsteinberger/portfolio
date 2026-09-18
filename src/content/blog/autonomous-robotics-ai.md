@@ -67,7 +67,3 @@ A logistics firm deployed AI-enhanced robots for sorting.
 ## Path Forward
 
 AI-driven robotics is entering a **scaling phase**. Businesses must integrate thoughtfully to balance innovation with responsibility.  
-
----
-
-*I help companies evaluate and deploy AI robotics solutions with governance in mind. [Book a consultation today.](/services/ai-consulting)*

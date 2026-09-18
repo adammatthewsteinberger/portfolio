@@ -4,8 +4,8 @@
  * Six specialty groups in the order the August-2026 bio lists them, plus one
  * group for how he designs and delivers. Every pillar carries the full
  * engineering explanation and its quotable rule (rendered on /expertise and
- * fed to the RAG knowledge base) and a plain-terms line (kept here as the seed
- * for the executive edition — it is not rendered on the engineering pages).
+ * fed to the RAG knowledge base) and a plain-terms line (fed to the knowledge
+ * base too, so the bot can answer a beginner — it is not rendered on the pages).
  *
  * `where` lists case-study slugs from src/data/projects.ts; a test asserts
  * they all exist.
@@ -114,7 +114,7 @@ export const specialtyGroups: SpecialtyGroup[] = [
         id: 'rag-chat-systems',
         title: 'RAG chat systems',
         engineer:
-          'RAG turns a closed-book exam into an open-book one: retrieval, indexing, and generation, each of which can fail independently. Parent-child chunking, contextual retrieval, and hybrid search close most of the gap before the model is ever touched. The "Ask my résumé" bot on this site is a small worked example: BM25 retrieval, a per-request system prompt, and a spend cap.',
+          'RAG turns a closed-book exam into an open-book one: retrieval, indexing, and generation, each of which can fail independently. Parent-child chunking, contextual retrieval, and hybrid search close most of the gap before the model is ever touched. The "Ask about Adam" bot on this site is a small worked example: BM25 retrieval, a per-request system prompt, and a spend cap.',
         rule: 'The AI is a commodity. The knowledge base is the only genuinely proprietary part of the stack.',
         plain:
           'A chatbot with a 35% resolution rate and one with an 85% resolution rate are almost never running different AI models — they’re running on different data.',

@@ -66,7 +66,3 @@ A consultancy deployed AI copilots across teams.
 ## Path Forward
 
 AI will reshape work more than any prior tech. Companies must act proactively to **reskill and retain trust**.  
-
----
-
-*I help enterprises design AI workforce strategies to balance automation with human growth. [Let’s discuss yours.](/services/ai-consulting)*

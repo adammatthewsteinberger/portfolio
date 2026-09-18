@@ -134,10 +134,10 @@ describe('AskAdam', () => {
     const user = userEvent.setup();
     render(<AskAdam />);
 
-    const button = await screen.findByRole('button', { name: /ask my résumé/i });
+    const button = await screen.findByRole('button', { name: /ask about adam/i });
     await user.click(button);
 
-    expect(screen.getByRole('dialog', { name: /ask my résumé/i })).toBeInTheDocument();
+    expect(screen.getByRole('dialog', { name: /ask about adam/i })).toBeInTheDocument();
     expect(screen.getByText(/has he shipped rag in production/i)).toBeInTheDocument();
   });
 
@@ -146,7 +146,7 @@ describe('AskAdam', () => {
     const user = userEvent.setup();
     render(<AskAdam />);
 
-    await user.click(await screen.findByRole('button', { name: /ask my résumé/i }));
+    await user.click(await screen.findByRole('button', { name: /ask about adam/i }));
     await user.click(screen.getByRole('button', { name: /close/i }));
 
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
@@ -166,7 +166,7 @@ describe('AskAdam', () => {
     const user = userEvent.setup();
     render(<AskAdam />);
 
-    await user.click(await screen.findByRole('button', { name: /ask my résumé/i }));
+    await user.click(await screen.findByRole('button', { name: /ask about adam/i }));
     await user.click(screen.getByText(/has he shipped rag in production/i));
 
     await waitFor(() => {
@@ -189,9 +189,9 @@ describe('AskAdam', () => {
     const user = userEvent.setup();
     render(<AskAdam />);
 
-    await user.click(await screen.findByRole('button', { name: /ask my résumé/i }));
+    await user.click(await screen.findByRole('button', { name: /ask about adam/i }));
     const input = screen.getByPlaceholderText(/ask a question/i);
-    await user.type(input, 'Is he remote-friendly?');
+    await user.type(input, 'How do I run the gates?');
     await user.click(screen.getByRole('button', { name: /^send$/i }));
 
     await waitFor(() => expect(screen.getByText('Sure.')).toBeInTheDocument());
@@ -203,7 +203,7 @@ describe('AskAdam', () => {
     const user = userEvent.setup();
     render(<AskAdam />);
 
-    await user.click(await screen.findByRole('button', { name: /ask my résumé/i }));
+    await user.click(await screen.findByRole('button', { name: /ask about adam/i }));
     const input = screen.getByPlaceholderText(/ask a question/i);
     await user.type(input, '   ');
     const sendButton = screen.getByRole('button', { name: /^send$/i });
@@ -224,8 +224,8 @@ describe('AskAdam', () => {
     const user = userEvent.setup();
     render(<AskAdam />);
 
-    await user.click(await screen.findByRole('button', { name: /ask my résumé/i }));
-    await user.click(screen.getByText(/is he open to remote work/i));
+    await user.click(await screen.findByRole('button', { name: /ask about adam/i }));
+    await user.click(screen.getByText(/can vibey run on local models/i));
 
     await waitFor(() => {
       expect(screen.getByText(/too many questions/i)).toBeInTheDocument();
@@ -244,8 +244,8 @@ describe('AskAdam', () => {
     const user = userEvent.setup();
     render(<AskAdam />);
 
-    await user.click(await screen.findByRole('button', { name: /ask my résumé/i }));
-    await user.click(screen.getByText(/is he open to remote work/i));
+    await user.click(await screen.findByRole('button', { name: /ask about adam/i }));
+    await user.click(screen.getByText(/can vibey run on local models/i));
 
     await waitFor(() => {
       expect(screen.getByText(/out of coffee/i)).toBeInTheDocument();
@@ -267,8 +267,8 @@ describe('AskAdam', () => {
     const user = userEvent.setup();
     render(<AskAdam />);
 
-    await user.click(await screen.findByRole('button', { name: /ask my résumé/i }));
-    await user.click(screen.getByText(/is he open to remote work/i));
+    await user.click(await screen.findByRole('button', { name: /ask about adam/i }));
+    await user.click(screen.getByText(/can vibey run on local models/i));
 
     await waitFor(() => {
       expect(screen.getByText(/something went wrong\. try again in a moment\./i)).toBeInTheDocument();
@@ -285,8 +285,8 @@ describe('AskAdam', () => {
     const user = userEvent.setup();
     render(<AskAdam />);
 
-    await user.click(await screen.findByRole('button', { name: /ask my résumé/i }));
-    await user.click(screen.getByText(/is he open to remote work/i));
+    await user.click(await screen.findByRole('button', { name: /ask about adam/i }));
+    await user.click(screen.getByText(/can vibey run on local models/i));
 
     await waitFor(() => {
       expect(screen.getByText(/something went wrong answering that/i)).toBeInTheDocument();
@@ -301,8 +301,8 @@ describe('AskAdam', () => {
     const user = userEvent.setup();
     render(<AskAdam />);
 
-    await user.click(await screen.findByRole('button', { name: /ask my résumé/i }));
-    await user.click(screen.getByText(/is he open to remote work/i));
+    await user.click(await screen.findByRole('button', { name: /ask about adam/i }));
+    await user.click(screen.getByText(/can vibey run on local models/i));
 
     await waitFor(() => {
       expect(screen.getByText(/something went wrong\. try again in a moment\./i)).toBeInTheDocument();
@@ -321,7 +321,7 @@ describe('AskAdam', () => {
     const user = userEvent.setup();
     render(<AskAdam />);
 
-    await user.click(await screen.findByRole('button', { name: /ask my résumé/i }));
+    await user.click(await screen.findByRole('button', { name: /ask about adam/i }));
     const input = screen.getByPlaceholderText(/ask a question/i);
 
     for (let i = 0; i < 6; i++) {
@@ -341,7 +341,7 @@ describe('AskAdam', () => {
     const user = userEvent.setup();
     render(<AskAdam />);
 
-    await user.click(await screen.findByRole('button', { name: /ask my résumé/i }));
+    await user.click(await screen.findByRole('button', { name: /ask about adam/i }));
     const honeypot = document.querySelector('input[name="website"]') as HTMLInputElement;
     expect(honeypot).toHaveAttribute('aria-hidden', 'true');
 
@@ -365,8 +365,8 @@ describe('AskAdam', () => {
     const user = userEvent.setup();
     render(<AskAdam />);
 
-    await user.click(await screen.findByRole('button', { name: /ask my résumé/i }));
-    await user.click(screen.getByText(/is he open to remote work/i));
+    await user.click(await screen.findByRole('button', { name: /ask about adam/i }));
+    await user.click(screen.getByText(/can vibey run on local models/i));
 
     await waitFor(() => expect(screen.getByText('Still here.')).toBeInTheDocument());
   });
@@ -380,8 +380,8 @@ describe('AskAdam', () => {
     const user = userEvent.setup();
     render(<AskAdam />);
 
-    await user.click(await screen.findByRole('button', { name: /ask my résumé/i }));
-    await user.click(screen.getByText(/is he open to remote work/i));
+    await user.click(await screen.findByRole('button', { name: /ask about adam/i }));
+    await user.click(screen.getByText(/can vibey run on local models/i));
 
     await waitFor(() => expect(screen.getByText('Thinking…')).toBeInTheDocument());
 
@@ -403,8 +403,8 @@ describe('AskAdam', () => {
     const user = userEvent.setup();
     render(<AskAdam />);
 
-    await user.click(await screen.findByRole('button', { name: /ask my résumé/i }));
-    await user.click(screen.getByText(/is he open to remote work/i));
+    await user.click(await screen.findByRole('button', { name: /ask about adam/i }));
+    await user.click(screen.getByText(/can vibey run on local models/i));
 
     await waitFor(() => expect(screen.getByText('Still works.')).toBeInTheDocument());
     expect(screen.queryByText(/something went wrong/i)).not.toBeInTheDocument();
@@ -457,7 +457,7 @@ describe('AskAdam', () => {
     const user = userEvent.setup();
     render(<AskAdam variant="widget" />);
 
-    const button = await screen.findByRole('button', { name: /ask my résumé/i });
+    const button = await screen.findByRole('button', { name: /ask about adam/i });
     await user.click(button);
 
     const link = screen.getByRole('link', { name: /open full page/i });
@@ -470,9 +470,9 @@ describe('AskAdam', () => {
       global.fetch = vi.fn().mockResolvedValue(mockEnabledStatusResponse());
       render(<AskAdam variant="page" />);
 
-      expect(screen.queryByRole('button', { name: /ask my résumé/i })).not.toBeInTheDocument();
+      expect(screen.queryByRole('button', { name: /ask about adam/i })).not.toBeInTheDocument();
       await waitFor(() => {
-        expect(screen.getByText(/ask about adam's experience/i)).toBeInTheDocument();
+        expect(screen.getByText(/ask about adam's work, vibey, or how to get involved/i)).toBeInTheDocument();
       });
     });
 
@@ -499,13 +499,13 @@ describe('AskAdam', () => {
       global.fetch = vi.fn().mockResolvedValue(mockEnabledStatusResponse());
       render(<AskAdam variant="page" />);
 
-      const region = await screen.findByRole('region', { name: 'Ask my résumé' });
+      const region = await screen.findByRole('region', { name: 'Ask about Adam' });
       expect(region).toBeInTheDocument();
       expect(region.className).toContain('min-h-[60vh]');
       expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
       expect(screen.queryByRole('button', { name: 'Close' })).not.toBeInTheDocument();
       expect(screen.queryByRole('link', { name: /open full page/i })).not.toBeInTheDocument();
-      expect(screen.getByRole('heading', { level: 2, name: 'Ask my résumé' })).toBeInTheDocument();
+      expect(screen.getByRole('heading', { level: 2, name: 'Ask about Adam' })).toBeInTheDocument();
       expect(screen.getByPlaceholderText(/ask a question/i).parentElement?.previousElementSibling?.className).toContain(
         'min-h-[320px]',
       );
@@ -515,9 +515,10 @@ describe('AskAdam', () => {
       global.fetch = vi.fn().mockResolvedValue({ ok: true, json: async () => ({ enabled: false }) } as unknown as Response);
       render(<AskAdam variant="page" />);
 
-      const region = await screen.findByRole('region', { name: 'Ask my résumé' });
+      const region = await screen.findByRole('region', { name: 'Ask about Adam' });
       expect(region).toHaveTextContent(/resting right now/i);
-      expect(screen.getByRole('link', { name: 'Hire Me' })).toHaveAttribute('href', '/hire-me');
+      expect(screen.getByRole('link', { name: 'Join Me' })).toHaveAttribute('href', '/join-me');
+      expect(screen.queryByRole('link', { name: /hire me/i })).not.toBeInTheDocument();
       expect(screen.getByRole('link', { name: 'get in touch' })).toHaveAttribute('href', '/contact');
       expect(screen.queryByPlaceholderText(/ask a question/i)).not.toBeInTheDocument();
     });
@@ -538,11 +539,11 @@ describe('AskAdam', () => {
       expect(screen.queryByPlaceholderText(/ask a question/i)).not.toBeInTheDocument();
     });
 
-    it('says it is checking availability until the status check resolves', () => {
+    it('says it is checking whether the chat is up until the status check resolves', () => {
       global.fetch = vi.fn(() => new Promise<Response>(() => {}));
       render(<AskAdam variant="page" />);
 
-      expect(screen.getByRole('region', { name: 'Ask my résumé' })).toHaveTextContent(/checking availability/i);
+      expect(screen.getByRole('region', { name: 'Ask about Adam' })).toHaveTextContent(/checking whether the chat is up/i);
       expect(screen.queryByText(/resting right now/i)).not.toBeInTheDocument();
     });
 
@@ -566,7 +567,7 @@ describe('AskAdam', () => {
       const user = userEvent.setup();
       render(<AskAdam />);
 
-      await user.click(await screen.findByRole('button', { name: /ask my résumé/i }));
+      await user.click(await screen.findByRole('button', { name: /ask about adam/i }));
 
       const link = screen.getByRole('link', { name: /open full page/i });
       expect(link).toHaveAttribute('href', '/chat');

@@ -66,7 +66,3 @@ A global fashion retailer deployed AI forecasting.
 ## Path Forward
 
 AI will power the **next wave of retail competition**. Winners will personalize responsibly and manage supply chains intelligently.  
-
----
-
-*I help retailers deploy AI to boost sales and improve inventory management. [Book a consultation today.](/services/ai-consulting)*

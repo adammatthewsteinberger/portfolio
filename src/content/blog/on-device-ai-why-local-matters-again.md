@@ -73,7 +73,3 @@ A bank shifted certain fraud detection tasks to on-device AI for compliance.
 ## The Path Forward
 
 We’re entering a **hybrid AI era** where intelligence flows between cloud, edge, and device. Companies that embrace this balance will gain speed, security, and cost control.  
-
----
-
-*I help enterprises design hybrid AI strategies that blend cloud, on-device, and self-hosted infrastructure. [Let’s explore your roadmap.](/services/ai-consulting)*
