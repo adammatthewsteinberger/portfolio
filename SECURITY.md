@@ -6,7 +6,7 @@ This is a personal portfolio and hire-me site, not a service that handles paymen
 
 In scope for reports:
 
-- The Next.js application in this repository (`src/`, `scripts/`, `netlify.toml`, `next.config.ts`)
+- The Next.js application in this repository (`src/`, `scripts/`, `wrangler.jsonc`, `open-next.config.ts`, `next.config.ts`)
 - The `/api/ask` RAG bot endpoint and its guardrails (rate limiting, honeypot, spend caps)
 - Build and deployment configuration
 
@@ -28,4 +28,4 @@ You can expect an acknowledgment within a few days. Since this is a personal sit
 
 ## Notes on the RAG bot specifically
 
-`/api/ask` calls the Anthropic API server-side using a key stored only in Netlify's environment variables — it is never exposed to the client. The endpoint has a feature flag (`ASK_BOT_ENABLED`), a honeypot field, a per-IP rate limit, and a daily output-token spend cap (see `src/lib/ask/rateLimit.ts`). Those in-memory limits are a best-effort backstop, not a hard guarantee, since Netlify Functions can scale to multiple instances with independent memory — this is a known, accepted tradeoff documented in the source, not an oversight. If you find a way to bypass them at meaningful cost or abuse scale, please report it.
+`/api/ask` calls the Anthropic API server-side using a key stored only as a Cloudflare Worker secret (`ANTHROPIC_API_KEY`) — it is never exposed to the client. The endpoint has a feature flag (`ASK_BOT_ENABLED`), a honeypot field, a per-IP rate limit, and a daily output-token spend cap (see `src/lib/ask/rateLimit.ts`). Those in-memory limits are a best-effort backstop, not a hard guarantee, since Worker isolates do not share memory — this is a known, accepted tradeoff documented in the source, not an oversight. When the daily spend cap is hit or Anthropic reports credit/billing exhaustion, visitors see an "Out of coffee" message (`src/lib/ask/messages.ts`) rather than a stack trace. If you find a way to bypass the limits at meaningful cost or abuse scale, please report it.
