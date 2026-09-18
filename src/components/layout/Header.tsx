@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { HIRE_HOST } from '@/lib/hostRouting';
+import { SITE_HOST } from '@/lib/hostRouting';
 
 // Join Me is the primary page: developers first, then governments and
 // military, then universities and academia (src/data/audiences.ts).
@@ -56,11 +56,11 @@ export default function Header({ preview = false }: HeaderProps = {}) {
           >
             <span className="sm:hidden">
               Preview build (<code>develop</code>) ·&nbsp;
-              <a href={`https://${HIRE_HOST}/`} className="underline" style={{ color: '#000000' }}>live site</a>
+              <a href={`https://${SITE_HOST}/`} className="underline" style={{ color: '#000000' }}>live site</a>
             </span>
             <span className="hidden sm:inline">
               Preview build — the&nbsp;<code>develop</code>&nbsp;branch. The live site is&nbsp;
-              <a href={`https://${HIRE_HOST}/`} className="underline" style={{ color: '#000000' }}>{HIRE_HOST}</a>.
+              <a href={`https://${SITE_HOST}/`} className="underline" style={{ color: '#000000' }}>{SITE_HOST}</a>.
             </span>
           </div>
         )}

@@ -41,6 +41,15 @@ test.describe('Navigation', () => {
     await expect(page).toHaveURL('/novice-to-navigator');
   });
 
+  test('package links point into the one vibey repository and PyPI distribution', async ({ page }) => {
+    for (const path of ['/', '/open-source']) {
+      await gotoAndDismiss(page, path);
+      await expect(page.locator('a[href="https://github.com/the-vibey-project/vibey/tree/develop/src/vibey_runners/claude"]').first()).toBeVisible();
+      await expect(page.locator('a[href="https://pypi.org/project/vibey/"]').first()).toBeVisible();
+      await expect(page.locator('a[href^="https://pypi.org/project/claudeloop"], a[href^="https://github.com/adammatthewsteinberger/claudeloop"]')).toHaveCount(0);
+    }
+  });
+
   test('contact page loads', async ({ page }) => {
     await gotoAndDismiss(page, '/contact');
     await expect(page).toHaveURL('/contact');
