@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 };
 
 // The three audiences, in priority order — each door opens its section of /join-me.
-const ICONS: Record<string, string> = { developers: 'fa-code-branch', governments: 'fa-shield-halved', academia: 'fa-graduation-cap' };
+const ICONS: Record<(typeof audiences)[number]['id'], string> = { developers: 'fa-code-branch', governments: 'fa-shield-halved', academia: 'fa-graduation-cap' };
 const doors = audiences.map((audience) => ({
   icon: ICONS[audience.id],
   title: audience.title,
