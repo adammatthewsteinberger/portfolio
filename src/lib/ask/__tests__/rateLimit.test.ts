@@ -133,6 +133,13 @@ describe('rateLimit', () => {
       expect(clientKeyFromHeaders(headers)).toBe('unknown');
     });
 
+    it('uses only the Cloudflare header when that is all that is present', async () => {
+      const { clientKeyFromHeaders } = await import('../rateLimit');
+      const headers = new Headers({ 'cf-connecting-ip': '198.51.100.7' });
+      expect(clientKeyFromHeaders(headers)).toBe('198.51.100.7');
+      expect(clientKeyFromHeaders(headers)).not.toBe('unknown');
+    });
+
     it('falls back to "unknown" with no identifying headers', async () => {
       const { clientKeyFromHeaders } = await import('../rateLimit');
       expect(clientKeyFromHeaders(new Headers())).toBe('unknown');
