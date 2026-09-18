@@ -64,7 +64,10 @@ jobs:
           # pull request's own files: a branch that adds one anywhere gets it installed
           # here, with this job's permissions, and hands the provenance gate a tool of the
           # contributor's choosing. The path is verified below before anything runs.
-          self="."
+          self=$(sed -n 's/^[[:space:]]*self_source[[:space:]]*=[[:space:]]*"\(.*\)".*/\1/p' \
+            .vibey-gh.toml 2>/dev/null | head -n 1)
+          [ -n "$self" ] || self="."
+          case "$self" in /*|*..*) self="" ;; esac
           # Verified, not assumed: a misconfigured path must fall back to the published
           # release rather than install whatever happens to sit there. That release is
           # `vibey`: `vibey_gh` ships inside it, not as a project of its own (ADR-0037).
