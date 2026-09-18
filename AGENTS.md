@@ -34,7 +34,7 @@ src/
 │   ├── chat/                     # Full-page "Ask about Adam" chat; served at chatwithadam.matthewsteinberger.com via host rules in next.config.ts
 │   ├── expertise/                # 10 technical pillars, CEO/engineer dual-audience copy
 │   ├── work/, work/[slug]/       # Case studies (renamed from /projects; old URL 301s)
-│   ├── open-source/              # PyPI package showcase
+│   ├── open-source/              # Package showcase: one repo (the-vibey-project/vibey), one PyPI distribution (vibey); links from src/data/open-source.ts
 │   ├── writing/                  # Hub linking to Blog, Novice to Navigator, Books
 │   ├── blog/, blog/[slug]/       # 110+ posts, dynamic OG images, JSON-LD Article schema
 │   ├── novice-to-navigator/      # 33-article free educational series + readiness quiz

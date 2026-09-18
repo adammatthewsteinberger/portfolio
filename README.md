@@ -92,9 +92,9 @@ Production deploys to Cloudflare Workers from `.github/workflows/deploy.yml` on 
 
 ## Related repos
 
-Open source (MIT, on PyPI): [claudeloop](https://github.com/adammatthewsteinberger/claudeloop) · [codexloop](https://github.com/adammatthewsteinberger/codexloop) · [cursorloop](https://github.com/adammatthewsteinberger/cursorloop) · [agyloop](https://github.com/adammatthewsteinberger/agyloop) · [qwenloop](https://github.com/adammatthewsteinberger/qwenloop) · [vibey](https://github.com/adammatthewsteinberger/vibey) · [vibey-gh](https://github.com/adammatthewsteinberger/vibey-gh) · [vibey-bootstrap](https://github.com/adammatthewsteinberger/vibey-bootstrap) · [vibey-skills](https://github.com/adammatthewsteinberger/vibey-skills) · [homebrew-tap](https://github.com/adammatthewsteinberger/homebrew-tap)
+Open source (MIT): the whole family lives in one repository, **[the-vibey-project/vibey](https://github.com/the-vibey-project/vibey)**, and ships as one PyPI distribution: `uv tool install vibey` installs the conductor, all five `*loop` engines, and the tools ([PyPI](https://pypi.org/project/vibey/) · [docs](https://the-vibey-project.github.io/vibey/main/)). Source: [claudeloop](https://github.com/the-vibey-project/vibey/tree/develop/src/vibey_runners/claude) · [codexloop](https://github.com/the-vibey-project/vibey/tree/develop/src/vibey_runners/codex) · [cursorloop](https://github.com/the-vibey-project/vibey/tree/develop/src/vibey_runners/cursor) · [agyloop](https://github.com/the-vibey-project/vibey/tree/develop/src/vibey_runners/agy) · [qwenloop](https://github.com/the-vibey-project/vibey/tree/develop/src/vibey_runners/qwen) · [vibey-gh](https://github.com/the-vibey-project/vibey/tree/develop/src/vibey_tools/gh) · [vibey-bootstrap](https://github.com/the-vibey-project/vibey/tree/develop/src/vibey_tools/bootstrap) · [vibey-skills](https://github.com/the-vibey-project/vibey/tree/develop/src/vibey_tools/skills) · [homebrew-tap](https://github.com/adammatthewsteinberger/homebrew-tap)
 
-Sites and books: [engineering-influence](https://github.com/adammatthewsteinberger/engineering-influence) (book manuscripts + PDF/EPUB generator) · [humbleberger](https://github.com/adammatthewsteinberger/humbleberger)
+Sites and books (private repositories): engineering-influence (book manuscripts + PDF/EPUB generator) · humbleberger
 
 ## Contributing
 

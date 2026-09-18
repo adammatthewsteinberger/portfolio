@@ -2,9 +2,9 @@ import { describe, it, expect } from 'vitest';
 import nextConfig from '../../next.config';
 
 const CHAT_HOST = 'chatwithadam.matthewsteinberger.com';
-const HIRE_HOST = 'vibewithadam.matthewsteinberger.com';
+const SITE_HOST = 'vibewithadam.matthewsteinberger.com';
 const onChatHost = [{ type: 'host', value: CHAT_HOST }];
-const onHireHost = [{ type: 'host', value: HIRE_HOST }];
+const onSiteHost = [{ type: 'host', value: SITE_HOST }];
 
 describe('next.config host-aware routing for the chat subdomain', () => {
   it('rewrites the chat-host root to /chat before the filesystem', async () => {
@@ -21,10 +21,10 @@ describe('next.config host-aware routing for the chat subdomain', () => {
       {
         source: '/:path((?!api/|_next/|.*\\.[a-zA-Z0-9]+$).+)',
         has: onChatHost,
-        destination: `https://${HIRE_HOST}/:path`,
+        destination: `https://${SITE_HOST}/:path`,
         permanent: true,
       },
-      { source: '/chat', has: onHireHost, destination: `https://${CHAT_HOST}/`, permanent: true },
+      { source: '/chat', has: onSiteHost, destination: `https://${CHAT_HOST}/`, permanent: true },
     ]);
   });
 

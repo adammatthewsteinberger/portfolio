@@ -28,13 +28,14 @@ export default defineConfig({
         'src/**/*.spec.{ts,tsx}',
         'src/test/**/*',
       ],
+      // Top-level keys, not `global: {…}`: vitest reads any other key under
+      // `thresholds` as a glob pattern, so `global` matched no file and the floor
+      // was never enforced. src/__tests__/vitest.config.test.ts guards the shape.
       thresholds: {
-        global: {
-          statements: 100,
-          branches: 100,
-          functions: 100,
-          lines: 100,
-        },
+        statements: 100,
+        branches: 100,
+        functions: 100,
+        lines: 100,
       },
     },
   },
