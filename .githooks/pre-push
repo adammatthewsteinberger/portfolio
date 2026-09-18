@@ -27,10 +27,10 @@ red() { printf '\033[0;31m%s\033[0m\n' "$1"; }
 #
 # What is looked for is the pyproject that DECLARES the distribution, not a fixed path.
 # It sits at the top of the tree in the standalone repository and under `src/` in the
-# monorepo that absorbed it, and hard-coding either one breaks the other. `git ls-files`
-# keeps the search bounded to tracked files, so a vendored copy under `.venv/` or
-# `site/` can never match, and it is available here by definition: hooks run inside a
-# git repository, from the top of the working tree.
+# monorepo that absorbed it, so this hook reads the declared `[install] self_source`
+# from `.vibey-gh.toml` at runtime instead of hard-coding either layout.
+# No tree search is performed, and only a safe relative path is honored.
+# Hooks run inside a git repository, from the top of the working tree.
 vibey_gh_self() {
   # Read from `[install] self_source` in .vibey-gh.toml at runtime rather than rendered
   # in: `install.installed()` compares these hooks byte-for-byte against the template, so
