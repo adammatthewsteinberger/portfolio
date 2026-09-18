@@ -2,7 +2,7 @@
 
 ## Objective
 
-Host the site's existing 'Ask my résumé' RAG chat (AskAdam + /api/ask) as a full-page experience at https://chat.adam.matthewsteinberger.com, served by this same Next.js 16 app on Netlify: add a /chat route that renders the chat inline (not as a floating dialog), and add host-aware routing in next.config.ts so the chat host's root serves that page while every other page stays canonical on https://hire.adam.matthewsteinberger.com. The /api/ask contract, guardrails, and knowledge base behaviour are unchanged. Full technical guidance, verified routing rules, and a file map are in .vibey/context/implementation-notes.md — read it before writing code.
+Host the site's existing 'Ask my résumé' RAG chat (AskAdam + /api/ask) as a full-page experience at https://chat.adam.matthewsteinberger.com, served by this same Next.js 16 app on Netlify: add a /chat route that renders the chat inline (not as a floating dialog), and add host-aware routing in next.config.ts so the chat host's root serves that page while every other page stays canonical on https://vibewithadam.matthewsteinberger.com. The /api/ask contract, guardrails, and knowledge base behaviour are unchanged. Full technical guidance, verified routing rules, and a file map are in .vibey/context/implementation-notes.md — read it before writing code.
 
 ## Constraints
 

@@ -1,5 +1,10 @@
 import { describe, it, expect } from 'vitest';
+import { isAvailableNow } from '@/lib/availability';
+import { openSourcePackages } from '../open-source';
 import { kbSources } from '../kb-sources';
+
+/** Closed / renamed packages that must never reappear as current KB inventory. */
+const CLOSED_PACKAGE_NAMES = ['engineering-influence-skills', 'content-pipeline-skills'] as const;
 
 describe('kbSources', () => {
   it('is a non-empty array of well-formed KB sources', () => {
@@ -29,5 +34,32 @@ describe('kbSources', () => {
       text: expect.stringContaining('https://chatwithadam.matthewsteinberger.com'),
     });
     expect(chatChunk?.text).toContain('six questions');
+  });
+
+  it('keeps hire/story availability copy aligned with availability.ts after the flip', () => {
+    // The RAG bot answers from these chunks; stale "from September 2026"
+    // wording after AVAILABLE_FROM would contradict the live hire-me UI.
+    if (!isAvailableNow()) return;
+
+    const hireAndStory = kbSources.filter((s) =>
+      ['hire-me-facts', 'story-vizius', 'story-timeline'].includes(s.id),
+    );
+    expect(hireAndStory).toHaveLength(3);
+    for (const source of hireAndStory) {
+      expect(source.text.toLowerCase()).not.toMatch(/available from september 2026/);
+      expect(source.text.toLowerCase()).toMatch(/available now/);
+    }
+  });
+
+  it('lists every current open-source package and none of the closed ones', () => {
+    const openSourceChunk = kbSources.find((s) => s.id === 'open-source');
+    expect(openSourceChunk).toBeDefined();
+    const text = openSourceChunk!.text;
+    for (const pkg of openSourcePackages) {
+      expect(text).toContain(pkg.name);
+    }
+    for (const closed of CLOSED_PACKAGE_NAMES) {
+      expect(text).not.toContain(closed);
+    }
   });
 });

@@ -1,6 +1,6 @@
 # portfolio
 
-Source for [vibewithadam.matthewsteinberger.com](https://vibewithadam.matthewsteinberger.com) (formerly hire.adam.matthewsteinberger.com, which now redirects) — a portfolio site that doubles as a working demo of a shipped RAG feature. Portfolio, blog, a free 33-article course on AI chatbots for business, and an "Ask my résumé" widget that answers from the site's own content, all in one Next.js app.
+Source for [vibewithadam.matthewsteinberger.com](https://vibewithadam.matthewsteinberger.com) — a portfolio site that doubles as a working demo of a shipped RAG feature. Portfolio, blog, a free 33-article course on AI chatbots for business, and an "Ask my résumé" widget that answers from the site's own content, all in one Next.js app. Full-page chat also lives at [chatwithadam.matthewsteinberger.com](https://chatwithadam.matthewsteinberger.com). Deprecated hosts (`hire.adam.*`, `chat.adam.*`) 301 to the canonical pair.
 
 [![Live site](https://img.shields.io/badge/live-vibewithadam.matthewsteinberger.com-0a7ea4)](https://vibewithadam.matthewsteinberger.com)
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org)
@@ -39,7 +39,8 @@ Everything works with zero environment variables. The "Ask my résumé" widget s
 | Command | What it does |
 | --- | --- |
 | `npm run dev` | Dev server (Turbopack) |
-| `npm run preview` / `deploy` | Build the Cloudflare Worker with OpenNext and run it locally / deploy it |
+| `npm run preview` / `deploy` | Build the Cloudflare Worker with OpenNext and run it locally / deploy production |
+| `npm run deploy:preview` | Deploy the `develop` preview Worker (`portfolio-preview`) from a logged-in machine |
 | `npm run build` / `npm start` | Production build / serve |
 | `npm run lint` / `lint:fix` | ESLint 9 flat config |
 | `npm run typecheck` | `tsc --noEmit` |
@@ -73,7 +74,7 @@ Adding content = adding a `.md` file with the frontmatter schema in [`AGENTS.md`
 3. `POST /api/ask` retrieves the top chunks, builds a per-request system prompt, and streams a Claude response (`max_tokens: 400`, thinking off for latency).
 4. `GET /api/ask` reports `{ enabled }`; the widget renders nothing when it's off.
 
-Guardrails: honeypot field, per-IP rate limit and daily output-token cap (`src/lib/ask/rateLimit.ts`, in-memory and documented as best-effort), 6-turn session cap client- and server-side, and a system prompt that must cite the source page and may not invent employment facts.
+Guardrails: honeypot field, per-IP rate limit and daily output-token cap (`src/lib/ask/rateLimit.ts`, in-memory and documented as best-effort), 6-turn session cap client- and server-side, and a system prompt that must cite the source page and may not invent employment facts. When the daily spend cap is hit or Anthropic reports credit/billing exhaustion, visitors see an "Out of coffee" message with a `/join-me` link (`src/lib/ask/messages.ts`) instead of a generic failure.
 
 | Env var | Effect |
 | --- | --- |
@@ -81,7 +82,7 @@ Guardrails: honeypot field, per-IP rate limit and daily output-token cap (`src/l
 | `ANTHROPIC_API_KEY` | Server-side only; never shipped to the client |
 | `GOOGLE_SITE_VERIFICATION` | Optional Search Console tag |
 
-Deploys to Cloudflare Workers from `.github/workflows/deploy.yml` on push to `main` (`npm run deploy` does the same from a logged-in machine; `npm run preview` runs the Worker locally). `ASK_BOT_ENABLED` is a var in `wrangler.jsonc`; `ANTHROPIC_API_KEY` is a Worker secret.
+Production deploys to Cloudflare Workers from `.github/workflows/deploy.yml` on push to `main` (`npm run deploy` from a logged-in machine; `npm run preview` runs the Worker locally). Pushes to `develop` deploy the preview Worker via `.github/workflows/deploy-preview.yml` to [preview.vibewithadam.matthewsteinberger.com](https://preview.vibewithadam.matthewsteinberger.com) and [preview.chatwithadam.matthewsteinberger.com](https://preview.chatwithadam.matthewsteinberger.com) (`SITE_ENV=preview`: `noindex`, preview banner, no analytics). `ASK_BOT_ENABLED` is a var in `wrangler.jsonc`; `ANTHROPIC_API_KEY` is a Worker secret.
 
 ## Docs & links
 

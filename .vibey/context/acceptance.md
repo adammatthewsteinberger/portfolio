@@ -46,7 +46,7 @@ Given next.config.ts redirects()
 
 When requests arrive on Host chat.adam.matthewsteinberger.com
 
-Then GET /chat permanently redirects (308) to https://chat.adam.matthewsteinberger.com/; and GET any other path that does not start with /api/ or /_next/ and does not end in a file extension (e.g. /story, /work/x, /hire-me?x=1) permanently redirects to https://hire.adam.matthewsteinberger.com/<same path> with the query string preserved; /api/ask, /_next/static/*, /favicon.ico, /robots.txt, /sitemap.xml, /feed.xml, /images/* and other asset paths are NOT redirected. The rules are, placed FIRST in the redirects array: { source: '/chat', has: [host chat], destination: 'https://chat.adam.matthewsteinberger.com/', permanent: true } and { source: '/:path((?!api/|_next/|.*\\.[a-zA-Z0-9]+$).+)', has: [host chat], destination: 'https://hire.adam.matthewsteinberger.com/:path', permanent: true }
+Then GET /chat permanently redirects (308) to https://chat.adam.matthewsteinberger.com/; and GET any other path that does not start with /api/ or /_next/ and does not end in a file extension (e.g. /story, /work/x, /hire-me?x=1) permanently redirects to https://vibewithadam.matthewsteinberger.com/<same path> with the query string preserved; /api/ask, /_next/static/*, /favicon.ico, /robots.txt, /sitemap.xml, /feed.xml, /images/* and other asset paths are NOT redirected. The rules are, placed FIRST in the redirects array: { source: '/chat', has: [host chat], destination: 'https://chat.adam.matthewsteinberger.com/', permanent: true } and { source: '/:path((?!api/|_next/|.*\\.[a-zA-Z0-9]+$).+)', has: [host chat], destination: 'https://vibewithadam.matthewsteinberger.com/:path', permanent: true }
 
 Fit criterion: the vitest test at src/__tests__/next.config.test.ts awaits redirects() and asserts both rules exist with those exact source/destination/has values and permanent: true, and that they precede all other redirects
 
@@ -54,9 +54,9 @@ Fit criterion: the vitest test at src/__tests__/next.config.test.ts awaits redir
 
 Given next.config.ts redirects()
 
-When a request arrives with Host hire.adam.matthewsteinberger.com for /chat
+When a request arrives with Host vibewithadam.matthewsteinberger.com for /chat
 
-Then it permanently redirects (308) to https://chat.adam.matthewsteinberger.com/ via { source: '/chat', has: [{ type: 'host', value: 'hire.adam.matthewsteinberger.com' }], destination: 'https://chat.adam.matthewsteinberger.com/', permanent: true }; requests on any other host (e.g. localhost:3000 in dev/tests, *.netlify.app previews) are untouched so /chat serves directly
+Then it permanently redirects (308) to https://chat.adam.matthewsteinberger.com/ via { source: '/chat', has: [{ type: 'host', value: 'vibewithadam.matthewsteinberger.com' }], destination: 'https://chat.adam.matthewsteinberger.com/', permanent: true }; requests on any other host (e.g. localhost:3000 in dev/tests, *.netlify.app previews) are untouched so /chat serves directly
 
 Fit criterion: the vitest test asserts this rule and that no host-less rule redirects /chat
 

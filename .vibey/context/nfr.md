@@ -30,7 +30,7 @@ Scale: number of hosts on which the chat page is indexable without a canonical p
 
 Meter: metadata export on /chat plus the hire-host /chat redirect rule
 
-Must: canonical is https://chat.adam.matthewsteinberger.com/ and hire.adam.matthewsteinberger.com/chat 308-redirects there, so exactly one indexable URL exists
+Must: canonical is https://chat.adam.matthewsteinberger.com/ and vibewithadam.matthewsteinberger.com/chat 308-redirects there, so exactly one indexable URL exists
 
 Wish: sitemap and llms.txt both reference the chat URL
 

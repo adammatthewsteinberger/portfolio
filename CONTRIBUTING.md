@@ -20,6 +20,8 @@ For anything larger than a typo, open an issue first so the change is agreed bef
 2. `npm ci`, then make sure `npm run lint`, `npm run typecheck`, `npm run test:coverage` (100% required), and `npm run test:e2e` pass. Husky runs most of this on commit/push anyway.
 3. Keep PRs small and single-purpose. Content changes and code changes go in separate PRs.
 
+Merged PRs land on `develop` first. Each push to `develop` auto-deploys to [preview.vibewithadam.matthewsteinberger.com](https://preview.vibewithadam.matthewsteinberger.com) and [preview.chatwithadam.matthewsteinberger.com](https://preview.chatwithadam.matthewsteinberger.com) for verification before promotion to `main` (production). If the ask bot shows "Out of coffee," Anthropic credits or the daily spend cap are exhausted — see `src/lib/ask/messages.ts`.
+
 ## Contact
 
-adam@matthewsteinberger.com · [hire.adam.matthewsteinberger.com/contact](https://hire.adam.matthewsteinberger.com/contact)
+adam@matthewsteinberger.com · [vibewithadam.matthewsteinberger.com/contact](https://vibewithadam.matthewsteinberger.com/contact)

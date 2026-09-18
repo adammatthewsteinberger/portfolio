@@ -44,7 +44,7 @@ started. Do not re-litigate the decisions below; they are settled.
   Disabled unless `ASK_BOT_ENABLED=true` and `ANTHROPIC_API_KEY` are set (so
   locally and in tests it is disabled: the page must still look intentional).
 - `src/app/layout.tsx` — root layout with Header, Footer, metadata template
-  `'%s | Adam Matthew Steinberger'`, `metadataBase = https://hire.adam.matthewsteinberger.com`.
+  `'%s | Adam Matthew Steinberger'`, `metadataBase = https://vibewithadam.matthewsteinberger.com`.
 - `src/app/hire-me/page.tsx` — a good reference for page structure/metadata:
   `container mx-auto px-4 …` sections, `text-[var(--color-text-primary)]`,
   cards `bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl`.
@@ -70,7 +70,7 @@ untouched (`/chat` serves directly, `/story` serves directly).
 
 ```ts
 const CHAT_HOST = 'chat.adam.matthewsteinberger.com';
-const HIRE_HOST = 'hire.adam.matthewsteinberger.com';
+const HIRE_HOST = 'vibewithadam.matthewsteinberger.com';
 
 const nextConfig: NextConfig = {
   async rewrites() {
