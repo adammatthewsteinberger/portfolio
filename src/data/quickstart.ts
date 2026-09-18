@@ -1,7 +1,7 @@
 /**
  * The ten-minute path from nothing to an autonomous software-engineering
  * agent, lifted from vibey's README (vibey 1.0.0: one `vibey` install carries
- * every *loop engine and the tools) and kept generic on purpose — nothing
+ * every `*loop` engine and the tools) and kept generic on purpose — nothing
  * here is tailored to this site or to any customer. Rendered on the homepage
  * and on /join-me.
  */
