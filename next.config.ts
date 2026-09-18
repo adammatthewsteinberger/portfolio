@@ -5,7 +5,7 @@ import type { NextConfig } from 'next';
 // exactly one canonical URL per page. See AGENTS.md → "Chat subdomain" for the curl
 // checklist to re-run after any Next.js / @opennextjs/cloudflare upgrade.
 const CHAT_HOST = 'chatwithadam.matthewsteinberger.com';
-const HIRE_HOST = 'vibewithadam.matthewsteinberger.com';
+const HIRE_HOST = 'vibewithadam.matthewsteinberger.com'; // Canonical primary-site host (historical name)
 
 // The consulting catalogue (/services/*) and its pre-2026 root-level aliases
 // (/ai-greenville, /ai-greenville.html, …) were retired with the rest of the
