@@ -81,12 +81,15 @@ export function clientKeyFromHeaders(headers: Headers): string {
   // When CF appends to X-Forwarded-For, the rightmost hop is the connecting IP.
   const xff = headers.get('x-forwarded-for');
   if (xff) {
-    const hops = xff
-      .split(',')
-      .map((s) => s.trim())
-      .filter(Boolean);
-    const last = hops.at(-1);
-    if (last) return last;
+    // Extract the last non-empty hop without allocating arrays per request.
+    let end = xff.length;
+    while (end > 0) {
+      const comma = xff.lastIndexOf(',', end - 1);
+      const hop = xff.slice(comma + 1, end).trim();
+      if (hop) return hop;
+      if (comma === -1) break;
+      end = comma;
+    }
   }
 
   return 'unknown';
