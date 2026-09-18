@@ -4,6 +4,7 @@ import { AskAdam } from '@/components/AskAdam';
 import { getAllBlogPosts } from '@/lib/blogUtils';
 import { specialties } from '@/data/expertise';
 import { openSourcePackages } from '@/data/open-source';
+import { DistributionNote, PackageLinks } from '@/components/PackageLinks';
 import { INVITATION, INVITATION_CTA, quickstart } from '@/data/quickstart';
 import { VIBEY, audiences } from '@/data/audiences';
 import { OG_IMAGE } from '@/lib/seo';
@@ -56,7 +57,7 @@ export default function Home() {
         <p className="text-lg text-[var(--color-text-muted)] max-w-2xl mx-auto md:mx-0 mb-4">
           I primarily develop free and open-source software: autonomous software-delivery tooling
           — the <code>*loop</code> agent runners, the vibey conductor, vibey-gh release automation
-          — all MIT licensed, all on PyPI, and all of it dogfooded on this very site.
+          — all MIT licensed, all in one PyPI distribution, and all of it dogfooded on this very site.
         </p>
         <p className="text-lg text-[var(--color-text-primary)] max-w-2xl mx-auto md:mx-0 mb-8">
           I&apos;m looking for developers to help build it. {INVITATION}
@@ -122,9 +123,7 @@ export default function Home() {
       {/* The packages */}
       <section className="container mx-auto px-4 py-12">
         <h2 className="text-2xl font-bold mb-2 text-center text-[var(--color-text-primary)]">The Packages</h2>
-        <p className="text-center text-[var(--color-text-muted)] mb-8">
-          Engines → conductor → release automation → skills → runtime layer. All MIT, all on PyPI.
-        </p>
+        <DistributionNote className="text-center text-[var(--color-text-muted)] mb-8 max-w-3xl mx-auto" />
         <div className="max-w-4xl mx-auto overflow-x-auto border border-[var(--color-dark-border)] rounded-xl">
           <table className="w-full text-sm">
             <tbody>
@@ -133,8 +132,7 @@ export default function Home() {
                   <td className="px-4 py-3 font-mono font-semibold text-[var(--color-text-primary)] whitespace-nowrap">{pkg.name}</td>
                   <td className="px-4 py-3 text-[var(--color-text-muted)]">{pkg.tagline}</td>
                   <td className="px-4 py-3 whitespace-nowrap">
-                    <a href={pkg.pypi} target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent-blue)] hover:underline mr-3">PyPI</a>
-                    <a href={pkg.repo} target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent-blue)] hover:underline">GitHub</a>
+                    <PackageLinks pkg={pkg} className="text-[var(--color-accent-blue)] hover:underline mr-3 last:mr-0" />
                   </td>
                 </tr>
               ))}

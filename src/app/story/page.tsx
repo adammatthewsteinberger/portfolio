@@ -169,7 +169,7 @@ export default function StoryPage() {
               . Underneath all of it: OIDC workload identity across 20 CI workflows in 9 repos,
               supply-chain scanning and keyless signing, and{' '}
               <a
-                href="https://pypi.org/project/vibey-bootstrap/"
+                href="https://github.com/the-vibey-project/vibey/tree/develop/src/vibey_tools/bootstrap"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[var(--color-accent-blue)] hover:underline"
