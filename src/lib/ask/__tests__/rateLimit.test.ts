@@ -133,6 +133,16 @@ describe('rateLimit', () => {
       expect(clientKeyFromHeaders(headers)).toBe('unknown');
     });
 
+    it('stops at the first x-forwarded-for hop when every hop is blank', async () => {
+      const { clientKeyFromHeaders } = await import('../rateLimit');
+      // Headers strips only HTTP whitespace, so a no-break space survives into the
+      // first hop, where String#trim empties it: the scan reaches the start of the
+      // header with nothing usable and must end there rather than loop.
+      const headers = new Headers({ 'x-forwarded-for': '\u00a0, ' });
+      expect(headers.get('x-forwarded-for')).toBe('\u00a0,');
+      expect(clientKeyFromHeaders(headers)).toBe('unknown');
+    });
+
     it('uses only the Cloudflare header when that is all that is present', async () => {
       const { clientKeyFromHeaders } = await import('../rateLimit');
       const headers = new Headers({ 'cf-connecting-ip': '198.51.100.7' });
