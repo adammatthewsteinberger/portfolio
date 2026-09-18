@@ -70,8 +70,8 @@
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
     "typescript": "^5",
-    "vitest": "^4.1.10",
-    "wrangler": "^4.127.0"
+    "vitest": "^5.0.1",
+    "wrangler": "^4.135.0"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
