@@ -66,7 +66,3 @@ A B2B SaaS firm used AI CRM insights.
 ## Path Forward
 
 AI is becoming the **sales copilot**. Teams that adopt thoughtfully will close faster without losing customer trust.  
-
----
-
-*I help sales teams implement AI enablement tools for measurable performance gains. [Book a call today.](/services/ai-consulting)*

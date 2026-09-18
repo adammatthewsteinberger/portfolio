@@ -66,7 +66,3 @@ An APAC e-commerce company deployed DeepSeek R1 for customer service in Chinese 
 ## Path Forward
 
 DeepSeek signals that AI leadership is no longer U.S.-only. Global enterprises must prepare for a **multipolar AI ecosystem**.  
-
----
-
-*Need advice on navigating open-weight models across jurisdictions? I help businesses build globally compliant AI stacks. [Book a consultation today.](/services/ai-consulting)*

@@ -66,7 +66,3 @@ A Fortune 500 company used AI to review vendor contracts.
 ## Path Forward
 
 AI won’t replace lawyers, but it will **transform legal workflows**. Firms that adopt responsibly will outpace competitors.  
-
----
-
-*I help law firms and legal teams deploy AI tools safely and effectively. [Book a consultation today.](/services/ai-consulting)*

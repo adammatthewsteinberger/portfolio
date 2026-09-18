@@ -67,7 +67,3 @@ A hospital integrated multimodal search across images + records.
 ## Path Forward
 
 Multimodal search is the next frontier of enterprise discovery. Businesses that adopt early will gain **data-driven advantage**.  
-
----
-
-*I help enterprises deploy multimodal search pipelines tailored to their industry. [Book a consultation today.](/services/ai-consulting)*

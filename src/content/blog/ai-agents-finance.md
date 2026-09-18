@@ -60,7 +60,3 @@ A global bank deployed fraud-detection agents.
 ## Path Forward
 
 AI agents will reshape finance, but only with **regulation + transparency.**  
-
----
-
-*I help financial firms deploy agentic AI responsibly. [Schedule a consult.](/services/ai-consulting)*

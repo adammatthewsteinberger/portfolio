@@ -67,7 +67,3 @@ A law firm used AI to draft case memos.
 ## Path Forward
 
 AI will reshape white-collar work as profoundly as spreadsheets reshaped finance.  
-
----
-
-*I help firms integrate AI responsibly to augment—not replace—their knowledge workers. [Book a consultation today.](/services/ai-consulting)*

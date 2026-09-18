@@ -60,7 +60,3 @@ A bank combined AI chatbots with human escalation.
 ## Path Forward
 
 The real productivity revolution isn’t AI replacing humans—it’s **AI amplifying them.**  
-
----
-
-*I help enterprises design human-AI collaboration strategies. [Schedule a consult.](/services/ai-consulting)*

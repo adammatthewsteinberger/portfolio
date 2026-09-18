@@ -60,7 +60,3 @@ An enterprise delayed automation waiting for AGI.
 ## Path Forward
 
 AGI may be the holy grail—but the real money today is in **applied, narrow AI.**  
-
----
-
-*I help enterprises cut through AGI hype and focus on actionable AI strategies. [Schedule a consult.](/services/ai-consulting)*

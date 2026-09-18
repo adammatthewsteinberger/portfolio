@@ -66,7 +66,3 @@ A creative agency used MidJourney for ad visuals.
 ## Path Forward
 
 AI will reshape art, but **human creativity remains core**. The most successful will blend both.  
-
----
-
-*I help creative orgs integrate AI art tools responsibly and effectively. [Book a strategy call today.](/services/ai-consulting)*

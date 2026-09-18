@@ -60,7 +60,3 @@ A telco swapped out GPT-5 for an SLM.
 ## Path Forward
 
 The future of AI isn’t bigger—it’s **right-sized.** SLMs will power everyday enterprise AI.  
-
----
-
-*I help enterprises integrate SLMs for efficiency and scalability. [Let’s talk.](/services/ai-consulting)*

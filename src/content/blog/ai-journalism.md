@@ -66,7 +66,3 @@ A news agency used AI to draft sports recaps.
 ## Path Forward
 
 AI will be a **tool, not a replacement** for journalists. Newsrooms that balance trust with speed will thrive.  
-
----
-
-*I help media orgs adopt AI responsibly in reporting and fact-checking. [Book a consultation today.](/services/ai-consulting)*

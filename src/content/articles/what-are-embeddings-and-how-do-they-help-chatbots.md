@@ -90,9 +90,3 @@ Not everything is perfect in embedding land:
 - They're the backbone of smart chatbots, especially in RAG systems.
 - They help reduce hallucinations, improve accuracy, and scale to massive document sets.
 - Challenges remain, but for now, they're essential to next-gen AI assistants.
-
-## 👋 Want Your Own Chatbot That Actually Understands You?
-
-If you're looking to build a chatbot that doesn't just parrot answers—but actually connects your content to user questions using modern AI—we can help.
-
-**Book a free consultation today** and let's talk about how a custom RAG-based chatbot powered by embeddings can solve your business or product challenge.

@@ -67,7 +67,3 @@ A law firm fed a **300k-token contract database** into Claude.
 ## Path Forward
 
 Context windows will keep growing—but the real challenge is **feeding high-quality data**. Enterprises that master this will leap ahead.  
-
----
-
-*I design knowledge pipelines for long-context AI, ensuring quality and compliance. [Book a consultation today.](/services/ai-consulting)*

@@ -69,7 +69,3 @@ Result: **40% faster claim processing**.
 ## Path Forward
 
 LangGraph could become the **Kubernetes of AI agents**: open, flexible, and community-driven.  
-
----
-
-*I help enterprises architect agentic workflows with LangGraph and MCP. [Book a consultation today.](/services/ai-consulting)*

@@ -61,7 +61,3 @@ The EU AI Act will amplify this risk for all sectors.
 ## Path Forward
 
 AI regulation is coming fast. Enterprises must treat it like **financial compliance**—table stakes for doing business.  
-
----
-
-*I help enterprises align AI deployments with global regulations. [Book a compliance review.](/services/ai-consulting)*

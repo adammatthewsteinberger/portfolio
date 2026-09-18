@@ -67,7 +67,3 @@ A pharma company piloted neurosymbolic AI for drug discovery.
 ## Path Forward
 
 Neurosymbolic AI could be the **bridge between today’s black-box LLMs and trustworthy AI systems**.  
-
----
-
-*I help enterprises evaluate next-gen AI paradigms like neurosymbolic systems. [Book a call today.](/services/ai-consulting)*

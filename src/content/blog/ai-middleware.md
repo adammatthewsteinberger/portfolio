@@ -67,7 +67,3 @@ A retailer used middleware to integrate product databases + chatbot agents.
 ## Path Forward
 
 AI middleware will be the **backbone of enterprise AI stacks**, much like APIs were for web services.  
-
----
-
-*I help enterprises design middleware strategies that ensure interoperability and governance. [Let’s discuss your stack.](/services/ai-consulting)*
