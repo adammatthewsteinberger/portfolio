@@ -68,7 +68,3 @@ A logistics firm deployed Phi models on ruggedized laptops for drivers.
 ## Path Forward
 
 SLMs will power the **next billion devices**. For enterprises, they’re not replacements—but essential complements to big models.  
-
----
-
-*I help enterprises design hybrid stacks that balance small and large models for efficiency and resilience. [Schedule your consultation today.](/services/ai-consulting)*

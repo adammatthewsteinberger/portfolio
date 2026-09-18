@@ -97,15 +97,3 @@ Many offer plug-and-play integrations with AI tools like LangChain, LlamaIndex, 
 Large Language Models are smart, but they forget to check the news. RAG systems fix that by letting them look up current info before answering. Vector databases make this possible by storing and finding knowledge based on meaning, not just words.
 
 If you want a chatbot that's smart, accurate, and always up to date, you need RAG—and you need vector search to power it.
-
-## Let's Build Yours
-
-If you're ready to create a custom AI chatbot that:
-
-- Understands your domain
-- Answers with confidence (and citations)
-- Grows with your business
-
-…then let's talk.
-
-Schedule a free consultation today to see how a custom RAG chatbot and vector database can work for your business.

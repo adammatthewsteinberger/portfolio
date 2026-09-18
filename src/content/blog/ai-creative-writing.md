@@ -66,7 +66,3 @@ A media org piloted AI story drafts.
 ## Path Forward
 
 AI will reshape storytelling—but **human creativity remains core**.  
-
----
-
-*I help creative orgs deploy AI writing responsibly while protecting authenticity. [Let’s design your approach.](/services/ai-consulting)*

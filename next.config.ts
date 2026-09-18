@@ -1,11 +1,28 @@
 import type { NextConfig } from 'next';
 
-// Hosts for the "Ask my résumé" chat subdomain. chatwithadam.matthewsteinberger.com is a
+// Hosts for the "Ask about Adam" chat subdomain. chatwithadam.matthewsteinberger.com is a
 // second custom domain on the same Cloudflare Worker; the host-aware rules below keep
 // exactly one canonical URL per page. See AGENTS.md → "Chat subdomain" for the curl
 // checklist to re-run after any Next.js / @opennextjs/cloudflare upgrade.
 const CHAT_HOST = 'chatwithadam.matthewsteinberger.com';
 const HIRE_HOST = 'vibewithadam.matthewsteinberger.com';
+
+// The consulting catalogue (/services/*) and its pre-2026 root-level aliases
+// (/ai-greenville, /ai-greenville.html, …) were retired with the rest of the
+// looking-for-work copy (the-vibey-project/vibey#238). Every old URL still
+// lands somewhere real: the homepage, which says what the site is for now.
+const LEGACY_SERVICE_SLUGS = [
+  'ai-greer', 'ai-simpsonville', 'ai-greenville', 'ai-spartanburg', 'ai-financial-services',
+  'ai-healthcare', 'ai-real-estate', 'ai-restaurants', 'ai-law-firms', 'ai-manufacturing',
+  'ai-marketing-agencies', 'ai-sales-teams', 'ai-nonprofits', 'ai-startups', 'ai-enterprise',
+  'ai-boutiques', 'ai-privacy-tech', 'ai-helpdesk', 'ai-copywriting', 'custom-chatbots',
+  'chatgpt-developer', 'claude-ai', 'gemini-ai', 'llm-development', 'rag-development',
+  'chat-engine-development', 'context-engineering', 'prompt-engineering', 'lora-fine-tuning',
+  'vllm-api-development', 'ai-agents', 'ai-automation', 'ai-business', 'ai-consulting',
+  'ai-consultant', 'ai-expert', 'ai-implementation', 'ai-integration', 'ai-marketing',
+  'ai-solutions', 'ai-strategy', 'ai-training', 'ai-services', 'upstate-ai-developer',
+  'ai-developer-near-me',
+];
 
 const nextConfig: NextConfig = {
   async rewrites() {
@@ -42,456 +59,22 @@ const nextConfig: NextConfig = {
         destination: `https://${CHAT_HOST}/`,
         permanent: true,
       },
-      {
-        source: '/ai-greer.html',
-        destination: '/services/ai-greer',
-        permanent: true,
-      },
-      {
-        source: '/ai-greer',
-        destination: '/services/ai-greer',
-        permanent: true,
-      },
-      {
-        source: '/ai-simpsonville.html',
-        destination: '/services/ai-simpsonville',
-        permanent: true,
-      },
-      {
-        source: '/ai-simpsonville',
-        destination: '/services/ai-simpsonville',
-        permanent: true,
-      },
-      {
-        source: '/ai-greenville.html',
-        destination: '/services/ai-greenville',
-        permanent: true,
-      },
-      {
-        source: '/ai-greenville',
-        destination: '/services/ai-greenville',
-        permanent: true,
-      },
-      {
-        source: '/ai-spartanburg.html',
-        destination: '/services/ai-spartanburg',
-        permanent: true,
-      },
-      {
-        source: '/ai-spartanburg',
-        destination: '/services/ai-spartanburg',
-        permanent: true,
-      },
-      {
-        source: '/ai-financial-services.html',
-        destination: '/services/ai-financial-services',
-        permanent: true,
-      },
-      {
-        source: '/ai-financial-services',
-        destination: '/services/ai-financial-services',
-        permanent: true,
-      },
-      {
-        source: '/ai-healthcare.html',
-        destination: '/services/ai-healthcare',
-        permanent: true,
-      },
-      {
-        source: '/ai-healthcare',
-        destination: '/services/ai-healthcare',
-        permanent: true,
-      },
-      {
-        source: '/ai-real-estate.html',
-        destination: '/services/ai-real-estate',
-        permanent: true,
-      },
-      {
-        source: '/ai-real-estate',
-        destination: '/services/ai-real-estate',
-        permanent: true,
-      },
-      {
-        source: '/ai-restaurants.html',
-        destination: '/services/ai-restaurants',
-        permanent: true,
-      },
-      {
-        source: '/ai-restaurants',
-        destination: '/services/ai-restaurants',
-        permanent: true,
-      },
-      {
-        source: '/ai-law-firms.html',
-        destination: '/services/ai-law-firms',
-        permanent: true,
-      },
-      {
-        source: '/ai-law-firms',
-        destination: '/services/ai-law-firms',
-        permanent: true,
-      },
-      {
-        source: '/ai-manufacturing.html',
-        destination: '/services/ai-manufacturing',
-        permanent: true,
-      },
-      {
-        source: '/ai-manufacturing',
-        destination: '/services/ai-manufacturing',
-        permanent: true,
-      },
-      {
-        source: '/ai-marketing-agencies.html',
-        destination: '/services/ai-marketing-agencies',
-        permanent: true,
-      },
-      {
-        source: '/ai-marketing-agencies',
-        destination: '/services/ai-marketing-agencies',
-        permanent: true,
-      },
-      {
-        source: '/ai-sales-teams.html',
-        destination: '/services/ai-sales-teams',
-        permanent: true,
-      },
-      {
-        source: '/ai-sales-teams',
-        destination: '/services/ai-sales-teams',
-        permanent: true,
-      },
-      {
-        source: '/ai-nonprofits.html',
-        destination: '/services/ai-nonprofits',
-        permanent: true,
-      },
-      {
-        source: '/ai-nonprofits',
-        destination: '/services/ai-nonprofits',
-        permanent: true,
-      },
-      {
-        source: '/ai-startups.html',
-        destination: '/services/ai-startups',
-        permanent: true,
-      },
-      {
-        source: '/ai-startups',
-        destination: '/services/ai-startups',
-        permanent: true,
-      },
-      {
-        source: '/ai-enterprise.html',
-        destination: '/services/ai-enterprise',
-        permanent: true,
-      },
-      {
-        source: '/ai-enterprise',
-        destination: '/services/ai-enterprise',
-        permanent: true,
-      },
-      {
-        source: '/ai-boutiques.html',
-        destination: '/services/ai-boutiques',
-        permanent: true,
-      },
-      {
-        source: '/ai-boutiques',
-        destination: '/services/ai-boutiques',
-        permanent: true,
-      },
-      {
-        source: '/ai-privacy-tech.html',
-        destination: '/services/ai-privacy-tech',
-        permanent: true,
-      },
-      {
-        source: '/ai-privacy-tech',
-        destination: '/services/ai-privacy-tech',
-        permanent: true,
-      },
-      {
-        source: '/ai-helpdesk.html',
-        destination: '/services/ai-helpdesk',
-        permanent: true,
-      },
-      {
-        source: '/ai-helpdesk',
-        destination: '/services/ai-helpdesk',
-        permanent: true,
-      },
-      {
-        source: '/ai-copywriting.html',
-        destination: '/services/ai-copywriting',
-        permanent: true,
-      },
-      {
-        source: '/ai-copywriting',
-        destination: '/services/ai-copywriting',
-        permanent: true,
-      },
-      {
-        source: '/custom-chatbots.html',
-        destination: '/services/custom-chatbots',
-        permanent: true,
-      },
-      {
-        source: '/custom-chatbots',
-        destination: '/services/custom-chatbots',
-        permanent: true,
-      },
-      {
-        source: '/chatgpt-developer.html',
-        destination: '/services/chatgpt-developer',
-        permanent: true,
-      },
-      {
-        source: '/chatgpt-developer',
-        destination: '/services/chatgpt-developer',
-        permanent: true,
-      },
-      {
-        source: '/claude-ai.html',
-        destination: '/services/claude-ai',
-        permanent: true,
-      },
-      {
-        source: '/claude-ai',
-        destination: '/services/claude-ai',
-        permanent: true,
-      },
-      {
-        source: '/gemini-ai.html',
-        destination: '/services/gemini-ai',
-        permanent: true,
-      },
-      {
-        source: '/gemini-ai',
-        destination: '/services/gemini-ai',
-        permanent: true,
-      },
-      {
-        source: '/llm-development.html',
-        destination: '/services/llm-development',
-        permanent: true,
-      },
-      {
-        source: '/llm-development',
-        destination: '/services/llm-development',
-        permanent: true,
-      },
-      {
-        source: '/rag-development.html',
-        destination: '/services/rag-development',
-        permanent: true,
-      },
-      {
-        source: '/rag-development',
-        destination: '/services/rag-development',
-        permanent: true,
-      },
-      {
-        source: '/chat-engine-development.html',
-        destination: '/services/chat-engine-development',
-        permanent: true,
-      },
-      {
-        source: '/chat-engine-development',
-        destination: '/services/chat-engine-development',
-        permanent: true,
-      },
-      {
-        source: '/context-engineering.html',
-        destination: '/services/context-engineering',
-        permanent: true,
-      },
-      {
-        source: '/context-engineering',
-        destination: '/services/context-engineering',
-        permanent: true,
-      },
-      {
-        source: '/prompt-engineering.html',
-        destination: '/services/prompt-engineering',
-        permanent: true,
-      },
-      {
-        source: '/prompt-engineering',
-        destination: '/services/prompt-engineering',
-        permanent: true,
-      },
-      {
-        source: '/lora-fine-tuning.html',
-        destination: '/services/lora-fine-tuning',
-        permanent: true,
-      },
-      {
-        source: '/lora-fine-tuning',
-        destination: '/services/lora-fine-tuning',
-        permanent: true,
-      },
-      {
-        source: '/vllm-api-development.html',
-        destination: '/services/vllm-api-development',
-        permanent: true,
-      },
-      {
-        source: '/vllm-api-development',
-        destination: '/services/vllm-api-development',
-        permanent: true,
-      },
-      {
-        source: '/ai-agents.html',
-        destination: '/services/ai-agents',
-        permanent: true,
-      },
-      {
-        source: '/ai-agents',
-        destination: '/services/ai-agents',
-        permanent: true,
-      },
-      {
-        source: '/ai-automation.html',
-        destination: '/services/ai-automation',
-        permanent: true,
-      },
-      {
-        source: '/ai-automation',
-        destination: '/services/ai-automation',
-        permanent: true,
-      },
-      {
-        source: '/ai-business.html',
-        destination: '/services/ai-business',
-        permanent: true,
-      },
-      {
-        source: '/ai-business',
-        destination: '/services/ai-business',
-        permanent: true,
-      },
-      {
-        source: '/ai-consulting.html',
-        destination: '/services/ai-consulting',
-        permanent: true,
-      },
-      {
-        source: '/ai-consulting',
-        destination: '/services/ai-consulting',
-        permanent: true,
-      },
-      {
-        source: '/ai-consultant.html',
-        destination: '/services/ai-consultant',
-        permanent: true,
-      },
-      {
-        source: '/ai-consultant',
-        destination: '/services/ai-consultant',
-        permanent: true,
-      },
-      {
-        source: '/ai-expert.html',
-        destination: '/services/ai-expert',
-        permanent: true,
-      },
-      {
-        source: '/ai-expert',
-        destination: '/services/ai-expert',
-        permanent: true,
-      },
-      {
-        source: '/ai-implementation.html',
-        destination: '/services/ai-implementation',
-        permanent: true,
-      },
-      {
-        source: '/ai-implementation',
-        destination: '/services/ai-implementation',
-        permanent: true,
-      },
-      {
-        source: '/ai-integration.html',
-        destination: '/services/ai-integration',
-        permanent: true,
-      },
-      {
-        source: '/ai-integration',
-        destination: '/services/ai-integration',
-        permanent: true,
-      },
-      {
-        source: '/ai-marketing.html',
-        destination: '/services/ai-marketing',
-        permanent: true,
-      },
-      {
-        source: '/ai-marketing',
-        destination: '/services/ai-marketing',
-        permanent: true,
-      },
-      {
-        source: '/ai-solutions.html',
-        destination: '/services/ai-solutions',
-        permanent: true,
-      },
-      {
-        source: '/ai-solutions',
-        destination: '/services/ai-solutions',
-        permanent: true,
-      },
-      {
-        source: '/ai-strategy.html',
-        destination: '/services/ai-strategy',
-        permanent: true,
-      },
-      {
-        source: '/ai-strategy',
-        destination: '/services/ai-strategy',
-        permanent: true,
-      },
-      {
-        source: '/ai-training.html',
-        destination: '/services/ai-training',
-        permanent: true,
-      },
-      {
-        source: '/ai-training',
-        destination: '/services/ai-training',
-        permanent: true,
-      },
-      {
-        source: '/ai-services.html',
-        destination: '/services/ai-services',
-        permanent: true,
-      },
-      {
-        source: '/ai-services',
-        destination: '/services/ai-services',
-        permanent: true,
-      },
-      {
-        source: '/upstate-ai-developer.html',
-        destination: '/services/upstate-ai-developer',
-        permanent: true,
-      },
-      {
-        source: '/upstate-ai-developer',
-        destination: '/services/upstate-ai-developer',
-        permanent: true,
-      },
-      {
-        source: '/ai-developer-near-me.html',
-        destination: '/services/ai-developer-near-me',
-        permanent: true,
-      },
-      {
-        source: '/ai-developer-near-me',
-        destination: '/services/ai-developer-near-me',
-        permanent: true,
-      },
+      // --- retired with the looking-for-work copy (the-vibey-project/vibey#238) ---
+      // /hire-me became /join-me: developers, then governments and military, then universities.
+      { source: '/hire-me', destination: '/join-me', permanent: true },
+      // The executive edition existed to sell (hire full-time, or engage the LLC). Each page
+      // lands on the engineering page it mirrored.
+      { source: '/for-executives', destination: '/', permanent: true },
+      { source: '/for-executives/work', destination: '/work', permanent: true },
+      { source: '/for-executives/work/:slug', destination: '/work/:slug', permanent: true },
+      { source: '/for-executives/engage', destination: '/contact', permanent: true },
+      // The consulting catalogue and its legacy aliases.
+      { source: '/services', destination: '/', permanent: true },
+      { source: '/services/:slug', destination: '/', permanent: true },
+      ...LEGACY_SERVICE_SLUGS.flatMap((slug) => [
+        { source: `/${slug}.html`, destination: '/', permanent: true },
+        { source: `/${slug}`, destination: '/', permanent: true },
+      ]),
       {
         source: '/novice-to-navigator.html',
         destination: '/novice-to-navigator',
@@ -735,31 +318,10 @@ const nextConfig: NextConfig = {
         destination: '/work/:slug',
         permanent: true,
       },
-      // Duplicate/near-duplicate "doorway" service pages collapsed to one canonical page each
-      {
-        source: '/services/ai-consultant',
-        destination: '/services/ai-consulting',
-        permanent: true,
-      },
-      {
-        source: '/services/ai-expert',
-        destination: '/services/ai-consulting',
-        permanent: true,
-      },
-      {
-        source: '/services/ai-solutions',
-        destination: '/services/ai-services',
-        permanent: true,
-      },
-      {
-        source: '/services/ai-business',
-        destination: '/services/ai-services',
-        permanent: true,
-      },
-      // Retired post — availability now lives on /hire-me rather than a narrative blog post.
+      // Retired post about leaving a job; the career narrative lives on /story.
       {
         source: '/blog/why-im-leaving-a-job-i-liked',
-        destination: '/hire-me',
+        destination: '/story',
         permanent: true,
       },
     ];

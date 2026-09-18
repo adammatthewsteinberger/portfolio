@@ -66,7 +66,3 @@ A fintech company used AutoGen to automate CI/CD pipelines.
 ## Path Forward
 
 AutoGen positions Microsoft as a leader in **multi-agent orchestration**. For enterprises already in Azure, it’s a natural fit.  
-
----
-
-*I help DevOps teams integrate AutoGen to boost productivity without losing flexibility. [Schedule a call today.](/services/ai-consulting)*

@@ -66,7 +66,3 @@ A hospital built an **alignment review board**.
 ## Path Forward
 
 AI alignment is becoming a **C-suite concern**. Enterprises must integrate it into governance now—not after incidents occur.  
-
----
-
-*I help businesses design AI governance frameworks that prioritize safety and alignment. [Let’s design yours.](/services/ai-consulting)*

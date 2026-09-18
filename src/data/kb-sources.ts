@@ -1,5 +1,5 @@
 /**
- * Curated, hand-written source text for the "Ask my résumé" RAG bot's
+ * Curated, hand-written source text for the "Ask about Adam" RAG bot's
  * knowledge base. Kept separate from the page components (which are JSX,
  * not plain text) so the bot only ever answers from facts a human wrote
  * and reviewed here — never from scraped/rendered markup.
@@ -8,6 +8,7 @@
  * blog content to produce src/generated/kb.json.
  */
 
+import { VIBEY, academiaItems, audiences, getStartedSteps, governmentClaims, helpWanted } from './audiences';
 import { fullStack, specialtyGroups } from './expertise';
 
 export interface KBSource {
@@ -38,28 +39,57 @@ export function expertiseChunks(): KBSource[] {
   ]);
 }
 
+/** Backticks mark inline code on the page; the bot gets plain text. */
+const plain = (text: string) => text.replaceAll('`', '');
+
+/**
+ * One chunk per /join-me section, generated from src/data/audiences.ts so the
+ * bot and the page never drift — and so the bot never answers from a hiring
+ * page that no longer exists.
+ */
+export function joinMeChunks(): KBSource[] {
+  const [developers, governments, academia] = audiences;
+  return [
+    {
+      id: 'join-me-overview',
+      url: '/join-me',
+      title: 'Join Me',
+      section: 'Who the site is for',
+      text: `Adam is looking for developers to help build vibey, his free and open-source conductor for autonomous software delivery (${VIBEY.repo}, MIT licensed, installed with uv tool install vibey). The /join-me page has three sections, in this order: ${audiences
+        .map((a) => `${a.title} (${a.href}) — ${a.summary}`)
+        .join(' ')} Greenville-remote or US-remote volunteers are welcome and encouraged to get involved at any time. Contact: adam@matthewsteinberger.com.`,
+    },
+    {
+      id: 'join-me-developers',
+      url: developers.href,
+      title: 'Join Me',
+      section: 'Developers: how to get started',
+      text: `How to get started contributing to vibey: ${getStartedSteps
+        .map((step, i) => `${i + 1}. ${step.title}. ${plain(step.body)}${step.commands.length ? ` Commands: ${step.commands.join('; ')}.` : ''}`)
+        .join(' ')} Where help matters most: ${helpWanted.map((h) => `${h.title} — ${h.body}`).join(' ')}`,
+    },
+    {
+      id: 'join-me-governments',
+      url: governments.href,
+      title: 'Join Me',
+      section: 'Governments and military',
+      text: `What vibey offers governments and military organizations: ${governmentClaims
+        .map((c) => `${c.title}: ${plain(c.body)}`)
+        .join(' ')} Contact goes through official channels: email adam@matthewsteinberger.com from an official address, report security vulnerabilities privately as vibey's SECURITY.md describes, and ask public questions in GitHub Discussions. The site claims no government or military customer, contract, clearance, accreditation, or endorsement.`,
+    },
+    {
+      id: 'join-me-academia',
+      url: academia.href,
+      title: 'Join Me',
+      section: 'Universities and academia',
+      text: `What vibey offers universities and researchers: ${academiaItems
+        .map((c) => `${c.title}: ${plain(c.body)}`)
+        .join(' ')} The paper is at ${VIBEY.paperHtml} (PDF: ${VIBEY.paperPdf}); the book is at ${VIBEY.bookPdf}. The site claims no institutional affiliation or endorsement.`,
+    },
+  ];
+}
+
 export const kbSources: KBSource[] = [
-  {
-    id: 'hire-me-facts',
-    url: '/hire-me',
-    title: 'Hire Me',
-    section: 'At a glance',
-    text: `Adam Matthew Steinberger is a Staff Software Architect & AI Automation Engineer, available now.
-Target titles: Staff Software Architect, AI Automation Engineer, Staff/Principal AI Engineer, Solutions Architect.
-Location: Greenville, South Carolina — remote preferred; open to US remote anywhere.
-Employment types: W2 full-time preferred; contract-to-hire considered.
-Work authorization: US citizen, no sponsorship required.
-Specialties: Azure (AKS, Functions, Service Bus, Bicep, Terraform, Key Vault); Python and .NET backends; event-driven microservices; RAG, multi-vendor LLM gateways, and AI governance (Claude, GPT, Gemini, Mistral, vLLM); Kubernetes, Helm, GitOps, and secretless DevSecOps; identity governance (Okta IGA, Entra ID, SAML/OIDC).
-Verify him: ask the résumé bot at chatwithadam.matthewsteinberger.com, read the packages on PyPI, or read the code on GitHub.`,
-  },
-  {
-    id: 'hire-me-looking',
-    url: '/hire-me',
-    title: 'Hire Me',
-    section: "What Adam is looking for",
-    text: `What Adam is looking for: a team where AI, automation, and architecture are the core of the role, not a side quest; ownership of hard, ambiguous problems with room to design the solution, not just implement a ticket; a culture that treats written specs and async communication as a strength, not a workaround; Greenville, SC-based or fully remote work.
-What Adam is not looking for: pure front-end or design roles with no backend/architecture component; on-call-heavy support rotations with no engineering ownership attached; roles requiring daily in-person presence in an office outside the Greenville area.`,
-  },
   {
     id: 'story-bio',
     url: '/story',
@@ -74,7 +104,7 @@ Before Vizius: four consulting engagements in six months through Adam Matthew St
     url: '/story',
     title: 'My Story',
     section: 'The Vizius Group engagement',
-    text: `Adam spent a year as Senior Azure & AI Development Engineer at The Vizius Group, a cybersecurity firm in Greenville, SC (September 2025 to August 2026). He is available now. At Vizius he was sole architect of an AI governance gateway (five model vendors — Azure AI, Anthropic, OpenAI/Codex, Cursor, Grok, Gemini — behind one policy-enforced OpenAI-compatible API with per-project USD cost caps, multi-unit rate limiting, an HMAC-signed hash-chained audit trail, and Entra ID / workload identity auth with no API keys; three product teams were migrated onto it and their credentials retired), co-lead of a 20-microservice AI payroll automation platform (~420k lines, four human-approved phases, 585 test modules, Terraform/Helm/GitOps on private AKS; architecture production-ready at day 45, junior developer trained in parallel now owns it), lead of a technical report generation platform (event-driven ingestion, multi-vendor instrument parsers, standards-aware deterministic analysis plus LLM review, SAML 2.0 + Entra SSO, SOC 2 readiness assessment and threat model), sole author of two identity-governance-as-code control planes for a SOX-regulated enterprise (a kopf Kubernetes operator with fully secretless multi-tenant auth and LLM-drafted PRs; an IdP governance platform managing 40 resource kinds through six addressing patterns with human-gated destructive drift and point-in-time reversion; plus a versioned sync API for 114+ directory groups), sole author of a multi-system ticket relay (N-way version vectors, echo suppression, conflict policy engine, 653 tests at 93% coverage, import-linter-enforced pure domain, property/mutation/chaos tested), and lead of a multi-tenant observability portal (three data planes with freshness tags on every payload). He authored the shared Python platform library vibey-bootstrap (formerly azure-bootstrap; three major versions on PyPI, adopted by 17+ repos), implemented secretless DevSecOps (OIDC workload identity federation across 20 CI workflows in 9 repos; SAST, SCA, IaC scanning, secret detection, SBOM, Cosign keyless signing, Kyverno/OPA admission), and did security self-reviews that closed an auth bypass, path traversal, SSRF, timing-unsafe comparison, an injection flaw, and an over-scoped CI credential. Non-code work: five formal architecture document sets (~180 pages, including a 43-page design / 10-page executive summary / one-sheet package and a STRIDE threat model), identity-governance advisory for ~5,700 workforce identities (20-page market survey, 11-page platform decision report, 14-page API/SDK/MCP coverage assessment across eight platforms, GxP-classified functional specifications, SOX-to-IAM risk mapping), the Security-First Scrum framework (framework, two training manuals, four AI-agent rulesets), an evidence-based delivery velocity playbook, a ~110,000-word technical reference library later published as vibey-skills, mentoring junior developers across three projects, and the firm's LinkedIn thought-leadership program (audit, 28-week playbook, a narrative white paper on export-control compliance and cloud enclave architecture that he produced and wrote from recorded expert interviews, and a six-post distribution series). Client identities, credentials, endpoints, and commercial terms are not disclosed.`,
+    text: `Adam spent a year as Senior Azure & AI Development Engineer at The Vizius Group, a cybersecurity firm in Greenville, SC (September 2025 to August 2026). At Vizius he was sole architect of an AI governance gateway (five model vendors — Azure AI, Anthropic, OpenAI/Codex, Cursor, Grok, Gemini — behind one policy-enforced OpenAI-compatible API with per-project USD cost caps, multi-unit rate limiting, an HMAC-signed hash-chained audit trail, and Entra ID / workload identity auth with no API keys; three product teams were migrated onto it and their credentials retired), co-lead of a 20-microservice AI payroll automation platform (~420k lines, four human-approved phases, 585 test modules, Terraform/Helm/GitOps on private AKS; architecture production-ready at day 45, junior developer trained in parallel now owns it), lead of a technical report generation platform (event-driven ingestion, multi-vendor instrument parsers, standards-aware deterministic analysis plus LLM review, SAML 2.0 + Entra SSO, SOC 2 readiness assessment and threat model), sole author of two identity-governance-as-code control planes for a SOX-regulated enterprise (a kopf Kubernetes operator with fully secretless multi-tenant auth and LLM-drafted PRs; an IdP governance platform managing 40 resource kinds through six addressing patterns with human-gated destructive drift and point-in-time reversion; plus a versioned sync API for 114+ directory groups), sole author of a multi-system ticket relay (N-way version vectors, echo suppression, conflict policy engine, 653 tests at 93% coverage, import-linter-enforced pure domain, property/mutation/chaos tested), and lead of a multi-tenant observability portal (three data planes with freshness tags on every payload). He authored the shared Python platform library vibey-bootstrap (formerly azure-bootstrap; three major versions on PyPI, adopted by 17+ repos), implemented secretless DevSecOps (OIDC workload identity federation across 20 CI workflows in 9 repos; SAST, SCA, IaC scanning, secret detection, SBOM, Cosign keyless signing, Kyverno/OPA admission), and did security self-reviews that closed an auth bypass, path traversal, SSRF, timing-unsafe comparison, an injection flaw, and an over-scoped CI credential. Non-code work: five formal architecture document sets (~180 pages, including a 43-page design / 10-page executive summary / one-sheet package and a STRIDE threat model), identity-governance advisory for ~5,700 workforce identities (20-page market survey, 11-page platform decision report, 14-page API/SDK/MCP coverage assessment across eight platforms, GxP-classified functional specifications, SOX-to-IAM risk mapping), the Security-First Scrum framework (framework, two training manuals, four AI-agent rulesets), an evidence-based delivery velocity playbook, a ~110,000-word technical reference library later published as vibey-skills, mentoring junior developers across three projects, and the firm's LinkedIn thought-leadership program (audit, 28-week playbook, a narrative white paper on export-control compliance and cloud enclave architecture that he produced and wrote from recorded expert interviews, and a six-post distribution series). Client identities, credentials, endpoints, and commercial terms are not disclosed.`,
   },
   {
     id: 'volunteer-project-excite',
@@ -88,7 +118,7 @@ Before Vizius: four consulting engagements in six months through Adam Matthew St
     url: '/story',
     title: 'My Story',
     section: 'Career timeline',
-    text: `Career timeline: B.A. Computer Science, Skidmore College (2012). Town & Country Computer Services, junior engineer, insurance software (2013-2015). New York State Insurance Fund — migrated VB6 to C# MVC, mentored junior devs (2015-2019). Bestpass — toll billing systems, introduced automated testing to a legacy codebase (2019-2020). Akmazio — led Agile delivery for a mobile networking platform (2020-2021). Certified ScrumMaster (2021). LeaseTrack — Python + AWS Textract for insurance document parsing (2021-2022). Transcat — .NET Web APIs and React for lab equipment calibration (2022-2023). Lima One Capital, Greenville SC — NestJS/gRPC microservices suite, replaced legacy Mulesoft (2023-2025). Adam Matthew Steinberger LLC — self-hosted RAG, cloud RAG, production push notifications (March-August 2025). The Vizius Group — Senior Azure & AI Development Engineer (September 2025-August 2026). Available now as Staff Software Architect & AI Automation Engineer (from September 2026).`,
+    text: `Career timeline: B.A. Computer Science, Skidmore College (2012). Town & Country Computer Services, junior engineer, insurance software (2013-2015). New York State Insurance Fund — migrated VB6 to C# MVC, mentored junior devs (2015-2019). Bestpass — toll billing systems, introduced automated testing to a legacy codebase (2019-2020). Akmazio — led Agile delivery for a mobile networking platform (2020-2021). Certified ScrumMaster (2021). LeaseTrack — Python + AWS Textract for insurance document parsing (2021-2022). Transcat — .NET Web APIs and React for lab equipment calibration (2022-2023). Lima One Capital, Greenville SC — NestJS/gRPC microservices suite, replaced legacy Mulesoft (2023-2025). Adam Matthew Steinberger LLC — self-hosted RAG, cloud RAG, production push notifications (March-August 2025). The Vizius Group — Senior Azure & AI Development Engineer (September 2025-August 2026). vibey 1.0.0 released on PyPI, the conductor and the whole *loop family in one MIT-licensed distribution (September 2026).`,
   },
   ...expertiseChunks(),
   {
@@ -119,25 +149,12 @@ Before Vizius: four consulting engagements in six months through Adam Matthew St
     section: 'Interactive quiz',
     text: `Adam built an interactive Chatbot Readiness Quiz — a 15-factor, four-pillar self-assessment (Organizational, Technical, Security & Compliance, Operational) that scores an organization's actual readiness to deploy a custom AI chatbot, based on the "Four Pillars of Chatbot Readiness" framework from his Novice to Navigator book.`,
   },
-  {
-    id: 'join-me',
-    url: '/join-me',
-    title: 'Join Me',
-    section: 'Contributing and volunteering',
-    text: `Adam primarily develops free and open-source software and is always open for a connection or a coffee; Greenville-remote or US-remote volunteers are welcome and encouraged to get involved at any time. The /join-me page has everything a developer needs to get started: a generic, free quickstart for the whole stack (install vibey and at least one *loop engine such as claudeloop with uv tool install, run vibey doctor, vibey new, vibey worker, and answer gates with vibey answer — Python 3.12+ and PostgreSQL required), how this very site is built with it (the chat subdomain shipped as a vibey project), ways to contribute (issues, pull requests against develop, new *loop engines, new skills for vibey-skills, documentation), the repositories with their code of conduct and security policy, and his volunteer architecture work for a nonprofit (Project Excite). Contact: adam@matthewsteinberger.com.`,
-  },
-  {
-    id: 'for-executives',
-    url: '/for-executives',
-    title: 'For Executives',
-    section: 'Executive edition',
-    text: `The site has two editions. The engineering site (the root and every page on it) is the canonical, default version. The executive edition at /for-executives restates the same work for a non-technical buyer — the problem first, then what changed, then two ways to work with Adam: hire him full-time into an engineering organization (/hire-me), or engage Adam Matthew Steinberger LLC to tailor and whitelabel the platforms to their environment (/for-executives/engage; the service pages are at /services). The engineering site is never reduced to make the executive edition more attractive, and it contains no sales framing. No pricing is published anywhere.`,
-  },
+  ...joinMeChunks(),
   {
     id: 'chat',
     url: '/chat',
-    title: 'Ask my résumé',
+    title: 'Ask about Adam',
     section: 'Chat',
-    text: `"Ask my résumé" is a small RAG chat assistant that answers questions about Adam's background, experience, technical stack, and availability. It lives full-page at https://chatwithadam.matthewsteinberger.com (also reachable at /chat) and as an inline widget on the homepage. It answers only using facts published on this site and is capped at six questions per session. For anything more, visitors can use the contact form or view the Hire Me page.`,
+    text: `"Ask about Adam" is a small RAG chat assistant that answers questions about Adam's work, his technical stack, his open-source project vibey, and how to get involved. It lives full-page at https://chatwithadam.matthewsteinberger.com (also reachable at /chat) and as an inline widget on the homepage. It answers only using facts published on this site and is capped at six questions per session. For anything more, visitors can use the contact form or read the Join Me page.`,
   },
 ];

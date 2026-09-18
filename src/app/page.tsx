@@ -2,22 +2,22 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { AskAdam } from '@/components/AskAdam';
 import { getAllBlogPosts } from '@/lib/blogUtils';
-import { availabilityLong } from '@/lib/availability';
 import { specialties } from '@/data/expertise';
 import { openSourcePackages } from '@/data/open-source';
 import { INVITATION, INVITATION_CTA, quickstart } from '@/data/quickstart';
+import { VIBEY, audiences } from '@/data/audiences';
 import { OG_IMAGE } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer',
   description:
-    'Free and open-source autonomous software-delivery tooling — the *loop agent runners, the vibey conductor, vibey-gh release automation — all MIT on PyPI, from a Staff Software Architect & AI Automation Engineer in Greenville, SC. Volunteers welcome. Available from September 2026.',
+    'Adam Matthew Steinberger builds vibey, free and open-source tooling for autonomous software delivery: the *loop agent runners, the vibey conductor, and vibey-gh release automation, all MIT licensed. He is looking for developers to help build it. Governments and military, and universities and academia, have their own sections.',
   alternates: { canonical: '/' },
   openGraph: {
     images: [OG_IMAGE],
     title: 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer',
     description:
-      'Free and open-source autonomous software-delivery tooling, MIT on PyPI. Run it in ten minutes; volunteers welcome. Available from September 2026 — Greenville, SC (remote) or US remote.',
+      'Free and open-source autonomous software-delivery tooling, MIT licensed. Run it in ten minutes, then help build it. Sections for governments and military, and for universities and academia.',
     url: 'https://vibewithadam.matthewsteinberger.com',
     locale: 'en_US',
     type: 'website',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     images: [OG_IMAGE],
     title: 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer',
-    description: 'Free and open-source autonomous software-delivery tooling, MIT on PyPI. Run it in ten minutes; volunteers welcome.',
+    description: 'Free and open-source autonomous software-delivery tooling, MIT licensed. Run it in ten minutes, then help build it.',
   },
 };
 
@@ -37,12 +37,6 @@ const shipped = [
   { title: 'Identity Governance as Code', role: 'Sole author', proof: 'Two control planes for a SOX-regulated enterprise — 40 resource kinds reconciled from Git, secretless multi-tenant auth, a human in front of anything destructive.', href: '/work/identity-governance-as-code' },
   { title: 'Multi-System Ticket Relay', role: 'Sole author', proof: 'N-way sync with no privileged hub. 653 tests, 93% coverage, chaos-proved convergence.', href: '/work/multi-system-ticket-relay' },
   { title: 'Multi-Tenant Observability Portal', role: 'Lead', proof: 'Logs, traces, cost, and health from three data planes — every payload tagged with how fresh it really is.', href: '/work/multi-tenant-observability-portal' },
-];
-
-const involvement = [
-  { title: 'Run it', body: 'The six commands above give you an autonomous software-engineering agent on your own machine, with a real budget brake. Nothing is tailored to anyone’s deployment but this site’s — by dogfooding.', href: '/join-me', cta: 'Full quickstart' },
-  { title: 'Contribute', body: 'Issues, pull requests against develop, a new *loop engine, a new skill for vibey-skills, or a doc that lied to you. Every repo has a CONTRIBUTING and a SECURITY policy.', href: '/join-me', cta: 'Ways to contribute' },
-  { title: 'Volunteer', body: 'Nonprofit with a real engineering problem, or an engineer who wants to work alongside on one? Project Excite is the current example. Same address either way.', href: '/work/project-excite-relay', cta: 'See the volunteer work' },
 ];
 
 export default function Home() {
@@ -65,7 +59,7 @@ export default function Home() {
           — all MIT licensed, all on PyPI, and all of it dogfooded on this very site.
         </p>
         <p className="text-lg text-[var(--color-text-primary)] max-w-2xl mx-auto md:mx-0 mb-8">
-          {INVITATION}
+          I&apos;m looking for developers to help build it. {INVITATION}
         </p>
         <div className="flex flex-wrap gap-3 justify-center md:justify-start mb-6">
           <Link
@@ -76,18 +70,34 @@ export default function Home() {
             {INVITATION_CTA} →
           </Link>
           <a
-            href="https://github.com/adammatthewsteinberger"
+            href={VIBEY.repo}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white font-bold rounded-lg transition-colors no-underline"
           >
-            GitHub
+            vibey on GitHub
           </a>
           <AskAdam />
         </div>
         <p className="text-sm font-mono text-[var(--color-text-muted)] max-w-xl mx-auto md:mx-0">
           Always open for a connection or a coffee — adam@matthewsteinberger.com
         </p>
+      </section>
+
+      {/* Who this site is for — in priority order */}
+      <section className="container mx-auto px-4 py-12" aria-labelledby="audiences-heading">
+        <h2 id="audiences-heading" className="text-2xl font-bold mb-2 text-center text-[var(--color-text-primary)]">Who This Is For</h2>
+        <p className="text-center text-[var(--color-text-muted)] mb-8">Each has its own section on the Join Me page.</p>
+        <ol className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto list-none pl-0">
+          {audiences.map((audience, i) => (
+            <li key={audience.id} className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-5 flex flex-col">
+              <span className="text-xs font-mono text-[var(--color-accent-blue)] mb-1">{String(i + 1).padStart(2, '0')}</span>
+              <h3 className="font-bold text-[var(--color-text-primary)] mb-2">{audience.title}</h3>
+              <p className="text-sm text-[var(--color-text-muted)] flex-grow">{audience.summary}</p>
+              <Link href={audience.href} className="text-[var(--color-accent-blue)] hover:underline font-medium text-sm mt-3">{audience.cta} →</Link>
+            </li>
+          ))}
+        </ol>
       </section>
 
       {/* Run it in ten minutes */}
@@ -133,33 +143,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Ways to get involved */}
-      <section className="container mx-auto px-4 py-12">
-        <h2 className="text-2xl font-bold mb-8 text-center text-[var(--color-text-primary)]">Get Involved</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
-          {involvement.map((item) => (
-            <div key={item.title} className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-5 flex flex-col">
-              <h3 className="font-bold text-[var(--color-text-primary)] mb-2">{item.title}</h3>
-              <p className="text-sm text-[var(--color-text-muted)] flex-grow">{item.body}</p>
-              <Link href={item.href} className="text-[var(--color-accent-blue)] hover:underline font-medium text-sm mt-3">{item.cta} →</Link>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Who's behind it */}
       <section className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold mb-2 text-[var(--color-text-primary)]">Who&apos;s Behind It</h2>
-          <p className="text-[var(--color-text-muted)] mb-2">
+          <p className="text-[var(--color-text-muted)] mb-6">
             I build AI systems that actually work inside enterprise environments — production-grade
             platforms that handle real data, real security requirements, and real organizational
             complexity. Not just demos. The past year at The Vizius Group; every number is on the
             case study.
           </p>
-          <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-full bg-[var(--color-accent-green)]/15 border border-[var(--color-accent-green)]/30 text-[var(--color-accent-green)] text-xs font-semibold">
-            {availabilityLong()}
-          </div>
           <div className="divide-y divide-[var(--color-dark-border)] border-y border-[var(--color-dark-border)]">
             {shipped.map((item) => (
               <Link key={item.href} href={item.href} className="grid grid-cols-1 md:grid-cols-[14rem_1fr] gap-1 md:gap-6 py-4 no-underline hover:bg-[var(--color-dark-card)] transition-colors">
@@ -180,7 +173,6 @@ export default function Home() {
           <div className="flex flex-wrap gap-x-6 gap-y-2 mt-4 text-sm">
             <Link href="/work" className="text-[var(--color-accent-blue)] hover:underline font-medium">All the work →</Link>
             <Link href="/story" className="text-[var(--color-accent-blue)] hover:underline font-medium">The story →</Link>
-            <Link href="/hire-me" className="text-[var(--color-accent-blue)] hover:underline font-medium">Hiring? Everything a recruiter needs →</Link>
           </div>
         </div>
       </section>
@@ -237,11 +229,9 @@ export default function Home() {
             {INVITATION_CTA} →
           </Link>
           <p className="text-sm text-[var(--color-text-muted)] mt-6 mb-0">
-            Hiring?{' '}
-            <Link href="/hire-me" className="hover:underline">Everything a recruiter needs</Link>
+            <Link href="/join-me#governments" className="hover:underline">Governments and military</Link>
             {' · '}
-            Running a business?{' '}
-            <Link href="/for-executives" className="hover:underline">The executive edition</Link>
+            <Link href="/join-me#academia" className="hover:underline">Universities and academia</Link>
           </p>
         </div>
       </section>

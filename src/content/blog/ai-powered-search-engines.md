@@ -66,7 +66,3 @@ A consulting firm deployed AI search across Confluence + Slack.
 ## Path Forward
 
 AI search will transform how information is discovered. Businesses must adapt early to avoid losing visibility and efficiency.  
-
----
-
-*I help enterprises implement AI search strategies internally and adapt SEO for AI-driven discovery. [Book a consultation today.](/services/ai-consulting)*

@@ -66,7 +66,3 @@ A hospital deployed AI nurse scheduling.
 ## Path Forward
 
 AI in healthcare operations is a **low-risk, high-reward entry point** for hospitals.  
-
----
-
-*I help healthcare leaders deploy AI operations tools that save money and improve patient flow. [Schedule a call today.](/services/ai-consulting)*

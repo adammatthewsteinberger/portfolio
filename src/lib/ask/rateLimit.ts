@@ -1,5 +1,5 @@
 /**
- * In-memory rate limiting and spend cap for the "Ask my résumé" bot.
+ * In-memory rate limiting and spend cap for the "Ask about Adam" bot.
  *
  * Cloudflare Workers can scale to multiple concurrent isolates, each with
  * its own memory, and cold starts reset it entirely — so these caps are a

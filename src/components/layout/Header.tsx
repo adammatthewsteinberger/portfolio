@@ -2,46 +2,33 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { availabilityLong, availabilityShort } from '@/lib/availability';
-import { EXEC_PREFIX, editionFor } from '@/lib/edition';
 import { HIRE_HOST } from '@/lib/hostRouting';
 
-const engineeringNav = [
+// Join Me is the primary page: developers first, then governments and
+// military, then universities and academia (src/data/audiences.ts).
+const navItems = [
   { href: '/', label: 'Home' },
   { href: '/story', label: 'Story' },
   { href: '/expertise', label: 'Expertise' },
   { href: '/work', label: 'Work' },
   { href: '/writing', label: 'Writing' },
-  { href: '/hire-me', label: 'Hire Me' },
+  { href: '/join-me', label: 'Join Me' },
 ];
 
-// The exec edition gets its own nav; the engineering nav never links to it
-// (that affordance lives in the footer and at the bottom of a few pages).
-const execNav = [
-  { href: EXEC_PREFIX, label: 'Overview' },
-  { href: `${EXEC_PREFIX}/work`, label: 'What Changed' },
-  { href: `${EXEC_PREFIX}/engage`, label: 'Engage' },
-  { href: '/', label: 'Engineering Edition' },
-];
+/** The header pill: an invitation to contributors, linking to the developer section. */
+const CONTRIBUTORS_PILL = { href: '/join-me#developers', label: 'Contributors welcome' };
+
+const PILL_CLASSES =
+  'items-center px-3 py-1 rounded-full bg-[var(--color-accent-green)]/15 border border-[var(--color-accent-green)]/30 text-[var(--color-accent-green)] text-xs font-semibold whitespace-nowrap no-underline hover:border-[var(--color-accent-green)]';
 
 export interface HeaderProps {
-  /** Pill text; the root layout passes build-time values so server and client agree. */
-  availabilityShortLabel?: string;
-  availabilityLongLabel?: string;
   /** Preview-build banner, stacked above the nav inside the fixed header so neither hides the other. */
   preview?: boolean;
 }
 
-export default function Header({
-  availabilityShortLabel = availabilityShort(),
-  availabilityLongLabel = availabilityLong(),
-  preview = false,
-}: HeaderProps = {}) {
+export default function Header({ preview = false }: HeaderProps = {}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const edition = editionFor(usePathname());
-  const navItems = edition === 'exec' ? execNav : engineeringNav;
 
   // Close the mobile menu on Escape and lock body scroll while it's open.
   useEffect(() => {
@@ -79,7 +66,7 @@ export default function Header({
         )}
       <nav className="bg-[var(--color-dark-bg)]/95 backdrop-blur-sm border-b border-[var(--color-dark-border)]">
         <div className="container mx-auto px-4 flex items-center justify-between h-16">
-          <Link href={edition === 'exec' ? EXEC_PREFIX : '/'} className="flex items-center gap-2 no-underline" onClick={closeMenu}>
+          <Link href="/" className="flex items-center gap-2 no-underline" onClick={closeMenu}>
             <Image
               src="/images/profile-picture.jpg"
               alt="Adam Matthew Steinberger"
@@ -91,11 +78,6 @@ export default function Header({
             <span className="text-[var(--color-text-primary)] font-semibold text-lg hidden sm:inline">
               Adam Matthew Steinberger
             </span>
-            {edition === 'exec' && (
-              <span className="hidden sm:inline text-xs font-mono uppercase tracking-wider text-[var(--color-accent-purple)]">
-                For executives
-              </span>
-            )}
           </Link>
 
           {/* Desktop nav */}
@@ -109,9 +91,9 @@ export default function Header({
                 {item.label}
               </Link>
             ))}
-            <span className="mx-2 hidden xl:inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-accent-green)]/15 border border-[var(--color-accent-green)]/30 text-[var(--color-accent-green)] text-xs font-semibold whitespace-nowrap">
-              {availabilityShortLabel}
-            </span>
+            <Link href={CONTRIBUTORS_PILL.href} className={`mx-2 hidden xl:inline-flex ${PILL_CLASSES}`}>
+              {CONTRIBUTORS_PILL.label}
+            </Link>
           </div>
 
           {/* Mobile menu toggle */}
@@ -159,9 +141,9 @@ export default function Header({
             >
               Contact
             </Link>
-            <span className="mt-4 self-start inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-accent-green)]/15 border border-[var(--color-accent-green)]/30 text-[var(--color-accent-green)] text-xs font-semibold">
-              {availabilityLongLabel}
-            </span>
+            <Link href={CONTRIBUTORS_PILL.href} onClick={closeMenu} className={`mt-4 self-start inline-flex ${PILL_CLASSES}`}>
+              {CONTRIBUTORS_PILL.label}
+            </Link>
           </div>
         </div>
       )}

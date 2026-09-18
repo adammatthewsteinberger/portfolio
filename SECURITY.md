@@ -1,6 +1,6 @@
 # Security Policy
 
-This is a personal portfolio and hire-me site, not a service that handles payments, user accounts, or sensitive personal data. Its attack surface is small and mostly consists of: a static Next.js frontend, a contact form (Formspree, hosted off-site), and one server-side API route (`/api/ask`) that proxies questions to Claude.
+This is a personal portfolio and open-source project site, not a service that handles payments, user accounts, or sensitive personal data. Its attack surface is small and mostly consists of: a static Next.js frontend, a contact form (Formspree, hosted off-site), and one server-side API route (`/api/ask`) that proxies questions to Claude.
 
 ## Scope
 
@@ -12,7 +12,7 @@ In scope for reports:
 
 Out of scope:
 
-- Third-party services this site links to or embeds (Formspree, Google Analytics, Mailchimp, TidyCal, GitHub, PyPI) — report those to the respective vendor
+- Third-party services this site links to or embeds (Formspree, Google Analytics, Mailchimp, GitHub, PyPI) — report those to the respective vendor
 - Social engineering, physical security, or denial-of-service testing against the live site
 - Findings that require a compromised or malicious npm dependency already flagged by `npm audit` — please report those upstream to the package maintainer first
 

@@ -60,7 +60,3 @@ A SaaS company deployed multilingual AI support.
 ## Path Forward
 
 Multilingual AI won’t just break barriers—it will **redefine global business.**  
-
----
-
-*I help enterprises deploy multilingual AI to expand into new markets. [Book a consult.](/services/ai-consulting)*

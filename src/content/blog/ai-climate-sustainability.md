@@ -66,7 +66,3 @@ A utility firm used AI for energy grid balancing.
 ## Path Forward
 
 AI can both **help and harm sustainability goals**. Enterprises must deploy it responsibly to maximize green impact.  
-
----
-
-*I help companies apply AI to climate strategy while managing emissions tradeoffs. [Schedule a consultation today.](/services/ai-consulting)*

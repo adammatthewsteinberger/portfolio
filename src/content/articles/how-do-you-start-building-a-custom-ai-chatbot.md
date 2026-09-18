@@ -131,9 +131,3 @@ Still, if your needs are basic (e.g., a few FAQs), off-the-shelf may suffice. Bu
 - RAG-based chatbots pull real answers from real documents, not just their training
 - The process involves NLP, embeddings, vector search, prompt design, and continual testing
 - Custom bots cost more upfront, but pay off with better engagement, control, and ROI
-
-## 🗓️ Want One That's Actually Smart?
-
-If you want a chatbot that truly understands your business—not just guesses at it—let's build it together. I design AI-driven chatbots powered by Retrieval-Augmented Generation and embeddings, custom-fit to your brand and use case.
-
-**Schedule a free consultation today** and let's talk about how we can make your chatbot brilliant from day one.

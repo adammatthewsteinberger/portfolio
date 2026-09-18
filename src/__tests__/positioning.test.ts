@@ -4,10 +4,10 @@ import { describe, expect, it } from 'vitest';
 
 const read = (rel: string) => fs.readFileSync(path.join(process.cwd(), rel), 'utf8');
 
-// Engineering edition is the default (vibey-gh #134/#135): the homepage
-// leads with the bio's thesis, and the engineering pages carry no
-// plain-terms/CEO lane — that copy lives in src/data/expertise.ts as the
-// seed for the executive edition only.
+// The site is by an engineer, for engineers (vibey-gh #134/#135): the
+// homepage leads with the bio's thesis, and the pages carry no
+// plain-terms/CEO lane — that copy lives in src/data/expertise.ts, where it
+// feeds the knowledge base only.
 describe('positioning', () => {
   it('the homepage states the "Not just demos" thesis exactly once', () => {
     const home = read('src/app/page.tsx');
@@ -15,7 +15,7 @@ describe('positioning', () => {
   });
 
   it('the engineering pages render no plain-terms lane', () => {
-    for (const rel of ['src/app/page.tsx', 'src/app/expertise/page.tsx', 'src/app/hire-me/page.tsx']) {
+    for (const rel of ['src/app/page.tsx', 'src/app/expertise/page.tsx', 'src/app/join-me/page.tsx']) {
       expect(read(rel), rel).not.toMatch(/In plain terms|Explain it like I|pillar\.plain|\.plain\b/);
     }
   });
