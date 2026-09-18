@@ -115,9 +115,3 @@ Bots do more than talk. They move the needle.
 Integrating your chatbot with CRM, ERP, cloud services, and other business tools isn't just nice—it's necessary. APIs, webhooks, and modular architectures let your bot access real-time data, act proactively, and scale with your business.
 
 When done right, chatbot integration turns an assistant into a revenue-driver.
-
-## 📅 Want a Bot That Plays Nice with Your Tech Stack?
-
-Whether you need a support bot connected to Salesforce, a retail chatbot tied into your inventory system, or a proactive assistant monitoring real-time payment events—we can help.
-
-**Schedule your free consultation today** and let's architect a custom AI chatbot that works with your systems—not against them.

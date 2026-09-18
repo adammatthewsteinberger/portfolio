@@ -66,7 +66,3 @@ A small retailer used AI marketing automation.
 ## Path Forward
 
 AI will level the playing field for SMBs. Those that adopt early will thrive.  
-
----
-
-*I help SMBs choose AI tools that drive growth without heavy costs. [Book a free consultation today.](/services/ai-consulting)*

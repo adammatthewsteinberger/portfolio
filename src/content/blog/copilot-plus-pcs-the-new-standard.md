@@ -82,7 +82,3 @@ A consulting firm replaced 500 employee laptops with Copilot+ PCs.
 ## The Path Forward
 
 Copilot+ PCs are not just a hardware upgrade—they’re a **strategic shift** toward distributed AI. Businesses that adopt early will enjoy privacy, speed, and cost benefits while laggards risk being stuck in cloud dependency.  
-
----
-
-*I help IT leaders plan AI-ready infrastructure—blending cloud, edge, and on-device AI. [Book a consultation today.](/services/ai-consulting)*

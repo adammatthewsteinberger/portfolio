@@ -19,15 +19,11 @@ test.describe('Navigation', () => {
     await expect(page.locator('h1').first()).toBeVisible();
   });
 
-  test('hire-me page loads', async ({ page }) => {
-    await gotoAndDismiss(page, '/hire-me');
-    await expect(page).toHaveURL('/hire-me');
-    await expect(page.locator('h1').first()).toBeVisible();
-  });
-
-  test('services page loads', async ({ page }) => {
-    await gotoAndDismiss(page, '/services');
-    await expect(page).toHaveURL('/services');
+  test('join-me page loads with its three sections in order', async ({ page }) => {
+    await gotoAndDismiss(page, '/join-me');
+    await expect(page).toHaveURL('/join-me');
+    await expect(page.locator('h1').first()).toHaveText('Join Me');
+    await expect(page.locator('h2')).toHaveText(['Help build vibey', 'Governments and military', 'Universities and academia']);
   });
 
   test('blog page loads', async ({ page }) => {
@@ -54,11 +50,9 @@ test.describe('Navigation', () => {
     await gotoAndDismiss(page, '/');
     const footer = page.locator('footer');
     await expect(footer).toBeVisible();
-    await expect(footer.locator('a[href="/hire-me"]')).toBeVisible();
-    await expect(footer.locator('a[href="/work"]')).toBeVisible();
     await expect(footer.locator('a[href="/join-me"]')).toBeVisible();
-    await expect(footer.locator('a[href="/for-executives"]')).toBeVisible();
-    await expect(footer.locator('a[href="/services"]')).toHaveCount(0);
+    await expect(footer.locator('a[href="/work"]')).toBeVisible();
+    await expect(footer.locator('a[href="/hire-me"], a[href^="/for-executives"], a[href="/services"]')).toHaveCount(0);
   });
 
   test('social media links open in new tab', async ({ page }) => {

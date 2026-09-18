@@ -60,7 +60,3 @@ A customer support agent escalated issues incorrectly.
 ## Path Forward
 
 Autonomous AI agents can transform work—but only if designed with **ethics first.**  
-
----
-
-*I help enterprises set ethical frameworks for AI agent deployments. [Book a consult.](/services/ai-consulting)*

@@ -67,7 +67,3 @@ A telco deployed real-time AI voice agents.
 ## Path Forward
 
 Voice AI is becoming the **new enterprise interface**. The businesses that embrace it will set new standards for accessibility and support.  
-
----
-
-*I help enterprises integrate real-time AI voice into support and training systems. [Schedule a consultation today.](/services/ai-consulting)*

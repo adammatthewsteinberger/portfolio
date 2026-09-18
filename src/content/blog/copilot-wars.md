@@ -62,7 +62,3 @@ They eventually consolidated on one platform.
 ## Path Forward
 
 The **Copilot Wars** will shape enterprise productivity. Choosing wisely now saves headaches later.  
-
----
-
-*I help enterprises evaluate and deploy copilots strategically. [Schedule a consultation.](/services/ai-consulting)*

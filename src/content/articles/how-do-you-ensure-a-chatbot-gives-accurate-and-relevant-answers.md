@@ -89,9 +89,3 @@ If you want a chatbot that answers accurately, stays relevant, and earns trust:
 - Keep improving post-launch
 
 Whether you're running a small business or an enterprise, this matters. Your chatbot is your front line.
-
-## 🚀 Ready to Build One That Actually Works?
-
-Want a chatbot that doesn't hallucinate, misfire, or annoy your users? Let's talk.
-
-**Schedule a free consultation today** and we'll help you design a Retrieval-Augmented Generation (RAG) chatbot that knows what it's talking about—powered by your own knowledge base, optimized for your users, and built for real-world performance.

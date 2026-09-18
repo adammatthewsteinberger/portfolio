@@ -82,7 +82,7 @@ Here's how all three might work in a single product — say, language translatio
 - **ML**: The part that learns from millions of example translations to improve accuracy.
 - **DL**: The deep neural network that understands sentence structure, context, and tone — making it sound natural.
 
-Another one: Chatbots (like the ones we build 😉)
+Another one: chatbots.
 
 - **AI**: The chatbot interface, logic, and flow.
 - **ML**: The engine that improves responses based on feedback.
@@ -121,15 +121,3 @@ For example:
 - **DL** is a subset of ML: powerful models that learn from massive, messy data — especially good for images, speech, and language.
 
 They build on each other — but serve different needs.
-
-## 🚀 Want to Build a Smart Chatbot That Actually Works?
-
-If you're thinking about using AI in your business, especially for customer support, internal knowledge, or sales automation, I can help you build a custom AI chatbot that actually understands your content and responds accurately.
-
-We specialize in:
-
-- Retrieval-Augmented Generation (RAG) systems
-- Integrating with your website, docs, and CRM
-- Using advanced ML and DL models — when needed — to keep it smart, relevant, and on-brand
-
-Let's explore your use case, your content, and what kind of AI system fits best.

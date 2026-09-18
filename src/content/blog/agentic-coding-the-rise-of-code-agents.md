@@ -80,7 +80,3 @@ A SaaS startup integrated code agents into its development pipeline.
 ## The Path Forward
 
 Agentic coding won’t replace developers—it will **reshape their role**. Engineers will move from writing every line to **orchestrating, reviewing, and scaling AI-generated code**.  
-
----
-
-*I help engineering teams integrate AI into development workflows without sacrificing security or culture. [Book a consultation today.](/services/ai-consulting)*

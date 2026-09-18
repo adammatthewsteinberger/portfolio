@@ -60,7 +60,3 @@ A consulting firm piloted AI assistants for consultants.
 ## Path Forward
 
 Personal AI assistants will be the next smartphone moment. The businesses that integrate them early will thrive.  
-
----
-
-*I help enterprises design strategies for deploying personal AI assistants responsibly. [Schedule a call.](/services/ai-consulting)*

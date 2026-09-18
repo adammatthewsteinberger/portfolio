@@ -60,7 +60,3 @@ A manufacturer deployed AI forecasting.
 ## Path Forward
 
 The smartest supply chains won’t just be global—they’ll be **AI-augmented.**  
-
----
-
-*I help enterprises deploy AI supply chain tools that reduce cost and risk. [Schedule a call.](/services/ai-consulting)*

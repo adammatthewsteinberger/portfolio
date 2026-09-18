@@ -77,7 +77,3 @@ The firm chose Claude. Why? In law, **accuracy is billable time saved**.
 ## The Path Forward
 
 Claude may never “wow” in flashy demos. But in the enterprise AI race, it doesn’t need to. **Trust beats hype**—and that’s where Anthropic has the edge.  
-
----
-
-*Need guidance on which model—GPT or Claude—fits your workflow? I help companies match AI models to industry-specific compliance needs. [Book a consultation today.](/services/ai-consulting)*

@@ -67,7 +67,3 @@ A SaaS company used Gemini video-to-slide features for sales demos.
 ## Path Forward
 
 Creative AI is moving from siloed tools into **core productivity suites**. This will reshape how businesses create, distribute, and scale content.  
-
----
-
-*I help marketing teams design AI-first creative pipelines that keep brand identity intact. [Book a consultation today.](/services/ai-consulting)*

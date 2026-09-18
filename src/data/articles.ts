@@ -267,7 +267,7 @@ export const articles: Article[] = [
   {
     slug: 'how-do-i-get-my-own-custom-ai-chatbot',
     title: 'How do I get my own custom AI chatbot?',
-    description: 'Provide actionable next steps and contact information.',
+    description: 'The three ways to get a custom chatbot — build it, have it built, or start on a platform — and how to choose.',
     section: 'Working with Experts',
     sectionDescription: 'Goal: Learn how to work effectively with AI experts and make informed decisions.',
     order: 33

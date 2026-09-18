@@ -67,7 +67,3 @@ A SaaS startup deployed synthetic agents for cold outreach.
 ## Path Forward
 
 Synthetic agents won’t replace employees—but they will handle **a growing share of enterprise workflows**.  
-
----
-
-*I help enterprises design agent strategies that balance automation with trust. [Book a call today.](/services/ai-consulting)*

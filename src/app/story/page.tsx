@@ -30,7 +30,7 @@ const timeline = [
   { year: '2023–2025', label: 'Lima One Capital, Greenville SC — moved the integration layer from Mulesoft to NestJS/gRPC microservices' },
   { year: 'Mar–Aug 2025', label: 'Adam Matthew Steinberger LLC — self-hosted RAG, cloud RAG, production push notifications' },
   { year: 'Sep 2025–Aug 2026', label: 'The Vizius Group — Senior Azure & AI Development Engineer' },
-  { year: 'Sep 2026', label: 'Available — Staff Software Architect & AI Automation Engineer' },
+  { year: 'Sep 2026', label: 'vibey 1.0.0 on PyPI — the conductor and the whole *loop family in one MIT-licensed distribution' },
 ];
 
 const jsonLd = {
@@ -132,10 +132,12 @@ export default function StoryPage() {
               >
                 The Vizius Group
               </a>
-              , a cybersecurity firm in Greenville. As of September 2026 I&apos;m looking for
-              the next team where AI, automation, and architecture are the whole job, not a side
-              quest — the problems I do my best work on, and the ones where I ship the
-              documentation that lets a junior developer own what I built.
+              , a cybersecurity firm in Greenville. The year ended in August 2026. What I&apos;m
+              building now is{' '}
+              <Link href="/join-me" className="text-[var(--color-accent-blue)] hover:underline">
+                vibey
+              </Link>
+              , in the open, and I&apos;m looking for developers to build it with me.
             </p>
             <p>
               The year was dense. I was sole architect of the firm&apos;s{' '}
@@ -233,11 +235,11 @@ export default function StoryPage() {
 
           <div className="pt-4 text-center">
             <Link
-              href="/hire-me"
+              href="/join-me"
               className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] font-bold rounded-lg transition-colors no-underline"
               style={{ color: '#ffffff' }}
             >
-              See what I&apos;m looking for →
+              Help build vibey →
             </Link>
           </div>
         </div>

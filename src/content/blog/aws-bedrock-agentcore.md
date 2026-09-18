@@ -66,7 +66,3 @@ A retailer used AgentCore to build product-support agents.
 ## Path Forward
 
 AgentCore cements AWS as a serious player in **enterprise agent orchestration**. Expect rapid adoption across AWS-native enterprises.  
-
----
-
-*I design AI architectures that balance speed, compliance, and flexibility across AWS, Azure, and open-source frameworks. [Schedule a consultation today.](/services/ai-consulting)*

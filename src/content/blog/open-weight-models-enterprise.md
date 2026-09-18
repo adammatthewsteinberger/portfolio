@@ -67,7 +67,3 @@ A bank deployed Llama on-prem for compliance chat.
 ## Path Forward
 
 Open-weight models are becoming **enterprise-grade**. Businesses that master hybrid stacks will lead in flexibility and resilience.  
-
----
-
-*I help enterprises deploy open-weight AI responsibly with hybrid architectures. [Book a call today.](/services/ai-consulting)*

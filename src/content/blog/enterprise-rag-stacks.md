@@ -66,7 +66,3 @@ A bank compared Pinecone vs. Redis.
 ## Path Forward
 
 RAG stacks are no longer optional—they’re the **foundation of enterprise AI**.  
-
----
-
-*I design enterprise RAG stacks that prioritize privacy, compliance, and cost efficiency. [Let’s architect yours.](/services/ai-consulting)*

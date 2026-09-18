@@ -66,7 +66,3 @@ Hospitals collaborated on federated cancer diagnosis models.
 ## Path Forward
 
 Federated learning will be **key for AI in regulated industries**. Enterprises must build skills now.  
-
----
-
-*I help enterprises deploy privacy-preserving AI strategies with federated learning. [Book a consultation today.](/services/ai-consulting)*
