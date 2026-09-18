@@ -67,7 +67,3 @@ A retailer’s AI chatbot was exploited via prompt injection.
 ## Path Forward
 
 AI security is moving from niche to **enterprise-critical discipline**. Companies that invest early will avoid costly breaches.  
-
----
-
-*I help businesses secure AI models and workflows against emerging threats. [Schedule a call today.](/services/ai-consulting)*

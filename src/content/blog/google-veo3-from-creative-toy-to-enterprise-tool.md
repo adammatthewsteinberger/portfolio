@@ -78,7 +78,3 @@ A manufacturing company used Veo 3 to replace traditional training videos. Inste
 ## The Path Forward
 
 Text-to-video will move from novelty to necessity. In the same way Canva democratized design, Veo 3 is democratizing video. Early adopters will build video pipelines into everyday workflows.  
-
----
-
-*Want to integrate text-to-video into your business? I help companies deploy multimodal AI stacks for training, marketing, and knowledge sharing. [Schedule your consultation today.](/services/ai-consulting)*

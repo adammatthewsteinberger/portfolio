@@ -61,7 +61,3 @@ A bank adopted Llama 3 OSS model for internal workflows.
 ## Path Forward
 
 Open-source AI is no longer fringe—it’s **enterprise-ready**. Companies that balance OSS with governance will gain agility and savings.  
-
----
-
-*I help enterprises evaluate and adopt OSS AI stacks that deliver flexibility + compliance. [Schedule a consult today.](/services/ai-consulting)*

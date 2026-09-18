@@ -65,7 +65,3 @@ A retail brand used AI video to create seasonal ads.
 ## Path Forward
 
 Generative video will be as disruptive to media as YouTube was in 2005. The winners will be those who **adopt it early, responsibly, and creatively.**  
-
----
-
-*I help creative teams integrate AI video tools into campaigns without sacrificing brand integrity. [Schedule a call today.](/services/ai-consulting)*

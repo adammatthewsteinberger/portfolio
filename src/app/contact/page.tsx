@@ -3,16 +3,17 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import Icon from '@/components/Icon';
 import { OG_IMAGE } from '@/lib/seo';
+import { audiences } from '@/data/audiences';
 
 export const metadata: Metadata = {
   title: 'Contact | Adam Matthew Steinberger',
   description:
-    'Reach Adam Matthew Steinberger — for a role, to contribute to his open-source work, or to talk about a business engagement. Email or the form; replies within 24 hours.',
+    'Reach Adam Matthew Steinberger: to help build vibey, to evaluate it for a government or military organization, or to propose research with a university. Email or the form; replies within 24 hours.',
   alternates: { canonical: '/contact' },
   openGraph: {
     images: [OG_IMAGE],
     title: 'Contact | Adam Matthew Steinberger',
-    description: 'For a role, an open-source contribution, or a business engagement. Replies within 24 hours.',
+    description: 'For contributors, governments and military, and universities. Replies within 24 hours.',
     url: 'https://vibewithadam.matthewsteinberger.com/contact',
     siteName: 'Adam Matthew Steinberger',
     locale: 'en_US',
@@ -22,15 +23,19 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     images: [OG_IMAGE],
     title: 'Contact | Adam Matthew Steinberger',
-    description: 'For a role, an open-source contribution, or a business engagement.',
+    description: 'For contributors, governments and military, and universities.',
   },
 };
 
-const doors = [
-  { icon: 'fa-briefcase', title: 'Hiring?', body: 'Availability, target roles, résumé, and how I interview best — all on one page.', href: '/hire-me', cta: 'Hire Me' },
-  { icon: 'fa-code-branch', title: 'Contributing?', body: 'Everything I build in the open is MIT licensed on PyPI. Volunteers are welcome — Greenville-remote or US-remote.', href: '/join-me', cta: 'Join Me' },
-  { icon: 'fa-user-tie', title: 'Running a business?', body: 'The executive edition states the problem first, then what changed, then how an engagement works.', href: '/for-executives', cta: 'For Executives' },
-];
+// The three audiences, in priority order — each door opens its section of /join-me.
+const ICONS: Record<(typeof audiences)[number]['id'], string> = { developers: 'fa-code-branch', governments: 'fa-shield-halved', academia: 'fa-graduation-cap' };
+const doors = audiences.map((audience) => ({
+  icon: ICONS[audience.id],
+  title: audience.title,
+  body: audience.summary,
+  href: audience.href,
+  cta: audience.cta,
+}));
 
 export default function ContactPage() {
   return (

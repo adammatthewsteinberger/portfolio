@@ -35,15 +35,6 @@ export default function Footer() {
             <Icon name="envelope" />
           </Link>
           <a
-            href="https://github.com/adammatthewsteinberger/resume/raw/main/adam-steinberger-resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Download Resume"
-            className="text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors"
-          >
-            <Icon name="download" />
-          </a>
-          <a
             href="/feed.xml"
             aria-label="RSS feed"
             className="text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors"

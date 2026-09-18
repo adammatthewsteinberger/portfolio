@@ -7,7 +7,7 @@ import { OG_IMAGE } from '@/lib/seo';
 export const metadata: Metadata = {
   title: 'Site Directory | Adam Matthew Steinberger',
   description:
-    'Complete site directory — every page on Adam Matthew Steinberger\'s site, from the hire-me page to the open-source projects, case studies, and writing.',
+    'Complete site directory — every page on Adam Matthew Steinberger\'s site, from Join Me (for developers, governments and military, and universities) to the open-source projects, case studies, and writing.',
   alternates: {
     canonical: '/site-directory',
   },
@@ -21,17 +21,16 @@ export const metadata: Metadata = {
 
 const pages = [
   { icon: 'fa-home', color: 'gold', title: 'Home', description: 'The whole pitch in one scroll.', href: '/', cta: 'Visit Home' },
-  { icon: 'fa-briefcase', color: 'blue', title: 'Hire Me', description: 'Availability, target roles, résumé, and how to reach me.', href: '/hire-me', cta: 'See Hire Me' },
+  { icon: 'fa-hands-helping', color: 'blue', title: 'Join Me', description: 'Help build vibey: how developers get started, what it offers governments and the military, and the research paper and book for universities.', href: '/join-me', cta: 'Get Started' },
   { icon: 'fa-user', color: 'purple', title: 'My Story', description: 'Background, career timeline, and how I approach architecture work.', href: '/story', cta: 'Read My Story' },
   { icon: 'fa-layer-group', color: 'blue', title: 'Expertise', description: 'The ten technical pillars — AI/ML, RAG, architecture, Azure, and more.', href: '/expertise', cta: 'See Expertise' },
   { icon: 'fa-diagram-project', color: 'green', title: 'Work', description: 'Case studies from thirteen-plus years of shipping software.', href: '/work', cta: 'Browse Work' },
   { icon: 'fa-code-branch', color: 'purple', title: 'Open Source', description: 'MIT-licensed packages on PyPI — the *loop engines, vibey, vibey-gh, vibey-bootstrap, and vibey-skills.', href: '/open-source', cta: 'See Open Source' },
-  { icon: 'fa-hands-helping', color: 'green', title: 'Join Me', description: 'Run the whole open-source stack for free, see how this site is built with it, and get involved — volunteers welcome.', href: '/join-me', cta: 'Get Started' },
+  { icon: 'fa-comments', color: 'green', title: 'Ask about Adam', description: 'A small RAG chat that answers questions about Adam\'s work and vibey from this site\'s own content.', href: '/chat', cta: 'Ask a Question' },
   { icon: 'fa-pen-nib', color: 'coral', title: 'Writing', description: 'Blog, the free Novice to Navigator article series, and both books.', href: '/writing', cta: 'Start Reading' },
   { icon: 'fa-newspaper', color: 'coral', title: 'Blog', description: 'AI, automation, and architecture — including what\'s buzzing right now.', href: '/blog', cta: 'Read the Blog' },
   { icon: 'fa-graduation-cap', color: 'gold', title: 'Novice to Navigator', description: 'A free 33-article series on AI chatbots for business.', href: '/novice-to-navigator', cta: 'Start Learning' },
   { icon: 'fa-book', color: 'gold', title: 'Books', description: 'Two books, both currently in development.', href: '/books', cta: 'See Books' },
-  { icon: 'fa-user-tie', color: 'green', title: 'For Executives', description: 'The executive edition — the problem first, then what changed, then how to engage. The service pages live under it.', href: '/for-executives', cta: 'Read the Executive Edition' },
   { icon: 'fa-envelope', color: 'blue', title: 'Contact', description: 'Send a message directly.', href: '/contact', cta: 'Contact Me' },
   { icon: 'fa-shield-halved', color: 'purple', title: 'Privacy Policy', description: 'How this site handles data and cookies.', href: '/privacy', cta: 'Read Privacy Policy' },
 ];

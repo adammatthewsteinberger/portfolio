@@ -1,6 +1,6 @@
 # portfolio
 
-Source for [vibewithadam.matthewsteinberger.com](https://vibewithadam.matthewsteinberger.com) — a portfolio site that doubles as a working demo of a shipped RAG feature. Portfolio, blog, a free 33-article course on AI chatbots for business, and an "Ask my résumé" widget that answers from the site's own content, all in one Next.js app. Full-page chat also lives at [chatwithadam.matthewsteinberger.com](https://chatwithadam.matthewsteinberger.com). Deprecated hosts (`hire.adam.*`, `chat.adam.*`) 301 to the canonical pair.
+Source for [vibewithadam.matthewsteinberger.com](https://vibewithadam.matthewsteinberger.com) — Adam Matthew Steinberger's site and the front door to vibey, his free and open-source conductor for autonomous software delivery. It is for three audiences, in this order: developers who want to help build vibey, governments and military, and universities and academia. Portfolio, blog, a free 33-article course on AI chatbots for business, and an "Ask about Adam" widget that answers from the site's own content, all in one Next.js app. Full-page chat also lives at [chatwithadam.matthewsteinberger.com](https://chatwithadam.matthewsteinberger.com). Deprecated hosts (`hire.adam.*`, `chat.adam.*`) 301 to the canonical pair.
 
 [![Live site](https://img.shields.io/badge/live-vibewithadam.matthewsteinberger.com-0a7ea4)](https://vibewithadam.matthewsteinberger.com)
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org)
@@ -9,9 +9,9 @@ Source for [vibewithadam.matthewsteinberger.com](https://vibewithadam.matthewste
 
 ## Why this repo exists
 
-- **It's the résumé, but it runs.** The site is Adam Matthew Steinberger's hire-me page (Staff Software Architect & AI Automation Engineer, Greenville, SC). Instead of a slide about RAG, the homepage has a RAG widget you can poke at.
+- **It's the invitation, and it runs.** The primary page, [/join-me](https://vibewithadam.matthewsteinberger.com/join-me), walks a developer from clone to first pull request on vibey, then speaks to governments and the military, then to universities. Instead of a slide about RAG, the homepage has a RAG widget you can poke at.
 - **RAG with the boring parts included.** Feature flag, honeypot, per-IP rate limit, daily spend cap, 6-turn session cap, prompt that refuses to invent facts. All in `src/app/api/ask/` and `src/lib/ask/`.
-- **Content is Markdown, not a CMS.** 115 blog posts, 33 Novice to Navigator articles, 17 case studies, 45 service pages — each a `.md` file with typed frontmatter.
+- **Content is Markdown, not a CMS.** 115 blog posts, 33 Novice to Navigator articles, and 17 case studies — each a `.md` file with typed frontmatter.
 - **Discoverability surfaces built in.** RSS (`/feed.xml`), sitemap, `llms.txt`, JSON-LD, per-page OG images.
 
 ## Stack
@@ -31,7 +31,7 @@ npm run test:e2e       # Playwright (e2e/*.spec.ts)
 npm run lint && npm run typecheck
 ```
 
-Everything works with zero environment variables. The "Ask my résumé" widget stays hidden unless both `ASK_BOT_ENABLED=true` and `ANTHROPIC_API_KEY` are set.
+Everything works with zero environment variables. The "Ask about Adam" widget stays hidden unless both `ASK_BOT_ENABLED=true` and `ANTHROPIC_API_KEY` are set.
 
 <details>
 <summary>All npm scripts</summary>
@@ -60,12 +60,12 @@ Husky runs `lint-staged` + `typecheck` on pre-commit and `test` + `build` on pre
 src/content/
 ├── blog/*.md        # 115 posts            → /blog/[slug]        (directory-scanned)
 ├── articles/*.md    # 33 N2N articles      → /novice-to-navigator (metadata in src/data/articles.ts)
-├── projects/*.md    # 17 case studies      → /work/[slug]        (metadata in src/data/projects.ts)
-└── services/*.md    # 45 service pages     → /services/[slug]    (directory-scanned)
+└── projects/*.md    # 17 case studies      → /work/[slug]        (metadata in src/data/projects.ts)
 src/data/kb-sources.ts   # hand-reviewed text the RAG bot is allowed to answer from
+src/data/audiences.ts    # the three audiences and everything /join-me says to them
 ```
 
-Adding content = adding a `.md` file with the frontmatter schema in [`AGENTS.md`](./AGENTS.md#content-model--frontmatter-schemas), then (for articles/projects) an entry in the matching `src/data/*.ts` array. House rules that are enforced on purpose: no pricing anywhere on the site, no invented metrics in case studies, and the books are not for sale — email-capture only.
+Adding content = adding a `.md` file with the frontmatter schema in [`AGENTS.md`](./AGENTS.md#content-model--frontmatter-schemas), then (for articles/projects) an entry in the matching `src/data/*.ts` array. House rules that are enforced on purpose: no looking-for-work copy and no pricing anywhere on the site, no invented metrics in case studies, and the books are not for sale — email-capture only.
 
 ## The RAG widget (`/api/ask`)
 
@@ -74,7 +74,7 @@ Adding content = adding a `.md` file with the frontmatter schema in [`AGENTS.md`
 3. `POST /api/ask` retrieves the top chunks, builds a per-request system prompt, and streams a Claude response (`max_tokens: 400`, thinking off for latency).
 4. `GET /api/ask` reports `{ enabled }`; the widget renders nothing when it's off.
 
-Guardrails: honeypot field, per-IP rate limit and daily output-token cap (`src/lib/ask/rateLimit.ts`, in-memory and documented as best-effort), 6-turn session cap client- and server-side, and a system prompt that must cite the source page and may not invent employment facts. When the daily spend cap is hit or Anthropic reports credit/billing exhaustion, visitors see an "Out of coffee" message with a `/join-me` link (`src/lib/ask/messages.ts`) instead of a generic failure.
+Guardrails: honeypot field, per-IP rate limit and daily output-token cap (`src/lib/ask/rateLimit.ts`, in-memory and documented as best-effort), 6-turn session cap client- and server-side, and a system prompt that must cite the source page, may not invent facts, and points hiring or consulting questions at `/join-me`. When the daily spend cap is hit or Anthropic reports credit/billing exhaustion, visitors see an "Out of coffee" message with a `/join-me` link (`src/lib/ask/messages.ts`) instead of a generic failure.
 
 | Env var | Effect |
 | --- | --- |
@@ -88,7 +88,7 @@ Production deploys to Cloudflare Workers from `.github/workflows/deploy.yml` on 
 
 - [`AGENTS.md`](./AGENTS.md) — the canonical agent/contributor guide (schemas, conventions, RAG internals). `CLAUDE.md`, `WARP.md`, `GEMINI.md`, `.agent`, `.agents` are symlinks to it.
 - [`SECURITY.md`](./SECURITY.md) · [`CONTRIBUTING.md`](./CONTRIBUTING.md) · [`LICENSE`](./LICENSE)
-- Live: [Hire me](https://vibewithadam.matthewsteinberger.com/hire-me) · [Work](https://vibewithadam.matthewsteinberger.com/work) · [Writing](https://vibewithadam.matthewsteinberger.com/writing) · [Novice to Navigator](https://vibewithadam.matthewsteinberger.com/novice-to-navigator) · [Books](https://vibewithadam.matthewsteinberger.com/books) · [Open source](https://vibewithadam.matthewsteinberger.com/open-source) · [Join me](https://vibewithadam.matthewsteinberger.com/join-me) · [RSS](https://vibewithadam.matthewsteinberger.com/feed.xml) · [llms.txt](https://vibewithadam.matthewsteinberger.com/llms.txt)
+- Live: [Join me](https://vibewithadam.matthewsteinberger.com/join-me) · [Work](https://vibewithadam.matthewsteinberger.com/work) · [Writing](https://vibewithadam.matthewsteinberger.com/writing) · [Novice to Navigator](https://vibewithadam.matthewsteinberger.com/novice-to-navigator) · [Books](https://vibewithadam.matthewsteinberger.com/books) · [Open source](https://vibewithadam.matthewsteinberger.com/open-source) · [RSS](https://vibewithadam.matthewsteinberger.com/feed.xml) · [llms.txt](https://vibewithadam.matthewsteinberger.com/llms.txt)
 
 ## Related repos
 

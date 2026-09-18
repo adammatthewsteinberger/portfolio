@@ -94,7 +94,3 @@ One client in finance used GPT-OSS to handle **document summarization** and **in
 ## The Path Forward
 
 The next few years won’t be about one model winning—it’ll be about **hybrid AI ecosystems**. Businesses that can fluidly switch between closed and open models will dominate on both cost and capability.  
-
----
-
-*Looking to design a cost-optimized AI stack? I help businesses build hybrid GPT-5 + GPT-OSS systems that balance privacy, performance, and ROI. [Schedule a consultation today.](/services/ai-consulting)*

@@ -66,7 +66,3 @@ A consulting firm piloted AI analyst agents.
 ## Path Forward
 
 AI agents will become standard for knowledge workers—but only firms with **governance and validation** will gain trust.  
-
----
-
-*I help consulting and research firms deploy AI agents that scale insights without sacrificing trust. [Let’s design yours.](/services/ai-consulting)*

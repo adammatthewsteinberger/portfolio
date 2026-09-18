@@ -60,7 +60,3 @@ A bank deployed AI robo-advisors.
 ## Path Forward
 
 AI will transform banking—but trust, compliance, and oversight will define winners.  
-
----
-
-*I help banks and fintechs integrate AI for growth + compliance. [Schedule a strategy call.](/services/ai-consulting)*

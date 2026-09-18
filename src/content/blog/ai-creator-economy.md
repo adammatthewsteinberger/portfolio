@@ -60,7 +60,3 @@ A YouTuber adopted AI editing software.
 ## Path Forward
 
 The future of the creator economy isn’t AI replacing creators—it’s **AI amplifying them.**  
-
----
-
-*I help creators and platforms adopt AI tools without losing authenticity. [Schedule a consult.](/services/ai-consulting)*

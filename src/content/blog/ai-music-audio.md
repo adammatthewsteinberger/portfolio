@@ -66,7 +66,3 @@ A brand used AI audio for a global ad campaign.
 ## Path Forward
 
 AI music and audio are becoming mainstream creative tools. Enterprises must balance **cost savings with IP risk**.  
-
----
-
-*I help enterprises deploy AI audio tools responsibly across marketing and training. [Let’s design your strategy.](/services/ai-consulting)*

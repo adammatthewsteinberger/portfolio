@@ -66,7 +66,3 @@ A SaaS firm deployed AI for predictive marketing.
 ## Path Forward
 
 AI-powered marketing will define the future of engagement. But enterprises must **balance personalization with trust**.  
-
----
-
-*I help businesses deploy AI marketing strategies that boost ROI while protecting brand reputation. [Book a consultation today.](/services/ai-consulting)*

@@ -67,7 +67,3 @@ A retail brand used Canva AI for campaign visuals.
 ## Path Forward
 
 AI will not replace human creativity—but it will **amplify and accelerate it**. Enterprises must set guardrails to maximize benefit.  
-
----
-
-*I help enterprises scale creative pipelines with AI tools while protecting brand identity. [Let’s design yours.](/services/ai-consulting)*
