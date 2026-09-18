@@ -17,12 +17,15 @@ interface Citation {
 const MAX_TURNS = 6;
 
 const SUGGESTED_QUESTIONS = [
+  'How do I start contributing to vibey?',
+  'Can vibey run on local models?',
+  'Is there a paper I can cite?',
   'Has he shipped RAG in production?',
-  'Is he open to remote work?',
   "What's onion architecture and why does he care?",
-  'What has he built with Azure?',
-  'How can I contribute to his open source?',
 ];
+
+/** The assistant's name everywhere it appears (button, dialog, panel, notices). */
+const NAME = 'Ask about Adam';
 
 export interface AskAdamProps {
   /**
@@ -76,15 +79,15 @@ export function AskAdam({ variant = 'widget' }: AskAdamProps = {}) {
     if (variant === 'widget') return null;
     const checking = !isBot && enabled === null;
     return (
-      <section role="region" aria-label="Ask my résumé" className={`${PANEL_CLASSES} p-6 text-center`}>
+      <section role="region" aria-label={NAME} className={`${PANEL_CLASSES} p-6 text-center`}>
         {checking ? (
-          <p className="text-[var(--color-text-muted)]">Checking availability…</p>
+          <p className="text-[var(--color-text-muted)]">Checking whether the chat is up…</p>
         ) : (
           <p className="text-[var(--color-text-muted)]">
-            Ask my résumé is resting right now — it needs a live model key to answer. In the
+            {NAME} is resting right now — it needs a live model key to answer. In the
             meantime, the{' '}
-            <a href="/hire-me" className={LINK_CLASSES}>
-              Hire Me
+            <a href="/join-me" className={LINK_CLASSES}>
+              Join Me
             </a>{' '}
             page has the short version, or{' '}
             <a href="/contact" className={LINK_CLASSES}>
@@ -183,7 +186,7 @@ export function AskAdam({ variant = 'widget' }: AskAdamProps = {}) {
         {messages.length === 0 && (
           <div>
             <p className="text-sm text-[var(--color-text-muted)] mb-3">
-              Ask about Adam&apos;s experience, stack, or availability — answered only from what&apos;s
+              Ask about Adam&apos;s work, vibey, or how to get involved — answered only from what&apos;s
               actually on this site.
             </p>
             <div className="flex flex-wrap gap-2">
@@ -290,9 +293,9 @@ export function AskAdam({ variant = 'widget' }: AskAdamProps = {}) {
 
   if (variant === 'page') {
     return (
-      <section role="region" aria-label="Ask my résumé" className={`${PANEL_CLASSES} min-h-[60vh]`}>
+      <section role="region" aria-label={NAME} className={`${PANEL_CLASSES} min-h-[60vh]`}>
         <div className="flex items-center justify-between p-4 border-b border-[var(--color-dark-border)]">
-          <h2 className="font-bold text-[var(--color-text-primary)]">Ask my résumé</h2>
+          <h2 className="font-bold text-[var(--color-text-primary)]">{NAME}</h2>
         </div>
         {panel}
       </section>
@@ -307,20 +310,20 @@ export function AskAdam({ variant = 'widget' }: AskAdamProps = {}) {
           onClick={() => setOpen(true)}
           className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white font-bold rounded-lg transition-colors text-sm"
         >
-          Ask my résumé
+          {NAME}
         </button>
       )}
 
       {open && (
         <div
           role="dialog"
-          aria-label="Ask my résumé"
+          aria-label={NAME}
           className={`fixed inset-x-4 bottom-4 sm:right-6 sm:left-auto sm:bottom-6 sm:w-96 z-50 ${PANEL_CLASSES} max-h-[80vh]`}
         >
           <div className="flex items-center justify-between p-4 border-b border-[var(--color-dark-border)]">
-            <h3 className="font-bold text-[var(--color-text-primary)]">Ask my résumé</h3>
+            <h3 className="font-bold text-[var(--color-text-primary)]">{NAME}</h3>
             <div className="flex items-center gap-3">
-              {/* Relative on purpose: on the hire host this 308s to chatwithadam.matthewsteinberger.com,
+              {/* Relative on purpose: on the main site host this 308s to chatwithadam.matthewsteinberger.com,
                   while localhost and deploy previews serve /chat directly. */}
               <a
                 href="/chat"

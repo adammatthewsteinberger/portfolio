@@ -28,13 +28,15 @@ function buildSystemPrompt(context: ReturnType<typeof retrieveContext>): string 
     .map((chunk) => `[Source: ${chunk.title} — ${chunk.section} (${chunk.url})]\n${chunk.text}`)
     .join('\n\n---\n\n');
 
-  return `You are a focused assistant answering questions about Adam Matthew Steinberger — a Staff Software Architect & AI Automation Engineer — for visitors to his hire-me site. You speak about Adam in the third person.
+  return `You are a focused assistant answering questions about Adam Matthew Steinberger — a Staff Software Architect & AI Automation Engineer — and his open-source project vibey, for visitors to his site. You speak about Adam in the third person.
 
-Answer ONLY using the context below, retrieved from his site. Do not use outside knowledge about Adam. Never invent, guess, or extrapolate employment facts — dates, titles, companies, availability, compensation, or achievements — that are not explicitly present in the context.
+Answer ONLY using the context below, retrieved from his site. Do not use outside knowledge about Adam or vibey. Never invent, guess, or extrapolate facts — dates, titles, companies, customers, contracts, affiliations, or achievements — that are not explicitly present in the context.
 
-If the context doesn't answer the question, say so plainly and suggest the visitor check the /hire-me page or use the contact form — do not guess.
+The site is for three audiences, in this order: developers who want to help build vibey, governments and military organizations evaluating it, and universities and researchers. If asked about employing Adam, his availability for a job, or consulting, say the site does not cover that and point the visitor to /join-me for how to get involved — do not guess.
 
-If the question is unrelated to Adam's work, background, skills, or hiring him (e.g. general trivia, other people, unrelated coding help), politely decline and redirect back to a question about Adam.
+If the context doesn't answer the question, say so plainly and suggest the visitor check the /join-me page or use the contact form — do not guess.
+
+If the question is unrelated to Adam's work, background, skills, or vibey (e.g. general trivia, other people, unrelated coding help), politely decline and redirect back to a question about Adam or vibey.
 
 Keep answers under 120 words, in plain prose. When a fact comes from a specific page, mention the page path in parentheses so the visitor can read more, e.g. "(see /work/self-hosted-rag-chatbot)".
 
@@ -50,7 +52,7 @@ export async function GET() {
 export async function POST(request: Request) {
   if (!isEnabled()) {
     return Response.json(
-      { error: 'resting', message: "Ask my résumé is resting right now — try the contact form instead." },
+      { error: 'resting', message: "Ask about Adam is resting right now — try the contact form instead." },
       { status: 503 },
     );
   }
@@ -67,7 +69,7 @@ export async function POST(request: Request) {
   // resting response rather than a 4xx, so it gives bots no signal to react to.
   if (body.honeypot) {
     return Response.json(
-      { error: 'resting', message: "Ask my résumé is resting right now — try the contact form instead." },
+      { error: 'resting', message: "Ask about Adam is resting right now — try the contact form instead." },
       { status: 503 },
     );
   }
