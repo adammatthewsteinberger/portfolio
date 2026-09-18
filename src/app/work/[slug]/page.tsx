@@ -255,7 +255,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               vibey, which is open source, and I&apos;m looking for developers to help build it.
             </p>
             <div className="flex gap-4 justify-center flex-wrap">
-              <Link href="/join-me" className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] font-bold rounded-lg transition-colors no-underline" style={{ color: '#ffffff' }}>
+              <Link href="/join-me" className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] text-white font-bold rounded-lg transition-colors no-underline">
                 <Icon name="code-branch" />
                 Join Me
               </Link>
