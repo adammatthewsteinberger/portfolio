@@ -124,6 +124,7 @@ jobs:
             echo "Promotion PR: checking repository provenance without rewriting or re-auditing admitted history."
             vibey-gh check --ci
           elif [ -n "${BASE_SHA:-}" ]; then
+            git fetch --quiet --depth=1 "https://github.com/${{ github.repository }}.git" "$BASE_SHA"
             vibey-gh check --ci --commits "${BASE_SHA}..${HEAD_SHA}"
           else
             vibey-gh check --ci
