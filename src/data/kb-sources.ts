@@ -12,6 +12,7 @@ import { availabilityHeading } from '@/lib/availability';
 import { VIBEY, academiaItems, audiences, getStartedSteps, governmentClaims, helpWanted } from './audiences';
 import { evidenceText, method, staffEvidence, vibeyGuarantees } from './evidence';
 import { fullStack, specialtyGroups } from './expertise';
+import { FREELANCE_SUMMARY, engagementSteps, freelanceFaq, offers, workingAgreement } from './freelance';
 
 export interface KBSource {
   id: string;
@@ -91,6 +92,41 @@ export function joinMeChunks(): KBSource[] {
   ];
 }
 
+/**
+ * One chunk per /freelance package, plus how an engagement runs and the
+ * buyer questions, generated from src/data/freelance.ts so the bot quotes the
+ * same scope, proof, and terms the page shows — and never a price.
+ */
+export function freelanceChunks(): KBSource[] {
+  return [
+    {
+      id: 'freelance-overview',
+      url: '/freelance',
+      title: 'Freelance',
+      section: 'Fixed-scope packages',
+      text: `Adam takes fixed-scope freelance projects. ${FREELANCE_SUMMARY} The packages: ${offers.map((o) => o.title).join('; ')}. How an engagement runs: ${engagementSteps
+        .map((s, i) => `${i + 1}. ${s.title}: ${s.body}`)
+        .join(' ')} What clients can count on: ${workingAgreement.map((w) => `${w.title}. ${w.body}`).join(' ')} Prices are quoted per package on the platform listing or in the written scope; this site publishes none. To start, send a written brief through the form on /freelance#brief.`,
+    },
+    ...offers.map((offer) => ({
+      id: `freelance-${offer.id}`,
+      url: `/freelance#${offer.id}`,
+      title: 'Freelance',
+      section: offer.title,
+      text: `Freelance package: ${offer.title}. ${offer.forWhom} Deliverables: ${offer.deliverables.join('; ')}. Done before: ${offer.proof} (see ${offer.proofHref}).`,
+    })),
+    {
+      id: 'freelance-faq',
+      url: '/freelance',
+      title: 'Freelance',
+      section: 'Questions',
+      text: freelanceFaq()
+        .map((q) => `${q.question} ${q.answer}`)
+        .join(' '),
+    },
+  ];
+}
+
 export const kbSources: KBSource[] = [
   {
     id: 'hire-me-facts',
@@ -110,7 +146,7 @@ Verify him: ask about him at chatwithadam.matthewsteinberger.com, read the packa
     url: '/hire-me',
     title: 'Hire Me',
     section: "What Adam is looking for",
-    text: `What Adam is looking for: a role where AI platform, identity, or security architecture is the job, not a side quest; ownership of hard, ambiguous problems with room to design the solution, not just implement a ticket; a team that writes things down — design docs, decision records, and reviews in the open; Greenville, SC-based or US remote work.
+    text: `What Adam is looking for: a role where AI platform, identity, or security architecture is the job, not a side quest; putting models into real operations, embedded with the people who run them, from discovery to production; regulated or public-sector work, where auditability and human sign-off are requirements from the first day; ownership of hard, ambiguous problems with room to design the solution, not just implement a ticket; a team that writes things down — design docs, decision records, and reviews in the open; Greenville, SC-based or US remote work.
 What Adam is not looking for: pure front-end or design roles with no backend/architecture component; on-call-heavy support rotations with no engineering ownership attached; roles requiring daily in-person presence in an office outside the Greenville area.`,
   },
   {
@@ -187,6 +223,7 @@ Before Vizius: four consulting engagements in six months through Adam Matthew St
     text: `Adam built an interactive Chatbot Readiness Quiz — a 15-factor, four-pillar self-assessment (Organizational, Technical, Security & Compliance, Operational) that scores an organization's actual readiness to deploy a custom AI chatbot, based on the "Four Pillars of Chatbot Readiness" framework from his Novice to Navigator book.`,
   },
   ...joinMeChunks(),
+  ...freelanceChunks(),
   {
     id: 'chat',
     url: '/chat',

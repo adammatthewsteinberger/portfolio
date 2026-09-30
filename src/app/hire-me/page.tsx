@@ -9,7 +9,7 @@ const DESCRIPTION =
   'Staff Software Architect & AI Automation Engineer: AI platforms, auth and identity, and secretless, auditable deployments for regulated environments. US citizen, Greenville, SC or US remote.';
 
 export const metadata: Metadata = {
-  title: 'Hire Me | Adam Matthew Steinberger — Staff Software Architect & AI Automation Engineer',
+  title: 'Hire Me — Staff Software Architect & AI Automation Engineer',
   description: `${availabilityHeading()}. ${DESCRIPTION}`,
   alternates: { canonical: '/hire-me' },
   openGraph: {
@@ -44,6 +44,8 @@ const facts: { label: string; value: string }[] = [
 
 const looking: string[] = [
   'A role where AI platform, identity, or security architecture is the job, not a side quest',
+  'Putting models into real operations, embedded with the people who run them, from discovery to production',
+  'Regulated or public-sector work, where auditability and human sign-off are requirements from the first day',
   'Hard, ambiguous problems, with room to design the solution and not only implement a ticket',
   'A team that writes things down: design docs, decision records, and reviews in the open',
   'Greenville, SC-based or US remote',
@@ -213,6 +215,8 @@ export default function HireMePage() {
         <p className="text-sm text-[var(--color-text-muted)] mt-6">
           Prefer to contribute first?{' '}
           <Link href="/join-me#developers" className="hover:underline">Help build vibey — how to get started</Link>.
+          {' '}Need one defined piece of work instead of a hire?{' '}
+          <Link href="/freelance" className="hover:underline">See the fixed-scope packages</Link>.
         </p>
       </section>
     </div>

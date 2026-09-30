@@ -16,12 +16,13 @@ import { metadata as contact } from '@/app/contact/page';
 import { metadata as siteDirectory } from '@/app/site-directory/page';
 import { metadata as chat } from '@/app/chat/page';
 import { metadata as joinMe } from '@/app/join-me/page';
+import { metadata as freelance } from '@/app/freelance/page';
 import { generateMetadata as articleSlug } from '@/app/novice-to-navigator/[slug]/page';
 
 // Next does not deep-merge `openGraph`: any page that defines the block must
 // carry the site-wide social card itself, or it ships with no image at all.
 const pages: [string, Metadata][] = [
-  ['/', home], ['/join-me', joinMe], ['/story', story], ['/expertise', expertise], ['/work', work],
+  ['/', home], ['/join-me', joinMe], ['/freelance', freelance], ['/story', story], ['/expertise', expertise], ['/work', work],
   ['/open-source', openSource], ['/writing', writing], ['/books', books], ['/novice-to-navigator', noviceToNavigator],
   ['/novice-to-navigator/readiness', readiness], ['/contact', contact],
   ['/site-directory', siteDirectory], ['/chat', chat],
@@ -49,5 +50,15 @@ describe('social card on every page', () => {
     for (const [, meta] of pages) {
       expect(JSON.stringify(meta)).not.toMatch(/og-home\.png|social-preview\.png/);
     }
+  });
+});
+
+// The root layout's title template appends "| Adam Matthew Steinberger". A page
+// whose own `title` carries the name renders it twice and wastes the ~60
+// characters a search result shows. The homepage is exempt: the template does
+// not apply to the root segment, so its title names him itself.
+describe('page titles leave the name to the template', () => {
+  it.each(pages.filter(([route]) => route !== '/'))('%s does not repeat the name in its title', (_route, meta) => {
+    expect(typeof meta.title === 'string' ? meta.title : '').not.toMatch(/Adam Matthew Steinberger/);
   });
 });

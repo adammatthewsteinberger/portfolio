@@ -6,14 +6,14 @@ import { OG_IMAGE } from '@/lib/seo';
 import { audiences } from '@/data/audiences';
 
 export const metadata: Metadata = {
-  title: 'Contact | Adam Matthew Steinberger',
+  title: 'Contact',
   description:
-    'Reach Adam Matthew Steinberger: to help build vibey, to evaluate it for a government or military organization, or to propose research with a university. Email or the form; replies within 24 hours.',
+    'Reach Adam Matthew Steinberger: to help build vibey, evaluate it for a government or university, start a fixed-scope project, or hire. Replies within 24 hours.',
   alternates: { canonical: '/contact' },
   openGraph: {
     images: [OG_IMAGE],
     title: 'Contact | Adam Matthew Steinberger',
-    description: 'For contributors, governments and military, and universities. Replies within 24 hours.',
+    description: 'For contributors, governments and universities, project teams, and hiring teams. Replies within 24 hours.',
     url: 'https://vibewithadam.matthewsteinberger.com/contact',
     siteName: 'Adam Matthew Steinberger',
     locale: 'en_US',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     images: [OG_IMAGE],
     title: 'Contact | Adam Matthew Steinberger',
-    description: 'For contributors, governments and military, and universities.',
+    description: 'For contributors, governments and universities, project teams, and hiring teams.',
   },
 };
 
@@ -67,6 +67,13 @@ export default function ContactPage() {
             </div>
           ))}
         </div>
+
+        <p className="text-center text-[var(--color-text-muted)] -mt-8 mb-16">
+          Have a fixed-scope project?{' '}
+          <Link href="/freelance#brief" className="text-[var(--color-accent-blue)] hover:underline">Start with a written brief</Link>.
+          {' '}Hiring for a permanent role?{' '}
+          <Link href="/hire-me" className="text-[var(--color-accent-blue)] hover:underline">Everything a recruiter needs</Link>.
+        </p>
 
         <div className="text-center mb-8">
           <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-2">Or Send Me a Message</h2>

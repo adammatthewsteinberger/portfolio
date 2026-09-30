@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 import { OG_IMAGE } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'My Story | Adam Matthew Steinberger',
+  title: 'My Story',
   description:
     'Staff Software Architect & AI Automation Engineer in Greenville, SC. Thirteen-plus years across insurance, fintech, and cybersecurity, and why I do my best work deep in AI, automation, and architecture.',
   alternates: { canonical: '/story' },

@@ -5,7 +5,7 @@ import { DistributionNote, PackageLinks } from '@/components/PackageLinks';
 import { OG_IMAGE } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Open Source | Adam Matthew Steinberger',
+  title: 'Open Source',
   description:
     'One MIT-licensed repository and one PyPI distribution, vibey-engine: the *loop family of autonomous AI-agent session runners, the vibey conductor and its release automation, a Claude Code skills marketplace, and a production Azure Functions bootstrap library.',
   alternates: { canonical: '/open-source' },

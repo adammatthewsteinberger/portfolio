@@ -4,7 +4,7 @@ import { getAllBlogPosts } from '@/lib/blogUtils';
 import { OG_IMAGE } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Writing | Adam Matthew Steinberger',
+  title: 'Writing',
   description:
     'Blog posts on AI and automation, a free 33-article series on AI chatbots for business, and two books in development.',
   alternates: { canonical: '/writing' },

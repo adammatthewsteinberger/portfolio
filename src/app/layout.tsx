@@ -113,6 +113,12 @@ const jsonLd = {
         'Microsoft Azure',
         'Python, TypeScript, and .NET',
       ],
+      // Fixed-scope freelance packages, described in full on /freelance.
+      makesOffer: {
+        '@type': 'Offer',
+        itemOffered: { '@id': `${SITE_URL}/freelance#service` },
+        url: `${SITE_URL}/freelance`,
+      },
     },
     {
       '@type': 'WebSite',
