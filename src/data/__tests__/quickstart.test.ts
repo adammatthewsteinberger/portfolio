@@ -3,7 +3,7 @@ import { INVITATION, INVITATION_CTA, quickstart } from '../quickstart';
 
 describe('quickstart', () => {
   it('is vibey 1.0 README quickstart: one install, a database, then vibey commands', () => {
-    expect(quickstart[0].cmd).toBe('uv tool install vibey');
+    expect(quickstart[0].cmd).toBe('uv tool install vibey-engine');
     expect(quickstart[1].cmd).toMatch(/^export VIBEY_PG_URL=/);
     for (const step of quickstart.slice(2)) {
       expect(step.cmd).toMatch(/^vibey /);

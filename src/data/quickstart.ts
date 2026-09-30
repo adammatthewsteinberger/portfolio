@@ -11,7 +11,7 @@ export interface QuickstartStep {
 }
 
 export const quickstart: QuickstartStep[] = [
-  { cmd: 'uv tool install vibey', note: 'or pipx / pip. One install carries all five *loop engines and the tools. Python 3.12+ and PostgreSQL required; Windows is not a target.' },
+  { cmd: 'uv tool install vibey-engine', note: 'or pipx / pip. One install carries all five *loop engines and the tools. Python 3.12+ and PostgreSQL required; Windows is not a target.' },
   { cmd: 'export VIBEY_PG_URL=postgresql://user@localhost:5432/vibey', note: 'every database-backed command reads it; vibey never guesses a database' },
   { cmd: 'vibey new my-app --repo ~/src/my-app --max-cycle-dollars 15', note: 'a real budget brake, enforced from the ledger' },
   { cmd: 'vibey doctor --conformance --record', note: 'pre-flight: engines and auth, plus a recorded contract check per engine for the new project' },
