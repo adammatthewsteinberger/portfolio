@@ -45,7 +45,7 @@ test.describe('Navigation', () => {
     for (const path of ['/', '/open-source']) {
       await gotoAndDismiss(page, path);
       await expect(page.locator('a[href="https://github.com/the-vibey-project/vibey/tree/develop/src/vibey_runners/claude"]').first()).toBeVisible();
-      await expect(page.locator('a[href="https://pypi.org/project/vibey/"]').first()).toBeVisible();
+      await expect(page.locator('a[href="https://pypi.org/project/vibey-engine/"]').first()).toBeVisible();
       await expect(page.locator('a[href^="https://pypi.org/project/claudeloop"], a[href^="https://github.com/adammatthewsteinberger/claudeloop"]')).toHaveCount(0);
     }
   });

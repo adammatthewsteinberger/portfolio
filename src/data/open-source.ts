@@ -2,7 +2,8 @@
  * Every package in Adam's open-source family, all MIT licensed.
  *
  * Since vibey 1.0.0 (ADR-0037) the family lives in one repository,
- * the-vibey-project/vibey, and ships as one PyPI distribution, `vibey`: the
+ * the-vibey-project/vibey, and ships as one PyPI distribution, `vibey-engine`
+ * (which installs the `vibey` command, the `*loop` engines, and the tools): the
  * old per-package repositories and PyPI projects no longer exist. So each
  * package links to its source directory in that repository, and only vibey
  * itself links to PyPI (VIBEY_DISTRIBUTION below).
@@ -32,8 +33,8 @@ const TREE = `${REPO}/tree/develop`;
 
 /** The one distribution, the one repository, and the docs every package ships in. */
 export const VIBEY_DISTRIBUTION = {
-  install: 'uv tool install vibey',
-  pypi: 'https://pypi.org/project/vibey/',
+  install: 'uv tool install vibey-engine',
+  pypi: 'https://pypi.org/project/vibey-engine/',
   repo: REPO,
   docs: 'https://the-vibey-project.github.io/vibey/main/',
 } as const;

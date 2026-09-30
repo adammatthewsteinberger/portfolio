@@ -7,13 +7,13 @@ import { OG_IMAGE } from '@/lib/seo';
 export const metadata: Metadata = {
   title: 'Open Source | Adam Matthew Steinberger',
   description:
-    'One MIT-licensed repository and one PyPI distribution, vibey: the *loop family of autonomous AI-agent session runners, the vibey conductor and its release automation, a Claude Code skills marketplace, and a production Azure Functions bootstrap library.',
+    'One MIT-licensed repository and one PyPI distribution, vibey-engine: the *loop family of autonomous AI-agent session runners, the vibey conductor and its release automation, a Claude Code skills marketplace, and a production Azure Functions bootstrap library.',
   alternates: { canonical: '/open-source' },
   openGraph: {
     images: [OG_IMAGE],
     title: 'Open Source | Adam Matthew Steinberger',
     description:
-      'One MIT-licensed repository and one PyPI distribution, vibey: the *loop runners, the vibey conductor and its release automation, a Claude Code skills marketplace, and an Azure Functions bootstrap library.',
+      'One MIT-licensed repository and one PyPI distribution, vibey-engine: the *loop runners, the vibey conductor and its release automation, a Claude Code skills marketplace, and an Azure Functions bootstrap library.',
     url: 'https://vibewithadam.matthewsteinberger.com/open-source',
   },
 };

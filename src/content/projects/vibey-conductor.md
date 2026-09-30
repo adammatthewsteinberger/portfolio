@@ -64,14 +64,14 @@ The chaos test is the proof: 500 jobs, 8 workers, 20% of workers dropped mid-job
 Ten minutes, Python 3.12+ and PostgreSQL. The full quickstart is on [Join Me](/join-me):
 
 ```sh
-uv tool install vibey
+uv tool install vibey-engine
 export VIBEY_PG_URL=postgresql://user@localhost:5432/vibey
 vibey new my-app --repo ~/src/my-app --max-cycle-dollars 15
 vibey doctor --conformance --record
 vibey worker --provider claudeloop --engines claudeloop,agyloop -j 2
 ```
 
-One install carries every `*loop` engine and the tools.
+One install carries every `*loop` engine and the tools. The PyPI distribution is `vibey-engine`; the command it installs is `vibey`.
 
 ## Where to help
 
