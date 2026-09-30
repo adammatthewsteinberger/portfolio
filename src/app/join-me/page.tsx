@@ -97,7 +97,7 @@ export default function JoinMePage() {
           <ol className="space-y-4 list-none pl-0">
             {getStartedSteps.map((step, i) => (
               <li key={step.title} className={`${CARD} p-5`}>
-                <h4 className="font-bold text-[var(--color-text-primary)] mb-2">
+                <h4 className="text-lg font-bold text-[var(--color-text-primary)] mb-2">
                   <span className="font-mono text-[var(--color-accent-blue)] mr-2">{i + 1}.</span>
                   {step.title}
                 </h4>
@@ -136,7 +136,7 @@ export default function JoinMePage() {
           <div className="space-y-4">
             {helpWanted.map((item) => (
               <div key={item.title} className={`${CARD} p-5`}>
-                <h4 className="font-bold text-[var(--color-text-primary)] mb-1">{item.title}</h4>
+                <h4 className="text-lg font-bold text-[var(--color-text-primary)] mb-1">{item.title}</h4>
                 <p className="text-sm text-[var(--color-text-muted)] mb-2">{item.body}</p>
                 <p className="text-sm mb-0"><External href={item.source.href}>{item.source.label} →</External></p>
               </div>
@@ -180,7 +180,7 @@ export default function JoinMePage() {
           <div className="space-y-4 mt-6">
             {governmentClaims.map((claim) => (
               <div key={claim.title} className={`${CARD} p-5`}>
-                <h3 className="font-bold text-[var(--color-text-primary)] mb-1">{claim.title}</h3>
+                <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-1">{claim.title}</h3>
                 <p className="text-sm text-[var(--color-text-muted)] mb-2">
                   <InlineCode text={claim.body} />
                 </p>
@@ -253,7 +253,7 @@ export default function JoinMePage() {
           <div className="space-y-4">
             {academiaItems.map((item) => (
               <div key={item.title} className={`${CARD} p-5`}>
-                <h3 className="font-bold text-[var(--color-text-primary)] mb-1">{item.title}</h3>
+                <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-1">{item.title}</h3>
                 <p className="text-sm text-[var(--color-text-muted)] mb-2">
                   <InlineCode text={item.body} />
                 </p>

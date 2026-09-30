@@ -77,8 +77,6 @@ const jsonLd = {
   ],
 };
 
-// globals.css styles ol/ul padding and h4 size outside any @layer, so they beat
-// Tailwind utilities; the `!` suffix restores the utility where it must win.
 const card = 'bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl';
 const link = 'text-[var(--color-accent-blue)] hover:underline font-medium';
 
@@ -133,7 +131,7 @@ export default function FreelancePage() {
             Each one names what you receive. The proof underneath is work already delivered, and
             every number links to its case study.
           </p>
-          <ol className="list-none pl-0! space-y-4">
+          <ol className="list-none pl-0 space-y-4">
             {offers.map((offer, i) => (
               <li key={offer.id} id={offer.id} className={`${card} p-6 scroll-mt-24`}>
                 <span className="text-xs font-mono text-[var(--color-accent-blue)]">{String(i + 1).padStart(2, '0')}</span>
@@ -141,7 +139,7 @@ export default function FreelancePage() {
                 <p className="text-[var(--color-text-muted)] mb-4">{offer.forWhom}</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <h4 className="text-sm! font-semibold text-[var(--color-text-primary)] mb-2">You get</h4>
+                    <h4 className="text-sm font-semibold text-[var(--color-text-primary)] mb-2">You get</h4>
                     <ul className="list-disc pl-5 space-y-1 text-sm text-[var(--color-text-primary)]">
                       {offer.deliverables.map((d) => (
                         <li key={d}>{d}</li>
@@ -149,7 +147,7 @@ export default function FreelancePage() {
                     </ul>
                   </div>
                   <div>
-                    <h4 className="text-sm! font-semibold text-[var(--color-text-primary)] mb-2">Done before</h4>
+                    <h4 className="text-sm font-semibold text-[var(--color-text-primary)] mb-2">Done before</h4>
                     <p className="text-sm text-[var(--color-text-muted)] mb-2">{offer.proof}</p>
                     <Link href={offer.proofHref} className={`text-sm ${link}`}>
                       Read the case study →
@@ -168,11 +166,11 @@ export default function FreelancePage() {
           <h2 id="steps-heading" className="text-2xl font-bold text-[var(--color-text-primary)] mb-6">
             How an engagement runs
           </h2>
-          <ol className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none pl-0!">
+          <ol className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none pl-0">
             {engagementSteps.map((step, i) => (
               <li key={step.title} className={`${card} p-5`}>
                 <span className="text-xs font-mono text-[var(--color-accent-blue)]">Step {i + 1}</span>
-                <h3 className="font-bold text-[var(--color-text-primary)] mt-1 mb-2">{step.title}</h3>
+                <h3 className="text-lg font-bold text-[var(--color-text-primary)] mt-1 mb-2">{step.title}</h3>
                 <p className="text-sm text-[var(--color-text-muted)] mb-0">{step.body}</p>
               </li>
             ))}
@@ -192,7 +190,7 @@ export default function FreelancePage() {
           <div className="divide-y divide-[var(--color-dark-border)] border-y border-[var(--color-dark-border)]">
             {workingAgreement.map((item) => (
               <div key={item.title} className="grid grid-cols-1 md:grid-cols-[16rem_1fr] gap-1 md:gap-6 py-4">
-                <h3 className="font-bold text-[var(--color-text-primary)] mb-0">{item.title}</h3>
+                <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-0">{item.title}</h3>
                 <p className="text-sm text-[var(--color-text-muted)] mb-0">{item.body}</p>
               </div>
             ))}

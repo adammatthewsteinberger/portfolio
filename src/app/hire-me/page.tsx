@@ -127,7 +127,7 @@ export default function HireMePage() {
           <div className="divide-y divide-[var(--color-dark-border)] border-y border-[var(--color-dark-border)]">
             {staffEvidence.map((item) => (
               <Link key={item.claim} href={item.href} className="block py-4 no-underline hover:bg-[var(--color-dark-card)] transition-colors">
-                <h3 className="font-bold text-[var(--color-text-primary)] mb-1">{item.claim}</h3>
+                <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-1">{item.claim}</h3>
                 <p className="text-sm text-[var(--color-text-muted)] mb-0">{item.proof}</p>
               </Link>
             ))}
