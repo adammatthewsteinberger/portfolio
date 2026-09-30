@@ -45,11 +45,11 @@ describe('next.config host-aware routing for the chat subdomain', () => {
   });
 });
 
-describe('next.config redirects for the pages retired with the looking-for-work copy', () => {
+describe('next.config redirects for the pages retired with the client-seeking copy', () => {
   const find = async (source: string) => (await nextConfig.redirects!()).find((rule) => rule.source === source && !rule.has);
 
-  it('sends /hire-me to /join-me, permanently', async () => {
-    expect(await find('/hire-me')).toEqual({ source: '/hire-me', destination: '/join-me', permanent: true });
+  it('serves /hire-me directly — it was restored, so nothing redirects it away', async () => {
+    expect(await find('/hire-me')).toBeUndefined();
   });
 
   it('sends every executive-edition page to the page it mirrored', async () => {
@@ -69,7 +69,7 @@ describe('next.config redirects for the pages retired with the looking-for-work 
     for (const rule of redirects) {
       expect(rule.permanent, rule.source).toBe(true);
       // No redirect points at a page that is itself redirected.
-      expect(rule.destination, rule.source).not.toMatch(/^\/(hire-me|for-executives|services)(\/|$)/);
+      expect(rule.destination, rule.source).not.toMatch(/^\/(for-executives|services)(\/|$)/);
     }
   });
 

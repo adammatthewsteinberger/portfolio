@@ -1,12 +1,13 @@
 import { test, expect, gotoAndDismiss } from './fixtures';
 
-// The pages retired with the looking-for-work copy (the-vibey-project/vibey#238)
-// redirect permanently, so no old link or search result 404s.
+// The pages retired with the client-seeking copy (the-vibey-project/vibey#238)
+// redirect permanently, so no old link or search result 404s. /hire-me was
+// retired with them and has since been restored, so it is served, not redirected.
 test.describe('Retired pages redirect', () => {
-  test('/hire-me lands on /join-me', async ({ page }) => {
+  test('/hire-me is served, not redirected', async ({ page }) => {
     await gotoAndDismiss(page, '/hire-me');
-    await expect(page).toHaveURL('/join-me');
-    await expect(page.locator('h1').first()).toHaveText('Join Me');
+    await expect(page).toHaveURL('/hire-me');
+    await expect(page.locator('h1').first()).toHaveText('Hire Me');
   });
 
   test('an executive-edition case study lands on the engineering case study', async ({ page }) => {
@@ -28,9 +29,9 @@ test.describe('Retired pages redirect', () => {
     await expect(page).toHaveURL('/');
   });
 
-  test('the header offers Join Me and never a hiring page', async ({ page }) => {
+  test('the header offers Join Me, then Hire Me', async ({ page }) => {
     await gotoAndDismiss(page, '/');
-    await expect(page.locator('a[href="/hire-me"]')).toHaveCount(0);
+    await expect(page.locator('header a[href="/hire-me"]').first()).toBeAttached();
     await expect(page.locator('a[href="/join-me#developers"]').first()).toBeAttached();
   });
 });

@@ -2,23 +2,29 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { AskAdam } from '@/components/AskAdam';
 import { getAllBlogPosts } from '@/lib/blogUtils';
+import { availabilityLong } from '@/lib/availability';
 import { specialties } from '@/data/expertise';
+import { method, staffEvidence, vibeyGuarantees } from '@/data/evidence';
 import { openSourcePackages } from '@/data/open-source';
 import { DistributionNote, PackageLinks } from '@/components/PackageLinks';
 import { INVITATION, INVITATION_CTA, quickstart } from '@/data/quickstart';
 import { VIBEY, audiences } from '@/data/audiences';
 import { OG_IMAGE } from '@/lib/seo';
 
+const TITLE = 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer';
+// Search engines truncate near 155 characters: the open-source pitch comes first
+// and fits whole; availability lives in /hire-me's description.
+const DESCRIPTION =
+  'vibey: run a team of coding agents that can’t lose your work. Open-source conductor on an append-only PostgreSQL ledger. MIT on PyPI; contributors welcome.';
+
 export const metadata: Metadata = {
-  title: 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer',
-  description:
-    'Adam Matthew Steinberger builds vibey, free and open-source tooling for autonomous software delivery: the *loop agent runners, the vibey conductor, and vibey-gh release automation, all MIT licensed. He is looking for developers to help build it. Governments and military, and universities and academia, have their own sections.',
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical: '/' },
   openGraph: {
     images: [OG_IMAGE],
-    title: 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer',
-    description:
-      'Free and open-source autonomous software-delivery tooling, MIT licensed. Run it in ten minutes, then help build it. Sections for governments and military, and for universities and academia.',
+    title: TITLE,
+    description: DESCRIPTION,
     url: 'https://vibewithadam.matthewsteinberger.com',
     locale: 'en_US',
     type: 'website',
@@ -26,19 +32,10 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     images: [OG_IMAGE],
-    title: 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer',
-    description: 'Free and open-source autonomous software-delivery tooling, MIT licensed. Run it in ten minutes, then help build it.',
+    title: TITLE,
+    description: DESCRIPTION,
   },
 };
-
-// Every figure below is on the corresponding case study or on /story — nothing new.
-const shipped = [
-  { title: 'AI Governance Gateway', role: 'Sole architect', proof: 'Five model vendors behind one policy-enforced API — per-project cost caps, hash-chained audit trail, no API keys in the path. Three product teams migrated; their credentials retired.', href: '/work/ai-governance-gateway' },
-  { title: 'AI Payroll Platform', role: 'Co-lead', proof: '20 microservices, 585 test modules, human approval on every phase. Architecture production-ready at day 45; a junior developer trained in parallel now owns it.', href: '/work/enterprise-ai-payroll-processor' },
-  { title: 'Identity Governance as Code', role: 'Sole author', proof: 'Two control planes for a SOX-regulated enterprise — 40 resource kinds reconciled from Git, secretless multi-tenant auth, a human in front of anything destructive.', href: '/work/identity-governance-as-code' },
-  { title: 'Multi-System Ticket Relay', role: 'Sole author', proof: 'N-way sync with no privileged hub. 653 tests, 93% coverage, chaos-proved convergence.', href: '/work/multi-system-ticket-relay' },
-  { title: 'Multi-Tenant Observability Portal', role: 'Lead', proof: 'Logs, traces, cost, and health from three data planes — every payload tagged with how fresh it really is.', href: '/work/multi-tenant-observability-portal' },
-];
 
 export default function Home() {
   const latestPosts = getAllBlogPosts().slice(0, 4);
@@ -54,10 +51,14 @@ export default function Home() {
           Staff Software Architect &amp; AI Automation Engineer
         </h2>
         <div className="scanline mx-auto md:mx-0 mb-6" aria-hidden="true" />
+        <p className="text-2xl font-semibold text-[var(--color-text-primary)] max-w-2xl mx-auto md:mx-0 mb-3">
+          Run a team of coding agents that can&apos;t lose your work.
+        </p>
         <p className="text-lg text-[var(--color-text-muted)] max-w-2xl mx-auto md:mx-0 mb-4">
-          I primarily develop free and open-source software: autonomous software-delivery tooling
-          — the <code>*loop</code> agent runners, the vibey conductor, vibey-gh release automation
-          — all MIT licensed, all in one PyPI distribution, and all of it dogfooded on this very site.
+          vibey carries a change from spec to reviewed merge across Claude Code, Codex, Cursor,
+          Antigravity, and a local Qwen model. Every decision is a row in an append-only ledger,
+          so when an agent dies, the next one starts from the last row. It&apos;s free, MIT
+          licensed, on PyPI, and this site is built with it.
         </p>
         <p className="text-lg text-[var(--color-text-primary)] max-w-2xl mx-auto md:mx-0 mb-8">
           I&apos;m looking for developers to help build it. {INVITATION}
@@ -120,6 +121,35 @@ export default function Home() {
         </div>
       </section>
 
+      {/* What it guarantees — the mechanism, for engineers deciding whether to try it */}
+      <section className="container mx-auto px-4 py-12" aria-labelledby="guarantees-heading">
+        <div className="max-w-4xl mx-auto">
+          <h2 id="guarantees-heading" className="text-2xl font-bold text-[var(--color-text-primary)] mb-2">
+            Why it doesn&apos;t lose your work
+          </h2>
+          <p className="text-[var(--color-text-muted)] mb-6">
+            The agent is a worker. The ledger is the record. What that buys you, and how each part is kept:
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {vibeyGuarantees.map((item) => (
+              <Link
+                key={item.claim}
+                href={item.href}
+                className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] hover:border-[var(--color-accent-blue)]/50 rounded-xl p-5 no-underline transition-colors"
+              >
+                <h3 className="font-bold text-[var(--color-text-primary)] mb-2">{item.claim}</h3>
+                <p className="text-sm text-[var(--color-text-muted)] mb-0">{item.proof}</p>
+              </Link>
+            ))}
+          </div>
+          <p className="mt-4 text-sm">
+            <Link href="/work/vibey-conductor" className="text-[var(--color-accent-blue)] hover:underline font-medium">
+              How vibey works, in one page →
+            </Link>
+          </p>
+        </div>
+      </section>
+
       {/* The packages */}
       <section className="container mx-auto px-4 py-12">
         <h2 className="text-2xl font-bold mb-2 text-center text-[var(--color-text-primary)]">The Packages</h2>
@@ -141,36 +171,41 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Who's behind it */}
-      <section className="container mx-auto px-4 py-12">
+      {/* Who's behind it — scope that reaches past one person's code */}
+      <section className="container mx-auto px-4 py-12" aria-labelledby="behind-heading">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold mb-2 text-[var(--color-text-primary)]">Who&apos;s Behind It</h2>
-          <p className="text-[var(--color-text-muted)] mb-6">
-            I build AI systems that actually work inside enterprise environments — production-grade
-            platforms that handle real data, real security requirements, and real organizational
-            complexity. Not just demos. The past year at The Vizius Group; every number is on the
-            case study.
+          <h2 id="behind-heading" className="text-2xl font-bold mb-2 text-[var(--color-text-primary)]">Who&apos;s Behind It</h2>
+          <p className="text-[var(--color-text-muted)] mb-2">
+            Thirteen years of production systems in insurance, fintech, healthcare, and
+            cybersecurity, where identity, audit, and supply-chain controls are the requirement,
+            not the afterthought. Not just demos. Every number below is on its case study.
           </p>
+          <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-full bg-[var(--color-accent-green)]/15 border border-[var(--color-accent-green)]/30 text-[var(--color-accent-green)] text-xs font-semibold">
+            {availabilityLong()}
+          </div>
           <div className="divide-y divide-[var(--color-dark-border)] border-y border-[var(--color-dark-border)]">
-            {shipped.map((item) => (
-              <Link key={item.href} href={item.href} className="grid grid-cols-1 md:grid-cols-[14rem_1fr] gap-1 md:gap-6 py-4 no-underline hover:bg-[var(--color-dark-card)] transition-colors">
-                <div>
-                  <h3 className="font-bold text-[var(--color-text-primary)]">{item.title}</h3>
-                  <span className="text-xs font-mono uppercase tracking-wider text-[var(--color-accent-green)]">{item.role}</span>
-                </div>
+            {staffEvidence.map((item) => (
+              <Link key={item.claim} href={item.href} className="grid grid-cols-1 md:grid-cols-[14rem_1fr] gap-1 md:gap-6 py-4 no-underline hover:bg-[var(--color-dark-card)] transition-colors">
+                <h3 className="font-bold text-[var(--color-text-primary)] mb-0">{item.claim}</h3>
                 <p className="text-sm text-[var(--color-text-muted)] mb-0">{item.proof}</p>
               </Link>
             ))}
           </div>
           <p className="mt-6 text-sm text-[var(--color-text-muted)]">
-            After 13+ years: the hardest part is never the technology — it&apos;s designing so the
-            people who inherit it get a product that just works. Architecture before code. Juniors
-            trained in parallel. Handoffs that hold. I document everything for the same reason a
-            RAG pipeline cites its sources, and I communicate best with written documentation.
+            The method is the same on every engagement:{' '}
+            {method.map((step, i) => (
+              <span key={step}>
+                {i > 0 && ' → '}
+                <strong className="text-[var(--color-text-primary)] font-semibold">{step}</strong>
+              </span>
+            ))}
+            . Architecture before code, and written down, so the people who inherit the system
+            can run it after I leave.
           </p>
           <div className="flex flex-wrap gap-x-6 gap-y-2 mt-4 text-sm">
             <Link href="/work" className="text-[var(--color-accent-blue)] hover:underline font-medium">All the work →</Link>
             <Link href="/story" className="text-[var(--color-accent-blue)] hover:underline font-medium">The story →</Link>
+            <Link href="/hire-me" className="text-[var(--color-accent-blue)] hover:underline font-medium">Hiring? Everything a recruiter needs →</Link>
           </div>
         </div>
       </section>
@@ -230,6 +265,8 @@ export default function Home() {
             <Link href="/join-me#governments" className="hover:underline">Governments and military</Link>
             {' · '}
             <Link href="/join-me#academia" className="hover:underline">Universities and academia</Link>
+            {' · '}
+            <Link href="/hire-me" className="hover:underline">Hiring</Link>
           </p>
         </div>
       </section>

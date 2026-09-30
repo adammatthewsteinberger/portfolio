@@ -60,9 +60,8 @@ const nextConfig: NextConfig = {
         destination: `https://${CHAT_HOST}/`,
         permanent: true,
       },
-      // --- retired with the looking-for-work copy (the-vibey-project/vibey#238) ---
-      // /hire-me became /join-me: developers, then governments and military, then universities.
-      { source: '/hire-me', destination: '/join-me', permanent: true },
+      // --- retired with the client-seeking copy (the-vibey-project/vibey#238) ---
+      // /hire-me was retired here too and has since been restored; it is served, not redirected.
       // The executive edition existed to sell (hire full-time, or engage the LLC). Each page
       // lands on the engineering page it mirrored.
       { source: '/for-executives', destination: '/', permanent: true },

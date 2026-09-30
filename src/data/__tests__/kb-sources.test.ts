@@ -48,10 +48,15 @@ describe('kbSources', () => {
     }
   });
 
-  it('never tells the bot Adam is looking for work', () => {
+  // Hiring was restored as a second track (PR #100): the bot can answer from /hire-me,
+  // but it never pitches the retired executive edition, the consulting catalogue, or a booking.
+  it('answers hiring questions from /hire-me and never pitches consulting', () => {
+    const hire = kbSources.filter((s) => s.url === '/hire-me');
+    expect(hire.map((s) => s.id)).toEqual(expect.arrayContaining(['hire-me-facts', 'hire-me-looking', 'evidence-staff']));
+    expect(hire.find((s) => s.id === 'hire-me-facts')?.text).toMatch(/Availability: Available/);
     const text = kbSources.map((s) => `${s.url} ${s.title} ${s.text}`).join('\n');
-    expect(text).not.toMatch(/\/hire-me|hire me|available (from|starting|for hire)|availability|W2|contract-to-hire|sponsorship|looking for (a role|roles|the next team|work)|résumé/i);
     expect(text).not.toMatch(/\/for-executives|\/services/);
+    expect(text).not.toMatch(/consulting (call|services)|free consultation|book a (call|consultation)|engage (my|the) (firm|llc)/i);
   });
 });
 
