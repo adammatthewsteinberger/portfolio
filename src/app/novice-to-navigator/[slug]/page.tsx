@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import Link from 'next/link';
 import MultipleCTAs from '@/components/MultipleCTAs';
+import ProseTable from '@/components/ProseTable';
 import SecondEditionNudge from '@/components/SecondEditionNudge';
 import type { Metadata } from 'next';
 import { OG_IMAGE } from '@/lib/seo';
@@ -118,6 +119,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeHighlight]}
+                components={{ table: ProseTable }}
               >
                 {articleContent.content}
               </ReactMarkdown>

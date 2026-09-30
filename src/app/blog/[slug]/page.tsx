@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import MultipleCTAs from '@/components/MultipleCTAs';
+import ProseTable from '@/components/ProseTable';
 import Link from 'next/link';
 import Icon from '@/components/Icon';
 
@@ -159,6 +160,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeHighlight]}
+              components={{ table: ProseTable }}
             >
               {post.content}
             </ReactMarkdown>
