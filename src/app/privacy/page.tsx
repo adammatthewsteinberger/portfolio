@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Adam Matthew Steinberger',
+  title: 'Privacy Policy',
   description:
     'Learn how we collect, use, and protect your personal information when you visit our website.',
   alternates: { canonical: '/privacy' },

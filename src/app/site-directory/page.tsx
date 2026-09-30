@@ -5,7 +5,7 @@ import Icon from '@/components/Icon';
 import { OG_IMAGE } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Site Directory | Adam Matthew Steinberger',
+  title: 'Site Directory',
   description:
     'Complete site directory — every page on Adam Matthew Steinberger\'s site, from Join Me (for developers, governments and military, and universities) to the open-source projects, case studies, and writing.',
   alternates: {
@@ -31,6 +31,7 @@ const pages = [
   { icon: 'fa-newspaper', color: 'coral', title: 'Blog', description: 'AI, automation, and architecture — including what\'s buzzing right now.', href: '/blog', cta: 'Read the Blog' },
   { icon: 'fa-graduation-cap', color: 'gold', title: 'Novice to Navigator', description: 'A free 33-article series on AI chatbots for business.', href: '/novice-to-navigator', cta: 'Start Learning' },
   { icon: 'fa-book', color: 'gold', title: 'Books', description: 'Two books, both currently in development.', href: '/books', cta: 'See Books' },
+  { icon: 'fa-file-signature', color: 'blue', title: 'Freelance', description: 'Fixed-scope packages: codebase and security reviews, RAG chatbots, LLM gateways, identity governance, and AI security readiness.', href: '/freelance', cta: 'See the Packages' },
   { icon: 'fa-briefcase', color: 'green', title: 'Hire Me', description: 'Target roles, availability, Staff-level evidence, and how I work.', href: '/hire-me', cta: 'See the Details' },
   { icon: 'fa-envelope', color: 'blue', title: 'Contact', description: 'Send a message directly.', href: '/contact', cta: 'Contact Me' },
   { icon: 'fa-shield-halved', color: 'purple', title: 'Privacy Policy', description: 'How this site handles data and cookies.', href: '/privacy', cta: 'Read Privacy Policy' },

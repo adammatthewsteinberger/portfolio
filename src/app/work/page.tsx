@@ -5,7 +5,7 @@ import Icon from '@/components/Icon';
 import { OG_IMAGE } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Work | Case Studies in AI, Azure & Automation | Adam Matthew Steinberger',
+  title: 'Work | Case Studies in AI, Azure & Automation',
   description: 'Case studies in RAG systems, event-driven microservices, and AI automation — built by Adam Matthew Steinberger, Staff Software Architect & AI Automation Engineer.',
   alternates: { canonical: '/work' },
   openGraph: {

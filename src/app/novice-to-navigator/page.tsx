@@ -6,7 +6,7 @@ import Icon from '@/components/Icon';
 import { OG_IMAGE } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Novice to Navigator: AI Chatbot Education Series | Adam Matthew Steinberger',
+  title: 'Novice to Navigator: AI Chatbot Education Series',
   description:
     'Master AI chatbot knowledge with this comprehensive 33-article series. Learn what AI chatbots are, how they work, and what to look for when hiring an expert. From complete beginner to confident decision-maker.',
   keywords:

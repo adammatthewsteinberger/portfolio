@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
   }
 
   return {
-    title: `${post.title} | Adam Matthew Steinberger`,
+    title: post.title,
     description: post.description,
     keywords: post.tags.join(', '),
     authors: [{ name: post.author }],

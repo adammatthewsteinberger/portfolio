@@ -2,16 +2,16 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-// The site carries no client-seeking copy: no consulting or booking pitch,
-// no "engage the LLC", and no links to the retired executive edition or
-// consulting catalogue (the-vibey-project/vibey#238). Its audiences are
-// developers who want to help build vibey, then governments and military,
-// then universities and academia (src/data/audiences.ts).
+// The site has three tracks, in priority order (src/data/tracks.ts):
+// open-source developers who want to help build vibey, teams with a
+// fixed-scope project (/freelance), and hiring teams (/hire-me).
 //
-// Job-seeking copy was retired with it and has since been restored: /hire-me,
-// availability (src/lib/availability.ts), and the résumé download are back as
-// a second track behind the open-source work. Only the client-seeking half of
-// the original guard remains.
+// The retired consulting pitch (the-vibey-project/vibey#238) stays retired:
+// no call booking, no "engage the LLC", no open-ended consulting catalogue,
+// and no links to the old executive edition or /services. Freelance work came
+// back in a different shape, on 2026-09-30: fixed-scope packages that start
+// with a written brief, with no price on the site (src/data/freelance.ts).
+// This guard is what keeps the two apart.
 //
 // This guard reads every copy surface a visitor, a crawler, or the chat
 // bot's knowledge base can reach, so the old copy cannot creep back in.
@@ -87,7 +87,8 @@ describe('no client-seeking copy on the site', () => {
     }
   });
 
-  it('serves the restored hiring page', () => {
+  it('serves the freelance and hiring pages', () => {
+    expect(fs.existsSync(path.join(root, 'src/app/freelance/page.tsx'))).toBe(true);
     expect(fs.existsSync(path.join(root, 'src/app/hire-me/page.tsx'))).toBe(true);
   });
 });

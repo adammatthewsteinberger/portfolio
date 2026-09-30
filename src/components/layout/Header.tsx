@@ -5,8 +5,9 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { SITE_HOST } from '@/lib/hostRouting';
 
-// Join Me is the primary page: developers first, then governments and
-// military, then universities and academia (src/data/audiences.ts).
+// The last three items follow the site's tracks, in priority order
+// (src/data/tracks.ts): open-source developers (Join Me), teams with a
+// fixed-scope project (Freelance), then hiring teams (Hire Me).
 const navItems = [
   { href: '/', label: 'Home' },
   { href: '/story', label: 'Story' },
@@ -14,6 +15,7 @@ const navItems = [
   { href: '/work', label: 'Work' },
   { href: '/writing', label: 'Writing' },
   { href: '/join-me', label: 'Join Me' },
+  { href: '/freelance', label: 'Freelance' },
   { href: '/hire-me', label: 'Hire Me' },
 ];
 

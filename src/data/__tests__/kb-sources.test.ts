@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { openSourcePackages } from '../open-source';
-import { joinMeChunks, kbSources } from '../kb-sources';
+import { freelanceChunks, joinMeChunks, kbSources } from '../kb-sources';
+import { freelanceFaq, offers } from '../freelance';
 import { academiaItems, audiences, getStartedSteps, governmentClaims } from '../audiences';
 
 /** Closed / renamed packages that must never reappear as current KB inventory. */
@@ -80,5 +81,32 @@ describe('joinMeChunks', () => {
     expect(governments.text).toContain('claims no government or military customer');
     for (const item of academiaItems) expect(academia.text).toContain(item.title);
     expect(academia.text).toContain('https://the-vibey-project.github.io/vibey/main/paper.pdf');
+  });
+});
+
+describe('freelanceChunks', () => {
+  const chunks = freelanceChunks();
+
+  it('covers the overview, one chunk per package, and the questions', () => {
+    expect(chunks.map((c) => c.id)).toEqual(['freelance-overview', ...offers.map((o) => `freelance-${o.id}`), 'freelance-faq']);
+    for (const chunk of chunks) expect(kbSources).toContainEqual(chunk);
+  });
+
+  it('is generated from the page data, so the bot and /freelance cannot drift', () => {
+    const [overview] = chunks;
+    for (const offer of offers) {
+      expect(overview.text).toContain(offer.title);
+      const chunk = chunks.find((c) => c.id === `freelance-${offer.id}`);
+      expect(chunk?.url).toBe(`/freelance#${offer.id}`);
+      expect(chunk?.text).toContain(offer.proof);
+      expect(chunk?.text).toContain(offer.proofHref);
+    }
+    for (const q of freelanceFaq()) expect(chunks.at(-1)?.text).toContain(q.question);
+  });
+
+  it('tells the bot there is no price to quote, and how to start', () => {
+    expect(chunks[0].text).toMatch(/this site publishes none/);
+    expect(chunks[0].text).toContain('/freelance#brief');
+    expect(chunks.map((c) => c.text).join(' ')).not.toMatch(/[$€£]\s?\d/);
   });
 });

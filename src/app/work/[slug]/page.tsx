@@ -25,13 +25,13 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 
   if (!project || !projectData) {
     return {
-       title: 'Work Not Found | Adam Matthew Steinberger',
+      title: 'Work Not Found',
       description: 'The requested case study could not be found.',
     };
   }
 
   return {
-    title: `${project.title} | Adam Matthew Steinberger — Work`,
+    title: `${project.title} — Case Study`,
     description: project.description,
     alternates: { canonical: `/work/${slug}` },
     openGraph: {
