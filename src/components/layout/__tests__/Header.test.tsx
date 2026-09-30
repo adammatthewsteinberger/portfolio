@@ -11,9 +11,10 @@ describe('Header', () => {
     );
   });
 
-  it('renders the desktop nav items, with Join Me as the last one and no hiring link', () => {
+  // Open source first, hiring second: Join Me, then Hire Me, then the contributors pill.
+  it('renders the desktop nav items, with Join Me before Hire Me and no executive link', () => {
     render(<Header />);
-    expect(document.querySelector('a[href="/hire-me"]')).toBeNull();
+    expect(document.querySelector('a[href="/hire-me"]')).not.toBeNull();
     expect(document.querySelector('a[href^="/for-executives"]')).toBeNull();
     // Desktop nav is present in the DOM even on narrow test viewports
     // (hidden via a lg: class, not removed), so getAllByRole is used since
@@ -25,7 +26,7 @@ describe('Header', () => {
     const joinMe = screen.getAllByRole('link', { name: 'Join Me' });
     expect(joinMe[0]).toHaveAttribute('href', '/join-me');
     const navLinks = Array.from(document.querySelectorAll('nav .lg\\:flex a')).map((a) => a.textContent);
-    expect(navLinks.slice(-2)).toEqual(['Join Me', 'Contributors welcome']);
+    expect(navLinks.slice(-3)).toEqual(['Join Me', 'Hire Me', 'Contributors welcome']);
   });
 
   it('shows a contributors pill that links to the developer section, never an availability pill', () => {
@@ -58,7 +59,7 @@ describe('Header', () => {
     expect(screen.getByRole('button', { name: 'Open menu' })).toBeInTheDocument();
   });
 
-  it('opens the mobile menu on click, and it contains the nav links, contact, and the contributors pill — never hiring pages', () => {
+  it('opens the mobile menu on click, and it contains the nav links, Hire Me, contact, and the contributors pill — never the retired pages', () => {
     render(<Header />);
 
     fireEvent.click(screen.getByRole('button', { name: 'Open menu' }));
@@ -67,7 +68,7 @@ describe('Header', () => {
     expect(dialog).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Close menu' })).toBeInTheDocument();
     expect(dialog.querySelector('a[href="/join-me"]')).toBeInTheDocument();
-    expect(dialog.querySelector('a[href="/hire-me"]')).not.toBeInTheDocument();
+    expect(dialog.querySelector('a[href="/hire-me"]')).toBeInTheDocument();
     expect(dialog.querySelector('a[href="/services"]')).not.toBeInTheDocument();
     expect(dialog.querySelector('a[href^="/for-executives"]')).not.toBeInTheDocument();
     expect(dialog.querySelector('a[href="/contact"]')).toBeInTheDocument();

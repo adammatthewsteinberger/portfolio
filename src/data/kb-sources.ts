@@ -8,7 +8,9 @@
  * blog content to produce src/generated/kb.json.
  */
 
+import { availabilityHeading } from '@/lib/availability';
 import { VIBEY, academiaItems, audiences, getStartedSteps, governmentClaims, helpWanted } from './audiences';
+import { evidenceText, method, staffEvidence, vibeyGuarantees } from './evidence';
 import { fullStack, specialtyGroups } from './expertise';
 
 export interface KBSource {
@@ -91,12 +93,33 @@ export function joinMeChunks(): KBSource[] {
 
 export const kbSources: KBSource[] = [
   {
+    id: 'hire-me-facts',
+    url: '/hire-me',
+    title: 'Hire Me',
+    section: 'At a glance',
+    text: `Adam Matthew Steinberger is a Staff Software Architect & AI Automation Engineer. Availability: ${availabilityHeading()}.
+Target roles: Staff+ Software Engineer (AI platform, auth and identity, regulated and public-sector deployments), Forward Deployed AI Engineer, Staff Software Architect.
+Location: Greenville, South Carolina — remote preferred; open to US remote anywhere.
+Employment types: W2 full-time preferred; contract-to-hire considered.
+Work authorization: US citizen, no sponsorship required.
+Specialties: identity and access (Entra ID, Okta core/IGA/Workflows, SAML 2.0, OIDC, workload identity federation); AI platforms (multi-vendor LLM gateways, agent orchestration and sandboxing, RAG, MCP); security and compliance (secretless delivery, SBOM and keyless signing, policy-as-code admission, STRIDE, SOC 2 readiness, OWASP LLM Top 10, NIST AI RMF); platform (private AKS, Terraform, Helm, GitOps); Python, TypeScript, C#/.NET.
+Verify him: ask about him at chatwithadam.matthewsteinberger.com, read the packages on PyPI, or read the code on GitHub.`,
+  },
+  {
+    id: 'hire-me-looking',
+    url: '/hire-me',
+    title: 'Hire Me',
+    section: "What Adam is looking for",
+    text: `What Adam is looking for: a role where AI platform, identity, or security architecture is the job, not a side quest; ownership of hard, ambiguous problems with room to design the solution, not just implement a ticket; a team that writes things down — design docs, decision records, and reviews in the open; Greenville, SC-based or US remote work.
+What Adam is not looking for: pure front-end or design roles with no backend/architecture component; on-call-heavy support rotations with no engineering ownership attached; roles requiring daily in-person presence in an office outside the Greenville area.`,
+  },
+  {
     id: 'story-bio',
     url: '/story',
     title: 'My Story',
     section: 'Who Adam is',
     text: `Adam Matthew Steinberger is a Staff Software Architect and AI Automation Engineer based in Greenville, South Carolina. He builds AI systems that actually work inside enterprise environments — production-grade platforms that handle real data, real security requirements, and real organizational complexity, not just demos. He has 13+ years of professional software engineering experience. His view after those years: the hardest part is never the technology, it is designing so the people who inherit the system get a product that just works — architecture before code, juniors trained in parallel, handoffs that hold.
-Adam describes himself as a deep thinker and a purpose-driven craftsman. He documents everything for the same reason a RAG pipeline cites its sources, and he communicates best with written documentation — written specs and async communication rather than live whiteboards or drive-by pings. He does his best work in deep, uninterrupted blocks of time on one hard architecture problem, and works remote-first from Greenville, SC. He primarily develops free and open-source software and is always open for a connection or a coffee; Greenville-remote or US-remote volunteers are welcome to get involved.
+Adam describes himself as a deep thinker and a purpose-driven craftsman. He documents everything for the same reason a RAG pipeline cites its sources: a design before the code, a decision record for every choice that matters, and a short written recap after every conversation. His method on every engagement: ${method.join(', then ').toLowerCase()}. He works remote-first from Greenville, SC. He primarily develops free and open-source software and is always open for a connection or a coffee; Greenville-remote or US-remote volunteers are welcome to get involved.
 Before Vizius: four consulting engagements in six months through Adam Matthew Steinberger LLC (a self-hosted RAG chatbot, a cloud RAG chatbot, a production push-notification system, and a codebase review with a refactor roadmap), and two years moving Lima One Capital's integration layer from Mulesoft to NestJS microservices.`,
   },
   {
@@ -104,7 +127,7 @@ Before Vizius: four consulting engagements in six months through Adam Matthew St
     url: '/story',
     title: 'My Story',
     section: 'The Vizius Group engagement',
-    text: `Adam spent a year as Senior Azure & AI Development Engineer at The Vizius Group, a cybersecurity firm in Greenville, SC (September 2025 to August 2026). At Vizius he was sole architect of an AI governance gateway (five model vendors — Azure AI, Anthropic, OpenAI/Codex, Cursor, Grok, Gemini — behind one policy-enforced OpenAI-compatible API with per-project USD cost caps, multi-unit rate limiting, an HMAC-signed hash-chained audit trail, and Entra ID / workload identity auth with no API keys; three product teams were migrated onto it and their credentials retired), co-lead of a 20-microservice AI payroll automation platform (~420k lines, four human-approved phases, 585 test modules, Terraform/Helm/GitOps on private AKS; architecture production-ready at day 45, junior developer trained in parallel now owns it), lead of a technical report generation platform (event-driven ingestion, multi-vendor instrument parsers, standards-aware deterministic analysis plus LLM review, SAML 2.0 + Entra SSO, SOC 2 readiness assessment and threat model), sole author of two identity-governance-as-code control planes for a SOX-regulated enterprise (a kopf Kubernetes operator with fully secretless multi-tenant auth and LLM-drafted PRs; an IdP governance platform managing 40 resource kinds through six addressing patterns with human-gated destructive drift and point-in-time reversion; plus a versioned sync API for 114+ directory groups), sole author of a multi-system ticket relay (N-way version vectors, echo suppression, conflict policy engine, 653 tests at 93% coverage, import-linter-enforced pure domain, property/mutation/chaos tested), and lead of a multi-tenant observability portal (three data planes with freshness tags on every payload). He authored the shared Python platform library vibey-bootstrap (formerly azure-bootstrap; three major versions on PyPI, adopted by 17+ repos), implemented secretless DevSecOps (OIDC workload identity federation across 20 CI workflows in 9 repos; SAST, SCA, IaC scanning, secret detection, SBOM, Cosign keyless signing, Kyverno/OPA admission), and did security self-reviews that closed an auth bypass, path traversal, SSRF, timing-unsafe comparison, an injection flaw, and an over-scoped CI credential. Non-code work: five formal architecture document sets (~180 pages, including a 43-page design / 10-page executive summary / one-sheet package and a STRIDE threat model), identity-governance advisory for ~5,700 workforce identities (20-page market survey, 11-page platform decision report, 14-page API/SDK/MCP coverage assessment across eight platforms, GxP-classified functional specifications, SOX-to-IAM risk mapping), the Security-First Scrum framework (framework, two training manuals, four AI-agent rulesets), an evidence-based delivery velocity playbook, a ~110,000-word technical reference library later published as vibey-skills, mentoring junior developers across three projects, and the firm's LinkedIn thought-leadership program (audit, 28-week playbook, a narrative white paper on export-control compliance and cloud enclave architecture that he produced and wrote from recorded expert interviews, and a six-post distribution series). Client identities, credentials, endpoints, and commercial terms are not disclosed.`,
+    text: `Adam spent a year as Senior Azure & AI Development Engineer at The Vizius Group, a cybersecurity firm in Greenville, SC (September 2025 to August 2026). Availability: ${availabilityHeading()}. At Vizius he was sole architect of an AI governance gateway (five model vendors — Azure AI, Anthropic, OpenAI/Codex, Cursor, Grok, Gemini — behind one policy-enforced OpenAI-compatible API with per-project USD cost caps, multi-unit rate limiting, an HMAC-signed hash-chained audit trail, and Entra ID / workload identity auth with no API keys; three product teams were migrated onto it and their credentials retired), co-lead of a 20-microservice AI payroll automation platform (~420k lines, four human-approved phases, 585 test modules, Terraform/Helm/GitOps on private AKS; architecture production-ready at day 45, junior developer trained in parallel now owns it), lead of a technical report generation platform (event-driven ingestion, multi-vendor instrument parsers, standards-aware deterministic analysis plus LLM review, SAML 2.0 + Entra SSO, SOC 2 readiness assessment and threat model), sole author of two identity-governance-as-code control planes for a SOX-regulated enterprise (a kopf Kubernetes operator with fully secretless multi-tenant auth and LLM-drafted PRs; an IdP governance platform managing 40 resource kinds through six addressing patterns with human-gated destructive drift and point-in-time reversion; plus a versioned sync API for 114+ directory groups), sole author of a multi-system ticket relay (N-way version vectors, echo suppression, conflict policy engine, 653 tests at 93% coverage, import-linter-enforced pure domain, property/mutation/chaos tested), and lead of a multi-tenant observability portal (three data planes with freshness tags on every payload). He authored the shared Python platform library vibey-bootstrap (formerly azure-bootstrap; three major versions on PyPI, adopted by 17+ repos), implemented secretless DevSecOps (OIDC workload identity federation across 20 CI workflows in 9 repos; SAST, SCA, IaC scanning, secret detection, SBOM, Cosign keyless signing, Kyverno/OPA admission), and did security self-reviews that closed an auth bypass, path traversal, SSRF, timing-unsafe comparison, an injection flaw, and an over-scoped CI credential. Non-code work: five formal architecture document sets (~180 pages, including a 43-page design / 10-page executive summary / one-sheet package and a STRIDE threat model), identity-governance advisory for ~5,700 workforce identities (20-page market survey, 11-page platform decision report, 14-page API/SDK/MCP coverage assessment across eight platforms, GxP-classified functional specifications, SOX-to-IAM risk mapping), the Security-First Scrum framework (framework, two training manuals, four AI-agent rulesets), an evidence-based delivery velocity playbook, a ~110,000-word technical reference library later published as vibey-skills, mentoring junior developers across three projects, and the firm's LinkedIn thought-leadership program (audit, 28-week playbook, a narrative white paper on export-control compliance and cloud enclave architecture that he produced and wrote from recorded expert interviews, and a six-post distribution series). Client identities, credentials, endpoints, and commercial terms are not disclosed.`,
   },
   {
     id: 'volunteer-project-excite',
@@ -118,7 +141,21 @@ Before Vizius: four consulting engagements in six months through Adam Matthew St
     url: '/story',
     title: 'My Story',
     section: 'Career timeline',
-    text: `Career timeline: B.A. Computer Science, Skidmore College (2012). Town & Country Computer Services, junior engineer, insurance software (2013-2015). New York State Insurance Fund — migrated VB6 to C# MVC, mentored junior devs (2015-2019). Bestpass — toll billing systems, introduced automated testing to a legacy codebase (2019-2020). Akmazio — led Agile delivery for a mobile networking platform (2020-2021). Certified ScrumMaster (2021). LeaseTrack — Python + AWS Textract for insurance document parsing (2021-2022). Transcat — .NET Web APIs and React for lab equipment calibration (2022-2023). Lima One Capital, Greenville SC — NestJS/gRPC microservices suite, replaced legacy Mulesoft (2023-2025). Adam Matthew Steinberger LLC — self-hosted RAG, cloud RAG, production push notifications (March-August 2025). The Vizius Group — Senior Azure & AI Development Engineer (September 2025-August 2026). vibey 1.0.0 released on PyPI, the conductor and the whole *loop family in one MIT-licensed distribution (September 2026).`,
+    text: `Career timeline: B.A. Computer Science, Skidmore College (2012). Town & Country Computer Services, junior engineer, insurance software (2013-2015). New York State Insurance Fund — migrated VB6 to C# MVC, mentored junior devs (2015-2019). Bestpass — toll billing systems, introduced automated testing to a legacy codebase (2019-2020). Akmazio — led Agile delivery for a mobile networking platform (2020-2021). Certified ScrumMaster (2021). LeaseTrack — Python + AWS Textract for insurance document parsing (2021-2022). Transcat — .NET Web APIs and React for lab equipment calibration (2022-2023). Lima One Capital, Greenville SC — NestJS/gRPC microservices suite, replaced legacy Mulesoft (2023-2025). Adam Matthew Steinberger LLC — self-hosted RAG, cloud RAG, production push notifications (March-August 2025). The Vizius Group — Senior Azure & AI Development Engineer (September 2025-August 2026). vibey 1.0.0 released on PyPI, the conductor and the whole *loop family in one MIT-licensed distribution (September 2026). The Apologist Project — volunteer software architect (April 2026-present). Availability: ${availabilityHeading()}.`,
+  },
+  {
+    id: 'evidence-staff',
+    url: '/hire-me',
+    title: 'Hire Me',
+    section: 'Staff-level evidence',
+    text: `Staff-level evidence for Adam Matthew Steinberger. ${evidenceText(staffEvidence)}`,
+  },
+  {
+    id: 'vibey-conductor',
+    url: '/work/vibey-conductor',
+    title: 'vibey — Ledger-Mediated Orchestration',
+    section: 'What vibey guarantees',
+    text: `vibey is Adam's open-source (MIT, PyPI, 1.0.0) conductor for autonomous software delivery across a pool of coding agents. ${evidenceText(vibeyGuarantees)} Development so far: 11 PyPI releases between August and September 2026, 188 merged pull requests. The design is written up in the paper "Ledger-Mediated Orchestration: Vendor-Independent Autonomous Software Delivery over a Pool of Coding Agents" (not refereed), published at ${VIBEY.paperHtml}. Contributors are welcome; start at /join-me#developers.`,
   },
   ...expertiseChunks(),
   {

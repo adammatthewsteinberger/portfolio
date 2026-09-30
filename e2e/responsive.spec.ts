@@ -32,7 +32,7 @@ test.describe('Responsive Design', () => {
     const menuPanel = page.locator('[role="dialog"]');
     await expect(menuPanel).toBeVisible();
     await expect(menuPanel.locator('a[href="/join-me"]')).toBeVisible();
-    await expect(menuPanel.locator('a[href="/hire-me"]')).toHaveCount(0);
+    await expect(menuPanel.locator('a[href="/hire-me"]')).toBeVisible();
   });
 
   test('footer is visible on all screen sizes', async ({ page }) => {

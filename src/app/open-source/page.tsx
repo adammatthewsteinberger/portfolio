@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { openSourcePackages, type OpenSourcePackage } from '@/data/open-source';
+import { VIBEY_DISTRIBUTION, openSourcePackages, type OpenSourcePackage } from '@/data/open-source';
 import { DistributionNote, PackageLinks } from '@/components/PackageLinks';
 import { OG_IMAGE } from '@/lib/seo';
 
@@ -33,6 +33,31 @@ const families: { family: OpenSourcePackage['family']; title: string; blurb: str
   },
 ];
 
+const SITE_URL = 'https://vibewithadam.matthewsteinberger.com';
+
+// One distribution and one repository since vibey 1.0.0 (ADR-0037), so the
+// structured data is one SoftwareSourceCode with each item in
+// src/data/open-source.ts as a part, linked to its source directory. Generated,
+// so it can never list something the page doesn't.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareSourceCode',
+  name: 'vibey',
+  description:
+    'Open-source conductor for autonomous software delivery across a pool of coding agents, with its agent runners, release automation, skills marketplace, and platform library.',
+  codeRepository: VIBEY_DISTRIBUTION.repo,
+  url: VIBEY_DISTRIBUTION.pypi,
+  programmingLanguage: 'Python',
+  license: 'https://opensource.org/licenses/MIT',
+  author: { '@id': `${SITE_URL}/#person` },
+  hasPart: openSourcePackages.map((pkg) => ({
+    '@type': 'SoftwareSourceCode',
+    name: pkg.name,
+    description: pkg.description,
+    codeRepository: pkg.links[0]?.href ?? VIBEY_DISTRIBUTION.repo,
+  })),
+};
+
 function PackageCard({ pkg }: { pkg: OpenSourcePackage }) {
   return (
     <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6">
@@ -49,6 +74,10 @@ function PackageCard({ pkg }: { pkg: OpenSourcePackage }) {
 export default function OpenSourcePage() {
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <section className="container mx-auto px-4 pt-8 pb-12 text-center">
         <h1 className="text-4xl md:text-5xl font-bold text-[var(--color-text-primary)] mb-4">
           Open Source

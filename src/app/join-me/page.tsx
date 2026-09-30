@@ -88,6 +88,10 @@ export default function JoinMePage() {
             <External href={VIBEY.repo}>one repository</External>: the five <code>*loop</code> engines,
             vibey-gh, vibey-skills, and vibey-bootstrap.
           </p>
+          <p className="text-[var(--color-text-muted)]">
+            Why it can&apos;t lose your work when an agent dies, in one page:{' '}
+            <Link href="/work/vibey-conductor" className={LINK}>how vibey works</Link>.
+          </p>
 
           <h3 className="text-2xl font-bold text-[var(--color-text-primary)] mt-10 mb-4">How to get started</h3>
           <ol className="space-y-4 list-none pl-0">
@@ -270,6 +274,9 @@ export default function JoinMePage() {
         <p className="text-[var(--color-text-muted)]">
           Don&apos;t see yourself here?{' '}
           <Link href="/contact" className={`${LINK} font-medium`}>Write to me →</Link>
+        </p>
+        <p className="text-sm text-[var(--color-text-muted)] mt-2">
+          Hiring for a Staff role? <Link href="/hire-me" className={LINK}>Everything you need is here</Link>.
         </p>
       </section>
     </div>

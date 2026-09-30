@@ -14,6 +14,7 @@ const navItems = [
   { href: '/work', label: 'Work' },
   { href: '/writing', label: 'Writing' },
   { href: '/join-me', label: 'Join Me' },
+  { href: '/hire-me', label: 'Hire Me' },
 ];
 
 /** The header pill: an invitation to contributors, linking to the developer section. */

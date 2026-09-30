@@ -1,3 +1,6 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import matter from 'gray-matter';
 import { describe, it, expect } from 'vitest';
 import { projects, projectCategories, Project } from '../projects';
 
@@ -189,5 +192,22 @@ describe('projects data', () => {
         expect(hasTech).toBe(true);
       });
     });
+  });
+});
+
+// A frontmatter parse error does not fail `next build` — projectUtils logs it
+// and the case study silently disappears from production. Parse every file
+// here so a stray ": " inside an unquoted value fails CI instead.
+describe('case-study content files', () => {
+  const REQUIRED = ['title', 'subtitle', 'description', 'category', 'challenge', 'solution', 'results'];
+
+  it.each(projects.map((p) => [p.slug]))('%s.md parses and carries the required frontmatter', (slug) => {
+    const file = path.join(process.cwd(), 'src/content/projects', `${slug}.md`);
+    expect(fs.existsSync(file), file).toBe(true);
+    const { data } = matter(fs.readFileSync(file, 'utf8'));
+    for (const key of REQUIRED) {
+      expect(typeof data[key], `${slug}: ${key}`).toBe('string');
+      expect((data[key] as string).length, `${slug}: ${key}`).toBeGreaterThan(0);
+    }
   });
 });

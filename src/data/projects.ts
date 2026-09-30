@@ -14,6 +14,21 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  // Open source (2026) — the flagship, listed first
+  {
+    slug: 'vibey-conductor',
+    title: 'vibey — Ledger-Mediated Orchestration',
+    description: 'Open-source conductor that carries a change from spec to reviewed merge across Claude Code, OpenAI Codex, Cursor Agent, Google Antigravity, and a local Qwen model — every decision a row in an append-only PostgreSQL ledger; chaos-tested at 500 jobs, 8 workers, 20% dropped mid-job, none lost or run twice',
+    category: 'AI Solutions',
+    categoryDescription: 'Enterprise AI implementations and automation systems',
+    order: 18,
+    heroTitle: 'vibey',
+    heroSubtitle: 'Many Agents, One Ledger, No Lost Work',
+    technologies: ['Python 3.12', 'PostgreSQL', 'SKIP LOCKED', 'Claude Code', 'OpenAI Codex', 'Cursor Agent', 'Antigravity', 'Qwen', 'Helm', 'KEDA', 'kopf'],
+    duration: 'August 2026 – present, creator and maintainer (MIT)',
+    status: 'ongoing',
+    featured: true,
+  },
   // Vizius platforms (2026)
   {
     slug: 'ai-governance-gateway',

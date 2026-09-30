@@ -79,11 +79,17 @@ describe('/join-me', () => {
     }
   });
 
-  it('never states a package count, never asks to be hired, and is self-canonical', () => {
+  // Hiring is a second track: /join-me carries no résumé or availability copy of its
+  // own and points to /hire-me once, in the footer, after all three audiences.
+  it('never states a package count, keeps hiring copy on /hire-me, and is self-canonical', () => {
     render(<JoinMePage />);
     expect(document.body.textContent).not.toMatch(/\b(seven|eight|nine)\s+packages/i);
-    expect(document.body.textContent).not.toMatch(/hire me|résumé|available (from|now|for)/i);
-    expect(document.querySelector('a[href="/hire-me"]')).toBeNull();
+    expect(document.body.textContent).not.toMatch(/résumé|available (from|now|for)/i);
+    const hire = document.querySelectorAll('a[href="/hire-me"]');
+    expect(hire).toHaveLength(1);
+    const academia = document.getElementById('academia') as HTMLElement;
+    expect(academia.compareDocumentPosition(hire[0]) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(academia.contains(hire[0])).toBe(false);
     expect(metadata.alternates?.canonical).toBe('/join-me');
     expect(metadata.title).toBe('Join Me — Help Build vibey');
   });
