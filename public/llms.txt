@@ -4,7 +4,7 @@
 
 ## Open source first
 
-vibey (https://github.com/the-vibey-project/vibey) keeps its state in an append-only PostgreSQL ledger (UPDATE and DELETE are no-ops), not in the agent. Workers claim jobs under SKIP LOCKED leases; a cross-vendor handoff must pass a model-free no-loss check or it retries, escalates, or parks for a human; humans are called only at recorded approval gates. Chaos test: 500 jobs, 8 workers, 20% dropped mid-job, none lost or run twice. The conductor, the `*loop` agent runners, vibey-gh release automation, vibey-skills, and vibey-bootstrap live in one MIT-licensed repository and one `vibey` distribution on PyPI. 100% branch-coverage floors in CI on the conductor, every runner, and the release tool; about 100k lines of source, about 121k lines of tests, 37 ADRs. This website is a dogfooding target for it.
+vibey (https://github.com/the-vibey-project/vibey) keeps its state in an append-only PostgreSQL ledger (UPDATE and DELETE are no-ops), not in the agent. Workers claim jobs under SKIP LOCKED leases; a cross-vendor handoff must pass a model-free no-loss check or it retries, escalates, or parks for a human; humans are called only at recorded approval gates. Chaos test: 500 jobs, 8 workers, 20% dropped mid-job, none lost or run twice. The conductor, the `*loop` agent runners, vibey-gh release automation, vibey-skills, and vibey-bootstrap live in one MIT-licensed repository and one PyPI distribution, `vibey-engine` (install with `uv tool install vibey-engine`; the command it installs is `vibey`). 100% branch-coverage floors in CI on the conductor, every runner, and the release tool; about 100k lines of source, about 121k lines of tests, 37 ADRs. This website is a dogfooding target for it.
 
 ## Staff-level evidence
 

@@ -61,7 +61,7 @@ const issuesWithLabel = (label: string) =>
 /** Every external vibey link the page uses, in one place. */
 export const VIBEY = {
   repo: REPO,
-  pypi: 'https://pypi.org/project/vibey/',
+  pypi: 'https://pypi.org/project/vibey-engine/',
   docs: `${DOCS}/`,
   paperHtml: `${DOCS}/paper/`,
   paperPdf: `${DOCS}/paper.pdf`,

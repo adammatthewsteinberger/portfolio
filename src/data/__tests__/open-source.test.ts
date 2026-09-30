@@ -37,8 +37,8 @@ describe('openSourcePackages', () => {
     const pypi = openSourcePackages.filter((p) => p.links.some((l) => l.href.startsWith('https://pypi.org/')));
     expect(pypi.map((p) => p.name)).toEqual(['vibey']);
     expect(VIBEY_DISTRIBUTION).toEqual({
-      install: 'uv tool install vibey',
-      pypi: 'https://pypi.org/project/vibey/',
+      install: 'uv tool install vibey-engine',
+      pypi: 'https://pypi.org/project/vibey-engine/',
       repo: 'https://github.com/the-vibey-project/vibey',
       docs: 'https://the-vibey-project.github.io/vibey/main/',
     });
@@ -95,10 +95,12 @@ describe('no package counts in site copy', () => {
 
 // Since vibey 1.0.0 the family is one repository and one PyPI distribution;
 // the old per-package repositories and PyPI projects 404. None may come back.
+// The distribution is `vibey-engine` — pypi.org/project/vibey/ 404s too, even
+// though the command it installs is still `vibey` (hence the lookahead).
 describe('no links to retired package homes', () => {
   const root = process.cwd();
   const RETIRED =
-    /github\.com\/adammatthewsteinberger\/(claudeloop|codexloop|cursorloop|agyloop|qwenloop|vibey|vibey-gh|vibey-bootstrap|vibey-skills|vibe-engineering-skills|azure-bootstrap)\b|pypi\.org\/(project|user)\/(claudeloop|codexloop|cursorloop|agyloop|qwenloop|vibey-gh|vibey-bootstrap|vibey-skills|azure-bootstrap|adammatthewsteinberger)\b/;
+    /github\.com\/adammatthewsteinberger\/(claudeloop|codexloop|cursorloop|agyloop|qwenloop|vibey|vibey-gh|vibey-bootstrap|vibey-skills|vibe-engineering-skills|azure-bootstrap)\b|pypi\.org\/(project|user)\/(claudeloop|codexloop|cursorloop|agyloop|qwenloop|vibey-gh|vibey-bootstrap|vibey-skills|azure-bootstrap|adammatthewsteinberger)\b|pypi\.org\/project\/vibey(?![-\w])/;
   const surfaces = [
     ...walk(path.join(root, 'src/app')),
     ...walk(path.join(root, 'src/components')),
