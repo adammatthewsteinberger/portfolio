@@ -61,7 +61,3 @@ A chain deployed on-device AI kiosks.
 ## Path Forward
 
 Edge AI is the **hidden unlock** for industries needing privacy + speed. Enterprises that move early will outpace competitors.  
-
----
-
-*I help enterprises design hybrid edge AI strategies that cut costs and improve performance. [Book a consult today.](/services/ai-consulting)*

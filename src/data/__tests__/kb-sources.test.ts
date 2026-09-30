@@ -1,5 +1,10 @@
 import { describe, it, expect } from 'vitest';
-import { kbSources } from '../kb-sources';
+import { openSourcePackages } from '../open-source';
+import { joinMeChunks, kbSources } from '../kb-sources';
+import { academiaItems, audiences, getStartedSteps, governmentClaims } from '../audiences';
+
+/** Closed / renamed packages that must never reappear as current KB inventory. */
+const CLOSED_PACKAGE_NAMES = ['engineering-influence-skills', 'content-pipeline-skills'] as const;
 
 describe('kbSources', () => {
   it('is a non-empty array of well-formed KB sources', () => {
@@ -24,10 +29,56 @@ describe('kbSources', () => {
     expect(chatChunk).toEqual({
       id: 'chat',
       url: '/chat',
-      title: 'Ask my résumé',
+      title: 'Ask about Adam',
       section: 'Chat',
       text: expect.stringContaining('https://chatwithadam.matthewsteinberger.com'),
     });
     expect(chatChunk?.text).toContain('six questions');
+  });
+
+  it('lists every current open-source package and none of the closed ones', () => {
+    const openSourceChunk = kbSources.find((s) => s.id === 'open-source');
+    expect(openSourceChunk).toBeDefined();
+    const text = openSourceChunk!.text;
+    for (const pkg of openSourcePackages) {
+      expect(text).toContain(pkg.name);
+    }
+    for (const closed of CLOSED_PACKAGE_NAMES) {
+      expect(text).not.toContain(closed);
+    }
+  });
+
+  // Hiring was restored as a second track (PR #100): the bot can answer from /hire-me,
+  // but it never pitches the retired executive edition, the consulting catalogue, or a booking.
+  it('answers hiring questions from /hire-me and never pitches consulting', () => {
+    const hire = kbSources.filter((s) => s.url === '/hire-me');
+    expect(hire.map((s) => s.id)).toEqual(expect.arrayContaining(['hire-me-facts', 'hire-me-looking', 'evidence-staff']));
+    expect(hire.find((s) => s.id === 'hire-me-facts')?.text).toMatch(/Availability: Available/);
+    const text = kbSources.map((s) => `${s.url} ${s.title} ${s.text}`).join('\n');
+    expect(text).not.toMatch(/\/for-executives|\/services/);
+    expect(text).not.toMatch(/consulting (call|services)|free consultation|book a (call|consultation)|engage (my|the) (firm|llc)/i);
+  });
+});
+
+describe('joinMeChunks', () => {
+  const chunks = joinMeChunks();
+
+  it('covers the overview and the three audiences, in priority order', () => {
+    expect(chunks.map((c) => c.id)).toEqual(['join-me-overview', 'join-me-developers', 'join-me-governments', 'join-me-academia']);
+    expect(chunks.slice(1).map((c) => c.url)).toEqual(audiences.map((a) => a.href));
+    for (const chunk of chunks) expect(kbSources).toContainEqual(chunk);
+  });
+
+  it('is generated from the page data, so the bot and /join-me cannot drift', () => {
+    const [overview, developers, governments, academia] = chunks;
+    expect(overview.text).toContain('looking for developers to help build vibey');
+    for (const audience of audiences) expect(overview.text).toContain(audience.title);
+    for (const step of getStartedSteps) expect(developers.text).toContain(step.title);
+    expect(developers.text).toContain('git checkout -b feature/short-description develop');
+    expect(developers.text).not.toContain('`');
+    for (const claim of governmentClaims) expect(governments.text).toContain(claim.title);
+    expect(governments.text).toContain('claims no government or military customer');
+    for (const item of academiaItems) expect(academia.text).toContain(item.title);
+    expect(academia.text).toContain('https://the-vibey-project.github.io/vibey/main/paper.pdf');
   });
 });

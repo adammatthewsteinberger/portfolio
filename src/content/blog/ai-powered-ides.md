@@ -67,7 +67,3 @@ A fintech firm rolled out Copilot++ across engineering.
 ## Path Forward
 
 AI IDEs will become the **default development environment**. Businesses must embrace them responsibly to remain competitive.  
-
----
-
-*I help engineering leaders deploy AI IDEs with governance and measurable ROI. [Book a call today.](/services/ai-consulting)*

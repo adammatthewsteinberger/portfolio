@@ -67,7 +67,3 @@ A news org adopted watermarking for AI visuals.
 ## Path Forward
 
 Authenticity is the new currency of trust. Enterprises that adopt early will avoid regulatory and reputational risk.  
-
----
-
-*I help enterprises implement authenticity frameworks for AI-generated content. [Book a consultation today.](/services/ai-consulting)*

@@ -66,7 +66,3 @@ A healthcare company built an AI audit trail to comply with EU rules.
 ## Path Forward
 
 AI regulation is inevitable. Enterprises that treat compliance as a **strategic advantage** will build trust and resilience.  
-
----
-
-*I help businesses design compliant AI systems that balance innovation and regulation. [Schedule a consultation today.](/services/ai-consulting)*

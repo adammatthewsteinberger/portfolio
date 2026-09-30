@@ -66,7 +66,3 @@ An NGO deployed AI for aid logistics.
 ## Path Forward
 
 AI offers nonprofits a force multiplier—but only with **responsibility + inclusivity** will it deliver lasting impact.  
-
----
-
-*I help nonprofits design AI strategies that scale impact responsibly. [Book a free consultation today.](/services/ai-consulting)*

@@ -68,7 +68,3 @@ A consumer brand used Runway Gen-3 for campaign content.
 ## Path Forward
 
 Text-to-video will transform enterprise communication. Early adopters will **outproduce competitors at a fraction of the cost**.  
-
----
-
-*I help businesses integrate text-to-video AI into marketing, training, and product workflows. [Schedule a consultation today.](/services/ai-consulting)*

@@ -66,7 +66,3 @@ A hospital deployed federated AI for diagnostics.
 ## Path Forward
 
 Privacy will define the winners in AI. Enterprises that put it first will build lasting trust.  
-
----
-
-*I help enterprises adopt privacy-first AI that balances compliance with innovation. [Book a consultation today.](/services/ai-consulting)*

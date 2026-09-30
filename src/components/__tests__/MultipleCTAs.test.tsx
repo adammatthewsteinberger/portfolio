@@ -1,58 +1,33 @@
-import { afterEach, describe, it, expect, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import MultipleCTAs from '../MultipleCTAs';
+import { audiences } from '@/data/audiences';
 
-describe('MultipleCTAs (engineering edition, default)', () => {
-  afterEach(() => {
-    vi.useRealTimers();
-  });
-
-  it('renders the September heading before the availability date', () => {
-    vi.useFakeTimers();
-    vi.setSystemTime(new Date('2026-08-27T12:00:00-04:00'));
+describe('MultipleCTAs', () => {
+  it('leads with the primary ask: help build vibey, linking to the developer section', () => {
     render(<MultipleCTAs />);
-    expect(screen.getByRole('heading', { name: /available september 2026/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: 'Help build vibey' })).toBeInTheDocument();
+    expect(screen.getByText(audiences[0].summary)).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /how to get started/i })).toHaveAttribute('href', '/join-me#developers');
   });
 
-  it('renders the "now" heading once the date has passed', () => {
-    vi.useFakeTimers();
-    vi.setSystemTime(new Date('2026-09-01T09:00:00-04:00'));
+  it('offers the other two audiences, in order, after the primary ask', () => {
     render(<MultipleCTAs />);
-    expect(screen.getByRole('heading', { name: /^available now$/i })).toBeInTheDocument();
+    const hrefs = Array.from(document.querySelectorAll('a')).map((a) => a.getAttribute('href'));
+    expect(hrefs.indexOf('/join-me#developers')).toBeLessThan(hrefs.indexOf('/join-me#governments'));
+    expect(hrefs.indexOf('/join-me#governments')).toBeLessThan(hrefs.indexOf('/join-me#academia'));
+    expect(screen.getByRole('link', { name: /governments and military/i })).toHaveAttribute('href', '/join-me#governments');
+    expect(screen.getByRole('link', { name: /universities and academia/i })).toHaveAttribute('href', '/join-me#academia');
   });
 
-  it('renders the primary Hire Me CTA', () => {
+  it('keeps the writing and newsletter links, and nothing about hiring or booking', () => {
     render(<MultipleCTAs />);
-    const hireMe = screen.getByRole('link', { name: /hire me/i });
-    expect(hireMe).toHaveAttribute('href', '/hire-me');
-  });
-
-  it('renders non-commercial secondary links only', () => {
-    render(<MultipleCTAs edition="engineering" />);
-    expect(screen.getByRole('link', { name: /open source/i })).toHaveAttribute('href', '/open-source');
     expect(screen.getByRole('link', { name: /read the writing/i })).toHaveAttribute('href', '/writing');
     const newsletter = screen.getByRole('link', { name: /newsletter/i });
     expect(newsletter).toHaveAttribute('href', 'https://eepurl.com/jiYXCQ');
     expect(newsletter).toHaveAttribute('target', '_blank');
-    expect(screen.queryByRole('link', { name: /call/i })).not.toBeInTheDocument();
-    expect(document.querySelector('a[href*="tidycal"]')).toBeNull();
-  });
-
-  it('mentions the target location and role in the supporting text', () => {
-    render(<MultipleCTAs />);
-    expect(screen.getByText(/staff software architect.*greenville, sc \(remote\)/i)).toBeInTheDocument();
-  });
-});
-
-describe('MultipleCTAs (exec edition)', () => {
-  it('leads with the engagement door and keeps the booking link here', () => {
-    render(<MultipleCTAs edition="exec" />);
-    expect(screen.getByRole('heading', { name: /engage my firm/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /how an engagement works/i })).toHaveAttribute('href', '/for-executives/engage');
-    const call = screen.getByRole('link', { name: /book a call/i });
-    expect(call).toHaveAttribute('href', 'https://tidycal.com/adammatthewsteinberger');
-    expect(call).toHaveAttribute('rel', 'noopener noreferrer');
-    expect(screen.getByRole('link', { name: /hire me full-time/i })).toHaveAttribute('href', '/hire-me');
-    expect(screen.getByRole('link', { name: /engineering edition/i })).toHaveAttribute('href', '/');
+    expect(screen.queryByRole('link', { name: /hire|call|engagement/i })).not.toBeInTheDocument();
+    expect(document.body.textContent).not.toMatch(/available/i);
+    expect(document.querySelector('a[href*="tidycal"], a[href="/hire-me"]')).toBeNull();
   });
 });

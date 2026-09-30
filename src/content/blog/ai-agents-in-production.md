@@ -67,7 +67,3 @@ A financial services company deployed agents for incident management.
 ## Path Forward
 
 Agents in production are inevitable—but **governance determines success or failure**. Enterprises that deploy responsibly will set new standards.  
-
----
-
-*I help enterprises move from pilot projects to production AI agents with governance baked in. [Schedule a consultation today.](/services/ai-consulting)*

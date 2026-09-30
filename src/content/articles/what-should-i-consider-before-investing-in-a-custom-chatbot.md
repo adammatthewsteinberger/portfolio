@@ -83,7 +83,3 @@ Custom chatbots typically show ROI within 12-24 months, with ongoing maintenance
 - Start with clear goals, a realistic budget, and strong technical infrastructure.
 - Use SMART goals and focus on solving one real problem at a time.
 - Custom bots can save money, improve service, and drive growth, but they require planning and investment.
-
-## 🚀 Ready to Talk Chatbots? Let's Chat
-
-If you're thinking about getting a custom AI chatbot—for your law firm, bank, consultancy, or startup—**schedule a free consultation today.** I'll help you figure out exactly what you need, what it'll take, and how we can build it together.

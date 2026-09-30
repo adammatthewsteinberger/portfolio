@@ -67,7 +67,3 @@ A SaaS firm tested SWE-Agent benchmarks to compare models for DevOps workflows.
 ## Path Forward
 
 Agent benchmarks are valuable, but the ultimate benchmark is **real-world ROI**.  
-
----
-
-*I help enterprises evaluate AI models and agents against real workflows, not just benchmarks. [Book a call today.](/services/ai-consulting)*

@@ -6,7 +6,9 @@ import { availabilityLong } from '@/lib/availability';
 import { specialties } from '@/data/expertise';
 import { method, staffEvidence, vibeyGuarantees } from '@/data/evidence';
 import { openSourcePackages } from '@/data/open-source';
+import { DistributionNote, PackageLinks } from '@/components/PackageLinks';
 import { INVITATION, INVITATION_CTA, quickstart } from '@/data/quickstart';
+import { VIBEY, audiences } from '@/data/audiences';
 import { OG_IMAGE } from '@/lib/seo';
 
 const TITLE = 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer';
@@ -35,12 +37,6 @@ export const metadata: Metadata = {
   },
 };
 
-const involvement = [
-  { title: 'Run it', body: 'The six commands above give you an autonomous software-engineering agent on your own machine, with a real budget brake. Nothing is tailored to anyone’s deployment but this site’s — by dogfooding.', href: '/join-me', cta: 'Full quickstart' },
-  { title: 'Contribute', body: 'Issues, pull requests against develop, a new *loop engine, a new skill for vibey-skills, or a doc that lied to you. Every repo has a CONTRIBUTING and a SECURITY policy.', href: '/join-me', cta: 'Ways to contribute' },
-  { title: 'Volunteer', body: 'Nonprofit with a real engineering problem, or an engineer who wants to work alongside on one? Project Excite is the current example. Same address either way.', href: '/work/project-excite-relay', cta: 'See the volunteer work' },
-];
-
 export default function Home() {
   const latestPosts = getAllBlogPosts().slice(0, 4);
 
@@ -65,7 +61,7 @@ export default function Home() {
           licensed, on PyPI, and this site is built with it.
         </p>
         <p className="text-lg text-[var(--color-text-primary)] max-w-2xl mx-auto md:mx-0 mb-8">
-          {INVITATION}
+          I&apos;m looking for developers to help build it. {INVITATION}
         </p>
         <div className="flex flex-wrap gap-3 justify-center md:justify-start mb-6">
           <Link
@@ -76,18 +72,34 @@ export default function Home() {
             {INVITATION_CTA} →
           </Link>
           <a
-            href="https://github.com/adammatthewsteinberger"
+            href={VIBEY.repo}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white font-bold rounded-lg transition-colors no-underline"
           >
-            GitHub
+            vibey on GitHub
           </a>
           <AskAdam />
         </div>
         <p className="text-sm font-mono text-[var(--color-text-muted)] max-w-xl mx-auto md:mx-0">
           Always open for a connection or a coffee — adam@matthewsteinberger.com
         </p>
+      </section>
+
+      {/* Who this site is for — in priority order */}
+      <section className="container mx-auto px-4 py-12" aria-labelledby="audiences-heading">
+        <h2 id="audiences-heading" className="text-2xl font-bold mb-2 text-center text-[var(--color-text-primary)]">Who This Is For</h2>
+        <p className="text-center text-[var(--color-text-muted)] mb-8">Each has its own section on the Join Me page.</p>
+        <ol className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto list-none pl-0">
+          {audiences.map((audience, i) => (
+            <li key={audience.id} className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-5 flex flex-col">
+              <span className="text-xs font-mono text-[var(--color-accent-blue)] mb-1">{String(i + 1).padStart(2, '0')}</span>
+              <h3 className="font-bold text-[var(--color-text-primary)] mb-2">{audience.title}</h3>
+              <p className="text-sm text-[var(--color-text-muted)] flex-grow">{audience.summary}</p>
+              <Link href={audience.href} className="text-[var(--color-accent-blue)] hover:underline font-medium text-sm mt-3">{audience.cta} →</Link>
+            </li>
+          ))}
+        </ol>
       </section>
 
       {/* Run it in ten minutes */}
@@ -141,9 +153,7 @@ export default function Home() {
       {/* The packages */}
       <section className="container mx-auto px-4 py-12">
         <h2 className="text-2xl font-bold mb-2 text-center text-[var(--color-text-primary)]">The Packages</h2>
-        <p className="text-center text-[var(--color-text-muted)] mb-8">
-          Engines → conductor → release automation → skills → runtime layer. All MIT, all on PyPI.
-        </p>
+        <DistributionNote className="text-center text-[var(--color-text-muted)] mb-8 max-w-3xl mx-auto" />
         <div className="max-w-4xl mx-auto overflow-x-auto border border-[var(--color-dark-border)] rounded-xl">
           <table className="w-full text-sm">
             <tbody>
@@ -152,27 +162,12 @@ export default function Home() {
                   <td className="px-4 py-3 font-mono font-semibold text-[var(--color-text-primary)] whitespace-nowrap">{pkg.name}</td>
                   <td className="px-4 py-3 text-[var(--color-text-muted)]">{pkg.tagline}</td>
                   <td className="px-4 py-3 whitespace-nowrap">
-                    <a href={pkg.pypi} target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent-blue)] hover:underline mr-3">PyPI</a>
-                    <a href={pkg.repo} target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent-blue)] hover:underline">GitHub</a>
+                    <PackageLinks pkg={pkg} className="text-[var(--color-accent-blue)] hover:underline mr-3 last:mr-0" />
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-        </div>
-      </section>
-
-      {/* Ways to get involved */}
-      <section className="container mx-auto px-4 py-12">
-        <h2 className="text-2xl font-bold mb-8 text-center text-[var(--color-text-primary)]">Get Involved</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
-          {involvement.map((item) => (
-            <div key={item.title} className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-5 flex flex-col">
-              <h3 className="font-bold text-[var(--color-text-primary)] mb-2">{item.title}</h3>
-              <p className="text-sm text-[var(--color-text-muted)] flex-grow">{item.body}</p>
-              <Link href={item.href} className="text-[var(--color-accent-blue)] hover:underline font-medium text-sm mt-3">{item.cta} →</Link>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -267,11 +262,11 @@ export default function Home() {
             {INVITATION_CTA} →
           </Link>
           <p className="text-sm text-[var(--color-text-muted)] mt-6 mb-0">
-            Hiring?{' '}
-            <Link href="/hire-me" className="hover:underline">Everything a recruiter needs</Link>
+            <Link href="/join-me#governments" className="hover:underline">Governments and military</Link>
             {' · '}
-            Running a business?{' '}
-            <Link href="/for-executives" className="hover:underline">The executive edition</Link>
+            <Link href="/join-me#academia" className="hover:underline">Universities and academia</Link>
+            {' · '}
+            <Link href="/hire-me" className="hover:underline">Hiring</Link>
           </p>
         </div>
       </section>

@@ -67,7 +67,3 @@ A consulting firm deployed Microsoft Copilot.
 ## Path Forward
 
 Personal AI assistants are inevitable. Enterprises must **shape adoption responsibly** to maximize ROI and minimize risk.  
-
----
-
-*I help businesses deploy AI assistants at scale with compliance built in. [Let’s design yours.](/services/ai-consulting)*

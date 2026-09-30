@@ -81,7 +81,3 @@ A hospital deployed RAG 2.0 to support doctors with instant policy lookups.
 ## The Path Forward
 
 RAG 2.0 isn’t hype—it’s becoming the **foundation of enterprise AI**. Businesses that deploy it now will own their knowledge infrastructure instead of renting it from SaaS vendors.  
-
----
-
-*I specialize in designing self-hosted and cloud RAG systems that prioritize privacy, resilience, and compliance. [Let’s build yours.](/services/ai-consulting)*

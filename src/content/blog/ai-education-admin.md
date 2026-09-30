@@ -66,7 +66,3 @@ A university deployed AI to predict student attrition.
 ## Path Forward
 
 AI will become the backbone of academic administration. Institutions that adopt responsibly will improve student outcomes.  
-
----
-
-*I help schools and universities deploy AI strategies that improve retention and reduce admin costs. [Book a consultation today.](/services/ai-consulting)*

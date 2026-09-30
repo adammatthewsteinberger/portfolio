@@ -66,7 +66,3 @@ A logistics firm deployed AI routing.
 ## Path Forward
 
 AI will power **smarter, greener logistics**. Companies that delay risk falling behind competitors.  
-
----
-
-*I help logistics firms implement AI routing and fleet strategies that cut costs and emissions. [Schedule a call today.](/services/ai-consulting)*

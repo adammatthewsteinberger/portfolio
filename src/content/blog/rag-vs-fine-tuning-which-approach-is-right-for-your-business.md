@@ -245,13 +245,3 @@ Regardless of which approach you choose, success depends on:
 4. **Performance Monitoring:** Measure results and continuously improve
 
 The choice between RAG and fine-tuning isn't always permanent. Many of my clients start with RAG for quick wins, then add fine-tuned components as they identify specific areas needing deeper specialization.
-
-## Your Next Step
-
-Still not sure which approach fits your business? The decision depends heavily on your specific situation, data, and objectives.
-
-I offer technical assessments where we evaluate your data, define your use cases, and create a custom implementation strategy. Most businesses benefit from a hybrid approach, but the right mix depends on your unique requirements.
-
----
-
-*Ready to determine the best AI approach for your business? I provide free 30-minute technical consultations to help you evaluate RAG vs fine-tuning for your specific needs. [Schedule your consultation today.](/services/ai-consulting)*

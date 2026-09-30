@@ -68,7 +68,3 @@ A retailer deployed AI at POS systems for fraud detection.
 ## Path Forward
 
 Edge AI is the next evolution of enterprise intelligence. Businesses that adopt early will gain speed, privacy, and resilience.  
-
----
-
-*I help companies design hybrid AI architectures spanning cloud, edge, and devices. [Book a call today.](/services/ai-consulting)*

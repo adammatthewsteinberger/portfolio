@@ -60,7 +60,3 @@ A city deployed AI for building permit applications.
 ## Path Forward
 
 AI can modernize government—but only if deployed with **trust and transparency.**  
-
----
-
-*I help governments design responsible AI adoption strategies. [Book a strategy session.](/services/ai-consulting)*

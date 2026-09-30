@@ -31,6 +31,7 @@ test.describe('Responsive Design', () => {
 
     const menuPanel = page.locator('[role="dialog"]');
     await expect(menuPanel).toBeVisible();
+    await expect(menuPanel.locator('a[href="/join-me"]')).toBeVisible();
     await expect(menuPanel.locator('a[href="/hire-me"]')).toBeVisible();
   });
 
@@ -48,9 +49,9 @@ test.describe('Responsive Design', () => {
     }
   });
 
-  test('service page is responsive', async ({ page }) => {
+  test('join-me page is responsive', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
-    await gotoAndDismiss(page, '/services/custom-chatbots');
+    await gotoAndDismiss(page, '/join-me');
 
     await expect(page.locator('h1').first()).toBeVisible();
   });

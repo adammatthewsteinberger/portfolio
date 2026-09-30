@@ -66,7 +66,3 @@ An insurer used AI for auto claims.
 ## Path Forward
 
 AI will redefine insurance. Firms that adopt fairly will win trust and efficiency.  
-
----
-
-*I help insurers implement AI for claims and risk while staying compliant. [Book a consultation today.](/services/ai-consulting)*

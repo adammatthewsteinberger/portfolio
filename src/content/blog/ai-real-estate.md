@@ -60,7 +60,3 @@ A regional brokerage adopted AI valuations.
 ## Path Forward
 
 AI won’t replace agents—it will **supercharge them.** Early adopters will win listings and trust.  
-
----
-
-*I help real estate firms integrate AI for valuations and customer experience. [Book a consult.](/services/ai-consulting)*

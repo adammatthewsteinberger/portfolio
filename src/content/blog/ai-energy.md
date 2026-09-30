@@ -66,7 +66,3 @@ A European utility used AI for renewable forecasting.
 ## Path Forward
 
 AI is the brain of the energy transition. Companies must adopt or fall behind the green revolution.  
-
----
-
-*I help energy leaders adopt AI strategies for renewables and smart grids. [Book a call today.](/services/ai-consulting)*

@@ -107,8 +107,6 @@ Edge AI is the next evolution of enterprise intelligence. Businesses that adopt 
 
 ---
 
-*I help companies design hybrid AI architectures spanning cloud, edge, and devices. [Book a call today.](/services/ai-consulting)*
-
 **Filename:** `ai-edge-computing.md`
 
 ## Case Study: Training with Gaudi 3
@@ -144,7 +142,3 @@ A research lab trained a mid-sized LLM on Intel Gaudi 3 clusters.
 ## Path Forward
 
 The future of AI hardware is **heterogeneous**. Winners will be enterprises that match the right chip to the right workload, not those that bet on a single vendor.  
-
----
-
-*I help enterprises design AI infrastructure strategies that balance GPUs, NPUs, and emerging accelerators. [Let’s architect yours.](/services/ai-consulting)*

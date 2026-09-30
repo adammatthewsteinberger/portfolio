@@ -1,5 +1,5 @@
 /**
- * Visitor-facing messages for the résumé bot's failure modes.
+ * Visitor-facing messages for the "Ask about Adam" bot's failure modes.
  *
  * Running out of API credit is not an error the visitor caused, so it gets a
  * light line and an invitation instead of "something went wrong".

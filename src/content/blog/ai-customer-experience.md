@@ -66,7 +66,3 @@ A telecom deployed AI for predictive churn scoring.
 ## Path Forward
 
 CX is the battlefield of differentiation. Enterprises that embed AI thoughtfully will **win loyalty and reduce churn**.  
-
----
-
-*I help enterprises design AI CX strategies that balance automation with human touch. [Schedule a consultation today.](/services/ai-consulting)*

@@ -65,11 +65,13 @@ Ten minutes, Python 3.12+ and PostgreSQL. The full quickstart is on [Join Me](/j
 
 ```sh
 uv tool install vibey
-uv tool install claudeloop
-vibey doctor --conformance --record
+export VIBEY_PG_URL=postgresql://user@localhost:5432/vibey
 vibey new my-app --repo ~/src/my-app --max-cycle-dollars 15
-vibey worker --project <id> --engines claudeloop -j 1
+vibey doctor --conformance --record
+vibey worker --provider claudeloop --engines claudeloop,agyloop -j 2
 ```
+
+One install carries every `*loop` engine and the tools.
 
 ## Where to help
 
@@ -79,8 +81,8 @@ The most useful contributions right now:
 - **A chaos scenario the test does not cover yet.** If you can make it lose or repeat a job, that is the most valuable issue you can open.
 - **A doc that lied to you.** If you had to read the source to find out, the doc was wrong.
 
-Every repository carries a CONTRIBUTING guide, a code of conduct, and a security policy. Pull requests go against `develop`.
+The repository carries a CONTRIBUTING guide, a code of conduct, and a security policy. Pull requests go against `develop`; the full contributor path is on [Join Me](/join-me#developers).
 
 ## The write-up
 
-The design is described in a paper, *Ledger-Mediated Orchestration: Vendor-Independent Autonomous Software Delivery over a Pool of Coding Agents* (not refereed). The architecture, the runbooks, and the 37 ADRs are in [the vibey repository](https://github.com/adammatthewsteinberger/vibey).
+The design is described in a paper, [*Ledger-Mediated Orchestration: Vendor-Independent Autonomous Software Delivery over a Pool of Coding Agents*](https://the-vibey-project.github.io/vibey/main/paper/) (not refereed; [PDF](https://the-vibey-project.github.io/vibey/main/paper.pdf)). The architecture, the runbooks, and the 37 ADRs are in [the vibey repository](https://github.com/the-vibey-project/vibey).

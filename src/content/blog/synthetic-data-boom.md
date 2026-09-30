@@ -61,7 +61,3 @@ A fintech trained fraud models on synthetic transactions.
 ## Path Forward
 
 Synthetic data is **AI’s fuel of the future**—but businesses must use it responsibly to avoid polluted models.  
-
----
-
-*I help enterprises integrate synthetic data strategies that balance privacy with performance. [Schedule a data strategy consult.](/services/ai-consulting)*

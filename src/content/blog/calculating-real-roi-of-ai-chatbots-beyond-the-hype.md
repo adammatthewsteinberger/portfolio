@@ -303,7 +303,3 @@ AI chatbots can deliver exceptional ROI, but only when implemented strategically
 - Optimize continuously based on real data
 
 Don't fall for the hype. Do the math properly, implement thoughtfully, and measure what matters.
-
----
-
-*Ready to calculate the real ROI potential for your business? I provide comprehensive ROI assessments that include baseline measurement, realistic projections, and implementation roadmaps. [Schedule your ROI consultation today.](/services/ai-consulting)*

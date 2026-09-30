@@ -80,9 +80,3 @@ While chatbots offer significant benefits, some users prefer human interaction f
 ## 🧠 TL;DR: Why You Should Care
 
 Chatbots aren't here to replace your team—they're here to scale them. Whether you want more leads, better onboarding, or just fewer repetitive questions, a smart AI chatbot can: Engage leads while you sleep, qualify prospects automatically, guide customers from zero to success faster, and cut support costs while increasing retention.
-
-## 🚀 Ready to See What a Custom AI Chatbot Can Do for You?
-
-If you're curious about boosting sales, streamlining onboarding, or just want to stop losing leads after hours, **schedule a free consultation today.**
-
-Let's build something smart—and effective—for your business.

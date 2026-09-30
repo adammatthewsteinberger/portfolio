@@ -66,7 +66,3 @@ An e-commerce company migrated workloads from GPUs to TPUs.
 ## Path Forward
 
 AI hardware is diversifying—enterprises must stay flexible to avoid getting locked into yesterday’s standard.  
-
----
-
-*I help businesses plan AI infrastructure strategies that balance cost, performance, and flexibility. [Let’s design yours.](/services/ai-consulting)*

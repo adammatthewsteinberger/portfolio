@@ -66,7 +66,3 @@ A European city used AI-enhanced twins for traffic.
 ## Path Forward
 
 Digital twins + AI will be **standard for complex system management**. Early adopters gain efficiency and resilience.  
-
----
-
-*I help enterprises design AI-driven digital twin strategies for manufacturing, cities, and energy. [Book a call today.](/services/ai-consulting)*

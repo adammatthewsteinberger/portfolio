@@ -66,7 +66,3 @@ A bank used synthetic transactions to train fraud models.
 ## Path Forward
 
 Synthetic data will be a **pillar of enterprise AI**, but only when paired with careful governance.  
-
----
-
-*I help enterprises design data pipelines that blend real and synthetic data responsibly. [Schedule a consultation today.](/services/ai-consulting)*

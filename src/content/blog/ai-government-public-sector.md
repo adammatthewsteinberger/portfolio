@@ -66,7 +66,3 @@ A government agency launched AI citizen support.
 ## Path Forward
 
 Governments that adopt AI responsibly will **improve citizen trust and service delivery**. Those that don’t risk backlash.  
-
----
-
-*I help public sector leaders design AI deployments that balance innovation with accountability. [Book a consultation today.](/services/ai-consulting)*

@@ -62,7 +62,3 @@ A law firm tested all three models.
 ## Path Forward
 
 There’s no single “best” model. Enterprises that **test, validate, and mix** will win.  
-
----
-
-*I help businesses benchmark and select foundation models tailored to their needs. [Book a consult today.](/services/ai-consulting)*

@@ -1,18 +1,19 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { openSourcePackages, type OpenSourcePackage } from '@/data/open-source';
+import { VIBEY_DISTRIBUTION, openSourcePackages, type OpenSourcePackage } from '@/data/open-source';
+import { DistributionNote, PackageLinks } from '@/components/PackageLinks';
 import { OG_IMAGE } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Open Source | Adam Matthew Steinberger',
   description:
-    'MIT-licensed packages on PyPI: the *loop family of autonomous AI-agent session runners, the vibey conductor and its release automation, a Claude Code skills marketplace, and a production Azure Functions bootstrap library.',
+    'One MIT-licensed repository and one PyPI distribution, vibey: the *loop family of autonomous AI-agent session runners, the vibey conductor and its release automation, a Claude Code skills marketplace, and a production Azure Functions bootstrap library.',
   alternates: { canonical: '/open-source' },
   openGraph: {
     images: [OG_IMAGE],
     title: 'Open Source | Adam Matthew Steinberger',
     description:
-      'MIT-licensed packages on PyPI: the *loop family of autonomous AI-agent session runners, the vibey conductor and its release automation, a Claude Code skills marketplace, and a production Azure Functions bootstrap library.',
+      'One MIT-licensed repository and one PyPI distribution, vibey: the *loop runners, the vibey conductor and its release automation, a Claude Code skills marketplace, and an Azure Functions bootstrap library.',
     url: 'https://vibewithadam.matthewsteinberger.com/open-source',
   },
 };
@@ -34,25 +35,26 @@ const families: { family: OpenSourcePackage['family']; title: string; blurb: str
 
 const SITE_URL = 'https://vibewithadam.matthewsteinberger.com';
 
-// A SoftwareSourceCode entry for each item in src/data/open-source.ts,
-// so the structured data can never list a package the page doesn't.
+// One distribution and one repository since vibey 1.0.0 (ADR-0037), so the
+// structured data is one SoftwareSourceCode with each item in
+// src/data/open-source.ts as a part, linked to its source directory. Generated,
+// so it can never list something the page doesn't.
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'ItemList',
-  name: 'Open-source packages by Adam Matthew Steinberger',
-  itemListElement: openSourcePackages.map((pkg, i) => ({
-    '@type': 'ListItem',
-    position: i + 1,
-    item: {
-      '@type': 'SoftwareSourceCode',
-      name: pkg.name,
-      description: pkg.description,
-      codeRepository: pkg.repo,
-      url: pkg.pypi,
-      programmingLanguage: 'Python',
-      license: 'https://opensource.org/licenses/MIT',
-      author: { '@id': `${SITE_URL}/#person` },
-    },
+  '@type': 'SoftwareSourceCode',
+  name: 'vibey',
+  description:
+    'Open-source conductor for autonomous software delivery across a pool of coding agents, with its agent runners, release automation, skills marketplace, and platform library.',
+  codeRepository: VIBEY_DISTRIBUTION.repo,
+  url: VIBEY_DISTRIBUTION.pypi,
+  programmingLanguage: 'Python',
+  license: 'https://opensource.org/licenses/MIT',
+  author: { '@id': `${SITE_URL}/#person` },
+  hasPart: openSourcePackages.map((pkg) => ({
+    '@type': 'SoftwareSourceCode',
+    name: pkg.name,
+    description: pkg.description,
+    codeRepository: pkg.links[0]?.href ?? VIBEY_DISTRIBUTION.repo,
   })),
 };
 
@@ -63,22 +65,7 @@ function PackageCard({ pkg }: { pkg: OpenSourcePackage }) {
       <p className="text-[var(--color-accent-blue)] font-medium text-sm mb-3">{pkg.tagline}</p>
       <p className="text-[var(--color-text-muted)] mb-4">{pkg.description}</p>
       <div className="flex flex-wrap gap-3">
-        <a
-          href={pkg.repo}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm font-medium text-[var(--color-accent-blue)] hover:underline"
-        >
-          GitHub →
-        </a>
-        <a
-          href={pkg.pypi}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm font-medium text-[var(--color-accent-blue)] hover:underline"
-        >
-          PyPI →
-        </a>
+        <PackageLinks pkg={pkg} className="text-sm font-medium text-[var(--color-accent-blue)] hover:underline" />
       </div>
     </div>
   );
@@ -96,9 +83,9 @@ export default function OpenSourcePage() {
           Open Source
         </h1>
         <p className="text-xl text-[var(--color-text-muted)] max-w-2xl mx-auto">
-          MIT-licensed packages on PyPI. This is the part of my work you can read before you ever
-          talk to me.
+          MIT licensed, and all of it readable before you ever talk to me.
         </p>
+        <DistributionNote className="mt-4 text-[var(--color-text-muted)] max-w-2xl mx-auto" />
       </section>
 
       {families.map((group) => (
@@ -119,31 +106,9 @@ export default function OpenSourcePage() {
 
       <section className="container mx-auto px-4 py-12 text-center">
         <p className="text-[var(--color-text-muted)] max-w-2xl mx-auto">
-          Every package is on{' '}
-          <a
-            href="https://pypi.org/user/adammatthewsteinberger/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[var(--color-accent-blue)] hover:underline"
-          >
-            PyPI
-          </a>{' '}
-          and{' '}
-          <a
-            href="https://github.com/adammatthewsteinberger"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[var(--color-accent-blue)] hover:underline"
-          >
-            GitHub
-          </a>
-          . Want to run the whole stack, contribute, or just say hi?{' '}
+          Want to run the whole stack, contribute, or just say hi?{' '}
           <Link href="/join-me" className="text-[var(--color-accent-blue)] hover:underline">
             Join me
-          </Link>
-          . Want the person who wrote them on your team?{' '}
-          <Link href="/hire-me" className="text-[var(--color-accent-blue)] hover:underline">
-            Here&apos;s what I&apos;m looking for
           </Link>
           .
         </p>

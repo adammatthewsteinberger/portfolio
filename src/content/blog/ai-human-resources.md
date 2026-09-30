@@ -66,7 +66,3 @@ A Fortune 100 firm deployed AI resume screening.
 ## Path Forward
 
 AI will become **core to HR operations**, but only organizations that combine it with transparency and human oversight will succeed.  
-
----
-
-*I help HR leaders deploy AI hiring tools responsibly, balancing efficiency with trust. [Schedule a consultation today.](/services/ai-consulting)*

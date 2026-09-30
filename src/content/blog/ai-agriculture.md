@@ -66,7 +66,3 @@ A farming cooperative used AI forecasting.
 ## Path Forward
 
 AI will be central to **feeding the world sustainably**. Farmers that adopt early will gain advantage.  
-
----
-
-*I help agri-businesses deploy AI for yield, efficiency, and sustainability. [Book a consultation today.](/services/ai-consulting)*

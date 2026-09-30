@@ -66,7 +66,3 @@ A Fortune 500 used Databricks MCP integration to power CFO dashboards.
 ## Path Forward
 
 Databricks + MCP is a sign of convergence: **AI is becoming native to enterprise data platforms**.  
-
----
-
-*I help companies design data + AI pipelines that combine MCP, RAG, and analytics for maximum ROI. [Let’s build yours.](/services/ai-consulting)*

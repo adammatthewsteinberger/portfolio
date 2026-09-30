@@ -67,7 +67,3 @@ A marketing agency tested Grok 4 for real-time brand monitoring on X.
 ## Path Forward
 
 xAI isn’t overtaking GPT or Claude soon—but Grok may carve out a niche where **real-time social data** is critical.  
-
----
-
-*I help businesses evaluate emerging AI models for niche advantages and avoid hype-driven mistakes. [Let’s discuss your options.](/services/ai-consulting)*

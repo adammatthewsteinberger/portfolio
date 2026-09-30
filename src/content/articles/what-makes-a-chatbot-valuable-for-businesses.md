@@ -143,13 +143,3 @@ When done right, they:
 - ⚙️ Cut costs through automation
 
 They're not just "nice to have" — they're a competitive edge.
-
-## 🚀 Ready to Build Your Own Business-Boosting Chatbot?
-
-Whether you're scaling customer service, improving sales conversion, or just tired of your team answering the same question 400 times a day...
-
-I help businesses build custom AI chatbots powered by Retrieval-Augmented Generation (RAG), fine-tuned to your data, and designed to grow with your business.
-
-Book a free consultation today
-
-I'll walk you through what a great chatbot can do — and how we can build one for you.

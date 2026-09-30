@@ -60,7 +60,3 @@ A retailer deployed an AI SOC.
 ## Path Forward
 
 AI is rewriting cybersecurity. Enterprises must fight fire with fire—**AI vs AI.**  
-
----
-
-*I help enterprises adopt AI defense strategies against evolving threats. [Book a security consult.](/services/ai-consulting)*

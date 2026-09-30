@@ -82,7 +82,3 @@ Check these boxes:
 ✅ Integrate with your tools and monitor performance
 
 If you're in banking, legal, or healthcare—your checklist must prioritize privacy, control, and compliance.
-
-## 🚀 Ready to Chat About Chatbots?
-
-If this guide helped clarify your next step—or raised the right questions—don't wait. **Schedule a free consultation with our team** to explore how a custom AI chatbot (including privacy-first, RAG-powered options) can serve your business.

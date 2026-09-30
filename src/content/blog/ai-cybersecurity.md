@@ -65,7 +65,3 @@ A healthcare firm deployed AI SOC assistants.
 ## Path Forward
 
 Cybersecurity is now an **AI vs. AI battle**. Enterprises must arm themselves accordingly.  
-
----
-
-*I help businesses integrate AI into cybersecurity defenses while preparing for adversarial AI threats. [Let’s build resilience.](/services/ai-consulting)*

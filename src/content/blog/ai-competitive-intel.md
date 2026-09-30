@@ -60,7 +60,3 @@ A retailer deployed an AI CI copilot.
 ## Path Forward
 
 AI won’t replace analysts—it will make them **10x faster**. Companies that adopt now will outmaneuver competitors.  
-
----
-
-*I help enterprises design AI-driven CI workflows that surface real opportunities. [Book a strategy call.](/services/ai-consulting)*

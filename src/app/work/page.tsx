@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { projects, projectCategories } from '@/data/projects';
-import { availabilitySentence } from '@/lib/availability';
 import Icon from '@/components/Icon';
 import { OG_IMAGE } from '@/lib/seo';
 
@@ -131,15 +130,16 @@ export default function WorkPage() {
       {/* Call to Action */}
       <section className="container mx-auto px-4 py-16 text-center">
         <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-blue-light)] bg-clip-text text-transparent">
-          Want the Person Who Built These on Your Team?
+          Build the Next One in the Open
         </h2>
         <p className="text-xl text-[var(--color-text-muted)] mb-8 max-w-2xl mx-auto">
-          {availabilitySentence()} — here&apos;s what I&apos;m looking for and how I interview best.
+          The practices behind these case studies now go into vibey, which is open source and MIT
+          licensed. I&apos;m looking for developers to help build it.
         </p>
         <div className="flex gap-4 justify-center flex-wrap">
-          <Link href="/hire-me" className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] text-white font-bold rounded-lg transition-colors no-underline">
-            <Icon name="briefcase" />
-            Hire Me
+          <Link href="/join-me" className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-light)] text-white font-bold rounded-lg transition-colors no-underline">
+            <Icon name="code-branch" />
+            Join Me
           </Link>
           <Link href="/expertise" className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white font-bold rounded-lg transition-colors no-underline">
             <Icon name="layer-group" />

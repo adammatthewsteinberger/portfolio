@@ -67,7 +67,3 @@ A manufacturing company built multimodal onboarding.
 ## Path Forward
 
 Multimodality is the future of enterprise AI. Businesses that connect text, image, audio, and video will lead in **customer experience and training effectiveness**.  
-
----
-
-*I help companies design multimodal workflows that integrate AI seamlessly into operations. [Let’s design yours.](/services/ai-consulting)*

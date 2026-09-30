@@ -66,7 +66,3 @@ A shipping company piloted quantum-inspired optimization.
 ## Path Forward
 
 Quantum AI is **long-term horizon tech**. Enterprises should monitor closely, but invest cautiously.  
-
----
-
-*I help enterprises separate hype from reality in quantum AI adoption. [Schedule a strategy call.](/services/ai-consulting)*

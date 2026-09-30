@@ -66,7 +66,3 @@ A global bank deployed AI for transaction monitoring.
 ## Path Forward
 
 AI will become **core financial infrastructure**. The winners will be those who build trust with regulators while innovating.  
-
----
-
-*I help financial institutions adopt AI responsibly, balancing innovation with compliance. [Schedule a consultation today.](/services/ai-consulting)*

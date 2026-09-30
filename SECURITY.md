@@ -1,18 +1,18 @@
 # Security Policy
 
-This is a personal portfolio and hire-me site, not a service that handles payments, user accounts, or sensitive personal data. Its attack surface is small and mostly consists of: a static Next.js frontend, a contact form (Formspree, hosted off-site), and one server-side API route (`/api/ask`) that proxies questions to Claude.
+This is a personal portfolio and open-source project site, not a service that handles payments, user accounts, or sensitive personal data. Its attack surface is small and mostly consists of: a static Next.js frontend, a contact form (Formspree, hosted off-site), and one server-side API route (`/api/ask`) that proxies questions to Claude.
 
 ## Scope
 
 In scope for reports:
 
-- The Next.js application in this repository (`src/`, `scripts/`, `netlify.toml`, `next.config.ts`)
+- The Next.js application in this repository (`src/`, `scripts/`, `wrangler.jsonc`, `open-next.config.ts`, `next.config.ts`)
 - The `/api/ask` RAG bot endpoint and its guardrails (rate limiting, honeypot, spend caps)
 - Build and deployment configuration
 
 Out of scope:
 
-- Third-party services this site links to or embeds (Formspree, Google Analytics, Mailchimp, TidyCal, GitHub, PyPI) — report those to the respective vendor
+- Third-party services this site links to or embeds (Formspree, Google Analytics, Mailchimp, GitHub, PyPI) — report those to the respective vendor
 - Social engineering, physical security, or denial-of-service testing against the live site
 - Findings that require a compromised or malicious npm dependency already flagged by `npm audit` — please report those upstream to the package maintainer first
 
@@ -28,4 +28,4 @@ You can expect an acknowledgment within a few days. Since this is a personal sit
 
 ## Notes on the RAG bot specifically
 
-`/api/ask` calls the Anthropic API server-side using a key stored only in Netlify's environment variables — it is never exposed to the client. The endpoint has a feature flag (`ASK_BOT_ENABLED`), a honeypot field, a per-IP rate limit, and a daily output-token spend cap (see `src/lib/ask/rateLimit.ts`). Those in-memory limits are a best-effort backstop, not a hard guarantee, since Netlify Functions can scale to multiple instances with independent memory — this is a known, accepted tradeoff documented in the source, not an oversight. If you find a way to bypass them at meaningful cost or abuse scale, please report it.
+`/api/ask` calls the Anthropic API server-side using a key stored only as a Cloudflare Worker secret (`ANTHROPIC_API_KEY`) — it is never exposed to the client. The endpoint has a feature flag (`ASK_BOT_ENABLED`), a honeypot field, a per-IP rate limit, and a daily output-token spend cap (see `src/lib/ask/rateLimit.ts`). Those in-memory limits are a best-effort backstop, not a hard guarantee, since Worker isolates do not share memory — this is a known, accepted tradeoff documented in the source, not an oversight. When the daily spend cap is hit or Anthropic reports credit/billing exhaustion, visitors see an "Out of coffee" message (`src/lib/ask/messages.ts`) rather than a stack trace. If you find a way to bypass the limits at meaningful cost or abuse scale, please report it.

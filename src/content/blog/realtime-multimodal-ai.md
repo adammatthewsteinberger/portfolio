@@ -61,7 +61,3 @@ A provider tested multimodal AI for video calls.
 ## Path Forward
 
 Realtime multimodal AI is the closest we’ve come to **sci-fi human-computer interaction**. The winners will balance delight with compliance.  
-
----
-
-*I help enterprises pilot multimodal AI tools safely and effectively. [Schedule a consultation today.](/services/ai-consulting)*

@@ -67,7 +67,3 @@ An insurer deployed Operator as a central AI layer.
 ## Path Forward
 
 Just as enterprises adopted cloud OS layers, they will adopt AI OS layers. The winners will be those who balance speed with independence.  
-
----
-
-*I help enterprises evaluate and deploy AI OS tools responsibly. [Book a consultation today.](/services/ai-consulting)*

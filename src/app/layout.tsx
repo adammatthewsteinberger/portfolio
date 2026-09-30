@@ -1,7 +1,6 @@
 import CookieConsent from '@/components/CookieConsent';
 import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
-import { availabilityHeading, availabilityLong, availabilityShort } from '@/lib/availability';
 import { isPreview } from '@/lib/siteEnv';
 import type { Metadata } from 'next';
 import Script from 'next/script';
@@ -19,7 +18,8 @@ export const metadata: Metadata = {
     default: 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer',
     template: '%s | Adam Matthew Steinberger',
   },
-  description: `Staff Software Architect & AI Automation Engineer in Greenville, SC. Creator of vibey, an open-source conductor for coding agents. AI platforms, identity, and secretless, auditable deployments for regulated environments. ${availabilityHeading()}.`,
+  description:
+    'Staff Software Architect & AI Automation Engineer in Greenville, SC, building vibey: free and open-source tooling for autonomous software delivery across a pool of coding agents. Looking for developers to help build it. AI platforms, identity, and secretless, auditable deployments for regulated environments.',
   authors: [{ name: 'Adam Matthew Steinberger' }],
   creator: 'Adam Matthew Steinberger',
   publisher: 'Adam Matthew Steinberger LLC',
@@ -186,7 +186,7 @@ export default function RootLayout({
         </Script>
         </>)}
 
-        <Header availabilityShortLabel={availabilityShort()} availabilityLongLabel={availabilityLong()} preview={PREVIEW} />
+        <Header preview={PREVIEW} />
         <main>{children}</main>
         <Footer />
         <CookieConsent />

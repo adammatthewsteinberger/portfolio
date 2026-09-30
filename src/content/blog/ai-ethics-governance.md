@@ -66,7 +66,3 @@ A global bank established an AI ethics board.
 ## Path Forward
 
 AI governance will be as standard as financial governance. Enterprises must act now to build trust.  
-
----
-
-*I help enterprises implement AI governance frameworks aligned with global regulations. [Book a strategy session.](/services/ai-consulting)*

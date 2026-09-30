@@ -109,9 +109,3 @@ Combine automated metrics with human evaluation. While automated metrics provide
 ## 🧠 TL;DR
 
 You can't improve what you don't measure. Accuracy, satisfaction, and speed are the three pillars of chatbot performance. RAG chatbots need extra metrics for retrieval quality and hallucination risk. Use a blend of automated metrics (like F1 score and faithfulness) and human evaluation. Better performance = more satisfied users, higher conversion, and greater ROI.
-
-## 👉 Ready to See How Your Chatbot Measures Up?
-
-If you're wondering whether your chatbot is really pulling its weight—or if you want one built right from the start—**schedule a free consultation today.** I'll walk you through your performance metrics, spot opportunities for improvement, and help you plan your own custom AI chatbot that's fast, accurate, and ready to impress.
-
-Let's make your chatbot work smarter.

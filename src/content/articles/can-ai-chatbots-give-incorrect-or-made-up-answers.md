@@ -48,7 +48,3 @@ Still, for businesses in customer service, healthcare, legal, and research, RAG-
 ## TL;DR
 
 AI chatbots can make up answers due to their statistical nature and outdated training. RAG improves accuracy by allowing the model to "look things up" before answering, dramatically reducing hallucinations. It's not perfect, but it's a big improvement.
-
-## Want a chatbot that doesn't bluff?
-
-Book a free consultation to build your own RAG-powered AI assistant—tailored to your data, your goals, and your customers. Let's make it trustworthy together.

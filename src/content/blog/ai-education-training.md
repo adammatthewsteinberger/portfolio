@@ -66,7 +66,3 @@ A bank deployed AI-powered training assistants.
 ## Path Forward
 
 AI education will **reshape corporate L&D**—enterprises must adopt early to remain competitive.  
-
----
-
-*I help businesses deploy AI training platforms for personalized workforce development. [Let’s discuss your needs.](/services/ai-consulting)*

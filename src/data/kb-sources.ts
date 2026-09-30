@@ -1,5 +1,5 @@
 /**
- * Curated, hand-written source text for the "Ask my résumé" RAG bot's
+ * Curated, hand-written source text for the "Ask about Adam" RAG bot's
  * knowledge base. Kept separate from the page components (which are JSX,
  * not plain text) so the bot only ever answers from facts a human wrote
  * and reviewed here — never from scraped/rendered markup.
@@ -9,6 +9,7 @@
  */
 
 import { availabilityHeading } from '@/lib/availability';
+import { VIBEY, academiaItems, audiences, getStartedSteps, governmentClaims, helpWanted } from './audiences';
 import { evidenceText, method, staffEvidence, vibeyGuarantees } from './evidence';
 import { fullStack, specialtyGroups } from './expertise';
 
@@ -40,6 +41,56 @@ export function expertiseChunks(): KBSource[] {
   ]);
 }
 
+/** Backticks mark inline code on the page; the bot gets plain text. */
+const plain = (text: string) => text.replaceAll('`', '');
+
+/**
+ * One chunk per /join-me section, generated from src/data/audiences.ts so the
+ * bot and the page never drift — and so the bot never answers from a hiring
+ * page that no longer exists.
+ */
+export function joinMeChunks(): KBSource[] {
+  const [developers, governments, academia] = audiences;
+  return [
+    {
+      id: 'join-me-overview',
+      url: '/join-me',
+      title: 'Join Me',
+      section: 'Who the site is for',
+      text: `Adam is looking for developers to help build vibey, his free and open-source conductor for autonomous software delivery (${VIBEY.repo}, MIT licensed, installed with uv tool install vibey). The /join-me page has three sections, in this order: ${audiences
+        .map((a) => `${a.title} (${a.href}) — ${a.summary}`)
+        .join(' ')} Greenville-remote or US-remote volunteers are welcome and encouraged to get involved at any time. Contact: adam@matthewsteinberger.com.`,
+    },
+    {
+      id: 'join-me-developers',
+      url: developers.href,
+      title: 'Join Me',
+      section: 'Developers: how to get started',
+      text: `How to get started contributing to vibey: ${getStartedSteps
+        .map((step, i) => `${i + 1}. ${step.title}. ${plain(step.body)}${step.commands.length ? ` Commands: ${step.commands.join('; ')}.` : ''}`)
+        .join(' ')} Where help matters most: ${helpWanted.map((h) => `${h.title} — ${h.body}`).join(' ')}`,
+    },
+    {
+      id: 'join-me-governments',
+      url: governments.href,
+      title: 'Join Me',
+      section: 'Governments and military',
+      text: `What vibey offers governments and military organizations: ${governmentClaims
+        .map((c) => `${c.title}: ${plain(c.body)}`)
+        .join(' ')} Contact goes through official channels: email adam@matthewsteinberger.com from an official address, report security vulnerabilities privately as vibey's SECURITY.md describes, and ask public questions in GitHub Discussions. The site claims no government or military customer, contract, clearance, accreditation, or endorsement.`,
+    },
+    {
+      id: 'join-me-academia',
+      url: academia.href,
+      title: 'Join Me',
+      section: 'Universities and academia',
+      text: `What vibey offers universities and researchers: ${academiaItems
+        .map((c) => `${c.title}: ${plain(c.body)}`)
+        .join(' ')} The paper is at ${VIBEY.paperHtml} (PDF: ${VIBEY.paperPdf}); the book is at ${VIBEY.bookPdf}. The site claims no institutional affiliation or endorsement.`,
+    },
+  ];
+}
+
 export const kbSources: KBSource[] = [
   {
     id: 'hire-me-facts',
@@ -52,7 +103,7 @@ Location: Greenville, South Carolina — remote preferred; open to US remote any
 Employment types: W2 full-time preferred; contract-to-hire considered.
 Work authorization: US citizen, no sponsorship required.
 Specialties: identity and access (Entra ID, Okta core/IGA/Workflows, SAML 2.0, OIDC, workload identity federation); AI platforms (multi-vendor LLM gateways, agent orchestration and sandboxing, RAG, MCP); security and compliance (secretless delivery, SBOM and keyless signing, policy-as-code admission, STRIDE, SOC 2 readiness, OWASP LLM Top 10, NIST AI RMF); platform (private AKS, Terraform, Helm, GitOps); Python, TypeScript, C#/.NET.
-Verify him: ask the résumé bot at chatwithadam.matthewsteinberger.com, read the packages on PyPI, or read the code on GitHub.`,
+Verify him: ask about him at chatwithadam.matthewsteinberger.com, read the packages on PyPI, or read the code on GitHub.`,
   },
   {
     id: 'hire-me-looking',
@@ -90,7 +141,7 @@ Before Vizius: four consulting engagements in six months through Adam Matthew St
     url: '/story',
     title: 'My Story',
     section: 'Career timeline',
-    text: `Career timeline: B.A. Computer Science, Skidmore College (2012). Town & Country Computer Services, junior engineer, insurance software (2013-2015). New York State Insurance Fund — migrated VB6 to C# MVC, mentored junior devs (2015-2019). Bestpass — toll billing systems, introduced automated testing to a legacy codebase (2019-2020). Akmazio — led Agile delivery for a mobile networking platform (2020-2021). Certified ScrumMaster (2021). LeaseTrack — Python + AWS Textract for insurance document parsing (2021-2022). Transcat — .NET Web APIs and React for lab equipment calibration (2022-2023). Lima One Capital, Greenville SC — NestJS/gRPC microservices suite, replaced legacy Mulesoft (2023-2025). Adam Matthew Steinberger LLC — self-hosted RAG, cloud RAG, production push notifications (March-August 2025). The Vizius Group — Senior Azure & AI Development Engineer (September 2025-August 2026). The Vibey Project — creator and maintainer of vibey, open source (August 2026-present). The Apologist Project — volunteer software architect (April 2026-present). Availability: ${availabilityHeading()}.`,
+    text: `Career timeline: B.A. Computer Science, Skidmore College (2012). Town & Country Computer Services, junior engineer, insurance software (2013-2015). New York State Insurance Fund — migrated VB6 to C# MVC, mentored junior devs (2015-2019). Bestpass — toll billing systems, introduced automated testing to a legacy codebase (2019-2020). Akmazio — led Agile delivery for a mobile networking platform (2020-2021). Certified ScrumMaster (2021). LeaseTrack — Python + AWS Textract for insurance document parsing (2021-2022). Transcat — .NET Web APIs and React for lab equipment calibration (2022-2023). Lima One Capital, Greenville SC — NestJS/gRPC microservices suite, replaced legacy Mulesoft (2023-2025). Adam Matthew Steinberger LLC — self-hosted RAG, cloud RAG, production push notifications (March-August 2025). The Vizius Group — Senior Azure & AI Development Engineer (September 2025-August 2026). vibey 1.0.0 released on PyPI, the conductor and the whole *loop family in one MIT-licensed distribution (September 2026). The Apologist Project — volunteer software architect (April 2026-present). Availability: ${availabilityHeading()}.`,
   },
   {
     id: 'evidence-staff',
@@ -104,7 +155,7 @@ Before Vizius: four consulting engagements in six months through Adam Matthew St
     url: '/work/vibey-conductor',
     title: 'vibey — Ledger-Mediated Orchestration',
     section: 'What vibey guarantees',
-    text: `vibey is Adam's open-source (MIT, PyPI, 1.0.0) conductor for autonomous software delivery across a pool of coding agents. ${evidenceText(vibeyGuarantees)} Development so far: 11 PyPI releases between August and September 2026, 188 merged pull requests. The design is written up in the paper "Ledger-Mediated Orchestration: Vendor-Independent Autonomous Software Delivery over a Pool of Coding Agents" (not refereed). Contributors are welcome; start at /join-me.`,
+    text: `vibey is Adam's open-source (MIT, PyPI, 1.0.0) conductor for autonomous software delivery across a pool of coding agents. ${evidenceText(vibeyGuarantees)} Development so far: 11 PyPI releases between August and September 2026, 188 merged pull requests. The design is written up in the paper "Ledger-Mediated Orchestration: Vendor-Independent Autonomous Software Delivery over a Pool of Coding Agents" (not refereed), published at ${VIBEY.paperHtml}. Contributors are welcome; start at /join-me#developers.`,
   },
   ...expertiseChunks(),
   {
@@ -119,7 +170,7 @@ Before Vizius: four consulting engagements in six months through Adam Matthew St
     url: '/open-source',
     title: 'Open Source',
     section: 'Packages',
-    text: `Adam publishes his open-source work on PyPI under the MIT license. The *loop family — claudeloop, codexloop, cursorloop, agyloop, and qwenloop — are onion-architected autonomous session runners for Claude Code, OpenAI Codex, Cursor Agent, Google Antigravity/Gemini, and a fully local Qwen 2.5 Coder model; they never block on a human and tell an exhausted rate-limit window apart from exhausted credits. vibey is a queue-based, six-phase conductor for autonomous software delivery built on those runners (PostgreSQL row-level locking); vibey-gh is stdlib-only release automation for GitHub repositories (provenance, merge train, dual-channel releases, documentation maintenance); vibey-skills is a Claude Code plugin marketplace of evidence-grounded practitioner references; vibey-bootstrap (formerly azure-bootstrap) is the Azure Functions cross-cutting layer used across 17+ repos. The site lists the packages by name and does not state a count.`,
+    text: `Adam's open-source work is MIT licensed, lives in one repository (https://github.com/the-vibey-project/vibey), and ships as one PyPI distribution, vibey: uv tool install vibey installs the conductor, all five *loop engines, and the tools. The old per-package repositories and PyPI projects no longer exist. The *loop family — claudeloop, codexloop, cursorloop, agyloop, and qwenloop — are onion-architected autonomous session runners for Claude Code, OpenAI Codex, Cursor Agent, Google Antigravity/Gemini, and a fully local Qwen 2.5 Coder model; they never block on a human and tell an exhausted rate-limit window apart from exhausted credits. vibey is a queue-based, six-phase conductor for autonomous software delivery built on those runners (PostgreSQL row-level locking); vibey-gh is stdlib-only release automation for GitHub repositories (provenance, merge train, dual-channel releases, documentation maintenance); vibey-skills is a Claude Code plugin marketplace of evidence-grounded practitioner references; vibey-bootstrap (formerly azure-bootstrap) is the Azure Functions cross-cutting layer used across 17+ repos. The site lists the packages by name and does not state a count.`,
   },
   {
     id: 'books',
@@ -135,25 +186,12 @@ Before Vizius: four consulting engagements in six months through Adam Matthew St
     section: 'Interactive quiz',
     text: `Adam built an interactive Chatbot Readiness Quiz — a 15-factor, four-pillar self-assessment (Organizational, Technical, Security & Compliance, Operational) that scores an organization's actual readiness to deploy a custom AI chatbot, based on the "Four Pillars of Chatbot Readiness" framework from his Novice to Navigator book.`,
   },
-  {
-    id: 'join-me',
-    url: '/join-me',
-    title: 'Join Me',
-    section: 'Contributing and volunteering',
-    text: `Adam primarily develops free and open-source software and is always open for a connection or a coffee; Greenville-remote or US-remote volunteers are welcome and encouraged to get involved at any time. The /join-me page has everything a developer needs to get started: a generic, free quickstart for the whole stack (install vibey and at least one *loop engine such as claudeloop with uv tool install, run vibey doctor, vibey new, vibey worker, and answer gates with vibey answer — Python 3.12+ and PostgreSQL required), how this very site is built with it (the chat subdomain shipped as a vibey project), ways to contribute (issues, pull requests against develop, new *loop engines, new skills for vibey-skills, documentation), the repositories with their code of conduct and security policy, and his volunteer architecture work for a nonprofit (Project Excite). Contact: adam@matthewsteinberger.com.`,
-  },
-  {
-    id: 'for-executives',
-    url: '/for-executives',
-    title: 'For Executives',
-    section: 'Executive edition',
-    text: `The site has two editions. The engineering site (the root and every page on it) is the canonical, default version. The executive edition at /for-executives restates the same work for a non-technical buyer — the problem first, then what changed, then two ways to work with Adam: hire him full-time into an engineering organization (/hire-me), or engage Adam Matthew Steinberger LLC to tailor and whitelabel the platforms to their environment (/for-executives/engage; the service pages are at /services). The engineering site is never reduced to make the executive edition more attractive, and it contains no sales framing. No pricing is published anywhere.`,
-  },
+  ...joinMeChunks(),
   {
     id: 'chat',
     url: '/chat',
-    title: 'Ask my résumé',
+    title: 'Ask about Adam',
     section: 'Chat',
-    text: `"Ask my résumé" is a small RAG chat assistant that answers questions about Adam's background, experience, technical stack, and availability. It lives full-page at https://chatwithadam.matthewsteinberger.com (also reachable at /chat) and as an inline widget on the homepage. It answers only using facts published on this site and is capped at six questions per session. For anything more, visitors can use the contact form or view the Hire Me page.`,
+    text: `"Ask about Adam" is a small RAG chat assistant that answers questions about Adam's work, his technical stack, his open-source project vibey, and how to get involved. It lives full-page at https://chatwithadam.matthewsteinberger.com (also reachable at /chat) and as an inline widget on the homepage. It answers only using facts published on this site and is capped at six questions per session. For anything more, visitors can use the contact form or read the Join Me page.`,
   },
 ];

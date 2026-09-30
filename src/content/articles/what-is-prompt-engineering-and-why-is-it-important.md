@@ -109,7 +109,7 @@ For chatbots, brand tone, or voice-based apps, prompt engineering ensures your A
 
 ## 🤖 Prompt Engineering in RAG Chatbots
 
-In Retrieval-Augmented Generation (RAG) systems — like the custom chatbots we build — prompt engineering is the glue between the retrieval system and the response.
+In Retrieval-Augmented Generation (RAG) systems, prompt engineering is the glue between the retrieval system and the response.
 
 Example prompt:
 
@@ -138,14 +138,3 @@ The truth? It's both. And it's a skill anyone can learn — but few people maste
 - It's essential for chatbots, content tools, assistants, and any AI that generates text.
 - It's the fastest, lowest-cost way to customize AI without needing code or training.
 - If you're using AI for anything important — prompt engineering is your power tool.
-
-## 🚀 Want a Custom AI Chatbot That Actually Gets It Right?
-
-We specialize in building Retrieval-Augmented Generation (RAG) chatbots powered by smart prompt engineering and your content.
-
-- ✅ Understands your tone, brand, and voice
-- ✅ Pulls from your internal documents and FAQs
-- ✅ Avoids hallucinations and keeps things accurate
-- ✅ Easily updated, no technical overhead
-
-Book your free consultation and let's explore how a custom chatbot can boost your customer support, automate internal answers, or supercharge your lead gen.

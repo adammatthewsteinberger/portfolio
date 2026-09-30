@@ -60,7 +60,3 @@ A research group used AI-enhanced climate models.
 ## Path Forward
 
 AI can help fight climate change—but only if enterprises adopt **responsible, energy-aware strategies.**  
-
----
-
-*I help organizations adopt AI climate tech solutions responsibly. [Book a consult.](/services/ai-consulting)*

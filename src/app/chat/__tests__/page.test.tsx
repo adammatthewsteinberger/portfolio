@@ -11,20 +11,21 @@ const CHAT_URL = 'https://chatwithadam.matthewsteinberger.com/';
 describe('ChatPage', () => {
   it('renders the heading, intro, and the page variant of AskAdam', () => {
     render(<ChatPage />);
-    expect(screen.getByRole('heading', { level: 1, name: 'Ask my résumé' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: 'Ask about Adam' })).toBeInTheDocument();
     expect(screen.getByText(/capped at six questions/i)).toBeInTheDocument();
     expect(screen.getByTestId('ask-adam')).toHaveAttribute('data-variant', 'page');
   });
 
-  it('links back to Hire Me and the contact form', () => {
+  it('links back to Join Me and the contact form', () => {
     render(<ChatPage />);
-    expect(screen.getByRole('link', { name: 'Hire Me' })).toHaveAttribute('href', '/hire-me');
+    expect(screen.getByRole('link', { name: 'Join Me' })).toHaveAttribute('href', '/join-me');
     expect(screen.getByRole('link', { name: 'get in touch' })).toHaveAttribute('href', '/contact');
   });
 
   it('is canonical on the chat subdomain', () => {
-    expect(metadata.title).toBe('Ask my résumé');
-    expect(metadata.description).toMatch(/experience, stack, and availability/);
+    expect(metadata.title).toBe('Ask about Adam');
+    expect(metadata.description).toMatch(/his open-source project vibey, and how to get involved/);
+    expect(metadata.description).not.toMatch(/résumé|availability/);
     expect(metadata.alternates?.canonical).toBe(CHAT_URL);
     expect(metadata.openGraph?.url).toBe(CHAT_URL);
   });

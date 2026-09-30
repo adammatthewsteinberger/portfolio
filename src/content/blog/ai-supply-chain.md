@@ -66,7 +66,3 @@ A global retailer deployed AI for demand forecasting.
 ## Path Forward
 
 AI is becoming essential for supply chain resilience. Enterprises that delay risk falling behind.  
-
----
-
-*I help businesses apply AI to supply chains for resilience and efficiency. [Schedule a call today.](/services/ai-consulting)*

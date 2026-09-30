@@ -132,7 +132,3 @@ If you’re building or considering AI agents, don’t wait until you’re locke
 **Ask every vendor one simple question: “Do you support MCP?”**  
 
 If the answer is no, it’s time to think carefully.  
-
----
-
-*Want an AI stack that’s modular, private, and MCP-ready? I help businesses design future-proof AI infrastructure rooted in privacy and resilience. [Schedule a consultation today.](/services/ai-consulting)*

@@ -84,7 +84,3 @@ They pivoted to a **hybrid strategy**: using smaller open-weight models on local
 ## The Path Forward
 
 As AI demand grows, **memory will be the new oil**. Enterprises that plan around HBM bottlenecks will outpace those who get blindsided by shortages and spiraling costs.  
-
----
-
-*I advise businesses on cloud vs. on-prem AI strategies that balance cost, performance, and resilience. [Schedule a consultation today.](/services/ai-consulting)*

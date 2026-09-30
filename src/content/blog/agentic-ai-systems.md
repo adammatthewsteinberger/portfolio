@@ -65,7 +65,3 @@ A consulting firm tested multi-agent research assistants.
 ## Path Forward
 
 The shift from copilots to agents is as big as the leap from search engines to social media. Businesses that get ahead of this **will multiply productivity—safely.**  
-
----
-
-*I help enterprises pilot and deploy AI agent systems with governance guardrails. [Book a consultation today.](/services/ai-consulting)*

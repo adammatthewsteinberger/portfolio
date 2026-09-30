@@ -61,7 +61,3 @@ Their content began surfacing in AI Overviews, restoring discovery.
 ## Path Forward
 
 The old SEO playbook won’t survive. Enterprises must optimize for **AI answer engines**, not just blue links.  
-
----
-
-*I help businesses adapt content strategy for AI-first search. [Book a strategy call.](/services/ai-consulting)*

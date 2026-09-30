@@ -158,7 +158,7 @@ export function CyberFrame({
             {`// ${kicker}`}
           </div>
           <div style={{ display: 'flex', fontSize: 15, letterSpacing: 3, color: og.magenta }}>
-            STATUS: AVAILABLE_SEP_2026
+            STATUS: BUILDING_IN_THE_OPEN
           </div>
         </div>
 
@@ -180,7 +180,7 @@ export function CyberFrame({
             }}
           >
             <div style={{ display: 'flex', width: 10, height: 10, borderRadius: 999, background: og.green, marginRight: 12 }} />
-            ADAM MATTHEW STEINBERGER · AVAILABLE SEPTEMBER 2026
+            ADAM MATTHEW STEINBERGER · CONTRIBUTORS WELCOME
           </div>
           <div style={{ display: 'flex', fontSize: 18, color: og.muted, letterSpacing: 1, whiteSpace: 'nowrap' }}>
             vibewithadam.matthewsteinberger.com

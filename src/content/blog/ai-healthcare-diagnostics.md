@@ -66,7 +66,3 @@ A hospital deployed AI for X-ray pre-screening.
 ## Path Forward
 
 AI diagnostics will transform healthcare, but only with **governance, transparency, and trust**.  
-
----
-
-*I help healthcare leaders evaluate and implement AI diagnostics responsibly. [Book a consultation today.](/services/ai-consulting)*

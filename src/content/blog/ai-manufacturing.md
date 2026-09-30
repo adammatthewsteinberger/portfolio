@@ -66,7 +66,3 @@ An auto manufacturer deployed AI maintenance.
 ## Path Forward
 
 Factories will be **AI-driven smart factories**. Leaders must adopt now or risk falling behind global competitors.  
-
----
-
-*I help manufacturers design AI adoption roadmaps that reduce downtime and boost resilience. [Book a consultation today.](/services/ai-consulting)*

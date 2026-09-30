@@ -67,7 +67,3 @@ An automaker used AI sims to train self-driving algorithms.
 ## Path Forward
 
 AI simulation will become a **core enterprise R&D tool** across industries.  
-
----
-
-*I help businesses design simulation pipelines that balance scale with real-world validation. [Book a consultation today.](/services/ai-consulting)*
