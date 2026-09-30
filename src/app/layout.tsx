@@ -1,7 +1,7 @@
 import CookieConsent from '@/components/CookieConsent';
 import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
-import { availabilityLong, availabilityShort } from '@/lib/availability';
+import { availabilityHeading, availabilityLong, availabilityShort } from '@/lib/availability';
 import { isPreview } from '@/lib/siteEnv';
 import type { Metadata } from 'next';
 import Script from 'next/script';
@@ -19,8 +19,7 @@ export const metadata: Metadata = {
     default: 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer',
     template: '%s | Adam Matthew Steinberger',
   },
-  description:
-    'Staff Software Architect & AI Automation Engineer in Greenville, SC. RAG systems, event-driven Azure microservices, and automation pipelines. Available from September 2026.',
+  description: `Staff Software Architect & AI Automation Engineer in Greenville, SC. Creator of vibey, an open-source conductor for coding agents. AI platforms, identity, and secretless, auditable deployments for regulated environments. ${availabilityHeading()}.`,
   authors: [{ name: 'Adam Matthew Steinberger' }],
   creator: 'Adam Matthew Steinberger',
   publisher: 'Adam Matthew Steinberger LLC',
@@ -85,16 +84,34 @@ const jsonLd = {
         'https://www.linkedin.com/in/adammatthewsteinberger/',
         'https://github.com/adammatthewsteinberger',
       ],
+      alumniOf: {
+        '@type': 'CollegeOrUniversity',
+        name: 'Skidmore College',
+        url: 'https://www.skidmore.edu/',
+      },
+      hasCredential: {
+        '@type': 'EducationalOccupationalCredential',
+        name: 'Certified ScrumMaster (CSM)',
+        credentialCategory: 'certification',
+        recognizedBy: { '@type': 'Organization', name: 'Scrum Alliance' },
+      },
       knowsAbout: [
         'Software Architecture',
-        'Retrieval-Augmented Generation',
+        'Multi-agent Orchestration and Autonomous Software Delivery',
+        'Agent Sandboxing and Egress Policy',
+        'Identity and Access Management (Microsoft Entra ID, Okta IGA, SAML 2.0, OIDC)',
+        'Workload Identity Federation and Secretless Delivery',
+        'Identity Governance as Code',
         'Multi-vendor LLM Gateways and AI Governance',
-        'Event-driven Microservices',
-        'Microsoft Azure (AKS, Functions, Service Bus, Bicep, Terraform, Key Vault)',
-        'Python and .NET Backends',
-        'Kubernetes, Helm, GitOps, and Secretless DevSecOps',
-        'Identity Governance (Okta IGA, Entra ID, SAML/OIDC)',
-        'Process Engineering and Security-First Scrum',
+        'Tamper-evident Audit Trails',
+        'Software Supply-chain Security (SBOM, Keyless Signing, Policy-as-code Admission)',
+        'OWASP Top 10 for LLM Applications and NIST AI RMF',
+        'SOC 2 Readiness and STRIDE Threat Modeling',
+        'Retrieval-Augmented Generation',
+        'Model Context Protocol (MCP)',
+        'Kubernetes, Helm, GitOps, and KEDA',
+        'Microsoft Azure',
+        'Python, TypeScript, and .NET',
       ],
     },
     {

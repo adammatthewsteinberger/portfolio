@@ -32,6 +32,30 @@ const families: { family: OpenSourcePackage['family']; title: string; blurb: str
   },
 ];
 
+const SITE_URL = 'https://vibewithadam.matthewsteinberger.com';
+
+// A SoftwareSourceCode entry for each item in src/data/open-source.ts,
+// so the structured data can never list a package the page doesn't.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Open-source packages by Adam Matthew Steinberger',
+  itemListElement: openSourcePackages.map((pkg, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: {
+      '@type': 'SoftwareSourceCode',
+      name: pkg.name,
+      description: pkg.description,
+      codeRepository: pkg.repo,
+      url: pkg.pypi,
+      programmingLanguage: 'Python',
+      license: 'https://opensource.org/licenses/MIT',
+      author: { '@id': `${SITE_URL}/#person` },
+    },
+  })),
+};
+
 function PackageCard({ pkg }: { pkg: OpenSourcePackage }) {
   return (
     <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6">
@@ -63,6 +87,10 @@ function PackageCard({ pkg }: { pkg: OpenSourcePackage }) {
 export default function OpenSourcePage() {
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <section className="container mx-auto px-4 pt-8 pb-12 text-center">
         <h1 className="text-4xl md:text-5xl font-bold text-[var(--color-text-primary)] mb-4">
           Open Source

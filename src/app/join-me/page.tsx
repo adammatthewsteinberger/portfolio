@@ -63,6 +63,8 @@ export default function JoinMePage() {
             ))}
           </ol>
           <p className="text-sm text-[var(--color-text-muted)] mt-4">
+            Why it can&apos;t lose your work, in one page:{' '}
+            <Link href="/work/vibey-conductor" className="text-[var(--color-accent-blue)] hover:underline">how vibey works</Link>.
             Full instructions, the architecture, and the runbooks are in{' '}
             <a href={`${GITHUB}/vibey`} target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent-blue)] hover:underline">the vibey repository</a>.
           </p>

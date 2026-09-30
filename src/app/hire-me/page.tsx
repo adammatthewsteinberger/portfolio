@@ -1,25 +1,31 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
 import ContactForm from '@/components/ContactForm';
-import { availabilityFact, availabilityLong } from '@/lib/availability';
+import { availabilityFact, availabilityHeading, availabilityLong } from '@/lib/availability';
+import { method, staffEvidence } from '@/data/evidence';
 import { OG_IMAGE } from '@/lib/seo';
+
+const DESCRIPTION =
+  'Staff Software Architect & AI Automation Engineer: AI platforms, auth and identity, and secretless, auditable deployments for regulated environments. US citizen, Greenville, SC or US remote.';
 
 export const metadata: Metadata = {
   title: 'Hire Me | Adam Matthew Steinberger — Staff Software Architect & AI Automation Engineer',
-  description:
-    'Available from September 2026. Staff Software Architect & AI Automation Engineer — RAG systems, event-driven Azure microservices, automation pipelines. Greenville, SC (remote) or US remote.',
+  description: `${availabilityHeading()}. ${DESCRIPTION}`,
   alternates: { canonical: '/hire-me' },
   openGraph: {
     images: [OG_IMAGE],
     title: 'Hire Me | Adam Matthew Steinberger',
-    description:
-      'Available from September 2026. Staff Software Architect & AI Automation Engineer — RAG systems, event-driven Azure microservices, automation pipelines.',
+    description: `${availabilityHeading()}. ${DESCRIPTION}`,
     url: 'https://vibewithadam.matthewsteinberger.com/hire-me',
   },
 };
 
 const facts: { label: string; value: string }[] = [
-  { label: 'Target titles', value: 'Staff Software Architect · AI Automation Engineer · Staff/Principal AI Engineer · Solutions Architect' },
+  {
+    label: 'Target roles',
+    value:
+      'Staff+ Software Engineer (AI platform, auth and identity, regulated and public-sector deployments) · Forward Deployed AI Engineer · Staff Software Architect',
+  },
   { label: 'Location', value: 'Greenville, SC — remote preferred; open to US remote anywhere' },
   { label: 'Available', value: availabilityFact() },
   { label: 'Employment types', value: 'W2 full-time preferred; contract-to-hire considered' },
@@ -27,24 +33,24 @@ const facts: { label: string; value: string }[] = [
   {
     label: 'Specialties',
     value:
-      'Azure (AKS, Functions, Service Bus, Bicep, Terraform, Key Vault) · Python and .NET backends · event-driven microservices · RAG, multi-vendor LLM gateways, AI governance (Claude, GPT, Gemini, Mistral, vLLM) · Kubernetes, Helm, GitOps, secretless DevSecOps · identity governance (Okta IGA, Entra ID, SAML/OIDC)',
+      'Identity and access (Entra ID, Okta core/IGA/Workflows, SAML 2.0, OIDC, workload identity federation) · AI platforms (multi-vendor LLM gateways, agent orchestration and sandboxing, RAG, MCP) · security and compliance (secretless delivery, SBOM and keyless signing, policy-as-code admission, STRIDE, SOC 2 readiness, OWASP LLM Top 10, NIST AI RMF) · platform (private AKS, Terraform, Helm, GitOps) · Python, TypeScript, C#/.NET',
   },
   {
     label: 'Verify me',
     value:
-      'Ask my résumé at chatwithadam.matthewsteinberger.com, read the packages on PyPI, or read the code on GitHub — every claim on this site is checkable.',
+      'Ask my résumé at chatwithadam.matthewsteinberger.com, run the packages from PyPI, or read the code on GitHub. Every claim on this site is checkable.',
   },
 ];
 
 const looking: string[] = [
-  'A team where AI, automation, and architecture are the core of the role — not a side quest',
-  'Ownership of hard, ambiguous problems with room to design the solution, not just implement a ticket',
-  'A culture that treats written specs and async communication as a strength, not a workaround',
-  'Greenville, SC-based or fully remote — I do not need to be in an office to do my best work',
+  'A role where AI platform, identity, or security architecture is the job, not a side quest',
+  'Hard, ambiguous problems, with room to design the solution and not only implement a ticket',
+  'A team that writes things down: design docs, decision records, and reviews in the open',
+  'Greenville, SC-based or US remote',
 ];
 
 const notLooking: string[] = [
-  'Pure front-end or design roles with no backend/architecture component',
+  'Pure front-end or design roles with no backend or architecture component',
   'On-call-heavy support rotations with no engineering ownership attached',
   'Roles requiring daily in-person presence in an office outside the Greenville area',
 ];
@@ -111,22 +117,46 @@ export default function HireMePage() {
         </div>
       </section>
 
-      <section className="container mx-auto px-4 py-12">
+      <section className="container mx-auto px-4 py-12" aria-labelledby="evidence-heading">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-4">
-            How to get the best signal out of me
+          <h2 id="evidence-heading" className="text-2xl font-bold text-[var(--color-text-primary)] mb-4">
+            Staff-level evidence
           </h2>
-          <p className="text-[var(--color-text-muted)] mb-4">
-            A live whiteboard measures how fast someone improvises under an audience. That is
-            not the job. If you want to see how I actually architect systems, these cost you
-            nothing and tell you far more:
+          <div className="divide-y divide-[var(--color-dark-border)] border-y border-[var(--color-dark-border)]">
+            {staffEvidence.map((item) => (
+              <Link key={item.claim} href={item.href} className="block py-4 no-underline hover:bg-[var(--color-dark-card)] transition-colors">
+                <h3 className="font-bold text-[var(--color-text-primary)] mb-1">{item.claim}</h3>
+                <p className="text-sm text-[var(--color-text-muted)] mb-0">{item.proof}</p>
+              </Link>
+            ))}
+          </div>
+          <p className="text-sm text-[var(--color-text-muted)] mt-4">
+            Open source, in public:{' '}
+            <Link href="/work/vibey-conductor" className="text-[var(--color-accent-blue)] hover:underline">
+              vibey
+            </Link>
+            , a ledger-mediated conductor for coding agents, chaos-tested at 500 jobs with 20% of
+            workers dropped mid-job and none lost.
           </p>
-          <ul className="list-disc pl-6 space-y-2 text-[var(--color-text-muted)]">
-            <li>A take-home or a walkthrough of real work over a live whiteboard, where possible</li>
-            <li>Technical questions shared in advance — you&apos;ll get a considered answer, not a rehearsed one</li>
-            <li>An agenda before the call so we spend the time on substance</li>
-            <li>Happy to be judged on shipped code: every case study on this site is real work with real constraints</li>
-          </ul>
+        </div>
+      </section>
+
+      <section className="container mx-auto px-4 py-12" aria-labelledby="how-heading">
+        <div className="max-w-3xl mx-auto">
+          <h2 id="how-heading" className="text-2xl font-bold text-[var(--color-text-primary)] mb-4">
+            How I work
+          </h2>
+          <ol className="list-decimal pl-6 space-y-1 text-[var(--color-text-primary)] mb-4">
+            {method.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ol>
+          <p className="text-[var(--color-text-muted)] mb-0">
+            My strongest work is in writing: a design before the code, a decision record for
+            every choice that matters, and a short written recap after every conversation, so
+            nothing we agreed depends on memory. For an interview loop, I&apos;m glad to do a
+            take-home or walk through real code from any case study on this site.
+          </p>
         </div>
       </section>
 
