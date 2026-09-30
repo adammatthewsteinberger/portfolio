@@ -92,11 +92,11 @@ export default function NoviceToNavigator() {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h6 className="font-bold text-[var(--color-accent-blue)] mb-2">33 Comprehensive Articles</h6>
+                <h6 className="text-base font-bold text-[var(--color-accent-blue)] mb-2">33 Comprehensive Articles</h6>
                 <p className="text-[var(--color-text-muted)]">From basic AI concepts to advanced business applications</p>
               </div>
               <div>
-                <h6 className="font-bold text-[var(--color-accent-blue)] mb-2">7 Progressive Sections</h6>
+                <h6 className="text-base font-bold text-[var(--color-accent-blue)] mb-2">7 Progressive Sections</h6>
                 <p className="text-[var(--color-text-muted)]">Structured learning path from beginner to confident decision-maker</p>
               </div>
             </div>

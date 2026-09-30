@@ -95,7 +95,7 @@ export default function Home() {
           {tracks.map((track, i) => (
             <li key={track.id} className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-5 flex flex-col">
               <span className="text-xs font-mono text-[var(--color-accent-blue)] mb-1">{String(i + 1).padStart(2, '0')}</span>
-              <h3 className="font-bold text-[var(--color-text-primary)] mb-2">{track.title}</h3>
+              <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-2">{track.title}</h3>
               <p className="text-sm text-[var(--color-text-muted)] flex-grow">{track.summary}</p>
               <Link href={track.href} className="text-[var(--color-accent-blue)] hover:underline font-medium text-sm mt-3">{track.cta} →</Link>
             </li>
@@ -145,7 +145,7 @@ export default function Home() {
                 href={item.href}
                 className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] hover:border-[var(--color-accent-blue)]/50 rounded-xl p-5 no-underline transition-colors"
               >
-                <h3 className="font-bold text-[var(--color-text-primary)] mb-2">{item.claim}</h3>
+                <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-2">{item.claim}</h3>
                 <p className="text-sm text-[var(--color-text-muted)] mb-0">{item.proof}</p>
               </Link>
             ))}
@@ -194,7 +194,7 @@ export default function Home() {
           <div className="divide-y divide-[var(--color-dark-border)] border-y border-[var(--color-dark-border)]">
             {staffEvidence.map((item) => (
               <Link key={item.claim} href={item.href} className="grid grid-cols-1 md:grid-cols-[14rem_1fr] gap-1 md:gap-6 py-4 no-underline hover:bg-[var(--color-dark-card)] transition-colors">
-                <h3 className="font-bold text-[var(--color-text-primary)] mb-0">{item.claim}</h3>
+                <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-0">{item.claim}</h3>
                 <p className="text-sm text-[var(--color-text-muted)] mb-0">{item.proof}</p>
               </Link>
             ))}
@@ -225,7 +225,7 @@ export default function Home() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
           {specialties.map((group) => (
             <Link key={group.id} href={`/expertise#${group.id}`} className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] hover:border-[var(--color-accent-blue)]/50 rounded-xl p-5 no-underline transition-colors">
-              <h3 className="font-bold text-[var(--color-text-primary)] mb-2">{group.title}</h3>
+              <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-2">{group.title}</h3>
               <p className="text-sm text-[var(--color-text-muted)] mb-3">{group.summary}</p>
               <p className="text-xs font-mono text-[var(--color-accent-blue)] mb-0">{group.stack.slice(0, 5).join(' · ')}</p>
             </Link>

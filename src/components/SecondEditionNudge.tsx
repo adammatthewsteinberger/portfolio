@@ -52,7 +52,7 @@ export default function SecondEditionNudge() {
       >
         <Icon name="times" />
       </button>
-      <h3 className="font-bold text-[var(--color-text-primary)] mb-2 pr-6">
+      <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 pr-6">
         A second edition is in the works
       </h3>
       <p className="text-sm text-[var(--color-text-muted)] mb-4">

@@ -227,7 +227,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                         className="block no-underline"
                       >
                         <div className="bg-[var(--color-dark-bg)] border border-[var(--color-dark-border)] rounded-lg p-4 hover:border-[var(--color-accent-blue)]/50 transition-colors">
-                          <h5 className="font-bold text-[var(--color-text-primary)] mb-2">{relatedProject.title}</h5>
+                          <h5 className="text-base font-bold text-[var(--color-text-primary)] mb-2">{relatedProject.title}</h5>
                           <p className="text-sm text-[var(--color-text-muted)] mb-2">
                             {relatedProject.description.substring(0, 100)}...
                           </p>
