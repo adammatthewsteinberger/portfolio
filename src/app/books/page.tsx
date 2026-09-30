@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 import { OG_IMAGE } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Books | Adam Matthew Steinberger',
+  title: 'Books',
   description:
     'Novice to Navigator (second edition in development) and Engineering Influence — both currently in development. Get notified when either ships.',
   alternates: { canonical: '/books' },

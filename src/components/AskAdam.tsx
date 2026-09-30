@@ -295,7 +295,7 @@ export function AskAdam({ variant = 'widget' }: AskAdamProps = {}) {
     return (
       <section role="region" aria-label={NAME} className={`${PANEL_CLASSES} min-h-[60vh]`}>
         <div className="flex items-center justify-between p-4 border-b border-[var(--color-dark-border)]">
-          <h2 className="font-bold text-[var(--color-text-primary)]">{NAME}</h2>
+          <h2 className="text-lg font-bold text-[var(--color-text-primary)]">{NAME}</h2>
         </div>
         {panel}
       </section>
@@ -321,7 +321,7 @@ export function AskAdam({ variant = 'widget' }: AskAdamProps = {}) {
           className={`fixed inset-x-4 bottom-4 sm:right-6 sm:left-auto sm:bottom-6 sm:w-96 z-50 ${PANEL_CLASSES} max-h-[80vh]`}
         >
           <div className="flex items-center justify-between p-4 border-b border-[var(--color-dark-border)]">
-            <h3 className="font-bold text-[var(--color-text-primary)]">{NAME}</h3>
+            <h3 className="text-base font-bold text-[var(--color-text-primary)]">{NAME}</h3>
             <div className="flex items-center gap-3">
               {/* Relative on purpose: on the main site host this 308s to chatwithadam.matthewsteinberger.com,
                   while localhost and deploy previews serve /chat directly. */}

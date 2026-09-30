@@ -9,6 +9,7 @@ import { openSourcePackages } from '@/data/open-source';
 import { DistributionNote, PackageLinks } from '@/components/PackageLinks';
 import { INVITATION, INVITATION_CTA, quickstart } from '@/data/quickstart';
 import { VIBEY, audiences } from '@/data/audiences';
+import { tracks } from '@/data/tracks';
 import { OG_IMAGE } from '@/lib/seo';
 
 const TITLE = 'Adam Matthew Steinberger | Staff Software Architect & AI Automation Engineer';
@@ -89,17 +90,24 @@ export default function Home() {
       {/* Who this site is for — in priority order */}
       <section className="container mx-auto px-4 py-12" aria-labelledby="audiences-heading">
         <h2 id="audiences-heading" className="text-2xl font-bold mb-2 text-center text-[var(--color-text-primary)]">Who This Is For</h2>
-        <p className="text-center text-[var(--color-text-muted)] mb-8">Each has its own section on the Join Me page.</p>
+        <p className="text-center text-[var(--color-text-muted)] mb-8">Three ways in, in the order they matter to me.</p>
         <ol className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto list-none pl-0">
-          {audiences.map((audience, i) => (
-            <li key={audience.id} className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-5 flex flex-col">
+          {tracks.map((track, i) => (
+            <li key={track.id} className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-5 flex flex-col">
               <span className="text-xs font-mono text-[var(--color-accent-blue)] mb-1">{String(i + 1).padStart(2, '0')}</span>
-              <h3 className="font-bold text-[var(--color-text-primary)] mb-2">{audience.title}</h3>
-              <p className="text-sm text-[var(--color-text-muted)] flex-grow">{audience.summary}</p>
-              <Link href={audience.href} className="text-[var(--color-accent-blue)] hover:underline font-medium text-sm mt-3">{audience.cta} →</Link>
+              <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-2">{track.title}</h3>
+              <p className="text-sm text-[var(--color-text-muted)] flex-grow">{track.summary}</p>
+              <Link href={track.href} className="text-[var(--color-accent-blue)] hover:underline font-medium text-sm mt-3">{track.cta} →</Link>
             </li>
           ))}
         </ol>
+        <p className="text-center text-sm text-[var(--color-text-muted)] mt-6">
+          Evaluating vibey for a{' '}
+          <Link href={audiences[1].href} className="text-[var(--color-accent-blue)] hover:underline">government or military organization</Link>
+          {' '}or a{' '}
+          <Link href={audiences[2].href} className="text-[var(--color-accent-blue)] hover:underline">university</Link>
+          ? Each has its own section on the Join Me page.
+        </p>
       </section>
 
       {/* Run it in ten minutes */}
@@ -137,7 +145,7 @@ export default function Home() {
                 href={item.href}
                 className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] hover:border-[var(--color-accent-blue)]/50 rounded-xl p-5 no-underline transition-colors"
               >
-                <h3 className="font-bold text-[var(--color-text-primary)] mb-2">{item.claim}</h3>
+                <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-2">{item.claim}</h3>
                 <p className="text-sm text-[var(--color-text-muted)] mb-0">{item.proof}</p>
               </Link>
             ))}
@@ -186,7 +194,7 @@ export default function Home() {
           <div className="divide-y divide-[var(--color-dark-border)] border-y border-[var(--color-dark-border)]">
             {staffEvidence.map((item) => (
               <Link key={item.claim} href={item.href} className="grid grid-cols-1 md:grid-cols-[14rem_1fr] gap-1 md:gap-6 py-4 no-underline hover:bg-[var(--color-dark-card)] transition-colors">
-                <h3 className="font-bold text-[var(--color-text-primary)] mb-0">{item.claim}</h3>
+                <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-0">{item.claim}</h3>
                 <p className="text-sm text-[var(--color-text-muted)] mb-0">{item.proof}</p>
               </Link>
             ))}
@@ -205,6 +213,7 @@ export default function Home() {
           <div className="flex flex-wrap gap-x-6 gap-y-2 mt-4 text-sm">
             <Link href="/work" className="text-[var(--color-accent-blue)] hover:underline font-medium">All the work →</Link>
             <Link href="/story" className="text-[var(--color-accent-blue)] hover:underline font-medium">The story →</Link>
+            <Link href="/freelance" className="text-[var(--color-accent-blue)] hover:underline font-medium">Have a project? Fixed-scope packages →</Link>
             <Link href="/hire-me" className="text-[var(--color-accent-blue)] hover:underline font-medium">Hiring? Everything a recruiter needs →</Link>
           </div>
         </div>
@@ -216,7 +225,7 @@ export default function Home() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
           {specialties.map((group) => (
             <Link key={group.id} href={`/expertise#${group.id}`} className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] hover:border-[var(--color-accent-blue)]/50 rounded-xl p-5 no-underline transition-colors">
-              <h3 className="font-bold text-[var(--color-text-primary)] mb-2">{group.title}</h3>
+              <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-2">{group.title}</h3>
               <p className="text-sm text-[var(--color-text-muted)] mb-3">{group.summary}</p>
               <p className="text-xs font-mono text-[var(--color-accent-blue)] mb-0">{group.stack.slice(0, 5).join(' · ')}</p>
             </Link>
@@ -265,6 +274,8 @@ export default function Home() {
             <Link href="/join-me#governments" className="hover:underline">Governments and military</Link>
             {' · '}
             <Link href="/join-me#academia" className="hover:underline">Universities and academia</Link>
+            {' · '}
+            <Link href="/freelance" className="hover:underline">Freelance projects</Link>
             {' · '}
             <Link href="/hire-me" className="hover:underline">Hiring</Link>
           </p>

@@ -25,13 +25,13 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 
   if (!project || !projectData) {
     return {
-       title: 'Work Not Found | Adam Matthew Steinberger',
+      title: 'Work Not Found',
       description: 'The requested case study could not be found.',
     };
   }
 
   return {
-    title: `${project.title} | Adam Matthew Steinberger — Work`,
+    title: `${project.title} — Case Study`,
     description: project.description,
     alternates: { canonical: `/work/${slug}` },
     openGraph: {
@@ -227,7 +227,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                         className="block no-underline"
                       >
                         <div className="bg-[var(--color-dark-bg)] border border-[var(--color-dark-border)] rounded-lg p-4 hover:border-[var(--color-accent-blue)]/50 transition-colors">
-                          <h5 className="font-bold text-[var(--color-text-primary)] mb-2">{relatedProject.title}</h5>
+                          <h5 className="text-base font-bold text-[var(--color-text-primary)] mb-2">{relatedProject.title}</h5>
                           <p className="text-sm text-[var(--color-text-muted)] mb-2">
                             {relatedProject.description.substring(0, 100)}...
                           </p>

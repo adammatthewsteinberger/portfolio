@@ -11,8 +11,8 @@ describe('Header', () => {
     );
   });
 
-  // Open source first, hiring second: Join Me, then Hire Me, then the contributors pill.
-  it('renders the desktop nav items, with Join Me before Hire Me and no executive link', () => {
+  // The tracks in priority order (src/data/tracks.ts): Join Me, Freelance, Hire Me, then the contributors pill.
+  it('renders the desktop nav items, with Join Me, then Freelance, then Hire Me, and no executive link', () => {
     render(<Header />);
     expect(document.querySelector('a[href="/hire-me"]')).not.toBeNull();
     expect(document.querySelector('a[href^="/for-executives"]')).toBeNull();
@@ -26,7 +26,7 @@ describe('Header', () => {
     const joinMe = screen.getAllByRole('link', { name: 'Join Me' });
     expect(joinMe[0]).toHaveAttribute('href', '/join-me');
     const navLinks = Array.from(document.querySelectorAll('nav .lg\\:flex a')).map((a) => a.textContent);
-    expect(navLinks.slice(-3)).toEqual(['Join Me', 'Hire Me', 'Contributors welcome']);
+    expect(navLinks.slice(-4)).toEqual(['Join Me', 'Freelance', 'Hire Me', 'Contributors welcome']);
   });
 
   it('shows a contributors pill that links to the developer section, never an availability pill', () => {
@@ -68,6 +68,7 @@ describe('Header', () => {
     expect(dialog).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Close menu' })).toBeInTheDocument();
     expect(dialog.querySelector('a[href="/join-me"]')).toBeInTheDocument();
+    expect(dialog.querySelector('a[href="/freelance"]')).toBeInTheDocument();
     expect(dialog.querySelector('a[href="/hire-me"]')).toBeInTheDocument();
     expect(dialog.querySelector('a[href="/services"]')).not.toBeInTheDocument();
     expect(dialog.querySelector('a[href^="/for-executives"]')).not.toBeInTheDocument();
