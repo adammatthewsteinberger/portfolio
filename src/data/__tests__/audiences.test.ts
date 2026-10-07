@@ -55,10 +55,14 @@ describe('claims', () => {
     expect(text).not.toMatch(/\b(customers?|contracts?|clearances?|accredit\w*|endorse\w*|affiliat\w*|partnered with|trusted by|used by|deployed (at|by|in))\b/i);
   });
 
-  it('states the known sovereign gap instead of overclaiming', () => {
+  it('states what the local path covers without overclaiming', () => {
     const sovereign = governmentClaims[0];
-    expect(sovereign.body).toMatch(/issue #115/);
-    // The rules prefer the fully local path; the page must not claim vibey already runs that way end to end.
+    // vibey#115 closed with 4.x: design and decomposition run on the local gptossloop provider.
+    expect(sovereign.body).toMatch(/decomposition/);
+    expect(sovereign.body).toMatch(/gptossloop/);
+    expect(sovereign.body).not.toMatch(/issue #115|still open/i);
+    // A paid engine still runs when no local one can; the page must not claim an end-to-end offline pipeline.
+    expect(sovereign.body).toMatch(/paid engine runs only when no local one can/);
     expect(sovereign.body).not.toMatch(/(runs|operates|works) (fully|entirely|completely) (locally|offline)|air-gapped/i);
   });
 

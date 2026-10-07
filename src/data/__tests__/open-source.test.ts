@@ -15,8 +15,9 @@ describe('openSourcePackages', () => {
       expect(pkg.links.length).toBeGreaterThan(0);
       for (const link of pkg.links) {
         expect(
-          link.href.startsWith(`${VIBEY_DISTRIBUTION.repo}/tree/develop/src/`) ||
-            [VIBEY_DISTRIBUTION.pypi, VIBEY_DISTRIBUTION.repo, VIBEY_DISTRIBUTION.docs].includes(link.href as never),
+          link.href.startsWith(`${VIBEY_DISTRIBUTION.repo}/tree/develop/`) ||
+            link.href.startsWith(VIBEY_DISTRIBUTION.docs) ||
+            [VIBEY_DISTRIBUTION.pypi, VIBEY_DISTRIBUTION.repo].includes(link.href as never),
           `${pkg.name}: ${link.href}`,
         ).toBe(true);
       }
@@ -28,9 +29,10 @@ describe('openSourcePackages', () => {
     const tree = `${VIBEY_DISTRIBUTION.repo}/tree/develop`;
     expect(source('claudeloop')).toBe(`${tree}/src/vibey_runners/claude`);
     expect(source('codexloop')).toBe(`${tree}/src/vibey_runners/codex`);
-    expect(source('cursorloop')).toBe(`${tree}/src/vibey_runners/cursor`);
-    expect(source('agyloop')).toBe(`${tree}/src/vibey_runners/agy`);
+    // gptossloop and qwenloop are two engines of one local runner (ADR-0064).
+    expect(source('gptossloop')).toBe(`${tree}/src/vibey_runners/qwen`);
     expect(source('qwenloop')).toBe(`${tree}/src/vibey_runners/qwen`);
+    expect(source('krypton')).toBe(`${VIBEY_DISTRIBUTION.docs}guides/downloads/`);
     expect(source('vibey-gh')).toBe(`${tree}/src/vibey_tools/gh`);
     expect(source('vibey-bootstrap')).toBe(`${tree}/src/vibey_tools/bootstrap`);
     expect(source('vibey-skills')).toBe(`${tree}/src/vibey_tools/skills`);
@@ -52,7 +54,7 @@ describe('openSourcePackages', () => {
   });
 
   it('formats the names as an Oxford-comma list', () => {
-    expect(packageNameList()).toMatch(/^claudeloop, .*, and vibey-skills$/);
+    expect(packageNameList()).toMatch(/^claudeloop, .*, and krypton$/);
     expect(packageNameList(openSourcePackages.slice(0, 2))).toBe('claudeloop, and codexloop');
   });
 });
@@ -97,6 +99,33 @@ describe('no package counts in site copy', () => {
 // the old per-package repositories and PyPI projects 404. None may come back.
 // The distribution is `vibey-engine` — pypi.org/project/vibey/ 404s too, even
 // though the command it installs is still `vibey` (hence the lookahead).
+// vibey 4.0.0 (ADR-0078) deleted the Cursor and Antigravity runners, and 4.x
+// refuses a config that still names them. Copy that offers them as current
+// engines, or a quickstart that passes them to `--engines`, is wrong.
+describe('no retired engines named as current', () => {
+  const root = process.cwd();
+  const RETIRED_ENGINE = /\b(cursorloop|agyloop)\b|Cursor Agent|Google Antigravity|Antigravity\/Gemini/i;
+  const surfaces = [
+    ...walk(path.join(root, 'src/app')),
+    ...walk(path.join(root, 'src/components')),
+    ...walk(path.join(root, 'src/data')),
+    path.join(root, 'public/llms.txt'),
+    path.join(root, 'README.md'),
+    path.join(root, 'src/content/projects/vibey-conductor.md'),
+  ];
+
+  it.each(surfaces.map((f) => [path.relative(root, f), f]))('%s names no retired engine', (_rel, file) => {
+    const text = fs.readFileSync(file, 'utf8');
+    // The AI governance gateway is a different project that really does front Cursor.
+    const hit = text
+      .split('\n')
+      .filter((line) => !/gateway|Grok|Gemini|ai-governance/i.test(line))
+      .join('\n')
+      .match(RETIRED_ENGINE);
+    expect(hit?.[0] ?? null).toBeNull();
+  });
+});
+
 describe('no links to retired package homes', () => {
   const root = process.cwd();
   const RETIRED =
