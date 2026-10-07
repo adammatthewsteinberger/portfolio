@@ -31,6 +31,7 @@ const timeline = [
   { year: 'Mar–Aug 2025', label: 'Adam Matthew Steinberger LLC — self-hosted RAG, cloud RAG, production push notifications' },
   { year: 'Sep 2025–Aug 2026', label: 'The Vizius Group — Senior Azure & AI Development Engineer' },
   { year: 'Sep 2026', label: 'vibey 1.0.0 on PyPI — the conductor and the whole *loop family in one MIT-licensed distribution' },
+  { year: 'Oct 2026', label: 'vibey-engine 4.2.0 — a local model runs the design interview and the build decomposition by default, hybrid dispatch for paid overflow, and the krypton apps' },
 ];
 
 const jsonLd = {

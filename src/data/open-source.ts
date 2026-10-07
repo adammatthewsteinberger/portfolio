@@ -2,11 +2,17 @@
  * Every package in Adam's open-source family, all MIT licensed.
  *
  * Since vibey 1.0.0 (ADR-0037) the family lives in one repository,
- * the-vibey-project/vibey, and ships as one PyPI distribution, `vibey-engine`
- * (which installs the `vibey` command, the `*loop` engines, and the tools): the
- * old per-package repositories and PyPI projects no longer exist. So each
- * package links to its source directory in that repository, and only vibey
- * itself links to PyPI (VIBEY_DISTRIBUTION below).
+ * the-vibey-project/vibey, and the engine family ships as one PyPI distribution,
+ * `vibey-engine` (which installs the `vibey` command, the `*loop` engines, and
+ * the tools): the old per-package repositories and PyPI projects no longer
+ * exist. The apps ship separately as `krypton-app` (ADR-0069). So each package
+ * links to its source directory in that repository, and only vibey itself
+ * links to PyPI (VIBEY_DISTRIBUTION below).
+ *
+ * vibey 4.0.0 (ADR-0078) retired the Cursor and Antigravity runners, so the
+ * paid engines are claudeloop and codexloop and the local ones gptossloop and
+ * qwenloop. src/data/__tests__/open-source.test.ts fails if the retired
+ * runners are named as current anywhere in copy.
  *
  * House rule: the site never states a *count* of these packages — it lists them.
  * Counts drifted three times in one month ("seven", "eight", "seven"); names
@@ -47,7 +53,7 @@ export const openSourcePackages: OpenSourcePackage[] = [
     family: 'loop',
     tagline: 'Onion-architected, autonomous Claude Code session runner',
     description:
-      'A full Anthropic SDK CLI that never blocks on a human — it distinguishes an exhausted rate-limit window from exhausted credits and resumes safely across usage windows. Built on the official claude-agent-sdk.',
+      'A full Anthropic SDK CLI that never blocks on a human — it distinguishes an exhausted rate-limit window from exhausted credits and resumes safely across usage windows. Built on the official claude-agent-sdk. Pointed at a local backend profile it is also claudeloop-local, a local engine.',
     links: source('src/vibey_runners/claude'),
   },
   {
@@ -55,31 +61,23 @@ export const openSourcePackages: OpenSourcePackage[] = [
     family: 'loop',
     tagline: 'The same runner for OpenAI Codex',
     description:
-      'Same onion architecture, same rate-limit-vs-credits distinction, same never-block-on-a-human guarantee — driving the OpenAI Codex agent.',
+      'Same onion architecture, same rate-limit-vs-credits distinction, same never-block-on-a-human guarantee — driving the OpenAI Codex agent. With claudeloop it is one of the two paid engines.',
     links: source('src/vibey_runners/codex'),
   },
   {
-    name: 'cursorloop',
+    name: 'gptossloop',
     family: 'loop',
-    tagline: 'The same runner for Cursor Agent',
+    tagline: 'The sovereign default: the same runner, fully local, on GPT-OSS 20B',
     description:
-      'The *loop contract on top of the Cursor Agent CLI, so a vibey build can rotate onto Cursor when another vendor is exhausted.',
-    links: source('src/vibey_runners/cursor'),
-  },
-  {
-    name: 'agyloop',
-    family: 'loop',
-    tagline: 'The same runner for Google Antigravity / Gemini',
-    description:
-      'The *loop contract for Google Antigravity and Gemini — same session semantics, same resume-across-windows behaviour, different vendor.',
-    links: source('src/vibey_runners/agy'),
+      'Runs GPT-OSS 20B on your own machine through Ollama and is on by default. It is vibey’s sovereign provider for the design interview and for decomposing a design into build work, and a local engine is preferred first, so a paid engine runs only when no local one can. The package never downloads model weights on its own.',
+    links: source('src/vibey_runners/qwen'),
   },
   {
     name: 'qwenloop',
     family: 'loop',
-    tagline: 'The same runner, fully local, on Qwen 2.5 Coder',
+    tagline: 'The same runner, fully local, on Qwen',
     description:
-      'An autonomous local Qwen 2.5 Coder 14B runner — a portable llama.cpp profile by default, BF16 through vLLM on Linux NVIDIA systems. Model installation is always explicit: the package never downloads weights on its own.',
+      'The opt-in Qwen twin of gptossloop: Qwen 3 14B through Ollama, llama.cpp, or vLLM, switched on with VIBEY_FEATURE_QWENLOOP=1. Model installation is always explicit: the package never downloads weights on its own.',
     links: source('src/vibey_runners/qwen'),
   },
   {
@@ -87,7 +85,7 @@ export const openSourcePackages: OpenSourcePackage[] = [
     family: 'vibey',
     tagline: 'A queue-based, six-phase conductor for autonomous software delivery',
     description:
-      'You describe what you want. Vibey interviews you until the spec is sharp, optionally runs a visual-design pass, builds autonomously on top of the *loop runners, reviews its own work, and asks whether to deploy. PostgreSQL-backed with FOR UPDATE SKIP LOCKED.',
+      'You describe what you want. Vibey interviews you until the spec is sharp, optionally runs a visual-design pass, builds autonomously on top of the *loop runners, reviews its own work, and asks whether to deploy. PostgreSQL-backed with FOR UPDATE SKIP LOCKED. Local engines fill their slots first; in hybrid mode a paid engine takes overflow only after a wait, and only under a daily spend cap counted from the ledger.',
     links: [
       { label: 'PyPI', href: VIBEY_DISTRIBUTION.pypi },
       { label: 'Repository', href: VIBEY_DISTRIBUTION.repo },
@@ -115,8 +113,19 @@ export const openSourcePackages: OpenSourcePackage[] = [
     family: 'vibey',
     tagline: 'A Claude Code plugin marketplace of evidence-grounded practitioner references',
     description:
-      'Security, cloud infrastructure, DevSecOps, AI/ML, software architecture, agile delivery, and technical writing as Agent Skills. Every claim cites the standard, vendor doc, or paper it comes from.',
+      'More than a hundred plugins and several hundred Agent Skills, from security, cloud infrastructure, DevSecOps, AI/ML, and software architecture to law, medicine, valuation, and writing craft. Every claim cites the standard, vendor doc, or paper it comes from.',
     links: source('src/vibey_tools/skills'),
+  },
+  {
+    name: 'krypton',
+    family: 'vibey',
+    tagline: 'The apps for talking to vibey: desktop, mobile, web, and your editor',
+    description:
+      'krypton desktop for Linux (a Flatpak and an Ubuntu build, x86_64 and arm64) and macOS on Apple silicon, the krypton app for Android, iOS, and the web, and krypton for VS Code (also on Open VSX). They answer gates and watch budgets through the vibey hub. Every release attaches the builds with checksums; the apps install from PyPI as krypton-app.',
+    links: [
+      { label: 'Downloads', href: `${VIBEY_DISTRIBUTION.docs}guides/downloads/` },
+      { label: 'Source', href: `${TREE}/clients` },
+    ],
   },
 ];
 

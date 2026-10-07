@@ -31,9 +31,9 @@ export function DistributionNote({ className = '' }: { className?: string }) {
   return (
     <p className={className}>
       Everything here lives in one repository,{' '}
-      <External href={VIBEY_DISTRIBUTION.repo}>the-vibey-project/vibey</External>, and ships as one PyPI
-      distribution: <code>{VIBEY_DISTRIBUTION.install}</code> installs the conductor, all five{' '}
-      <code>*loop</code> engines, and the tools (<External href={VIBEY_DISTRIBUTION.pypi}>PyPI</External>
+      <External href={VIBEY_DISTRIBUTION.repo}>the-vibey-project/vibey</External>, and the engine family ships as one PyPI
+      distribution: <code>{VIBEY_DISTRIBUTION.install}</code> installs the conductor, every{' '}
+      <code>*loop</code> engine, and the tools; the apps ship separately as <code>krypton-app</code> (<External href={VIBEY_DISTRIBUTION.pypi}>PyPI</External>
       {' · '}
       <External href={VIBEY_DISTRIBUTION.docs}>docs</External>).
     </p>
