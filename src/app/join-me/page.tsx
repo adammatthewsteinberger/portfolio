@@ -8,6 +8,7 @@ import {
   getStartedSteps,
   governmentClaims,
   helpWanted,
+  nonprofitClaims,
 } from '@/data/audiences';
 import { INVITATION, quickstart } from '@/data/quickstart';
 import { OG_IMAGE } from '@/lib/seo';
@@ -15,13 +16,13 @@ import { OG_IMAGE } from '@/lib/seo';
 export const metadata: Metadata = {
   title: 'Join Me — Help Build vibey',
   description:
-    'I’m looking for developers to help build vibey, the open-source conductor for autonomous software delivery. Here is how to get started. Governments and military, and universities and academia, each have their own section.',
+    'I’m looking for developers to help build vibey, the open-source conductor for autonomous software delivery. Here is how to get started. Nonprofits, universities and academia, and governments and military each have their own section.',
   alternates: { canonical: '/join-me' },
   openGraph: {
     images: [OG_IMAGE],
     title: 'Join Me — Help Build vibey | Adam Matthew Steinberger',
     description:
-      'How developers get started on vibey, what it offers governments and the military, and the research paper and book for universities.',
+      'How developers get started on vibey, what it offers nonprofits, the research paper and book for universities, and what it offers governments and the military.',
     url: 'https://vibewithadam.matthewsteinberger.com/join-me',
   },
 };
@@ -163,22 +164,21 @@ export default function JoinMePage() {
         </div>
       </section>
 
-      {/* 2 — Governments and military */}
-      <section id="governments" aria-labelledby="governments-heading" className="container mx-auto px-4 py-10 scroll-mt-24">
+      {/* 2 — Nonprofits */}
+      <section id="nonprofits" aria-labelledby="nonprofits-heading" className="container mx-auto px-4 py-10 scroll-mt-24">
         <div className="max-w-3xl mx-auto">
-          <p className="text-xs font-mono uppercase tracking-wider text-[var(--color-accent-green)] mb-2">02 · Governments and military</p>
-          <h2 id="governments-heading" className="text-3xl font-bold text-[var(--color-text-primary)] mb-4">
-            Governments and military
+          <p className="text-xs font-mono uppercase tracking-wider text-[var(--color-accent-purple)] mb-2">02 · Nonprofits</p>
+          <h2 id="nonprofits-heading" className="text-3xl font-bold text-[var(--color-text-primary)] mb-4">
+            Nonprofits
           </h2>
           <p className="text-[var(--color-text-muted)]">
-            Governments, and armed forces most of all, adopt software under the hardest obligations. Every
-            artifact has to be attributable, and every automated decision has to be reconstructible after
-            the fact. Work has to continue when a vendor or a network is denied, and no capability can
-            depend on a supplier&apos;s continued goodwill. Here is what vibey offers against those
-            obligations. Each claim links to its source, so you can check it instead of trusting it.
+            Nonprofits run on small budgets, volunteer time, and the trust of donors and funders. Software
+            has to be affordable to keep, understandable by the next volunteer, and able to say what it
+            did when someone asks. Here is what vibey offers against those constraints. Each claim links to
+            its source, so you can check it instead of trusting it.
           </p>
           <div className="space-y-4 mt-6">
-            {governmentClaims.map((claim) => (
+            {nonprofitClaims.map((claim) => (
               <div key={claim.title} className={`${CARD} p-5`}>
                 <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-1">{claim.title}</h3>
                 <p className="text-sm text-[var(--color-text-muted)] mb-2">
@@ -189,23 +189,18 @@ export default function JoinMePage() {
             ))}
           </div>
 
-          <div className={`${CARD} border-[var(--color-accent-green)]/30 p-6 mt-8`}>
+          <div className={`${CARD} border-[var(--color-accent-purple)]/30 p-6 mt-8`}>
             <h3 className="text-xl font-bold text-[var(--color-text-primary)] mb-2">How to reach me</h3>
             <p className="text-[var(--color-text-muted)]">
-              Use official channels, and expect the same verification in return. Write from an official
-              address to{' '}
-              <a href="mailto:adam@matthewsteinberger.com" className={LINK}>adam@matthewsteinberger.com</a>.
-              Report a security vulnerability privately, as{' '}
-              <External href={VIBEY.security}>vibey&apos;s security policy</External> describes, and never in
-              a public issue. Ask public questions in{' '}
-              <External href={VIBEY.discussions}>GitHub Discussions</External>. The longer case, written for a
-              defense institution, is{' '}
-              <External href={VIBEY.governmentPage}>vibey-gh for governments</External>.
+              Write to{' '}
+              <a href="mailto:adam@matthewsteinberger.com" className={LINK}>adam@matthewsteinberger.com</a>{' '}
+              with a few lines on the project and the people who would run it, or ask in{' '}
+              <External href={VIBEY.discussions}>GitHub Discussions</External> if you would rather the answer
+              help others too.
             </p>
             <p className="text-sm text-[var(--color-text-muted)] mb-0">
-              This page claims no government or military customer, contract, clearance, accreditation,
-              or endorsement. vibey is MIT-licensed open source: evaluate it on your own hardware, against
-              its own gates.
+              This page claims no nonprofit customer, partnership, grant, or endorsement. vibey is
+              MIT-licensed open source: try it on your own hardware, against its own gates.
             </p>
           </div>
         </div>
@@ -267,6 +262,54 @@ export default function JoinMePage() {
             exact-head release calculus is <External href={VIBEY.companionPaper}>in the repository</External>.
             This page claims no institutional affiliation or endorsement.
           </p>
+        </div>
+      </section>
+
+      {/* 4 — Governments and military */}
+      <section id="governments" aria-labelledby="governments-heading" className="container mx-auto px-4 py-10 scroll-mt-24">
+        <div className="max-w-3xl mx-auto">
+          <p className="text-xs font-mono uppercase tracking-wider text-[var(--color-accent-green)] mb-2">04 · Governments and military</p>
+          <h2 id="governments-heading" className="text-3xl font-bold text-[var(--color-text-primary)] mb-4">
+            Governments and military
+          </h2>
+          <p className="text-[var(--color-text-muted)]">
+            Governments, and armed forces most of all, adopt software under the hardest obligations. Every
+            artifact has to be attributable, and every automated decision has to be reconstructible after
+            the fact. Work has to continue when a vendor or a network is denied, and no capability can
+            depend on a supplier&apos;s continued goodwill. Here is what vibey offers against those
+            obligations. Each claim links to its source, so you can check it instead of trusting it.
+          </p>
+          <div className="space-y-4 mt-6">
+            {governmentClaims.map((claim) => (
+              <div key={claim.title} className={`${CARD} p-5`}>
+                <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-1">{claim.title}</h3>
+                <p className="text-sm text-[var(--color-text-muted)] mb-2">
+                  <InlineCode text={claim.body} />
+                </p>
+                <p className="text-sm mb-0"><External href={claim.source.href}>{claim.source.label} →</External></p>
+              </div>
+            ))}
+          </div>
+
+          <div className={`${CARD} border-[var(--color-accent-green)]/30 p-6 mt-8`}>
+            <h3 className="text-xl font-bold text-[var(--color-text-primary)] mb-2">How to reach me</h3>
+            <p className="text-[var(--color-text-muted)]">
+              Use official channels, and expect the same verification in return. Write from an official
+              address to{' '}
+              <a href="mailto:adam@matthewsteinberger.com" className={LINK}>adam@matthewsteinberger.com</a>.
+              Report a security vulnerability privately, as{' '}
+              <External href={VIBEY.security}>vibey&apos;s security policy</External> describes, and never in
+              a public issue. Ask public questions in{' '}
+              <External href={VIBEY.discussions}>GitHub Discussions</External>. The longer case, written for a
+              defense institution, is{' '}
+              <External href={VIBEY.governmentPage}>vibey-gh for governments</External>.
+            </p>
+            <p className="text-sm text-[var(--color-text-muted)] mb-0">
+              This page claims no government or military customer, contract, clearance, accreditation,
+              or endorsement. vibey is MIT-licensed open source: evaluate it on your own hardware, against
+              its own gates.
+            </p>
+          </div>
         </div>
       </section>
 

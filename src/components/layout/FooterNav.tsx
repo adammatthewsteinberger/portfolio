@@ -8,8 +8,8 @@ interface FooterLink {
 
 const NEWSLETTER = { href: 'https://eepurl.com/jiYXCQ', label: 'Newsletter', external: true };
 
-// Join Me first: it is the primary page (developers, then governments and
-// military, then universities and academia).
+// Join Me first: it is the primary page (developers, then nonprofits,
+// universities and academia, and governments and military).
 const links: FooterLink[] = [
   { href: '/join-me', label: 'Join Me' },
   { href: '/chat', label: 'Ask about Adam' },

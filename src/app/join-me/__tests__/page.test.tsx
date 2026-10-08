@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen, within } from '@testing-library/react';
 import JoinMePage, { metadata } from '../page';
-import { academiaItems, getStartedSteps, governmentClaims, helpWanted } from '@/data/audiences';
+import { academiaItems, getStartedSteps, governmentClaims, helpWanted, nonprofitClaims } from '@/data/audiences';
 import { quickstart } from '@/data/quickstart';
 
 describe('/join-me', () => {
-  it('leads with the invitation to developers and jumps to the three sections in priority order', () => {
+  it('leads with the invitation to developers and jumps to the four sections in priority order', () => {
     render(<JoinMePage />);
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Join Me');
     expect(screen.getByText(/looking for developers to help build/i)).toBeInTheDocument();
@@ -13,8 +13,9 @@ describe('/join-me', () => {
     const jump = screen.getByRole('navigation', { name: 'Sections on this page' });
     expect(within(jump).getAllByRole('link').map((a) => a.getAttribute('href'))).toEqual([
       '#developers',
-      '#governments',
+      '#nonprofits',
       '#academia',
+      '#governments',
     ]);
     expect(screen.getAllByRole('link', { name: /adam@matthewsteinberger\.com/i })[0]).toHaveAttribute(
       'href',
@@ -22,17 +23,18 @@ describe('/join-me', () => {
     );
   });
 
-  it('renders the three sections in order, each labelled by its heading', () => {
+  it('renders the four sections in order, each labelled by its heading', () => {
     render(<JoinMePage />);
-    const sections = ['developers', 'governments', 'academia'].map((id) => document.getElementById(id)!);
+    const sections = ['developers', 'nonprofits', 'academia', 'governments'].map((id) => document.getElementById(id)!);
     for (const section of sections) {
       expect(section).not.toBeNull();
       expect(section.getAttribute('aria-labelledby')).toBe(`${section.id}-heading`);
     }
     expect(sections[0].compareDocumentPosition(sections[1]) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(sections[1].compareDocumentPosition(sections[2]) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(sections[2].compareDocumentPosition(sections[3]) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     const h2s = screen.getAllByRole('heading', { level: 2 }).map((h) => h.textContent);
-    expect(h2s).toEqual(['Help build vibey', 'Governments and military', 'Universities and academia']);
+    expect(h2s).toEqual(['Help build vibey', 'Nonprofits', 'Universities and academia', 'Governments and military']);
   });
 
   it('gives developers a concrete path: every step, its commands, and the quickstart', () => {
@@ -62,6 +64,19 @@ describe('/join-me', () => {
     expect(gov.textContent).toMatch(/official channels/i);
   });
 
+  it('states what vibey offers nonprofits, with sources, a way to reach me, and no claimed customers or grants', () => {
+    render(<JoinMePage />);
+    const nonprofits = document.getElementById('nonprofits')!;
+    for (const claim of nonprofitClaims) {
+      expect(within(nonprofits).getByText(claim.title)).toBeInTheDocument();
+      expect(within(nonprofits).getAllByRole('link', { name: `${claim.source.label} →` })[0]).toHaveAttribute('href', claim.source.href);
+    }
+    expect(within(nonprofits).getAllByRole('link', { name: /adam@matthewsteinberger\.com/i })[0]).toHaveAttribute('href', 'mailto:adam@matthewsteinberger.com');
+    expect(nonprofits.textContent).toMatch(/claims no nonprofit customer, partnership, grant, or endorsement/);
+    // Inline code in a claim renders as <code>.
+    expect(within(nonprofits).getByText('uv tool install vibey-engine').tagName).toBe('CODE');
+  });
+
   it('gives academia the paper, the book, the citation file, and no claimed affiliation', () => {
     render(<JoinMePage />);
     const academia = document.getElementById('academia')!;
@@ -79,17 +94,17 @@ describe('/join-me', () => {
     }
   });
 
-  // Hiring is a second track: /join-me carries no résumé or availability copy of its
-  // own and points to /hire-me once, in the footer, after all three audiences.
+  // Hiring is the sixth track: /join-me carries no résumé or availability copy of its
+  // own and points to /hire-me once, in the footer, after all four audiences.
   it('never states a package count, keeps hiring copy on /hire-me, and is self-canonical', () => {
     render(<JoinMePage />);
     expect(document.body.textContent).not.toMatch(/\b(seven|eight|nine)\s+packages/i);
     expect(document.body.textContent).not.toMatch(/résumé|available (from|now|for)/i);
     const hire = document.querySelectorAll('a[href="/hire-me"]');
     expect(hire).toHaveLength(1);
-    const academia = document.getElementById('academia') as HTMLElement;
-    expect(academia.compareDocumentPosition(hire[0]) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-    expect(academia.contains(hire[0])).toBe(false);
+    const governments = document.getElementById('governments') as HTMLElement;
+    expect(governments.compareDocumentPosition(hire[0]) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(governments.contains(hire[0])).toBe(false);
     expect(metadata.alternates?.canonical).toBe('/join-me');
     expect(metadata.title).toBe('Join Me — Help Build vibey');
   });

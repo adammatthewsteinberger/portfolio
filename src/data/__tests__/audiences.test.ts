@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { VIBEY, academiaItems, audiences, getStartedSteps, governmentClaims, helpWanted } from '../audiences';
+import { VIBEY, academiaItems, audiences, getStartedSteps, governmentClaims, helpWanted, nonprofitClaims } from '../audiences';
 
 describe('audiences', () => {
-  it('are developers, then governments and military, then universities and academia', () => {
-    expect(audiences.map((a) => a.id)).toEqual(['developers', 'governments', 'academia']);
-    expect(audiences.map((a) => a.title)).toEqual(['Developers', 'Governments and military', 'Universities and academia']);
+  it('are developers, then nonprofits, then universities and academia, then governments and military', () => {
+    expect(audiences.map((a) => a.id)).toEqual(['developers', 'nonprofits', 'academia', 'governments']);
+    expect(audiences.map((a) => a.title)).toEqual(['Developers', 'Nonprofits', 'Universities and academia', 'Governments and military']);
     for (const audience of audiences) {
       expect(audience.href).toBe(`/join-me#${audience.id}`);
       expect(audience.summary.length).toBeGreaterThan(40);
@@ -41,7 +41,7 @@ describe('the developer path', () => {
 });
 
 describe('claims', () => {
-  const all = [...governmentClaims, ...academiaItems];
+  const all = [...nonprofitClaims, ...governmentClaims, ...academiaItems];
 
   it('every claim cites a source in the vibey repository or on its docs site', () => {
     for (const claim of all) {
@@ -55,8 +55,28 @@ describe('claims', () => {
     expect(text).not.toMatch(/\b(customers?|contracts?|clearances?|accredit\w*|endorse\w*|affiliat\w*|partnered with|trusted by|used by|deployed (at|by|in))\b/i);
   });
 
+  it('tells nonprofits about license, cost ceiling, hardware, audit, approval, and docs, all from the repository', () => {
+    expect(nonprofitClaims.map((c) => c.title)).toEqual([
+      'Nothing to subscribe to',
+      'A bill that does not hinge on one vendor',
+      'Runs on hardware you choose',
+      'A record you can show a board or a funder',
+      'Your people decide what ships',
+      'Documentation the next volunteer can read',
+      'Try it on a real project',
+    ]);
+    const text = nonprofitClaims.map((c) => c.body).join(' ');
+    expect(text).toMatch(/MIT licensed/);
+    expect(text).toMatch(/paid engine runs only when no local one can/);
+    expect(text).toMatch(/daily spend cap/);
+    // No dollar figure, discount, or savings claim: the repository shows none.
+    expect(text).not.toMatch(/[$€£]\s?\d|\bsav(e|es|ing|ings)\b|\bfree of charge\b|\bdiscount/i);
+  });
+
   it('states what the local path covers without overclaiming', () => {
     const sovereign = governmentClaims[0];
+    const nonprofitSpend = nonprofitClaims[1];
+    expect(nonprofitSpend.body).not.toMatch(/(runs|operates|works) (fully|entirely|completely) (locally|offline)|air-gapped/i);
     // vibey#115 closed with 4.x: design and decomposition run on the local gptossloop provider.
     expect(sovereign.body).toMatch(/decomposition/);
     expect(sovereign.body).toMatch(/gptossloop/);

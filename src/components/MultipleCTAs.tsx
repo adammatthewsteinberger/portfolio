@@ -4,13 +4,14 @@ import Icon from '@/components/Icon';
 
 const AUDIENCE_ICONS: Record<string, string> = {
   developers: 'code-branch',
-  governments: 'shield-halved',
+  nonprofits: 'hand-holding-heart',
   academia: 'graduation-cap',
+  governments: 'shield-halved',
 };
 
 /**
  * The closing call to action on posts, articles, and index pages. It leads
- * with the primary ask — help build vibey — and then offers the other two
+ * with the primary ask — help build vibey — and then offers the other
  * audiences, in the same order as /join-me (src/data/audiences.ts).
  */
 export default function MultipleCTAs() {
