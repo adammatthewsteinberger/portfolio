@@ -31,7 +31,7 @@ export const vibeyGuarantees: Evidence[] = [
   {
     claim: 'No vendor owns the build',
     proof:
-      'One queue carries a change from spec interview through design, build, and review across Claude Code, OpenAI Codex, Cursor Agent, Google Antigravity, and a local Qwen model. A cross-vendor handoff must pass a model-free no-loss check or it retries, escalates, or parks for a human.',
+      'One queue carries a change from spec interview through design, build, and review across Claude Code, OpenAI Codex, and local models (GPT-OSS on Ollama, or Qwen), local engines first and a paid one only when no local one can. A cross-vendor handoff must pass a model-free no-loss check or it retries, escalates, or parks for a human.',
     href: '/work/vibey-conductor',
   },
   {
@@ -43,7 +43,7 @@ export const vibeyGuarantees: Evidence[] = [
   {
     claim: 'The gates it asks of you, it passes itself',
     proof:
-      '100% branch-coverage floors in CI on the conductor, every runner, and the release tool. The Helm chart (KEDA, kopf operator) installs on minikube in CI. About 121k lines of tests for about 100k lines of source, and 37 ADRs.',
+      '100% branch-coverage floors in CI on the conductor, every runner, and the release tool. The Helm chart (KEDA, kopf operator) installs on minikube in CI. Every hard call is argued in one of 86 written architecture decision records.',
     href: '/open-source',
   },
 ];

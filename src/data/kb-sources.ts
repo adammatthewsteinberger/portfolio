@@ -9,7 +9,7 @@
  */
 
 import { availabilityHeading } from '@/lib/availability';
-import { VIBEY, academiaItems, audiences, getStartedSteps, governmentClaims, helpWanted } from './audiences';
+import { VIBEY, academiaItems, audiences, type AudienceId, getStartedSteps, governmentClaims, helpWanted, nonprofitClaims } from './audiences';
 import { evidenceText, method, staffEvidence, vibeyGuarantees } from './evidence';
 import { fullStack, specialtyGroups } from './expertise';
 import { FREELANCE_SUMMARY, engagementSteps, freelanceFaq, offers, workingAgreement } from './freelance';
@@ -51,14 +51,18 @@ const plain = (text: string) => text.replaceAll('`', '');
  * page that no longer exists.
  */
 export function joinMeChunks(): KBSource[] {
-  const [developers, governments, academia] = audiences;
+  const byId = (id: AudienceId) => audiences.find((audience) => audience.id === id)!;
+  const developers = byId('developers');
+  const nonprofits = byId('nonprofits');
+  const academia = byId('academia');
+  const governments = byId('governments');
   return [
     {
       id: 'join-me-overview',
       url: '/join-me',
       title: 'Join Me',
       section: 'Who the site is for',
-      text: `Adam is looking for developers to help build vibey, his free and open-source conductor for autonomous software delivery (${VIBEY.repo}, MIT licensed, installed with uv tool install vibey-engine — the PyPI distribution is vibey-engine, the command it installs is vibey). The /join-me page has three sections, in this order: ${audiences
+      text: `Adam is looking for developers to help build vibey, his free and open-source conductor for autonomous software delivery (${VIBEY.repo}, MIT licensed, installed with uv tool install vibey-engine — the PyPI distribution is vibey-engine, the command it installs is vibey). The /join-me page has these sections, in this order: ${audiences
         .map((a) => `${a.title} (${a.href}) — ${a.summary}`)
         .join(' ')} Greenville-remote or US-remote volunteers are welcome and encouraged to get involved at any time. Contact: adam@matthewsteinberger.com.`,
     },
@@ -72,13 +76,13 @@ export function joinMeChunks(): KBSource[] {
         .join(' ')} Where help matters most: ${helpWanted.map((h) => `${h.title} — ${h.body}`).join(' ')}`,
     },
     {
-      id: 'join-me-governments',
-      url: governments.href,
+      id: 'join-me-nonprofits',
+      url: nonprofits.href,
       title: 'Join Me',
-      section: 'Governments and military',
-      text: `What vibey offers governments and military organizations: ${governmentClaims
+      section: 'Nonprofits',
+      text: `What vibey offers nonprofits: ${nonprofitClaims
         .map((c) => `${c.title}: ${plain(c.body)}`)
-        .join(' ')} Contact goes through official channels: email adam@matthewsteinberger.com from an official address, report security vulnerabilities privately as vibey's SECURITY.md describes, and ask public questions in GitHub Discussions. The site claims no government or military customer, contract, clearance, accreditation, or endorsement.`,
+        .join(' ')} To talk it over, email adam@matthewsteinberger.com or ask in GitHub Discussions. The site claims no nonprofit customer, partnership, grant, or endorsement.`,
     },
     {
       id: 'join-me-academia',
@@ -88,6 +92,15 @@ export function joinMeChunks(): KBSource[] {
       text: `What vibey offers universities and researchers: ${academiaItems
         .map((c) => `${c.title}: ${plain(c.body)}`)
         .join(' ')} The paper is at ${VIBEY.paperHtml} (PDF: ${VIBEY.paperPdf}); the book is at ${VIBEY.bookPdf}. The site claims no institutional affiliation or endorsement.`,
+    },
+    {
+      id: 'join-me-governments',
+      url: governments.href,
+      title: 'Join Me',
+      section: 'Governments and military',
+      text: `What vibey offers governments and military organizations: ${governmentClaims
+        .map((c) => `${c.title}: ${plain(c.body)}`)
+        .join(' ')} Contact goes through official channels: email adam@matthewsteinberger.com from an official address, report security vulnerabilities privately as vibey's SECURITY.md describes, and ask public questions in GitHub Discussions. The site claims no government or military customer, contract, clearance, accreditation, or endorsement.`,
     },
   ];
 }
@@ -191,7 +204,7 @@ Before Vizius: four consulting engagements in six months through Adam Matthew St
     url: '/work/vibey-conductor',
     title: 'vibey — Ledger-Mediated Orchestration',
     section: 'What vibey guarantees',
-    text: `vibey is Adam's open-source (MIT, PyPI, 1.0.0) conductor for autonomous software delivery across a pool of coding agents. ${evidenceText(vibeyGuarantees)} Development so far: 11 PyPI releases between August and September 2026, 188 merged pull requests. The design is written up in the paper "Ledger-Mediated Orchestration: Vendor-Independent Autonomous Software Delivery over a Pool of Coding Agents" (not refereed), published at ${VIBEY.paperHtml}. Contributors are welcome; start at /join-me#developers.`,
+    text: `vibey is Adam's open-source (MIT, PyPI, vibey-engine 4.2.0) conductor for autonomous software delivery across a pool of coding agents. ${evidenceText(vibeyGuarantees)} Development so far: 25 tagged releases between August and October 2026, the latest vibey-engine 4.2.0 on 7 October 2026, and 86 architecture decision records. The design is written up in the paper "Ledger-Mediated Orchestration: Vendor-Independent Autonomous Software Delivery over a Pool of Coding Agents" (not refereed), published at ${VIBEY.paperHtml}. Contributors are welcome; start at /join-me#developers.`,
   },
   ...expertiseChunks(),
   {
@@ -206,7 +219,7 @@ Before Vizius: four consulting engagements in six months through Adam Matthew St
     url: '/open-source',
     title: 'Open Source',
     section: 'Packages',
-    text: `Adam's open-source work is MIT licensed, lives in one repository (https://github.com/the-vibey-project/vibey), and ships as one PyPI distribution, vibey-engine: uv tool install vibey-engine installs the vibey command (the conductor), all five *loop engines, and the tools. The old per-package repositories and PyPI projects no longer exist. The *loop family — claudeloop, codexloop, cursorloop, agyloop, and qwenloop — are onion-architected autonomous session runners for Claude Code, OpenAI Codex, Cursor Agent, Google Antigravity/Gemini, and a fully local Qwen 2.5 Coder model; they never block on a human and tell an exhausted rate-limit window apart from exhausted credits. vibey is a queue-based, six-phase conductor for autonomous software delivery built on those runners (PostgreSQL row-level locking); vibey-gh is stdlib-only release automation for GitHub repositories (provenance, merge train, dual-channel releases, documentation maintenance); vibey-skills is a Claude Code plugin marketplace of evidence-grounded practitioner references; vibey-bootstrap (formerly azure-bootstrap) is the Azure Functions cross-cutting layer used across 17+ repos. The site lists the packages by name and does not state a count.`,
+    text: `Adam's open-source work is MIT licensed, lives in one repository (https://github.com/the-vibey-project/vibey), and the engine family ships as one PyPI distribution, vibey-engine: uv tool install vibey-engine installs the vibey command (the conductor), every *loop engine, and the tools (current release 4.2.0). The old per-package repositories and PyPI projects no longer exist. The apps ship separately as krypton-app. The *loop family — claudeloop and codexloop (paid, for Claude Code and OpenAI Codex), and gptossloop and qwenloop (local) — are onion-architected autonomous session runners; they never block on a human and tell an exhausted rate-limit window apart from exhausted credits. gptossloop runs GPT-OSS 20B through Ollama, is on by default, and is the sovereign provider for the design interview and for decomposing a design into build work; qwenloop is the opt-in Qwen twin (qwen3:14b); claudeloop-local is claudeloop on a local backend profile. Local engines are preferred first, and a paid engine runs only when no local one can; in hybrid mode (ADR-0079) a paid engine takes overflow only after a wait and under a daily spend cap counted from the ledger. The Cursor and Antigravity runners were retired in 4.0.0 (ADR-0078), and a configuration that still names them is refused. vibey is a queue-based, six-phase conductor for autonomous software delivery built on those runners (PostgreSQL row-level locking); vibey-gh is stdlib-only release automation for GitHub repositories (provenance, merge train, dual-channel releases, documentation maintenance); vibey-skills is a Claude Code plugin marketplace of evidence-grounded practitioner references (more than a hundred plugins and several hundred skills); krypton is the family of apps for talking to vibey — krypton desktop for Linux and macOS on Apple silicon, the krypton app for Android, iOS and the web, and krypton for VS Code, also on Open VSX; vibey-bootstrap (formerly azure-bootstrap) is the Azure Functions cross-cutting layer used across 17+ repos. The site lists the packages by name and does not state a count.`,
   },
   {
     id: 'books',

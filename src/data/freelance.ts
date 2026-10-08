@@ -1,6 +1,6 @@
 /**
- * Fixed-scope freelance work — the site's second track, behind the open-source
- * work and ahead of hiring. /freelance renders it; the homepage, the header,
+ * Fixed-scope freelance work — the site's fifth track, behind the open-source
+ * work and vibey's other audiences, and ahead of hiring. /freelance renders it; the homepage, the header,
  * the site directory, llms.txt, and the "Ask about Adam" knowledge base read it.
  *
  * Rules this file keeps (AGENTS.md; src/data/__tests__/freelance.test.ts checks them):

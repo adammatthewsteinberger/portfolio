@@ -11,13 +11,15 @@ describe('MultipleCTAs', () => {
     expect(screen.getByRole('link', { name: /how to get started/i })).toHaveAttribute('href', '/join-me#developers');
   });
 
-  it('offers the other two audiences, in order, after the primary ask', () => {
+  it('offers the other audiences, in order, after the primary ask', () => {
     render(<MultipleCTAs />);
     const hrefs = Array.from(document.querySelectorAll('a')).map((a) => a.getAttribute('href'));
-    expect(hrefs.indexOf('/join-me#developers')).toBeLessThan(hrefs.indexOf('/join-me#governments'));
-    expect(hrefs.indexOf('/join-me#governments')).toBeLessThan(hrefs.indexOf('/join-me#academia'));
-    expect(screen.getByRole('link', { name: /governments and military/i })).toHaveAttribute('href', '/join-me#governments');
+    const order = ['/join-me#developers', '/join-me#nonprofits', '/join-me#academia', '/join-me#governments'].map((h) => hrefs.indexOf(h));
+    expect(order.every((i) => i >= 0)).toBe(true);
+    expect(order).toEqual([...order].sort((a, b) => a - b));
+    expect(screen.getByRole('link', { name: /nonprofits/i })).toHaveAttribute('href', '/join-me#nonprofits');
     expect(screen.getByRole('link', { name: /universities and academia/i })).toHaveAttribute('href', '/join-me#academia');
+    expect(screen.getByRole('link', { name: /governments and military/i })).toHaveAttribute('href', '/join-me#governments');
   });
 
   it('keeps the writing and newsletter links, and nothing about hiring or booking', () => {

@@ -1,7 +1,7 @@
 /**
  * The ten-minute path from nothing to an autonomous software-engineering
- * agent, lifted from vibey's README (vibey 1.0.0: one `vibey` install carries
- * every `*loop` engine and the tools) and kept generic on purpose — nothing
+ * agent, lifted from vibey's README (kept in step with vibey-engine 4.2.0: one
+ * `vibey` install carries every `*loop` engine and the tools) and kept generic on purpose — nothing
  * here is tailored to this site or to any customer. Rendered on the homepage
  * and on /join-me.
  */
@@ -11,11 +11,11 @@ export interface QuickstartStep {
 }
 
 export const quickstart: QuickstartStep[] = [
-  { cmd: 'uv tool install vibey-engine', note: 'or pipx / pip. One install carries all five *loop engines and the tools. Python 3.12+ and PostgreSQL required; Windows is not a target.' },
+  { cmd: 'uv tool install vibey-engine', note: 'or pipx / pip, or scripts/install.sh, which also repairs an install when run again. One install carries the conductor, every *loop engine, and the tools. Python 3.12+ and PostgreSQL 14+ required; macOS or Linux, Windows is not a target.' },
   { cmd: 'export VIBEY_PG_URL=postgresql://user@localhost:5432/vibey', note: 'every database-backed command reads it; vibey never guesses a database' },
   { cmd: 'vibey new my-app --repo ~/src/my-app --max-cycle-dollars 15', note: 'a real budget brake, enforced from the ledger' },
   { cmd: 'vibey doctor --conformance --record', note: 'pre-flight: engines and auth, plus a recorded contract check per engine for the new project' },
-  { cmd: 'vibey worker --provider claudeloop --engines claudeloop,agyloop -j 2', note: 'a live design interview, then an unattended build across the engine pool (the default provider is an offline test double)' },
+  { cmd: 'vibey worker --provider claudeloop --engines claudeloop,codexloop -j 2', note: 'a live design interview on a paid engine, then an unattended build across the pool. Leave --provider off and design and build decomposition run on the sovereign local gptossloop (GPT-OSS 20B on Ollama) instead; local engines are preferred first, and a paid one runs only when no local one can.' },
   { cmd: 'vibey answer <gate-id> --defaults', note: 'when it parks for your input: design gates, review, budget grants' },
 ];
 

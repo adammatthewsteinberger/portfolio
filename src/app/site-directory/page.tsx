@@ -7,7 +7,7 @@ import { OG_IMAGE } from '@/lib/seo';
 export const metadata: Metadata = {
   title: 'Site Directory',
   description:
-    'Complete site directory — every page on Adam Matthew Steinberger\'s site, from Join Me (for developers, governments and military, and universities) to the open-source projects, case studies, and writing.',
+    'Complete site directory — every page on Adam Matthew Steinberger\'s site, from Join Me (for developers, nonprofits, universities, and governments and military) to the open-source projects, case studies, and writing.',
   alternates: {
     canonical: '/site-directory',
   },
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 const pages = [
   { icon: 'fa-home', color: 'gold', title: 'Home', description: 'The whole pitch in one scroll.', href: '/', cta: 'Visit Home' },
-  { icon: 'fa-hands-helping', color: 'blue', title: 'Join Me', description: 'Help build vibey: how developers get started, what it offers governments and the military, and the research paper and book for universities.', href: '/join-me', cta: 'Get Started' },
+  { icon: 'fa-hands-helping', color: 'blue', title: 'Join Me', description: 'Help build vibey: how developers get started, what it offers nonprofits, the research paper and book for universities, and what it offers governments and the military.', href: '/join-me', cta: 'Get Started' },
   { icon: 'fa-user', color: 'purple', title: 'My Story', description: 'Background, career timeline, and how I approach architecture work.', href: '/story', cta: 'Read My Story' },
   { icon: 'fa-layer-group', color: 'blue', title: 'Expertise', description: 'The ten technical pillars — AI/ML, RAG, architecture, Azure, and more.', href: '/expertise', cta: 'See Expertise' },
   { icon: 'fa-diagram-project', color: 'green', title: 'Work', description: 'Case studies from thirteen-plus years of shipping software.', href: '/work', cta: 'Browse Work' },
