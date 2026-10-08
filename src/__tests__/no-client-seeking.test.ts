@@ -2,9 +2,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-// The site has three tracks, in priority order (src/data/tracks.ts):
-// open-source developers who want to help build vibey, teams with a
-// fixed-scope project (/freelance), and hiring teams (/hire-me).
+// The site has six tracks, in priority order (src/data/tracks.ts):
+// open-source developers who want to help build vibey, nonprofits,
+// universities, governments and military (those four on /join-me), teams
+// with a fixed-scope project (/freelance), and industry hiring teams (/hire-me).
 //
 // The retired consulting pitch (the-vibey-project/vibey#238) stays retired:
 // no call booking, no "engage the LLC", no open-ended consulting catalogue,

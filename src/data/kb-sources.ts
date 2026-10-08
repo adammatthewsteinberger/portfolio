@@ -9,7 +9,7 @@
  */
 
 import { availabilityHeading } from '@/lib/availability';
-import { VIBEY, academiaItems, audiences, getStartedSteps, governmentClaims, helpWanted } from './audiences';
+import { VIBEY, academiaItems, audiences, type AudienceId, getStartedSteps, governmentClaims, helpWanted, nonprofitClaims } from './audiences';
 import { evidenceText, method, staffEvidence, vibeyGuarantees } from './evidence';
 import { fullStack, specialtyGroups } from './expertise';
 import { FREELANCE_SUMMARY, engagementSteps, freelanceFaq, offers, workingAgreement } from './freelance';
@@ -51,14 +51,18 @@ const plain = (text: string) => text.replaceAll('`', '');
  * page that no longer exists.
  */
 export function joinMeChunks(): KBSource[] {
-  const [developers, governments, academia] = audiences;
+  const byId = (id: AudienceId) => audiences.find((audience) => audience.id === id)!;
+  const developers = byId('developers');
+  const nonprofits = byId('nonprofits');
+  const academia = byId('academia');
+  const governments = byId('governments');
   return [
     {
       id: 'join-me-overview',
       url: '/join-me',
       title: 'Join Me',
       section: 'Who the site is for',
-      text: `Adam is looking for developers to help build vibey, his free and open-source conductor for autonomous software delivery (${VIBEY.repo}, MIT licensed, installed with uv tool install vibey-engine — the PyPI distribution is vibey-engine, the command it installs is vibey). The /join-me page has three sections, in this order: ${audiences
+      text: `Adam is looking for developers to help build vibey, his free and open-source conductor for autonomous software delivery (${VIBEY.repo}, MIT licensed, installed with uv tool install vibey-engine — the PyPI distribution is vibey-engine, the command it installs is vibey). The /join-me page has these sections, in this order: ${audiences
         .map((a) => `${a.title} (${a.href}) — ${a.summary}`)
         .join(' ')} Greenville-remote or US-remote volunteers are welcome and encouraged to get involved at any time. Contact: adam@matthewsteinberger.com.`,
     },
@@ -72,13 +76,13 @@ export function joinMeChunks(): KBSource[] {
         .join(' ')} Where help matters most: ${helpWanted.map((h) => `${h.title} — ${h.body}`).join(' ')}`,
     },
     {
-      id: 'join-me-governments',
-      url: governments.href,
+      id: 'join-me-nonprofits',
+      url: nonprofits.href,
       title: 'Join Me',
-      section: 'Governments and military',
-      text: `What vibey offers governments and military organizations: ${governmentClaims
+      section: 'Nonprofits',
+      text: `What vibey offers nonprofits: ${nonprofitClaims
         .map((c) => `${c.title}: ${plain(c.body)}`)
-        .join(' ')} Contact goes through official channels: email adam@matthewsteinberger.com from an official address, report security vulnerabilities privately as vibey's SECURITY.md describes, and ask public questions in GitHub Discussions. The site claims no government or military customer, contract, clearance, accreditation, or endorsement.`,
+        .join(' ')} To talk it over, email adam@matthewsteinberger.com or ask in GitHub Discussions. The site claims no nonprofit customer, partnership, grant, or endorsement.`,
     },
     {
       id: 'join-me-academia',
@@ -88,6 +92,15 @@ export function joinMeChunks(): KBSource[] {
       text: `What vibey offers universities and researchers: ${academiaItems
         .map((c) => `${c.title}: ${plain(c.body)}`)
         .join(' ')} The paper is at ${VIBEY.paperHtml} (PDF: ${VIBEY.paperPdf}); the book is at ${VIBEY.bookPdf}. The site claims no institutional affiliation or endorsement.`,
+    },
+    {
+      id: 'join-me-governments',
+      url: governments.href,
+      title: 'Join Me',
+      section: 'Governments and military',
+      text: `What vibey offers governments and military organizations: ${governmentClaims
+        .map((c) => `${c.title}: ${plain(c.body)}`)
+        .join(' ')} Contact goes through official channels: email adam@matthewsteinberger.com from an official address, report security vulnerabilities privately as vibey's SECURITY.md describes, and ask public questions in GitHub Discussions. The site claims no government or military customer, contract, clearance, accreditation, or endorsement.`,
     },
   ];
 }

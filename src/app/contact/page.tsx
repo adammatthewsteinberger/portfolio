@@ -8,12 +8,12 @@ import { audiences } from '@/data/audiences';
 export const metadata: Metadata = {
   title: 'Contact',
   description:
-    'Reach Adam Matthew Steinberger: to help build vibey, evaluate it for a government or university, start a fixed-scope project, or hire. Replies within 24 hours.',
+    'Reach Adam Matthew Steinberger: to help build vibey, evaluate it for a nonprofit, university, or government, start a fixed-scope project, or hire. Replies within 24 hours.',
   alternates: { canonical: '/contact' },
   openGraph: {
     images: [OG_IMAGE],
     title: 'Contact | Adam Matthew Steinberger',
-    description: 'For contributors, governments and universities, project teams, and hiring teams. Replies within 24 hours.',
+    description: 'For contributors, nonprofits, universities and governments, project teams, and hiring teams. Replies within 24 hours.',
     url: 'https://vibewithadam.matthewsteinberger.com/contact',
     siteName: 'Adam Matthew Steinberger',
     locale: 'en_US',
@@ -23,12 +23,12 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     images: [OG_IMAGE],
     title: 'Contact | Adam Matthew Steinberger',
-    description: 'For contributors, governments and universities, project teams, and hiring teams.',
+    description: 'For contributors, nonprofits, universities and governments, project teams, and hiring teams.',
   },
 };
 
-// The three audiences, in priority order — each door opens its section of /join-me.
-const ICONS: Record<(typeof audiences)[number]['id'], string> = { developers: 'fa-code-branch', governments: 'fa-shield-halved', academia: 'fa-graduation-cap' };
+// The vibey audiences, in priority order — each door opens its section of /join-me.
+const ICONS: Record<(typeof audiences)[number]['id'], string> = { developers: 'fa-code-branch', nonprofits: 'fa-hand-holding-heart', academia: 'fa-graduation-cap', governments: 'fa-shield-halved' };
 const doors = audiences.map((audience) => ({
   icon: ICONS[audience.id],
   title: audience.title,
@@ -52,7 +52,7 @@ export default function ContactPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
           {doors.map((door) => (
             <div key={door.href} className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6 shadow-lg text-center h-full flex flex-col">
               <Icon name={door.icon} className="text-4xl text-[var(--color-accent-blue)] mb-4" />

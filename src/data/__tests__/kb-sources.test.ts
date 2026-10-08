@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { openSourcePackages } from '../open-source';
 import { freelanceChunks, joinMeChunks, kbSources } from '../kb-sources';
 import { freelanceFaq, offers } from '../freelance';
-import { academiaItems, audiences, getStartedSteps, governmentClaims } from '../audiences';
+import { academiaItems, audiences, getStartedSteps, governmentClaims, nonprofitClaims } from '../audiences';
 
 /** Closed / renamed packages that must never reappear as current KB inventory. */
 const CLOSED_PACKAGE_NAMES = ['engineering-influence-skills', 'content-pipeline-skills'] as const;
@@ -49,7 +49,7 @@ describe('kbSources', () => {
     }
   });
 
-  // Hiring was restored as a second track (PR #100): the bot can answer from /hire-me,
+  // Hiring was restored as a track (PR #100): the bot can answer from /hire-me,
   // but it never pitches the retired executive edition, the consulting catalogue, or a booking.
   it('answers hiring questions from /hire-me and never pitches consulting', () => {
     const hire = kbSources.filter((s) => s.url === '/hire-me');
@@ -64,19 +64,28 @@ describe('kbSources', () => {
 describe('joinMeChunks', () => {
   const chunks = joinMeChunks();
 
-  it('covers the overview and the three audiences, in priority order', () => {
-    expect(chunks.map((c) => c.id)).toEqual(['join-me-overview', 'join-me-developers', 'join-me-governments', 'join-me-academia']);
+  it('covers the overview and the four audiences, in priority order', () => {
+    expect(chunks.map((c) => c.id)).toEqual([
+      'join-me-overview',
+      'join-me-developers',
+      'join-me-nonprofits',
+      'join-me-academia',
+      'join-me-governments',
+    ]);
     expect(chunks.slice(1).map((c) => c.url)).toEqual(audiences.map((a) => a.href));
     for (const chunk of chunks) expect(kbSources).toContainEqual(chunk);
   });
 
   it('is generated from the page data, so the bot and /join-me cannot drift', () => {
-    const [overview, developers, governments, academia] = chunks;
+    const [overview, developers, nonprofits, academia, governments] = chunks;
     expect(overview.text).toContain('looking for developers to help build vibey');
     for (const audience of audiences) expect(overview.text).toContain(audience.title);
     for (const step of getStartedSteps) expect(developers.text).toContain(step.title);
     expect(developers.text).toContain('git checkout -b feature/short-description develop');
     expect(developers.text).not.toContain('`');
+    for (const claim of nonprofitClaims) expect(nonprofits.text).toContain(claim.title);
+    expect(nonprofits.text).toContain('claims no nonprofit customer, partnership, grant, or endorsement');
+    expect(nonprofits.text).not.toContain('`');
     for (const claim of governmentClaims) expect(governments.text).toContain(claim.title);
     expect(governments.text).toContain('claims no government or military customer');
     for (const item of academiaItems) expect(academia.text).toContain(item.title);
