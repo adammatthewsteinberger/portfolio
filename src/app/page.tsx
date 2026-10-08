@@ -8,7 +8,7 @@ import { method, staffEvidence, vibeyGuarantees } from '@/data/evidence';
 import { openSourcePackages } from '@/data/open-source';
 import { DistributionNote, PackageLinks } from '@/components/PackageLinks';
 import { INVITATION, INVITATION_CTA, quickstart } from '@/data/quickstart';
-import { VIBEY, audiences } from '@/data/audiences';
+import { VIBEY } from '@/data/audiences';
 import { tracks } from '@/data/tracks';
 import { OG_IMAGE } from '@/lib/seo';
 
@@ -90,7 +90,7 @@ export default function Home() {
       {/* Who this site is for — in priority order */}
       <section className="container mx-auto px-4 py-12" aria-labelledby="audiences-heading">
         <h2 id="audiences-heading" className="text-2xl font-bold mb-2 text-center text-[var(--color-text-primary)]">Who This Is For</h2>
-        <p className="text-center text-[var(--color-text-muted)] mb-8">Three ways in, in the order they matter to me.</p>
+        <p className="text-center text-[var(--color-text-muted)] mb-8">Six ways in, in the order they matter to me.</p>
         <ol className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto list-none pl-0">
           {tracks.map((track, i) => (
             <li key={track.id} className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-5 flex flex-col">
@@ -101,13 +101,6 @@ export default function Home() {
             </li>
           ))}
         </ol>
-        <p className="text-center text-sm text-[var(--color-text-muted)] mt-6">
-          Evaluating vibey for a{' '}
-          <Link href={audiences[1].href} className="text-[var(--color-accent-blue)] hover:underline">government or military organization</Link>
-          {' '}or a{' '}
-          <Link href={audiences[2].href} className="text-[var(--color-accent-blue)] hover:underline">university</Link>
-          ? Each has its own section on the Join Me page.
-        </p>
       </section>
 
       {/* Run it in ten minutes */}
@@ -271,13 +264,15 @@ export default function Home() {
             {INVITATION_CTA} →
           </Link>
           <p className="text-sm text-[var(--color-text-muted)] mt-6 mb-0">
-            <Link href="/join-me#governments" className="hover:underline">Governments and military</Link>
+            <Link href="/join-me#nonprofits" className="hover:underline">Nonprofits</Link>
             {' · '}
             <Link href="/join-me#academia" className="hover:underline">Universities and academia</Link>
             {' · '}
+            <Link href="/join-me#governments" className="hover:underline">Governments and military</Link>
+            {' · '}
             <Link href="/freelance" className="hover:underline">Freelance projects</Link>
             {' · '}
-            <Link href="/hire-me" className="hover:underline">Hiring</Link>
+            <Link href="/hire-me" className="hover:underline">Industry</Link>
           </p>
         </div>
       </section>

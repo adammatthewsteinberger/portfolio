@@ -1,12 +1,16 @@
 /**
- * The three audiences this site is for, in priority order, and everything the
- * /join-me page says to each of them. One source: /join-me renders it, the
+ * The four vibey audiences on /join-me, in priority order, and everything the
+ * page says to each of them. One source: /join-me renders it, the
  * homepage, /contact, the site directory and the shared CTA link to it, and
  * the "Ask about Adam" knowledge base is generated from it (src/data/kb-sources.ts).
  *
  * 1. Developers — help build vibey; how to get started.
- * 2. Governments and military.
+ * 2. Nonprofits.
  * 3. Universities and academia.
+ * 4. Governments and military.
+ *
+ * Freelance clients and hiring teams have their own pages (src/data/tracks.ts
+ * lists all six in order).
  *
  * Content integrity (AGENTS.md): every claim here is traceable to the vibey
  * repository and links to its source. Nothing claims a customer, contract,
@@ -14,7 +18,7 @@
  * src/data/__tests__/audiences.test.ts keeps it that way.
  */
 
-export type AudienceId = 'developers' | 'governments' | 'academia';
+export type AudienceId = 'developers' | 'nonprofits' | 'academia' | 'governments';
 
 export interface Audience {
   id: AudienceId;
@@ -35,12 +39,12 @@ export const audiences: Audience[] = [
     cta: 'How to get started',
   },
   {
-    id: 'governments',
-    title: 'Governments and military',
-    href: '/join-me#governments',
+    id: 'nonprofits',
+    title: 'Nonprofits',
+    href: '/join-me#nonprofits',
     summary:
-      'Local models by preference, an append-only ledger you can audit, provenance on every commit, and review bound to the exact code it examined — all MIT licensed and checkable.',
-    cta: 'What vibey offers',
+      'MIT licensed with nothing to subscribe to, local models by preference so the bill does not hinge on one vendor, your own hardware, and a ledger that can answer what a run did — all of it checkable.',
+    cta: 'What vibey offers nonprofits',
   },
   {
     id: 'academia',
@@ -49,6 +53,14 @@ export const audiences: Audience[] = [
     summary:
       'A research paper that states the model formally, the whole documentation as a book, a citation file, and open-licensed code to reproduce, teach with, and extend.',
     cta: 'The paper and the book',
+  },
+  {
+    id: 'governments',
+    title: 'Governments and military',
+    href: '/join-me#governments',
+    summary:
+      'Local models by preference, an append-only ledger you can audit, provenance on every commit, and review bound to the exact code it examined — all MIT licensed and checkable.',
+    cta: 'What vibey offers',
   },
 ];
 
@@ -188,6 +200,49 @@ export interface Claim {
   body: string;
   source: Source;
 }
+
+/**
+ * What vibey offers nonprofits — the same checkable properties as the other
+ * audiences, put in terms of small budgets, volunteer turnover, and answering
+ * to a board or a funder. Stated only as far as the repository supports it.
+ */
+export const nonprofitClaims: Claim[] = [
+  {
+    title: 'Nothing to subscribe to',
+    body: 'vibey is MIT licensed. There is no seat count and no hosted service to subscribe to. Install it with `uv tool install vibey-engine`, fork it, and keep running it whatever happens to the project.',
+    source: { label: 'The license', href: VIBEY.license },
+  },
+  {
+    title: 'A bill that does not hinge on one vendor',
+    body: 'The design interview and the decomposition of a design into build work run on a local model by default (gptossloop, on GPT-OSS 20B served by Ollama), and a paid engine runs only when no local one can. In hybrid mode a paid engine takes overflow only after a wait, under a daily spend cap counted from the ledger, so the ceiling is written down before the run starts.',
+    source: { label: 'Decision record: gptossloop, the sovereign engine', href: VIBEY.gptossloopAdr },
+  },
+  {
+    title: 'Runs on hardware you choose',
+    body: 'vibey runs on your macOS or Linux hosts against your own PostgreSQL, with no cloud control plane. The local runner never downloads model weights on its own: you install the model you choose.',
+    source: { label: 'The local runner’s README', href: VIBEY.localRunner },
+  },
+  {
+    title: 'A record you can show a board or a funder',
+    body: 'Every decision, finding, and handoff is written to an append-only PostgreSQL ledger before it takes effect. Nothing is updated or deleted; a correction is a new event that supersedes the old one. Any run can be reconstructed after the fact, which is the answer to “what did the software do?”',
+    source: { label: 'The research paper', href: VIBEY.paperHtml },
+  },
+  {
+    title: 'Your people decide what ships',
+    body: 'Four of the six phases wait for a person: design, review, deployment design, and deployment review. Each one needs an explicit, recorded human verdict before it can close, so the automation never decides on your organization’s behalf.',
+    source: { label: 'The research paper', href: VIBEY.paperHtml },
+  },
+  {
+    title: 'Documentation the next volunteer can read',
+    body: 'The documentation is the product, and every page of it is published in reading order as one book, as a PDF, an EPUB, and print-ready HTML, on every release. Volunteers change; the book is the same one for each of them.',
+    source: { label: 'The book (PDF)', href: VIBEY.bookPdf },
+  },
+  {
+    title: 'Try it on a real project',
+    body: 'If your organization has a small project worth trying vibey on, propose it in Discussions or by email. Reports from real use, including where it falls short, are what the project needs most.',
+    source: { label: 'Discussions', href: VIBEY.discussions },
+  },
+];
 
 /**
  * What vibey offers governments and military organizations — stated only as far

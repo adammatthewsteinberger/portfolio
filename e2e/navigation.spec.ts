@@ -19,11 +19,11 @@ test.describe('Navigation', () => {
     await expect(page.locator('h1').first()).toBeVisible();
   });
 
-  test('join-me page loads with its three sections in order', async ({ page }) => {
+  test('join-me page loads with its four sections in order', async ({ page }) => {
     await gotoAndDismiss(page, '/join-me');
     await expect(page).toHaveURL('/join-me');
     await expect(page.locator('h1').first()).toHaveText('Join Me');
-    await expect(page.locator('h2')).toHaveText(['Help build vibey', 'Governments and military', 'Universities and academia']);
+    await expect(page.locator('h2')).toHaveText(['Help build vibey', 'Nonprofits', 'Universities and academia', 'Governments and military']);
   });
 
   test('blog page loads', async ({ page }) => {
