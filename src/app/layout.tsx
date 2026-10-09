@@ -5,7 +5,7 @@ import { isPreview } from '@/lib/siteEnv';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import './globals.css';
-import { inter, rajdhani, shareTechMono } from './fonts';
+import { heebo, inter, rajdhani, shareTechMono } from './fonts';
 import { OG_IMAGE } from '@/lib/seo';
 
 const SITE_URL = 'https://vibewithadam.matthewsteinberger.com';
@@ -136,7 +136,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${rajdhani.variable} ${shareTechMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${heebo.variable} ${rajdhani.variable} ${shareTechMono.variable}`}>
       <head>
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
