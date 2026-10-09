@@ -38,6 +38,7 @@ AI coding agents are used as tools under strict gates and disclosed up front; Ad
 - [Expertise](https://vibewithadam.matthewsteinberger.com/expertise): The specialties in full, each with the engineering rule behind it.
 - [Story](https://vibewithadam.matthewsteinberger.com/story): Background, career timeline, and how he approaches architecture and documentation work.
 - [Writing](https://vibewithadam.matthewsteinberger.com/writing): Blog posts on AI and automation, plus a free 33-article series on AI chatbots for business.
+- [Essays](https://vibewithadam.matthewsteinberger.com/essays): Essays on faith, autism and neurodiversity, science, and technology, written from where those interests overlap. Personal writing, separate from the engineering blog.
 - [Books](https://vibewithadam.matthewsteinberger.com/books): Two books currently in development — Novice to Navigator (AI chatbots for business) and Engineering Influence.
 
 ## vibey, for researchers

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ESSAYS_PATH } from '@/data/essays';
 
 interface FooterLink {
   href: string;
@@ -17,6 +18,7 @@ const links: FooterLink[] = [
   { href: '/expertise', label: 'Expertise' },
   { href: '/open-source', label: 'Open Source' },
   { href: '/writing', label: 'Writing' },
+  { href: ESSAYS_PATH, label: 'Essays' },
   NEWSLETTER,
   { href: '/site-directory', label: 'Site Directory' },
   { href: '/privacy', label: 'Privacy' },
