@@ -22,6 +22,8 @@
      banners (Rajdhani + Share Tech Mono, self-hosted via src/app/fonts.ts). */
   --font-display: var(--font-rajdhani), 'Rajdhani', var(--font-sans);
   --font-mono: var(--font-share-tech-mono), 'Share Tech Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+  /* Hebrew body face for /he (src/app/he/layout.tsx). Latin falls back to Inter. */
+  --font-hebrew: var(--font-heebo), var(--font-sans);
 
   /* Signal colours from the banners: hairlines, eyebrows, and the exec chip
      only — never text on a surface. */

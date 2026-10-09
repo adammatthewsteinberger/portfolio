@@ -17,6 +17,7 @@ import { metadata as siteDirectory } from '@/app/site-directory/page';
 import { metadata as chat } from '@/app/chat/page';
 import { metadata as joinMe } from '@/app/join-me/page';
 import { metadata as freelance } from '@/app/freelance/page';
+import { metadata as essays } from '@/app/essays/page';
 import { generateMetadata as articleSlug } from '@/app/novice-to-navigator/[slug]/page';
 
 // Next does not deep-merge `openGraph`: any page that defines the block must
@@ -25,7 +26,7 @@ const pages: [string, Metadata][] = [
   ['/', home], ['/join-me', joinMe], ['/freelance', freelance], ['/story', story], ['/expertise', expertise], ['/work', work],
   ['/open-source', openSource], ['/writing', writing], ['/books', books], ['/novice-to-navigator', noviceToNavigator],
   ['/novice-to-navigator/readiness', readiness], ['/contact', contact],
-  ['/site-directory', siteDirectory], ['/chat', chat],
+  ['/site-directory', siteDirectory], ['/chat', chat], ['/essays', essays],
 ];
 
 const images = (meta: Metadata) => JSON.stringify(meta.openGraph?.images ?? []);

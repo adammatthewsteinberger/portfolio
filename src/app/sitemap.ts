@@ -2,6 +2,8 @@ import { MetadataRoute } from 'next';
 import { articles } from '@/data/articles';
 import { projects } from '@/data/projects';
 import { getAllBlogPosts } from '@/lib/blogUtils';
+import { getAllCollectionEntries } from '@/lib/collectionUtils';
+import { ESSAYS_DIR, ESSAYS_PATH } from '@/data/essays';
 
 const DOMAIN = 'https://vibewithadam.matthewsteinberger.com';
 
@@ -24,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${DOMAIN}/writing`, lastModified: buildDate, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${DOMAIN}/books`, lastModified: buildDate, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${DOMAIN}/blog`, lastModified: buildDate, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${DOMAIN}${ESSAYS_PATH}`, lastModified: buildDate, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${DOMAIN}/novice-to-navigator`, lastModified: buildDate, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${DOMAIN}/contact`, lastModified: buildDate, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${DOMAIN}/privacy`, lastModified: buildDate, changeFrequency: 'yearly', priority: 0.3 },
@@ -54,5 +57,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: post.featured ? 0.8 : 0.6,
   }));
 
-  return [...staticPages, ...articlePages, ...projectPages, ...blogPages];
+  // Essays also use their own date, and rank below the blog: the site leads with engineering.
+  const essayPages: MetadataRoute.Sitemap = getAllCollectionEntries(ESSAYS_DIR).map((essay) => ({
+    url: `${DOMAIN}${ESSAYS_PATH}/${essay.slug}`,
+    lastModified: new Date(essay.publishedDate),
+    changeFrequency: 'yearly' as const,
+    priority: 0.4,
+  }));
+
+  return [...staticPages, ...articlePages, ...projectPages, ...blogPages, ...essayPages];
 }

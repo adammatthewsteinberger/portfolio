@@ -1,4 +1,4 @@
-import { Inter } from 'next/font/google';
+import { Heebo, Inter } from 'next/font/google';
 import localFont from 'next/font/local';
 
 /**
@@ -9,6 +9,18 @@ import localFont from 'next/font/local';
  * third-party font host, no layout shift.
  */
 export const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
+
+/**
+ * Hebrew face for the /he twin of /ministry. The Hebrew subset is its own
+ * unicode-range file, so English pages never download it, and preload is off so
+ * they do not even hint at it; only pages that render Hebrew glyphs fetch it.
+ */
+export const heebo = Heebo({
+  subsets: ['hebrew', 'latin'],
+  variable: '--font-heebo',
+  display: 'swap',
+  preload: false,
+});
 
 export const rajdhani = localFont({
   src: './_og/fonts/Rajdhani-Bold.ttf',
