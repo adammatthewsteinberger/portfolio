@@ -48,6 +48,28 @@ describe('EssayPage', () => {
     expect(data.inLanguage).toBe('en');
   });
 
+  it('shows the essay\'s hero image when it has one, as a decorative image', async () => {
+    const { container } = render(await EssayPage(params('welcome')));
+    const image = container.querySelector('img');
+
+    expect(image).not.toBeNull();
+    expect(decodeURIComponent(image!.getAttribute('src') ?? '')).toContain('/images/essays/mars-expedition.webp');
+    expect(image).toHaveAttribute('alt', '');
+  });
+
+  it('shows no image for an essay without one', async () => {
+    const { container } = render(await EssayPage(params('autism-and-faith')));
+
+    expect(container.querySelector('img')).toBeNull();
+  });
+
+  it('lists related essays that share a tag, linked to their pages', async () => {
+    render(await EssayPage(params('autism-and-faith')));
+
+    expect(screen.getByRole('heading', { level: 2, name: 'More essays' })).toBeInTheDocument();
+    expect(screen.getAllByRole('link').some((link) => link.getAttribute('href')?.startsWith('/essays/'))).toBe(true);
+  });
+
   it('404s for an unknown essay', async () => {
     await expect(EssayPage(params('no-such-essay'))).rejects.toThrow();
   });

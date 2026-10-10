@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import Icon from '@/components/Icon';
 import EntryCard from '@/components/EntryCard';
@@ -155,6 +156,17 @@ export default async function EssayPage({ params }: EssayPageProps) {
 
       <section className="container mx-auto px-4 py-8">
         <div className="max-w-3xl mx-auto">
+          {essay.image && (
+            // Decorative: the images carry no description, so none is invented.
+            <Image
+              src={essay.image}
+              alt=""
+              width={1280}
+              height={853}
+              priority
+              className="w-full h-auto rounded-xl mb-8"
+            />
+          )}
           <MarkdownArticle>{essay.content}</MarkdownArticle>
         </div>
       </section>

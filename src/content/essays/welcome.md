@@ -3,6 +3,7 @@ title: "Welcome to The Autistic Apologist"
 description: "An introduction to these essays and what you can expect to find in them."
 publishedDate: "2025-10-29"
 tags: ["introduction", "personal", "autism", "christianity"]
+image: "/images/essays/mars-expedition.webp"
 ---
 
 Hello and welcome to **The Autistic Apologist**! I'm [Adam Matthew](https://www.instagram.com/realadammatthew), and I'm excited to share this space with you.
