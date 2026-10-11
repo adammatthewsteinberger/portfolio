@@ -11,19 +11,34 @@
  * shares blocks with the source; on Linux `--reflink=auto` does the same
  * where the filesystem supports it.
  *
- * Idempotent: exits 0 immediately when `node_modules` already exists.
+ * Idempotent: exits 0 immediately when `node_modules` already holds packages.
+ *
+ * A `node_modules` with nothing installed in it does not count. Tools make one on their own:
+ * Vitest writes its cache to `node_modules/.vite`, so a test run in a worktree before this
+ * script ran leaves a directory holding only dot-folders. Treating that as "present" skipped
+ * the clone for good, and every `next build` after it failed with "Could not find the Next.js
+ * package", which an unattended repair loop then chased for hours as if it were a code bug.
  */
 import { execFileSync } from 'node:child_process';
-import { existsSync } from 'node:fs';
+import { existsSync, readdirSync, rmSync } from 'node:fs';
 import { platform } from 'node:os';
 import { dirname, join } from 'node:path';
 
 const here = process.cwd();
 const target = join(here, 'node_modules');
 
+/** A real install has a package directory in it; a tool cache only has dot-folders. */
+function holdsPackages(dir) {
+  return readdirSync(dir).some((name) => !name.startsWith('.'));
+}
+
 if (existsSync(target)) {
-  console.log('node_modules already present — nothing to do');
-  process.exit(0);
+  if (holdsPackages(target)) {
+    console.log('node_modules already present — nothing to do');
+    process.exit(0);
+  }
+  console.log('node_modules holds no packages (only tool caches) — replacing it with a clone');
+  rmSync(target, { recursive: true, force: true });
 }
 
 let dir = dirname(here);
