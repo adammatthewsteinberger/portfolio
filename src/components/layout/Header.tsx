@@ -5,9 +5,8 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { SITE_HOST } from '@/lib/hostRouting';
 
-// The last three items follow the site's tracks, in priority order
-// (src/data/tracks.ts): Join Me covers the first four (developers, nonprofits,
-// universities and academia, governments and military), then Freelance, then
+// The last three items follow the site's tracks: Join Me (covering
+// developers, academia, governments, and nonprofits), then Freelance, then
 // Hire Me (industry).
 const navItems = [
   { href: '/', label: 'Home' },

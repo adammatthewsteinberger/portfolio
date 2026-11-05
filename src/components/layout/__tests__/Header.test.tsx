@@ -11,7 +11,7 @@ describe('Header', () => {
     );
   });
 
-  // The tracks in priority order (src/data/tracks.ts): Join Me, Freelance, Hire Me, then the contributors pill.
+  // The tracks: Join Me, Freelance, Hire Me, then the contributors pill.
   it('renders the desktop nav items, with Join Me, then Freelance, then Hire Me, and no executive link', () => {
     render(<Header />);
     expect(document.querySelector('a[href="/hire-me"]')).not.toBeNull();

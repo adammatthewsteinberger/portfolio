@@ -56,10 +56,11 @@ export default function Home() {
           Run a team of coding agents that can&apos;t lose your work.
         </p>
         <p className="text-lg text-[var(--color-text-muted)] max-w-2xl mx-auto md:mx-0 mb-4">
-          vibey carries a change from spec to reviewed merge across Claude Code, Codex, Cursor,
-          Antigravity, and a local Qwen model. Every decision is a row in an append-only ledger,
-          so when an agent dies, the next one starts from the last row. It&apos;s free, MIT
-          licensed, on PyPI, and this site is built with it.
+          vibey carries a change from spec to reviewed merge across Claude Code, OpenAI Codex, and
+          local models (GPT-OSS on Ollama, Qwen), local engines first. Every decision is a row in an
+          append-only ledger, so when an agent dies, the next one starts from the last row. Driven via
+          CLI or the cross-platform krypton apps, it&apos;s free, MIT licensed, on PyPI, and this site is
+          built with it.
         </p>
         <p className="text-lg text-[var(--color-text-primary)] max-w-2xl mx-auto md:mx-0 mb-8">
           I&apos;m looking for developers to help build it. {INVITATION}
@@ -264,13 +265,13 @@ export default function Home() {
             {INVITATION_CTA} →
           </Link>
           <p className="text-sm text-[var(--color-text-muted)] mt-6 mb-0">
-            <Link href="/join-me#nonprofits" className="hover:underline">Nonprofits</Link>
+            <Link href="/freelance" className="hover:underline">Freelance projects</Link>
             {' · '}
             <Link href="/join-me#academia" className="hover:underline">Universities and academia</Link>
             {' · '}
             <Link href="/join-me#governments" className="hover:underline">Governments and military</Link>
             {' · '}
-            <Link href="/freelance" className="hover:underline">Freelance projects</Link>
+            <Link href="/join-me#nonprofits" className="hover:underline">Nonprofits</Link>
             {' · '}
             <Link href="/hire-me" className="hover:underline">Industry</Link>
           </p>
