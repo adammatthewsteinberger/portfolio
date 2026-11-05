@@ -16,7 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${DOMAIN}/`, lastModified: buildDate, changeFrequency: 'weekly', priority: 1.0 },
     // The primary page: developers, nonprofits, universities, then governments and military.
     { url: `${DOMAIN}/join-me`, lastModified: buildDate, changeFrequency: 'weekly', priority: 1.0 },
-    // The tracks in priority order (src/data/tracks.ts): freelance fifth, industry hiring sixth.
+    // The tracks in priority order (src/data/tracks.ts): freelance second, industry hiring sixth.
     { url: `${DOMAIN}/freelance`, lastModified: buildDate, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${DOMAIN}/hire-me`, lastModified: buildDate, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${DOMAIN}/story`, lastModified: buildDate, changeFrequency: 'monthly', priority: 0.9 },

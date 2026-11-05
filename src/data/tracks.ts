@@ -3,23 +3,22 @@
  * cards and the knowledge base follow this list.
  *
  * 1. Open-source developers — help build vibey (the primary audience).
- * 2. Nonprofits — what vibey offers small, mission-driven teams.
+ * 2. Freelance clients — fixed-scope projects (src/data/freelance.ts).
  * 3. Universities and academia — the paper, the book, the citation file.
  * 4. Governments and military — vibey's checkable guarantees.
- * 5. Freelance clients — fixed-scope projects (src/data/freelance.ts).
+ * 5. Nonprofits — what vibey offers small, mission-driven teams.
  * 6. Industry — hiring teams for Staff+ and forward-deployed roles (/hire-me).
  *
- * The first four are vibey's audiences and live on /join-me
- * (src/data/audiences.ts); the last two have pages of their own. The header
- * keeps three entries (Join Me, Freelance, Hire Me) because /join-me covers
- * the first four. The site never names a target employer; the industry card
- * describes the work.
+ * Open-source developers, academia, governments, and nonprofits live on /join-me
+ * (src/data/audiences.ts); freelance and industry have pages of their own.
+ * The header reflects the main navigation paths (Join Me, Freelance, Hire Me).
+ * The site never names a target employer; the industry card describes the work.
  */
 
 import { audiences, type Audience, type AudienceId } from './audiences';
 import { FREELANCE_SUMMARY } from './freelance';
 
-export type TrackId = 'contributors' | 'nonprofits' | 'academia' | 'governments' | 'clients' | 'employers';
+export type TrackId = 'contributors' | 'clients' | 'academia' | 'governments' | 'nonprofits' | 'employers';
 
 export interface Track {
   id: TrackId;
@@ -39,9 +38,6 @@ const fromAudience = (id: AudienceId, trackId: TrackId, title = audience(id).tit
 
 export const tracks: Track[] = [
   fromAudience('developers', 'contributors', 'Open-source developers'),
-  fromAudience('nonprofits', 'nonprofits'),
-  fromAudience('academia', 'academia'),
-  fromAudience('governments', 'governments'),
   {
     id: 'clients',
     title: 'Freelance projects',
@@ -49,6 +45,9 @@ export const tracks: Track[] = [
     href: '/freelance',
     cta: 'See the packages',
   },
+  fromAudience('academia', 'academia'),
+  fromAudience('governments', 'governments'),
+  fromAudience('nonprofits', 'nonprofits'),
   {
     id: 'employers',
     title: 'Industry and hiring teams',
