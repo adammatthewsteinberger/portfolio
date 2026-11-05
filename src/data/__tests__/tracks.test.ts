@@ -6,23 +6,34 @@ import { audiences } from '../audiences';
 import { FREELANCE_SUMMARY } from '../freelance';
 
 describe('tracks', () => {
-  it('are in priority order: developers, nonprofits, academia, governments, freelance, industry', () => {
-    expect(tracks.map((t) => t.id)).toEqual(['contributors', 'nonprofits', 'academia', 'governments', 'clients', 'employers']);
+  it('are in priority order: developers, freelance, academia, governments, nonprofits, industry', () => {
+    expect(tracks.map((t) => t.id)).toEqual(['contributors', 'clients', 'academia', 'governments', 'nonprofits', 'employers']);
     expect(tracks.map((t) => t.title)).toEqual([
       'Open-source developers',
-      'Nonprofits',
+      'Freelance projects',
       'Universities and academia',
       'Governments and military',
-      'Freelance projects',
+      'Nonprofits',
       'Industry and hiring teams',
     ]);
   });
 
-  it('take the four vibey audiences from /join-me, word for word, in the same relative order', () => {
-    const [, ...rest] = tracks.slice(0, 4);
-    expect(rest.map((t) => t.summary)).toEqual(audiences.slice(1).map((a) => a.summary));
-    expect(rest.map((t) => t.href)).toEqual(['/join-me#nonprofits', '/join-me#academia', '/join-me#governments']);
-    expect(rest.map((t) => t.cta)).toEqual(audiences.slice(1).map((a) => a.cta));
+  it('take the audience tracks from /join-me, word for word', () => {
+    const academia = tracks.find((t) => t.id === 'academia')!;
+    const governments = tracks.find((t) => t.id === 'governments')!;
+    const nonprofits = tracks.find((t) => t.id === 'nonprofits')!;
+
+    expect(academia.summary).toBe(audiences.find((a) => a.id === 'academia')?.summary);
+    expect(academia.href).toBe('/join-me#academia');
+    expect(academia.cta).toBe(audiences.find((a) => a.id === 'academia')?.cta);
+
+    expect(governments.summary).toBe(audiences.find((a) => a.id === 'governments')?.summary);
+    expect(governments.href).toBe('/join-me#governments');
+    expect(governments.cta).toBe(audiences.find((a) => a.id === 'governments')?.cta);
+
+    expect(nonprofits.summary).toBe(audiences.find((a) => a.id === 'nonprofits')?.summary);
+    expect(nonprofits.href).toBe('/join-me#nonprofits');
+    expect(nonprofits.cta).toBe(audiences.find((a) => a.id === 'nonprofits')?.cta);
   });
 
   it('lead with the developer audience from /join-me, word for word', () => {
@@ -31,9 +42,9 @@ describe('tracks', () => {
     expect(contributors.href).toBe('/join-me#developers');
   });
 
-  it('describe freelance work from its own source', () => {
-    expect(tracks[4].summary).toBe(FREELANCE_SUMMARY);
-    expect(tracks[4].href).toBe('/freelance');
+  it('describe freelance work from its own source as track 2', () => {
+    expect(tracks[1].summary).toBe(FREELANCE_SUMMARY);
+    expect(tracks[1].href).toBe('/freelance');
     expect(tracks[5].href).toBe('/hire-me');
   });
 
