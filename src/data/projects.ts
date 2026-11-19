@@ -100,6 +100,20 @@ export const projects: Project[] = [
     status: 'ongoing',
     featured: false,
   },
+  {
+    slug: 'apg-insight-monthly-elt',
+    title: 'APG Insight — Monthly ELT That Finds Its Own Categories',
+    description: 'Volunteer architecture for a nonprofit AI chat platform: a monthly ELT system (Python, dbt, PostgreSQL, DuckDB) that clusters embeddings, has a local model name each category, and publishes a portal where a count appears only when ten different people stand behind it; a 27 GB export runs end to end in about six minutes; 120 ADRs, 100% branch coverage',
+    category: 'AI Solutions',
+    categoryDescription: 'Enterprise AI implementations and automation systems',
+    order: 19,
+    heroTitle: 'APG Insight — Monthly ELT With Privacy Built In',
+    heroSubtitle: 'Categories Discovered From the Data, Counts Withheld Below Ten People, Every Secret With One Reader',
+    technologies: ['Python', 'dbt', 'PostgreSQL', 'DuckDB', 'Sentence embeddings', 'Qwen3-4B', 'Next.js', 'FastAPI', 'Helm', 'Kustomize', 'KEDA', 'Redis'],
+    duration: 'Volunteer, 2026 – present',
+    status: 'ongoing',
+    featured: false,
+  },
   // AI Solutions Projects
   {
     slug: 'enterprise-ai-payroll-processor',

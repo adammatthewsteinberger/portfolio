@@ -191,7 +191,12 @@ export default function StoryPage() {
               </Link>
               , the relay that hands a seeker from an AI apologetics chatbot to a live volunteer
               without losing the thread — designed in three technical summaries before a line of
-              code, then shipped across split PR stacks. And in 2026 I wrote business plans and
+              code, then shipped across split PR stacks. I also designed{' '}
+              <Link href="/work/apg-insight-monthly-elt" className="text-[var(--color-accent-blue)] hover:underline">
+                APG Insight
+              </Link>
+              , a monthly pipeline that finds what a month of messages was about and publishes
+              only counts that ten different people stand behind. And in 2026 I wrote business plans and
               architecture documents for two SaaS concepts of my own; those stay unnamed here.
             </p>
           </div>
