@@ -3,17 +3,18 @@ import { Metadata } from 'next';
 import { getAllBlogPosts } from '@/lib/blogUtils';
 import { OG_IMAGE } from '@/lib/seo';
 import { ESSAYS_PATH, essaysSection } from '@/data/essays';
+import { WRITING_ARTICLES_PATH, writingArticlesSection } from '@/data/writingArticles';
 
 export const metadata: Metadata = {
   title: 'Writing',
   description:
-    'Blog posts on AI and automation, a free 33-article series on AI chatbots for business, and two books in development.',
+    'Blog posts on AI and automation, a free 33-article series on AI chatbots for business, and his books.',
   alternates: { canonical: '/writing' },
   openGraph: {
     images: [OG_IMAGE],
     title: 'Writing | Adam Matthew Steinberger',
     description:
-      'Blog posts on AI and automation, a free 33-article series on AI chatbots for business, and two books in development.',
+      'Blog posts on AI and automation, a free 33-article series on AI chatbots for business, and his books.',
     url: 'https://vibewithadam.matthewsteinberger.com/writing',
   },
 };
@@ -54,6 +55,15 @@ export default function WritingPage() {
             <p className="text-[var(--color-text-muted)]">{essaysSection.description}</p>
           </Link>
           <Link
+            href={WRITING_ARTICLES_PATH}
+            className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] hover:border-[var(--color-accent-blue)]/50 rounded-xl p-6 no-underline transition-colors"
+          >
+            <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-2">
+              {writingArticlesSection.title}
+            </h2>
+            <p className="text-[var(--color-text-muted)]">{writingArticlesSection.description}</p>
+          </Link>
+          <Link
             href="/novice-to-navigator"
             className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] hover:border-[var(--color-accent-blue)]/50 rounded-xl p-6 no-underline transition-colors"
           >
@@ -71,8 +81,8 @@ export default function WritingPage() {
           >
             <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-2">Books</h2>
             <p className="text-[var(--color-text-muted)]">
-              Novice to Navigator and Engineering Influence — both in development. The first
-              edition of Novice to Navigator is free to read right now.
+              Adam&apos;s books on Amazon, including the Living Waters Space Trilogy and
+              Engineering Influence, each linked by format.
             </p>
           </Link>
         </div>

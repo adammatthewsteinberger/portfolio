@@ -4,6 +4,12 @@ import { projects } from '@/data/projects';
 import { getAllBlogPosts } from '@/lib/blogUtils';
 import { getAllCollectionEntries } from '@/lib/collectionUtils';
 import { ESSAYS_DIR, ESSAYS_PATH } from '@/data/essays';
+import {
+  WRITING_ARTICLES_DIR,
+  WRITING_ARTICLES_HE_DIR,
+  WRITING_ARTICLES_HE_PATH,
+  WRITING_ARTICLES_PATH,
+} from '@/data/writingArticles';
 
 const DOMAIN = 'https://vibewithadam.matthewsteinberger.com';
 
@@ -27,6 +33,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${DOMAIN}/books`, lastModified: buildDate, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${DOMAIN}/blog`, lastModified: buildDate, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${DOMAIN}${ESSAYS_PATH}`, lastModified: buildDate, changeFrequency: 'monthly', priority: 0.6 },
+    {
+      url: `${DOMAIN}${WRITING_ARTICLES_PATH}`,
+      lastModified: buildDate,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+      alternates: { languages: { en: `${DOMAIN}${WRITING_ARTICLES_PATH}`, he: `${DOMAIN}${WRITING_ARTICLES_HE_PATH}` } },
+    },
+    { url: `${DOMAIN}${WRITING_ARTICLES_HE_PATH}`, lastModified: buildDate, changeFrequency: 'monthly', priority: 0.4 },
     { url: `${DOMAIN}/novice-to-navigator`, lastModified: buildDate, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${DOMAIN}/contact`, lastModified: buildDate, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${DOMAIN}/privacy`, lastModified: buildDate, changeFrequency: 'yearly', priority: 0.3 },
@@ -65,5 +79,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.4,
   }));
 
-  return [...staticPages, ...articlePages, ...projectPages, ...blogPages, ...essayPages];
+  // The ministry articles: English first, each with its Hebrew twin declared as an
+  // alternate, and the Hebrew URLs listed too. They rank with the essays, below the blog.
+  const writingArticlePages: MetadataRoute.Sitemap = getAllCollectionEntries(WRITING_ARTICLES_DIR).map((article) => {
+    const en = `${DOMAIN}${WRITING_ARTICLES_PATH}/${article.slug}`;
+    const he = `${DOMAIN}${WRITING_ARTICLES_HE_PATH}/${article.slug}`;
+    return {
+      url: en,
+      lastModified: new Date(article.publishedDate),
+      changeFrequency: 'yearly' as const,
+      priority: 0.4,
+      alternates: { languages: { en, he } },
+    };
+  });
+
+  const hebrewArticlePages: MetadataRoute.Sitemap = getAllCollectionEntries(WRITING_ARTICLES_HE_DIR).map((article) => ({
+    url: `${DOMAIN}${WRITING_ARTICLES_HE_PATH}/${article.slug}`,
+    lastModified: new Date(article.publishedDate),
+    changeFrequency: 'yearly' as const,
+    priority: 0.3,
+  }));
+
+  return [
+    ...staticPages,
+    ...articlePages,
+    ...projectPages,
+    ...blogPages,
+    ...essayPages,
+    ...writingArticlePages,
+    ...hebrewArticlePages,
+  ];
 }

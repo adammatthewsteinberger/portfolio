@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import Icon from '@/components/Icon';
 import { OG_IMAGE } from '@/lib/seo';
 import { ESSAYS_PATH, essaysSection } from '@/data/essays';
+import { WRITING_ARTICLES_PATH, writingArticlesSection } from '@/data/writingArticles';
 
 export const metadata: Metadata = {
   title: 'Site Directory',
@@ -28,11 +29,12 @@ const pages = [
   { icon: 'fa-diagram-project', color: 'green', title: 'Work', description: 'Case studies from thirteen-plus years of shipping software.', href: '/work', cta: 'Browse Work' },
   { icon: 'fa-code-branch', color: 'purple', title: 'Open Source', description: 'The *loop engines, vibey, vibey-gh, vibey-bootstrap, and vibey-skills — one MIT-licensed repository, one PyPI distribution.', href: '/open-source', cta: 'See Open Source' },
   { icon: 'fa-comments', color: 'green', title: 'Ask about Adam', description: 'A small RAG chat that answers questions about Adam\'s work and vibey from this site\'s own content.', href: '/chat', cta: 'Ask a Question' },
-  { icon: 'fa-pen-nib', color: 'coral', title: 'Writing', description: 'Blog, the free Novice to Navigator article series, and both books.', href: '/writing', cta: 'Start Reading' },
+  { icon: 'fa-pen-nib', color: 'coral', title: 'Writing', description: 'Blog, the free Novice to Navigator article series, and his books.', href: '/writing', cta: 'Start Reading' },
   { icon: 'fa-pen-nib', color: 'purple', title: essaysSection.title, description: essaysSection.description, href: ESSAYS_PATH, cta: 'Read the Essays' },
+  { icon: 'fa-book-open', color: 'purple', title: writingArticlesSection.title, description: writingArticlesSection.description, href: WRITING_ARTICLES_PATH, cta: 'Read the Articles' },
   { icon: 'fa-newspaper', color: 'coral', title: 'Blog', description: 'AI, automation, and architecture — including what\'s buzzing right now.', href: '/blog', cta: 'Read the Blog' },
   { icon: 'fa-graduation-cap', color: 'gold', title: 'Novice to Navigator', description: 'A free 33-article series on AI chatbots for business.', href: '/novice-to-navigator', cta: 'Start Learning' },
-  { icon: 'fa-book', color: 'gold', title: 'Books', description: 'Two books, both currently in development.', href: '/books', cta: 'See Books' },
+  { icon: 'fa-book', color: 'gold', title: 'Books', description: 'His books on Amazon, including the Living Waters Space Trilogy.', href: '/books', cta: 'See Books' },
   { icon: 'fa-file-signature', color: 'blue', title: 'Freelance', description: 'Fixed-scope packages: codebase and security reviews, RAG chatbots, LLM gateways, identity governance, and AI security readiness.', href: '/freelance', cta: 'See the Packages' },
   { icon: 'fa-briefcase', color: 'green', title: 'Hire Me', description: 'Target roles, availability, Staff-level evidence, and how I work.', href: '/hire-me', cta: 'See the Details' },
   { icon: 'fa-envelope', color: 'blue', title: 'Contact', description: 'Send a message directly.', href: '/contact', cta: 'Contact Me' },
@@ -82,7 +84,7 @@ export default function SiteDirectoryPage() {
           <div className="md:col-span-2 bg-[var(--color-dark-card)] border border-[var(--color-accent-purple)]/30 rounded-xl p-6 text-center max-w-md mx-auto w-full">
             <Icon name="envelope-open-text" className="text-4xl text-[var(--color-accent-blue)] mb-4" />
             <h5 className="text-xl font-bold text-[var(--color-text-primary)] mb-2">Newsletter</h5>
-            <p className="text-[var(--color-text-muted)] mb-4">Get notified when the books ship, plus occasional writing updates.</p>
+            <p className="text-[var(--color-text-muted)] mb-4">Get occasional writing updates.</p>
             <a
               href="https://eepurl.com/jiYXCQ"
               target="_blank"
