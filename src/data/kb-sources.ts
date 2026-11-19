@@ -11,6 +11,7 @@
 import { availabilityHeading } from '@/lib/availability';
 import { VIBEY, academiaItems, audiences, type AudienceId, getStartedSteps, governmentClaims, helpWanted, nonprofitClaims } from './audiences';
 import { essaysSection } from './essays';
+import { writingArticlesSection } from './writingArticles';
 import { booksSummary } from './books';
 import { evidenceText, method, staffEvidence, vibeyGuarantees } from './evidence';
 import { fullStack, specialtyGroups } from './expertise';
@@ -244,6 +245,13 @@ Before Vizius: four consulting engagements in six months through Adam Matthew St
     title: 'Essays',
     section: 'Personal essays',
     text: `Adam also writes personal essays, collected at /essays: ${essaysSection.description} ${essaysSection.botNote}`,
+  },
+  {
+    id: 'writing-articles',
+    url: '/writing/articles',
+    title: 'Articles',
+    section: 'Faith articles',
+    text: `Adam's articles for Jewish seekers and believers are collected at /writing/articles: ${writingArticlesSection.description} ${writingArticlesSection.botNote}`,
   },
   {
     id: 'readiness-quiz',

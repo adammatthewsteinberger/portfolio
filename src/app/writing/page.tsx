@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import { getAllBlogPosts } from '@/lib/blogUtils';
 import { OG_IMAGE } from '@/lib/seo';
 import { ESSAYS_PATH, essaysSection } from '@/data/essays';
+import { WRITING_ARTICLES_PATH, writingArticlesSection } from '@/data/writingArticles';
 
 export const metadata: Metadata = {
   title: 'Writing',
@@ -52,6 +53,15 @@ export default function WritingPage() {
               {essaysSection.title}
             </h2>
             <p className="text-[var(--color-text-muted)]">{essaysSection.description}</p>
+          </Link>
+          <Link
+            href={WRITING_ARTICLES_PATH}
+            className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] hover:border-[var(--color-accent-blue)]/50 rounded-xl p-6 no-underline transition-colors"
+          >
+            <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-2">
+              {writingArticlesSection.title}
+            </h2>
+            <p className="text-[var(--color-text-muted)]">{writingArticlesSection.description}</p>
           </Link>
           <Link
             href="/novice-to-navigator"

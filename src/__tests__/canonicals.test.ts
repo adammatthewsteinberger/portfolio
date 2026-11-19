@@ -20,6 +20,10 @@ import { generateMetadata as workSlugMetadata } from '@/app/work/[slug]/page';
 import { metadata as joinMe } from '@/app/join-me/page';
 import { metadata as essays } from '@/app/essays/page';
 import { generateMetadata as essaySlugMetadata } from '@/app/essays/[slug]/page';
+import { metadata as writingArticles } from '@/app/writing/articles/page';
+import { generateMetadata as writingArticleSlugMetadata } from '@/app/writing/articles/[slug]/page';
+import { metadata as hebrewWritingArticles } from '@/app/he/writing/articles/page';
+import { generateMetadata as hebrewWritingArticleSlugMetadata } from '@/app/he/writing/articles/[slug]/page';
 
 // Regression guard for a real bug: the root layout used to set
 // `alternates.canonical: '/'`, and Next.js does not deep-merge `alternates`,
@@ -41,6 +45,8 @@ const staticPages: [string, Metadata][] = [
   ['/privacy', privacy],
   ['/site-directory', siteDirectory],
   ['/essays', essays],
+  ['/writing/articles', writingArticles],
+  ['/he/writing/articles', hebrewWritingArticles],
 ];
 
 describe('canonical URLs', () => {
@@ -56,6 +62,12 @@ describe('canonical URLs', () => {
   it('essays canonicalize to their own slug', async () => {
     const meta = await essaySlugMetadata({ params: Promise.resolve({ slug: 'welcome' }) });
     expect(meta.alternates?.canonical).toBe('/essays/welcome');
+  });
+
+  it('articles canonicalize to their own slug, and each Hebrew twin to its own /he URL', async () => {
+    const params = { params: Promise.resolve({ slug: 'what-is-sin' }) };
+    expect((await writingArticleSlugMetadata(params)).alternates?.canonical).toBe('/writing/articles/what-is-sin');
+    expect((await hebrewWritingArticleSlugMetadata(params)).alternates?.canonical).toBe('/he/writing/articles/what-is-sin');
   });
 
   it('the root layout no longer declares a canonical for children to inherit', () => {

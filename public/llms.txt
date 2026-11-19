@@ -39,6 +39,7 @@ AI coding agents are used as tools under strict gates and disclosed up front; Ad
 - [Story](https://vibewithadam.matthewsteinberger.com/story): Background, career timeline, and how he approaches architecture and documentation work.
 - [Writing](https://vibewithadam.matthewsteinberger.com/writing): Blog posts on AI and automation, plus a free 33-article series on AI chatbots for business.
 - [Essays](https://vibewithadam.matthewsteinberger.com/essays): Essays on faith, autism and neurodiversity, science, and technology, written from where those interests overlap. Personal writing, separate from the engineering blog.
+- [Articles](https://vibewithadam.matthewsteinberger.com/writing/articles): Articles for Jewish seekers and believers: who Yeshua is, what the Hebrew Scriptures say about the Messiah, sin and atonement, and life as a Jewish believer. Written for Humbleberger Ministries, a mission Adam founded; every article is also in Hebrew at https://vibewithadam.matthewsteinberger.com/he/writing/articles. Faith writing, separate from the engineering work.
 - [Books](https://vibewithadam.matthewsteinberger.com/books): Adam's books on Amazon, each format linked: the Living Waters Space Trilogy (Murky Water, Deep Water, Living Water), The Case for Catholicism, A Return to What Worked, The Social Sickness, The Autistic Gospel, Mars Mission, Encountering Messiah, and Engineering Influence.
 
 ## vibey, for researchers
