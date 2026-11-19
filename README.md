@@ -11,7 +11,7 @@ Source for [vibewithadam.matthewsteinberger.com](https://vibewithadam.matthewste
 
 - **It's the invitation, and it runs.** The primary page, [/join-me](https://vibewithadam.matthewsteinberger.com/join-me), walks a developer from clone to first pull request on vibey, then speaks to governments and the military, then to universities. Instead of a slide about RAG, the homepage has a RAG widget you can poke at.
 - **RAG with the boring parts included.** Feature flag, honeypot, per-IP rate limit, daily spend cap, 6-turn session cap, prompt that refuses to invent facts. All in `src/app/api/ask/` and `src/lib/ask/`.
-- **Content is Markdown, not a CMS.** 115 blog posts, 33 Novice to Navigator articles, and 17 case studies — each a `.md` file with typed frontmatter.
+- **Content is Markdown, not a CMS.** 115 blog posts, 33 Novice to Navigator articles, and 19 case studies — each a `.md` file with typed frontmatter.
 - **Discoverability surfaces built in.** RSS (`/feed.xml`), sitemap, `llms.txt`, JSON-LD, per-page OG images.
 
 ## Stack
@@ -60,7 +60,7 @@ Husky runs `lint-staged` + `typecheck` on pre-commit and `test` + `build` on pre
 src/content/
 ├── blog/*.md        # 115 posts            → /blog/[slug]        (directory-scanned)
 ├── articles/*.md    # 33 N2N articles      → /novice-to-navigator (metadata in src/data/articles.ts)
-└── projects/*.md    # 17 case studies      → /work/[slug]        (metadata in src/data/projects.ts)
+└── projects/*.md    # 19 case studies      → /work/[slug]        (metadata in src/data/projects.ts)
 src/data/kb-sources.ts   # hand-reviewed text the RAG bot is allowed to answer from
 src/data/audiences.ts    # the three audiences and everything /join-me says to them
 ```
