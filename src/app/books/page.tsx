@@ -1,40 +1,76 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { Metadata } from 'next';
 import { OG_IMAGE } from '@/lib/seo';
+import {
+  BOOK_AUTHOR,
+  LIVING_WATERS_SERIES,
+  amazonUrl,
+  books,
+  seriesBooks,
+  standaloneBooks,
+  type Book,
+} from '@/data/books';
+
+const DESCRIPTION =
+  'Books by Adam Steinberger on Amazon: the Living Waters Space Trilogy, The Case for Catholicism, Engineering Influence, and more, each linked by format.';
 
 export const metadata: Metadata = {
   title: 'Books',
-  description:
-    'Novice to Navigator (second edition in development) and Engineering Influence — both currently in development. Get notified when either ships.',
+  description: DESCRIPTION,
   alternates: { canonical: '/books' },
   openGraph: {
     images: [OG_IMAGE],
     title: 'Books | Adam Matthew Steinberger',
-    description: 'Novice to Navigator and Engineering Influence — both currently in development.',
+    description: DESCRIPTION,
     url: 'https://vibewithadam.matthewsteinberger.com/books',
   },
 };
 
+const BOOK_FORMAT_URL = {
+  Kindle: 'https://schema.org/EBook',
+  Paperback: 'https://schema.org/Paperback',
+  Hardcover: 'https://schema.org/Hardcover',
+} as const;
+
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@graph': [
-    {
+  '@graph': books.map((book) => ({
+    '@type': 'Book',
+    name: book.title,
+    alternateName: `${book.title}: ${book.subtitle}`,
+    author: { '@type': 'Person', name: BOOK_AUTHOR },
+    ...(book.series ? { isPartOf: { '@type': 'BookSeries', name: book.series } } : {}),
+    workExample: book.editions.map((edition) => ({
       '@type': 'Book',
-      name: 'Novice to Navigator: Your Guide to AI Chatbots for Business',
-      description: 'Your guide to AI chatbots for business. Second edition in development.',
-      author: { '@type': 'Person', name: 'Adam Matthew Steinberger' },
-      url: 'https://vibewithadam.matthewsteinberger.com/books',
-    },
-    {
-      '@type': 'Book',
-      name: 'Engineering Influence',
-      description: 'A Playbook for the Remnant to Bring Christian Culture Back to America. In development.',
-      author: { '@type': 'Person', name: 'Adam Matthew Steinberger' },
-      url: 'https://vibewithadam.matthewsteinberger.com/books',
-    },
-  ],
+      bookFormat: BOOK_FORMAT_URL[edition.format],
+      url: amazonUrl(edition.asin),
+    })),
+  })),
 };
+
+function BookCard({ book }: { book: Book }) {
+  return (
+    <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-6">
+      <h3 className="text-xl font-bold text-[var(--color-text-primary)] mb-1">{book.title}</h3>
+      <p className="text-sm text-[var(--color-text-muted)] mb-4 italic">{book.subtitle}</p>
+      <ul className="flex flex-wrap gap-3 list-none p-0 m-0">
+        {book.editions.map((edition) => (
+          <li key={edition.asin}>
+            <a
+              href={amazonUrl(edition.asin)}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${book.title}, ${edition.format}, on Amazon`}
+              className="inline-flex items-center gap-2 px-4 py-2 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white font-bold rounded-lg transition-colors no-underline text-sm"
+            >
+              {edition.format}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 export default function BooksPage() {
   return (
@@ -48,76 +84,41 @@ export default function BooksPage() {
           Books
         </h1>
         <p className="text-xl text-[var(--color-text-muted)] max-w-2xl mx-auto">
-          Two books. Neither is for sale yet — both are actively in development.
+          Published as {BOOK_AUTHOR}. Each format links to its Amazon page.
         </p>
       </section>
 
       <section className="container mx-auto px-4 py-8">
-        <div className="max-w-3xl mx-auto space-y-8">
-          <div className="bg-[var(--color-dark-card)] border border-[var(--color-accent-gold)]/30 rounded-xl p-8">
-            <div className="flex flex-col sm:flex-row gap-6 items-start">
-              <Image
-                src="/images/book-cover.jpg"
-                alt="Novice to Navigator book cover"
-                width={140}
-                height={200}
-                className="rounded-lg shadow-lg shrink-0"
-              />
-              <div>
-                <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-2">
-                  Novice to Navigator
-                </h2>
-                <p className="text-[var(--color-text-muted)] mb-4">
-                  Your guide to AI chatbots for business. The first edition&apos;s 33 chapters
-                  are free to read right now as web articles. A second edition — with real
-                  case studies, named research, and a sharper argument — is currently in
-                  development and is not yet for sale.
-                </p>
-                <div className="flex flex-wrap gap-3">
-                  <Link
-                    href="/novice-to-navigator"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[var(--color-accent-gold)] to-amber-500 hover:from-amber-500 hover:to-[var(--color-accent-gold)] font-bold rounded-lg transition-all no-underline text-sm"
-                    style={{ color: '#000000' }}
-                  >
-                    Read the First Edition Free
-                  </Link>
-                  <a
-                    href="https://eepurl.com/jiYXCQ"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 border-2 border-[var(--color-accent-gold)] text-[var(--color-accent-gold)] hover:bg-[var(--color-accent-gold)] hover:text-black font-bold rounded-lg transition-colors no-underline text-sm"
-                  >
-                    Get Notified — Second Edition
-                  </a>
-                </div>
-              </div>
+        <div className="max-w-3xl mx-auto space-y-10">
+          <div>
+            <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-4">
+              {LIVING_WATERS_SERIES}
+            </h2>
+            <div className="space-y-4">
+              {seriesBooks.map((book) => (
+                <BookCard key={book.title} book={book} />
+              ))}
             </div>
           </div>
 
-          <div className="bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-xl p-8">
-            <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-2">
-              Engineering Influence
+          <div>
+            <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-4">
+              More books
             </h2>
-            <p className="text-sm text-[var(--color-text-muted)] mb-4 italic">
-              A Playbook for the Remnant to Bring Christian Culture Back to America
-            </p>
-            <p className="text-[var(--color-text-muted)] mb-4">
-              A 246-page, 200-plus-source field manual on how influence, attention, and culture
-              actually work — social engineering frameworks, virality mechanics, narrative
-              apologetics, organizational psychology, and a chapter on cognitive difference and
-              faithful presence that&apos;s the most personal thing I&apos;ve written. It&apos;s
-              explicitly a Christian book, written from a Messianic Jewish perspective, and it
-              names that plainly rather than hiding it. Currently in development.
-            </p>
-            <a
-              href="https://eepurl.com/jiYXCQ"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 border-2 border-[var(--color-accent-blue)] text-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)] hover:text-white font-bold rounded-lg transition-colors no-underline text-sm"
-            >
-              Get Notified
-            </a>
+            <div className="space-y-4">
+              {standaloneBooks.map((book) => (
+                <BookCard key={book.title} book={book} />
+              ))}
+            </div>
           </div>
+
+          <p className="text-[var(--color-text-muted)] text-sm text-center">
+            Looking for the free series on AI chatbots for business? It is on the web:{' '}
+            <Link href="/novice-to-navigator" className="text-[var(--color-accent-blue)] hover:underline">
+              Novice to Navigator
+            </Link>
+            .
+          </p>
         </div>
       </section>
     </div>

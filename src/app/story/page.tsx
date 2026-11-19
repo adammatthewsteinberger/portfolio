@@ -219,7 +219,7 @@ export default function StoryPage() {
               want to be doing every day. If you want the fuller version of my story,
               the parts that aren&apos;t about software are in{' '}
               <Link href="/books" className="text-[var(--color-accent-blue)] hover:underline">
-                the book I wrote
+                the books I wrote
               </Link>
               .
             </p>

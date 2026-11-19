@@ -41,7 +41,7 @@ src/
 │   ├── blog/, blog/[slug]/       # 110+ posts, dynamic OG images, JSON-LD Article schema
 │   ├── novice-to-navigator/      # 33-article free educational series + readiness quiz
 │   │   └── readiness/            # Interactive chatbot-readiness quiz (client component)
-│   ├── books/                    # Both books — neither is for sale; email-capture only
+│   ├── books/                    # All of Adam's books, grouped (Living Waters trilogy, then the rest), each format linked to Amazon; source: src/data/books.ts
 │   ├── contact/, privacy/, site-directory/
 │   ├── api/ask/route.ts          # RAG bot streaming endpoint (see below)
 │   ├── feed.xml/route.ts         # RSS 2.0
@@ -136,7 +136,7 @@ Husky runs `lint-staged` + `npm run typecheck` on pre-commit, and `npm run test`
 - **Server-first**: default to Server Components; add `'use client'` only at the leaf that actually needs interactivity/state (see `AskAdam.tsx`, `AudienceToggle.tsx`, `ReadinessQuiz.tsx` for examples of the pattern)
 - **No pricing and no consulting pitch anywhere on the site** — both were deliberate removals; don't reintroduce dollar figures or consulting and booking calls to action (see "Audiences"). Freelance copy belongs on `/freelance` and job-seeking copy on `/hire-me`; both stay behind the open-source work.
 - **Page titles leave the name to the template.** The root layout's `title.template` appends "| Adam Matthew Steinberger", so a page's own `title` must not repeat it (only `openGraph.title` carries the name, since no template applies there). `src/__tests__/metadata.test.ts` checks every listed page.
-- **Books are not for sale** — no Amazon links, no prices; only email-capture "get notified" CTAs (Mailchimp, `https://eepurl.com/jiYXCQ`)
+- **Books are on sale on Amazon; the site shows no prices.** `/books` links each format (Kindle, Paperback, Hardcover) to `https://www.amazon.com/dp/<ASIN>` from `src/data/books.ts`, the one source for the page, its JSON-LD, the KB (`booksSummary()`), and `public/llms.txt`. Titles, subtitles, and ASINs come from the KDP bookshelf; never state a price, rating, review count, or description that is not on it, and never link the author-only `kdp.amazon.com` dashboard. Add a format to the data when it goes live. The free Novice to Navigator web series is separate (`/novice-to-navigator`) and is not on `/books`. The newsletter CTA (Mailchimp, `https://eepurl.com/jiYXCQ`) stays in the footer and elsewhere.
 - **Redirects** for renamed/merged routes live in `next.config.ts` under the `redirects()` function — add one there whenever a route is renamed or a duplicate page is merged, don't just delete the old page
 - **Every page sets its own `alternates.canonical`** (static pages in `metadata`, dynamic routes in `generateMetadata`), and the root layout must never declare one — Next.js does not deep-merge `alternates`, so a root canonical is inherited verbatim by every page that omits it (that bug shipped once: every URL canonicalized to the homepage). `src/__tests__/canonicals.test.ts` guards both halves.
 - **Never state a count of the open-source packages** — list them by name from `src/data/open-source.ts`. Counts drifted three times in a month; `src/data/__tests__/open-source.test.ts` fails on any spelled-out or numeric package count in `src/app`, `src/components`, `src/data`, or `public/llms.txt`.
@@ -174,4 +174,4 @@ The site runs on Cloudflare Workers through the OpenNext adapter — free plan: 
 
 ## SEO / GEO surface
 
-`sitemap.ts`, `robots.txt` (with a `Sitemap:` line), `public/llms.txt` (AI-crawler discoverability), `feed.xml` (RSS), JSON-LD on the root layout (`Person` + `WebSite`) and per-page (`ProfilePage` on `/story`, `Article` on blog posts, `CreativeWork` on case studies, `Book` ×2 on `/books`), and dynamic per-page OG images via `next/og`'s `ImageResponse`.
+`sitemap.ts`, `robots.txt` (with a `Sitemap:` line), `public/llms.txt` (AI-crawler discoverability), `feed.xml` (RSS), JSON-LD on the root layout (`Person` + `WebSite`) and per-page (`ProfilePage` on `/story`, `Article` on blog posts, `CreativeWork` on case studies, `Book` per title on `/books`), and dynamic per-page OG images via `next/og`'s `ImageResponse`.

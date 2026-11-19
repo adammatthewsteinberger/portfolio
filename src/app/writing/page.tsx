@@ -7,13 +7,13 @@ import { ESSAYS_PATH, essaysSection } from '@/data/essays';
 export const metadata: Metadata = {
   title: 'Writing',
   description:
-    'Blog posts on AI and automation, a free 33-article series on AI chatbots for business, and two books in development.',
+    'Blog posts on AI and automation, a free 33-article series on AI chatbots for business, and his books.',
   alternates: { canonical: '/writing' },
   openGraph: {
     images: [OG_IMAGE],
     title: 'Writing | Adam Matthew Steinberger',
     description:
-      'Blog posts on AI and automation, a free 33-article series on AI chatbots for business, and two books in development.',
+      'Blog posts on AI and automation, a free 33-article series on AI chatbots for business, and his books.',
     url: 'https://vibewithadam.matthewsteinberger.com/writing',
   },
 };
@@ -71,8 +71,8 @@ export default function WritingPage() {
           >
             <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-2">Books</h2>
             <p className="text-[var(--color-text-muted)]">
-              Novice to Navigator and Engineering Influence — both in development. The first
-              edition of Novice to Navigator is free to read right now.
+              Adam&apos;s books on Amazon, including the Living Waters Space Trilogy and
+              Engineering Influence, each linked by format.
             </p>
           </Link>
         </div>
