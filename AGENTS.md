@@ -38,6 +38,7 @@ src/
 │   ├── work/, work/[slug]/       # Case studies (renamed from /projects; old URL 301s)
 │   ├── open-source/              # Package showcase: one repo (the-vibey-project/vibey), one PyPI distribution (vibey-engine, which installs the `vibey` command); links from src/data/open-source.ts
 │   ├── writing/                  # Hub linking to Blog, Novice to Navigator, Books
+│   ├── writing/articles/, he/writing/articles/  # Humbleberger Ministries articles, each with a Hebrew (RTL) twin of the same slug; one shared ArticleList/ArticleDetail pair in src/components renders both languages (src/data/writingArticles.ts)
 │   ├── blog/, blog/[slug]/       # 110+ posts, dynamic OG images, JSON-LD Article schema
 │   ├── novice-to-navigator/      # 33-article free educational series + readiness quiz
 │   │   └── readiness/            # Interactive chatbot-readiness quiz (client component)
@@ -52,7 +53,8 @@ src/
 ├── content/
 │   ├── blog/*.md                 # 115 posts
 │   ├── projects/*.md             # 19 case studies
-│   └── articles/*.md             # 33 Novice to Navigator articles
+│   ├── articles/*.md             # 33 Novice to Navigator articles
+│   └── writing-articles/         # Ministry articles: *.md in English, he/*.md the Hebrew twins (same file names)
 ├── data/                         # Metadata arrays (articles.ts, projects.ts, open-source.ts, expertise.ts, audiences.ts, quickstart.ts) + kb-sources.ts (KB chunks for expertise are generated from expertise.ts)
 ├── lib/                          # Content utils (blogUtils, projectUtils, markdownUtils), analytics.ts, hostRouting.ts, siteEnv.ts, ask/ (RAG bot retrieval + rate limiting)
 ├── hooks/                        # useConsent, useBotDetection, useScrollDepth
@@ -141,6 +143,7 @@ Husky runs `lint-staged` + `npm run typecheck` on pre-commit, and `npm run test`
 - **Every page sets its own `alternates.canonical`** (static pages in `metadata`, dynamic routes in `generateMetadata`), and the root layout must never declare one — Next.js does not deep-merge `alternates`, so a root canonical is inherited verbatim by every page that omits it (that bug shipped once: every URL canonicalized to the homepage). `src/__tests__/canonicals.test.ts` guards both halves.
 - **Never state a count of the open-source packages** — list them by name from `src/data/open-source.ts`. Counts drifted three times in a month; `src/data/__tests__/open-source.test.ts` fails on any spelled-out or numeric package count in `src/app`, `src/components`, `src/data`, or `public/llms.txt`.
 - **Audience copy** (the four audiences, the contributor path, the nonprofit, government, and academia claims) comes from `src/data/audiences.ts`, never a literal on a page.
+- **Ministry articles are faith writing, not a track.** `/writing/articles` (and `/he/writing/articles`) hold the articles moved from the Humbleberger Ministries site, loaded by the same collection loader as the essays from `src/content/writing-articles` (English) and `src/content/writing-articles/he` (Hebrew twins, same file names, shared dates and tags). Frontmatter is only what the loader reads; the ministry site's testimonial, trust-badge, donation and conversion fields were deliberately dropped, and `src/__tests__/writing-articles-integrity.test.ts` fails if they return. Hebrew pages are canonical on their own `/he` URL, declare the English twin as an alternate, and carry the site-wide social card (the generated cards bundle Latin fonts only). Copy comes from `src/data/writingArticles.ts`; the site still states no price, donation appeal, or consulting call to action.
 - **Expertise has one source**: `src/data/expertise.ts` drives the homepage specialties, `/expertise`, and the RAG KB chunks. Each pillar carries `engineer` + `rule` (rendered on the engineering pages) and `plain` (fed to the knowledge base only — never rendered on the pages; `src/__tests__/positioning.test.ts` checks).
 - **Tests are colocated** in `__tests__/` directories next to the code they cover, and coverage must stay at 100% — see `vitest.config.ts` for the exact include/exclude globs (roughly: `src/lib`, `src/data`, `src/components`, `src/hooks`; `src/app/**` route handlers and pages are intentionally excluded from the coverage requirement, matching how `/api/ask/route.ts` and the OG image routes are handled)
 
