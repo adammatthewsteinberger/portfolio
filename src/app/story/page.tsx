@@ -195,8 +195,8 @@ export default function StoryPage() {
               <Link href="/work/apg-insight-monthly-elt" className="text-[var(--color-accent-blue)] hover:underline">
                 APG Insight
               </Link>
-              , a monthly pipeline that finds what a month of messages was about and publishes
-              only counts that ten different people stand behind. And in 2026 I wrote business plans and
+              , a monthly pipeline that uses topic clustering and a local model to find what people
+              talk about in the chat and publishes only what ten different people stand behind. And in 2026 I wrote business plans and
               architecture documents for two SaaS concepts of my own; those stay unnamed here.
             </p>
           </div>
