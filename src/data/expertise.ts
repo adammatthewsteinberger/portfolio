@@ -72,7 +72,7 @@ export const specialtyGroups: SpecialtyGroup[] = [
     title: 'Event-driven microservices',
     summary: 'Service Bus, Event Grid, and Event Hubs used for what each is for; the Outbox pattern wherever a business change and an event must land together; a modular monolith first when a real boundary hasn’t shown up yet.',
     stack: ['Azure Service Bus', 'Event Grid', 'Event Hubs', 'gRPC', 'REST', 'KEDA', 'Outbox pattern', 'dbt', 'Snowflake'],
-    where: ['enterprise-ai-payroll-processor', 'lima-one-microservices-suite', 'project-excite-relay', 'enterprise-etl-integrations', 'snow-portal-job-scheduler'],
+    where: ['enterprise-ai-payroll-processor', 'lima-one-microservices-suite', 'project-excite-relay', 'apg-insight-monthly-elt', 'enterprise-etl-integrations', 'snow-portal-job-scheduler'],
     pillars: [
       {
         id: 'microservices',
