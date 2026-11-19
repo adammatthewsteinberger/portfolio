@@ -11,6 +11,7 @@
 import { availabilityHeading } from '@/lib/availability';
 import { VIBEY, academiaItems, audiences, type AudienceId, getStartedSteps, governmentClaims, helpWanted, nonprofitClaims } from './audiences';
 import { essaysSection } from './essays';
+import { booksSummary } from './books';
 import { evidenceText, method, staffEvidence, vibeyGuarantees } from './evidence';
 import { fullStack, specialtyGroups } from './expertise';
 import { FREELANCE_SUMMARY, engagementSteps, freelanceFaq, offers, workingAgreement } from './freelance';
@@ -234,8 +235,8 @@ Before Vizius: four consulting engagements in six months through Adam Matthew St
     id: 'books',
     url: '/books',
     title: 'Books',
-    section: 'Novice to Navigator and Engineering Influence',
-    text: `Adam has written two books, both currently in development and not yet for sale. Novice to Navigator is a guide to AI chatbots for business — the first edition's chapters are free to read online as web articles; a second edition is in development. Engineering Influence: A Playbook for the Remnant to Bring Christian Culture Back to America is a field manual on influence, attention, and culture, written from a Messianic Jewish Christian perspective, including a chapter on cognitive difference. Readers can get notified when either ships via the email signup on the books page.`,
+    section: 'Books on Amazon',
+    text: `${booksSummary()} Each format has its own Amazon link on the books page; the site states no prices, ratings or review counts. Novice to Navigator, the free 33-article series on AI chatbots for business, is a web series at /novice-to-navigator, not one of these books.`,
   },
   {
     id: 'essays',
