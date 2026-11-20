@@ -23,7 +23,7 @@ describe('quickstart', () => {
   });
 
   it('carries the bio invitation verbatim', () => {
-    expect(INVITATION).toBe('Greenville-remote or US-remote volunteers are welcome and encouraged to get involved at any time.');
+    expect(INVITATION).toBe('Volunteers in Albany, Greenville, or anywhere in the US (remote) are welcome and encouraged to get involved at any time.');
     expect(INVITATION_CTA).toBe('Everything a developer needs to get started');
   });
 });
