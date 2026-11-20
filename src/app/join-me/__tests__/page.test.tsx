@@ -9,7 +9,7 @@ describe('/join-me', () => {
     render(<JoinMePage />);
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Join Me');
     expect(screen.getByText(/looking for developers to help build/i)).toBeInTheDocument();
-    expect(screen.getByText(/Greenville-remote or US-remote volunteers are welcome/i)).toBeInTheDocument();
+    expect(screen.getByText(/Volunteers in Albany, Greenville, or anywhere in the US \(remote\) are welcome/i)).toBeInTheDocument();
     const jump = screen.getByRole('navigation', { name: 'Sections on this page' });
     expect(within(jump).getAllByRole('link').map((a) => a.getAttribute('href'))).toEqual([
       '#developers',

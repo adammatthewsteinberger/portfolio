@@ -67,7 +67,7 @@ export function joinMeChunks(): KBSource[] {
       section: 'Who the site is for',
       text: `Adam is looking for developers to help build vibey, his free and open-source conductor for autonomous software delivery (${VIBEY.repo}, MIT licensed, installed with uv tool install vibey-engine — the PyPI distribution is vibey-engine, the command it installs is vibey). The /join-me page has these sections, in this order: ${audiences
         .map((a) => `${a.title} (${a.href}) — ${a.summary}`)
-        .join(' ')} Greenville-remote or US-remote volunteers are welcome and encouraged to get involved at any time. Contact: adam@matthewsteinberger.com.`,
+        .join(' ')} Volunteers in Albany, Greenville, or anywhere in the US (remote) are welcome and encouraged to get involved at any time. Contact: adam@matthewsteinberger.com.`,
     },
     {
       id: 'join-me-developers',
@@ -151,7 +151,7 @@ export const kbSources: KBSource[] = [
     section: 'At a glance',
     text: `Adam Matthew Steinberger is a Staff Software Architect & AI Automation Engineer. Availability: ${availabilityHeading()}.
 Target roles: Staff+ Software Engineer (AI platform, auth and identity, regulated and public-sector deployments), Forward Deployed AI Engineer, Staff Software Architect.
-Location: Greenville, South Carolina — remote preferred; open to US remote anywhere.
+Location: Albany, New York or Greenville, South Carolina — remote preferred; open to US remote anywhere.
 Employment types: W2 full-time preferred; contract-to-hire considered.
 Work authorization: US citizen, no sponsorship required.
 Specialties: identity and access (Entra ID, Okta core/IGA/Workflows, SAML 2.0, OIDC, workload identity federation); AI platforms (multi-vendor LLM gateways, agent orchestration and sandboxing, RAG, MCP); security and compliance (secretless delivery, SBOM and keyless signing, policy-as-code admission, STRIDE, SOC 2 readiness, OWASP LLM Top 10, NIST AI RMF); platform (private AKS, Terraform, Helm, GitOps); Python, TypeScript, C#/.NET.
@@ -162,16 +162,16 @@ Verify him: ask about him at chatwithadam.matthewsteinberger.com, read the packa
     url: '/hire-me',
     title: 'Hire Me',
     section: "What Adam is looking for",
-    text: `What Adam is looking for: a role where AI platform, identity, or security architecture is the job, not a side quest; putting models into real operations, embedded with the people who run them, from discovery to production; regulated or public-sector work, where auditability and human sign-off are requirements from the first day; ownership of hard, ambiguous problems with room to design the solution, not just implement a ticket; a team that writes things down — design docs, decision records, and reviews in the open; Greenville, SC-based or US remote work.
-What Adam is not looking for: pure front-end or design roles with no backend/architecture component; on-call-heavy support rotations with no engineering ownership attached; roles requiring daily in-person presence in an office outside the Greenville area.`,
+    text: `What Adam is looking for: a role where AI platform, identity, or security architecture is the job, not a side quest; putting models into real operations, embedded with the people who run them, from discovery to production; regulated or public-sector work, where auditability and human sign-off are requirements from the first day; ownership of hard, ambiguous problems with room to design the solution, not just implement a ticket; a team that writes things down — design docs, decision records, and reviews in the open; Albany, NY-based, Greenville, SC-based, or US remote work.
+What Adam is not looking for: pure front-end or design roles with no backend/architecture component; on-call-heavy support rotations with no engineering ownership attached; roles requiring daily in-person presence in an office outside the Albany and Greenville areas.`,
   },
   {
     id: 'story-bio',
     url: '/story',
     title: 'My Story',
     section: 'Who Adam is',
-    text: `Adam Matthew Steinberger is a Staff Software Architect and AI Automation Engineer based in Greenville, South Carolina. He builds AI systems that actually work inside enterprise environments — production-grade platforms that handle real data, real security requirements, and real organizational complexity, not just demos. He has 13+ years of professional software engineering experience. His view after those years: the hardest part is never the technology, it is designing so the people who inherit the system get a product that just works — architecture before code, juniors trained in parallel, handoffs that hold.
-Adam describes himself as a deep thinker and a purpose-driven craftsman. He documents everything for the same reason a RAG pipeline cites its sources: a design before the code, a decision record for every choice that matters, and a short written recap after every conversation. His method on every engagement: ${method.join(', then ').toLowerCase()}. He works remote-first from Greenville, SC. He primarily develops free and open-source software and is always open for a connection or a coffee; Greenville-remote or US-remote volunteers are welcome to get involved.
+    text: `Adam Matthew Steinberger is a Staff Software Architect and AI Automation Engineer based in Albany, New York, and Greenville, South Carolina. He builds AI systems that actually work inside enterprise environments — production-grade platforms that handle real data, real security requirements, and real organizational complexity, not just demos. He has 13+ years of professional software engineering experience. His view after those years: the hardest part is never the technology, it is designing so the people who inherit the system get a product that just works — architecture before code, juniors trained in parallel, handoffs that hold.
+Adam describes himself as a deep thinker and a purpose-driven craftsman. He documents everything for the same reason a RAG pipeline cites its sources: a design before the code, a decision record for every choice that matters, and a short written recap after every conversation. His method on every engagement: ${method.join(', then ').toLowerCase()}. He works remote-first from Albany, NY and Greenville, SC. He primarily develops free and open-source software and is always open for a connection or a coffee; volunteers in Albany, Greenville, or anywhere in the US (remote) are welcome to get involved.
 Before Vizius: four consulting engagements in six months through Adam Matthew Steinberger LLC (a self-hosted RAG chatbot, a cloud RAG chatbot, a production push-notification system, and a codebase review with a refactor roadmap), and two years moving Lima One Capital's integration layer from Mulesoft to NestJS microservices.`,
   },
   {

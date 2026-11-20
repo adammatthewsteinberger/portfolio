@@ -21,5 +21,5 @@ export const quickstart: QuickstartStep[] = [
 
 /** The invitation, verbatim from the bio. One source so every surface says the same thing. */
 export const INVITATION =
-  'Greenville-remote or US-remote volunteers are welcome and encouraged to get involved at any time.';
+  'Volunteers in Albany, Greenville, or anywhere in the US (remote) are welcome and encouraged to get involved at any time.';
 export const INVITATION_CTA = 'Everything a developer needs to get started';

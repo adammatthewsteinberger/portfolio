@@ -26,7 +26,7 @@ describe('availability copy', () => {
   it('renders the September wording before the flip', () => {
     expect(availabilityShort(before)).toBe('Available Sept 2026');
     expect(availabilityHeading(before)).toBe('Available September 2026');
-    expect(availabilityLong(before)).toBe('Available September 2026 · Greenville, SC (remote) · US remote');
+    expect(availabilityLong(before)).toBe('Available September 2026 · Albany, NY · Greenville, SC · US remote');
     expect(availabilityFact(before)).toBe('September 2026');
     expect(availabilitySentence(before)).toBe("I'm available starting September 2026");
   });
@@ -34,7 +34,7 @@ describe('availability copy', () => {
   it('renders the "now" wording after the flip', () => {
     expect(availabilityShort(after)).toBe('Available now');
     expect(availabilityHeading(after)).toBe('Available now');
-    expect(availabilityLong(after)).toBe('Available now · Greenville, SC (remote) · US remote');
+    expect(availabilityLong(after)).toBe('Available now · Albany, NY · Greenville, SC · US remote');
     expect(availabilityFact(after)).toBe('Now');
     expect(availabilitySentence(after)).toBe("I'm available now");
   });

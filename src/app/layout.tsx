@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: '%s | Adam Matthew Steinberger',
   },
   description:
-    'Staff Software Architect & AI Automation Engineer in Greenville, SC, building vibey: free and open-source tooling for autonomous software delivery across a pool of coding agents. Looking for developers to help build it. AI platforms, identity, and secretless, auditable deployments for regulated environments.',
+    'Staff Software Architect & AI Automation Engineer in Albany, NY, building vibey: free and open-source tooling for autonomous software delivery across a pool of coding agents. Looking for developers to help build it. AI platforms, identity, and secretless, auditable deployments for regulated environments.',
   authors: [{ name: 'Adam Matthew Steinberger' }],
   creator: 'Adam Matthew Steinberger',
   publisher: 'Adam Matthew Steinberger LLC',
@@ -76,8 +76,8 @@ const jsonLd = {
       email: 'adam@matthewsteinberger.com',
       address: {
         '@type': 'PostalAddress',
-        addressLocality: 'Greenville',
-        addressRegion: 'SC',
+        addressLocality: 'Albany',
+        addressRegion: 'NY',
         addressCountry: 'US',
       },
       sameAs: [
