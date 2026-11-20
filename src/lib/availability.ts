@@ -8,7 +8,7 @@
  */
 export const AVAILABLE_FROM = new Date('2026-09-01T00:00:00-04:00');
 
-export const LOCATION_SUFFIX = 'Greenville, SC (remote) · US remote';
+export const LOCATION_SUFFIX = 'Albany, NY · Greenville, SC · US remote';
 
 export function isAvailableNow(now: Date = new Date()): boolean {
   return now.getTime() >= AVAILABLE_FROM.getTime();
@@ -24,7 +24,7 @@ export function availabilityHeading(now: Date = new Date()): string {
   return isAvailableNow(now) ? 'Available now' : 'Available September 2026';
 }
 
-/** Hero pill with location: "Available September 2026 · Greenville, SC (remote) · US remote". */
+/** Hero pill with location: "Available September 2026 · Albany, NY · Greenville, SC · US remote". */
 export function availabilityLong(now: Date = new Date()): string {
   return `${availabilityHeading(now)} · ${LOCATION_SUFFIX}`;
 }

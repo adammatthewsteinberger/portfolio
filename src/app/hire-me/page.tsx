@@ -6,7 +6,7 @@ import { method, staffEvidence } from '@/data/evidence';
 import { OG_IMAGE } from '@/lib/seo';
 
 const DESCRIPTION =
-  'Staff Software Architect & AI Automation Engineer: AI platforms, auth and identity, and secretless, auditable deployments for regulated environments. US citizen, Greenville, SC or US remote.';
+  'Staff Software Architect & AI Automation Engineer: AI platforms, auth and identity, and secretless, auditable deployments for regulated environments. US citizen, Albany, NY, Greenville, SC, or US remote.';
 
 export const metadata: Metadata = {
   title: 'Hire Me — Staff Software Architect & AI Automation Engineer',
@@ -26,7 +26,7 @@ const facts: { label: string; value: string }[] = [
     value:
       'Staff+ Software Engineer (AI platform, auth and identity, regulated and public-sector deployments) · Forward Deployed AI Engineer · Staff Software Architect',
   },
-  { label: 'Location', value: 'Greenville, SC — remote preferred; open to US remote anywhere' },
+  { label: 'Location', value: 'Albany, NY or Greenville, SC — remote preferred; open to US remote anywhere' },
   { label: 'Available', value: availabilityFact() },
   { label: 'Employment types', value: 'W2 full-time preferred; contract-to-hire considered' },
   { label: 'Work authorization', value: 'US citizen — no sponsorship required' },
@@ -48,13 +48,13 @@ const looking: string[] = [
   'Regulated or public-sector work, where auditability and human sign-off are requirements from the first day',
   'Hard, ambiguous problems, with room to design the solution and not only implement a ticket',
   'A team that writes things down: design docs, decision records, and reviews in the open',
-  'Greenville, SC-based or US remote',
+  'Albany, NY-based, Greenville, SC-based, or US remote',
 ];
 
 const notLooking: string[] = [
   'Pure front-end or design roles with no backend or architecture component',
   'On-call-heavy support rotations with no engineering ownership attached',
-  'Roles requiring daily in-person presence in an office outside the Greenville area',
+  'Roles requiring daily in-person presence in an office outside the Albany and Greenville areas',
 ];
 
 export default function HireMePage() {

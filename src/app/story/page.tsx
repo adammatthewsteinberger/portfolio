@@ -6,13 +6,13 @@ import { OG_IMAGE } from '@/lib/seo';
 export const metadata: Metadata = {
   title: 'My Story',
   description:
-    'Staff Software Architect & AI Automation Engineer in Greenville, SC. Thirteen-plus years across insurance, fintech, and cybersecurity, and why I do my best work deep in AI, automation, and architecture.',
+    'Staff Software Architect & AI Automation Engineer in Albany, NY. Thirteen-plus years across insurance, fintech, and cybersecurity, and why I do my best work deep in AI, automation, and architecture.',
   alternates: { canonical: '/story' },
   openGraph: {
     images: [OG_IMAGE],
     title: 'My Story | Adam Matthew Steinberger',
     description:
-      'Staff Software Architect & AI Automation Engineer in Greenville, SC. Thirteen-plus years of shipping RAG systems, microservices, and automation pipelines.',
+      'Staff Software Architect & AI Automation Engineer in Albany, NY. Thirteen-plus years of shipping RAG systems, microservices, and automation pipelines.',
     url: 'https://vibewithadam.matthewsteinberger.com/story',
     type: 'profile',
   },
@@ -43,7 +43,7 @@ const jsonLd = {
     jobTitle: 'Staff Software Architect & AI Automation Engineer',
     url: 'https://vibewithadam.matthewsteinberger.com/story',
     image: 'https://vibewithadam.matthewsteinberger.com/images/profile-picture.jpg',
-    address: { '@type': 'PostalAddress', addressLocality: 'Greenville', addressRegion: 'SC', addressCountry: 'US' },
+    address: { '@type': 'PostalAddress', addressLocality: 'Albany', addressRegion: 'NY', addressCountry: 'US' },
     sameAs: [
       'https://www.linkedin.com/in/adammatthewsteinberger/',
       'https://github.com/adammatthewsteinberger',
@@ -81,7 +81,7 @@ export default function StoryPage() {
           <div>
             <p>
               I&apos;m Adam Matthew Steinberger — a Staff Software Architect and AI Automation
-              Engineer based in Greenville, South Carolina. I build AI systems that actually work
+              Engineer based in Albany, New York, and Greenville, South Carolina. I build AI systems that actually work
               inside enterprise environments: production-grade platforms that handle real data,
               real security requirements, and real organizational complexity. Not just demos.
               After 13+ years, the hardest part is never the technology — it&apos;s designing so
@@ -115,7 +115,7 @@ export default function StoryPage() {
             <ul className="list-disc pl-6 space-y-2">
               <li>Written specs and async communication over live whiteboards and drive-by Slack pings — I document everything for the same reason a RAG pipeline cites its sources</li>
               <li>Deep, uninterrupted blocks of time on one hard problem, not context-switched across five</li>
-              <li>Remote-first — Greenville, SC is home; the work travels fine over a network connection</li>
+              <li>Remote-first — Albany, NY and Greenville, SC are home; the work travels fine over a network connection</li>
               <li>Architecture before code, juniors trained in parallel, handoffs that hold — the goal is a system a junior engineer can own</li>
               <li>I primarily develop free and open-source software, and I&apos;m always open for a connection or a coffee</li>
             </ul>
