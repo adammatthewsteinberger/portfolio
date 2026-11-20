@@ -11,6 +11,8 @@
 import { availabilityHeading } from '@/lib/availability';
 import { VIBEY, academiaItems, audiences, type AudienceId, getStartedSteps, governmentClaims, helpWanted, nonprofitClaims } from './audiences';
 import { essaysSection } from './essays';
+import { writingArticlesSection } from './writingArticles';
+import { booksSummary } from './books';
 import { evidenceText, method, staffEvidence, vibeyGuarantees } from './evidence';
 import { fullStack, specialtyGroups } from './expertise';
 import { FREELANCE_SUMMARY, engagementSteps, freelanceFaq, offers, workingAgreement } from './freelance';
@@ -191,8 +193,9 @@ Before Vizius: four consulting engagements in six months through Adam Matthew St
     url: '/work/apg-insight-monthly-elt',
     title: 'APG Insight (volunteer)',
     section: 'Volunteer work',
-    text: `Also as a volunteer architect for the same nonprofit AI chat platform, Adam designs APG Insight, a monthly ELT system that discovers what a month of messages was about. It is built in Python with dbt on PostgreSQL (and on DuckDB for offline runs): it clusters sentence embeddings into categories, has a local open-weight model (Qwen3-4B) name each one, assigns every eligible message to versioned categories, and publishes marts, a one-page report and a public portal. The reference month, a 27 GB export of about 5.14 million rows, runs end to end in about six minutes on a 24 GB laptop because the file is streamed once and never restored. Privacy is built into the data: a count is public only when ten different people stand behind it, no message text is ever published, each secret has exactly one reader, and the public run buttons sit behind a kill switch that starts off. The repository is held to its own gates: 120 architecture decision records, 100% branch coverage enforced across more than 4,500 tests, and a Helm and Kustomize install with KEDA-scaled workers tested on minikube. A dbt step that ran 4 hours 20 minutes without finishing now builds in about a minute. The source repository is private and the portal is not deployed yet.`,
+    text: `Also as a volunteer architect for the same nonprofit AI chat platform, Adam designs APG Insight, a monthly pipeline that works out what people talk about in the chat with no list of subjects written in advance. It is built in Python with dbt on PostgreSQL (and on DuckDB for offline runs). Multilingual sentence embeddings of a stratified sample are clustered into 40 micro-topics and merged into 12 categories; a local open-weight model (Qwen3-4B) judges whether each category is a real subject and writes its headline; every message joins its nearest category and up to two more, and a message no subject claims goes to a non-topical bucket. Categories keep their keys from run to run because each run's clusters are matched to the last run's by centroid, and a stability check refits on subsamples. Each run also splits large, stable categories into named subtopics up to three levels deep, and an optional tone stage scores messages from Hostile to Friendly using the local model as a teacher on a sample and a trained classifier as the student for the rest, with the student checked out of fold. dbt traces conversations from message structure so topic and tone roll up per conversation. A public portal lets a visitor ask what a month talked about: the question is matched against the month's message vectors and split into topics that come from the data, no language model sees the question, counts are rounded to five, and a count is public only when ten different people stand behind it. Each secret has exactly one reader, so a compromised portal cannot reach the pipeline or the text. Discovery and assignment for 120,901 messages take about two minutes on a 24 GB laptop, and a 27 GB SQL dump of 5.14 million rows is read in about 2.5 minutes without being restored. The repository has 120 architecture decision records and 100% branch coverage on more than 4,500 tests, and a queue-driven Helm and Kustomize install is exercised on minikube. A dbt step that ran 4 hours 20 minutes without finishing now builds in about a minute. The source repository is private and the portal is built and tested but not deployed yet.`,
   },
+
   {
     id: 'story-timeline',
     url: '/story',
@@ -233,8 +236,8 @@ Before Vizius: four consulting engagements in six months through Adam Matthew St
     id: 'books',
     url: '/books',
     title: 'Books',
-    section: 'Novice to Navigator and Engineering Influence',
-    text: `Adam has written two books, both currently in development and not yet for sale. Novice to Navigator is a guide to AI chatbots for business — the first edition's chapters are free to read online as web articles; a second edition is in development. Engineering Influence: A Playbook for the Remnant to Bring Christian Culture Back to America is a field manual on influence, attention, and culture, written from a Messianic Jewish Christian perspective, including a chapter on cognitive difference. Readers can get notified when either ships via the email signup on the books page.`,
+    section: 'Books on Amazon',
+    text: `${booksSummary()} Each format has its own Amazon link on the books page; the site states no prices, ratings or review counts. Novice to Navigator, the free 33-article series on AI chatbots for business, is a web series at /novice-to-navigator, not one of these books.`,
   },
   {
     id: 'essays',
@@ -242,6 +245,13 @@ Before Vizius: four consulting engagements in six months through Adam Matthew St
     title: 'Essays',
     section: 'Personal essays',
     text: `Adam also writes personal essays, collected at /essays: ${essaysSection.description} ${essaysSection.botNote}`,
+  },
+  {
+    id: 'writing-articles',
+    url: '/writing/articles',
+    title: 'Articles',
+    section: 'Faith articles',
+    text: `Adam's articles for Jewish seekers and believers are collected at /writing/articles: ${writingArticlesSection.description} ${writingArticlesSection.botNote}`,
   },
   {
     id: 'readiness-quiz',

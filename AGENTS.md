@@ -38,10 +38,11 @@ src/
 │   ├── work/, work/[slug]/       # Case studies (renamed from /projects; old URL 301s)
 │   ├── open-source/              # Package showcase: one repo (the-vibey-project/vibey), one PyPI distribution (vibey-engine, which installs the `vibey` command); links from src/data/open-source.ts
 │   ├── writing/                  # Hub linking to Blog, Novice to Navigator, Books
+│   ├── writing/articles/, he/writing/articles/  # Humbleberger Ministries articles, each with a Hebrew (RTL) twin of the same slug; one shared ArticleList/ArticleDetail pair in src/components renders both languages (src/data/writingArticles.ts)
 │   ├── blog/, blog/[slug]/       # 110+ posts, dynamic OG images, JSON-LD Article schema
 │   ├── novice-to-navigator/      # 33-article free educational series + readiness quiz
 │   │   └── readiness/            # Interactive chatbot-readiness quiz (client component)
-│   ├── books/                    # Both books — neither is for sale; email-capture only
+│   ├── books/                    # All of Adam's books, grouped (Living Waters trilogy, then the rest), each format linked to Amazon; source: src/data/books.ts
 │   ├── contact/, privacy/, site-directory/
 │   ├── api/ask/route.ts          # RAG bot streaming endpoint (see below)
 │   ├── feed.xml/route.ts         # RSS 2.0
@@ -52,7 +53,8 @@ src/
 ├── content/
 │   ├── blog/*.md                 # 115 posts
 │   ├── projects/*.md             # 19 case studies
-│   └── articles/*.md             # 33 Novice to Navigator articles
+│   ├── articles/*.md             # 33 Novice to Navigator articles
+│   └── writing-articles/         # Ministry articles: *.md in English, he/*.md the Hebrew twins (same file names)
 ├── data/                         # Metadata arrays (articles.ts, projects.ts, open-source.ts, expertise.ts, audiences.ts, quickstart.ts) + kb-sources.ts (KB chunks for expertise are generated from expertise.ts)
 ├── lib/                          # Content utils (blogUtils, projectUtils, markdownUtils), analytics.ts, hostRouting.ts, siteEnv.ts, ask/ (RAG bot retrieval + rate limiting)
 ├── hooks/                        # useConsent, useBotDetection, useScrollDepth
@@ -136,11 +138,12 @@ Husky runs `lint-staged` + `npm run typecheck` on pre-commit, and `npm run test`
 - **Server-first**: default to Server Components; add `'use client'` only at the leaf that actually needs interactivity/state (see `AskAdam.tsx`, `AudienceToggle.tsx`, `ReadinessQuiz.tsx` for examples of the pattern)
 - **No pricing and no consulting pitch anywhere on the site** — both were deliberate removals; don't reintroduce dollar figures or consulting and booking calls to action (see "Audiences"). Freelance copy belongs on `/freelance` and job-seeking copy on `/hire-me`; both stay behind the open-source work.
 - **Page titles leave the name to the template.** The root layout's `title.template` appends "| Adam Matthew Steinberger", so a page's own `title` must not repeat it (only `openGraph.title` carries the name, since no template applies there). `src/__tests__/metadata.test.ts` checks every listed page.
-- **Books are not for sale** — no Amazon links, no prices; only email-capture "get notified" CTAs (Mailchimp, `https://eepurl.com/jiYXCQ`)
+- **Books are on sale on Amazon; the site shows no prices.** `/books` links each format (Kindle, Paperback, Hardcover) to `https://www.amazon.com/dp/<ASIN>` from `src/data/books.ts`, the one source for the page, its JSON-LD, the KB (`booksSummary()`), and `public/llms.txt`. Titles, subtitles, and ASINs come from the KDP bookshelf; never state a price, rating, review count, or description that is not on it, and never link the author-only `kdp.amazon.com` dashboard. Add a format to the data when it goes live. The free Novice to Navigator web series is separate (`/novice-to-navigator`) and is not on `/books`. The newsletter CTA (Mailchimp, `https://eepurl.com/jiYXCQ`) stays in the footer and elsewhere.
 - **Redirects** for renamed/merged routes live in `next.config.ts` under the `redirects()` function — add one there whenever a route is renamed or a duplicate page is merged, don't just delete the old page
 - **Every page sets its own `alternates.canonical`** (static pages in `metadata`, dynamic routes in `generateMetadata`), and the root layout must never declare one — Next.js does not deep-merge `alternates`, so a root canonical is inherited verbatim by every page that omits it (that bug shipped once: every URL canonicalized to the homepage). `src/__tests__/canonicals.test.ts` guards both halves.
 - **Never state a count of the open-source packages** — list them by name from `src/data/open-source.ts`. Counts drifted three times in a month; `src/data/__tests__/open-source.test.ts` fails on any spelled-out or numeric package count in `src/app`, `src/components`, `src/data`, or `public/llms.txt`.
 - **Audience copy** (the four audiences, the contributor path, the nonprofit, government, and academia claims) comes from `src/data/audiences.ts`, never a literal on a page.
+- **Ministry articles are faith writing, not a track.** `/writing/articles` (and `/he/writing/articles`) hold the articles moved from the Humbleberger Ministries site, loaded by the same collection loader as the essays from `src/content/writing-articles` (English) and `src/content/writing-articles/he` (Hebrew twins, same file names, shared dates and tags). Frontmatter is only what the loader reads; the ministry site's testimonial, trust-badge, donation and conversion fields were deliberately dropped, and `src/__tests__/writing-articles-integrity.test.ts` fails if they return. Hebrew pages are canonical on their own `/he` URL, declare the English twin as an alternate, and carry the site-wide social card (the generated cards bundle Latin fonts only). Copy comes from `src/data/writingArticles.ts`; the site still states no price, donation appeal, or consulting call to action.
 - **Expertise has one source**: `src/data/expertise.ts` drives the homepage specialties, `/expertise`, and the RAG KB chunks. Each pillar carries `engineer` + `rule` (rendered on the engineering pages) and `plain` (fed to the knowledge base only — never rendered on the pages; `src/__tests__/positioning.test.ts` checks).
 - **Tests are colocated** in `__tests__/` directories next to the code they cover, and coverage must stay at 100% — see `vitest.config.ts` for the exact include/exclude globs (roughly: `src/lib`, `src/data`, `src/components`, `src/hooks`; `src/app/**` route handlers and pages are intentionally excluded from the coverage requirement, matching how `/api/ask/route.ts` and the OG image routes are handled)
 
@@ -174,4 +177,4 @@ The site runs on Cloudflare Workers through the OpenNext adapter — free plan: 
 
 ## SEO / GEO surface
 
-`sitemap.ts`, `robots.txt` (with a `Sitemap:` line), `public/llms.txt` (AI-crawler discoverability), `feed.xml` (RSS), JSON-LD on the root layout (`Person` + `WebSite`) and per-page (`ProfilePage` on `/story`, `Article` on blog posts, `CreativeWork` on case studies, `Book` ×2 on `/books`), and dynamic per-page OG images via `next/og`'s `ImageResponse`.
+`sitemap.ts`, `robots.txt` (with a `Sitemap:` line), `public/llms.txt` (AI-crawler discoverability), `feed.xml` (RSS), JSON-LD on the root layout (`Person` + `WebSite`) and per-page (`ProfilePage` on `/story`, `Article` on blog posts, `CreativeWork` on case studies, `Book` per title on `/books`), and dynamic per-page OG images via `next/og`'s `ImageResponse`.
