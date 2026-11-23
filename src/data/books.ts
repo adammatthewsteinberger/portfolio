@@ -46,7 +46,11 @@ export const books: Book[] = [
     title: 'Deep Water',
     subtitle: 'The Living Waters Space Trilogy [Book Two]',
     series: LIVING_WATERS_SERIES,
-    editions: [{ format: 'Kindle', asin: 'B0HQY4NQVR' }],
+    editions: [
+      { format: 'Kindle', asin: 'B0HQY4NQVR' },
+      { format: 'Paperback', asin: 'B0HSNKJYCN' },
+      { format: 'Hardcover', asin: 'B0HSM768DM' },
+    ],
   },
   {
     title: 'Living Water',
@@ -70,12 +74,20 @@ export const books: Book[] = [
   {
     title: 'A Return to What Worked',
     subtitle: 'Premodern Goods, Modern Losses, and the Recovery of Human Flourishing',
-    editions: [{ format: 'Hardcover', asin: 'B0HQXZYC4S' }],
+    editions: [
+      { format: 'Kindle', asin: 'B0HSLXQPS9' },
+      { format: 'Paperback', asin: 'B0HSM82JTR' },
+      { format: 'Hardcover', asin: 'B0HQXZYC4S' },
+    ],
   },
   {
     title: 'The Social Sickness',
     subtitle: 'How a Disconnected Age Lost the Art of Belonging',
-    editions: [{ format: 'Paperback', asin: 'B0HQXTNNR8' }],
+    editions: [
+      { format: 'Kindle', asin: 'B0HSM9WGDD' },
+      { format: 'Paperback', asin: 'B0HQXTNNR8' },
+      { format: 'Hardcover', asin: 'B0HSM3CGRV' },
+    ],
   },
   {
     title: 'The Autistic Gospel',
