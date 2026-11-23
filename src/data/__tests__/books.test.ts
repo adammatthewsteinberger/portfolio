@@ -21,6 +21,12 @@ describe('books data', () => {
     expect(books.every((b) => b.editions.length > 0)).toBe(true);
   });
 
+  it('lists Kindle, Paperback and Hardcover for every book, as the bookshelf shows', () => {
+    for (const book of books) {
+      expect(book.editions.map((e) => e.format)).toEqual(['Kindle', 'Paperback', 'Hardcover']);
+    }
+  });
+
   it('keeps the Living Waters trilogy together and in reading order', () => {
     expect(seriesBooks.map((b) => b.title)).toEqual(['Murky Water', 'Deep Water', 'Living Water']);
     expect(seriesBooks.every((b) => b.series === LIVING_WATERS_SERIES)).toBe(true);
